@@ -8,6 +8,7 @@
         $str=trim(fgets(STDIN));
         if(strlen($str)<=65536){
             for($j=0;$j<strlen($str);$j=$j+1){
+        //!FIXME:
                 $hashvalue=$hashvalue+((ord($str[$i]))*(31**(strlen($str)-1)));
             }
             echo($hashvalue."\n");
