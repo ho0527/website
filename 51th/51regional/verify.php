@@ -11,6 +11,7 @@
             <div class="verifydiv" id="verifydiva"></div>
             <div class="verifydiv" id="verifydivb"></div>
             <div class="verifydiv" id="verifydivc"></div>
+            <input type="button" onclick="location.href='login.php'" value="登出">
             <input type="button" onclick="location.href='verify.php'" value="更新">
             <input type="button" onclick="verifysubmit()" value="送出">
         <div>
