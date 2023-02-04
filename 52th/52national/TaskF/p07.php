@@ -4,7 +4,7 @@
     $n=trim(fgets(STDIN));
     $arr=[];
     $max=0;
-    if(($a<=1)&&($a>=(2**31-1))){
+    if((1<=$n)&&($n<=(2**31-1))){
         for($i=0;$i<$n;$i=$i+1){
             $num=trim(fgets(STDIN));
             if(isset($arr[$num])){
@@ -35,6 +35,7 @@
     }else{
         echo("輸入未符合要求");
     }
+    echo("\n");
     $memoryAfter=memory_get_usage();
     $memoryDifference=$memoryAfter-$memoryBefore;
     echo("Memory used: ".($memoryDifference/1048576)."MB");

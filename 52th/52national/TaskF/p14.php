@@ -2,6 +2,7 @@
     $memoryBefore=memory_get_usage();
     echo("p14\n");
     $n=fgets(STDIN);
+    $ans=[];
     for($i=0;$i<$n;$i=$i+1){
         $str=trim(fgets(STDIN));
         $len=strlen($str);
@@ -25,10 +26,13 @@
             }
         }
         if($left==$right){
-            echo("Y".PHP_EOL);
+            $ans[]="Y";
         }else{
-            echo("N".PHP_EOL);
+            $ans[]="N";
         }
+    }
+    for($i=0;$i<count($ans);$i=$i+1){
+        echo("output".($i+1)."=>".$ans[$i]."\n");
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

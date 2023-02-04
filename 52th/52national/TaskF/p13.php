@@ -1,19 +1,27 @@
 <?php
     $memoryBefore=memory_get_usage();
     echo("p13\n");
-    $n=intval(fgets(STDIN));
-    for($i=0;$i<$n;$i++){
-        $hash_value=0;
+    $n=(int)(fgets(STDIN));
+    $ans=[];
+    for($i=0;$i<$n;$i=$i+1){
+        $hashvalue=0;
         $str=trim(fgets(STDIN));
-        if(((-2**31)<=$str)&&($str<=((2**31)-1))){
-            for($j=0;$j<strlen($str);$j++){
-                $hash_value=$hash_value*31+ord($str[$j]);
-                $hash_value=($hash_value&0x7FFFFFFF)+($hash_value>>31&0x7FFFFFFF);
-                echo($hash_value."\n");
+        if(strlen($str)<=65536){
+            for($j=0;$j<strlen($str);$j=$j+1){
+                $hashvalue=$hashvalue+((ord($str[$i]))*(31**(strlen($str)-1)));
+            }
+            echo($hashvalue."\n");
+            if(((-2**31)<=$hashvalue)&&($hashvalue<=((2**31)-1))){
+                $ans[]=$hashvalue;
+            }else{
+                $ans[]="error";
             }
         }else{
             echo("輸入未符合要求");
         }
+    }
+    for($i=0;$i<count($ans);$i=$i+1){
+        echo("output".($i+1)."=>".$ans[$i]."\n");
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

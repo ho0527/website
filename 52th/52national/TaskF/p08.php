@@ -2,6 +2,7 @@
     $memoryBefore=memory_get_usage();
     echo("p08\n");
     $n=trim(fgets(STDIN));
+    $ans=[];
     function gcd($num){
         if(($num<1)&&($num>(2**63-1))){
             return false;
@@ -20,11 +21,13 @@
         }
     }
     for($i=0;$i<$n;$i=$i+1){
-        $num=trim(fgets(STDIN));
-        if(gcd($num)){
-            echo("Y".PHP_EOL);
+        $ans[]=trim(fgets(STDIN));
+    }
+    for($i=0;$i<count($ans);$i=$i+1){
+        if(gcd($ans[$i])){
+            echo("output".($i+1)."=>"."Y".PHP_EOL);
         }else{
-            echo("N".PHP_EOL);
+            echo("output".($i+1)."=>"."N".PHP_EOL);
         }
     }
     $memoryAfter=memory_get_usage();

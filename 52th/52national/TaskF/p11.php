@@ -2,27 +2,28 @@
     $memoryBefore=memory_get_usage();
     echo("p11\n");
     $n=(int)fgets(STDIN);
+    $data=[];
+    $ans=[];
     for($i=0;$i<$n;$i=$i+1){
         $s=trim(fgets(STDIN));
-        $len=strlen($s);
-        $digit=preg_match("/\d/",$s);
-        $uppercase=preg_match("/[A-Z]/",$s);
-        $lowercase=preg_match("/[a-z]/",$s);
-        $special=preg_match("/[~!@#$%^&*()_+=-\\|';:\"\/.,?><]/",$s);
+        echo($s."\n");
         $count=0;
-        if($digit){
+        if(preg_match("/[0-9]/",$s)){
             $count=$count+1;
         }
-        if($uppercase){
+        if(preg_match("/[A-Z]/",$s)){
             $count=$count+1;
         }
-        if($lowercase){
+        if(preg_match("/[a-z]/",$s)){
             $count=$count+1;
         }
-        if($special){
+        if(preg_match("/\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\-|\\|\||\'|\;|\"|\:|\/|\.|\,|\?|\>|\</",$s)){
             $count=$count+1;
         }
-        echo($count."\n");
+        $ans[]=$count;
+    }
+    for($i=0;$i<count($ans);$i=$i+1){
+        echo("output".($i+1)."=>".$ans[$i]."\n");
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

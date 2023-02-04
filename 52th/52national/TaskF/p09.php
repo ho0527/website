@@ -2,7 +2,8 @@
     $memoryBefore=memory_get_usage();
     echo("p09\n");
     $m=trim(fgets(STDIN));
-    $data=array();
+    $data=[];
+    $ans=[];
     for($i=0;$i<$m;$i++){
         $line=explode(" ",trim(fgets(STDIN)));
         $data[$line[0]]=array("cash_buy"=>$line[1],"cash_sell"=>$line[2],"spot_buy"=>$line[3],"spot_sell"=>$line[4]);
@@ -16,20 +17,22 @@
         $amount=$line[3];
         if($from=="TWD"){
             if($method=="A"){
-                $result=$amount/$data[$to]["spot_sell"];
+                $ans[]=$amount/$data[$to]["spot_sell"];
             }else{
-                $result=$amount/$data[$to]["cash_sell"];
+                $ans[]=$amount/$data[$to]["cash_sell"];
             }
         }elseif($to=="TWD"){
             if($method=="A"){
-                $result=$amount*$data[$from]["spot_buy"];
+                $ans[]=$amount*$data[$from]["spot_buy"];
             }else{
-                $result=$amount*$data[$from]["cash_buy"];
+                $ans[]=$amount*$data[$from]["cash_buy"];
             }
         }else{
             echo("至少要有個是TWD");
         }
-        echo(sprintf("%.5f",$result)."\n");
+    }
+    for($i=0;$i<count($ans);$i=$i+1){
+        echo("output".($i+1)."=>".(sprintf("%.5f",$ans[$i])."\n"));
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

@@ -19,12 +19,15 @@
         }
     }
     $n=trim(fgets(STDIN));
+    $num=[];
     for($i=0;$i<$n;$i=$i+1){
-        $num=trim(fgets(STDIN));
-        if(is_prime($num)){
-            echo("Y".PHP_EOL);
+        $num[]=trim(fgets(STDIN));
+    }
+    for($i=0;$i<count($num);$i=$i+1){
+        if(is_prime($num[$i])){
+            echo("output".($i+1)."=>"."Y".PHP_EOL);
         }else{
-            echo("N".PHP_EOL);
+            echo("output".($i+1)."=>"."N".PHP_EOL);
         }
     }
     echo("\n");
