@@ -1,0 +1,59 @@
+.app{
+    background-color:aqua;/* 背景顏色 */
+    position: absolute;/* 絕對定位 */
+    top: 50%;/* 距頂部高度位移 */
+    left: 50%;/* 距左邊位移 */
+    transform: translate(-50%, -50%);/* 定位 */
+    width: 900px;/* 寬度 */
+    height: 55%;/* 高度 */
+	border-radius: 15px;/* 圓弧邊框 */
+}
+
+.c{
+    width: 90px;/* 寬度 */
+    height: 80px;/* 高度 */
+	position: absolute;
+	top:10px;/* 距頂部高度位移 */
+	left: 25px;/* 距左邊位移 */
+	border: none;/* 邊框 */
+	border-radius: 15px;/* 圓弧邊框 */
+	cursor: pointer;/* 覆蓋指標 */
+}
+
+.output{
+	text-align: right;/* 文字置右 */
+	position: absolute;/* 絕對定位 */
+	top:10px;/* 距頂部高度位移 */
+	right: 5px;/* 距右邊位移 */
+	width: 750px;/* 寬度 */
+	height: 65px;/* 高度 */
+    font-size: 50px;/* 字體大小 */
+    resize: none;/* 禁止移動大小 */
+}
+
+.keys{
+	position: absolute;/* 絕對定位 */
+	bottom: 5px;/* 距底部高度位移 */
+	left: 20px;/* 距左邊位移 */
+}
+
+.key{
+    margin: 3px;/* 物件間格 */
+}
+
+.calckey{
+    width: 210px;/* 寬度 */
+    height: 85px;/* 高度 */
+	font-size: 30px;/* 字體大小 */
+	border: none;/* 邊框 */
+	border-radius: 15px;/* 圓弧邊框 */
+	cursor: pointer;/* 覆蓋指標 */
+}
+
+.change{
+	position: absolute;/* 絕對定位 */
+    left: 50%;/* 距左邊位移 */
+    width: 145px;/* 寬度 */
+    height: 55px;/* 高度 */
+	font-size: 25px;/* 字體大小 */
+}

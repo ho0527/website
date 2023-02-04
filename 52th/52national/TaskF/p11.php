@@ -1,0 +1,31 @@
+<?php
+    $memoryBefore=memory_get_usage();
+    echo("p11\n");
+    $n=(int)fgets(STDIN);
+    for($i=0;$i<$n;$i=$i+1){
+        $s=trim(fgets(STDIN));
+        $len=strlen($s);
+        $digit=preg_match("/\d/",$s);
+        $uppercase=preg_match("/[A-Z]/",$s);
+        $lowercase=preg_match("/[a-z]/",$s);
+        $special=preg_match("/[~!@#$%^&*()_+=-\\|';:\"\/.,?><]/",$s);
+        $count=0;
+        if($digit){
+            $count=$count+1;
+        }
+        if($uppercase){
+            $count=$count+1;
+        }
+        if($lowercase){
+            $count=$count+1;
+        }
+        if($special){
+            $count=$count+1;
+        }
+        echo($count."\n");
+    }
+    echo("\n");
+    $memoryAfter=memory_get_usage();
+    $memoryDifference=$memoryAfter-$memoryBefore;
+    echo("Memory used: ".($memoryDifference/1048576)."MB");
+?>

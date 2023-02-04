@@ -1,0 +1,39 @@
+<!-- HTML for the image cropper page -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>A04</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <!-- 顯示上傳圖像的區域 -->
+        <div id="image-container"></div>
+
+        <!-- 顯示虛線矩形的canvas元件 -->
+        <canvas id="image-canvas"></canvas>
+
+        <!-- 上傳圖像的按鈕 -->
+        <input type="file" id="image-input" onchange="previewImage()">
+
+        <!-- crop / download 按鈕 -->
+        <button id="crop-button" onclick="cropImage()">Crop</button>
+        <button id="download-button" onclick="downloadImage()">download</button>
+
+        <!-- <div class="container"> -->
+            <!-- Image cropper container -->
+            <!-- <div class="cropper"> -->
+                <!-- Dotted rectangle for selecting the crop area -->
+                <!-- <div class="dotted-rectangle"></div> -->
+                <!-- Image to be cropped -->
+                <!-- <img src="" alt=""> -->
+            <!-- </div> -->
+            <!-- File input for selecting the image to be cropped -->
+            <!-- <input type="file" accept="image/*"> -->
+            <!-- Crop and download buttons -->
+            <!-- <button class="crop-button">Crop</button>
+            <button class="download-button" disabled>Download</button><br>
+        </div> -->
+        <script src="index.js"></script>
+    </body>
+</html>

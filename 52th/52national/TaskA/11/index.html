@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>011</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+    <body>
+        <input type="file" id="fileInput"><br>
+        <input type="button" id="submit" value="送出"><br>
+        <div id="chart"></div>
+        <script>
+            let fileInput=document.getElementById("fileInput");
+            let submit=document.getElementById("submit");
+            submit.onclick=function(){
+                let file=fileInput.files[0]
+                loadCSV(file)
+            }
+        </script>
+        <script src="index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+.navigationbar{
+    background-color: rgba(245, 245, 245, 0.6);
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top:5px;
+}
+
+.button{
+    float:right;
+}
+
+button{
+    border-radius: 25px;
+    background-color: white;
+    border: 0.5px black solid;
+    height: 30px;
+    width: 100px;
+}
+
+
+/* 電腦版排版 */
+@media only screen and (min-width: 1920px) {
+  /* CSS 樣式 */
+    body{
+        width: 1920px;
+        height: 1080px;
+    }
+
+    .logo{
+        width: 175px;
+        height: 175px;
+    }
+}
+
+/* 平板電腦版排版 */
+@media only screen and (min-width: 768px) and (max-width: 1919px) {
+  /* CSS 樣式 */
+    body{
+        width: 768px;
+        height: 1024px;
+    }
+
+    .logo{
+        width: 175px;
+        height: 175px;
+    }
+}
+
+/* 智慧型手機版排版 */
+@media only screen and (max-width: 767px) {
+  /* CSS 樣式 */
+    body{
+        width: 360px;
+        height: 640px;
+    }
+
+    .logo{
+        width: 175px;
+        height: 175px;
+    }
+}

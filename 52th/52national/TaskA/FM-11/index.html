@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>A11</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <input type="file" id="image-input" onchange="loadImage()" class="input">
+        <img id="image" style="display:none;" onmousemove="showColor(event)" draggable="false">
+        <div id="color-display"></div>
+        <canvas id="magnifier"></canvas><!-- 畫布標籤 -->
+        <script src="index.js"></script>
+    </body>
+</html>

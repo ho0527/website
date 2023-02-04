@@ -1,0 +1,37 @@
+<?php
+    $memoryBefore=memory_get_usage();
+    echo("p14\n");
+    $n=fgets(STDIN);
+    for($i=0;$i<$n;$i=$i+1){
+        $str=trim(fgets(STDIN));
+        $len=strlen($str);
+        $left=0;
+        $right=0;
+        for($j=0;$j<$len;$j=$j+1){
+            if($str[$j]==" "){
+            }elseif($str[$j]=="("){
+                $left=$left+1;
+            }elseif($str[$j]==")"){
+                $right=$right+1;
+            }elseif($str[$j]=="*"){
+                if($left>$right){
+                    $right=$right+1;
+                }else{
+                    $left=$left+1;
+                }
+            }else{
+                echo("內含無效字元");
+                break;
+            }
+        }
+        if($left==$right){
+            echo("Y".PHP_EOL);
+        }else{
+            echo("N".PHP_EOL);
+        }
+    }
+    echo("\n");
+    $memoryAfter=memory_get_usage();
+    $memoryDifference=$memoryAfter-$memoryBefore;
+    echo("Memory used: ".($memoryDifference/1048576)."MB");
+?>

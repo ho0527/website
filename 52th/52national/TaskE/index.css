@@ -1,0 +1,221 @@
+body{
+    height: 1080px;
+    width: 1920px;
+    user-select: none;
+}
+
+/* .header{ */
+    /* margin: 5px; */
+/* } */
+
+.search{
+    width: 80%;
+    float: right;
+    height: 25px;
+    font-size: 15px;
+    position: relative;
+    bottom:10px;
+    right: 50px;
+    /* margin-bottom: 5px; */
+}
+
+.aside{
+    position: relative;/* 絕對定位 */
+    top: 5px;/* 定位 */
+    left: 0px;
+    width: 17%;/* 寬度 */
+    height: 100%;/* 高度 */
+    float: left;
+    /* margin-top: 55px; */
+    border-right: 1px black solid;
+    background-color: rgba(245, 245, 245, 0.6);
+}
+
+/* 新增學生 */
+.addsut{
+    cursor: pointer;/* 覆蓋指標 */
+    background-color: rgba(200, 200, 200,0.75);/* 背景顏色 */
+    border: none;
+    width: 285px;/* 寬度 */
+    height: 45px;/* 高度 */
+    font-size: 30px;/* 字體大小 */
+    text-align: center;/* 文字置中 */
+    border-radius: 20px;/* 圓弧邊框 */
+    position: relative;/* 絕對定位 */
+    top:0px;/* 定位 */
+    right: 3px;
+    box-shadow: 2px 2px 5px rgba(100, 100, 100, 1);
+}
+
+.addsut:hover{
+    background-color: rgba(100, 100, 100,0.35);/* 背景顏色 */
+}
+
+/*
+燈箱
+#########################################
+*/
+.div {
+    position: absolute;/* 絕對定位 */
+    top: 0px;/* 定位 */
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 999;/*  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mask {
+    position: absolute;/* 絕對定位 */
+    top: 0px;/* 定位 */
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(100, 100, 100, 0.25);/* 背景顏色 */
+}
+
+.close{
+    font-size:15px;/* 字體大小 */
+    width: 125px;/* 寬度 */
+}
+
+.submit{
+    font-size: 15px;/* 字體大小 */
+    width: 125px;/* 寬度 */
+}
+
+.body {
+    position: absolute;/* 絕對定位 */
+    left: 50%;/* 定位 */
+    top: 50% ;
+    transform: translate(-50%,-50%) scale(2);
+    text-align: center;/* 文字置中 */
+    width: 700px;/* 寬度 */
+    height: 300px;/* 高度 */
+    border: 1px blue solid;/* 邊框 */
+    background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
+    border-radius: 15px;/* 圓弧邊框 */
+    /* display: block; */
+}
+
+.stu{
+    font-size: 45px;/* 字體大小 */
+    text-align: center;/* 文字置中 */
+}
+
+.note{
+    width: 92%;/* 寬度 */
+    height: 25px;/* 高度 */
+    font-size: 15px;/* 字體大小 */
+    resize: none;/* 禁止移動大小 */
+}
+
+.title{
+    margin: 5px;
+    text-align: left;
+}
+
+.avatar{
+    width: 70px;
+}
+
+.input{
+    width: 92%;
+    margin-top: 15px;
+    border: none;
+    background-color: rgb(255, 255, 255);/* 背景顏色 */
+}
+
+.name{
+    position: relative;
+    top:15px;
+    width: 45%;
+    margin-bottom:25px;
+    border: none;
+    background-color: rgb(255, 255, 255);/* 背景顏色 */
+}
+
+.left{
+    float: left;
+    width: 12%;
+    height: 245px;
+    border-right: 1px black solid;
+}
+
+.right{
+    float: right;
+    height: 245px;
+    width:85%;
+    position: relative;
+    right: 10px
+}
+
+.avater_preview{
+    width: 60px;
+    height: 60px;
+    border: 1px black solid;
+    border-radius: 50%;
+}
+
+.avater{
+    transform: scale(0.7);
+    position: relative;
+    bottom:20px;
+}
+
+.addclassbody{
+    position: absolute;/* 絕對定位 */
+    left: 50%;/* 定位 */
+    top: 50%;
+    transform: translate(-50%,-50%) scale(2);
+    text-align: center;/* 文字置中 */
+    width: 400px;/* 寬度 */
+    height: 125px;/* 高度 */
+    border: 1px blue solid;/* 邊框 */
+    background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
+    border-radius: 15px;/* 圓弧邊框 */
+    /* display: block; */
+}
+
+.addclass{
+    width: 80%;
+    height: 25px;
+    font-size: 15px;
+
+}
+
+.button{
+    float: right;
+    position: relative;
+    right: 5px;
+    top: 5px;
+}
+
+/*
+#####################################
+*/
+
+.list{
+    list-style-type:none;
+    position: relative;
+    right: 65px;
+}
+
+.item{
+    width: 325px;
+    height: 45px;
+    font-size: 35px;
+    border-radius: 20px;
+    background-color: rgb(231, 231, 231);
+    text-align: center;
+}
+
+.current{
+    background-color: rgb(145, 145, 145);
+}
+
+.searchresult{
+    background-color: yellow;
+}
