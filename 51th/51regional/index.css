@@ -84,7 +84,7 @@ table{
 .link{
     position: absolute;
     bottom: 5px;
-}
+    }
 
 .verifymaindiv{
     font-family: Arial, Helvetica, sans-serif;
@@ -110,13 +110,51 @@ table{
     font-size:10px;
     font-weight:bold;
     margin:3px;
-    position: relative;
-    top: 300px;
-    left: 5px;
+    /* position: absolute; */
+    /* top: 90px; */
+    /* left: 5px; */
     transform:  scale(2);
     text-align: center;
     background-color: rgb(125, 125, 125);
+    /* height: 600px; */
+    width: 50.5%;
+}
+
+.formdiv{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size:10px;
+    font-weight:bold;
+    margin:3px;
+    position: absolute;
+    top: 200px;
+    text-align: center;
     height: 600px;
+    width: 100%;
+}
+
+.divform{
+    color: white;
+    font-size:10px;
+    font-weight:bold;
+    margin:3px;
+    position: relative;
+    top: 300px;
+    left: 5px;
+    text-align: center;
+    width: 50.5%;
+}
+
+.newform{
+    color: white;
+    font-size:10px;
+    font-weight:bold;
+    margin:3px;
+    position: relative;
+    top: 300px;
+    left: 5px;
+    text-align: center;
+    background-color: rgb(125, 125, 125);
     width: 50.5%;
 }
 
@@ -363,4 +401,10 @@ table{
     position: relative;
     top: 2px;
     margin: 1px;
+}
+
+.big3x{
+    margin-right: 80px;
+    margin-left: 80px;
+    transform: scale(3);
 }

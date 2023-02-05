@@ -5,7 +5,7 @@
         $sum=0;
         $odd=strlen($number) % 2;
         for($i=0;$i<strlen($number);$i=$i+1){
-            $digit=(int) $number[$i];
+            $digit=(int)$number[$i];
             if(($i+$odd)%2==0){
                 $digit=$digit*2;
             }
@@ -15,7 +15,7 @@
                $sum=$sum+$digit;
             }
         }
-        return($sum % 10)==0;
+        return($sum%10)==0;
     }
 
     $input=trim(fgets(STDIN));
