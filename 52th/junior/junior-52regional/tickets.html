@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <center>
+            <img src="logo.png"><br>
+            <input type="button" value="Home" onclick="location.href='home.html'">
+            <input type="button" value="News" onclick="location.href='news.html'">
+            <input type="button" value="Discover" onclick="location.href='discover.html'">
+            <input type="button" value="Tickets" onclick="location.href='tickets.html'"><br><br>
+            <form action="tickets.php">
+                First name: <input type="text" name="firstname"><br><br>
+                Last name: <input type="text" name="lastname"><br><br>
+                Phone: <input type="text" name="phone"><br><br>
+                Password: <input type="text" name="password"><br><br>
+                Verification: <input type="text" name="verification"><br>
+                <input type="hidden" name="ans" id="ans">
+                <script src="tickets.js"></script><br><br>
+                <input type="submit" value="送出" name="submit"><br>
+            </form><br>
+            <button>
+                <img src="fb.png" style="width: 20px;height: 20px;">
+                Facebook
+            </button>
+            <button>
+                <img src="google.png" style="width: 20px;height: 20px;">
+                Google+
+            </button>
+            <footer>
+                Copyright &copy Floriade All Rights Reserved
+            </footer>
+        </center>
+    </body>
+</html>

@@ -84,7 +84,7 @@ table{
 .link{
     position: absolute;
     bottom: 5px;
-    }
+}
 
 .verifymaindiv{
     font-family: Arial, Helvetica, sans-serif;
@@ -107,27 +107,36 @@ table{
 .mainform{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin:3px;
-    /* position: absolute; */
-    /* top: 90px; */
-    /* left: 5px; */
-    transform:  scale(2);
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 3px;
+    position: absolute;
+    top: 125px;
+    left: 475px;
     text-align: center;
     background-color: rgb(125, 125, 125);
-    /* height: 600px; */
-    width: 50.5%;
+    height: 50px;
+    width: 950px;
+    transform: scale(2);
+}
+
+.formhead{
+    position: relative;
+    top: 5px;
+    left: 80px;
+    width: 83%;
+    transform: scale(1.2);
 }
 
 .formdiv{
+    border-top: 3px black solid;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-size:10px;
     font-weight:bold;
-    margin:3px;
     position: absolute;
-    top: 200px;
+    top: 70px;
+    left: 0px;
     text-align: center;
     height: 600px;
     width: 100%;
@@ -137,25 +146,19 @@ table{
     color: white;
     font-size:10px;
     font-weight:bold;
-    margin:3px;
+    margin-top:5px;
     position: relative;
-    top: 300px;
-    left: 5px;
     text-align: center;
-    width: 50.5%;
+    width: 100%;
 }
 
 .newform{
     color: white;
     font-size:10px;
     font-weight:bold;
-    margin:3px;
-    position: relative;
-    top: 300px;
-    left: 5px;
     text-align: center;
     background-color: rgb(125, 125, 125);
-    width: 50.5%;
+    width: 100%;
 }
 
 .formtext{
