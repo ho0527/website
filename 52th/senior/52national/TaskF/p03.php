@@ -1,7 +1,7 @@
 <?php
     $memoryBefore=memory_get_usage();
     echo("p03\n");
-    $k=intval(fgets(STDIN));
+    $k=(int)(fgets(STDIN));
     $ciphertext=trim(fgets(STDIN));
     $plaintext="";
     for($i=0;$i<strlen($ciphertext);$i=$i+1){

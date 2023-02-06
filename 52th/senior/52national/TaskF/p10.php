@@ -3,7 +3,7 @@
     echo("p10\n");
     function checkLuhn($number){
         $sum=0;
-        $odd=strlen($number) % 2;
+        $odd=strlen($number)%2;
         for($i=0;$i<strlen($number);$i=$i+1){
             $digit=(int)$number[$i];
             if(($i+$odd)%2==0){
@@ -20,14 +20,18 @@
 
     $input=trim(fgets(STDIN));
     $n=(int)$input;
+    $ans=[];
     for($i=0;$i<$n;$i=$i+1){
         $input=trim(fgets(STDIN));
         $input=preg_replace("/[^\d]/","",$input);
-        if(checkLuhn($input)){
-            echo("Y".PHP_EOL);
+        if(checkLuhn($input)&&preg_match("/[0-9]/",$input)){
+            $ans[]="Y";
         }else{
-            echo("N".PHP_EOL);
+            $ans[]="N";
         }
+    }
+    for($i=0;$i<count($ans);$i=$i+1){
+        echo("output".($i+1)."=>".$ans[$i].PHP_EOL);
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

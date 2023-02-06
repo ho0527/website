@@ -24,10 +24,10 @@
                 <div class="pinpostmessage">
                     <?php
                         include("link.php");
-                        $data=mysqli_query($db,"SELECT*FROM `message` WHERE `pin`='yes'");
+                        $data=query("SELECT*FROM `message` WHERE `pin`='yes'");
                         $a=[];
-                        while($row=mysqli_fetch_row($data)){
-                            array_push($a,$row);
+                        while($row=fetch($data)){
+                            $a[]=$row;
                         }
                         for($i=0;$i<sizeof($a)-1;$i=$i+1){
                             for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
@@ -128,10 +128,10 @@
             </div>
             <div class="postbody">
                 <?php
-                    $data=mysqli_query($db,"SELECT*FROM `message`");
+                    $data=query("SELECT*FROM `message`");
                     $a=[];
-                    while($row=mysqli_fetch_row($data)){
-                        array_push($a,$row);
+                    while($row=fetch($data)){
+                        $a[]=$row;
                     }
                     for($i=0;$i<sizeof($a)-1;$i=$i+1){
                         for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
@@ -268,7 +268,7 @@
                 @$_SESSION["tel"]=$tel;
                 @$_SESSION["message"]=$message;
                 @$_SESSION["sn"]=$sn;
-                $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `message` WHERE `sn`='$sn'"));
+                $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"));
                 if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/", $email)) {
                     ?><script>alert("email驗證失敗!");location.href="index.php"</script><?php
                 }elseif(!preg_match("/^[0-9-]+$/",$tel)){
@@ -280,20 +280,20 @@
                 }elseif($username==""||$sn==""){
                     ?><script>alert("請輸入名字及序號!");location.href="index.php"</script><?php
                 }else{
-                    $targetDir = "uploads/";
-                    $fileName = basename($picture);
-                    $targetFilePath = $targetDir . $fileName;
-                    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+                    $targetDir="uploads/";
+                    $fileName=basename($picture);
+                    $targetFilePath=$targetDir . $fileName;
+                    $fileType=pathinfo($targetFilePath,PATHINFO_EXTENSION);
                     if(!empty($picture)){
                         // Allow certain file formats
-                        $allowTypes = array('jpg','png','jpeg','gif','pdf');
+                        $allowTypes=array('jpg','png','jpeg','gif','pdf');
                         if(in_array($fileType, $allowTypes)){
                             // Upload file to server
                             if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
                                 // Insert image file name into database
                                 if(isset($emailbox)){
                                     if(isset($telbox)){
-                                        mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
+                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                         @$_SESSION["name"]="";
                                         @$_SESSION["email"]="";
@@ -301,7 +301,7 @@
                                         @$_SESSION["message"]="";
                                         @$_SESSION["sn"]="";
                                     }else{
-                                        mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
+                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                         @$_SESSION["name"]="";
                                         @$_SESSION["email"]="";
@@ -311,7 +311,7 @@
                                     }
                                 }else{
                                     if(isset($telbox)){
-                                        mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
+                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                         @$_SESSION["name"]="";
                                         @$_SESSION["email"]="";
@@ -319,7 +319,7 @@
                                         @$_SESSION["message"]="";
                                         @$_SESSION["sn"]="";
                                     }else{
-                                        mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
+                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                         @$_SESSION["name"]="";
                                         @$_SESSION["email"]="";
@@ -339,7 +339,7 @@
                     }else{
                         if(isset($emailbox)){
                             if(isset($telbox)){
-                                mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                 @$_SESSION["name"]="";
                                 @$_SESSION["email"]="";
@@ -347,7 +347,7 @@
                                 @$_SESSION["message"]="";
                                 @$_SESSION["sn"]="";
                             }else{
-                                mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                 @$_SESSION["name"]="";
                                 @$_SESSION["email"]="";
@@ -357,7 +357,7 @@
                             }
                         }else{
                             if(isset($telbox)){
-                                mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                 @$_SESSION["name"]="";
                                 @$_SESSION["email"]="";
@@ -365,7 +365,7 @@
                                 @$_SESSION["message"]="";
                                 @$_SESSION["sn"]="";
                             }else{
-                                mysqli_query($db,"INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
                                 @$_SESSION["name"]="";
                                 @$_SESSION["email"]="";
@@ -380,7 +380,7 @@
             if(isset($_GET["edit"])){
                 $sn=$_GET["text"];
                 if($sn==$_GET["edit"]){
-                    $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `message` WHERE `sn`='$sn'"))
+                    $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
                     ?>
                     <div class="newchatdiv" id="editchatdiv">
                         <div class="signupdiv">
@@ -404,7 +404,7 @@
             if(isset($_GET["del"])){
                 $sn=$_GET["text"];
                 if($sn==$_GET["del"]){
-                    mysqli_query($db,"UPDATE `message` SET `emailbox`='no',`telbox`='no',`del`='$date' WHERE `sn`='$sn'");
+                    query("UPDATE `message` SET `emailbox`='no',`telbox`='no',`del`='$date' WHERE `sn`='$sn'");
                     ?><script>alert("刪除成功!");location.href="index.php"</script><?php
                 }else{
                     ?><script>alert("序號錯誤!");location.href="index.php"</script><?php
@@ -428,18 +428,18 @@
                 }else{
                     if(isset($emailbox)){
                         if(isset($telbox)){
-                            mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
+                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
                             ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }else{
-                            mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
+                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
                             ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }
                     }else{
                         if(isset($telbox)){
-                            mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
+                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
                             ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }else{
-                            mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
+                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
                             ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }
                     }

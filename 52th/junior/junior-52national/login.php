@@ -29,10 +29,10 @@
                     </div>
                     <div class="postbody">
                         <?php
-                            $data=mysqli_query($db,"SELECT*FROM `message`");
+                            $data=query("SELECT*FROM `message`");
                             $a=[];
-                            while($row=mysqli_fetch_row($data)){
-                                array_push($a,$row);
+                            while($row=fetch($data)){
+                                $a[]=$row;
                             }
                             for($i=0;$i<sizeof($a)-1;$i=$i+1){
                                 for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
@@ -165,7 +165,7 @@
                 <?php
                 if(isset($_GET["edit"])){
                     $sn=$_GET["edit"];
-                    $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `message` WHERE `sn`='$sn'"))
+                    $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
                     ?>
                     <div class="newchatdiv" id="editchatdiv">
                         <div class="signupdiv">
@@ -185,7 +185,7 @@
                 }
                 if(isset($_GET["del"])){
                     $sn=$_GET["del"];
-                    mysqli_query($db,"DELETE FROM `message` WHERE `sn`='$sn'");
+                    query("DELETE FROM `message` WHERE `sn`='$sn'");
                     ?><script>alert("刪除成功!");location.href="login.php"</script><?php
                 }
                 if(isset($_GET["editsubmit"])){
@@ -205,18 +205,18 @@
                     }else{
                         if(isset($emailbox)){
                             if(isset($telbox)){
-                                mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
+                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
                                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
                             }else{
-                                mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
+                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
                                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
                             }
                         }else{
                             if(isset($telbox)){
-                                mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
+                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
                                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
                             }else{
-                                mysqli_query($db,"UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
+                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
                                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
                             }
                         }
@@ -279,8 +279,8 @@
                                 $_SESSION["password"]=$code;
                                 $verify=$_GET["verify"];
                                 $ans=$_GET["verifyans"];
-                                $user=mysqli_query($db,"SELECT*FROM `user` WHERE `username`='$username'");
-                                if($row=mysqli_fetch_row($user)){
+                                $user=query("SELECT*FROM `user` WHERE `username`='$username'");
+                                if($row=fetch($user)){
                                     if($row[2]==$code){
                                         if($ans==$verify){
                                             ?><script>alert("登入成功");location.href="login.php"</script><?php
@@ -311,18 +311,18 @@
             }
             if(isset($_GET["pin"])){
                 $sn=$_GET["pin"];
-                $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `message` WHERE `sn`='$sn'"));
+                $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"));
                 if($row[13]=="yes"){
-                    mysqli_query($db,"UPDATE `message` SET `pin`='' WHERE `sn`='$sn'");
+                    query("UPDATE `message` SET `pin`='' WHERE `sn`='$sn'");
                     ?><script>alert("解訂成功!");location.href="login.php"</script><?php
                 }else{
-                    mysqli_query($db,"UPDATE `message` SET `pin`='yes' WHERE `sn`='$sn'");
+                    query("UPDATE `message` SET `pin`='yes' WHERE `sn`='$sn'");
                     ?><script>alert("訂選成功!");location.href="login.php"</script><?php
                 }
             }
             if(isset($_GET["resp"])){
                 $sn=$_GET["resp"];
-                $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `message` WHERE `sn`='$sn'"))
+                $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
                 ?>
                 <div class="adminresp" id="editchatdiv">
                     <div class="signupdiv">
@@ -340,7 +340,7 @@
             if(isset($_GET["respsubmit"])){
                 $message=$_GET["message"];
                 $sn=$_GET['sn'];
-                mysqli_query($db,"UPDATE `message` SET `respond`='$message' WHERE `sn`='$sn'");
+                query("UPDATE `message` SET `respond`='$message' WHERE `sn`='$sn'");
                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
             }
         ?>

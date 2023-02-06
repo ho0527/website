@@ -5,6 +5,11 @@ body{
     /* user-select: none; */
 }
 
+table{
+    border-collapse:collapse;
+    vertical-align:top;
+}
+
 .head{
     height: 60px;
     width: 101%;
@@ -61,7 +66,7 @@ body{
     width: 1200px;
     height: 75px;
     position: relative;
-    /* bottom: 50%; */
+    bottom: 30px;
     left: 50%;
     transform: translate(-50%,0%);
 }
@@ -69,9 +74,8 @@ body{
 .posthead{
     border: 1px black solid;
     width: 1200px;
-    /* height: 75px; */
     position: relative;
-    /* bottom: 50%; */
+    bottom: 30px;
     left: 50%;
     transform: translate(-50%,0%);
     text-align: center;
@@ -81,9 +85,7 @@ body{
 .pinchattitle{
     border: 1px black solid;
     width: 1200px;
-    /* height: 975px; */
     position: relative;
-    /* bottom: 50%; */
     left: 50%;
     color: white;
     transform: translate(-50%,0%);
@@ -94,9 +96,7 @@ body{
 .newstitle{
     border: 1px black solid;
     width: 1200px;
-    /* height: 975px; */
     position: relative;
-    /* bottom: 50%; */
     left: 50%;
     color: white;
     transform: translate(-50%,0%);
@@ -109,11 +109,9 @@ body{
     width: 1200px;
     height: 175px;
     position: relative;
-    /* bottom: 50%; */
     left: 50%;
     transform: translate(-50%,0%);
     text-align: center;
-    /* background-color: orange; */
 }
 
 .newsmessage{
@@ -121,11 +119,9 @@ body{
     width: 1200px;
     height: 175px;
     position: relative;
-    /* bottom: 50%; */
     left: 50%;
     transform: translate(-50%,0%);
     text-align: center;
-    /* background-color: orange; */
 }
 
 .postbody{
@@ -133,15 +129,10 @@ body{
     width: 1200px;
     height: 975px;
     position: relative;
-    /* bottom: 50%; */
+    bottom: 30px;
     left: 50%;
     transform: translate(-50%,0%);
     text-align: center;
-    /* background-color: orange; */
-}
-
-.post{
-    width: 1200px;
 }
 
 .button2{
@@ -153,7 +144,6 @@ body{
     margin: 10px;
     position: relative;
     border-radius: 10px;
-    /* bottom: 50%; */
     left: 50%;
     transform: translate(-100%,0%);
 }
@@ -204,9 +194,6 @@ body{
     color: white;
     position: relative;
     text-align: center;
-    /* bottom: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%,0%); */
 }
 
 .block2{
@@ -256,35 +243,6 @@ body{
     margin-bottom: 5px;
 }
 
-.admin-title{
-    font-size:50px;
-}
-
-.admin-find{
-    text-align: right;
-}
-
-.admin-table-num{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:175px;
-    height:30px;
-    text-align: center;
-}
-
-.admin-table{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:300px;
-    height:30px;
-    text-align: center;
-}
-
-.date-time{
-    font-size: 25px;
-    font-weight: bold;
-}
-
 .right{
     float: right;
 }
@@ -322,18 +280,13 @@ body{
     text-align: center;
 }
 
-table{
-    border-collapse:collapse;
-    vertical-align:top;
-}
-
 .div{
     position: absolute;/* 絕對定位 */
     top: 0px;/* 定位 */
     left: 0px;
     bottom: 0px;
     right: 0px;
-    z-index: 999;/*  */
+    z-index: 999;
 }
 
 .mask {
@@ -568,4 +521,14 @@ table{
     height: 100px;
     width: 300px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+}
+
+.compdiv{
+    border: 1px black solid;
+    width: 1200px;
+    height: 400px;
+    position: relative;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%,0%);
 }

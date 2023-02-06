@@ -23,10 +23,44 @@
                     <button class="button2" onclick="location.href='login.php'">留言管理</button>
                     <button class="button2 selectbut" onclick="location.href='comp.php'">賽制管理</button>
                 </div>
-                <div>
-                    <?php
-                    
-                    ?>
+                <div class="compdiv">
+                    <form>
+                        <?php
+                        $data=query("SELECT*FROM `comp`");
+                        $row=fetchall($data);
+                        $countrow=count($row);
+                        print_r($row);
+                        function group($countrow){
+                            $totalcount=1;
+                            $result=[];
+                            while($totalcount<=$countrow){
+                                $rand=rand(1,$countrow-1);
+                                $result[]=$rand;
+                                $time=1;
+                                for($i=0;$i<count($result)-1;$i=$i+1){
+                                    if($result[$i]==$rand){
+                                        $time=$time+1;
+                                        if($time>2){
+                                            array_pop($result);
+                                            $totalcount=$totalcount-1;
+                                        }
+                                    }
+                                }
+                                $totalcount=$totalcount+1;
+                            }
+                            print_r($result);
+                        }
+                        for($i=0;$i<$countrow;$i=$i+1){
+                            ?>
+                            <div class="compplayerhead" name="playerhead<?= $row[$i][0] ?>"><?= $row[$i][4] ?></div>
+                            <div class="compusername" name="username<?= $row[$i][0] ?>"><?= $row[$i][1] ?></div>
+                            <div class="compemail" name="email<?= $row[$i][0] ?>"><?= $row[$i][2] ?></div>
+                            <div class="compphone" name="phone<?= $row[$i][0] ?>"><?= $row[$i][3] ?></div>
+                            <?php
+                        }
+                        ?>
+                        <input type="submit" value="亂數配對" name="submit">
+                    </form>
                 </div>
                 <?php
             }else{

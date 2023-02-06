@@ -24,8 +24,8 @@
                         email: <input type="text" class="indexinput" name="email" placeholder="要有@及一個以上的." value="<?= @$_SESSION["email"] ?>"><br>
                         電&nbsp&nbsp話: <input type="text" class="indexinput" name="tel" placeholder="只能包含數字或-" value="<?= @$_SESSION["tel"] ?>"><br>
                         <input type="file" name="picture" accept="image/*" style="width:70px">64KB以下<br>
-                        <input type="submit" name="submit" class="button" value="參賽">
-                        <input type="button" onclick="location.href='post.php'" class="button" value="重設"><br>
+                        <input type="button" onclick="location.href='post.php'" class="button" value="重設">
+                        <input type="submit" name="submit" class="button" value="參賽"><br>
                     </form>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     if(isset($picture)){
                         // 轉換圖片為二進位資料
                         @$image=base64_encode(file_get_contents($picture));
-                        mysqli_query($db,"INSERT INTO `comp`(`username`, `email`,`tel`, `picture`) VALUES ('$username','$email','$tel','$image')");
+                        query("INSERT INTO `comp`(`username`, `email`,`tel`, `picture`) VALUES ('$username','$email','$tel','$image')");
                         ?><script>alert("新增成功!");location.href="post.php"</script><?php
                         @$_SESSION["name"]="";
                         @$_SESSION["email"]="";
@@ -58,7 +58,7 @@
                         @$_SESSION["message"]="";
                         @$_SESSION["sn"]="";
                     }else{
-                        mysqli_query($db,"INSERT INTO `comp`(`username`, `email`,`tel`, `picture`) VALUES ('$username','$email','$tel','')");
+                        query("INSERT INTO `comp`(`username`, `email`,`tel`, `picture`) VALUES ('$username','$email','$tel','')");
                         ?><script>alert("新增成功!");location.href="post.php"</script><?php
                         @$_SESSION["name"]="";
                         @$_SESSION["email"]="";
