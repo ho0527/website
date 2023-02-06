@@ -1,8 +1,52 @@
+.small{
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+.left{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%,-50%) scale(2);
+}
+
 .center{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(4);
+    transform: translate(-50%, -50%) scale(7);
+}
+
+.centercenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3);
+}
+
+.centercentercenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.centercentercentercenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.2);
+}
+
+.right{
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translate(-50%, -50%) scale(2);
 }
 
 .div{
