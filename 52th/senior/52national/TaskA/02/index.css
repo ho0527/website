@@ -2,7 +2,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(4);
+    transform: translate(-50%, -50%) scale(4.5);
 }
 
 .div{
@@ -10,7 +10,7 @@
     height: 150px;
     position: relative;
     transform: rotate(0);
-    animation: rotate infinite 1s;
+    animation: 1s rotate infinite;
 }
 
 .circle{
