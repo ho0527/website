@@ -25,46 +25,85 @@
                 </div>
                 <div class="compdiv">
                     <form>
+                        <table class="compmaintable">
                         <?php
-                        $data=query("SELECT*FROM `comp`");
-                        $row=fetchall($data);
+                        $row=fetchall(query("SELECT*FROM `comp`"));
                         $countrow=count($row);
-                        print_r($row);
-                        function group($countrow){
-                            $totalcount=1;
-                            $result=[];
-                            while($totalcount<=$countrow){
-                                $rand=rand(1,$countrow-1);
-                                $result[]=$rand;
-                                $time=1;
-                                for($i=0;$i<count($result)-1;$i=$i+1){
-                                    if($result[$i]==$rand){
-                                        $time=$time+1;
-                                        if($time>2){
-                                            array_pop($result);
-                                            $totalcount=$totalcount-1;
-                                        }
-                                    }
-                                }
-                                $totalcount=$totalcount+1;
+                        $maxnum=round($countrow/2);
+                        $team=[];
+                        for($i=1;$i<=$maxnum;$i=$i+1){
+                            for($j=1;$j<=$countrow;$j=$j+1){
+                                $team[]=fetchall(query("SELECT*FROM `comp` WHERE `id`='$j' AND `team`='$i'"));
                             }
-                            print_r($result);
-                        }
-                        for($i=0;$i<$countrow;$i=$i+1){
-                            ?>
-                            <div class="compplayerhead" name="playerhead<?= $row[$i][0] ?>"><?= $row[$i][4] ?></div>
-                            <div class="compusername" name="username<?= $row[$i][0] ?>"><?= $row[$i][1] ?></div>
-                            <div class="compemail" name="email<?= $row[$i][0] ?>"><?= $row[$i][2] ?></div>
-                            <div class="compphone" name="phone<?= $row[$i][0] ?>"><?= $row[$i][3] ?></div>
-                            <?php
+                            if(count($team)==2){
+                                query("UPDATE `comp` SET `ingame`='yes' WHERE `team`='$maxnum'");
+                                ?>
+                                <tr>
+                                    <td class="compplayerhead" name="playerhead<?= $team[0][0][0] ?>" rowspan="2"><?= $team[0][0][4] ?></td>
+                                    <td class="compusername" name="username<?= $team[0][0][0] ?>" rowspan="2"><?= $team[0][0][1] ?></td>
+                                    <td class="compemail" name="email<?= $team[0][0][0] ?>"><?= $team[0][0][2] ?></td>
+                                    <td class="vs" rowspan="2">VS</td>
+                                    <td class="compplayerhead" name="playerhead<?= $team[1][0][0] ?>" rowspan="2"><?= $team[1][0][4] ?></td>
+                                    <td class="compusername" name="username<?= $team[1][0][0] ?>" rowspan="2"><?= $team[1][0][1] ?></td>
+                                    <td class="compemail" name="email<?= $team[1][0][0] ?>"><?= $team[1][0][2] ?></td>
+                                    <td class="disabled" rowspan="2"><button name="cancel" value="<?= $team[0][0][0] ?> <?= $team[1][0][0] ?>">取消配對</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="compphone" name="phone<?= $team[0][0][0] ?>"><?= $team[0][0][3] ?></td>
+                                    <td class="compphone" name="phone<?= $team[1][0][0] ?>"><?= $team[1][0][3] ?></td>
+                                </tr>
+                                <?php
+                            }else{
+                                ?>
+                                <tr>
+                                    <td class="compplayerhead" name="playerhead<?= $team[0][0][0] ?>" rowspan="2"><?= $team[0][0][4] ?></td>
+                                    <td class="compusername" name="username<?= $team[0][0][0] ?>" rowspan="2"><?= $team[0][0][1] ?></td>
+                                    <td class="compemail" name="email<?= $team[0][0][0] ?>"><?= $team[0][0][2] ?></td>
+                                    <td class="vs" rowspan="2">配對中</td>
+                                </tr>
+                                <tr>
+                                    <td class="compphone" name="phone<?= $team[0][0][0] ?>"><?= $team[0][0][3] ?></td>
+                                </tr>
+                                <?php
+                            }
                         }
                         ?>
+                        </table>
                         <input type="submit" value="亂數配對" name="submit">
                     </form>
                 </div>
                 <?php
+                if(isset($_GET["submit"])){
+                    $totalcount=1;
+                    $result=[];
+                    while($totalcount<=$countrow){
+                        $rand=rand(1,$countrow-1);
+                        $result[]=$rand;
+                        $time=1;
+                        for($i=0;$i<count($result)-1;$i=$i+1){
+                            if($result[$i]==$rand){
+                                $time=$time+1;
+                                if($time>2){
+                                    array_pop($result);
+                                    $totalcount=$totalcount-1;
+                                }
+                            }
+                        }
+                        $totalcount=$totalcount+1;
+                    }
+                    print_r($result);
+                    for($i=0;$i<count($result);$i=$i+1){
+                        $fetch=$row[$i][0];
+                        echo $fetch;
+                        $notingame=fetch(query("SELECT*FROM `comp` WHERE `id`='$fetch' AND `ingame`!='yes'"));
+                        if($notingame){
+                            query("UPDATE `comp` SET `team`='$result[$i]' WHERE `id`='$fetch'");
+                        }
+                    }
+                    ?><script>alert("亂數成功!");location.href="comp.php"</script><?php
+                }
             }else{
-                ?><script>alert("請先登入");location.href="login.php"</script><?php
+                ?><script>alert("請先登入!");location.href="login.php"</script><?php
             }
             if(isset($_GET["logout"])){
                 if(isset($_SESSION["data"])){
@@ -74,6 +113,10 @@
                     ?><script>alert("請先登入!");location.href="login.php"</script><?php
                     session_unset();
                 }
+            }
+            if(isset($_GET["cancel"])){
+                $arr=explode(" ",$_GET["cancel"]);
+                print_r($arr);
             }
         ?>
         <script src="index.js"></script>

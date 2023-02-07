@@ -532,3 +532,39 @@ table{
     left: 50%;
     transform: translate(-50%,0%);
 }
+
+.compplayerhead{
+    border: 1px black solid;
+    width: 100px;
+    height: 75px;
+}
+
+.compusername{
+    border: 1px black solid;
+    width: 150px;
+}
+
+.compemail{
+    border: 1px black solid;
+    width: 275px;
+}
+
+.compphone{
+    border: 1px black solid;
+    width: 275px;
+}
+
+.vs{
+    border: 1px black solid;
+    width: 125px;
+}
+
+.disabled{
+    border: 1px black solid;
+}
+
+
+.compmaintable{
+    text-align: center;
+    font-size: 25px;
+}

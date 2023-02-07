@@ -50,7 +50,7 @@
                     if(isset($picture)){
                         // 轉換圖片為二進位資料
                         @$image=base64_encode(file_get_contents($picture));
-                        query("INSERT INTO `comp`(`username`, `email`,`tel`, `picture`) VALUES ('$username','$email','$tel','$image')");
+                        query("INSERT INTO `comp`(`username`, `email`,`tel`, `picture`,`ingame`) VALUES ('$username','$email','$tel','$image','no')");
                         ?><script>alert("新增成功!");location.href="post.php"</script><?php
                         @$_SESSION["name"]="";
                         @$_SESSION["email"]="";
@@ -58,7 +58,7 @@
                         @$_SESSION["message"]="";
                         @$_SESSION["sn"]="";
                     }else{
-                        query("INSERT INTO `comp`(`username`, `email`,`tel`, `picture`) VALUES ('$username','$email','$tel','')");
+                        query("INSERT INTO `comp`(`username`, `email`,`tel`, `ingame`) VALUES ('$username','$email','$tel','no')");
                         ?><script>alert("新增成功!");location.href="post.php"</script><?php
                         @$_SESSION["name"]="";
                         @$_SESSION["email"]="";
