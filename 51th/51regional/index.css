@@ -135,7 +135,7 @@ table{
     font-size:10px;
     font-weight:bold;
     position: absolute;
-    top: 70px;
+    top: 50px;
     left: 0px;
     text-align: center;
     height: 600px;
@@ -410,4 +410,10 @@ table{
     margin-right: 80px;
     margin-left: 80px;
     transform: scale(3);
+}
+
+.verticalcenter{
+    position: relative;
+    top:5px;
+    /* transform: translate(0%,-50%); */
 }

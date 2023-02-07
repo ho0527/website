@@ -17,14 +17,16 @@
         </div>
         <form class="mainform">
             <div class="formhead">
-                id: <input type="text" class="formtext" value="<?= $id ?>" name="title" style="width:50px">
-                標題: <input type="text" class="formtext" value="<?= $title ?>" name="title">
-                總數: <input type="text" class="formtext" value="<?= $num ?>" style="width:25px" name="num">
-                <input type="submit" value="新增" name="newqust" class="button">
-                <input type="submit" value="減少" name="lestqust" class="button">
-                <input type="submit" value="儲存" name="save" class="button">
-                <input type="submit" value="取消" name="cancel" class="button">
-                <input type="submit" value="登出" name="logout" class="button">
+                <div class="verticalcenter">
+                    id: <input type="text" class="formtext" value="<?= $id ?>" name="title" style="width:50px" readonly>
+                    標題: <input type="text" class="formtext" value="<?= $title ?>" name="title" style="width:120px">
+                    總數: <input type="text" class="formtext" value="<?= $num ?>" style="width:35px" name="num">
+                    <input type="submit" value="新增" name="newqust" class="button">
+                    <input type="submit" value="減少" name="lestqust" class="button">
+                    <input type="submit" value="儲存" name="save" class="button">
+                    <input type="submit" value="取消" name="cancel" class="button">
+                    <input type="submit" value="登出" name="logout" class="button">
+                <div>
             </div>
             <div class="formdiv">
                 <?php
@@ -32,11 +34,11 @@
                         ?>
                         <div class="divform">
                             <div class="newform">
-                                未設定<input type="radio" name="select<?= $i ?>" class="radio" id="none" checked >
-                                是非題<input type="radio" name="select<?= $i ?>" class="radio" id="yesno">
-                                單選題<input type="radio" name="select<?= $i ?>" class="radio" id="single">
-                                多選題<input type="radio" name="select<?= $i ?>" class="radio" id="multi">
-                                問答題<input type="radio" name="select<?= $i ?>" class="radio" id="question">
+                                未設定<input type="radio" name="select<?= $i ?>" class="radio none" id="none<?= $i ?>" checked >
+                                是非題<input type="radio" name="select<?= $i ?>" class="radio yesno" id="yesno<?= $i ?>">
+                                單選題<input type="radio" name="select<?= $i ?>" class="radio single" id="single<?= $i ?>">
+                                多選題<input type="radio" name="select<?= $i ?>" class="radio multi" id="multi<?= $i ?>">
+                                問答題<input type="radio" name="select<?= $i ?>" class="radio question" id="question<?= $i ?>">
                             </div>
                         </div>
                         <?php
