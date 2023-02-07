@@ -117,7 +117,7 @@ table{
 .newsmessage{
     border: 1px black solid;
     width: 1200px;
-    height: 175px;
+    /* height:; */
     position: relative;
     left: 50%;
     transform: translate(-50%,0%);

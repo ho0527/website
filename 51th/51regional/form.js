@@ -1,17 +1,17 @@
-let none=document.getElementById("none")
-let yesno=document.getElementById("yesno")
-let single=document.getElementById("single")
-let multi=document.getElementById("multi")
-let question=document.getElementById("question")
+let none=document.querySelectorAll(".none")
+let yesno=document.querySelectorAll(".yesno")
+let single=document.querySelectorAll(".single")
+let multi=document.querySelectorAll(".multi")
+let question=document.querySelectorAll(".question")
 let all=[none,yesno,single,multi,question]
 
-all.foreach(function(event){
-    event.addeventListener("onchange",onchange)
+all.forEach(function(event){
+    event.forEach(function(event){
+        event.addEventListener("checked",onchange(event.target.id))
+    })
 })
 
 
-function onchange(){
-
-
-
+function onchange(id){
+    console.log("hi"+id)
 }
