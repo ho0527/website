@@ -117,6 +117,59 @@
             <div class="news">
                 <div class="newstitle">最新消息與賽制公告區塊</div>
                 <div class="newsmessage">
+                    <table class="compmaintable">
+                        <?php
+                        $comp=fetchall(query("SELECT*FROM `comp`"));
+                        $maxid=fetch(query("SELECT MAX(`id`) FROM `comp`"))[0];
+                        $countcomp=count($comp);
+                        $maxnum=round($countcomp/2);
+                        for($i=1;$i<=$maxnum;$i=$i+1){
+                            $team=[];
+                            for($j=1;$j<=$maxid;$j=$j+1){
+                                $temporarystorage=fetch(query("SELECT*FROM `comp` WHERE `id`='$j' AND `team`='$i'"));
+                                if($temporarystorage){
+                                    $team[]=$temporarystorage;
+                                }
+                            }
+                            if(count($team)==2&&$team[0]!=""){
+                                query("UPDATE `comp` SET `ingame`='yes' WHERE `team`='$i'");
+                                ?>
+                                <tr>
+                                    <td class="compplayerhead" name="playerhead<?= $team[0][0] ?>" rowspan="2"><?= $team[0][4] ?></td>
+                                    <td class="compusername" name="username<?= $team[0][0] ?>" rowspan="2"><?= $team[0][1] ?></td>
+                                    <td class="compemail" name="email<?= $team[0][0] ?>"><?= $team[0][2] ?></td>
+                                    <td class="vs" rowspan="2">VS</td>
+                                    <td class="compplayerhead" name="playerhead<?= $team[1] ?>" rowspan="2"><?= $team[1][4] ?></td>
+                                    <td class="compusername" name="username<?= $team[1] ?>" rowspan="2"><?= $team[1][1] ?></td>
+                                    <td class="compemail" name="email<?= $team[1] ?>"><?= $team[1][2] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="compphone" name="phone<?= $team[0][0] ?>"><?= $team[0][3] ?></td>
+                                    <td class="compphone" name="phone<?= $team[1] ?>"><?= $team[1][3] ?></td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        for($i=0;$i<$countcomp;$i=$i+1){
+                            $row=fetchall(query("SELECT*FROM `comp` WHERE `ingame`!='yes'"));
+                        }
+                        for($i=0;$i<count($row);$i=$i+1){
+                            if($row){
+                                ?>
+                                <tr>
+                                    <td class="compplayerhead" name="playerhead<?= $row[$i][0] ?>" rowspan="2"><?= $row[$i][4] ?></td>
+                                    <td class="compusername" name="username<?= $row[$i][0] ?>" rowspan="2"><?= $row[$i][1] ?></td>
+                                    <td class="compemail" name="email<?= $row[$i][0] ?>"><?= $row[$i][2] ?></td>
+                                    <td class="vs" rowspan="2">配對中</td>
+                                </tr>
+                                <tr>
+                                    <td class="compphone" name="phone<?= $row[$i][0] ?>"><?= $row[$i][3] ?></td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </table>
                 </div>
             </div>
         </div>
