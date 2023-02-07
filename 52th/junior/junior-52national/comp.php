@@ -117,6 +117,10 @@
             if(isset($_GET["cancel"])){
                 $arr=explode(" ",$_GET["cancel"]);
                 print_r($arr);
+                for($i=0;$i<count($arr);$i=$i+1){
+                    query("UPDATE `comp` SET `ingame`='no',`team`='' WHERE `id`='$arr[$i]'");
+                }
+                ?><script>alert("取消配對成功!");location.href="comp.php"</script><?php
             }
         ?>
         <script src="index.js"></script>

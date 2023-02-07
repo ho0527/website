@@ -49,6 +49,13 @@
     transform: translate(-50%,-50%) scale(0.05);
 }
 
+.centercentercentercentercentercenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.01);
+}
+
 .right{
     position: absolute;
     top: 50%;
