@@ -80,7 +80,7 @@ body{
     position: absolute;/* 絕對定位 */
     left: 50%;/* 定位 */
     top: 50% ;
-    transform: translate(-50%,-50%) scale(2);
+    transform: translate(-50%,-50%) scale(4);
     text-align: center;/* 文字置中 */
     width: 350px;
     border: 1px blue solid;/* 邊框 */

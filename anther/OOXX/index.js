@@ -26,7 +26,7 @@ function win(id){
                     <h2 class="title">遊戲結束</h2>
                     <h1>結果:O獲勝</h1>
                     <div class="buttonlist">
-                        <button id="submit" name="enter" class="submit">重新開始</button>
+                        <button id="submit" name="enter" class="submit button">重新開始</button>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@ function win(id){
                     <h2 class="title">遊戲結束</h2>
                     <h1>結果:X獲勝</h1>
                     <div class="buttonlist">
-                        <button id="submit" name="enter" class="submit">重新開始</button>
+                        <button id="submit" name="enter" class="submit button">重新開始</button>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@ function win(id){
                     <h2 class="title">遊戲結束</h2>
                     <h1>結果:平手</h1>
                     <div class="buttonlist">
-                        <button id="submit" name="enter" class="submit">重新開始</button>
+                        <button id="submit" name="enter" class="submit button">重新開始</button>
                     </div>
                 </div>
             </div>
