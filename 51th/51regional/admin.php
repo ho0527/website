@@ -18,22 +18,28 @@
                 <input type="submit" value="登出" class="button" name="logout">
             </span>
         </form>
-        <div class="div">
-            <div id="check" class="checkdiv">
-                <form>
+        <div id="check" class="div">
+            <div class="mask"></div>
+            <div class="checkdiv">
+                <form class="buttonbar">
                     問卷名稱: <input type="text" placeholder="問卷名稱" name="title"><br>
                     問卷題數: <input type="text" placeholder="問卷題數" name="num"><br>
-                    <input type="submit" value="取消" name="clear">
-                    <input type="submit" value="確定" name="submit">
+                    <div class="buttonbar">
+                        <input type="submit" value="取消" name="clear">
+                        <input type="submit" value="確定" name="submit">
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="div">
-            <div id="edit" class="checkdiv" style="height:50px">
-                <form>
+        <div id="edit" class="div">
+            <div class="mask"></div>
+            <div class="checkdiv" style="height:55px">
+                <form class="buttonbar">
                     問卷名稱: <input type="text" placeholder="問卷名稱" name="edittitle"><br>
-                    <input type="submit" value="取消" name="clear">
-                    <input type="submit" value="確定" name="enter">
+                    <div class="buttonbar">
+                        <input type="submit" value="取消" name="clear">
+                        <input type="submit" value="確定" name="enter">
+                    </div>
                 </form>
             </div>
         </div>

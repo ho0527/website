@@ -182,9 +182,24 @@ table{
     text-align: center;
     background-color: rgb(125, 125, 125);
     border-radius: 25px;
-    height: 70px;
+    height: 80px;
     width: 280px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+}
+
+
+.mask {
+    position: absolute;/* 絕對定位 */
+    top: 0px;/* 定位 */
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(100, 100, 100, 0.25);/* 背景顏色 */
+}
+
+.buttonbar{
+    position: relative;
+    top: 3px;
 }
 
 .verifydiv{
@@ -416,4 +431,9 @@ table{
     position: relative;
     top:5px;
     /* transform: translate(0%,-50%); */
+}
+
+.yesnodiv{
+    background-color: rgb(133, 133, 133);
+    height: 100px;
 }

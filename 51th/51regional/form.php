@@ -34,12 +34,13 @@
                         ?>
                         <div class="divform">
                             <div class="newform">
-                                未設定<input type="radio" name="select<?= $i ?>" class="radio none" id="none<?= $i ?>" checked >
-                                是非題<input type="radio" name="select<?= $i ?>" class="radio yesno" id="yesno<?= $i ?>">
-                                單選題<input type="radio" name="select<?= $i ?>" class="radio single" id="single<?= $i ?>">
-                                多選題<input type="radio" name="select<?= $i ?>" class="radio multi" id="multi<?= $i ?>">
-                                問答題<input type="radio" name="select<?= $i ?>" class="radio question" id="question<?= $i ?>">
+                                未設定<input type="radio" name="select<?= $i ?>" class="radio none" id="none <?= $i ?>" checked>
+                                是非題<input type="radio" name="select<?= $i ?>" class="radio yesno" id="yesno <?= $i ?>">
+                                單選題<input type="radio" name="select<?= $i ?>" class="radio single" id="single <?= $i ?>">
+                                多選題<input type="radio" name="select<?= $i ?>" class="radio multi" id="multi <?= $i ?>">
+                                問答題<input type="radio" name="select<?= $i ?>" class="radio question" id="question <?= $i ?>">
                             </div>
+                            <div class="output" id="output"></div>
                         </div>
                         <?php
                     }
