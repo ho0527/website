@@ -1,3 +1,11 @@
+body{
+    position: relative;
+    top:0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+
 .navigationbar{
     background-color: rgba(245, 245, 245, 0.6);
     width: 100%;
@@ -17,7 +25,7 @@
     background-color: white;
     border: 0.5px black solid;
     height: 45px;
-    width: 200px;
+    width: 225px;
     font-size: 25px;
     cursor: pointer;
 }
@@ -144,7 +152,7 @@
 
 .indexdiv{
     position: absolute;
-    bottom: 10%;
+    bottom: 30%;
     left: 50%;
     transform:  translate(-50%, -10%) scale(1.75);
     display: flex;
@@ -184,8 +192,8 @@
 }
 
 .footer{
-    position: relative;
-    top: 300px;
+    position: absolute;
+    bottom: 0px;
 }
 
 .center{
@@ -199,9 +207,58 @@
 }
 
 
+.carousel {
+    position: relative;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-item {
+    position: relative;
+    display: none;
+    width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    /* top: 50%; */
+    top: 450px;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 0;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: black;
+}
+
+
 /* 電腦版排版 */
-@media only screen and (min-width: 1920px) {
-  /* CSS 樣式 */
+/* @media only screen and (min-width: 1920px) {
     body{
         width: 1920px;
         height: 1080px;
@@ -211,11 +268,10 @@
         width: 175px;
         height: 175px;
     }
-}
+} */
 
 /* 平板電腦版排版 */
-@media only screen and (min-width: 768px) and (max-width: 1919px) {
-  /* CSS 樣式 */
+/* @media only screen and (min-width: 768px) and (max-width: 1919px) {
     body{
         width: 768px;
         height: 1024px;
@@ -225,11 +281,10 @@
         width: 175px;
         height: 175px;
     }
-}
+} */
 
 /* 智慧型手機版排版 */
-@media only screen and (max-width: 767px) {
-  /* CSS 樣式 */
+/* @media only screen and (max-width: 767px) {
     body{
         width: 360px;
         height: 640px;
@@ -239,4 +294,4 @@
         width: 175px;
         height: 175px;
     }
-}
+} */
