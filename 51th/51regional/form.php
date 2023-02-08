@@ -10,7 +10,7 @@
             include("link.php");
             $title=$_SESSION["title"];
             $num=$_SESSION["num"];
-            $id=fetch(query("SELECT*FROM `form` WHERE `title`='$title'"))[0];
+            $id=fetch(query($db,"SELECT*FROM `form` WHERE `title`='$title'"))[0];
         ?>
         <div class="div">
             <div class="formtitle">編輯問卷</div><br>
@@ -54,7 +54,7 @@
                     if(isset($_GET["save"])){
                         $title=$_GET["title"];
                         $num=$_GET["num"];
-                        query("UPDATE `form` SET `title`='$title',`num`='$num' WHERE `id`='$id'");
+                        query($db,"UPDATE `form` SET `title`='$title',`num`='$num' WHERE `id`='$id'");
                         ?><script>alert("儲存成功");location.href="form.php"</script><?php
                     }
                     if(isset($_GET["cancel"])){

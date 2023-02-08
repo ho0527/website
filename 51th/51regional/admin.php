@@ -42,13 +42,13 @@
             if(isset($_GET["submit"])){
                 $title=$_GET["title"];
                 $num=$_GET["num"];
-                $row=fetch(query("SELECT*FROM `form` WHERE `title`='$title'"));
+                $row=fetch(query($db,"SELECT*FROM `form` WHERE `title`='$title'"));
                 if($title==""){
                     ?><script>alert("請輸入問卷標題");location.href="admin.php"</script><?php
                 }elseif($row){
                     ?><script>alert("問卷已存在");location.href="admin.php"</script><?php
                 }elseif(preg_match("/^[0-9]+$/",$num)){
-                    query("INSERT INTO `form`(`title`, `num`) VALUES ('$title','$num')");
+                    query($db,"INSERT INTO `form`(`title`, `num`) VALUES ('$title','$num')");
                     $_SESSION["title"]=$title;
                     $_SESSION["num"]=$num;
                     ?><script>alert("登入成功");location.href="form.php"</script><?php
@@ -58,7 +58,7 @@
             }
             if(isset($_GET["enter"])){
                 $title=$_GET["edittitle"];
-                $row=fetch(query("SELECT*FROM `form` WHERE `title`='$title'"));
+                $row=fetch(query($db,"SELECT*FROM `form` WHERE `title`='$title'"));
                 if($title==""){
                     ?><script>alert("請輸入問卷標題");location.href="admin.php"</script><?php
                 }elseif($row){

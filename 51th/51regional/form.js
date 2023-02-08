@@ -7,11 +7,9 @@ let all=[none,yesno,single,multi,question]
 
 all.forEach(function(event){
     event.forEach(function(event){
-        event.addEventListener("checked",onchange(event.target.id))
+        event.onclick=function onchange(){
+            let id=event.target.id
+            console.log("hi"+id)
+        }
     })
 })
-
-
-function onchange(id){
-    console.log("hi"+id)
-}

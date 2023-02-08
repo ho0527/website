@@ -24,11 +24,7 @@
                 <div class="pinpostmessage">
                     <?php
                         include("link.php");
-                        $data=query("SELECT*FROM `message` WHERE `pin`='yes'");
-                        $a=[];
-                        while($row=fetch($data)){
-                            $a[]=$row;
-                        }
+                        $a=fetchall(query("SELECT*FROM `message` WHERE `pin`='yes'"));
                         for($i=0;$i<sizeof($a)-1;$i=$i+1){
                             for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
                                 if($a[$j][8]<$a[$j+1][8]){
@@ -39,7 +35,7 @@
                             }
                         }
                         for($i=0;$i<sizeof($a);$i=$i+1){
-                            $id=$a[$i][0]
+                            $id=$a[$i][0];
                             ?>
                             <table class="postmessage">
                                 <tr>
@@ -181,11 +177,7 @@
             </div>
             <div class="postbody">
                 <?php
-                    $data=query("SELECT*FROM `message`");
-                    $a=[];
-                    while($row=fetch($data)){
-                        $a[]=$row;
-                    }
+                    $a=fetchall(query("SELECT*FROM `message` WHERE `pin`='yes'"));
                     for($i=0;$i<sizeof($a)-1;$i=$i+1){
                         for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
                             if($a[$j][8]<$a[$j+1][8]){
@@ -196,7 +188,7 @@
                         }
                     }
                     for($i=0;$i<sizeof($a);$i=$i+1){
-                        $id=$a[$i][0]
+                        $id=$a[$i][0];
                         ?>
                         <table class="postmessage">
                             <tr>

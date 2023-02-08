@@ -4,8 +4,7 @@
     $time=date("Y-m-d H:i:s");
     session_start();
 
-    function query($query){
-        global $db;
+    function query($db,$query){
         return $db->query($query);
     }
 
