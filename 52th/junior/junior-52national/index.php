@@ -300,19 +300,19 @@
         </div>
         <?php
             if(isset($_GET["submit"])){
-                @$username=$_GET["username"];
-                @$email=$_GET["email"];
+                @$_SESSION["name"]=$_GET["username"];
+                @$_SESSION["email"]=$_GET["email"];
+                @$_SESSION["tel"]=$_GET["tel"];
+                @$_SESSION["message"]=$_GET["message"];
+                @$_SESSION["sn"]=$_GET["sn"];
+                @$username=$_SESSION["name"];
+                @$email=$_SESSION["email"];
                 @$emailbox=$_GET["emailbox"];
-                @$tel=$_GET["tel"];
+                @$tel=$_SESSION["tel"];
                 @$telbox=$_GET["telbox"];
-                @$message=$_GET["message"];
+                @$message=$_SESSION["message"];
                 @$picture=$_FILES["picture"]["name"];
-                @$sn=$_GET['sn'];
-                @$_SESSION["name"]=$username;
-                @$_SESSION["email"]=$email;
-                @$_SESSION["tel"]=$tel;
-                @$_SESSION["message"]=$message;
-                @$_SESSION["sn"]=$sn;
+                @$sn=$_SESSION["sn"];
                 $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"));
                 if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/", $email)) {
                     ?><script>alert("email驗證失敗!");location.href="index.php"</script><?php
@@ -340,40 +340,24 @@
                                     if(isset($telbox)){
                                         query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        @$_SESSION["name"]="";
-                                        @$_SESSION["email"]="";
-                                        @$_SESSION["tel"]="";
-                                        @$_SESSION["message"]="";
-                                        @$_SESSION["sn"]="";
+                                        unset($username,$email,$email,$tel,$message,$sn);
                                     }else{
                                         query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        @$_SESSION["name"]="";
-                                        @$_SESSION["email"]="";
-                                        @$_SESSION["tel"]="";
-                                        @$_SESSION["message"]="";
-                                        @$_SESSION["sn"]="";
+                                        unset($username,$email,$email,$tel,$message,$sn);
                                     }
                                 }else{
                                     if(isset($telbox)){
                                         query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        @$_SESSION["name"]="";
-                                        @$_SESSION["email"]="";
-                                        @$_SESSION["tel"]="";
-                                        @$_SESSION["message"]="";
-                                        @$_SESSION["sn"]="";
+                                        unset($username,$email,$email,$tel,$message,$sn);
                                     }else{
                                         query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
                                         ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        @$_SESSION["name"]="";
-                                        @$_SESSION["email"]="";
-                                        @$_SESSION["tel"]="";
-                                        @$_SESSION["message"]="";
-                                        @$_SESSION["sn"]="";
+                                        unset($username,$email,$email,$tel,$message,$sn);
                                     }
                                 }
-                                $insert = $db->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
+                                // $insert = $db->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
                                 ?><script>alert("The file has been uploaded successfully.!");location.href="index.php"</script><?php
                             }else{
                                 ?><script>alert("Sorry, there was an error uploading your file.!");location.href="index.php"</script><?php
@@ -386,37 +370,21 @@
                             if(isset($telbox)){
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                @$_SESSION["name"]="";
-                                @$_SESSION["email"]="";
-                                @$_SESSION["tel"]="";
-                                @$_SESSION["message"]="";
-                                @$_SESSION["sn"]="";
+                                unset($username,$email,$email,$tel,$message,$sn);
                             }else{
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                @$_SESSION["name"]="";
-                                @$_SESSION["email"]="";
-                                @$_SESSION["tel"]="";
-                                @$_SESSION["message"]="";
-                                @$_SESSION["sn"]="";
+                                unset($username,$email,$email,$tel,$message,$sn);
                             }
                         }else{
                             if(isset($telbox)){
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                @$_SESSION["name"]="";
-                                @$_SESSION["email"]="";
-                                @$_SESSION["tel"]="";
-                                @$_SESSION["message"]="";
-                                @$_SESSION["sn"]="";
+                                unset($username,$email,$email,$tel,$message,$sn);
                             }else{
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
                                 ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                @$_SESSION["name"]="";
-                                @$_SESSION["email"]="";
-                                @$_SESSION["tel"]="";
-                                @$_SESSION["message"]="";
-                                @$_SESSION["sn"]="";
+                                unset($username,$email,$email,$tel,$message,$sn);
                             }
                         }
                     }
