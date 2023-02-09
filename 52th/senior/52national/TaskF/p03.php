@@ -10,7 +10,7 @@
     echo($plaintext.PHP_EOL);
     $memoryAfter=memory_get_usage();
     $memoryDifference=$memoryAfter-$memoryBefore;
-    echo("Memory used: ".($memoryDifference/1048576)."MB");
+    echo("memory used: ".($memoryDifference/1048576)."MB");
     /*
     這段程式碼讀取兩行輸入，第一行為加密的整數 K，第二行為要解密的字串。接著，使用迴圈對每個字元進行解密：
     使用 ord 函數將字元轉換為 ASCII 碼。
