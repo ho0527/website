@@ -26,12 +26,13 @@ all.forEach(function(event){
                 `
             }else if(data[0]=="single"){
                 output[0].innerHTML=`
-                    <div class="yesnodiv">
+                    <div class="singlediv">
                         <div class="center">
                             必填<input type="checkbox" name="required"><br>
                             題目說明:<input type="text" class="directions"><br>
-                            是<input type="radio" name="yesno" value="yes">
-                            否<input type="radio" name="yesno" value="no">
+                            1.<input type="text" name="single1" value="">
+                            2.<input type="text" name="single2" value="">
+                            3.<input type="radio" name="single3" value="">
                         </div>
                     </div>
                 `
@@ -40,7 +41,7 @@ all.forEach(function(event){
             }else if(data[0]=="question"){
 
             }else{
-
+                output[0].innerHTML=``
             }
         }
     })

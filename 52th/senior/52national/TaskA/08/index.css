@@ -6,20 +6,19 @@
 }
 
 .ios{
-    position: relative;
+    outline: none;
     appearance: none;
-    /* outline: none; */
-    width: 50px; 
+    width: 50px;
     height: 30px;
-    background: lightskyblue; 
+    background: lightskyblue;
     border: solid 8px darkblue;
-    border-radius: 50px; 
+    border-radius: 50px;
     box-shadow: inset -20px 0 0 0 darkblue;
     transition: all 0.25s ease-out;
 }
 
 .ios:checked{
-    background: darkblue; 
+    background: darkblue;
     border: solid 8px lightskyblue;
     box-shadow: inset 20px 0 0 0 lightskyblue;
     transition: all 0.25s ease-out;
