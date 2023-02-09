@@ -24,6 +24,7 @@ function win(id){
                 <div class="mask"></div>
                 <div class="body">
                     <h2 class="title">遊戲結束</h2>
+                    <hr>
                     <h1>結果:O獲勝</h1>
                     <div class="buttonlist">
                         <button id="submit" name="enter" class="submit button">重新開始</button>
@@ -37,6 +38,7 @@ function win(id){
                 <div class="mask"></div>
                 <div class="body">
                     <h2 class="title">遊戲結束</h2>
+                    <hr>
                     <h1>結果:X獲勝</h1>
                     <div class="buttonlist">
                         <button id="submit" name="enter" class="submit button">重新開始</button>
@@ -50,6 +52,7 @@ function win(id){
                 <div class="mask"></div>
                 <div class="body">
                     <h2 class="title">遊戲結束</h2>
+                    <hr>
                     <h1>結果:平手</h1>
                     <div class="buttonlist">
                         <button id="submit" name="enter" class="submit button">重新開始</button>

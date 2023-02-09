@@ -68,7 +68,7 @@ body{
     left: 0px;
     bottom: 0px;
     right: 0px;
-    background-color: rgba(23, 23, 23, 0.624);/* 背景顏色 */
+    background-color: rgba(41, 41, 41, 0.718);/* 背景顏色 */
 }
 
 .submit{
@@ -80,18 +80,16 @@ body{
     position: absolute;/* 絕對定位 */
     left: 50%;/* 定位 */
     top: 50% ;
-    transform: translate(-50%,-50%) scale(4);
+    transform: translate(-50%,-50%) scale(3);
     text-align: center;/* 文字置中 */
     width: 350px;
-    border: 1px blue solid;/* 邊框 */
+    border: 1px rgb(45, 45, 45) solid;/* 邊框 */
     background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
-    border-radius: 15px;/* 圓弧邊框 */
-    /* display: block; */
+    border-radius: 15px;
 }
 
 .title{
     margin: 5px;
-    /* text-align: ; */
 }
 
 .buttonlist{
@@ -99,6 +97,5 @@ body{
     position: relative;
     right: 5px;
     bottom: 10px;
-    /* top: 5px; */
     width: 100%;
 }
