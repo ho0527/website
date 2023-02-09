@@ -6,7 +6,6 @@
     $ans=[];
     for($i=0;$i<$n;$i=$i+1){
         $s=trim(fgets(STDIN));
-        echo($s."\n");
         $count=0;
         if(preg_match("/[0-9]/",$s)){
             $count=$count+1;
@@ -17,8 +16,7 @@
         if(preg_match("/[a-z]/",$s)){
             $count=$count+1;
         }
-        if(preg_match("/\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\-|\\|\||\'|\;|\"|\:|\/|\.|\,|\?|\>|\</",$s)){
-            //!FIXME:
+        if(preg_match("/[~|!|@|#|\$|%|^|&|*|(|)|_|+|=|-|\\|\||'|;|\"|:|\/|.|,|?|>|<]/",$s)){
             $count=$count+1;
         }
         $ans[]=$count;

@@ -17,7 +17,6 @@
         }
         return($sum%10)==0;
     }
-
     $input=trim(fgets(STDIN));
     $n=(int)$input;
     $ans=[];
