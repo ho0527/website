@@ -437,3 +437,35 @@ table{
     background-color: rgb(133, 133, 133);
     height: 100px;
 }
+
+.singlediv{
+    background-color: rgb(133, 133, 133);
+    height: 100px;
+}
+
+.forminputtext{
+    width: 95px;
+}
+
+.multidiv{
+    background-color: rgb(133, 133, 133);
+    height: 150px;
+}
+
+.forminputlongtext{
+    width: 200px;
+}
+
+.questiondiv{
+    background-color: rgb(133, 133, 133);
+    height: 150px;
+}
+
+
+.formcenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    width: 100%;
+}
