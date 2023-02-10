@@ -40,7 +40,7 @@
                                 多選題<input type="radio" name="select<?= $i ?>" class="radio multi" id="multi <?= $i ?>">
                                 問答題<input type="radio" name="select<?= $i ?>" class="radio question" id="question <?= $i ?>">
                             </div>
-                            <div class="output" id="output<?= $i ?>"></div>
+                            <div class="output" id="output"></div>
                         </div>
                         <?php
                     }
