@@ -100,22 +100,16 @@ function check(id){
 
 function tdclick(id){
     console.log(id);
-    if(player=="X"){
-        if(document.getElementById(id).innerHTML==""){
+    if(document.getElementById(id).innerHTML==""){
+        if(player=="X"){
             document.getElementById(id).innerHTML=`X`
-            document.getElementById(id).classList.add("cover")
             player="O"
         }else{
-            console.log("FUCK 幹嘛按這格");
+            document.getElementById(id).innerHTML=`O`
+            player="X"
         }
     }else{
-        if(document.getElementById(id).innerHTML==""){
-            document.getElementById(id).innerHTML=`O`
-            document.getElementById(id).classList.add("cover")
-            player="X"
-        }else{
-            console.log("FUCK 幹嘛按這格");
-        }
+        console.log("FUCK 幹嘛按這格");
     }
     check(player)
 }
