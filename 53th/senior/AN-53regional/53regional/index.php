@@ -9,7 +9,7 @@
         <div class="indexdiv">
             <form>
                 <?php session_start(); ?>
-                <class class="indextitle"></class><br>
+                <class class="indextitle">咖啡商品展示系統</class><br>
                 <div class="text">
                     帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>" class="input"><br>
                 </div>
@@ -18,7 +18,7 @@
                 </div>
                 <class class="text">驗證碼:</class><br>
                 <?php
-                    for($i=0;$i<3;$i=$i+1){
+                    for($i=0;$i<4;$i=$i+1){
                         $str=range("a","z");
                         $finalStr=$str[rand(0,25)];
                         ?>
@@ -42,6 +42,7 @@
                 </class>
                 <div class="dropbox" id="dropbox"></div><br>
                 <input type="submit" value="清除" name="clear" class="button">
+                <input type="submit" value="重設" name="clear" class="button">
                 <button type="button" class="button" onclick="loginclick(<?= $key ?>)" id="login">登入</button><br><br>
                 <?php
                     if(isset($_GET["reflashpng"])){

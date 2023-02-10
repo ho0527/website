@@ -3,12 +3,9 @@
    <head>
       <meta charset="UTF-8">
       <title>管理者專區</title>
-      <link href="index.css" rel="stylesheet">
+      <link href="index.css" rel="Stylesheet">
    </head>
    <body>
-      <?php
-         include("link.php");
-      ?>
       <table>
          <tr>
             <td class="admin-title">
@@ -17,8 +14,8 @@
                      <div class="navigationbardiv">
                         咖啡商品展示系統
                         <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
-                        <input type="button" class="adminbutton selectbut" onclick="location.href='adminWelcome.php'" value="上架商品">
-                        <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
+                        <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="上架商品">
+                        <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
                         <input type="submit" class="adminbutton" name="logout" value="登出">
                         <input type="search" name="search" placeholder="查詢" class="admininput">
                         <button class="button" name="enter">送出</button>
@@ -30,6 +27,34 @@
          <tr>
             <td>
                <table class="main-table">
+                  <form>
+                     <tr>
+                        <td class="admin-table-num">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
+                        <td class="admin-table">使用者帳號<input type="submit" name="user-up-down" id="user-up-down" value="升冪"></td>
+                        <td class="admin-table">密碼<input type="submit" name="code-up-down" id="code-up-down" value="升冪"></td>
+                        <td class="admin-table">名稱<input type="submit" name="name-up-down" id="name-up-down" value="升冪"></td>
+                        <td class="admin-table">權限</td>
+                        <td class="admin-table">時間</td>
+                        <td class="admin-table">動作</td>
+                     </tr>
+                     <?php
+                        include("link.php");
+                        include("admindef.php");
+                        if(isset($_SESSION["type"])){
+                           $type=$_SESSION["type"];
+                           if($type==""){
+                              unset($_SESSION["type"]);
+                              header("location:manage.php");
+                           }else{
+                              $data=query($db,"SELECT*FROM `data` WHERE `usernumber`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `logintime`LIKE'%$type%' or `logouttime`LIKE'%$type%' or `move`LIKE'%$type%' or `movetime`LIKE'%$type%'");
+                              issetgetupdown($data);
+                           }
+                        }else{
+                           $data=query($db,"SELECT*FROM `data`");
+                           issetgetupdown($data);
+                        }
+                     ?>
+                  </form>
                </table>
             </td>
          </tr>
@@ -61,7 +86,6 @@
          </div>
       </div>
       <?php
-         include("admindef.php");
          @$data=$_SESSION["data"];
          if(isset($_GET["logout"])){
             $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
@@ -75,9 +99,23 @@
                session_unset();
             }
          }
+         if(isset($_GET["enter"])){
+            $_SESSION["type"]=$_GET["search"];
+            header("location:adminWelcome.php");
+         }
+         if(isset($_GET["del"])){
+            $number=$_GET["del"];
+            $user=query($db,"SELECT*FROM `user` WHERE `number`='$number'");
+            if($row=fetch($user)){
+               query($db,"DELETE FROM `user` WHERE `number`='$number'");
+               ?><script>alert("刪除成功!");location.href="manage.php"</script><?php
+            }else{
+               ?><script>alert("帳號已被刪除!");location.href="manage.php"</script><?php
+            }
+         }
          if(isset($_GET["changetimersubmit"])){
             $_SESSION["timer"]=$_GET["changetimer"];
-            ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
+            ?><script>alert("更改成功!");location.href="manage.php"</script><?php
          }
       ?>
       <script src="admin.js"></script>

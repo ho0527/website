@@ -1,13 +1,27 @@
 body{
     width: 1875px;
     height: 900px;
-    background-color:rgba(244, 236, 236, 0.37);
+    background-color: rgba(156, 154, 154, 0.342);
     user-select: none;
 }
 
 table{
     border-collapse:collapse;
     vertical-align:top;
+}
+
+.navigationbar{
+    background-color: rgba(245, 245, 245, 0.6);
+    width: 100%;
+    height: 100px;
+    /* position: absolute;
+    top:5px; */
+}
+
+.navigationbardiv{
+    position: relative;
+    left:15%;
+    width: 85%;
 }
 
 .indextitle{
@@ -37,7 +51,7 @@ table{
     background-color: rgb(125, 125, 125);
     border-radius: 25px;
     height: 280px;
-    width: 275px;
+    width: 290px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
 }
 
@@ -49,15 +63,39 @@ table{
     background-color: white;
 }
 
+.admininput{
+    border-radius: 25px;
+    width: 200px;
+    height: 35px;
+    border: 1px black solid;
+    background-color: white;
+    font-size: 15px;
+}
+
 .button{
     border-radius: 25px;
     background-color: white;
     border: 0.5px black solid;
-    height: 25px;
-    width: 75px;
+    height: 30px;
+    width: 80px;
+    font-size: 15px;
 }
 
 .button:hover{
+    background-color: rgba(186, 186, 186, 0.363);
+}
+
+.adminbutton{
+    border-radius: 25px;
+    background-color: white;
+    border: 0.5px black solid;
+    height: 50px;
+    width: 175px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.adminbutton:hover{
     background-color: rgba(186, 186, 186, 0.363);
 }
 
@@ -76,7 +114,7 @@ table{
 .dropbox{
     border: 1px black solid;
     height: 40px;
-    width: 130px;
+    width: 190px;
     display: inline-block;
     background-color: white;
 }
@@ -125,6 +163,7 @@ table{
 
 .admin-title{
     font-size:50px;
+    width: 1875px;
 }
 
 .admin-find{
@@ -134,7 +173,7 @@ table{
 .admin-table-num{
     border: 0.5px black solid;
     background-color: gray;
-    width:175px;
+    width:200px;
     height:30px;
     text-align: center;
 }
@@ -142,7 +181,7 @@ table{
 .admin-table{
     border: 0.5px black solid;
     background-color: gray;
-    width:300px;
+    width:275px;
     height:30px;
     text-align: center;
 }
@@ -343,3 +382,154 @@ table{
     top: 2px;
     margin: 1px;
 }
+
+
+.selectbut{
+    background-color: rgb(187, 187, 187)
+}
+
+/*
+timer與燈箱
+########################################################################
+*/
+
+.timer{
+    font-size: 40px;/* 字體大小 */
+    color: #333333;/* 文字顏色 */
+    text-align: center;/* 將文字置中 */
+    transform: scale(1.25);
+    position: absolute;
+    bottom: 55px;
+    right: 100px;
+}
+
+.timerbox{
+    width: 150px;
+    height: 100px;
+    text-align: center;
+    background: none;
+    outline: none;
+    font-size: 80px;
+    margin-top: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+.timeerbutton{
+    background-color: #ffa07a;/* 背景顏色 */
+    border: none;/* 邊框 */
+    border-radius: 4px;/* 弧形邊框 */
+    color: #ffffff;/* 文字顏色 */
+    cursor: pointer;/* hover時變pointer */
+    font-size: 25px;/* 字體大小 */
+}
+
+.timertd{
+    border: 1px black solid;
+    width: 175px;
+    height: 15px;
+    padding-bottom: 10px;
+}
+
+.timersec{
+    border: 1px black solid;
+    width: 80px;
+    height: 25px;
+}
+
+.lightboxdiv{
+    position: absolute;/* 絕對定位 */
+    top: 0px;/* 定位 */
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 999;/*  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mask{
+    position: absolute;/* 絕對定位 */
+    top: 0px;/* 定位 */
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(100, 100, 100, 0.25);/* 背景顏色 */
+}
+
+.close{
+    font-size:15px;/* 字體大小 */
+    width: 125px;/* 寬度 */
+}
+
+.body{
+    position: absolute;/* 絕對定位 */
+    left: 50%;/* 定位 */
+    top: 50%;
+    transform: translate(-50%,-50%) scale(3.5);
+    text-align: center;/* 文字置中 */
+    width: 300px;/* 寬度 */
+    height: 100px;/* 高度 */
+    border: 1px blue solid;/* 邊框 */
+    background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
+    border-radius: 15px;/* 圓弧邊框 */
+    /* display: block; */
+}
+/*
+########################################################################
+*/
+
+
+/*
+verify
+########################################################################
+*/
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(5);
+}
+
+.gamebar{
+    transform: scale(0.5);
+    width: 250px;
+}
+
+.verifybutton{
+    border-radius: 25px;
+    background-color: white;
+    border: 0.5px black solid;
+    height: 25px;
+    width: 75px;
+    cursor: pointer;
+}
+
+.verifybutton:hover{
+    background-color: rgba(186, 186, 186, 0.363);
+}
+
+.table{
+    border-collapse: collapse;
+    text-align: center;
+    position: relative;
+    left: 30%;
+}
+
+.td{
+    width: 40px;
+    height: 40px;
+    border: 1px rgb(83, 81, 81) solid;
+    font-size: 30px;
+    background-color: white;
+}
+
+.title{
+    margin: 5px;
+}
+
+/*
+########################################################################
+*/

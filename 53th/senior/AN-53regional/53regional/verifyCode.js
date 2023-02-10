@@ -32,13 +32,16 @@ function drop(e){
 function loginclick(key){
     let username=document.getElementById("username").value
     let code=document.getElementById("code").value
-    for(let i=0;i<3;i=i+1){
+    for(let i=0;i<4;i=i+1){
         b[i]=a[i]
     }
     if(key==0){
         b.sort()
         let temp=b[0]
-        b[0]=b[2]
+        b[0]=b[3]
+        b[3]=temp
+        temp=b[1]
+        b[1]=b[2]
         b[2]=temp
         if(JSON.stringify(a)==JSON.stringify(b)){
             location.href="login.php?username="+username+"&code="+code
