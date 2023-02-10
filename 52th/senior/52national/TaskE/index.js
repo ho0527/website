@@ -98,15 +98,15 @@ allstu.addEventListener("click",function(){
     location.reload()
 })
 
-// lessmoreclass.addEventListener("click",function(){
-//     if(allclass.style.display=="none"){
-//         allclass.innerHTML=`${allclass()}`
-//         lessmoreclass.innerHTML=`班級(顯示更少)`
-//     }else{
-//         allclass.innerHTML=``
-//         lessmoreclass.innerHTML=`班級(顯示更多)`
-//     }
-// })
+lessmoreclass.addEventListener("click",function(){
+    if(lessmoreclass.innerHTML=="班級(顯示更多)"){
+        // allclass.innerHTML=`${allclass()}`
+        lessmoreclass.innerHTML=`班級(顯示更少)`
+    }else{
+        // allclass.innerHTML=``
+        lessmoreclass.innerHTML=`班級(顯示更多)`
+    }
+})
 
 addsut.onclick=function(){
     dialog.innerHTML=`
@@ -144,22 +144,14 @@ addsut.onclick=function(){
         reload()
     }
     addsut.onsubmit=function(event){
-        let student_id=document.getElementById("student_id").value
-        let last_name=document.getElementById("last_name").value
-        let first_name=document.getElementById("first_name").value
+        let studentid=document.getElementById("student_id").value
+        let lastname=document.getElementById("last_name").value
+        let firstname=document.getElementById("first_name").value
         let email=document.getElementById("email").value
         let phone=document.getElementById("phone").value
         let class_id=document.getElementById("class").value
         let address=document.getElementById("address").value
-        let student={
-            student_id,
-            last_name,
-            first_name,
-            email,
-            phone,
-            class_id,
-            address
-        }
+        let student={studentid,lastname,firstname,email,phone,class_id,address}
         if(lastname.value==""||firstname.value==""){
             alert("請輸入姓名!")
         }else{
@@ -224,22 +216,14 @@ editstu.onclick=function(){
         reload()
     }
     newstudent.onsubmit=function(event){
-        let student_id=document.getElementById("student_id").value
-        let last_name=document.getElementById("last_name").value
-        let first_name=document.getElementById("first_name").value
+        let studentid=document.getElementById("student_id").value
+        let lastname=document.getElementById("last_name").value
+        let firstname=document.getElementById("first_name").value
         let email=document.getElementById("email").value
         let phone=document.getElementById("phone").value
         let class_id=document.getElementById("class").value
         let address=document.getElementById("address").value
-        let student={
-            student_id,
-            last_name,
-            first_name,
-            email,
-            phone,
-            class_id,
-            address
-        }
+        let student={studentid,lastname,firstname,email,phone,class_id,address}
         if(lastname.value==""||firstname.value==""){
             alert("請輸入姓名!")
         }else{

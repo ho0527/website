@@ -1,116 +1,68 @@
-let td1=document.getElementById("td1")
-let td2=document.getElementById("td2")
-let td3=document.getElementById("td3")
-let td4=document.getElementById("td4")
-let td5=document.getElementById("td5")
-let td6=document.getElementById("td6")
-let td7=document.getElementById("td7")
-let td8=document.getElementById("td8")
-let td9=document.getElementById("td9")
-let tds=document.querySelectorAll(".td")
-let mask=document.getElementById("maskdiv")
-let player="X"
+let chessboard = document.getElementById("chessboard");
+let cells = chessboard.getElementsByTagName("td");
 
-tds.forEach(function(td){
-    td.addEventListener("click", function() {
-        tdclick(td.id)
-    })
-})
-
-function win(id){
-    if(id=="X"){
-        mask.innerHTML=`
-            <div class="div">
-                <div class="mask"></div>
-                <div class="body">
-                    <h2 class="title">遊戲結束</h2>
-                    <h1>結果:O獲勝</h1>
-                    <div class="buttonlist">
-                        <button id="submit" name="enter" class="submit button">重新開始</button>
-                    </div>
-                </div>
-            </div>
-        `
-    }else if(id=="O"){
-        mask.innerHTML=`
-            <div class="div">
-                <div class="mask"></div>
-                <div class="body">
-                    <h2 class="title">遊戲結束</h2>
-                    <h1>結果:X獲勝</h1>
-                    <div class="buttonlist">
-                        <button id="submit" name="enter" class="submit button">重新開始</button>
-                    </div>
-                </div>
-            </div>
-        `
-    }else{
-        mask.innerHTML=`
-            <div class="div">
-                <div class="mask"></div>
-                <div class="body">
-                    <h2 class="title">遊戲結束</h2>
-                    <h1>結果:平手</h1>
-                    <div class="buttonlist">
-                        <button id="submit" name="enter" class="submit button">重新開始</button>
-                    </div>
-                </div>
-            </div>
-        `
-    }
-    document.getElementById("submit").onclick=function(){
-        location.reload()
-    }
+let grid = [];
+for (let i = 0; i < 6; i++) {
+  grid[i] = [];
+  for (let j = 0; j < 7; j++) {
+    grid[i][j] = 0;
+  }
 }
 
-function check(id){
-    if((td1.innerHTML==td2.innerHTML)&&(td2.innerHTML==td3.innerHTML)&&td1.innerHTML!=""&&td2.innerHTML!=""&&td3.innerHTML!=""){
-        console.log("1");
-        win(id)
-    }else if((td4.innerHTML==td5.innerHTML)&&(td5.innerHTML==td6.innerHTML)&&td4.innerHTML!=""&&td5.innerHTML!=""&&td6.innerHTML!=""){
-        console.log("2");
-        win(id)
-    }else if((td7.innerHTML==td8.innerHTML)&&(td8.innerHTML==td9.innerHTML)&&td7.innerHTML!=""&&td8.innerHTML!=""&&td9.innerHTML!=""){
-        console.log("3");
-        win(id)
-    }else if((td1.innerHTML==td4.innerHTML)&&(td4.innerHTML==td7.innerHTML)&&td1.innerHTML!=""&&td4.innerHTML!=""&&td7.innerHTML!=""){
-        console.log("4");
-        win(id)
-    }else if((td2.innerHTML==td5.innerHTML)&&(td5.innerHTML==td8.innerHTML)&&td2.innerHTML!=""&&td5.innerHTML!=""&&td8.innerHTML!=""){
-        console.log("5");
-        win(id)
-    }else if((td3.innerHTML==td6.innerHTML)&&(td6.innerHTML==td9.innerHTML)&&td3.innerHTML!=""&&td6.innerHTML!=""&&td9.innerHTML!=""){
-        console.log("6");
-        win(id)
-    }else if((td1.innerHTML==td5.innerHTML)&&(td5.innerHTML==td9.innerHTML)&&td1.innerHTML!=""&&td5.innerHTML!=""&&td9.innerHTML!=""){
-        console.log("7");
-        win(id)
-    }else if((td3.innerHTML==td5.innerHTML)&&(td5.innerHTML==td7.innerHTML)&&td3.innerHTML!=""&&td5.innerHTML!=""&&td7.innerHTML!=""){
-        console.log("8");
-        win(id)
-    }else if(td1.innerHTML!=""&&td2.innerHTML!=""&&td3.innerHTML!=""&&td4.innerHTML!=""&&td5.innerHTML!=""&&td6.innerHTML!=""&&td7.innerHTML!=""&&td8.innerHTML!=""&&td9.innerHTML!=""){
-        win("same")
-    }else{
-        console.log("countu");
+let currentPlayer = 1; // 1代表黑棋，2代表白棋
+for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener("click", function() {
+      let row = Math.floor(i / 7);
+      let col = i % 7;
+      for (let j = 5; j >= 0; j--) {
+        if (grid[j][col] === 0) {
+          grid[j][col] = currentPlayer;
+          if (currentPlayer === 1) {
+            this.style.backgroundColor = "black";
+          } else {
+            this.style.backgroundColor = "white";
+          }
+          break;
+        }
+      }
+      currentPlayer = (currentPlayer === 1) ? 2 : 1;
+      checkForWin();
+    });
+  }
+  function checkForWin() {
+    // Check rows
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 4; j++) {
+        if (grid[i][j] !== 0 &&
+            grid[i][j] === grid[i][j + 1] &&
+            grid[i][j] === grid[i][j + 2] &&
+            grid[i][j] === grid[i][j + 3]) {
+          alert("Player " + grid[i][j] + " wins!");
+        }
+      }
     }
-}
+  
+     // Check columns
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 7; j++) {
+      if (grid[i][j] !== 0 &&
+          grid[i][j] === grid[i + 1][j] &&
+          grid[i][j] === grid[i + 2][j] &&
+          grid[i][j] === grid[i + 3][j]) {
+        alert("Player " + grid[i][j] + " wins!");
+      }
+    }
+  }
 
-function tdclick(id){
-    console.log(id);
-    if(player=="X"){
-        if(document.getElementById(id).innerHTML==""){
-            document.getElementById(id).innerHTML=`X`
-            player="O"
-        }else{
-            console.log("FUCK 幹嘛按這格");
-        }
-    }else{
-        if(document.getElementById(id).innerHTML==""){
-            document.getElementById(id).innerHTML=`O`
-            player="X"
-        }else{
-            console.log("FUCK 幹嘛按這格");
-        }
+  // Check diagonals (left to right)
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 4; j++) {
+    if (grid[i][j] !== 0 &&
+    grid[i][j] === grid[i + 1][j + 1] &&
+    grid[i][j] === grid[i + 2][j + 2] &&
+    grid[i][j] === grid[i + 3][j + 3]) {
+    alert("Player " + grid[i][j] + " wins!");
     }
-    check(player)
+    }
+    }
 }

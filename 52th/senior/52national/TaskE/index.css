@@ -1,6 +1,7 @@
 body{
     height: 1080px;
     width: 1920px;
+    background-color: rgba(245, 245, 245, 0.6);
     user-select: none;
 }
 
@@ -28,7 +29,6 @@ body{
     float: left;
     /* margin-top: 55px; */
     border-right: 1px black solid;
-    background-color: rgba(245, 245, 245, 0.6);
 }
 
 /* 新增學生 */
