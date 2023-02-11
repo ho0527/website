@@ -12,9 +12,10 @@
                <form>
                   <div class="navigationbar">
                      <div class="navigationbardiv">
-                        咖啡商品展示系統
+                        咖啡商品展示系統-會員管理
                         <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
-                        <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="上架商品">
+                        <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
+                        <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
                         <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
                         <input type="submit" class="adminbutton" name="logout" value="登出">
                         <input type="search" name="search" placeholder="查詢" class="admininput">
@@ -73,7 +74,7 @@
          </tr>
          <tr>
             <td class="timertd">
-               <button class="timeerbutton" id="resetbutton">重設</button>
+               <button class="timeerbutton" id="resetbutton">重新計時</button>
             </td>
          </tr>
       </table>

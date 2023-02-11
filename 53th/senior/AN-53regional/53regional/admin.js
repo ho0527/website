@@ -38,8 +38,10 @@ function check(){
         ask.style.display="none"
         location.reload()
     }
+    no.onclick=function(){
+        location.href="adminWelcome.php?logout"
+    }
     setTimeout(function(){
-        alert("登出成功!")
-        location.href="index.php"
+        location.href="adminWelcome.php?logout"
     },5000)
 }

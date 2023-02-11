@@ -3,6 +3,7 @@ body{
     height: 900px;
     background-color: rgba(156, 154, 154, 0.342);
     user-select: none;
+    word-break: break-all;
 }
 
 table{
@@ -20,8 +21,22 @@ table{
 
 .navigationbardiv{
     position: relative;
-    left:15%;
-    width: 85%;
+    left:0%;
+    width: 100%;
+}
+
+.productbar{
+    background-color: rgba(245, 245, 245, 0.6);
+    width: 100%;
+    height: 100px;
+    /* position: absolute;
+    top:5px; */
+}
+
+.productbardiv{
+    position: relative;
+    left:10%;
+    width: 90%;
 }
 
 .indextitle{
@@ -138,7 +153,9 @@ table{
     border: 1px black solid;
     color: rgb(0, 0, 0);
     text-align: center;
+    
 }
+
 
 /*admin table*/
 .signupdiv{
@@ -187,9 +204,15 @@ table{
 }
 
 /*user table*/
+.usermaintable{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: 100%;
+}
+
 .title{
     border: 0.5px black solid;
-    width:225px;
+    width:100%;
     height:25px;
     font-size:30px;
     font-weight: bold;
@@ -235,7 +258,7 @@ timer與燈箱
 
 .timertd{
     border: 1px black solid;
-    width: 175px;
+    width: 200px;
     height: 15px;
     padding-bottom: 10px;
 }
@@ -279,12 +302,106 @@ timer與燈箱
     transform: translate(-50%,-50%) scale(3.5);
     text-align: center;/* 文字置中 */
     width: 300px;/* 寬度 */
-    height: 100px;/* 高度 */
-    border: 1px blue solid;/* 邊框 */
+    height: 50px;/* 高度 */
+    border: 1px rgb(0, 0, 0) solid;/* 邊框 */
     background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
     border-radius: 15px;/* 圓弧邊框 */
     /* display: block; */
 }
+/*
+########################################################################
+*/
+
+
+/*
+product
+########################################################################
+*/
+
+.productbutton{
+    /* border-radius: 25px  ; */
+    background-color: white;
+    border: 0.5px black solid;
+    height: 90px;
+    width: 350px;   
+    font-size: 65px;
+    cursor: pointer;
+}
+
+.productbutton:hover{
+    background-color: rgba(186, 186, 186, 0.363);
+}
+
+.version{
+    width: 550px;
+    height: 250px;
+    background-color: #ffa07a;
+    position: relative;
+    transform: scale(1.5);
+}
+
+.name{
+    width: 250px;
+    height: 30px;
+    border: 1px black solid;
+    background-color: aqua;
+    position: absolute;
+}
+
+.picture{
+    width: 250px;
+    height: 180px;
+    border: 1px black solid;
+    background-color: aqua;
+    font-size: 20px;
+    display: flex;
+    background-color: aqua;
+    position: absolute;
+}
+
+.introduction{
+    width: 250px;
+    height: 80px;
+    border: 1px black solid;
+    background-color: aqua;
+    position: absolute;
+}
+
+.date{
+    width: 250px;
+    height: 60px;
+    border: 1px black solid;
+    background-color: aqua;
+    position: absolute;
+}
+
+.cost{
+    width: 250px;
+    height: 30px;
+    border: 1px black solid;
+    background-color: aqua;
+    position: absolute;
+}
+
+.link{
+    width: 250px;
+    height: 40px;
+    border: 1px black solid;
+    background-color: aqua;
+    position: absolute;
+}
+
+.check{
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(5);
+    background-color: rgb(103, 103, 103);
+}
+
 /*
 ########################################################################
 */
@@ -344,4 +461,28 @@ verify
 
 .selectbut{
     background-color: rgb(187, 187, 187)
+}
+
+.producttd{
+    width: 180px;
+    height: 200px;
+    border: 1px black solid;
+}
+
+.maintable{
+    border: 1px black solid;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: 20px;
+}
+
+.bottom{
+    position: absolute;
+    bottom: 2px;
+    right: -190px;
+    width: 130px;
+    height: 50px;
+    font-size: 30px;
 }

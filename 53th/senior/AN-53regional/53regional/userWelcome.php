@@ -9,19 +9,46 @@
         <?php
             include("link.php");
             include("userdef.php");
-            unset($_SESSION["todoval"]);
-            $start=$_SESSION["starttime"];
         ?>
-        <table class="main-table">
+        <table class="usermaintable">
             <tr>
-                <td class="date">
-                </td>
-                <td class="title">咖啡商品展示系統</td>
-                <td class="all" rowspan="2">
+                <td class="title">
+                    <div class="navigationbar">
+                        <div class="navigationbardiv" style="position: relative;top:20px;font-size:45px">
+                            咖啡商品展示系統
+                            <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
+                            <input type="submit" class="adminbutton" name="logout" value="登出">
+                            <button class="adminbutton" name="enter">查詢</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
+                    <table class="maintable">
+                        <?php
+                            product($db);
+                        ?>
+                    </table>
+                    <?php
+                        @$data=$_SESSION["data"];
+                        if(isset($_GET["logout"])){
+                            $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
+                            if(isset($data)){
+                            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
+                            ?><script>alert("登出成功!");location.href="index.php"</script><?php
+                            session_unset();
+                            }else{
+                            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','','','','','','登出成功')");
+                            ?><script>alert("登出成功!");location.href="index.php"</script><?php
+                            session_unset();
+                            }
+                        }
+                        if(isset($_GET["changetimersubmit"])){
+                            $_SESSION["timer"]=$_GET["changetimer"];
+                            ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
+                        }
+                    ?>
                 </td>
                 <td class="user-table4">
                 </td>

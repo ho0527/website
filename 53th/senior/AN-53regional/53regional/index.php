@@ -19,8 +19,8 @@
                 <class class="text">驗證碼:</class><br>
                 <?php
                     for($i=0;$i<4;$i=$i+1){
-                        $str=range("a","z");
-                        $finalStr=$str[rand(0,25)];
+                        $str=array_merge(range("a","z"),range(0,9),range("A","Z"));
+                        $finalStr=$str[rand(0,61)];
                         ?>
                         <div class="dragbox">
                             <img src="verifyCode.php?val=<?= $finalStr ?>" id="<?= $finalStr ?>" class="dragimg" draggable="true">
@@ -43,7 +43,7 @@
                 <div class="dropbox" id="dropbox"></div><br>
                 <input type="submit" value="清除" name="clear" class="button">
                 <input type="submit" value="重設" name="clear" class="button">
-                <button type="button" class="button" onclick="loginclick(<?= $key ?>)" id="login">登入</button><br><br>
+                <button type="button" class="button" onclick="loginclick(<?= $key ?>)">登入</button><br><br>
                 <?php
                     if(isset($_GET["reflashpng"])){
                         @$_SESSION["username"]=$_GET["username"];

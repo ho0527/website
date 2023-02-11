@@ -6,11 +6,11 @@ let tds=document.querySelectorAll(".td")
 let mask=document.getElementById("maskdiv")
 let permission=document.getElementById("permission").value
 
-window.onload=function(){
-    let rand1=Math.floor(Math.random()*4)+1
-    console.log(rand1)
-    document.getElementById("td"+rand1).style.backgroundColor="black"
-}
+// window.onload=function(){
+//     let rand1=Math.floor(Math.random()*4)+1
+//     console.log(rand1)
+//     document.getElementById("td"+rand1).style.backgroundColor="black"
+// }
 
 tds.forEach(function(td){
     td.addEventListener("click",function(){
