@@ -16,7 +16,7 @@
         ?>
         <table>
             <tr>
-                <td class="admin-title">
+                <td class="admintitle">
                 <form>
                     <div class="navigationbar">
                         <div class="navigationbardiv">

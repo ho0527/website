@@ -6,59 +6,47 @@
       <link href="index.css" rel="Stylesheet">
    </head>
    <body>
-      <table>
-         <tr>
-            <td class="admin-title">
+      <div class="navigationbar">
+         <div class="navigationbardiv">
                <form>
-                  <div class="navigationbar">
-                     <div class="navigationbardiv">
-                        咖啡商品展示系統-會員管理
-                        <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
-                        <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
-                        <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-                        <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
-                        <input type="submit" class="adminbutton" name="logout" value="登出">
-                        <input type="search" name="search" placeholder="查詢" class="admininput">
-                        <button class="button" name="enter">送出</button>
-                     </div>
-                  </div>
+               咖啡商品展示系統-會員管理
+               <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
+               <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
+               <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
+               <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
+               <input type="submit" class="adminbutton" name="logout" value="登出">
                </form>
-            </td>
-         </tr>
-         <tr>
-            <td>
-               <table class="main-table">
-                  <form>
-                     <tr>
-                        <td class="admin-table-num">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
-                        <td class="admin-table">使用者帳號<input type="submit" name="user-up-down" id="user-up-down" value="升冪"></td>
-                        <td class="admin-table">密碼<input type="submit" name="code-up-down" id="code-up-down" value="升冪"></td>
-                        <td class="admin-table">名稱<input type="submit" name="name-up-down" id="name-up-down" value="升冪"></td>
-                        <td class="admin-table">權限</td>
-                        <td class="admin-table">時間</td>
-                        <td class="admin-table">動作</td>
-                     </tr>
-                     <?php
-                        include("link.php");
-                        include("admindef.php");
-                        if(isset($_SESSION["type"])){
-                           $type=$_SESSION["type"];
-                           if($type==""){
-                              unset($_SESSION["type"]);
-                              header("location:manage.php");
-                           }else{
-                              $data=query($db,"SELECT*FROM `data` WHERE `number`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `time`LIKE'%$type%' or `move`LIKE'%$type%'");
-                              issetgetupdown($data);
-                           }
-                        }else{
-                           $data=query($db,"SELECT*FROM `data`");
-                           issetgetupdown($data);
-                        }
-                     ?>
-                  </form>
-               </table>
-            </td>
-         </tr>
+         </div>
+      </div>
+      <table class="main-table">
+         <form>
+            <tr>
+               <td class="admin-table-num">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
+               <td class="admin-table">使用者帳號<input type="submit" name="user-up-down" id="user-up-down" value="升冪"></td>
+               <td class="admin-table">密碼<input type="submit" name="code-up-down" id="code-up-down" value="升冪"></td>
+               <td class="admin-table">名稱<input type="submit" name="name-up-down" id="name-up-down" value="升冪"></td>
+               <td class="admin-table">權限</td>
+               <td class="admin-table">時間</td>
+               <td class="admin-table">動作</td>
+            </tr>
+            <?php
+               include("link.php");
+               include("admindef.php");
+               if(isset($_SESSION["type"])){
+                  $type=$_SESSION["type"];
+                  if($type==""){
+                     unset($_SESSION["type"]);
+                     header("location:manage.php");
+                  }else{
+                     $data=query($db,"SELECT*FROM `data` WHERE `number`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `time`LIKE'%$type%' or `move`LIKE'%$type%'");
+                     issetgetupdown($data);
+                  }
+               }else{
+                  $data=query($db,"SELECT*FROM `data`");
+                  issetgetupdown($data);
+               }
+            ?>
+         </form>
       </table>
       <table class="timer">
          <tr>
@@ -87,19 +75,6 @@
          </div>
       </div>
       <?php
-         @$data=$_SESSION["data"];
-         if(isset($_GET["logout"])){
-            $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
-            if(isset($data)){
-               query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
-               ?><script>alert("登出成功!");location.href="index.php"</script><?php
-               session_unset();
-            }else{
-               query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','','','','','','登出成功')");
-               ?><script>alert("登出成功!");location.href="index.php"</script><?php
-               session_unset();
-            }
-         }
          if(isset($_GET["enter"])){
             $_SESSION["type"]=$_GET["search"];
             ?><script>location.href="manage.php"</script><?php

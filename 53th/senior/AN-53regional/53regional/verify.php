@@ -27,21 +27,6 @@
                 <input type="hidden" class="verifybutton" id="permission" value="<?= $_SESSION["permission"] ?>">
             </form>
         </div>
-        <?php
-            @$data=$_SESSION["data"];
-            if(isset($_GET["logout"])){
-                $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
-                if(isset($data)){
-                    query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
-                    ?><script>alert("登出成功!");location.href="index.php"</script><?php
-                    session_unset();
-                }else{
-                    query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','','','','','','登出成功')");
-                    ?><script>alert("登出成功!");location.href="index.php"</script><?php
-                    session_unset();
-                }
-            }
-        ?>
         <script src="verify.js"></script>
     </body>
 </html>

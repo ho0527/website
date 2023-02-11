@@ -1,7 +1,5 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    width: 1875px;
-    height: 900px;
     background-color: rgba(156, 154, 154, 0.342);
     user-select: none;
     word-break: break-all;
@@ -16,8 +14,9 @@ table{
     background-color: rgba(245, 245, 245, 0.6);
     width: 100%;
     height: 100px;
-    /* position: absolute;
-    top:5px; */
+    font-size:50px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .navigationbardiv{
@@ -30,8 +29,6 @@ table{
     background-color: rgba(245, 245, 245, 0.6);
     width: 100%;
     height: 100px;
-    /* position: absolute;
-    top:5px; */
 }
 
 .productbardiv{
@@ -194,13 +191,8 @@ table{
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
 }
 
-.admin-title{
+.admintitle{
     font-size:50px;
-    width: 1875px;
-}
-
-.admin-find{
-    text-align: right;
 }
 
 .admin-table-num{
@@ -216,22 +208,6 @@ table{
     background-color: gray;
     width:275px;
     height:30px;
-    text-align: center;
-}
-
-/*user table*/
-.usermaintable{
-    color: rgb(0, 0, 0);
-    text-align: center;
-    width: 100%;
-}
-
-.title{
-    border: 0.5px black solid;
-    width:100%;
-    height:25px;
-    font-size:30px;
-    font-weight: bold;
     text-align: center;
 }
 
@@ -378,7 +354,7 @@ product
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%) scale(5);
-    background-color: rgb(103, 103, 103);
+    background-color: rgb(135, 135, 135);
 }
 
 /*
@@ -479,6 +455,7 @@ usersearch
     position: relative;
     top: 5px;
     font-size: 30px;
+    text-align: center;
 }
 
 .radiobox{
