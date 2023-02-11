@@ -486,3 +486,46 @@ verify
     height: 50px;
     font-size: 30px;
 }
+
+/*
+usersearch
+########################################################################
+*/
+
+.searchtd1{
+    width: 100%;
+    height: 155px;
+    border: 1px black solid;
+    position: relative;
+    top: 5px;
+    font-size: 30px;
+}
+
+.radiobox{
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top:5px;
+    background-color: rgb(125, 125, 125);
+}
+
+.radiosearchtext{
+    background-color: rgb(133, 133, 133);
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    top: 50px;
+}
+
+.searchform{
+    transform: scale(2.25);
+}
+
+.radio{
+    transform: scale(3);
+    cursor: pointer;
+}
+
+/*
+########################################################################
+*/

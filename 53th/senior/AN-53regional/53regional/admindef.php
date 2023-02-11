@@ -100,40 +100,40 @@
                 }
             }
         }
-        ?><tr><?php
         for($i=0;$i<count($a);$i=$i+1){
             ?>
-            <td class="producttd">
-                <?php
-                    if($a[$i][7]==1){
-                        ?>
-                        <div class="version" id="version1" style="top: 0px;left: 20%;transform: scale(1);">
-                            <div class="name" style="top: 5px;left: 20px;">商品名稱:<?= @$a[$i][2] ?></div>
-                            <div class="picture" style="top: 40px;left: 20px;">圖片:<img src="<?= @$a[$i][1] ?>" width="120px"></div>
-                            <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$a[$i][3] ?></div>
-                            <div class="date" style="top: 125px;right: 20px;">發佈日期:<?= @$a[$i][5] ?></div>
-                            <div class="cost" style="top: 5px;right: 20px;">費用:<?= @$a[$i][4] ?></div>
-                            <div class="link" style="top: 195px;right: 20px;">相關連結:<?= @$a[$i][6] ?></div>
-                            <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
-                        </div>
-                        <?php
-                    }else{
-                        ?>
-                        <div class="version" id="version1" style="top: 0px;left: 20%;transform: scale(1);">
-                            <div class="name" style="top: 5px;right: 20px;">商品名稱:<?= @$a[$i][2] ?></div>
-                            <div class="picture" style="top: 5px;left: 20px;">圖片:<img src="<?= @$a[$i][1] ?>" width="120px"></div>
-                            <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$a[$i][3] ?></div>
-                            <div class="date" style="top: 125px;right: 20px;">發佈日期:<?= @$a[$i][5] ?></div>
-                            <div class="cost" style="top: 195px;right: 20px;">費用:<?= @$a[$i][4] ?></div>
-                            <div class="link" style="top: 195px;left: 20px;">相關連結:<?= @$a[$i][6] ?></div>
-                            <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
-                        </div>
-                        <?php
-                    }
-                ?>
-            </td>
+            <tr>
+                <td class="producttd">
+                    <?php
+                        if($a[$i][7]==1){
+                            ?>
+                            <div class="version" id="version1" style="top: 0px;left: 35%;transform: scale(1);">
+                                <div class="name" style="top: 5px;left: 20px;">商品名稱:<?= @$a[$i][2] ?></div>
+                                <div class="picture" style="top: 40px;left: 20px;">圖片:<img src="<?= @$a[$i][1] ?>" width="120px"></div>
+                                <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$a[$i][3] ?></div>
+                                <div class="date" style="top: 125px;right: 20px;">發佈日期:<?= @$a[$i][5] ?></div>
+                                <div class="cost" style="top: 5px;right: 20px;">費用:<?= @$a[$i][4] ?></div>
+                                <div class="link" style="top: 195px;right: 20px;">相關連結:<?= @$a[$i][6] ?></div>
+                                <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
+                            </div>
+                            <?php
+                        }else{
+                            ?>
+                            <div class="version" id="version1" style="top: 0px;left: 35%;transform: scale(1);">
+                                <div class="name" style="top: 5px;right: 20px;">商品名稱:<?= @$a[$i][2] ?></div>
+                                <div class="picture" style="top: 5px;left: 20px;">圖片:<img src="<?= @$a[$i][1] ?>" width="120px"></div>
+                                <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$a[$i][3] ?></div>
+                                <div class="date" style="top: 125px;right: 20px;">發佈日期:<?= @$a[$i][5] ?></div>
+                                <div class="cost" style="top: 195px;right: 20px;">費用:<?= @$a[$i][4] ?></div>
+                                <div class="link" style="top: 195px;left: 20px;">相關連結:<?= @$a[$i][6] ?></div>
+                                <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
+                            </div>
+                            <?php
+                        }
+                    ?>
+                </td>
+            </tr>
             <?php
         }
-        ?></tr><?php
     }
 ?>

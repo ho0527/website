@@ -16,9 +16,10 @@
                     <div class="navigationbar">
                         <div class="navigationbardiv" style="position: relative;top:20px;font-size:45px">
                             咖啡商品展示系統
-                            <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
+                            <input type="button" class="adminbutton selectbut" onclick="location.href='userWelcome.php'" value="首頁">
+                            <input type="button" class="adminbutton" value="上架商品">
+                            <input type="button" class="adminbutton" onclick="location.href='usersearch.php'" name="enter" value="查詢">
                             <input type="submit" class="adminbutton" name="logout" value="登出">
-                            <button class="adminbutton" name="enter">查詢</button>
                         </div>
                     </div>
                 </td>
@@ -27,7 +28,7 @@
                 <td>
                     <table class="maintable">
                         <?php
-                            product($db);
+                            product(query($db,"SELECT*FROM `coffee`"));
                         ?>
                     </table>
                     <?php
@@ -95,6 +96,5 @@
                 }
             ?>
         </form>
-        <script src="todobox.js"></script>
     </body>
 </html>
