@@ -17,25 +17,45 @@
                     <?php
                         if($a[$i][7]==1){
                             ?>
-                            <div class="version" id="version1" style="top: 0px;left: 35%;transform: scale(1);">
-                                <div class="name" style="top: 5px;left: 20px;">商品名稱:<?= @$a[$i][2] ?></div>
-                                <div class="picture" style="top: 40px;left: 20px;">圖片:<img src="<?= @$a[$i][1] ?>" width="120px"></div>
-                                <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$a[$i][3] ?></div>
-                                <div class="date" style="top: 125px;right: 20px;">發佈日期:<?= @$a[$i][5] ?></div>
-                                <div class="cost" style="top: 5px;right: 20px;">費用:<?= @$a[$i][4] ?></div>
-                                <div class="link" style="top: 195px;right: 20px;">相關連結:<?= @$a[$i][6] ?></div>
-                            </div>
+                            <table class="version" id="version1" style="top: 10px;left: 35%;transform: scale(1);">
+                                <tr>
+                                    <td class="coffeedata">商品名稱: <?= @$a[$i][2] ?></td>
+                                    <td class="coffeedata">費用: <?= @$a[$i][4] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$a[$i][1] ?>" width="120px"></td>
+                                    <td class="coffeedata" rowspan="2">商品簡介: <?= @$a[$i][3] ?></td>
+                                </tr>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td class="coffeedata">發佈日期: <?= @$a[$i][5] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="coffeedata">相關連結: <?= @$a[$i][6] ?></td>
+                                </tr>
+                            </table>
                             <?php
                         }else{
                             ?>
-                            <div class="version" id="version1" style="top: 0px;left: 35%;transform: scale(1);">
-                                <div class="name" style="top: 5px;right: 20px;">商品名稱:<?= @$a[$i][2] ?></div>
-                                <div class="picture" style="top: 5px;left: 20px;">圖片:<img src="<?= @$a[$i][1] ?>" width="120px"></div>
-                                <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$a[$i][3] ?></div>
-                                <div class="date" style="top: 125px;right: 20px;">發佈日期:<?= @$a[$i][5] ?></div>
-                                <div class="cost" style="top: 195px;right: 20px;">費用:<?= @$a[$i][4] ?></div>
-                                <div class="link" style="top: 195px;left: 20px;">相關連結:<?= @$a[$i][6] ?></div>
-                            </div>
+                            <table class="version" id="version2" style="top: 10px;left: 35%;transform: scale(1);">
+                                <tr>
+                                    <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$a[$i][1] ?>" width="120px"></td>
+                                    <td class="coffeedata">商品名稱: <?= @$a[$i][2] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="coffeedata" rowspan="2">商品簡介: <?= @$a[$i][3] ?></td>
+                                </tr>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td class="coffeedata">發佈日期: <?= @$a[$i][5] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="coffeedata">費用: <?= @$a[$i][4] ?></td>
+                                    <td class="coffeedata">相關連結: <?= @$a[$i][6] ?></td>
+                                </tr>
+                            </table>
                             <?php
                         }
                     ?>

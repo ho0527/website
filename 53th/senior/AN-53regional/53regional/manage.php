@@ -47,7 +47,7 @@
                               unset($_SESSION["type"]);
                               header("location:manage.php");
                            }else{
-                              $data=query($db,"SELECT*FROM `data` WHERE `usernumber`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `logintime`LIKE'%$type%' or `logouttime`LIKE'%$type%' or `move`LIKE'%$type%' or `movetime`LIKE'%$type%'");
+                              $data=query($db,"SELECT*FROM `data` WHERE `number`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `time`LIKE'%$type%' or `move`LIKE'%$type%'");
                               issetgetupdown($data);
                            }
                         }else{
@@ -102,7 +102,7 @@
          }
          if(isset($_GET["enter"])){
             $_SESSION["type"]=$_GET["search"];
-            header("location:adminWelcome.php");
+            ?><script>location.href="manage.php"</script><?php
          }
          if(isset($_GET["del"])){
             $number=$_GET["del"];

@@ -1,4 +1,5 @@
 body{
+    font-family: Arial, Helvetica, sans-serif;
     width: 1875px;
     height: 900px;
     background-color: rgba(156, 154, 154, 0.342);
@@ -47,14 +48,6 @@ table{
     text-align: center;
 }
 
-.text{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin:3px;
-}
-
 .indexdiv{
     position: absolute;
     top: 50%;
@@ -68,6 +61,9 @@ table{
     height: 280px;
     width: 290px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+    color: white;
+    font-size:10px;
+    font-weight:bold;
 }
 
 .input{
@@ -76,6 +72,7 @@ table{
     height: 20px;
     border: 1px black solid;
     background-color: white;
+    outline: none;
 }
 
 .admininput{
@@ -153,7 +150,6 @@ table{
     border: 1px black solid;
     color: rgb(0, 0, 0);
     text-align: center;
-    
 }
 
 
@@ -168,6 +164,26 @@ table{
     top: 50%;
     left: 50%;
     transform:  translate(-50%, -50%) scale(3.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(125, 125, 125);
+    border-radius: 25px;
+    height: 200px;
+    width: 300px;
+    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+}
+
+.productinput{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size:10px;
+    font-weight:bold;
+    margin:3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -0%) scale(2.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,6 +245,7 @@ timer與燈箱
     color: #333333;/* 文字顏色 */
     text-align: center;/* 將文字置中 */
     transform: scale(1.25);
+    background-color: rgba(0, 255, 255, 0.677);
     position: absolute;
     bottom: 55px;
     right: 100px;
@@ -323,7 +340,7 @@ product
     background-color: white;
     border: 0.5px black solid;
     height: 90px;
-    width: 350px;   
+    width: 350px;
     font-size: 65px;
     cursor: pointer;
 }
@@ -336,59 +353,21 @@ product
     width: 550px;
     height: 250px;
     background-color: #ffa07a;
+    transform: scale(1.25);
+    position: absolute;
+}
+
+.producttable{
     position: relative;
-    transform: scale(1.5);
+    top: 15px;
+    left: 20px;
 }
 
-.name{
+.coffeedata{
     width: 250px;
-    height: 30px;
+    height: 50px;
     border: 1px black solid;
     background-color: aqua;
-    position: absolute;
-}
-
-.picture{
-    width: 250px;
-    height: 180px;
-    border: 1px black solid;
-    background-color: aqua;
-    font-size: 20px;
-    display: flex;
-    background-color: aqua;
-    position: absolute;
-}
-
-.introduction{
-    width: 250px;
-    height: 80px;
-    border: 1px black solid;
-    background-color: aqua;
-    position: absolute;
-}
-
-.date{
-    width: 250px;
-    height: 60px;
-    border: 1px black solid;
-    background-color: aqua;
-    position: absolute;
-}
-
-.cost{
-    width: 250px;
-    height: 30px;
-    border: 1px black solid;
-    background-color: aqua;
-    position: absolute;
-}
-
-.link{
-    width: 250px;
-    height: 40px;
-    border: 1px black solid;
-    background-color: aqua;
-    position: absolute;
 }
 
 .check{
@@ -465,8 +444,9 @@ verify
 
 .producttd{
     width: 180px;
-    height: 200px;
+    height: 275px;
     border: 1px black solid;
+    position: relative;
 }
 
 .maintable{
@@ -480,8 +460,8 @@ verify
 
 .bottom{
     position: absolute;
-    bottom: 2px;
-    right: -190px;
+    bottom: 10px;
+    right: 30px;
     width: 130px;
     height: 50px;
     font-size: 30px;

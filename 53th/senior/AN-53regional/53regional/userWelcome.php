@@ -14,13 +14,13 @@
             <tr>
                 <td class="title">
                     <div class="navigationbar">
-                        <div class="navigationbardiv" style="position: relative;top:20px;font-size:45px">
+                        <form class="navigationbardiv" style="position: relative;top:20px;font-size:45px">
                             咖啡商品展示系統
                             <input type="button" class="adminbutton selectbut" onclick="location.href='userWelcome.php'" value="首頁">
                             <input type="button" class="adminbutton" value="上架商品">
                             <input type="button" class="adminbutton" onclick="location.href='usersearch.php'" name="enter" value="查詢">
                             <input type="submit" class="adminbutton" name="logout" value="登出">
-                        </div>
+                        </form>
                     </div>
                 </td>
             </tr>
@@ -31,70 +31,23 @@
                             product(query($db,"SELECT*FROM `coffee`"));
                         ?>
                     </table>
-                    <?php
-                        @$data=$_SESSION["data"];
-                        if(isset($_GET["logout"])){
-                            $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
-                            if(isset($data)){
-                            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
-                            ?><script>alert("登出成功!");location.href="index.php"</script><?php
-                            session_unset();
-                            }else{
-                            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','','','','','','登出成功')");
-                            ?><script>alert("登出成功!");location.href="index.php"</script><?php
-                            session_unset();
-                            }
-                        }
-                        if(isset($_GET["changetimersubmit"])){
-                            $_SESSION["timer"]=$_GET["changetimer"];
-                            ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
-                        }
-                    ?>
-                </td>
-                <td class="user-table4">
                 </td>
             </tr>
         </table>
-        <form>
-            <?php
-                // if(isset($_SESSION["priority"])||isset($_SESSION["deal"])){
-                //     @$priority=$_SESSION["priority"];
-                //     @$deal=$_SESSION["deal"];
-                //     $todo_conditions="`date`='$date'";
-                //     if($deal!="篩選器"){
-                //         $todo_conditions=$todo_conditions." AND `deal`='$deal'";
-                //     }
-                //     if($priority!="篩選器"){
-                //         $todo_conditions=$todo_conditions." AND `priority`='$priority'";
-                //     }
-                //     $todo=mysqli_query($db,"SELECT*FROM `todo` WHERE $todo_conditions");
-                //     if($start=="升冪"){
-                //         uper($todo);
-                //     }else{
-                //         lower($todo);
-                //     }
-                // }else{
-                //     $todo=mysqli_query($db, "SELECT*FROM `todo` WHERE `date`='$date'");
-                //     if($start=="升冪"){
-                //         uper($todo);
-                //     }else{
-                //         lower($todo);
-                //     }
-                // }
-                @$data=$_SESSION["data"];
-                if(isset($_GET["logout"])){
-                   $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
-                   if(isset($data)){
-                      query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
-                      ?><script>alert("登出成功!");location.href="index.php"</script><?php
-                      session_unset();
-                   }else{
-                      query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','','','','','','登出成功')");
-                      ?><script>alert("登出成功!");location.href="index.php"</script><?php
-                      session_unset();
-                   }
+        <?php
+            @$data=$_SESSION["data"];
+            if(isset($_GET["logout"])){
+                $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
+                if(isset($data)){
+                    query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
+                    session_unset();
+                    ?><script>alert("登出成功!");location.href="index.php"</script><?php
+                }else{
+                    query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','','','','','','登出成功')");
+                    session_unset();
+                    ?><script>alert("登出成功!");location.href="index.php"</script><?php
                 }
-            ?>
-        </form>
+            }
+        ?>
     </body>
 </html>

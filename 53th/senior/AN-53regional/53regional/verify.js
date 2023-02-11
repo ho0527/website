@@ -6,12 +6,6 @@ let tds=document.querySelectorAll(".td")
 let mask=document.getElementById("maskdiv")
 let permission=document.getElementById("permission").value
 
-// window.onload=function(){
-//     let rand1=Math.floor(Math.random()*4)+1
-//     console.log(rand1)
-//     document.getElementById("td"+rand1).style.backgroundColor="black"
-// }
-
 tds.forEach(function(td){
     td.addEventListener("click",function(){
         tdclick(td.id)
@@ -35,13 +29,10 @@ function check(id){
     if((td1.style.backgroundColor==td2.style.backgroundColor)&&td2.style.backgroundColor=="black"){
         pass()
     }else if((td3.style.backgroundColor==td4.style.backgroundColor)&&td4.style.backgroundColor=="black"){
-        console.log("2")
         pass()
     }else if((td1.style.backgroundColor==td3.style.backgroundColor)&&td1.style.backgroundColor=="black"){
-        console.log("3")
         pass()
     }else if((td2.style.backgroundColor==td4.style.backgroundColor)&&td2.style.backgroundColor=="black"){
-        console.log("4")
         pass()
     }else{
         alert("驗證碼輸入錯誤")

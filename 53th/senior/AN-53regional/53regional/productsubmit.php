@@ -34,7 +34,7 @@
                         <div class="productbar">
                             <div class="productbardiv">
                                 <input type="button" class="productbutton" onclick="location.href='productindex.php'" value="選擇版型">
-                                <input type="button" class="productbutton" onclick="location.href='productcheckdata.php'" value="填寫資料">
+                                <input type="button" class="productbutton" onclick="location.href='productinput.php'" value="填寫資料">
                                 <input type="button" class="productbutton" onclick="location.href='productpreview.php'" value="預覽">
                                 <input type="button" class="productbutton selectbut" onclick="location.href='productsubmit.php'" value="確定送出">
                             </div>

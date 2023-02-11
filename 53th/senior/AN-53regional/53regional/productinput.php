@@ -33,13 +33,13 @@
                     <div class="productbar">
                         <div class="productbardiv">
                             <input type="button" class="productbutton" onclick="location.href='productindex.php'" value="選擇版型">
-                            <input type="button" class="productbutton selectbut " onclick="location.href='productcheckdata.php'" value="填寫資料">
+                            <input type="button" class="productbutton selectbut " onclick="location.href='productinput.php'" value="填寫資料">
                             <input type="button" class="productbutton" onclick="sub()" value="預覽">
                             <input type="button" class="productbutton" onclick="nono2()" value="確定送出">
                         </div>
                     </div>
-                    <div class="signupdiv">
-                        <form id="form" action="productcheckdata.php" enctype="multipart/form-data">
+                    <div class="productinput">
+                        <form id="form" action="productinput.php" enctype="multipart/form-data">
                             商品名稱: <input type="text" class="indexinput" name="name" value="<?= @$_SESSION["name"] ?>"><br>
                             費用: <input type="number" class="indexinput" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br>
                             相關連結: <input type="text" class="indexinput" name="link" placeholder="" value="<?= @$_SESSION["link"] ?>"><br>
@@ -78,7 +78,7 @@
                 @$_SESSION["cost"]=$_GET["cost"];
                 @$_SESSION["link"]=$_GET["link"];
                 if($_SESSION["name"]==""){
-                    ?><script>alert("請輸入商品!");location.href="productcheckdata.php"</script><?php
+                    ?><script>alert("請輸入商品!");location.href="productinput.php"</script><?php
                 }else{
                     if(isset($_FILES["picture"]["tmp_name"])){
                         // echo("in");
@@ -113,7 +113,7 @@
             }
             if(isset($_GET["val"])){
                 $_SESSION["val"]=$_GET["val"];
-                header("location:productcheckdata.php");
+                header("location:productinput.php");
             }
         ?>
         <script src="productindex.js"></script>

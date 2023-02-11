@@ -21,8 +21,6 @@
                         <input type="button" class="adminbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
                         <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
                         <input type="submit" class="adminbutton" name="logout" value="登出">
-                        <input type="search" name="search" placeholder="查詢" class="admininput">
-                        <button class="button" name="enter">送出</button>
                      </div>
                   </div>
                </form>
@@ -30,37 +28,58 @@
          </tr>
          <tr>
             <td>
-               <table class="main-table">
-                  <div class="productbar">
-                     <div class="productbardiv">
-                        <input type="button" class="productbutton selectbut" onclick="location.href='productindex.php'" value="選擇版型">
-                        <input type="button" class="productbutton" onclick="data()" value="填寫資料">
-                        <input type="button" class="productbutton" onclick="location.href='productpreview.php'" value="預覽">
-                        <input type="button" class="productbutton" onclick="nono()" value="確定送出">
-                     </div>
+               <div class="productbar">
+                  <div class="productbardiv">
+                     <input type="button" class="productbutton selectbut" onclick="location.href='productindex.php'" value="選擇版型">
+                     <input type="button" class="productbutton" onclick="data()" value="填寫資料">
+                     <input type="button" class="productbutton" onclick="location.href='productpreview.php'" value="預覽">
+                     <input type="button" class="productbutton" onclick="nono()" value="確定送出">
                   </div>
-                  <div class="version" id="version1" style="top: 130px;left:225px;">
-                     <div class="name" style="top: 5px;left: 20px;">商品名稱</div>
-                     <div class="picture" style="top: 40px;left: 20px;">圖片</div>
-                     <div class="introduction" style="top: 40px;right: 20px;">商品簡介</div>
-                     <div class="date" style="top: 125px;right: 20px;">發布日期</div>
-                     <div class="cost" style="top: 5px;right: 20px;">費用:0000</div>
-                     <div class="link" style="top: 195px;right: 20px;">相關連結</div>
-                  </div>
-                  <div class="version" id="version2" style="bottom: 115px;left:1175px;">
-                     <div class="picture" style="top: 5px;left: 20px;">圖片</div>
-                     <div class="link" style="bottom: 15px;left: 20px;">相關連結</div>
-                     <div class="introduction" style="top: 40px;right: 20px;">商品簡介</div>
-                     <div class="date" style="top: 125px;right: 20px;">發布日期</div>
-                     <div class="name" style="top: 5px;right: 20px;">商品名稱</div>
-                     <div class="cost" style="top: 195px;right: 20px;">費用:0000</div>
-                  </div>
-               </table>
+               </div>
+               <div class="version" id="version1" style="top: 300px;left:225px;">
+                  <table class="producttable">
+                     <tr>
+                        <td class="coffeedata">商品名稱</td>
+                        <td class="coffeedata">費用:0000</td>
+                     </tr>
+                     <tr>
+                        <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$a[$i][1] ?>" width="120px"></td>
+                        <td class="coffeedata" rowspan="2">商品簡介:</td>
+                     </tr>
+                     <tr>
+                     </tr>
+                     <tr>
+                        <td class="coffeedata">發佈日期:</td>
+                     </tr>
+                     <tr>
+                        <td class="coffeedata">相關連結:</td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="version" id="version2" style="top: 300px;right:225px;">
+                  <table class="producttable">
+                     <tr>
+                        <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$a[$i][1] ?>" width="120px"></td>
+                        <td class="coffeedata">商品名稱</td>
+                     </tr>
+                     <tr>
+                        <td class="coffeedata" rowspan="2">商品簡介:</td>
+                     </tr>
+                     <tr>
+                     </tr>
+                     <tr>
+                        <td class="coffeedata">發佈日期:</td>
+                     </tr>
+                     <tr>
+                        <td class="coffeedata">相關連結:</td>
+                        <td class="coffeedata">費用:0000</td>
+                     </tr>
+                  </table>
+               </div>
             </td>
          </tr>
       </table>
       <?php
-         include("admindef.php");
          @$data=$_SESSION["data"];
          if(isset($_GET["logout"])){
             $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
@@ -80,7 +99,7 @@
          }
          if(isset($_GET["val"])){
             if(isset($_SESSION["val"])){
-               header("location:productcheckdata.php");
+               header("location:productinput.php");
             }else{
                ?><script>alert("請先選擇版型!");location.href="productindex.php"</script><?php
             }

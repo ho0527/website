@@ -13,7 +13,7 @@ version.forEach(function(event){
 
 function data(){
     if(val!=undefined){
-        location.href="productcheckdata.php?val="+val[7]
+        location.href="productinput.php?val="+val[7]
     }else{
         location.href="productindex.php?val=no"
     }

@@ -8,6 +8,7 @@
    <body>
       <?php
          include("link.php");
+         include("admindef.php");
       ?>
       <table>
          <tr>
@@ -21,8 +22,6 @@
                         <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
                         <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
                         <input type="submit" class="adminbutton" name="logout" value="登出">
-                        <input type="search" name="search" placeholder="查詢" class="admininput">
-                        <button class="button" name="enter">送出</button>
                      </div>
                   </div>
                </form>
@@ -32,7 +31,6 @@
             <td>
                <table class="maintable">
                   <?php
-                     include("admindef.php");
                      product($db);
                   ?>
                </table>
@@ -52,10 +50,6 @@
                ?><script>alert("登出成功!");location.href="index.php"</script><?php
                session_unset();
             }
-         }
-         if(isset($_GET["changetimersubmit"])){
-            $_SESSION["timer"]=$_GET["changetimer"];
-            ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
          }
       ?>
    </body>

@@ -34,7 +34,7 @@
                     <div class="productbar">
                         <div class="productbardiv">
                             <input type="button" class="productbutton" onclick="location.href='productindex.php'" value="選擇版型">
-                            <input type="button" class="productbutton" onclick="location.href='productcheckdata.php'" value="填寫資料">
+                            <input type="button" class="productbutton" onclick="location.href='productinput.php'" value="填寫資料">
                             <input type="button" class="productbutton selectbut" onclick="location.href='productpreview.php'" value="預覽">
                             <input type="button" class="productbutton" onclick="location.href='productsubmit.php'" value="確定送出">
                         </div>
@@ -70,24 +70,46 @@
             if($val){
                 if($val==1){
                     ?>
-                    <div class="version" id="version1" style="top: 35%;left: 35%;">
-                        <div class="name" style="top: 5px;left: 20px;">商品名稱:<?= @$name ?></div>
-                        <div class="picture" style="top: 40px;left: 20px;">圖片:<img src="<?= @$picture ?>" width="120px"></div>
-                        <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$introduction ?></div>
-                        <div class="date" style="top: 125px;right: 20px;">發佈日期:(發布後產生)</div>
-                        <div class="cost" style="top: 5px;right: 20px;">費用:<?= @$cost ?></div>
-                        <div class="link" style="top: 195px;right: 20px;">相關連結:<?= @$link ?></div>
+                    <div class="version" style="position: relative;left: 38%;top:200px;">
+                        <table class="producttable">
+                            <tr>
+                                <td class="coffeedata">商品名稱: <?= @$name ?></td>
+                                <td class="coffeedata">費用: <?= @$cost ?></td>
+                            </tr>
+                            <tr>
+                                <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$picture ?>" width="120px"></td>
+                                <td class="coffeedata" rowspan="2">商品簡介: <?= @$introduction ?></td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <td class="coffeedata">發佈日期: (發布後產生)</td>
+                            </tr>
+                            <tr>
+                                <td class="coffeedata">相關連結: <?= @$link ?></td>
+                            </tr>
+                        </table>
                     </div>
                     <?php
                 }else{
                     ?>
-                    <div class="version" id="version2" style="top: 35%;left: 35%;">
-                        <div class="name" style="top: 5px;right: 20px;">商品名稱:<?= @$name ?></div>
-                        <div class="picture" style="top: 5px;left: 20px;">圖片:<img src="<?= @$picture ?>" width="120px"></div>
-                        <div class="introduction" style="top: 40px;right: 20px;">商品簡介:<?= @$introduction ?></div>
-                        <div class="date" style="top: 125px;right: 20px;">發佈日期:(發布後產生)</div>
-                        <div class="cost" style="top: 195px;right: 20px;">費用:<?= @$cost ?></div>
-                        <div class="link" style="top: 195px;left: 20px;">相關連結:<?= @$link ?></div>
+                    <div class="version" style="position: relative;left: 38%;">
+                        <table class="producttable">
+                            <tr>
+                                <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$picture ?>" width="120px"></td>
+                                <td class="coffeedata">商品名稱: <?= @$a[$i][2] ?></td>
+                            </tr>
+                            <tr>
+                                <td class="coffeedata" rowspan="2">商品簡介: <?= @$introduction ?></td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <td class="coffeedata">發佈日期: (發布後產生)</td>
+                            </tr>
+                            <tr>
+                                <td class="coffeedata">費用: <?= @$cost ?></td>
+                                <td class="coffeedata">相關連結: <?= @$link ?></td>
+                            </tr>
+                        </table>
                     </div>
                     <?php
                 }

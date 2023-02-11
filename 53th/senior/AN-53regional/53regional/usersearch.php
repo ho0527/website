@@ -14,13 +14,13 @@
             <tr>
                 <td class="title">
                     <div class="navigationbar">
-                        <div class="navigationbardiv" style="position: relative;top:20px;font-size:45px">
+                        <form class="navigationbardiv" style="position: relative;top:20px;font-size:45px">
                             咖啡商品展示系統-查詢
                             <input type="button" class="adminbutton" onclick="location.href='userWelcome.php'" value="首頁">
                             <input type="button" class="adminbutton" value="上架商品">
                             <input type="button" class="adminbutton selectbut" onclick="location.href='usersearch.php'" name="enter" value="查詢">
                             <input type="submit" class="adminbutton" name="logout" value="登出">
-                        </div>
+                        </form>
                     </div>
                 </td>
             </tr>
