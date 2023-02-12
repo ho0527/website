@@ -214,7 +214,7 @@ timer與燈箱
     text-align: center;/* 將文字置中 */
     transform: scale(1.25);
     background-color: rgba(0, 255, 255, 0.677);
-    position: absolute;
+    position: fixed;
     bottom: 55px;
     right: 100px;
 }

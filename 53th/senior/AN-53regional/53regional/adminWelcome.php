@@ -6,10 +6,6 @@
       <link href="index.css" rel="stylesheet">
    </head>
    <body>
-      <?php
-         include("link.php");
-         include("def.php");
-      ?>
       <div class="navigationbar">
          <form class="navigationbardiv">
             咖啡商品展示系統-&nbsp&nbsp首頁&nbsp&nbsp
@@ -22,6 +18,7 @@
       </div>
       <table class="maintable">
          <?php
+            include("link.php");
             product(query($db,"SELECT*FROM `coffee`"),0);
          ?>
       </table>

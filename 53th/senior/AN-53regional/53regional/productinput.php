@@ -59,10 +59,11 @@
                             $image = $_FILES['picture']['tmp_name'];
                             $imgContent = addslashes(file_get_contents($image));
                             // Insert image content into database
-                            $insert = query($db,"INSERT into images (image, created) VALUES ('$imgContent', NOW())");
+                            // $insert = query($db,"INSERT into images (image, created) VALUES ('$imgContent', NOW())");
                             if($insert){
                                 $status = 'success';
-                                $statusMsg = "File uploaded successfully.";
+                                $statusMsg = "File uploaded successfully:)";
+                                $_SESSION["picture"]="image/".$_GET["picture"];
                             }else{
                                 $statusMsg = "File upload failed, please try again.";
                             }

@@ -18,7 +18,6 @@
         <table class="maintable">
             <?php
                 include("link.php");
-                include("def.php");
                 product(query($db,"SELECT*FROM `coffee`"),1);
             ?>
         </table>

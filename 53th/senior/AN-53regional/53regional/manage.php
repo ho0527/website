@@ -7,18 +7,16 @@
    </head>
    <body>
       <div class="navigationbar">
-         <div class="navigationbardiv">
-               <form>
-               咖啡商品展示系統-會員管理
-               <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
-               <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
-               <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-               <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
-               <input type="submit" class="adminbutton" name="logout" value="登出">
-               </form>
-         </div>
+         <form class="navigationbardiv">
+            咖啡商品展示系統-會員管理
+            <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
+            <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
+            <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
+            <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
+            <input type="submit" class="adminbutton" name="logout" value="登出">
+         </form>
       </div>
-      <table class="maintable">
+      <table>
          <form>
             <tr>
                <td class="admintablenum">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
@@ -31,7 +29,6 @@
             </tr>
             <?php
                include("link.php");
-               include("def.php");
                if(isset($_SESSION["type"])){
                   $type=$_SESSION["type"];
                   if($type==""){

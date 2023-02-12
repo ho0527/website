@@ -27,7 +27,6 @@
         <table class="maintable">
             <?php
                 include("link.php");
-                include("def.php");
                 if(isset($_GET["submit"])){
                     if($_GET["but"]=="num"){
                         $start=$_GET["start"];
