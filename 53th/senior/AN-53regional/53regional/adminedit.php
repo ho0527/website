@@ -6,50 +6,44 @@
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
-        <div class="admintitle">
-            <form>
-                <div class="navigationbar">
-                    <div class="navigationbardiv">
-                        咖啡商品展示系統-編輯使用者
-                        <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
-                        <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
-                        <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-                        <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
-                        <input type="submit" class="adminbutton" name="logout" value="登出">
-                    </div>
-                </div>
+        <div class="navigationbar">
+            <form class="navigationbardiv">
+                咖啡商品展示系統-編輯使用者
+                <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
+                <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
+                <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
+                <input type="button" class="adminbutton selectbut" onclick="location.href='manage.php'" value="會員管理">
+                <input type="submit" class="adminbutton" name="logout" value="登出">
             </form>
         </div>
-        <div class="signupdiv">
-            <form>
-                <?php
-                    include("link.php");
-                    if(isset($_GET["number"])){
-                        $number=$_GET["number"];
-                        if($row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"))){
-                            ?>
-                            <from class="text">
-                                編號: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
-                                帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
-                                用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
-                                密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
-                                <?php
-                                if($row[5]=="管理者"){
-                                    ?>管理員權限: <input type="checkbox" name="adminbox" checked><br><br><?php
-                                }else{
-                                    ?>管理員權限: <input type="checkbox" name="adminbox"><br><br><?php
-                                }
-                                ?>
-                                <button type="button" id="go_back" onclick="location.href='manage.php'">返回主頁</button>
-                                <button name="enter">更改帳號</button>
-                            </from>
+        <div class="text">
+            <?php
+                include("link.php");
+                if(isset($_GET["number"])){
+                    $number=$_GET["number"];
+                    if($row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"))){
+                        ?>
+                        <form class="signupdiv">
+                            編號: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
+                            帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
+                            用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
+                            密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
                             <?php
-                        }else{
-                            ?><script>alert("帳號已被刪除!");location.href="manage.php"</script><?php
-                        }
+                            if($row[5]=="管理者"){
+                                ?>管理員權限: <input type="checkbox" name="adminbox" checked><br><br><?php
+                            }else{
+                                ?>管理員權限: <input type="checkbox" name="adminbox"><br><br><?php
+                            }
+                            ?>
+                            <button type="button" id="go_back" onclick="location.href='manage.php'">返回主頁</button>
+                            <button name="enter">更改帳號</button>
+                        </form>
+                        <?php
+                    }else{
+                        ?><script>alert("帳號已被刪除!");location.href="manage.php"</script><?php
                     }
-                    ?>
-            </form>
+                }
+            ?>
         </div>
         <?php
             if(isset($_GET["enter"])){

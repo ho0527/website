@@ -31,7 +31,7 @@
             </tr>
             <?php
                include("link.php");
-               include("admindef.php");
+               include("def.php");
                if(isset($_SESSION["type"])){
                   $type=$_SESSION["type"];
                   if($type==""){

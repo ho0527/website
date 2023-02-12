@@ -1,6 +1,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgba(156, 154, 154, 0.342);
+    /* background-color: rgba(75, 31, 31, 0.852); */
     user-select: none;
     word-break: break-all;
 }
@@ -88,6 +89,7 @@ table{
     height: 30px;
     width: 80px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .button:hover{
@@ -183,10 +185,6 @@ table{
     height: 200px;
     width: 300px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
-}
-
-.admintitle{
-    font-size:50px;
 }
 
 .admintablenum{

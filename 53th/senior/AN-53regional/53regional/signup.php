@@ -6,22 +6,18 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="admintitle">
-            <form>
-                <div class="navigationbar">
-                    <div class="navigationbardiv">
-                    咖啡商品展示系統-新增使用者
-                    <input type="button" class="adminbutton selectbut" onclick="location.href='signup.php'" value="新增">
-                    <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
-                    <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-                    <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-                    <input type="submit" class="adminbutton" name="logout" value="登出">
-                    </div>
-                </div>
+        <div class="navigationbar">
+            <form class="navigationbardiv">
+                咖啡商品展示系統-新增使用者
+                <input type="button" class="adminbutton selectbut" onclick="location.href='signup.php'" value="新增">
+                <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
+                <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
+                <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
+                <input type="submit" class="adminbutton" name="logout" value="登出">
             </form>
         </div>
         <div class="signupdiv">
-            <form>
+            <form class="text">
                 用戶帳號: <input type="text" class="input" name="username"><br><br>
                 密碼: <input type="text" class="input" name="code"><br><br>
                 用戶名: <input type="text" class="input" name="name"><br><br>

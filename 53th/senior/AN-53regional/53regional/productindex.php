@@ -64,6 +64,9 @@
             </tr>
          </table>
       </div>
+      <div style="float:right">
+         <button onclick="location.href='newproduct.php'">新增版型</button>
+      </div>
       <?php
          include("link.php");
          if(isset($_GET["val"])){

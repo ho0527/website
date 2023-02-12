@@ -21,25 +21,24 @@
                     數字範圍:<input type="radio" class="radio" name="but" id="numb" value="num">
                     關鍵字:<input type="radio" class="radio" name="but" id="text" value="text">
                 </div>
-                <div class="radiosearchtext" id="radiosearchtext">
-                </div>
+                <div class="radiosearchtext" id="radiosearchtext"></div>
             </form>
         </div>
         <table class="maintable">
             <?php
                 include("link.php");
-                include("userdef.php");
+                include("def.php");
                 if(isset($_GET["submit"])){
                     if($_GET["but"]=="num"){
                         $start=$_GET["start"];
                         $end=$_GET["end"];
-                        product(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'"));
+                        product(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'"),1);
                     }else{
                         $text=$_GET["maintext"];
-                        product(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'"));
+                        product(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'"),1);
                     }
                 }else{
-                    product(query($db,"SELECT*FROM `coffee`"));
+                    product(query($db,"SELECT*FROM `coffee`"),1);
                 }
             ?>
         </table>

@@ -32,8 +32,8 @@ function sub(){
 }
 
 
-let form=document.getElementById("form")
-const a = (e) => {
-    let a = e.target.result[0]
-    
-}
+// let form=document.getElementById("form")
+// const a = (e) => {
+//     let a = e.target.result[0]
+
+// }
