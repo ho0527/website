@@ -2,13 +2,12 @@ let td1=document.getElementById("td1")
 let td2=document.getElementById("td2")
 let td3=document.getElementById("td3")
 let td4=document.getElementById("td4")
-let tds=document.querySelectorAll(".td")
-let mask=document.getElementById("maskdiv")
 let permission=document.getElementById("permission").value
+let all=[td1,td2,td3,td4]
 
-tds.forEach(function(td){
+all.forEach(function(td){
     td.addEventListener("click",function(){
-        tdclick(td.id)
+        tdclick(this.id)
     })
 })
 
@@ -21,11 +20,7 @@ function pass(){
     }
 }
 
-function check(id){
-    console.log(td1.style.backgroundColor)
-    console.log(td2.style.backgroundColor)
-    console.log(td3.style.backgroundColor)
-    console.log(td4.style.backgroundColor)
+function check(){
     if((td1.style.backgroundColor==td2.style.backgroundColor)&&td2.style.backgroundColor=="black"){
         pass()
     }else if((td3.style.backgroundColor==td4.style.backgroundColor)&&td4.style.backgroundColor=="black"){
@@ -40,9 +35,7 @@ function check(id){
 }
 
 function tdclick(id){
-    console.log(id)
     id=document.getElementById(id)
-    console.log(id.style.backgroundColor)
     if(id.style.backgroundColor==""||id.style.backgroundColor=="white"){
         id.style.backgroundColor="black"
     }else{

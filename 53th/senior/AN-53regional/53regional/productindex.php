@@ -6,9 +6,6 @@
       <link href="index.css" rel="stylesheet">
    </head>
    <body>
-      <?php
-         include("link.php");
-      ?>
       <div class="navigationbar">
          <div class="navigationbardiv">
             <form>
@@ -36,7 +33,7 @@
                <td class="coffeedata">費用:0000</td>
             </tr>
             <tr>
-               <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$a[$i][1] ?>" width="120px"></td>
+               <td class="coffeedata" rowspan="4">圖片:</td>
                <td class="coffeedata" rowspan="2">商品簡介:</td>
             </tr>
             <tr></tr>
@@ -51,7 +48,7 @@
       <div class="version" id="version2" style="top: 300px;right:225px;">
          <table class="producttable">
             <tr>
-               <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$a[$i][1] ?>" width="120px"></td>
+               <td class="coffeedata" rowspan="4">圖片:</td>
                <td class="coffeedata">商品名稱</td>
             </tr>
             <tr>
@@ -68,10 +65,7 @@
          </table>
       </div>
       <?php
-         if(isset($_GET["changetimersubmit"])){
-            $_SESSION["timer"]=$_GET["changetimer"];
-            ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
-         }
+         include("link.php");
          if(isset($_GET["val"])){
             if(isset($_SESSION["val"])){
                header("location:productinput.php");

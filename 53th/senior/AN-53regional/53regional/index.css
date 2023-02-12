@@ -143,12 +143,6 @@ table{
     border-top: dashed 1px rgb(42, 42, 42);
 }
 
-.main-table{
-    border: 1px black solid;
-    color: rgb(0, 0, 0);
-    text-align: center;
-}
-
 
 /*admin table*/
 .signupdiv{
@@ -195,7 +189,7 @@ table{
     font-size:50px;
 }
 
-.admin-table-num{
+.admintablenum{
     border: 0.5px black solid;
     background-color: gray;
     width:200px;
@@ -203,7 +197,7 @@ table{
     text-align: center;
 }
 
-.admin-table{
+.admintable{
     border: 0.5px black solid;
     background-color: gray;
     width:275px;
@@ -326,7 +320,7 @@ product
 }
 
 .version{
-    width: 550px;
+    width: 650px;
     height: 250px;
     background-color: #ffa07a;
     transform: scale(1.25);
@@ -340,7 +334,7 @@ product
 }
 
 .coffeedata{
-    width: 250px;
+    width: 300px;
     height: 50px;
     border: 1px black solid;
     background-color: aqua;
@@ -355,6 +349,11 @@ product
     left: 50%;
     transform: translate(-50%,-50%) scale(5);
     background-color: rgb(135, 135, 135);
+}
+
+.show{
+    position: relative;
+    left: 35%;
 }
 
 /*
@@ -430,8 +429,6 @@ verify
     color: rgb(0, 0, 0);
     text-align: center;
     width: 100%;
-    position: relative;
-    top: 20px;
 }
 
 .bottom{
