@@ -57,7 +57,7 @@
                 <tr>
                     <td class="admintablenum" id=<?= $a[$row][1]; ?>>
                         <?php print_r($a[$row][1]); ?>
-                        <input type="button" value="修改" onclick="location.href='adminedit.php?number=<?= $a[$row][1] ?>'">
+                        <input type="button" value="修改" onclick="location.href='signupedit.php?number=<?= $a[$row][1] ?>'">
                         <button name="del" value="<?= $a[$row][1]; ?>">刪除帳號</button>
                     </td>
                     <td class="admintable"><?php print_r($a[$row][2]); ?></td>

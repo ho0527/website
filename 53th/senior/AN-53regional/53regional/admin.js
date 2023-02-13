@@ -39,9 +39,9 @@ function check(){
         location.reload()
     }
     no.onclick=function(){
-        location.href="adminWelcome.php?logout"
+        location.href="main.php?logout"
     }
     setTimeout(function(){
-        location.href="adminWelcome.php?logout"
+        location.href="main.php?logout"
     },5000)
 }

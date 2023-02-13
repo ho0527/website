@@ -10,9 +10,10 @@
             <div class="navigationbardiv">
                 <form>
                 咖啡商品展示系統-確定送出
-                <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
-                <input type="button" class="adminbutton" onclick="location.href='adminWelcome.php'" value="首頁">
+                <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
+                <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
                 <input type="button" class="adminbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
+                <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
                 <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
                 <input type="submit" class="adminbutton" name="logout" value="登出">
                 </form>
@@ -49,7 +50,7 @@
                 unset($_SESSION["link"]);
                 unset($_SESSION["val"]);
                 unset($_SESSION["picture"]);
-                ?><script>alert("完成!");location.href="adminWelcome.php"</script><?php
+                ?><script>alert("完成!");location.href="main.php"</script><?php
             }
             if(isset($_GET["nono"])){
                 unset($_SESSION["name"]);
@@ -58,7 +59,7 @@
                 unset($_SESSION["link"]);
                 unset($_SESSION["val"]);
                 unset($_SESSION["picture"]);
-                ?><script>alert("完成!");location.href="adminWelcome.php"</script><?php
+                ?><script>alert("完成!");location.href="main.php"</script><?php
             }
         ?>
    </body>

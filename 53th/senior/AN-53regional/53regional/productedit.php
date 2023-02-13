@@ -18,13 +18,12 @@
         <div class="navigationbar">
             <form class="navigationbardiv">
                 咖啡商品展示系統-編輯
-                <input type="button" class="adminbutton" onclick="location.href='signup.php'" value="新增">
-                <input type="button" class="adminbutton selectbut" onclick="location.href='adminWelcome.php'" value="首頁">
+                <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
+                <input type="button" class="adminbutton selectbut" onclick="location.href='main.php'" value="首頁">
                 <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
+                <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
                 <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
                 <input type="submit" class="adminbutton" name="logout" value="登出">
-                <input type="search" name="search" placeholder="查詢" class="admininput">
-                <button class="button" name="enter">送出</button>
             </form>
         </div>
         <div class="signupdiv">
@@ -36,7 +35,7 @@
                 <input type="file" name="picture" accept="image/*" style="width:200px" value="上傳圖片"><br>
                 版型: <input type="text" class="indexinput" name="val" placeholder="1or2" value="<?= @$row[7] ?>"><br>
                 <input type="button" onclick="location.href='productedit.php'" class="button" value="重設">
-                <input type="button" onclick="location.href='adminWelcome.php'" class="button" value="返回">
+                <input type="button" onclick="location.href='main.php'" class="button" value="返回">
                 <input type="submit" class="button" name="submit" value="完成"><br>
             </form>
         </div>
@@ -52,7 +51,7 @@
                     ?><script>alert("請輸入商品!");location.href="productedit.php"</script><?php
                 }else{
                     query($db,"UPDATE `coffee` SET `name`='$name',`introduction`='$introduction',`cost`='$cost',`link`='$link',`version`='$val' WHERE `id`='$id'");
-                    ?><script>alert("修改完成!");location.href="adminWelcome.php"</script><?php
+                    ?><script>alert("修改完成!");location.href="main.php"</script><?php
                     // if(isset($_FILES["picture"]["tmp_name"])){
                     //     // echo("in");
                     //     if($_FILES["picture"]["error"]>0){

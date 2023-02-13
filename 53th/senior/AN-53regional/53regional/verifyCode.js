@@ -1,7 +1,6 @@
 let dragimg=document.querySelectorAll(".dragimg")
 let drops=document.querySelectorAll("#dropbox")
-let a=[]
-let b=["","",""]
+let a=""
 
 dragimg.forEach(function(dragimgs){
     dragimgs.addEventListener("dragstart",dragstart)
@@ -25,35 +24,13 @@ function drag(e){
 function drop(e){
     let id=e.dataTransfer.getData("text")
     let draggable=document.getElementById(id)
-    a.push(id)
+    a=a+id
     e.target.appendChild(draggable)
+    console.log(a)
 }
 
-function loginclick(key){
+function loginclick(){
     let username=document.getElementById("username").value
     let code=document.getElementById("code").value
-    for(let i=0;i<4;i=i+1){
-        b[i]=a[i]
-    }
-    if(key==0){
-        b.sort()
-        let temp=b[0]
-        b[0]=b[3]
-        b[3]=temp
-        temp=b[1]
-        b[1]=b[2]
-        b[2]=temp
-        if(JSON.stringify(a)==JSON.stringify(b)){
-            location.href="login.php?username="+username+"&code="+code
-        }else{
-            location.href="login.php?vererror=&username="+username+"&code="+code
-        }
-    }else{
-        b.sort()
-        if(JSON.stringify(a)==JSON.stringify(b)){
-            location.href="login.php?username="+username+"&code="+code
-        }else{
-            location.href="login.php?vererror=&username="+username+"&code="+code
-        }
-    }
+    location.href="login.php?verifycode="+a+"&username="+username+"&code="+code
 }

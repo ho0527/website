@@ -2,7 +2,6 @@ let td1=document.getElementById("td1")
 let td2=document.getElementById("td2")
 let td3=document.getElementById("td3")
 let td4=document.getElementById("td4")
-let permission=document.getElementById("permission").value
 let all=[td1,td2,td3,td4]
 
 all.forEach(function(td){
@@ -13,11 +12,7 @@ all.forEach(function(td){
 
 function pass(){
     alert("登入成功")
-    if(permission=="管理者"){
-        location.href="adminWelcome.php"
-    }else{
-        location.href="userWelcome.php"
-    }
+    location.href="main.php"
 }
 
 function check(){
