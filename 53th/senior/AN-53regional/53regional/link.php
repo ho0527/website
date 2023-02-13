@@ -39,7 +39,7 @@
             if($a[$row][1]=="0000"||$a[$row][1]=="未知"){
                 ?>
                     <tr>
-                        <td class="admintablenum" id=<?= $a[$row][1]; ?>>
+                        <td class="admintable" id=<?= $a[$row][1]; ?>>
                             <?php print_r($a[$row][1]); ?>
                             <input type="button" value="修改" disabled>
                             <button name="del" disabled>刪除帳號</button>
@@ -55,7 +55,7 @@
             }else{
                 ?>
                 <tr>
-                    <td class="admintablenum" id=<?= $a[$row][1]; ?>>
+                    <td class="admintable" id=<?= $a[$row][1]; ?>>
                         <?php print_r($a[$row][1]); ?>
                         <input type="button" value="修改" onclick="location.href='signupedit.php?number=<?= $a[$row][1] ?>'">
                         <button name="del" value="<?= $a[$row][1]; ?>">刪除帳號</button>
@@ -109,16 +109,20 @@
             down($data,1);
             ?><script>document.getElementById("num-up-down").value="降冪"</script><?php
         }elseif($user=="升冪"){
-            down($data,"username");
+            down($data,2);
             ?><script>document.getElementById("user-up-down").value="降冪"</script><?php
         }elseif($code=="升冪"){
-            down($data,"password");
+            down($data,3);
             ?><script>document.getElementById("code-up-down").value="降冪"</script><?php
         }elseif($name=="升冪"){
-            down($data,"name");
+            down($data,4);
             ?><script>document.getElementById("name-up-down").value="降冪"</script><?php
-        }elseif(isset($number)||isset($user)||isset($code)||isset($name)){
-            header("location:manage.php");
+        }elseif(isset($user)){
+            up($data,2);
+        }elseif(isset($code)){
+            up($data,3);
+        }elseif(isset($name)){
+            up($data,4);
         }else{
             up($data,1);
         }
@@ -126,15 +130,6 @@
 
     function product($db,$permission){
         $a=fetchall($db);
-        for($i=0;$i<count($a)-1;$i=$i+1){
-            for($j=0;$j<count($a)-$i-1;$j=$j+1){
-                if($a[$j][0]<$a[$j+1][0]){
-                    $tamp=$a[$j];
-                    $a[$j]=$a[$j+1];
-                    $a[$j+1]=$tamp;
-                }
-            }
-        }
         for($i=0;$i<count($a)-1;$i=$i+1){
             for($j=0;$j<count($a)-$i-1;$j=$j+1){
                 if($a[$j][0]<$a[$j+1][0]){

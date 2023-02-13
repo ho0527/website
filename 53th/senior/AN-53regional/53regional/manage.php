@@ -20,7 +20,7 @@
       <table>
          <form>
             <tr>
-               <td class="admintablenum">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
+               <td class="admintable">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
                <td class="admintable">使用者帳號<input type="submit" name="user-up-down" id="user-up-down" value="升冪"></td>
                <td class="admintable">密碼<input type="submit" name="code-up-down" id="code-up-down" value="升冪"></td>
                <td class="admintable">名稱<input type="submit" name="name-up-down" id="name-up-down" value="升冪"></td>

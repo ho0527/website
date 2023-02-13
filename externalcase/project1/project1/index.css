@@ -156,13 +156,13 @@ table{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:  translate(-50%, -40%) scale(3.5);
+    transform:  translate(-50%, -50%) scale(3.5);
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(125, 125, 125);
     border-radius: 25px;
-    height: 220px;
+    height: 200px;
     width: 300px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
 }
@@ -187,10 +187,18 @@ table{
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
 }
 
+.admintablenum{
+    border: 0.5px black solid;
+    background-color: gray;
+    width:200px;
+    height:30px;
+    text-align: center;
+}
+
 .admintable{
     border: 0.5px black solid;
     background-color: gray;
-    width:265px;
+    width:275px;
     height:30px;
     text-align: center;
 }

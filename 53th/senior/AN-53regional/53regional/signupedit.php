@@ -42,9 +42,9 @@
                             密碼: <input type="text" name="code" value="<?= ($row[2]); ?>"><br><br>
                             <?php
                             if($row[5]=="管理者"){
-                                ?>管理員權限: <input type="checkbox" name="adminbox" checked><br><?php
+                                ?>管理員權限: <input type="checkbox" name="adminbox" checked><br><br><?php
                             }else{
-                                ?>管理員權限: <input type="checkbox" name="adminbox"><br><?php
+                                ?>管理員權限: <input type="checkbox" name="adminbox"><br><br><?php
                             }
                             ?>
                             <input type="button" onclick="location.href='manage.php'" class="button" value="返回">
