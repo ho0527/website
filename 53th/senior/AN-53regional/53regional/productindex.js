@@ -1,10 +1,13 @@
-let version=document.querySelectorAll(".version")
+let version=document.querySelectorAll(".maintable")
 let val
 
+
 version.forEach(function(event){
+    event.style.backgroundColor="gray"
     event.addEventListener("click",function(){
-        version[0].style.backgroundColor="#ffa07a"
-        version[1].style.backgroundColor="#ffa07a"
+        version.forEach(function(event){
+            event.style.backgroundColor="gray"
+        })
         this.style.backgroundColor="yellow"
         val=this.id
     })

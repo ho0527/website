@@ -72,7 +72,7 @@
                             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
                         }
                     }else{
-                        $statusMsg = 'Please select an image file to upload.';
+                        header("location:productpreview.php");
                     }
                     echo($statusMsg);
                     // // if(isset($_FILES["picture"]["tmp_name"])){
@@ -102,7 +102,6 @@
                     //     // }
                     //     // header("location:productpreview.php");
                     // // }else{
-                    // //     header("location:productpreview.php");
                     // }
                 }
             }
