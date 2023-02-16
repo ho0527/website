@@ -26,7 +26,6 @@ function drop(e){
     let draggable=document.getElementById(id)
     a=a+id
     e.target.appendChild(draggable)
-    console.log(a)
 }
 
 function loginclick(){
