@@ -12,7 +12,7 @@
                     include("link.php");
                     if($_SESSION["permission"]=="管理者"){
                         ?>
-                        咖啡商品展示系統-&nbsp&nbsp首頁&nbsp&nbsp
+                        咖啡商品展示系統-&nbsp&nbsp查詢&nbsp&nbsp
                         <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
                         <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
                         <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
@@ -22,7 +22,7 @@
                         <?php
                     }else{
                         ?>
-                        咖啡商品展示系統-&nbsp&nbsp首頁&nbsp&nbsp
+                        咖啡商品展示系統-&nbsp&nbsp查詢&nbsp&nbsp
                         <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
                         <input type="button" class="adminbutton" value="上架商品">
                         <input type="button" class="adminbutton selectbut" onclick="location.href='search.php'" value="查詢">
@@ -47,13 +47,13 @@
                     if($_GET["but"]=="num"){
                         $start=$_GET["start"];
                         $end=$_GET["end"];
-                        product(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'"),1);
+                        product(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'"),1,$db);
                     }else{
                         $text=$_GET["maintext"];
-                        product(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'"),1);
+                        product(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'"),1,$db);
                     }
                 }else{
-                    product(query($db,"SELECT*FROM `coffee`"),1);
+                    product(query($db,"SELECT*FROM `coffee`"),1,$db);
                 }
             ?>
         </table>

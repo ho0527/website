@@ -9,9 +9,6 @@ let no=document.getElementById("no")
 
 ask.style.display="none"
 
-//訂定變數
-//設定disabled
-
 console.log(seconds)
 timerInterval=setInterval(updateTimer,1000)
 resetbutton.onclick=function(){
@@ -39,9 +36,9 @@ function check(){
         location.reload()
     }
     no.onclick=function(){
-        location.href="main.php?logout"
+        location.href="link.php?logout"
     }
     setTimeout(function(){
-        location.href="main.php?logout"
+        location.href="link.php?logout"
     },5000)
 }

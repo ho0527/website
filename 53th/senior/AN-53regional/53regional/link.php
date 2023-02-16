@@ -243,12 +243,12 @@
                                     <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
                                     <?php
                                 }
-                                ?>
-                            </td>
-                        </tr>
-                        <?php
-                    }
-                }
+                            }
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <?php
             }else{
                 ?>
                 <tr>
