@@ -48,7 +48,7 @@
       </table>
       <table class="timer">
          <tr>
-            <td rowspan="2" class="timertd">
+            <td class="timertd" rowspan="2">
                <input type="text" class="timerbox" id="timer" value="<?= @$_SESSION["timer"] ?>" readonly>
             </td>
             <td class="timertd">

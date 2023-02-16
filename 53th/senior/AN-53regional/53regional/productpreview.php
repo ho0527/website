@@ -7,17 +7,15 @@
    </head>
    <body>
         <div class="navigationbar">
-            <div class="navigationbardiv">
-                <form>
-                    咖啡商品展示系統-&nbsp&nbsp預覽&nbsp&nbsp
-                    <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
-                    <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
-                    <input type="button" class="adminbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
-                    <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
-                    <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-                    <input type="submit" class="adminbutton" name="logout" value="登出">
-                </form>
-            </div>
+            <form class="navigationbardiv">
+                咖啡商品展示系統-&nbsp&nbsp預覽&nbsp&nbsp
+                <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
+                <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
+                <input type="button" class="adminbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
+                <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
+                <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
+                <input type="submit" class="adminbutton" name="logout" value="登出">
+            </form>
         </div>
         <div class="productbar">
            <div class="productbardiv">
@@ -45,10 +43,9 @@
                                 <td class="coffeedata">費用: <?= @$cost ?></td>
                             </tr>
                             <tr>
-                                <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$picture ?>" width="120px"></td>
-                                <td class="coffeedata" rowspan="2">商品簡介: <?= @$introduction ?></td>
+                                <td class="coffeedata" rowspan="3">圖片: <img src="<?= @$picture ?>" width="120px"></td>
+                                <td class="coffeedata" >商品簡介: <?= @$introduction ?></td>
                             </tr>
-                            <tr></tr>
                             <tr>
                                 <td class="coffeedata">發佈日期: (發布後產生)</td>
                             </tr>
@@ -63,13 +60,12 @@
                     <div class="version" style="position: relative;left: 38%;">
                         <table class="producttable">
                             <tr>
-                                <td class="coffeedata" rowspan="4">圖片: <img src="<?= @$picture ?>" width="120px"></td>
+                                <td class="coffeedata" rowspan="3">圖片: <img src="<?= @$picture ?>" width="120px"></td>
                                 <td class="coffeedata">商品名稱: <?= @$a[$i][2] ?></td>
                             </tr>
                             <tr>
-                                <td class="coffeedata" rowspan="2">商品簡介: <?= @$introduction ?></td>
+                                <td class="coffeedata" >商品簡介: <?= @$introduction ?></td>
                             </tr>
-                            <tr></tr>
                             <tr>
                                 <td class="coffeedata">發佈日期: (發布後產生)</td>
                             </tr>
