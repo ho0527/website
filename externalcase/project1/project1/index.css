@@ -126,10 +126,20 @@ table{
 
 .navigationbarbutton{
     border-radius: 25px;
+    background: none;
+    border: none;
+    height: 50px;
+    width: 130px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.navigationbarbuttonlogin{
+    border-radius: 25px;
     background-color: white;
     border: 0.5px black solid;
     height: 50px;
-    width: 175px;
+    width: 125px;
     font-size: 25px;
     cursor: pointer;
 }

@@ -12,12 +12,11 @@
             <div class="navigationbardiv">
                 <div class="maintitle">chatcom</div>
                 <div class="navigationbarbuttondiv">
-                    <input type="button" class="navigationbarbutton" onclick="location.href='signupedit.php'" value="新增">
                     <input type="button" class="navigationbarbutton selectbut" onclick="location.href='index.php'" value="首頁">
-                    <input type="button" class="navigationbarbutton" onclick="location.href='productindex.php'" value="上架商品">
-                    <input type="button" class="navigationbarbutton" onclick="location.href='search.php'" value="查詢">
+                    <input type="button" class="navigationbarbutton" onclick="location.href='chat/index.php'" value="chatcom">
                     <input type="button" class="navigationbarbutton" onclick="location.href='log.php'" value="製作日誌">
-                    <input type="submit" class="navigationbarbutton" name="logout" value="登入">
+                    <input type="button" class="navigationbarbutton" onclick="location.href='about.php'" value="關於我們">
+                    <input type="submit" class="navigationbarbuttonlogin" name="logout" value="登入">
                 </div>
             </div>
         </div>
