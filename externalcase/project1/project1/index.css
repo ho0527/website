@@ -1,9 +1,10 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgba(156, 154, 154, 0.342);
-    /* background-color: rgba(75, 31, 31, 0.852); */
     user-select: none;
     word-break: break-all;
+    margin: 0;
+    padding: 0;
 }
 
 table{
@@ -242,69 +243,30 @@ table{
 }
 
 /*
-timer與燈箱
+燈箱
 ########################################################################
 */
 
-.timer{
-    font-size: 40px;/* 字體大小 */
-    color: #333333;/* 文字顏色 */
-    text-align: center;/* 將文字置中 */
-    transform: scale(1.25);
-    background-color: rgba(0, 255, 255, 0.677);
-    position: fixed;
-    bottom: 55px;
-    right: 100px;
-}
-
-.timerbox{
-    width: 150px;
-    height: 100px;
-    text-align: center;
-    background: none;
-    outline: none;
-    font-size: 80px;
-    margin-top: 5px;
-    background-color: rgba(0, 0, 0, 0);
-    color: rgb(0, 0, 0);
-    border: none;
-}
-
-.timeerbutton{
-    background-color: #ffa07a;/* 背景顏色 */
-    border: none;/* 邊框 */
-    border-radius: 4px;/* 弧形邊框 */
-    color: #ffffff;/* 文字顏色 */
-    cursor: pointer;/* hover時變pointer */
-    font-size: 25px;/* 字體大小 */
-}
-
-.timertd{
-    border: 1px black solid;
-    width: 200px;
-    height: 15px;
-    padding-bottom: 10px;
-}
-
-.timersec{
-    border: 1px black solid;
-    width: 80px;
-    height: 25px;
-}
-
 .lightboxdiv{
+    width: 100%;
+    height: 100%;
+}
+
+.lightbox{
+    height: 200%;
     position: absolute;/* 絕對定位 */
     top: 0px;/* 定位 */
     left: 0px;
     bottom: 0px;
     right: 0px;
-    z-index: 999;/*  */
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .mask{
+    height: 200%;
     position: absolute;/* 絕對定位 */
     top: 0px;/* 定位 */
     left: 0px;
@@ -314,23 +276,30 @@ timer與燈箱
 }
 
 .close{
-    font-size:15px;/* 字體大小 */
-    width: 125px;/* 寬度 */
+    font-size:30px;/* 字體大小 */
+    text-align: center;
+    width: 90%;/* 寬度 */
+    position: absolute;
+    bottom: 10px;
+    right: 35px;
+    /* top: 3p  x; */
 }
 
 .body{
-    position: absolute;/* 絕對定位 */
-    left: 50%;/* 定位 */
+    position: fixed;/* 絕對定位 */
+    /* left: 100px; */
+    left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%) scale(3.5);
+    transform: translate(-50%,-50%);
     text-align: center;/* 文字置中 */
-    width: 300px;/* 寬度 */
-    height: 50px;/* 高度 */
-    border: 1px rgb(0, 0, 0) solid;/* 邊框 */
+    width: 700px;/* 寬度 */
+    height: 400px;/* 高度 */
+    border: 1px blue solid;/* 邊框 */
     background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
     border-radius: 15px;/* 圓弧邊框 */
-    /* display: block; */
 }
+
+
 /*
 ########################################################################
 */
@@ -472,42 +441,35 @@ verify
 }
 
 /*
-usersearch
+ads
 ########################################################################
 */
 
-.searchtd1{
+.adstable{
     width: 100%;
-    height: 155px;
+    position: absolute;
+    top: 26%;
+    left: 0px;
+}
+
+.adstd{
     border: 1px black solid;
-    position: relative;
-    top: 5px;
-    font-size: 30px;
     text-align: center;
+    width: 30%;
+    height: 400px;
 }
 
-.radiobox{
-    width: 100%;
-    height: 45px;
-    position: absolute;
-    top:5px;
-    background-color: rgb(125, 125, 125);
+.adsimage{
+    width: 95%;
+    height: 325px;
 }
 
-.radiosearchtext{
-    background-color: rgb(133, 133, 133);
-    width: 100%;
-    height: 80px;
-    position: absolute;
-    top: 50px;
-}
-
-.searchform{
-    transform: scale(2.25);
-}
-
-.radio{
-    transform: scale(3);
+.adsbutton{
+    border: 1px black solid;
+    width: 95%;
+    height: 25px;
+    border-radius: 25px;
+    font-size: 15px;
     cursor: pointer;
 }
 
