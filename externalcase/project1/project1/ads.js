@@ -4,8 +4,8 @@ let lightbox=document.getElementById("lightbox")
 
 adsbutton.forEach(function(adsbut){
     adsbut.onclick=function(){
-        let td = this.parentNode;
-        let img = td.querySelector('.adsimage');
+        let td=this.parentNode
+        let img=td.querySelector('.adsimage')
         lightbox.innerHTML=`
             <div class="lightbox">
                 <div class="mask"></div>
