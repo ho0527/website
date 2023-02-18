@@ -1,0 +1,154 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(144, 144, 144, 0.593);
+    word-break: break-all;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.dragbox{
+    display: inline-block;
+    border: 1px black solid;
+    width: 40px;
+    height: 40px;
+}
+
+.dropbox{
+    display: inline-block;
+    border: 1px black solid;
+    width: 170px;
+    height: 40px;
+}
+
+.verifytd{
+    background-color: rgba(144, 144, 144, 0.593);
+    border: 1px rgb(105, 105, 105) solid;
+    width: 40px;
+    height: 40px;
+}
+
+.verify{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(5);
+}
+
+.verifytable{
+    position: relative;
+    left: 25px;
+}
+
+.head{
+    background-color: aliceblue;
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+}
+
+.headf{
+    position: relative;
+    top: 5px;
+    font-size: 35px;
+}
+
+.ubutton{
+    background-color: rgb(221, 221, 221);
+    border: none;
+    width: 150px;
+    height: 40px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.select{
+    background-color: rgba(145, 145, 145, 0.751);
+}
+
+.signup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(4);
+    background-color: gray;
+    width: 275px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    color: white;
+}
+
+.index{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(3);
+    background-color: gray;
+    width: 325px;
+    height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    color: white;
+}
+
+.atable{
+    position: absolute;
+    top: 75px;
+    left: 0px;
+}
+
+.admtable{
+    border: 1px black solid;
+    width: 275px;
+    text-align: center;
+}
+
+.timer{
+    background-color: rgba(128, 128, 128, 0.42);
+    position: fixed;
+    bottom: 3px;
+    right: 3px;
+    text-align: center;
+}
+
+.time{
+    width: 200px;
+    border: 1px black solid;
+    height: 50px;
+}
+
+.input1{
+    width: 100%;
+    border: none;
+    background: none;
+    font-size: 90px;
+    text-align: center;
+}
+
+.input2{
+    width: 100px;
+}
+
+.ask{
+    background-color: rgba(128, 128, 128, 0.743);
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
