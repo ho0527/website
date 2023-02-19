@@ -196,18 +196,17 @@ table{
 .show{
     border: 1px black solid;
     position: relative;
-    left: 25%;
+    left: 30%;
 }
 
 .coffeedata{
     border: 1px black solid;
-    width: 500px;
+    width: 400px;
     height: 50px;
 }
 
 .maintable{
     color: rgb(0, 0, 0);
-    text-align: center;
     width: 100%;
 }
 
