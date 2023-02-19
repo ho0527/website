@@ -473,11 +473,3 @@ usersearch
 /*
 ########################################################################
 */
-
-.thisdiv{
-    position: relative;
-    top: 150px;
-    left: 50px;
-    font-size: 50px;
-    margin: -20px;
-}
