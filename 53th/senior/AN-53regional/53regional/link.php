@@ -20,8 +20,8 @@
         return $result->rowCount();
     }
 
-    @$data=$_SESSION["data"];
     if(isset($_GET["logout"])){
+        @$data=$_SESSION["data"];
         $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
         if(isset($data)){
             query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");

@@ -27,12 +27,7 @@
         </div>
         <?php
             include("link.php");
-            @$name=$_SESSION["name"];
-            @$introduction=$_SESSION["introduction"];
-            @$cost=$_SESSION["cost"];
-            @$link=$_SESSION["link"];
             @$val=$_SESSION["val"];
-            @$picture=$_SESSION["picture"];
             if(isset($val)){
                 $a=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
                 function ifadta2($a,$i,$data){
@@ -41,7 +36,7 @@
                     }elseif($a[$i][$data]=="cost"){
                         ?>金額: <?= $_SESSION["cost"] ?><?php
                     }elseif($a[$i][$data]=="date"){
-                        ?>發佈日期: <?= $_SESSION["date"] ?><?php
+                        ?>發佈日期: (發佈後產生)<?php
                     }elseif($a[$i][$data]=="link"){
                         ?>相關連結: <?= $_SESSION["link"] ?><?php
                     }else{
@@ -58,7 +53,7 @@
                                     ?>
                                     <table class="show">
                                         <tr>
-                                            <td class="coffeedata" rowspan="3">圖片</td>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
                                             <td class="coffeedata"><?= ifadta2($a,$i,2) ?></td>
                                         </tr>
                                         <tr>
@@ -78,7 +73,7 @@
                                     <table class="show">
                                         <tr>
                                             <td class="coffeedata"><?= ifadta2($a,$i,1) ?></td>
-                                            <td class="coffeedata" rowspan="3">圖片</td>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
                                         </tr>
                                         <tr>
                                             <td class="coffeedata"><?= ifadta2($a,$i,3) ?></td>
@@ -100,7 +95,7 @@
                                             <td class="coffeedata"><?= ifadta2($a,$i,2) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata" rowspan="3">圖片</td>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
                                             <td class="coffeedata"><?= ifadta2($a,$i,4) ?></td>
                                         </tr>
                                         <tr>
@@ -120,7 +115,7 @@
                                         </tr>
                                         <tr>
                                             <td class="coffeedata"><?= ifadta2($a,$i,3) ?></td>
-                                            <td class="coffeedata" rowspan="3"></td>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
                                         </tr>
                                         <tr>
                                             <td class="coffeedata"><?= ifadta2($a,$i,5) ?></td>

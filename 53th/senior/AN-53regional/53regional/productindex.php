@@ -132,12 +132,10 @@
                   </tr>
                </table>
             <?php 
-         }
-         ?>
-      <?php
+            }
          if(isset($_GET["val"])){
             if(isset($_SESSION["val"])){
-               header("location:productinput.php");
+               ?><script>location.href="productinput.php"</script><?php
             }else{
                ?><script>alert("請先選擇版型!");location.href="productindex.php"</script><?php
             }

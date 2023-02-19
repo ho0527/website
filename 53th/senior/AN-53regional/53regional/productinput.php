@@ -38,11 +38,7 @@
             </form>
         </div>
         <?php
-            if(isset($_GET["submit"])){
-                // @$_SESSION["name"]=$_GET["name"];
-                // @$_SESSION["introduction"]=$_GET["introduction"];
-                // @$_SESSION["cost"]=$_GET["cost"];
-                // @$_SESSION["link"]=$_GET["link"];
+            if(isset($_POST["submit"])){
                 @$_SESSION["name"]=$_POST["name"];
                 @$_SESSION["introduction"]=$_POST["introduction"];
                 @$_SESSION["cost"]=$_POST["cost"];
@@ -50,25 +46,11 @@
                 if($_SESSION["name"]==""){
                     ?><script>alert("請輸入商品!");location.href="productinput.php"</script><?php
                 }else{
-                    echo "\$_GET[\"picture\"] ="; print_r($_POST["picture"]); echo "<br>";
-                    echo "\$_FILES[\"picture\"][\"name\"] ="; print_r($_FILES["picture"]["name"]); echo "<br>";
-                    echo "\$_FILES[\"picture\"][\"tmp_name\"] ="; print_r($_FILES["picture"]["tmp_name"]); echo "<br>";
-                    move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
                     if(!empty($_FILES["picture"]["name"])){
-                        echo("in");
-                        $insert=false;
-                        if($insert){
-                            $status='success';
-                            $statusMsg="File uploaded successfully:)";
-                            $_SESSION["picture"]="image/".$_POST["picture"];
-                        }else{
-                            $statusMsg="File upload failed, please try again.";
-                        }
-                    }else{
-                        echo("no flie upset");
-                        //header("location:productpreview.php");
+                        move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
+                        $_SESSION["picture"]="image/".$_FILES["picture"]["name"];
                     }
-                    echo($statusMsg);
+                    header("location:productpreview.php");
                 }
             }
             if(isset($_GET["clear"])){
