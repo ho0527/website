@@ -13,7 +13,6 @@ version.forEach(function(event){
     })
 })
 
-
 function data(){
     if(val!=undefined){
         location.href="productinput.php?val="+val[7]
@@ -33,4 +32,3 @@ function nono2(){
 function sub(){
     document.getElementById("form").submit.click()
 }
-

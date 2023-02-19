@@ -31,9 +31,9 @@ function check(){
 
 function tdclick(id){
     id=document.getElementById(id)
-    if(id.style.backgroundColor==""||id.style.backgroundColor=="white"){
-        id.style.backgroundColor="black"
-    }else{
+    if(id.style.backgroundColor=="black"){
         id.style.backgroundColor="white"
+    }else{
+        id.style.backgroundColor="black"
     }
 }

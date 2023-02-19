@@ -6,17 +6,19 @@
       <link href="index.css" rel="stylesheet">
    </head>
    <body>
-      <div class="navigationbar">
-         <form class="navigationbardiv">
-            咖啡商品展示系統-新增版型
-            <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
-            <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
-            <input type="button" class="adminbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
-            <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
-            <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-            <input type="submit" class="adminbutton" name="logout" value="登出">
-         </form>
-      </div>
+        <div class="header">
+            <form action="" class="headerform">
+               <div class="headtitle">咖啡商品展示系統-新增版型</div>
+               <div class="headbut">
+                  <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
+                  <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
+                  <input type="button" class="hbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
+                  <input type="button" class="hbutton" onclick="location.href='search.php'" value="查詢">
+                  <input type="button" class="hbutton" onclick="location.href='admin.php'" value="會員管理">
+                  <input type="submit" class="hbutton" name="logout" value="登出">
+               </div>
+            </form>
+        </div>
       <div class="version" id="version1" style="top: 300px;left:225px;">
          <table class="producttable">
             <tr>
@@ -37,7 +39,7 @@
             </tr>
          </table>
       </div>
-      <form class="version" style="background: none;top: 300px;right:225px;">
+      <form class="version" style="top: 300px;right:225px;">
          圖片: <input type="number" name="picture" placeholder="1~4(會往下佔3格)"><br><br>
          名稱: <input type="number" name="name" placeholder="1~8"><br><br>
          連結: <input type="number" name="link" placeholder="1~8"><br><br>

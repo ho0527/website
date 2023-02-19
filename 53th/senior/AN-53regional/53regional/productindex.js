@@ -13,7 +13,6 @@ version.forEach(function(event){
     })
 })
 
-
 function data(){
     if(val!=undefined){
         location.href="productinput.php?val="+val[7]

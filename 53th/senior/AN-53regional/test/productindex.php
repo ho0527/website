@@ -6,23 +6,25 @@
       <link href="index.css" rel="stylesheet">
    </head>
    <body>
-      <div class="navigationbar">
-         <form class="navigationbardiv">
-            咖啡商品展示系統-選擇版型
-            <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
-            <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
-            <input type="button" class="adminbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
-            <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
-            <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-            <input type="submit" class="adminbutton" name="logout" value="登出">
+      <div class="header">
+         <form action="" class="headerform">
+               <div class="headtitle">咖啡商品展示系統-選擇版型</div>
+               <div class="headbut">
+                  <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
+                  <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
+                  <input type="button" class="hbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
+                  <input type="button" class="hbutton" onclick="location.href='search.php'" value="查詢">
+                  <input type="button" class="hbutton" onclick="location.href='admin.php'" value="會員管理">
+                  <input type="submit" class="hbutton" name="logout" value="登出">
+               </div>
          </form>
       </div>
-      <div class="productbar">
-         <div class="productbardiv">
-            <input type="button" class="productbutton selectbut" onclick="location.href='productindex.php'" value="選擇版型">
-            <input type="button" class="productbutton" onclick="data()" value="填寫資料">
-            <input type="button" class="productbutton" onclick="location.href='productpreview.php'" value="預覽">
-            <input type="button" class="productbutton" onclick="nono()" value="確定送出">
+      <div class="pbar">
+         <div class="pber2">
+            <input type="button" class="pbut selectbut" onclick="location.href='productindex.php'" value="選擇版型">
+            <input type="button" class="pbut" onclick="data()" value="填寫資料">
+            <input type="button" class="pbut" onclick="location.href='productpreview.php'" value="預覽">
+            <input type="button" class="pbut" onclick="nono()" value="確定送出">
             <div style="float:right">
                <button onclick="location.href='newproduct.php'">新增版型</button>
             </div>
@@ -116,7 +118,7 @@
                                  </tr>
                                  <tr>
                                     <td class="coffeedata"><?= ifadta2($a,$i,3) ?></td>
-                                    <td class="coffeedata" rowspan="3"></td>
+                                    <td class="coffeedata" rowspan="3">圖片</td>
                                  </tr>
                                  <tr>
                                     <td class="coffeedata"><?= ifadta2($a,$i,5) ?></td>
@@ -130,8 +132,9 @@
                         ?>
                      </td>
                   </tr>
+                  <div class="thisdiv">這是版型<?= $i+1 ?></div>
                </table>
-            <?php 
+            <?php
             }
          if(isset($_GET["val"])){
             if(isset($_SESSION["val"])){
@@ -142,6 +145,5 @@
          }
       ?>
       <script src="productindex.js"></script>
-      <script src="product.js"></script>
    </body>
 </html>

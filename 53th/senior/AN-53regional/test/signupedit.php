@@ -1,41 +1,34 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>signup</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <div class="navigationbar">
-            <form class="navigationbardiv">
-                <?php
-                    include("link.php");
-                    if(isset($_GET["number"])){
-                        ?>
-                        咖啡商品展示系統-編輯使用者
-                        <input type="button" class="adminbutton selectbut" onclick="location.href='signupedit.php'" value="編輯">
-                        <?php
-                    }else{
-                        ?>
-                        咖啡商品展示系統-新增使用者
-                        <input type="button" class="adminbutton selectbut" onclick="location.href='signupedit.php'" value="新增">
-                        <?php
-                    }
-                ?>
-                <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
-                <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-                <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
-                <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-                <input type="submit" class="adminbutton" name="logout" value="登出">
-            </form>
-        </div>
-        <div class="signupdiv">
-            <form class="text">
-                <?php
-                    if(isset($_GET["number"])){
-                        $number=$_GET["number"];
-                        if($row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"))){
-                            ?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+        <?php
+            include("link.php");
+            if(isset($_GET["number"])){
+                $number=$_GET["number"];
+                if($row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"))){
+                    ?>
+                    <div class="header">
+                        <form class="headerform">
+                            <div class="headtitle">咖啡商品展示系統-編輯使用者</div>
+                            <div class="headbut">
+                                <input type="button" class="hbutton selectbut" onclick="location.href='signupedit.php'" value="編輯">
+                                <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
+                                <input type="button" class="hbutton" onclick="location.href='productindex.php'" value="上架商品">
+                                <input type="button" class="hbutton" onclick="location.href='search.php'" value="查詢">
+                                <input type="button" class="hbutton" onclick="location.href='admin.php'" value="會員管理">
+                                <input type="submit" class="hbutton" name="logout" value="登出">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signupdiv">
+                        <form class="text">
                             編號: <input type="text" name="number" value="<?= ($number); ?>" readonly><br><br>
                             帳號: <input type="text" name="username" value="<?= ($row[1]); ?>"><br><br>
                             用戶名: <input type="text" name="name" value="<?= ($row[3]); ?>"><br><br>
@@ -47,26 +40,41 @@
                                 ?>管理員權限: <input type="checkbox" name="adminbox"><br><br><?php
                             }
                             ?>
-                            <input type="button" onclick="location.href='manage.php'" class="button" value="返回">
+                            <input type="button" onclick="location.href='admin.php'" class="button" value="返回">
                             <input type="submit" name="edit" class="button" value="送出"><br>
-                            <?php
-                        }else{
-                            ?><script>alert("帳號已被刪除!");location.href="manage.php"</script><?php
-                        }
-                    }else{
-                        ?>
+                        </form>
+                    </div>
+                    <?php
+                }else{
+                    ?><script>alert("帳號已被刪除!");location.href="admin.php"</script><?php
+                }
+            }else{
+                ?>
+                <div class="header">
+                    <form class="headerform">
+                        <div class="headtitle">咖啡商品展示系統-新增使用者</div>
+                        <div class="headbut">
+                            <input type="button" class="hbutton selectbut" onclick="location.href='signupedit.php'" value="新增">
+                            <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
+                            <input type="button" class="hbutton" onclick="location.href='productindex.php'" value="上架商品">
+                            <input type="button" class="hbutton" onclick="location.href='search.php'" value="查詢">
+                            <input type="button" class="hbutton" onclick="location.href='admin.php'" value="會員管理">
+                            <input type="submit" class="hbutton" name="logout" value="登出">
+                        </div>
+                    </form>
+                </div>
+                <div class="signupdiv">
+                    <form class="text">
                         用戶帳號: <input type="text" class="input" name="username"><br><br>
                         密碼: <input type="text" class="input" name="code"><br><br>
                         用戶名: <input type="text" class="input" name="name"><br><br>
                         管理員權限: <input type="checkbox" name="adminbox"><br><br>
                         <input type="button" onclick="location.href='main.php'" class="button" value="返回">
                         <input type="submit" name="signup" class="button" value="送出"><br>
-                        <?php
-                    }
-                ?>
-            </form>
-        </div>
-        <?php
+                    </form>
+                </div>
+                <?php
+            }
             if(isset($_GET["signup"])){
                 $username=$_GET["username"];
                 $name=$_GET["name"];
@@ -104,13 +112,13 @@
                 }else{
                     if($_GET["adminbox"]){
                         query($db,"UPDATE `user` SET `username`='$username' ,`name`='$name',`password`='$code',`permission`='管理者' WHERE `number`='$number'");
-                        ?><script>alert("更改成功!");location.href="manage.php"</script><?php
+                        ?><script>alert("更改成功!");location.href="admin.php"</script><?php
                     }else{
                         query($db,"UPDATE `user` SET `username`='$username' ,`name`='$name',`password`='$code',`permission`='一般使用者' WHERE `number`='$number'");
-                        ?><script>alert("更改成功!");location.href="manage.php"</script><?php
+                        ?><script>alert("更改成功!");location.href="admin.php"</script><?php
                     }
                 }
             }
         ?>
-    </body>
+</body>
 </html>

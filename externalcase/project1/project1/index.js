@@ -8,7 +8,7 @@ let buttonandpath=[
     {id:"log",path:"log.php",value:"製作日誌"},
     {id:"about",path:"about.php",value:"關於我們"},
     {id:"connection",path:"connection.php",value:"聯絡我們"},
-    {id:"ads",path:"ads.php",value:"廣告投放"}
+    {id:"ads",path:"ads.php",value:"廣告投放"},
 ]
 
 buttonandpath.forEach(function(button){
@@ -20,7 +20,7 @@ buttonandpath.forEach(function(button){
     element.onclick=function(){
         if(path.endsWith(button.path)){
             location.reload()
-        } else{
+        }else{
             location.href=button.path
         }
    }
@@ -35,11 +35,4 @@ loginButton.value="登入"
 navigationbar.appendChild(loginButton)
 
 
-let selectedButton=buttonandpath.find(function(button){
-    return path.endsWith(button.path)
-})
-
-if(selectedButton){
-    let buttonElement=document.getElementById(selectedButton.id)
-    buttonElement.classList.add("selectbut")
-}
+document.getElementById(buttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbut")

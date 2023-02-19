@@ -14,18 +14,20 @@
             $id=$_SESSION["id"];
             $row=fetch(query($db,"SELECT*FROM `coffee` WHERE `id`='$id'"));
         ?>
-        <div class="navigationbar">
-            <form class="navigationbardiv">
-                咖啡商品展示系統-編輯
-                <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
-                <input type="button" class="adminbutton selectbut" onclick="location.href='main.php'" value="首頁">
-                <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-                <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
-                <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-                <input type="submit" class="adminbutton" name="logout" value="登出">
+        <div class="header">
+            <form action="" class="headerform">
+                <div class="headtitle">咖啡商品展示系統-編輯</div>
+                <div class="headbut">
+                    <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
+                    <input type="button" class="hbutton selectbut" onclick="location.href='main.php'" value="首頁">
+                    <input type="button" class="hbutton" onclick="location.href='productindex.php'" value="上架商品">
+                    <input type="button" class="hbutton" onclick="location.href='search.php'" value="查詢">
+                    <input type="button" class="hbutton" onclick="location.href='admin.php'" value="會員管理">
+                    <input type="submit" class="hbutton" name="logout" value="登出">
+                </div>
             </form>
         </div>
-        <div class="signupdiv">
+        <div class="productinput">
             <form id="form" enctype="multipart/form-data">
                 商品名稱: <input type="text" class="indexinput" name="name" value="<?= @$row[2] ?>"><br>
                 費用: <input type="number" class="indexinput" name="cost" placeholder="只能是數字" value="<?= @$row[4] ?>"><br>
