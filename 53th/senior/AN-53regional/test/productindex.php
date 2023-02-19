@@ -116,7 +116,7 @@
                                  </tr>
                                  <tr>
                                     <td class="coffeedata"><?= ifadta2($a,$i,3) ?></td>
-                                    <td class="coffeedata" rowspan="3">圖片</td>
+                                    <td class="coffeedata" rowspan="3"></td>
                                  </tr>
                                  <tr>
                                     <td class="coffeedata"><?= ifadta2($a,$i,5) ?></td>
@@ -130,9 +130,8 @@
                         ?>
                      </td>
                   </tr>
-                  <div class="thisdiv">這是版型<?= $i+1 ?></div>
                </table>
-            <?php
+            <?php 
             }
          if(isset($_GET["val"])){
             if(isset($_SESSION["val"])){
@@ -143,5 +142,6 @@
          }
       ?>
       <script src="productindex.js"></script>
+      <script src="product.js"></script>
    </body>
 </html>

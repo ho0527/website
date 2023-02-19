@@ -128,14 +128,14 @@
         }
     }
 
-    function ifdata($a,$i,$product,$j,$data){
-        if($product[$j][$data]=="name"){
+    function ifdata($a,$i,$place){
+        if($place=="name"){
             ?>商品名稱: <?= @$a[$i][2] ?> <?php
-        }elseif($product[$j][$data]=="cost"){
+        }elseif($place=="cost"){
             ?>金額: <?= @$a[$i][4] ?> <?php
-        }elseif($product[$j][$data]=="date"){
+        }elseif($place=="date"){
             ?>發佈日期: <?= @$a[$i][5] ?> <?php
-        }elseif($product[$j][$data]=="link"){
+        }elseif($place=="link"){
             ?>相關連結: <?= @$a[$i][6] ?> <?php
         }else{
             ?>商品簡介: <?= @$a[$i][3] ?> <?php
@@ -167,17 +167,17 @@
                                     <table class="show">
                                         <tr>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][2]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,4) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][4]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,6) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][6]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][7]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][8]) ?></td>
                                         </tr>
                                     </table>
                                     <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
@@ -186,18 +186,18 @@
                                     ?>
                                     <table class="show">
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][1]) ?></td>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,3) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][3]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,5) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][5]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][7]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][8]) ?></td>
                                         </tr>
                                     </table>
                                     <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
@@ -206,18 +206,18 @@
                                     ?>
                                     <table class="show">
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][1]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][2]) ?></td>
                                         </tr>
                                         <tr>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,4) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][4]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,6) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][6]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][8]) ?></td>
                                         </tr>
                                     </table>
                                     <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
@@ -226,18 +226,18 @@
                                     ?>
                                     <table class="show">
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][1]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][2]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,3) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][3]) ?></td>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,5) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][5]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][7]) ?></td>
                                         </tr>
                                     </table>
                                     <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
@@ -261,17 +261,17 @@
                                     <table class="show">
                                         <tr>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][2]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,4) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][4]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,6) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][6]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][7]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][8]) ?></td>
                                         </tr>
                                     </table>
                                     <?php
@@ -279,18 +279,18 @@
                                     ?>
                                     <table class="show">
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][1]) ?></td>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,3) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][3]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,5) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][5]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][7]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][8]) ?></td>
                                         </tr>
                                     </table>
                                     <?php
@@ -298,18 +298,18 @@
                                     ?>
                                     <table class="show">
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][1]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][2]) ?></td>
                                         </tr>
                                         <tr>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,4) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][4]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,6) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][6]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][8]) ?></td>
                                         </tr>
                                     </table>
                                     <?php
@@ -317,18 +317,18 @@
                                     ?>
                                     <table class="show">
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][1]) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][2]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,3) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][3]) ?></td>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,5) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][5]) ?></td>
                                         </tr>
                                         <tr>
-                                            <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
+                                            <td class="coffeedata"><?= ifdata($a,$i,$product[$j][7]) ?></td>
                                         </tr>
                                     </table>
                                     <?php

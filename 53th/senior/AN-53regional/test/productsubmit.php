@@ -7,7 +7,8 @@
    </head>
    <body>
         <div class="navigationbar">
-            <form class="navigationbardiv">
+            <div class="navigationbardiv">
+                <form>
                 咖啡商品展示系統-確定送出
                 <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
                 <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
@@ -15,7 +16,8 @@
                 <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
                 <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
                 <input type="submit" class="adminbutton" name="logout" value="登出">
-            </form>
+                </form>
+            </div>
         </div>
         <div class="productbar">
            <div class="productbardiv">

@@ -27,7 +27,7 @@
            </div>
         </div>
         <div class="productinput">
-            <form id="form" action="productinput.php" method="POST" enctype="multipart/form-data">
+            <form action="productinput.php" method="POST" enctype="multipart/form-data">
                 商品名稱: <input type="text" class="input" name="name" value="<?= @$_SESSION["name"] ?>"><br>
                 費用: <input type="number" class="input" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br>
                 相關連結: <input type="text" class="input" name="link" value="<?= @$_SESSION["link"] ?>"><br>
