@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>網站前台登入頁面</title>
+        <title>chatcom</title>
         <link href="../index.css" rel="Stylesheet">
         <link href="chat.css" rel="Stylesheet">
     </head>
@@ -12,7 +12,7 @@
         <div class="navigationbar">
             <div class="navigationbardiv">
                 <div class="maintitle">chatcom</div>
-                <div class="navigationbarbuttondiv">
+                <div class="navigationbarbuttondiv" id="navigationbarbuttondiv">
                     <input type="button" class="navigationbarbutton" onclick="location.href='../index.php'" value="首頁">
                     <input type="button" class="navigationbarbutton selectbut" onclick="location.href='index.php'" value="chatcom">
                     <input type="button" class="navigationbarbutton" onclick="location.href='../product.php'" value="產品">

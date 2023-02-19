@@ -3,8 +3,7 @@ body{
     background-color: rgba(156, 154, 154, 0.342);
     user-select: none;
     word-break: break-all;
-    margin: 0;
-    padding: 0;
+    margin: 5px;
 }
 
 table{
@@ -467,9 +466,10 @@ ads
 .adsbutton{
     border: 1px black solid;
     width: 95%;
-    height: 25px;
+    height: 30px;
     border-radius: 25px;
-    font-size: 15px;
+    font-size: 20px;
+    margin-top: 3px;
     cursor: pointer;
 }
 
