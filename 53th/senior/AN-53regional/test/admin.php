@@ -33,20 +33,20 @@
                 <td class="admintable">動作</td>
                 </tr>
                 <?php
-                include("link.php");
-                if(isset($_SESSION["type"])){
-                    $type=$_SESSION["type"];
-                    if($type==""){
-                        unset($_SESSION["type"]);
-                        header("location:admin.php");
+                    include("link.php");
+                    if(isset($_SESSION["type"])){
+                        $type=$_SESSION["type"];
+                        if($type==""){
+                            unset($_SESSION["type"]);
+                            header("location:admin.php");
+                        }else{
+                            $data=query($db,"SELECT*FROM `data` WHERE `number`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `time`LIKE'%$type%' or `move`LIKE'%$type%'");
+                            issetgetupdown($data);
+                        }
                     }else{
-                        $data=query($db,"SELECT*FROM `data` WHERE `number`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `time`LIKE'%$type%' or `move`LIKE'%$type%'");
+                        $data=query($db,"SELECT*FROM `data`");
                         issetgetupdown($data);
                     }
-                }else{
-                    $data=query($db,"SELECT*FROM `data`");
-                    issetgetupdown($data);
-                }
                 ?>
             </form>
         </table>

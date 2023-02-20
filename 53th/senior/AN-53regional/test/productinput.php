@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>管理者專區</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
 <body>
     <?php include("link.php");?>
     <div class="header">
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div class="productinput">
+    <div class="signupdiv">
         <form id="form" method="POST" enctype="multipart/form-data">
             商品名稱: <input type="text" class="input" name="name" value="<?= @$_SESSION["name"] ?>"><br>
             費用: <input type="number" class="input" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br>

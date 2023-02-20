@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="UTF-8">
-      <title>管理者專區</title>
-      <link href="index.css" rel="stylesheet">
-   </head>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>管理者專區</title>
+        <link rel="stylesheet" href="index.css">
    <body>
       <div class="header">
          <form action="" class="headerform">
@@ -31,111 +32,111 @@
          </div>
       </div>
       <?php
-            include("link.php");
-            $a=fetchall(query($db,"SELECT*FROM `product`"));
-            function ifadta2($a,$i,$data){
-               if($a[$i][$data]=="name"){
-                  ?>商品名稱:<?php
-               }elseif($a[$i][$data]=="cost"){
-                  ?>金額:0000<?php
-               }elseif($a[$i][$data]=="date"){
-                  ?>發佈日期:<?php
-               }elseif($a[$i][$data]=="link"){
-                  ?>相關連結:<?php
-               }else{
-                  ?>商品簡介:<?php
-               }
+         include("link.php");
+         $a=fetchall(query($db,"SELECT*FROM `product`"));
+         function ifadta2($a){
+            if($a=="name"){
+               ?>商品名稱:<?php
+            }elseif($a=="cost"){
+               ?>金額:0000<?php
+            }elseif($a=="date"){
+               ?>發佈日期:<?php
+            }elseif($a=="link"){
+               ?>相關連結:<?php
+            }else{
+               ?>商品簡介:<?php
             }
-            for($i=0;$i<count($a);$i=$i+1){
-               ?>
-               <table class="maintable" id="version<?= $i+1 ?>">
-                  <tr>
-                     <td class="producttd">
-                        <?php
-                           if($a[$i][1]=="picture"){
-                              ?>
-                              <table class="show">
-                                 <tr>
-                                    <td class="coffeedata" rowspan="3">圖片</td>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,2) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,4) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,6) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,7) ?></td>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,8) ?></td>
-                                 </tr>
-                              </table>
-                              <?php
-                           }elseif($a[$i][2]=="picture"){
-                              ?>
-                              <table class="show">
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,1) ?></td>
-                                    <td class="coffeedata" rowspan="3">圖片</td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,3) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,5) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,7) ?></td>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,8) ?></td>
-                                 </tr>
-                              </table>
-                              <?php
-                           }elseif($a[$i][3]=="picture"){
-                              ?>
-                              <table class="show">
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,1) ?></td>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,2) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata" rowspan="3">圖片</td>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,4) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,6) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,8) ?></td>
-                                 </tr>
-                              </table>
-                              <?php
-                           }else{
-                              ?>
-                              <table class="show">
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,1) ?></td>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,2) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,3) ?></td>
-                                    <td class="coffeedata" rowspan="3">圖片</td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,5) ?></td>
-                                 </tr>
-                                 <tr>
-                                    <td class="coffeedata"><?= ifadta2($a,$i,7) ?></td>
-                                 </tr>
-                              </table>
-                              <?php
-                           }
-                        ?>
-                     </td>
-                  </tr>
-                  <div class="thisdiv">這是版型<?= $i+1 ?></div>
-               </table>
-            <?php
-            }
+         }
+         for($i=0;$i<count($a);$i=$i+1){
+            ?>
+            <table class="maintable" id="version<?= $i+1 ?>">
+               <tr>
+                  <td class="producttd">
+                     <?php
+                        if($a[$i][1]=="picture"){
+                           ?>
+                           <table class="show">
+                              <tr>
+                                 <td class="coffeedata" rowspan="3">圖片</td>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][2]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][4]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][6]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][7]) ?></td>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][8]) ?></td>
+                              </tr>
+                           </table>
+                           <?php
+                        }elseif($a[$i][2]=="picture"){
+                           ?>
+                           <table class="show">
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][1]) ?></td>
+                                 <td class="coffeedata" rowspan="3">圖片</td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][3]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][5]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][7]) ?></td>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][8]) ?></td>
+                              </tr>
+                           </table>
+                           <?php
+                        }elseif($a[$i][3]=="picture"){
+                           ?>
+                           <table class="show">
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][1]) ?></td>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][2]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata" rowspan="3">圖片</td>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][4]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][6]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][8]) ?></td>
+                              </tr>
+                           </table>
+                           <?php
+                        }else{
+                           ?>
+                           <table class="show">
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][1]) ?></td>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][2]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][3]) ?></td>
+                                 <td class="coffeedata" rowspan="3">圖片</td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][5]) ?></td>
+                              </tr>
+                              <tr>
+                                 <td class="coffeedata"><?= ifadta2($a[$i][7]) ?></td>
+                              </tr>
+                           </table>
+                           <?php
+                        }
+                     ?>
+                  </td>
+               </tr>
+               <div class="thisdiv">這是版型<?= $i+1 ?></div>
+            </table>
+         <?php
+         }
          if(isset($_GET["val"])){
             if(isset($_SESSION["val"])){
                ?><script>location.href="productinput.php"</script><?php

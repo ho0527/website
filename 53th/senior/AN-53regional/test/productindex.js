@@ -3,10 +3,10 @@ let val
 
 
 version.forEach(function(event){
-    event.style.backgroundColor="gray"
+    event.style.backgroundColor="rgba(130,130,130,0.7)"
     event.addEventListener("click",function(){
         version.forEach(function(event){
-            event.style.backgroundColor="gray"
+            event.style.backgroundColor="rgba(130,130,130,0.7)"
         })
         this.style.backgroundColor="yellow"
         val=this.id
