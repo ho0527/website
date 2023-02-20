@@ -59,9 +59,7 @@
             </tr>
         </table>
         <div class="lightboxdiv" id="lightbox"></div>
-        <div class="footer">
-            我也不知道:)
-        </div>
+        <div class="footer" id="footer"></div>
         <script src="ads.js"></script>
         <script src="index.js"></script>
     </body>

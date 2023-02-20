@@ -73,7 +73,7 @@
             <div class="body">
                 是否繼續操作?<br>
                 <input type="button" class="close" value="Yes" onclick="location.reload()">
-                <input type="button" class="close" id="no" value="no">
+                <input type="button" class="close" id="no" value="否">
             </div>
         </div>
         <?php

@@ -14,9 +14,10 @@
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>
-        <div class="footer">
-            我也不知道:)
+        <div class="productmain">
+            <input type="button" class="productbutton" onclick="location.href='chat/index.php'" value="chatcom">
         </div>
+        <div class="footer" id="footer"></div>
         <script src="index.js"></script>
     </body>
 </html>

@@ -14,9 +14,7 @@
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>
-        <div class="footer">
-            我也不知道:)
-        </div>
+        <div class="footer" id="footer"></div>
         <script src="index.js"></script>
     </body>
 </html>

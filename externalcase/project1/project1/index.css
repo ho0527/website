@@ -309,13 +309,18 @@ product
 ########################################################################
 */
 
+.productmain{
+    position: absolute;
+    top: 50%;
+}
+
 .productbutton{
     /* border-radius: 25px  ; */
     background-color: white;
     border: 0.5px black solid;
-    height: 90px;
-    width: 350px;
-    font-size: 65px;
+    height: 30px;
+    width: 150px;
+    font-size: 25px;
     cursor: pointer;
 }
 
@@ -412,10 +417,6 @@ verify
 ########################################################################
 */
 
-.selectbut{
-    background-color: rgb(187, 187, 187)
-}
-
 .producttd{
     width: 180px;
     height: 275px;
@@ -483,4 +484,18 @@ ads
     position: fixed;
     bottom: 3px;
     left: 0px;
+}
+
+.footerbutton{
+    border-radius: 25px;
+    background: none;
+    border: none;
+    height: 20px;
+    width: auto;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.selectbut{
+    background-color: rgb(187, 187, 187)
 }

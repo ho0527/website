@@ -33,10 +33,14 @@
                 <div class="date">2023/02/18</div>
                 <div class="depiction">程式碼更新及簡化</div>
             </div>
+            <div class="log">
+                <div class="version">0</div>
+                <div class="logtitle">版面更新</div>
+                <div class="date">2023/02/20</div>
+                <div class="depiction">footer更新</div>
+            </div>
         </div>
-        <div class="footer">
-            我也不知道:)
-        </div>
+        <div class="footer" id="footer"></div>
         <script src="index.js"></script>
     </body>
 </html>

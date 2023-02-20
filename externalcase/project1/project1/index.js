@@ -1,9 +1,9 @@
 let path=location.pathname
 let navigationbar=document.getElementById("navigationbarbuttondiv")
+let footer=document.getElementById("footer")
 
-let buttonandpath=[
+let navigationbarbuttonandpath=[
     {id:"index",path:"index.php",value:"首頁"},
-    {id:"chatcom",path:"chat/index.php",value:"chatcom"},
     {id:"product",path:"product.php",value:"產品"},
     {id:"log",path:"log.php",value:"製作日誌"},
     {id:"about",path:"about.php",value:"關於我們"},
@@ -11,7 +11,16 @@ let buttonandpath=[
     {id:"ads",path:"ads.php",value:"廣告投放"},
 ]
 
-buttonandpath.forEach(function(button){
+let footerbuttonandpath=[
+    {id:"index",path:"index.php",value:"首頁"},
+    {id:"product",path:"product.php",value:"產品"},
+    {id:"log",path:"log.php",value:"製作日誌"},
+    {id:"about",path:"about.php",value:"關於我們"},
+    {id:"connection",path:"connection.php",value:"聯絡我們"},
+    {id:"ads",path:"ads.php",value:"廣告投放"},
+]
+
+navigationbarbuttonandpath.forEach(function(button){
     let element=document.createElement("input")
     element.type="button"
     element.classList.add("navigationbarbutton")
@@ -34,5 +43,20 @@ loginButton.name="login"
 loginButton.value="登入"
 navigationbar.appendChild(loginButton)
 
+footerbuttonandpath.forEach(function(button){
+    let element=document.createElement("input")
+    element.type="button"
+    element.classList.add("footerbutton")
+    element.id=button.id
+    element.value=button.value
+    element.onclick=function(){
+        if(path.endsWith(button.path)){
+            location.reload()
+        }else{
+            location.href=button.path
+        }
+   }
+    footer.appendChild(element)
+})
 
-document.getElementById(buttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbut")
+document.getElementById(navigationbarbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbut")
