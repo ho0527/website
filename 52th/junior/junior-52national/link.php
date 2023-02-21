@@ -17,7 +17,12 @@
         return $result->fetchAll();
     }
 
-    function rowcount($result){
-        return $result->rowCount();
+    if(isset($_GET["logout"])){
+        if(isset($_SESSION["data"])){
+            ?><script>alert("登出成功!");location.href="login.php"</script><?php
+            session_unset();
+        }else{
+            ?><script>alert("請先登入!");location.href="login.php"</script><?php
+        }
     }
 ?>

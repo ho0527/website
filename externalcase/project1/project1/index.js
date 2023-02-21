@@ -10,7 +10,6 @@ let navigationbarbuttonandpath=[
     {id:"navigationbarabout",path:"about.php",value:"關於我們"},
     {id:"navigationbarconnection",path:"connection.php",value:"聯絡我們"},
     {id:"navigationbarads",path:"ads.php",value:"廣告投放"},
-    
 ]
 
 let footerbuttonandpath=[
@@ -21,6 +20,11 @@ let footerbuttonandpath=[
     {id:"footerconnection",path:"connection.php",value:"聯絡我們"},
     {id:"footerads",path:"ads.php",value:"廣告投放"},
 ]
+
+let url=(location.href).split("/")
+if(url[url.length-1]==""){
+    location.href="index.php"
+}
 
 navigationbarbuttonandpath.forEach(function(button){
     let element=document.createElement("input")

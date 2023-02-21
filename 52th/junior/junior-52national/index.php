@@ -177,16 +177,8 @@
             </div>
             <div class="postbody">
                 <?php
-                    $a=fetchall(query("SELECT*FROM `message` WHERE `pin`='yes'"));
-                    for($i=0;$i<sizeof($a)-1;$i=$i+1){
-                        for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
-                            if($a[$j][8]<$a[$j+1][8]){
-                                $tamp=$a[$j];
-                                $a[$j]=$a[$j+1];
-                                $a[$j+1]=$tamp;
-                            }
-                        }
-                    }
+                    $a=fetchall(query("SELECT*FROM `message`"));
+                    usort($a,function($a,$b){ return strcmp($b[8],$a[8]); });
                     for($i=0;$i<sizeof($a);$i=$i+1){
                         $id=$a[$i][0];
                         ?>
@@ -197,7 +189,7 @@
                                 <?php
                                     if($a[$i][9]!=""){
                                         ?>
-                                        <td class="pictre" rowspan="4"><div style="height:100px;width:50px;"><?= $a[$i][9] ?></div></td>
+                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" alt="" width="100px"></td>
                                         <?php
                                     }else{
                                         ?>
@@ -227,8 +219,7 @@
                                     }
                                 ?>
                             </tr>
-                            <tr>
-                            </tr>
+                            <tr></tr>
                             <tr>
                                 <?php
                                     if($a[$i][11]!=""){
@@ -286,12 +277,13 @@
         </div>
         <div class="newchatdiv" id="newchatdiv">
             <div class="signupdiv">
-                <form>
+                <form method="POST" enctype="multipart/form-data">
                     <div class="title">玩家留言-新增</div>
                     姓&nbsp&nbsp名: <input type="text" class="indexinput" name="username" value="<?= @$_SESSION["name"] ?>"><br>
                     email: <input type="text" class="indexinput" name="email" placeholder="要有@及一個以上的." value="<?= @$_SESSION["email"] ?>"> 顯示:<input type="checkbox" name="emailbox" checked><br>
                     電&nbsp&nbsp話: <input type="text" class="indexinput" name="tel" placeholder="只能包含數字或-" value="<?= @$_SESSION["tel"] ?>"> 顯示:<input type="checkbox" name="telbox" checked><br>
-                    留言內容: <textarea name="message" rows="1" cols="25"><?= @$_SESSION["message"] ?></textarea><input type="file" name="picture" accept="image/*" style="width:70px">64KB以下<br>
+                    留言內容: <textarea name="message" rows="1" cols="25"><?= @$_SESSION["message"] ?></textarea>
+                    <input type="file" name="picture" accept="image/*"><br>
                     留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$_SESSION["sn"] ?>">
                     <input type="submit" name="submit" class="button" value="送出">
                     <input type="button" onclick="location.href='index.php'" class="button" value="返回"><br>
@@ -299,17 +291,17 @@
             </div>
         </div>
         <?php
-            if(isset($_GET["submit"])){
-                @$_SESSION["name"]=$_GET["username"];
-                @$_SESSION["email"]=$_GET["email"];
-                @$_SESSION["tel"]=$_GET["tel"];
-                @$_SESSION["message"]=$_GET["message"];
-                @$_SESSION["sn"]=$_GET["sn"];
+            if(isset($_POST["submit"])){
+                @$_SESSION["name"]=$_POST["username"];
+                @$_SESSION["email"]=$_POST["email"];
+                @$_SESSION["tel"]=$_POST["tel"];
+                @$_SESSION["message"]=$_POST["message"];
+                @$_SESSION["sn"]=$_POST["sn"];
                 @$username=$_SESSION["name"];
                 @$email=$_SESSION["email"];
-                @$emailbox=$_GET["emailbox"];
+                @$emailbox=$_POST["emailbox"];
                 @$tel=$_SESSION["tel"];
-                @$telbox=$_GET["telbox"];
+                @$telbox=$_POST["telbox"];
                 @$message=$_SESSION["message"];
                 @$picture=$_FILES["picture"]["name"];
                 @$sn=$_SESSION["sn"];
@@ -325,69 +317,39 @@
                 }elseif($username==""||$sn==""){
                     ?><script>alert("請輸入名字及序號!");location.href="index.php"</script><?php
                 }else{
-                    $targetDir="uploads/";
-                    $fileName=basename($picture);
-                    $targetFilePath=$targetDir . $fileName;
-                    $fileType=pathinfo($targetFilePath,PATHINFO_EXTENSION);
-                    if(!empty($picture)){
-                        // Allow certain file formats
-                        $allowTypes=array('jpg','png','jpeg','gif','pdf');
-                        if(in_array($fileType, $allowTypes)){
-                            // Upload file to server
-                            if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                                // Insert image file name into database
-                                if(isset($emailbox)){
-                                    if(isset($telbox)){
-                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
-                                        ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        unset($username,$email,$email,$tel,$message,$sn);
-                                    }else{
-                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
-                                        ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        unset($username,$email,$email,$tel,$message,$sn);
-                                    }
-                                }else{
-                                    if(isset($telbox)){
-                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
-                                        ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        unset($username,$email,$email,$tel,$message,$sn);
-                                    }else{
-                                        query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
-                                        ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                        unset($username,$email,$email,$tel,$message,$sn);
-                                    }
-                                }
-                                // $insert = $db->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
-                                ?><script>alert("The file has been uploaded successfully.!");location.href="index.php"</script><?php
+                    if(!empty($_FILES["picture"]["name"])){
+                        move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
+                        $picture="image/".$_FILES["picture"]["name"];
+                        if(isset($emailbox)){
+                            if(isset($telbox)){
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','$picture','','','')");
                             }else{
-                                ?><script>alert("Sorry, there was an error uploading your file.!");location.href="index.php"</script><?php
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','$picture','','','')");
                             }
                         }else{
-                            ?><script>alert("Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.!");location.href="index.php"</script><?php
+                            if(isset($telbox)){
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','$picture','','','')");
+                            }else{
+                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','$picture','','','')");
+                            }
                         }
                     }else{
                         if(isset($emailbox)){
                             if(isset($telbox)){
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
-                                ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                unset($username,$email,$email,$tel,$message,$sn);
                             }else{
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
-                                ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                unset($username,$email,$email,$tel,$message,$sn);
                             }
                         }else{
                             if(isset($telbox)){
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
-                                ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                unset($username,$email,$email,$tel,$message,$sn);
                             }else{
                                 query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
-                                ?><script>alert("新增成功!");location.href="index.php"</script><?php
-                                unset($username,$email,$email,$tel,$message,$sn);
                             }
                         }
                     }
+                    unset($username,$email,$email,$tel,$message,$sn);
+                    ?><script>alert("新增成功!");location.href="index.php"</script><?php
                 }
             }
             if(isset($_GET["edit"])){
@@ -424,7 +386,6 @@
                 }
             }
             if(isset($_GET["editsubmit"])){
-                echo("1233");
                 $username=$_GET["username"];
                 $email=$_GET["email"];
                 $emailbox=$_GET["emailbox"];
@@ -442,29 +403,17 @@
                     if(isset($emailbox)){
                         if(isset($telbox)){
                             query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
-                            ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }else{
                             query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
-                            ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }
                     }else{
                         if(isset($telbox)){
                             query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
-                            ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }else{
                             query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
-                            ?><script>alert("更改成功!");location.href="index.php"</script><?php
                         }
                     }
-                }
-            }
-            if(isset($_GET["logout"])){
-                if(isset($_SESSION["data"])){
-                    ?><script>alert("登出成功!");location.href="login.php"</script><?php
-                    session_unset();
-                }else{
-                    ?><script>alert("請先登入!");location.href="login.php"</script><?php
-                    session_unset();
+                    ?><script>alert("更改成功!");location.href="index.php"</script><?php
                 }
             }
         ?>

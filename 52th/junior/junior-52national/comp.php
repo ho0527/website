@@ -43,11 +43,11 @@
                                     query("UPDATE `comp` SET `ingame`='yes' WHERE `team`='$i'");
                                     ?>
                                     <tr>
-                                        <td class="compplayerhead" name="playerhead<?= $team[0][0] ?>" rowspan="2"><?= $team[0][4] ?></td>
+                                        <td class="compplayerhead" name="playerhead<?= $team[0][0] ?>" rowspan="2"><img src="<?= $team[0][4] ?>" alt="" width="100px"></td>
                                         <td class="compusername" name="username<?= $team[0][0] ?>" rowspan="2"><?= $team[0][1] ?></td>
                                         <td class="compemail" name="email<?= $team[0][0] ?>"><?= $team[0][2] ?></td>
                                         <td class="vs" rowspan="2">VS</td>
-                                        <td class="compplayerhead" name="playerhead<?= $team[1] ?>" rowspan="2"><?= $team[1][4] ?></td>
+                                        <td class="compplayerhead" name="playerhead<?= $team[1][0] ?>" rowspan="2"><img src="<?= $team[1][4] ?>" alt="" width="100px"></td>
                                         <td class="compusername" name="username<?= $team[1] ?>" rowspan="2"><?= $team[1][1] ?></td>
                                         <td class="compemail" name="email<?= $team[1] ?>"><?= $team[1][2] ?></td>
                                         <td class="disabled" rowspan="2"><button name="cancel" value="<?= $team[0][0] ?> <?= $team[1][0] ?>">取消配對</button></td>
@@ -66,7 +66,7 @@
                                 if($row){
                                     ?>
                                     <tr>
-                                        <td class="compplayerhead" name="playerhead<?= $row[$i][0] ?>" rowspan="2"><?= $row[$i][4] ?></td>
+                                        <td class="compplayerhead" name="playerhead<?= $team[$i][0] ?>" rowspan="2"><img src="<?= $team[$i][4] ?>" alt="" width="100px"></td>
                                         <td class="compusername" name="username<?= $row[$i][0] ?>" rowspan="2"><?= $row[$i][1] ?></td>
                                         <td class="compemail" name="email<?= $row[$i][0] ?>"><?= $row[$i][2] ?></td>
                                         <td class="vs" rowspan="2">配對中</td>
@@ -122,15 +122,6 @@
                 }
             }else{
                 ?><script>alert("請先登入!");location.href="login.php"</script><?php
-            }
-            if(isset($_GET["logout"])){
-                if(isset($_SESSION["data"])){
-                    ?><script>alert("登出成功!");location.href="login.php"</script><?php
-                    session_unset();
-                }else{
-                    ?><script>alert("請先登入!");location.href="login.php"</script><?php
-                    session_unset();
-                }
             }
             if(isset($_GET["cancel"])){
                 $arr=explode(" ",$_GET["cancel"]);

@@ -29,20 +29,10 @@
                     </div>
                     <div class="postbody">
                         <?php
-                            $data=query("SELECT*FROM `message`");
-                            $a=[];
-                            while($row=fetch($data)){
-                                $a[]=$row;
-                            }
-                            for($i=0;$i<sizeof($a)-1;$i=$i+1){
-                                for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
-                                    if($a[$j][8]<$a[$j+1][8]){
-                                        $tamp=$a[$j];
-                                        $a[$j]=$a[$j+1];
-                                        $a[$j+1]=$tamp;
-                                    }
-                                }
-                            }
+                            $a=fetchall(query("SELECT*FROM `message`"));
+                            usort($a,function($a,$b){
+                                return strcmp($b[8],$a[8]);
+                            });
                             for($i=0;$i<sizeof($a);$i=$i+1){
                                 $id=$a[$i][0]
                                 ?>
@@ -53,7 +43,7 @@
                                         <?php
                                             if($a[$i][9]!=""){
                                                 ?>
-                                                <td class="pictre" rowspan="4"><div style="height:100px;width:50px;"><?= $a[$i][9] ?></div></td>
+                                                <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" alt="" width="100px"></td>
                                                 <?php
                                             }else{
                                                 ?>
@@ -168,18 +158,16 @@
                     $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
                     ?>
                     <div class="newchatdiv" id="editchatdiv">
-                        <div class="signupdiv">
-                            <form>
-                                <div class="title">玩家留言-編輯</div>
-                                姓&nbsp&nbsp名: <input type="text" class="indexinput" name="username" value="<?= @$row[2] ?>"><br>
-                                email: <input type="text" class="indexinput" name="email" placeholder="要有@及一個以上的." value="<?= @$row[4] ?>"> 顯示:<input type="checkbox" name="emailbox" checked><br>
-                                電&nbsp&nbsp話: <input type="text" class="indexinput" name="tel" placeholder="只能包含數字或-" value="<?= @$row[6] ?>"> 顯示:<input type="checkbox" name="telbox" checked><br>
-                                留言內容: <textarea name="message" rows="1" cols="25"><?= @$row[3] ?></textarea>
-                                留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$sn ?>" readonly>
-                                <input type="submit" name="editsubmit" class="button" value="送出">
-                                <input type="button" onclick="location.href='login.php'" class="button" value="返回"><br>
-                            </form>
-                        </div>
+                        <form class="signupdiv">
+                            <div class="title">玩家留言-編輯</div>
+                            姓&nbsp&nbsp名: <input type="text" class="indexinput" name="username" value="<?= @$row[2] ?>"><br>
+                            email: <input type="text" class="indexinput" name="email" placeholder="要有@及一個以上的." value="<?= @$row[4] ?>"> 顯示:<input type="checkbox" name="emailbox" checked><br>
+                            電&nbsp&nbsp話: <input type="text" class="indexinput" name="tel" placeholder="只能包含數字或-" value="<?= @$row[6] ?>"> 顯示:<input type="checkbox" name="telbox" checked><br>
+                            留言內容: <textarea name="message" rows="1" cols="25"><?= @$row[3] ?></textarea>
+                            留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$sn ?>" readonly>
+                            <input type="submit" name="editsubmit" class="button" value="送出">
+                            <input type="button" onclick="location.href='login.php'" class="button" value="返回"><br>
+                        </form>
                     </div>
                     <?php
                 }
@@ -300,15 +288,6 @@
                 </div>
                 <?php
             }
-            if(isset($_GET["logout"])){
-                if(isset($_SESSION["data"])){
-                    ?><script>alert("登出成功!");location.href="login.php"</script><?php
-                    session_unset();
-                }else{
-                    ?><script>alert("請先登入!");location.href="login.php"</script><?php
-                    session_unset();
-                }
-            }
             if(isset($_GET["pin"])){
                 $sn=$_GET["pin"];
                 $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"));
@@ -325,15 +304,13 @@
                 $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
                 ?>
                 <div class="adminresp" id="editchatdiv">
-                    <div class="signupdiv">
-                        <form>
-                            <div class="title">管理員留言</div>
-                            留言內容: <textarea name="message" rows="1" cols="25"><?= @$row[12] ?></textarea><br>
-                            留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$sn ?>" readonly>
-                            <input type="submit" name="respsubmit" class="button" value="送出">
-                            <input type="button" onclick="location.href='login.php'" class="button" value="返回"><br>
-                        </form>
-                    </div>
+                    <form class="signupdiv">
+                        <div class="title">管理員留言</div>
+                        留言內容: <textarea name="message" rows="1" cols="25"><?= @$row[12] ?></textarea><br>
+                        留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$sn ?>" readonly>
+                        <input type="submit" name="respsubmit" class="button" value="送出">
+                        <input type="button" onclick="location.href='login.php'" class="button" value="返回"><br>
+                    </form>
                 </div>
                 <?php
             }
