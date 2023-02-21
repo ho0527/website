@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>管理者專區</title>
+        <title>咖啡商品展示系統</title>
         <link rel="stylesheet" href="index.css">
    </head>
    <body>
     <div class="header">
-        <form action="" class="headerform">
+        <form class="headerform">
             <div class="headtitle">咖啡商品展示系統-預覽</div>
             <div class="headbut">
                 <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
@@ -25,7 +25,7 @@
         <div class="pber2">
             <input type="button" class="pbut" onclick="location.href='productindex.php'" value="選擇版型">
             <input type="button" class="pbut" onclick="location.href='productinput.php'" value="填寫資料">
-            <input type="button" class="pbut selectbut" onclick="location.reload()" value="預覽">
+            <input type="button" class="pbut selectbut" onclick="location.href='productpreview.php'" value="預覽">
             <input type="button" class="pbut" onclick="location.href='productsubmit.php'" value="確定送出">
             <div style="float:right">
                <button onclick="location.href='newproduct.php'">新增版型</button>
@@ -39,15 +39,15 @@
             $a=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
             function ifadta2($a){
                 if($a=="name"){
-                    ?>商品名稱: <?= $_SESSION["name"] ?><?php
+                    ?>商品名稱: <?= @$_SESSION["name"] ?><?php
                 }elseif($a=="cost"){
-                    ?>金額: <?= $_SESSION["cost"] ?><?php
+                    ?>金額: <?= @$_SESSION["cost"] ?><?php
                 }elseif($a=="date"){
                     ?>發佈日期: (發佈後產生)<?php
                 }elseif($a=="link"){
-                    ?>相關連結: <?= $_SESSION["link"] ?><?php
+                    ?>相關連結: <?= @$_SESSION["link"] ?><?php
                 }else{
-                    ?>商品簡介: <?= $_SESSION["introduction"] ?><?php
+                    ?>商品簡介: <?= @$_SESSION["introduction"] ?><?php
                 }
             }
             for($i=0;$i<count($a);$i=$i+1){

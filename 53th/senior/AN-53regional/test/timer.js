@@ -1,30 +1,28 @@
-let time=document.getElementById("timer")
+let time=document.getElementById("timer").value
 let lightbox=document.getElementById("lightbox")
-let timer
-let s=document.getElementById("inputtime").value
 let no=document.getElementById("no")
 
 lightbox.style.display="none"
 
-timer=setInterval(updatetimer,1000)
-function updatetimer(){
-    s--
-    if(s==0){
+let timer=setInterval(updatetime,1000)
+function updatetime(){
+    time--
+    if(time==0){
         clearInterval(timer)
+        time=0
         setTimeout(function(){
             lightbox.style.display="block"
-            time.value=0
             check()
-        },100)
+        },100);
     }
-    time.value=s
+    document.getElementById("timer").value=time
 }
 
 function check(){
     no.onclick=function(){
-        location.href="link.php?logout"
+        location.href="link.php?logout="
     }
     setTimeout(function(){
-        location.href="link.php?logout"
+        location.href="link.php?logout="
     },5000)
 }

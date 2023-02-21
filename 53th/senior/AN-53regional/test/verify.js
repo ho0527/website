@@ -1,12 +1,9 @@
-let td1=document.getElementById("td1")
-let td2=document.getElementById("td2")
-let td3=document.getElementById("td3")
-let td4=document.getElementById("td4")
-let all=[td1,td2,td3,td4]
+let alltd=document.querySelectorAll(".verifytd")
 
-all.forEach(function(td){
+alltd.forEach(function(td){
+    td.style.backgroundColor="white"
     td.addEventListener("click",function(){
-        tdclick(this.id)
+        tdclick(td)
     })
 })
 
@@ -16,13 +13,13 @@ function pass(){
 }
 
 function check(){
-    if((td1.style.backgroundColor==td2.style.backgroundColor)&&td2.style.backgroundColor=="black"){
+    if((alltd[0].style.backgroundColor==alltd[1].style.backgroundColor)&&alltd[1].style.backgroundColor=="black"){
         pass()
-    }else if((td3.style.backgroundColor==td4.style.backgroundColor)&&td4.style.backgroundColor=="black"){
+    }else if((alltd[2].style.backgroundColor==alltd[3].style.backgroundColor)&&alltd[3].style.backgroundColor=="black"){
         pass()
-    }else if((td1.style.backgroundColor==td3.style.backgroundColor)&&td1.style.backgroundColor=="black"){
+    }else if((alltd[0].style.backgroundColor==alltd[2].style.backgroundColor)&&alltd[2].style.backgroundColor=="black"){
         pass()
-    }else if((td2.style.backgroundColor==td4.style.backgroundColor)&&td2.style.backgroundColor=="black"){
+    }else if((alltd[1].style.backgroundColor==alltd[3].style.backgroundColor)&&alltd[3].style.backgroundColor=="black"){
         pass()
     }else{
         alert("驗證碼輸入錯誤")
@@ -30,7 +27,6 @@ function check(){
 }
 
 function tdclick(id){
-    id=document.getElementById(id)
     if(id.style.backgroundColor=="black"){
         id.style.backgroundColor="white"
     }else{

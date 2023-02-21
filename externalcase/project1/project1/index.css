@@ -1,6 +1,6 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(156, 154, 154, 0.342);
+    background-color: rgba(0, 0, 0, 0.55);
     user-select: none;
     word-break: break-all;
     margin: 5px;
@@ -28,7 +28,8 @@ table{
 }
 
 .navigationbar{
-    background-color: rgba(245, 245, 245, 0.6);
+    background-color: rgba(34, 34, 34, 0.6);
+    color: white;
     width: 100%;
     height: 75px;
     font-size:50px;
@@ -74,7 +75,7 @@ table{
     text-align: center;
 }
 
-.indexdiv{
+.main{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -84,17 +85,37 @@ table{
     justify-content: center;
     background-color: rgb(125, 125, 125);
     border-radius: 25px;
-    height: 280px;
-    width: 290px;
-    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+    padding: 50px;
+    box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.422);
     color: white;
     font-size:10px;
     font-weight:bold;
 }
 
-.input{
-    border-radius: 25px;
+.logindiv{
+    position: relative;
+}
+
+.logininput{
+    border-radius: 30px;
     width: 175px;
+    height: 20px;
+    border: 1px black solid;
+    background-color: gray;
+    outline: none;
+}
+
+.logininput:hover{
+    background-color: rgb(74, 74, 74);
+}
+
+.logininput:focus{
+    background-color: rgb(74, 74, 74);
+}
+
+.loginbutton{
+    border-radius: 25px;
+    width: 75px;
     height: 20px;
     border: 1px black solid;
     background-color: white;
@@ -128,20 +149,25 @@ table{
     border-radius: 25px;
     background: none;
     border: none;
-    height: 50px;
-    width: 130px;
+    margin-right: 30px;
     font-size: 25px;
     cursor: pointer;
+    color: white;
 }
 
 .navigationbarbuttonlogin{
     border-radius: 25px;
     background-color: white;
-    border: 0.5px black solid;
+    border: none;
     height: 50px;
     width: 125px;
     font-size: 25px;
     cursor: pointer;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.359);
+}
+
+.navigationbarbuttonlogin:hover{
+    background-color: antiquewhite;
 }
 
 .adminbutton:hover{
@@ -366,51 +392,40 @@ product
 
 
 /*
-verify
+log
 ########################################################################
 */
-.center{
+.logmain{
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
-    transform: translate(-50%,-50%) scale(5);
+    transform: translate(-50%,20%) scale(1.5);
 }
 
-.gamebar{
-    transform: scale(0.5);
-    width: 250px;
+.log{
+    background-color: rgb(217, 217, 217);
 }
 
-.verifybutton{
-    border-radius: 25px;
-    background-color: white;
-    border: 0.5px black solid;
-    height: 25px;
+.version{
+    border: 1px black solid;
     width: 75px;
-    cursor: pointer;
 }
 
-.verifybutton:hover{
-    background-color: rgba(186, 186, 186, 0.363);
+.logtitle{
+    border: 1px black solid;
+    width: 150px;
+    background-color: rgb(157, 157, 157);
 }
 
-.table{
-    border-collapse: collapse;
-    text-align: center;
-    position: relative;
-    left: 30%;
+.date{
+    border: 1px black solid;
+    width: 100px;
 }
 
-.td{
-    width: 40px;
-    height: 40px;
-    border: 1px rgb(83, 81, 81) solid;
-    font-size: 30px;
-    background-color: white;
-}
-
-.title{
-    margin: 5px;
+.depiction{
+    border: 1px black solid;
+    width: 350px;
+    background-color: rgb(157, 157, 157);
 }
 
 /*
@@ -496,6 +511,10 @@ ads
     cursor: pointer;
 }
 
-.selectbut{
-    background-color: rgb(187, 187, 187)
+.selectbutton{
+    color: rgb(162, 162, 162);
+}
+
+.selectbutton2{
+    color: rgb(255, 255, 255);
 }

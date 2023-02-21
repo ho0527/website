@@ -1,8 +1,55 @@
+.small{
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+.left{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%,-50%) scale(2);
+}
+
 .center{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(3);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.input{
+    border: none;
+    background: none;
+    width: 80%;
+    animation: 1s changeword infinite;
+    font-size: 500px;
+    text-align: center;
+}
+
+.right{
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translate(-50%, -50%) scale(2);
+}
+
+.up{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2);
+}
+
+.bottom{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2);
 }
 
 .div{
@@ -118,5 +165,23 @@
     50%{
         bottom:25px;
         right:25px;
+    }
+}
+
+@keyframes changeword{
+    0%{
+        color: black;
+    }
+    25%{
+        color: lightgreen;
+    }
+    50%{
+        color: pink;
+    }
+    75%{
+        color: aqua;
+    }
+    100%{
+        color: red;
     }
 }

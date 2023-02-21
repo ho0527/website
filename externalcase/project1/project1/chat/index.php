@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>chatcom</title>
+        <title>Chatcom</title>
         <link href="../index.css" rel="Stylesheet">
         <link href="chat.css" rel="Stylesheet">
     </head>
@@ -11,7 +11,7 @@
         <img src="" alt="" class="mainlogo">
         <div class="navigationbar">
             <div class="navigationbardiv">
-                <div class="maintitle">chatcom</div>
+                <div class="maintitle">Chatcom</div>
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv">
                     <input type="button" class="navigationbarbutton" onclick="location.href='../index.php'" value="返回首頁">
                     <input type="submit" class="navigationbarbuttonlogin" name="logout" value="登入">

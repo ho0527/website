@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>chatcom</title>
+        <title>Chatcom</title>
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
@@ -10,7 +10,7 @@
         <img src="" alt="" class="mainlogo">
         <div class="navigationbar">
             <div class="navigationbardiv">
-                <div class="maintitle">chatcom</div>
+                <div class="maintitle">Chatcom</div>
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>

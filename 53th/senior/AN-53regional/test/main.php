@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>咖啡商品展示系統</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
         if($_SESSION["permission"]=="管理者"){
             ?>
             <div class="header">
-                <form action="" class="headerform">
+                <form class="headerform">
                     <div class="headtitle">咖啡商品展示系統-首頁</div>
                     <div class="headbut">
                         <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
@@ -34,7 +34,7 @@
         }else{
             ?>
             <div class="header">
-                <form action="" class="headerform">
+                <form class="headerform">
                     <div class="headtitle">咖啡商品展示系統-首頁</div>
                     <div class="headbut">
                         <input type="button" class="hbutton selectbut" onclick="location.href='main.php'" value="首頁">

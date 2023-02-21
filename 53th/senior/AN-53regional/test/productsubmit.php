@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
    </head>
    <body>
         <div class="header">
-            <form action="" class="headerform">
+            <form class="headerform">
                 <div class="headtitle">咖啡商品展示系統-確定送出</div>
                 <div class="headbut">
                     <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
@@ -28,7 +28,7 @@
                 <input type="button" class="pbut selectbut" onclick="location.reload()" value="預覽">
                 <input type="button" class="pbut" onclick="location.href='productsubmit.php'" value="確定送出">
                 <div style="float:right">
-                <button onclick="location.href='newproduct.php'">新增版型</button>
+                    <button onclick="location.href='newproduct.php'">新增版型</button>
                 </div>
             </div>
         </div>

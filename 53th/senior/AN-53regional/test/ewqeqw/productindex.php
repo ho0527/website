@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="header">
-        <form action="" class="headerform">
+        <form class="headerform">
             咖啡商品展示系統-選擇版型
             <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
             <input type="button" class="hbutton selectbut" onclick="location.href='main.php'" value="首頁">

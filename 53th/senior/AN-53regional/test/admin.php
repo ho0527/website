@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,7 +57,7 @@
                 </td>
                 <td class="timertd">
                     <form action="">
-                        <input type="text" class="inputime" name="time" id="inputtime" value="<?= $_SESSION["timer"] ?>">
+                        <input type="text" class="inputime" name="time" value="<?= $_SESSION["timer"] ?>">
                         <input type="submit" name="timersubmit" value="送出">
                     </form>
                 </td>
@@ -69,11 +69,10 @@
             </tr>
         </table>
         <div class="lightbox" id="lightbox">
-            <div class="mask"></div>
             <div class="body">
                 是否繼續操作?<br>
-                <input type="button" class="close" value="Yes" onclick="location.reload()">
-                <input type="button" class="close" id="no" value="否">
+                <input type="button" class="lightboxbut" value="Yes" onclick="location.reload()">
+                <input type="button" class="lightboxbut" id="no" value="否">
             </div>
         </div>
         <?php

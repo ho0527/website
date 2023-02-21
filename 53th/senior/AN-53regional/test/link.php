@@ -1,7 +1,7 @@
 <?php
     $db=new PDO("mysql:host=localhost;dbname=53regional;charset=utf8","admin","1234");
     date_default_timezone_set("Asia/Taipei");
-    $data=date("Y-m-d H:i:s");
+    $time=date("Y-m-d H:i:s");
     session_start();
 
     function query($db,$data){
@@ -15,16 +15,16 @@
     function fetchall($data){
         return $data->fetchall();
     }
-
+ 
     if(isset($_GET["logout"])){
         @$data=$_SESSION["data"];
         $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
         if(isset($data)){
-            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$date','登出成功')");
+            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
             session_unset();
             ?><script>alert("登出成功!");location.href="index.php"</script><?php
         }else{
-            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','',']','','','$date','登出成功')");
+            query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES ('未知','',']','','','$time','登出成功')");
             session_unset();
             ?><script>alert("登出成功!");location.href="index.php"</script><?php
         }
@@ -32,9 +32,7 @@
 
     function up($data,$comper){
         $a=fetchall($data);
-        usort($a,function($a,$b)use($comper){
-            return strcmp($a[$comper],$b[$comper]);
-        });
+        usort($a,function($a,$b)use($comper){ return strcmp($a[$comper],$b[$comper]); });
         for($row=0;$row<count($a);$row=$row+1){
             if($a[$row][1]=="0000"||$a[$row][1]=="未知"){
                 ?>
@@ -74,9 +72,7 @@
 
     function down($data,$comper){
         $a=fetchall($data);
-        usort($a,function($a,$b)use($comper){
-            return strcmp($b[$comper],$a[$comper]);
-        });
+        usort($a,function($a,$b)use($comper){ return strcmp($b[$comper],$a[$comper]); });
         for($row=0;$row<count($a);$row=$row+1){
             if($a[$row][1]=="0000"||$a[$row][1]=="未知"){
                 ?>
@@ -159,18 +155,18 @@
     function product($db,$permission,$otr){
         $a=fetchall($db);
         $product=fetchall(query($otr,"SELECT*FROM `product`"));
-        usort($a,function($a,$b){ return $b[0] - $a[0]; });
+        usort($a,function($a,$b){  return strcmp($b[0],$a[0]); });
         for($i=0;$i<count($a);$i=$i+1){
             if($permission==0){
                 ?>
                 <tr>
                     <td class="producttd">
-                        <?php
-                        for($j=0;$j<count($product);$j=$j+1){
-                            if($a[$i][7]==$product[$j][0]){
-                                if($product[$j][1]=="picture"){
-                                    ?>
-                                    <table class="show">
+                        <table class="show">
+                            <?php
+                            for($j=0;$j<count($product);$j=$j+1){
+                                if($a[$i][7]==$product[$j][0]){
+                                    if($product[$j][1]=="picture"){
+                                        ?>
                                         <tr>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
@@ -185,12 +181,9 @@
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
                                         </tr>
-                                    </table>
-                                    <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
-                                    <?php
-                                }elseif($product[$j][2]=="picture"){
-                                    ?>
-                                    <table class="show">
+                                        <?php
+                                    }elseif($product[$j][2]=="picture"){
+                                        ?>
                                         <tr>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
                                             <td class="coffeedata" rowspan="3"><img src="<?= @$a[$i][1] ?>" width="175px" alt="圖片"></td>
@@ -205,12 +198,9 @@
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
                                         </tr>
-                                    </table>
-                                    <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
-                                    <?php
-                                }elseif($product[$j][3]=="picture"){
-                                    ?>
-                                    <table class="show">
+                                        <?php
+                                    }elseif($product[$j][3]=="picture"){
+                                        ?>
                                         <tr>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
@@ -225,12 +215,9 @@
                                         <tr>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,8) ?></td>
                                         </tr>
-                                    </table>
-                                    <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
-                                    <?php
-                                }else{
-                                    ?>
-                                    <table class="show">
+                                        <?php
+                                    }else{
+                                        ?>
                                         <tr>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,1) ?></td>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,2) ?></td>
@@ -245,13 +232,13 @@
                                         <tr>
                                             <td class="coffeedata"><?= ifdata($a,$i,$product,$j,7) ?></td>
                                         </tr>
-                                    </table>
-                                    <button class="bottom" onclick="location.href='productedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
-                                    <?php
+                                        <?php
+                                    }
                                 }
                             }
-                        }
-                        ?>
+                            ?>
+                        </table>
+                        <button class="bottom" onclick="location.href='signupedit.php?id=<?= @$a[$i][0] ?>'">修改</button>
                     </td>
                 </tr>
                 <?php

@@ -1,12 +1,11 @@
 let version=document.querySelectorAll(".maintable")
 let val
 
-
-version.forEach(function(event){
-    event.style.backgroundColor="rgba(130,130,130,0.7)"
-    event.addEventListener("click",function(){
-        version.forEach(function(event){
-            event.style.backgroundColor="rgba(130,130,130,0.7)"
+version.forEach(function(e){
+    e.style.backgroundColor="rgba(130,130,130,0.7)"
+    e.addEventListener("click",function(){
+        version.forEach(function(e2){
+            e2.style.backgroundColor="rgba(130,130,130,0.7)"
         })
         this.style.backgroundColor="yellow"
         val=this.id
@@ -15,18 +14,14 @@ version.forEach(function(event){
 
 function data(){
     if(val!=undefined){
-        location.href="productinput.php?val="+val[7]
+        location.href="productindex.php?val="+val[7]
     }else{
         location.href="productindex.php?val=no"
     }
 }
 
 function nono(){
-    alert("請先填寫資料")
-}
-
-function nono2(){
-    alert("請先預覽")
+    alert("請先填寫資料/預覽")
 }
 
 function sub(){

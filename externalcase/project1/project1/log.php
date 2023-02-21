@@ -2,44 +2,55 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>chatcom</title>
+        <title>Chatcom</title>
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
-        <img src="" alt="" class="mainimage">
         <img src="" alt="" class="mainlogo">
         <div class="navigationbar">
             <div class="navigationbardiv">
-                <div class="maintitle">chatcom</div>
+                <div class="maintitle">Chatcom</div>
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>
-        <div class="logmain">
-            <div class="log">
-                <div class="version">0</div>
-                <div class="logtitle">首頁版型製作</div>
-                <div class="date">2023/02/16</div>
-                <div class="depiction">將首頁框架完成</div>
-            </div>
-            <div class="log">
-                <div class="version">0</div>
-                <div class="logtitle">首頁 廣告基本版型</div>
-                <div class="date">2023/02/17</div>
-                <div class="depiction">將首頁基本導覽列更新 廣告基本版型</div>
-            </div>
-            <div class="log">
-                <div class="version">0</div>
-                <div class="logtitle">程式碼更新</div>
-                <div class="date">2023/02/18</div>
-                <div class="depiction">程式碼更新及簡化</div>
-            </div>
-            <div class="log">
-                <div class="version">0</div>
-                <div class="logtitle">版面更新</div>
-                <div class="date">2023/02/20</div>
-                <div class="depiction">footer更新</div>
-            </div>
-        </div>
+        <table class="logmain">
+            <tr class="log">
+                <td class="version">版本</td>
+                <td class="logtitle">標題</td>
+                <td class="date">日期</td>
+                <td class="depiction">簡述</td>
+            </tr>
+            <tr class="log">
+                <td class="version">0.0.0</td>
+                <td class="logtitle">首頁版型製作</td>
+                <td class="date">2023/02/16</td>
+                <td class="depiction">將首頁框架完成</td>
+            </tr>
+            <tr class="log">
+                <td class="version">0.0.0</td>
+                <td class="logtitle">首頁 廣告基本版型</td>
+                <td class="date">2023/02/17</td>
+                <td class="depiction">將首頁基本導覽列更新 廣告基本版型</td>
+            </tr>
+            <tr class="log">
+                <td class="version">0.0.0</td>
+                <td class="logtitle">程式碼更新</td>
+                <td class="date">2023/02/18</td>
+                <td class="depiction">程式碼更新及簡化</td>
+            </tr>
+            <tr class="log">
+                <td class="version">0.0.0</td>
+                <td class="logtitle">版面更新</td>
+                <td class="date">2023/02/20</td>
+                <td class="depiction">footer更新</td>
+            </tr>
+            <tr class="log">
+                <td class="version">0.0.0</td>
+                <td class="logtitle">版面更新</td>
+                <td class="date">2023/02/21</td>
+                <td class="depiction">版面美化 login介面</td>
+            </tr>
+        </table>
         <div class="footer" id="footer"></div>
         <script src="index.js"></script>
     </body>

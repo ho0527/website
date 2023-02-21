@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>管理者專區</title>
+        <title>咖啡商品展示系統</title>
         <link rel="stylesheet" href="index.css">
    <body>
       <div class="header">
-         <form action="" class="headerform">
+         <form class="headerform">
                <div class="headtitle">咖啡商品展示系統-選擇版型</div>
                <div class="headbut">
                   <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
@@ -138,13 +138,18 @@
          <?php
          }
          if(isset($_GET["val"])){
-            if(isset($_SESSION["val"])){
-               ?><script>location.href="productinput.php"</script><?php
+            if($_GET["val"]=="no"){
+               if(isset($_SESSION["val"])){
+                  ?><script>location.href="productinput.php"</script><?php
+               }else{
+                  ?><script>alert("請選擇版型");location.href="productindex.php"</script><?php
+               }
             }else{
-               ?><script>alert("請先選擇版型!");location.href="productindex.php"</script><?php
+               $_SESSION["val"]=$_GET["val"];
+               ?><script>location.href="productinput.php"</script><?php
             }
          }
-      ?>
+         ?>
       <script src="productindex.js"></script>
    </body>
 </html>
