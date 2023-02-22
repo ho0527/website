@@ -26,9 +26,9 @@
     border: none;
     background: none;
     width: 80%;
-    animation: 1s changeword infinite;
     font-size: 500px;
     text-align: center;
+    animation: 1.5s changeword infinite;
 }
 
 .right{
@@ -171,17 +171,21 @@
 @keyframes changeword{
     0%{
         color: black;
+        opacity: 1;
     }
     25%{
         color: lightgreen;
+        opacity: 0.5;
     }
     50%{
-        color: pink;
+        opacity: 0;
     }
     75%{
         color: aqua;
+        opacity: 0.5;
     }
     100%{
         color: red;
+        opacity: 1;
     }
 }
