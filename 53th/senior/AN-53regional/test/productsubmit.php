@@ -25,8 +25,8 @@
             <div class="pber2">
                 <input type="button" class="pbut" onclick="location.href='productindex.php'" value="選擇版型">
                 <input type="button" class="pbut" onclick="location.href='productinput.php'" value="填寫資料">
-                <input type="button" class="pbut selectbut" onclick="location.reload()" value="預覽">
-                <input type="button" class="pbut" onclick="location.href='productsubmit.php'" value="確定送出">
+                <input type="button" class="pbut" onclick="location.href='productpreview.php'" value="預覽">
+                <input type="button" class="pbut selectbut" onclick="location.href='productsubmit.php'" value="確定送出">
                 <div style="float:right">
                     <button onclick="location.href='newproduct.php'">新增版型</button>
                 </div>

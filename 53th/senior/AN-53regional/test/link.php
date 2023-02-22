@@ -29,10 +29,10 @@
             ?><script>alert("登出成功!");location.href="index.php"</script><?php
         }
     }
-
+    
     function up($data,$comper){
         $a=fetchall($data);
-        usort($a,function($a,$b)use($comper){ return strcmp($a[$comper],$b[$comper]); });
+        usort($a,function($a,$b)use($comper){ return $a[$comper]>$b[$comper]||($a[$comper]==$b[$comper]&&$a[0]>$b[0]); });
         for($row=0;$row<count($a);$row=$row+1){
             if($a[$row][1]=="0000"||$a[$row][1]=="未知"){
                 ?>
@@ -72,7 +72,7 @@
 
     function down($data,$comper){
         $a=fetchall($data);
-        usort($a,function($a,$b)use($comper){ return strcmp($b[$comper],$a[$comper]); });
+        usort($a,function($a,$b)use($comper){ return $a[$comper]<$b[$comper]||($a[$comper]==$b[$comper]&&$a[0]>$b[0]); });
         for($row=0;$row<count($a);$row=$row+1){
             if($a[$row][1]=="0000"||$a[$row][1]=="未知"){
                 ?>
@@ -155,7 +155,7 @@
     function product($db,$permission,$otr){
         $a=fetchall($db);
         $product=fetchall(query($otr,"SELECT*FROM `product`"));
-        usort($a,function($a,$b){  return strcmp($b[0],$a[0]); });
+        usort($a,function($a,$b){ return $a[0]<$b[0]; });
         for($i=0;$i<count($a);$i=$i+1){
             if($permission==0){
                 ?>

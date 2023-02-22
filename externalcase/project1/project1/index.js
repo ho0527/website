@@ -10,6 +10,7 @@ let navigationbarbuttonandpath=[
     {id:"navigationbarabout",path:"about.php",value:"關於我們"},
     {id:"navigationbarconnection",path:"connection.php",value:"聯絡我們"},
     {id:"navigationbarads",path:"ads.php",value:"廣告投放"},
+    {id:"navigationbarsetting",path:"setting.php",value:"設定"},
 ]
 
 let footerbuttonandpath=[
@@ -19,6 +20,7 @@ let footerbuttonandpath=[
     {id:"footerabout",path:"about.php",value:"關於我們"},
     {id:"footerconnection",path:"connection.php",value:"聯絡我們"},
     {id:"footerads",path:"ads.php",value:"廣告投放"},
+    {id:"footersetting",path:"setting.php",value:"設定"},
 ]
 
 let url=(location.href).split("/")
