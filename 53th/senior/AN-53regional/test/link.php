@@ -155,7 +155,7 @@
     function product($db,$permission,$otr){
         $a=fetchall($db);
         $product=fetchall(query($otr,"SELECT*FROM `product`"));
-        usort($a,function($a,$b){  return strcmp($b[0],$a[0]); });
+        usort($a,function($a,$b){ return strcmp($b[0],$a[0]); });
         for($i=0;$i<count($a);$i=$i+1){
             if($permission==0){
                 ?>
