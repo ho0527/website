@@ -59,12 +59,12 @@
                 if(isset($_GET["num"])){
                     $start=$_GET["start"];
                     $end=$_GET["end"];
-                    product(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'"),1,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'")),1,$db);
                 }elseif(isset($_GET["text"])){
                     $text=$_GET["tex"];
-                    product(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'"),1,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'")),1,$db);
                 }else{
-                    product(query($db,"SELECT*FROM `coffee`"),1,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee`")),1,$db);
                 }
             ?>
         </table>

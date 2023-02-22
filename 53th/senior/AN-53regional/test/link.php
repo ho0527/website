@@ -152,9 +152,8 @@
         }
     }
 
-    function product($db,$permission,$otr){
-        $a=fetchall($db);
-        $product=fetchall(query($otr,"SELECT*FROM `product`"));
+    function product($a,$permission,$db){
+        $product=fetchall(query($db,"SELECT*FROM `product`"));
         usort($a,function($a,$b){ return $a[0]<$b[0]; });
         for($i=0;$i<count($a);$i=$i+1){
             if($permission==0){

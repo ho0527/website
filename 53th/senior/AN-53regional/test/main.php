@@ -27,7 +27,7 @@
             </div>
             <table class="maintable">
                 <?php
-                    product(query($db,"SELECT*FROM `coffee`"),0,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee`")),0,$db);
                 ?>
             </table>
             <?php
@@ -46,7 +46,7 @@
             </div>
             <table class="maintable">
                 <?php
-                    product(query($db,"SELECT*FROM `coffee`"),0,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee`")),1,$db);
                 ?>
             </table>
             <?php
