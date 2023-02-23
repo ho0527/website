@@ -10,7 +10,7 @@
 <body>
             <div class="header">
                 <form class="headerform">
-                    <div class="headtitle">咖啡商品展示系統-選擇版型</div>
+                    <div class="headtitle">咖啡商品展示系統-預覽</div>
                     <div class="headbut">
                         <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
                         <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
@@ -23,10 +23,10 @@
             </div>
             <div class="header">
                 <div class="pdiv">
-                    <input type="button" class="pbutton selectbut" onclick="location.href='productindex.php'" value="選擇版型">
-                    <input type="button" class="pbutton" onclick="data()" value="填寫資料">
-                    <input type="button" class="pbutton" onclick="data()" value="預覽">
-                    <input type="button" class="pbutton" onclick="nono()" value="確定送出">
+                    <input type="button" class="pbutton" onclick="location.href='productindex.php'" value="選擇版型">
+                    <input type="button" class="pbutton" onclick="location.href='productinput.php'" value="填寫資料">
+                    <input type="button" class="pbutton selectbut" onclick="location.href='productpreview.php'" value="預覽">
+                    <input type="button" class="pbutton" onclick="location.href='productsubmit.php'" value="確定送出">
                     <div style="float:right;">
                         <input type="button" class="pbutton" onclick="location.href='newproduct.php'" value="新增版型">
                     </div>
@@ -37,24 +37,24 @@
                 include("link.php");
                 function data2($p){
                     if($p=="name"){
-                        ?>商品名稱<?php
+                        ?>商品名稱: <?= $_SESSION["name"] ?><?php
                     }elseif($p=="cost"){
-                        ?>金額: 0000<?php
+                        ?>金額:  <?= $_SESSION["cost"] ?><?php
                     }elseif($p=="date"){
-                        ?>發佈日期<?php
+                        ?>發佈日期: (發布後產生)<?php
                     }elseif($p=="link"){
-                        ?>相關連結<?php
+                        ?>相關連結: <?= $_SESSION["link"] ?><?php
                     }else{
-                        ?>商品簡介<?php
+                        ?>商品簡介: <?= $_SESSION["intr"] ?><?php
                     }
                 }
-
-                $product=fetchall(query($db,"SELECT*FROM `product`"));
+                $val=$_SESSION["val"];
+                $product=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
                 for($i=0;$i<count($product);$i++){
                     ?>
                         <tr>
                             <td class="producttd">
-                                <table class="producttable" id="v<?= $product[$i][0] ?>">
+                                <table class="producttable">
                                     <?php
                                         if($product[$i][1]=="picture"){
                                             ?>
@@ -126,24 +126,12 @@
                                             <?php
                                         }
                                     ?>
-                                <?= "這是板型".$product[$i][0] ?>
                                 </table>
                             </td>
                         </tr>
                     <?php
                 }
-                if(isset($_GET["val"])){
-                    if($_GET["val"]=="no"&&!(isset($_SESSION["val"]))){
-                        ?><script>alert("請先選擇版型");location.reload()</script><?php
-                    }else{
-                        if($_GET["val"]!="no"){
-                            $_SESSION["val"]=$_GET["val"];
-                        }
-                        ?><script>location.href="productinput.php"</script><?php
-                    }
-                }
             ?>
             </table>
-        <script src="productindex.js"></script>
     </body>
 </html>

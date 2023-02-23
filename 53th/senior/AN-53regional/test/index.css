@@ -25,11 +25,11 @@ table{
 
 .maindiv{
     background-color: rgb(148, 148, 148);
-    padding: 20px;
+    padding: 15px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-25%) scale(3);
+    transform: translate(-50%,-30%) scale(3);
     display: flex;
     align-items: center;
     justify-content: center;

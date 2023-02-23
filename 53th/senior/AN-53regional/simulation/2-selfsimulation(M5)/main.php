@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body><!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -34,7 +26,9 @@
                 </form>
             </div>
             <table class="maintable">
-                <?php  ?>
+                <?php
+                    product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,0);
+                ?>
             </table>
             <?php
         }else{
@@ -51,12 +45,12 @@
                 </form>
             </div>
             <table class="maintable">
-                <?php  ?>
+                <?php
+                    product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,1);
+                ?>
             </table>
             <?php
         }
     ?>
-</body>
-</html>
 </body>
 </html>
