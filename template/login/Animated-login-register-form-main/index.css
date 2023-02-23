@@ -55,6 +55,7 @@ body{
     transform: translateY(10px);
     opacity: 0;
     transition: .5s ease;
+    cursor: pointer;
 }
 
 .navbar a:hover:after{
@@ -229,7 +230,7 @@ body{
 
 }
 
-.input-box label{
+.input-box .logintext{
     position: absolute;
     top: 50%;
     left: 0;
@@ -248,8 +249,8 @@ body{
     font-size: 19px;
 }
 
-.input-box input:focus~ label,
-.input-box input:valid~ label{
+.input-box input:focus~ .logintext,
+.input-box input:valid~ .logintext{
     top: -5px;
 }
 
@@ -261,15 +262,15 @@ body{
     justify-content: space-between;
 }
 
-.remember-password label input{
+.remember-password .logintext input{
     accent-color: #fff;
     margin-right: 3px;
-
 }
 
 .remember-password a{
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .remember-password a:hover{
