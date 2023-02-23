@@ -9,20 +9,20 @@
         <?php session_start() ?>
         <div class="maindiv">
             <form>
-                <div class="title">咖啡商品展示系統</div>
+                咖啡商品展示系統<br>
                 帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br>
                 密碼: <input type="text" name="code" id="code" value="<?= @$_SESSION["code"] ?>"><br>
                 驗證碼:<br>
                 <?php
                     $_SESSION["verify"]="";
-                    for($i=0;$i<4;$i=$i+1){
-                        $finalstr=array_merge(range(0,9),range("A","Z"),range("a","z"))[rand(0,61)];
+                    for($i=0;$i<4;$i++){
+                        $str=array_merge(range(0,9),range("A","Z"),range("a","z"))[rand(0,61)];
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?val=<?= $finalstr ?>" id="<?= $finalstr ?>" class="dragimg">
+                            <img src="verifycode.php?val=<?= $str ?>" id="<?= $str ?>" class="dragimg">
                         </div>
                         <?php
-                        $_SESSION["verify"]=$_SESSION["verify"].$finalstr;
+                        $_SESSION["verify"].=$str;
                     }
                 ?>
                 <input type="submit" name="reflash" value="重新產生"><br>

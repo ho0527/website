@@ -53,11 +53,11 @@
         <table class="timer">
             <tr>
                 <td class="timertd" rowspan="2">
-                    <input type="text" class="time" id="timer" value="<?= $_SESSION["timer"] ?>">
+                    <input type="text" class="time" id="timer" value="<?= @$_SESSION["timer"] ?>">
                 </td>
                 <td class="timertd">
-                    <form action="">
-                        <input type="text" class="inputime" name="time" value="<?= $_SESSION["timer"] ?>">
+                    <form>
+                        <input type="text" class="inputime" name="time" value="<?= @$_SESSION["timer"] ?>">
                         <input type="submit" name="timersubmit" value="送出">
                     </form>
                 </td>
@@ -72,7 +72,7 @@
             <div class="body">
                 是否繼續操作?<br>
                 <input type="button" class="lightboxbut" value="Yes" onclick="location.reload()">
-                <input type="button" class="lightboxbut" id="no" value="否">
+                <input type="button" class="lightboxbut" onclick="location.href='link.php?logout='" id="no" value="否">
             </div>
         </div>
         <?php

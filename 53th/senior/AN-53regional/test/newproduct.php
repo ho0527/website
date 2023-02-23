@@ -42,7 +42,7 @@
          </table>
       </div>
       <form class="version" style="top: 300px;right:225px;">
-         圖片: <input type="number" name="picture" placeholder="1~4(會往下佔3格)"><br><br>
+         圖片: <input type="number" name="picture" placeholder="1~4(會往下佔2格)"><br><br>
          名稱: <input type="number" name="name" placeholder="1~8"><br><br>
          連結: <input type="number" name="link" placeholder="1~8"><br><br>
          金額: <input type="number" name="cost" placeholder="1~8"><br><br>
@@ -63,7 +63,7 @@
             $date=$_GET["date"];
             $introduction=$_GET["introduction"];
             query($db,"INSERT INTO `product`(`$picture`, `$name`, `$link`, `$cost`, `$date`, `$introduction`) VALUES ('picture','name','link','cost','date','introduction')");
-            header("location:productindex.php");
+            ?><script>alert("完成!");location.href="productindex.php"</script><?php
          }
       ?>
    </body>

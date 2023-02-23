@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="maindiv">
-            <form action="" id="form" method="POST" enctype="multipart/form-data">
+            <form id="form" method="POST" enctype="multipart/form-data">
                 商品名稱: <input type="text" class="input" name="name" value="<?= @$_SESSION["name"] ?>"><br>
                 費用: <input type="number" class="input" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br>
                 相關連結: <input type="text" class="input" name="link" value="<?= @$_SESSION["link"] ?>"><br>

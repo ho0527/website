@@ -27,7 +27,7 @@
             <input type="button" class="pbut" onclick="data()" value="預覽">
             <input type="button" class="pbut" onclick="nono()" value="確定送出">
             <div style="float:right">
-               <button onclick="location.href='newproduct.php'">新增版型</button>
+               <input type="button" onclick="location.href='newproduct.php'" value="新增版型">
             </div>
          </div>
       </div>
@@ -52,10 +52,10 @@
             <table class="maintable" id="version<?= $i+1 ?>">
                <tr>
                   <td class="producttd">
+                     <table class="show">
                      <?php
                         if($a[$i][1]=="picture"){
                            ?>
-                           <table class="show">
                               <tr>
                                  <td class="coffeedata" rowspan="3">圖片</td>
                                  <td class="coffeedata"><?= data2($a[$i][2]) ?></td>
@@ -70,11 +70,9 @@
                                  <td class="coffeedata"><?= data2($a[$i][7]) ?></td>
                                  <td class="coffeedata"><?= data2($a[$i][8]) ?></td>
                               </tr>
-                           </table>
                            <?php
                         }elseif($a[$i][2]=="picture"){
                            ?>
-                           <table class="show">
                               <tr>
                                  <td class="coffeedata"><?= data2($a[$i][1]) ?></td>
                                  <td class="coffeedata" rowspan="3">圖片</td>
@@ -89,11 +87,9 @@
                                  <td class="coffeedata"><?= data2($a[$i][7]) ?></td>
                                  <td class="coffeedata"><?= data2($a[$i][8]) ?></td>
                               </tr>
-                           </table>
                            <?php
                         }elseif($a[$i][3]=="picture"){
                            ?>
-                           <table class="show">
                               <tr>
                                  <td class="coffeedata"><?= data2($a[$i][1]) ?></td>
                                  <td class="coffeedata"><?= data2($a[$i][2]) ?></td>
@@ -108,11 +104,9 @@
                               <tr>
                                  <td class="coffeedata"><?= data2($a[$i][8]) ?></td>
                               </tr>
-                           </table>
                            <?php
                         }else{
                            ?>
-                           <table class="show">
                               <tr>
                                  <td class="coffeedata"><?= data2($a[$i][1]) ?></td>
                                  <td class="coffeedata"><?= data2($a[$i][2]) ?></td>
@@ -127,10 +121,10 @@
                               <tr>
                                  <td class="coffeedata"><?= data2($a[$i][7]) ?></td>
                               </tr>
-                           </table>
-                           <?php
+                              <?php
                         }
-                     ?>
+                        ?>
+                     </table>
                   </td>
                </tr>
                <div class="thisdiv">這是版型<?= $i+1 ?></div>

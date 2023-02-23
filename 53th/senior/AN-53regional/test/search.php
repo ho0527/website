@@ -30,11 +30,13 @@
                 ?>
                 <div class="header">
                     <form class="headerform">
-                        咖啡商品展示系統-查詢
-                        <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
-                        <input type="button" class="hbutton" value="上架商品">
-                        <input type="button" class="hbutton selectbut" onclick="location.href='search.php'" value="查詢">
-                        <input type="submit" class="hbutton" name="logout" value="登出">
+                        <div class="headtitle">咖啡商品展示系統-查詢</div>
+                        <div class="headbut">
+                            <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
+                            <input type="button" class="hbutton" value="上架商品">
+                            <input type="button" class="hbutton selectbut" onclick="location.href='search.php'" value="查詢">
+                            <input type="submit" class="hbutton" name="logout" value="登出">
+                        </div>
                     </form>
                 </div>
                 <?php

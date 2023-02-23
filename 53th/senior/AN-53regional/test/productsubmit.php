@@ -28,7 +28,7 @@
                 <input type="button" class="pbut" onclick="location.href='productpreview.php'" value="預覽">
                 <input type="button" class="pbut selectbut" onclick="location.href='productsubmit.php'" value="確定送出">
                 <div style="float:right">
-                    <button onclick="location.href='newproduct.php'">新增版型</button>
+                   <input type="button" onclick="location.href='newproduct.php'" value="新增版型">
                 </div>
             </div>
         </div>
@@ -36,33 +36,25 @@
             <form>
                 確定?<br>
                 <input type="submit" name="check" value="確定">
-                <input type="submit" name="nono" value="取消">
+                <input type="submit" name="check" value="取消">
             </form>
         </div>
         <?php
             include("link.php");
-            @$name=$_SESSION["name"];
-            @$introduction=$_SESSION["introduction"];
-            @$cost=$_SESSION["cost"];
-            @$link=$_SESSION["link"];
-            @$picture=$_SESSION["picture"];
-            @$val=$_SESSION["val"];
             if(isset($_GET["check"])){
-                query($db,"INSERT INTO `coffee`(`picture`, `name`, `introduction`, `cost`, `date`, `link`, `version`) VALUES('$picture','$name','$introduction','$cost','$time','$link','$val')");
+                @$name=$_SESSION["name"];
+                @$introduction=$_SESSION["introduction"];
+                @$cost=$_SESSION["cost"];
+                @$link=$_SESSION["link"];
+                @$picture=$_SESSION["picture"];
+                @$val=$_SESSION["val"];
+                if($_GET["check"]=="確定"){
+                    query($db,"INSERT INTO `coffee`(`picture`, `name`, `introduction`, `cost`, `date`, `link`, `version`) VALUES('$picture','$name','$introduction','$cost','$time','$link','$val')");
+                }
                 unset($_SESSION["name"]);
                 unset($_SESSION["introduction"]);
                 unset($_SESSION["cost"]);
                 unset($_SESSION["link"]);
-                unset($_SESSION["val"]);
-                unset($_SESSION["picture"]);
-                ?><script>alert("完成!");location.href="main.php"</script><?php
-            }
-            if(isset($_GET["nono"])){
-                unset($_SESSION["name"]);
-                unset($_SESSION["introduction"]);
-                unset($_SESSION["cost"]);
-                unset($_SESSION["link"]);
-                unset($_SESSION["val"]);
                 unset($_SESSION["picture"]);
                 ?><script>alert("完成!");location.href="main.php"</script><?php
             }
