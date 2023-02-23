@@ -111,7 +111,7 @@
                 $username=$_GET["username"];
                 $name=$_GET["name"];
                 $code=$_GET["code"];
-                $row=fetch(query($db,"SELECT*FROM `user` WHERE username='$username'"));
+                $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
                 if($username==""&&$code==""){
                     ?><script>alert("請填寫帳密!")</script><?php
                 }elseif($row){
@@ -120,22 +120,22 @@
                     if(isset($_GET["adminbox"])){
                         query($db,"INSERT INTO `user`(`username`, `password`, `name`,`permission`) VALUES('$username','$code','$name','管理者')");
                         $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                        $number=str_pad(($row[0]-1),4,"0",STR_PAD_LEFT);
+                        $number=str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
                         query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
-                        header("location:main.php");
                     }else{
                         query($db,"INSERT INTO `user`(`username`, `password`, `name`, `permission`) VALUES('$username','$code','$name','一般使用者')");
                         $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
                         $number=str_pad(($row[0]-1),4,"0",STR_PAD_LEFT);
                         query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
-                        header("location:main.php");
                     }
+                    ?><script>alert("新增成功");location.href="main.php"</script><?php
                 }
             }
             if(isset($_GET["edit"])){
                 $username=$_GET["username"];
                 $code=$_GET["code"];
                 $name=$_GET["name"];
+                $number=$_GET["number"];
                 $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
                 if($username==""&&$code==""){
                     ?><script>alert("請填寫帳密!")</script><?php

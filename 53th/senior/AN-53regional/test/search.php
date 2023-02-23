@@ -30,11 +30,13 @@
                 ?>
                 <div class="header">
                     <form class="headerform">
-                        咖啡商品展示系統-查詢
-                        <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
-                        <input type="button" class="hbutton" value="上架商品">
-                        <input type="button" class="hbutton selectbut" onclick="location.href='search.php'" value="查詢">
-                        <input type="submit" class="hbutton" name="logout" value="登出">
+                        <div class="headtitle">咖啡商品展示系統-查詢</div>
+                        <div class="headbut">
+                            <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
+                            <input type="button" class="hbutton" value="上架商品">
+                            <input type="button" class="hbutton selectbut" onclick="location.href='search.php'" value="查詢">
+                            <input type="submit" class="hbutton" name="logout" value="登出">
+                        </div>
                     </form>
                 </div>
                 <?php
@@ -59,12 +61,12 @@
                 if(isset($_GET["num"])){
                     $start=$_GET["start"];
                     $end=$_GET["end"];
-                    product(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'"),1,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'")),1,$db);
                 }elseif(isset($_GET["text"])){
                     $text=$_GET["tex"];
-                    product(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'"),1,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'")),1,$db);
                 }else{
-                    product(query($db,"SELECT*FROM `coffee`"),1,$db);
+                    product(fetchall(query($db,"SELECT*FROM `coffee`")),1,$db);
                 }
             ?>
         </table>

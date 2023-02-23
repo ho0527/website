@@ -1,20 +1,15 @@
 <?php
     include("link.php");
-    if(!isset($_SESSION["error"])){
-        $_SESSION["error"]=0;
-    }
+    if(!isset($_SESSION["error"])){ $_SESSION["error"]=0; }
     $username=$_GET["username"];
     $code=$_GET["code"];
+    $_SESSION["username"]=$_GET["username"];
+    $_SESSION["code"]=$_GET["code"];
     if($row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"))){
         if($row[2]==$code){
             $verifyans=str_split($_SESSION["verify"]);
-            $verify=str_split($_GET["verify"]);
-            if($_SESSION["key"]==0){
-                rsort($verifyans);
-            }else{
-                sort($verifyans);
-            }
-            if($verifyans==$verify){
+            if($_SESSION["key"]==0){ rsort($verifyans); }else{ sort($verifyans); }
+            if($verifyans==(str_split($_GET["verify"]))){
                 ?><script>alert("登入成功");location.href="verify.php"</script><?php
                 query($db,"INSERT INTO `data`(`number`, `username`, `password`,`name`,`permission`, `time`, `move`) VALUES('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登入成功')");
                 session_unset();

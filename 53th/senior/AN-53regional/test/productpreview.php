@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>咖啡商品展示系統</title>
+        <title>上架商品精靈</title>
         <link rel="stylesheet" href="index.css">
    </head>
    <body>
@@ -28,7 +28,7 @@
             <input type="button" class="pbut selectbut" onclick="location.href='productpreview.php'" value="預覽">
             <input type="button" class="pbut" onclick="location.href='productsubmit.php'" value="確定送出">
             <div style="float:right">
-               <button onclick="location.href='newproduct.php'">新增版型</button>
+               <input type="button" onclick="location.href='newproduct.php'" value="新增版型">
             </div>
         </div>
     </div>
@@ -37,103 +37,97 @@
         @$val=$_SESSION["val"];
         if(isset($val)){
             $a=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
-            function ifadta2($a){
+            function data2($a){
                 if($a=="name"){
                     ?>商品名稱: <?= @$_SESSION["name"] ?><?php
                 }elseif($a=="cost"){
                     ?>金額: <?= @$_SESSION["cost"] ?><?php
                 }elseif($a=="date"){
-                    ?>發佈日期: (發佈後產生)<?php
+                    ?>發佈日期: (發布後產生)<?php
                 }elseif($a=="link"){
                     ?>相關連結: <?= @$_SESSION["link"] ?><?php
                 }else{
                     ?>商品簡介: <?= @$_SESSION["introduction"] ?><?php
                 }
             }
-            for($i=0;$i<count($a);$i=$i+1){
+            for($i=0;$i<count($a);$i++){
                 ?>
                 <table class="maintable" id="version<?= $i+1 ?>">
                     <tr>
                         <td class="producttd">
-                            <?php
-                            if($a[$i][1]=="picture"){
-                                ?>
-                                <table class="show">
-                                    <tr>
-                                        <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][2]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][4]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][6]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][7]) ?></td>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][8]) ?></td>
-                                    </tr>
-                                </table>
+                            <table class="show">
                                 <?php
-                            }elseif($a[$i][2]=="picture"){
-                                ?>
-                                <table class="show">
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][1]) ?></td>
-                                        <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][3]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][5]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][7]) ?></td>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][8]) ?></td>
-                                    </tr>
-                                </table>
-                                <?php
-                            }elseif($a[$i][3]=="picture"){
-                                ?>
-                                <table class="show">
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][1]) ?></td>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][2]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][4]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][6]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][8]) ?></td>
-                                    </tr>
-                                </table>
-                                <?php
-                            }else{
-                                ?>
-                                <table class="show">
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][1]) ?></td>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][2]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][3]) ?></td>
-                                        <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][5]) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="coffeedata"><?= ifadta2($a[$i][7]) ?></td>
-                                    </tr>
-                                </table>
-                                <?php
-                            }
-                            ?>
+                                    if($a[$i][1]=="picture"){
+                                        ?>
+                                        <tr>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
+                                            <td class="coffeedata"><?= data2($a[$i][2]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][4]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][6]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][7]) ?></td>
+                                            <td class="coffeedata"><?= data2($a[$i][8]) ?></td>
+                                        </tr>
+                                        <?php
+                                    }elseif($a[$i][2]=="picture"){
+                                        ?>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][1]) ?></td>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][3]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][5]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][7]) ?></td>
+                                            <td class="coffeedata"><?= data2($a[$i][8]) ?></td>
+                                        </tr>
+                                        <?php
+                                    }elseif($a[$i][3]=="picture"){
+                                        ?>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][1]) ?></td>
+                                            <td class="coffeedata"><?= data2($a[$i][2]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
+                                            <td class="coffeedata"><?= data2($a[$i][4]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][6]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][8]) ?></td>
+                                        </tr>
+                                        <?php
+                                    }elseif($a[$i][4]=="picture"){
+                                        ?>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][1]) ?></td>
+                                            <td class="coffeedata"><?= data2($a[$i][2]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][3]) ?></td>
+                                            <td class="coffeedata" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" width="175px" alt="圖片"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][5]) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="coffeedata"><?= data2($a[$i][7]) ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                ?>`
+                            </table>
                         </td>
                     </tr>
                 </table>
