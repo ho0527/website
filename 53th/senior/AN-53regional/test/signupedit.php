@@ -67,7 +67,7 @@
                     </form>
                 </div>
                 <div class="maindiv">
-                    <form id="form" enctype="multipart/form-data">
+                    <form id="form" method="post" enctype="multipart/form-data">
                         商品名稱: <input type="text" class="indexinput" name="name" value="<?= @$row[2] ?>"><br>
                         費用: <input type="number" class="indexinput" name="cost" placeholder="只能是數字" value="<?= @$row[4] ?>"><br>
                         相關連結: <input type="text" class="indexinput" name="link" placeholder="" value="<?= @$row[6] ?>"><br>
@@ -107,30 +107,6 @@
                 </div>
                 <?php
             }
-            if(isset($_GET["signup"])){
-                $username=$_GET["username"];
-                $name=$_GET["name"];
-                $code=$_GET["code"];
-                $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                if($username==""&&$code==""){
-                    ?><script>alert("請填寫帳密!")</script><?php
-                }elseif($row){
-                    ?><script>alert("帳號已被註冊")</script><?php
-                }else{
-                    if(isset($_GET["adminbox"])){
-                        query($db,"INSERT INTO `user`(`username`, `password`, `name`,`permission`) VALUES('$username','$code','$name','管理者')");
-                        $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                        $number=str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
-                        query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
-                    }else{
-                        query($db,"INSERT INTO `user`(`username`, `password`, `name`, `permission`) VALUES('$username','$code','$name','一般使用者')");
-                        $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                        $number=str_pad(($row[0]-1),4,"0",STR_PAD_LEFT);
-                        query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
-                    }
-                    ?><script>alert("新增成功");location.href="main.php"</script><?php
-                }
-            }
             if(isset($_GET["edit"])){
                 $username=$_GET["username"];
                 $code=$_GET["code"];
@@ -151,14 +127,14 @@
                     }
                 }
             }
-            if(isset($_GET["pedit"])){
-                @$name=$_GET["name"];
-                @$introduction=$_GET["introduction"];
-                @$cost=$_GET["cost"];
-                @$link=$_GET["link"];
-                @$picture=$_GET["picture"];
-                @$val=$_GET["val"];
-                @$id=$_GET["id"];
+            if(isset($_POST["pedit"])){
+                @$name=$_POST["name"];
+                @$introduction=$_POST["introduction"];
+                @$cost=$_POST["cost"];
+                @$link=$_POST["link"];
+                @$picture=$_POST["picture"];
+                @$val=$_POST["val"];
+                @$id=$_POST["id"];
                 if($name==""){
                     ?><script>alert("請輸入商品!");location.href="productedit.php"</script><?php
                 }else{

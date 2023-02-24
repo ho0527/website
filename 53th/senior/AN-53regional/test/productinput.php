@@ -29,7 +29,7 @@
                 <input type="button" class="pbut" onclick="sub()" value="預覽">
                 <input type="button" class="pbut" onclick="nono()" value="確定送出">
                 <div style="float:right">
-                <button onclick="location.href='newproduct.php'">新增版型</button>
+                    <button onclick="location.href='newproduct.php'">新增版型</button>
                 </div>
             </div>
         </div>

@@ -210,63 +210,6 @@ table{
 }
 
 
-/*admin table*/
-.signupdiv{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin:3px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:  translate(-50%, -50%) scale(3.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(125, 125, 125);
-    border-radius: 25px;
-    height: 200px;
-    width: 300px;
-    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
-}
-
-.productinput{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin:3px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:  translate(-50%, -0%) scale(2.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(125, 125, 125);
-    border-radius: 25px;
-    height: 200px;
-    width: 300px;
-    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
-}
-
-.admintablenum{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:200px;
-    height:30px;
-    text-align: center;
-}
-
-.admintable{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:275px;
-    height:30px;
-    text-align: center;
-}
-
 /*
 燈箱
 ########################################################################
@@ -329,68 +272,6 @@ table{
 ########################################################################
 */
 
-
-/*
-product
-########################################################################
-*/
-
-.productmain{
-    position: absolute;
-    top: 50%;
-}
-
-.productbutton{
-    /* border-radius: 25px  ; */
-    background-color: white;
-    border: 0.5px black solid;
-    height: 30px;
-    width: 150px;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.productbutton:hover{
-    background-color: rgba(186, 186, 186, 0.363);
-}
-
-/* .version{
-} */
-
-.producttable{
-    position: relative;
-    top: 15px;
-    left: 20px;
-}
-
-.coffeedata{
-    width: 300px;
-    height: 50px;
-    border: 1px black solid;
-    background-color: aqua;
-}
-
-.check{
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) scale(5);
-    background-color: rgb(135, 135, 135);
-}
-
-.show{
-    position: relative;
-    left: 35%;
-}
-
-/*
-########################################################################
-*/
-
-
 /*
 log
 ########################################################################
@@ -431,29 +312,6 @@ log
 /*
 ########################################################################
 */
-
-.producttd{
-    width: 180px;
-    height: 275px;
-    border: 1px black solid;
-    position: relative;
-}
-
-.maintable{
-    border: 1px black solid;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    width: 100%;
-}
-
-.bottom{
-    position: absolute;
-    bottom: 10px;
-    right: 30px;
-    width: 130px;
-    height: 50px;
-    font-size: 30px;
-}
 
 /*
 ads
@@ -518,3 +376,174 @@ ads
 .selectbutton2{
     color: rgb(255, 255, 255);
 }
+
+/*
+login
+########################################################################
+*/
+
+.form{
+    font-family: 'poppins',sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-size: cover;
+}
+
+.formbox{
+    position: relative;
+    width: 400px;
+    height: 425px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+}
+
+.inputbox .logintext{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+}
+
+input:focus ~ .logintext,input:valid ~ .logintext{
+    top: -5px;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding:0 35px 0 5px;
+    color: #fff;
+}
+
+.inputbox ion-icon{
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top: 20px;
+}
+
+.forget{
+    margin: -15px 0 15px ;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;  
+}
+
+
+.forget .logintext input{
+    margin-right: 3px;
+}
+
+.forget .logintext a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.forget .logintext a:hover{
+    text-decoration: underline;
+}
+
+.loginbutton{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.signup{
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.signup p a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.signup p a:hover{
+    text-decoration: underline;
+}
+
+.social-icon a i{
+    color: #fff;
+    font-size: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+
+.create-account p a{
+    color: #fff;
+    font-weight: 600px;
+    text-decoration: none;
+}
+
+
+.create-account p a:hover{
+    text-decoration: underline;
+}
+
+.forget a{
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.forget a:hover{
+    text-decoration: underline;
+}
+
+
+/*
+########################################################################
+*/
+
+/*
+
+########################################################################
+*/
+
+/*
+########################################################################
+*/

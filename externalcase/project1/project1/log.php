@@ -27,25 +27,25 @@
                 <td class="depiction">將首頁框架完成</td>
             </tr>
             <tr class="log">
-                <td class="version">0.0.0</td>
+                <td class="version">0.0.0.0</td>
                 <td class="logtitle">首頁 廣告基本版型</td>
                 <td class="date">2023/02/17</td>
                 <td class="depiction">將首頁基本導覽列更新 廣告基本版型</td>
             </tr>
             <tr class="log">
-                <td class="version">0.0.0</td>
+                <td class="version">0.0.0.0</td>
                 <td class="logtitle">程式碼更新</td>
                 <td class="date">2023/02/18</td>
                 <td class="depiction">程式碼更新及簡化</td>
             </tr>
             <tr class="log">
-                <td class="version">0.0.0</td>
+                <td class="version">0.0.0.0</td>
                 <td class="logtitle">版面更新</td>
                 <td class="date">2023/02/20</td>
                 <td class="depiction">footer更新</td>
             </tr>
             <tr class="log">
-                <td class="version">0.0.0</td>
+                <td class="version">0.0.0.0</td>
                 <td class="logtitle">版面更新</td>
                 <td class="date">2023/02/21</td>
                 <td class="depiction">版面美化 login介面</td>
