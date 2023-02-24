@@ -30,6 +30,11 @@ table{
     text-align: center;
 }
 
+.verify{
+    position: relative;
+    left: 15px;
+}
+
 .verifytd{
     border: 1px rgb(121, 121, 121) solid;
     width: 50px;
@@ -140,17 +145,20 @@ table{
 
 .ptd{
     border: 1px black solid;
+    padding: 10px;
 }
 
 .coffeetable{
     position: relative;
-    left: 35%;
-    /* width: 100%; */
+    left: 50%;
+    transform: translate(-50%,0%);
 }
 
 .coffeetd{
     border: 1px black solid;
-    width: 250px;
+    width: 400px;
+    font-size: 25px;
+    padding: 5px;
 }
 
 .timertable{

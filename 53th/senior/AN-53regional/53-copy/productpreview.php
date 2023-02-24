@@ -34,103 +34,104 @@
         </div>
         <table class="maintable">
             <?php
-                    include("link.php");
-                    function data2($p){
-                        if($p=="name"){
-                            ?>商品名稱: <?= @$_SESSION["name"] ?><?php
-                        }elseif($p=="link"){
-                            ?>相關連結: <?= @$_SESSION["link"] ?><?php
-                        }elseif($p=="cost"){
-                            ?>費用: <?= @$_SESSION["cost"] ?><?php
-                        }elseif($p=="date"){
-                            ?>發佈日期: (發佈後產生)<?php
-                        }else{
-                            ?>商品簡介:  <?= @$_SESSION["intr"] ?><?php
-                        }
+                include("link.php");
+                function data2($p){
+                    if($p=="name"){
+                        ?>商品名稱: <?= @$_SESSION["name"] ?><?php
+                    }elseif($p=="link"){
+                        ?>相關連結: <?= @$_SESSION["link"] ?><?php
+                    }elseif($p=="cost"){
+                        ?>費用: <?= @$_SESSION["cost"] ?><?php
+                    }elseif($p=="date"){
+                        ?>發佈日期: (發佈後產生)<?php
+                    }else{
+                        ?>商品簡介:  <?= @$_SESSION["intr"] ?><?php
                     }
-                    $val=$_SESSION["val"];
-                    $product=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
-                    for($i=0;$i<count($product);$i++){
-                        ?>
-                        <tr>
-                            <td class="ptd">
-                                <table class="coffeetable">
-                                    <?php
-                                        if($product[$i][1]=="picture"){
-                                            ?>
-                                                <tr>
-                                                    <td class="coffeetd" rowspan="3">圖片</td>
-                                                    <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][4]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][6]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][7]) ?></td>
-                                                    <td class="coffeetd"><?php data2($product[$i][8]) ?></td>
-                                                </tr>
-                                            <?php
-                                        }elseif($product[$i][2]=="picture"){
-                                            ?>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][1]) ?></td>
-                                                    <td class="coffeetd" rowspan="3">圖片</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][3]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][5]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][7]) ?></td>
-                                                    <td class="coffeetd"><?php data2($product[$i][8]) ?></td>
-                                                </tr>
-                                            <?php
-                                        }elseif($product[$i][3]=="picture"){
-                                            ?>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][1]) ?></td>
-                                                    <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd" rowspan="3">圖片</td>
-                                                    <td class="coffeetd"><?php data2($product[$i][4]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][6]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][8]) ?></td>
-                                                </tr>
-                                            <?php
-                                        }elseif($product[$i][4]=="picture"){
-                                            ?>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][1]) ?></td>
-                                                    <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][3]) ?></td>
-                                                    <td class="coffeetd" rowspan="3">圖片</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][5]) ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="coffeetd"><?php data2($product[$i][7]) ?></td>
-                                                </tr>
-                                            <?php
-                                        }
-                                    ?>
-                                </table>
-                            </td>
-                        </tr>
-                        <?php
-                    }
+                }
+                $val=$_SESSION["val"];
+                echo "\$_SESSION[\"val\"] ="; print_r($_SESSION["picture"]); echo "\n";
+                $product=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
+                for($i=0;$i<count($product);$i++){
+                    ?>
+                    <tr>
+                        <td class="ptd">
+                            <table class="coffeetable">
+                                <?php
+                                    if($product[$i][1]=="picture"){
+                                        ?>
+                                            <tr>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                                <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][4]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][6]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][7]) ?></td>
+                                                <td class="coffeetd"><?php data2($product[$i][8]) ?></td>
+                                            </tr>
+                                        <?php
+                                    }elseif($product[$i][2]=="picture"){
+                                        ?>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][1]) ?></td>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][3]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][5]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][7]) ?></td>
+                                                <td class="coffeetd"><?php data2($product[$i][8]) ?></td>
+                                            </tr>
+                                        <?php
+                                    }elseif($product[$i][3]=="picture"){
+                                        ?>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][1]) ?></td>
+                                                <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                                <td class="coffeetd"><?php data2($product[$i][4]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][6]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][8]) ?></td>
+                                            </tr>
+                                        <?php
+                                    }elseif($product[$i][4]=="picture"){
+                                        ?>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][1]) ?></td>
+                                                <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][3]) ?></td>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][5]) ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="coffeetd"><?php data2($product[$i][7]) ?></td>
+                                            </tr>
+                                        <?php
+                                    }
+                                ?>
+                            </table>
+                        </td>
+                    </tr>
+                    <?php
+                }
             ?>
         </table>
     </body>

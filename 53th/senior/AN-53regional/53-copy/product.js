@@ -23,3 +23,8 @@ function data(){
 function nono(){
     alert("清先填寫資料/預覽")
 }
+
+function sub(){
+    let form=document.getElementById("form")
+    form.submit()
+}

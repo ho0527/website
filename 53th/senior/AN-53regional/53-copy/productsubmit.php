@@ -48,7 +48,8 @@
                     $link=$_SESSION["link"];
                     $intr=$_SESSION["intr"];
                     $val=$_SESSION["val"];
-                    query($db,"INSERT INTO `coffee`( `name`, `intr`, `link`, `cost`, `date`, `product`) VALUES ('$name','$intr','$link','$cost','$time','$val')");
+                    $picture=$_SESSION["picture"];
+                    query($db,"INSERT INTO `coffee`(`picture`, `name`, `intr`, `link`, `cost`, `date`, `product`) VALUES ('$picture','$name','$intr','$link','$cost','$time','$val')");
                 }
                 unset($name);
                 unset($cost);

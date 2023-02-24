@@ -10,7 +10,7 @@
     <body>
         <div class="verifytable">
             <form>
-                <table>
+                <table class="verify">
                     <tr>
                         <td class="verifytd"></td>
                         <td class="verifytd"></td>
@@ -20,9 +20,9 @@
                         <td class="verifytd"></td>
                     </tr>
                 </table>
-                <input type="submit" onclick="location.reload()" value="重設">
-                <input type="button" onclick="check()" value="送出"><br>
                 <input type="submit" name="logout" value="登出">
+                <input type="submit" onclick="location.reload()" value="重設">
+                <input type="button" onclick="check()" value="確定">
             </form>
     </div>
     <?php

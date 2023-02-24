@@ -9,8 +9,9 @@
     </head>
     <body>
         <?php
-            include("link.php")
-        ?>  
+            include("link.php");
+            if(isset($_SESSION["data"])){ header("location:verify.php"); }
+        ?>
         <div class="main">
             <form>
                 咖啡商品展示系統<br>

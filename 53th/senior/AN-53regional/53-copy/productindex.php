@@ -48,7 +48,7 @@
                         ?>商品簡介<?php
                     }
                 }
-            
+
                 $product=fetchall(query($db,"SELECT*FROM `product`"));
                 for($i=0;$i<count($product);$i++){
                     ?>
@@ -132,16 +132,9 @@
                     <?php
                 }
                 if(isset($_GET["val"])){
-                    if($val!="no"){
+                    if($_GET["val"]!="no"){
                         $_SESSION["val"]=$_GET["val"];
                         ?><script>location.href="productinput.php"</script><?php
-                    }else{
-                        if(isset($_SESSION["val"])){
-                            ?><script>location.href="productinput.php"</script><?php
-
-                        }else{
-                            ?><script>alert("請先選擇版型");location.href="productindex.php"</script><?php
-                        }
                     }
                 }
                 ?>
