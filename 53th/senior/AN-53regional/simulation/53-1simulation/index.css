@@ -1,0 +1,160 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(160, 160, 160, 0.849);
+    user-select: none;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.dragbox{
+    border: 1px black solid;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.dropbox{
+    border: 1px black solid;
+    display: inline-block;
+    width: 170px;
+    height: 40px;
+}
+
+.verifytable{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(5);
+    text-align: center;
+}
+
+.verifytd{
+    border: 1px rgb(121, 121, 121) solid;
+    width: 50px;
+    height:50px;
+}
+
+.admintd{
+    border: 1px black solid;
+    width: 275px;
+    text-align: center;
+}
+
+.nbar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.title{
+    font-size: 30px;
+}
+
+.divbut{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    text-align: right;
+}
+
+.hbutton{
+    font-size: 25px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.selt{
+    color: rgb(255, 153, 0);
+}
+
+.main{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(3);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px gray solid;
+}
+.table{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+}
+
+.pbar{
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    width: 100%;
+}
+
+.pbut{
+    text-align: center;
+}
+
+.td{
+    border: 1px black solid;
+}
+
+.table2{
+    position: relative;
+    top: 50px;
+    width: 50%;
+}
+.div2{
+    position: relative;
+    top: 50px;
+}
+
+.maintable{
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    width: 100%;
+}
+
+.ptd{
+    border: 1px black solid;
+}
+
+.coffeetable{
+    position: relative;
+    left: 35%;
+    /* width: 100%; */
+}
+
+.coffeetd{
+    border: 1px black solid;
+    width: 250px;
+}
+
+.timertable{
+    width: 250px;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+}
+
+.time{
+    width: 40px;
+}
+
+.timer{
+    font-size: 60px;
+    background: none;
+    border: none;
+    width: 90px;
+    text-align: center;
+}
+
+.ttd{
+    border: 1px black solid;
+}
