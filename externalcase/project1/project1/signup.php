@@ -17,33 +17,49 @@
         <div class="form">
             <div class="formbox">
                 <form method="POST">
-                    <h2 id="signupheader"></h2>
+                    <div class="title" id="signupheader"></div>
                     <div class="inputbox">
-                        <img src="image/mail-outline.svg" class="loginicon">
-                        <input type="text" name="name" autocomplete="off">
-                        <div class="logintext" id="name"></div>
+                        <img src="image/person-sharp.svg" class="loginicon" draggable="false">
+                        <input type="text" name="name" class="loginsignupinput" autocomplete="off">
+                        <div class="loginsignuptext">
+                            <span id="name"></span>
+                            <span class="warning" id="namewarning"></span>
+                        </div>
                     </div>
                     <div class="inputbox">
-                        <img src="image/mail-outline.svg" class="loginicon">
-                        <input type="text" name="email" autocomplete="off">
-                        <div class="logintext" id="email"></div>
+                        <img src="image/mail-outline.svg" class="loginicon" draggable="false">
+                        <input type="text" name="email" class="loginsignupinput" autocomplete="off">
+                        <div class="loginsignuptext">
+                            <span id="email"></span>
+                            <span class="warning" id="emailwarning"></span>
+                        </div>
                     </div>
                     <div class="inputbox">
-                        <img src="image/lock-closed-outline.svg" class="loginicon">
-                        <input type="password" name="password" autocomplete="off">
-                        <div class="logintext" id="password"></div>
+                        <img src="image/lock-closed-outline.svg" class="loginicon" draggable="false">
+                        <input type="password" name="password" class="loginsignupinput" autocomplete="off">
+                        <div class="loginsignuptext">
+                            <span id="password"></span>
+                            <span class="warning" id="passwordwarning"></span>
+                        </div>
                     </div>
-                    <input type="submit" class="loginbutton" id="signupbutton" value="">
-                    <div class="signup">
+                    <div class="check">
+                        <div>
+                            <input type="checkbox" class="loginsignupcheckbox">
+                            <span id="check"></span>
+                            <a href="terms.php" id="checklink"></a>
+                        </div>
+                        <a href="#" class="a" id="signupformal"></a>
+                    </div>
+                    <input type="submit" class="loginbutton" id="signupbutton">
+                    <div class="loginsignup">
                         <class id="logintext"></class>
-                        <a href="login.php" id="loginlink" class="loginsignupa"></a>
+                        <a href="login.php" class="a" id="loginlink"></a>
                     </div>
                 </form>
             </div>
         </div>
         <div class="footer" id="footer"></div>
         <script src="js/index.js"></script>
-        <script src="js/changelanguage/"></script>
         <script src="js/changelanguage/changelanguage.js"></script>
         <script src="js/changelanguage/changelanguagesignup.js"></script>
     </body>

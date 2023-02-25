@@ -13,7 +13,7 @@ try{
         {id:"navigationbarads",path:"ads.php",value:"廣告投放"},
         {id:"navigationbarsetting",path:"setting.php",value:"設定"},
     ]
-    
+
     let footerbuttonandpath=[
         {id:"footerindex",path:"index.php"},
         {id:"footerproduct",path:"product.php"},
@@ -24,12 +24,12 @@ try{
         {id:"footersetting",path:"setting.php"},
         {id:"footerlogin",path:"login.php"},
     ]
-    
+
     let url=(location.href).split("/")
     if(url[url.length-1]==""){
         location.href="index.php"
     }
-    
+
     navigationbarbuttonandpath.forEach(function(button){
         let element=document.createElement("input")
         element.type="button"
@@ -45,7 +45,7 @@ try{
        }
         navigationbar.appendChild(element)
     })
-    
+
     let loginbutton=document.createElement("input")
     loginbutton.type="submit"
     loginbutton.classList.add("navigationbarbuttonlogin")
@@ -56,7 +56,7 @@ try{
         location.href="login.php"
     }
     navigationbar.appendChild(loginbutton)
-    
+
     footerbuttonandpath.forEach(function(button){
         let element=document.createElement("input")
         element.type="button"
@@ -73,13 +73,13 @@ try{
        }
         footer.appendChild(element)
     })
-    
+
     try{
         document.getElementById(navigationbarbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbutton")
     }catch{
         document.getElementById("navigationbarlogin").classList.add("selectbutton")
     }
-    
+
     document.getElementById(footerbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbutton2")
 }catch(error){
     console.log( error.message)

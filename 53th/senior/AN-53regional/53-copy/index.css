@@ -31,7 +31,7 @@ table{
 }
 
 .verify{
-    position: relative; 
+    position: relative;
     left: 15px;
 }
 
@@ -88,10 +88,11 @@ table{
     align-items: center;
     justify-content: center;
     border: 1px gray solid;
+    border-radius: 10px;
 }
 
 .table{
-    position: relative; 
+    position: relative;
     top: 0px;
     left: 0px;
     border: 1px black solid;
@@ -197,7 +198,7 @@ table{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%) scale(5);
-}   
+}
 
 .searchdiv{
     display: inline-block;

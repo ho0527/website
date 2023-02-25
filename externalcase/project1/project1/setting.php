@@ -14,11 +14,11 @@
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>
-        <input type="button" id="switchlanguagebutton" value="切換語言">
-        <div class="alllanguagediv">
-        </div>
+        <input type="button" id="switchlanguagebutton" value="切換語言" style="position: absolute;top: 500px;">
+        <div class="alllanguagediv" id="alllanguagediv"></div>
         <input type="button" value="">
         <div class="footer" id="footer"></div>
-        <script src="index.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/changelanguage/changelanguage.js"></script>
     </body>
 </html>

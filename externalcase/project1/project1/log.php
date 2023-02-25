@@ -65,5 +65,6 @@
         </table>
         <div class="footer" id="footer"></div>
         <script src="index.js"></script>
+        <script src="js/changelanguage/changelanguage.js"></script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 let language={
     zhtw:{
-        index:"首頁", 
+        index:"首頁",
         product:"產品",
         updatelog:"更新日誌",
         log:"製作日誌",
@@ -11,7 +11,7 @@ let language={
         login:"登入",
     },
     en:{
-        index:"home", 
+        index:"home",
         product:"product",
         updatelog:"updatelog",
         log:"log",
@@ -22,7 +22,6 @@ let language={
         login:"login",
     },
 }
-
 
 let defaultlanguage="zhtw"; // 預設語言為英文
 // 語言切換功能
@@ -51,12 +50,12 @@ function switchlanguage(event){
 switchlanguage(language[defaultlanguage]);
 
 // 語言切換按鈕事件
-// document.getElementById("switchlanguagebutton").addEventListener("click",function(){
-//     // 切換語言
-//     if(defaultlanguage=="en"){
-//         defaultlanguage="zn"
-//     }else{
-//         defaultlanguage="en"
-//     }
-//     switchlanguage(language[defaultlanguage])
-// })
+document.getElementById("switchlanguagebutton").addEventListener("click",function(){
+    // 切換語言
+    if(defaultlanguage=="en"){
+        defaultlanguage="zhtw"
+    }else{
+        defaultlanguage="en"
+    }
+    switchlanguage(language[defaultlanguage])
+})

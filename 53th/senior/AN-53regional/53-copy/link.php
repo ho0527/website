@@ -32,62 +32,34 @@
     function up($data,$comper){
         usort($data,function($a,$b)use($comper){ return $a[$comper]>$b[$comper]||($a[$comper]==$b[$comper])&&$a[0]>$b[0]; });
         for($i=0;$i<count($data);$i++){
-            if($data[$i][1]=="0000"||$data[$i][1]=="未知"){
-                ?>
-                <tr>
-                    <td class="admintd"><?= $data[$i][1] ?></td>
-                    <td class="admintd"><?= $data[$i][2] ?></td>
-                    <td class="admintd"><?= $data[$i][3] ?></td>
-                    <td class="admintd"><?= $data[$i][4] ?></td>
-                    <td class="admintd"><?= $data[$i][5] ?></td>
-                    <td class="admintd"><?= $data[$i][6] ?></td>
-                    <td class="admintd"><?= $data[$i][7] ?></td>
-                </tr>
-                <?php
-            }else{
-                ?>
-                <tr>
-                    <td class="admintd"><?= $data[$i][1] ?></td>
-                    <td class="admintd"><?= $data[$i][2] ?></td>
-                    <td class="admintd"><?= $data[$i][3] ?></td>
-                    <td class="admintd"><?= $data[$i][4] ?></td>
-                    <td class="admintd"><?= $data[$i][5] ?></td>
-                    <td class="admintd"><?= $data[$i][6] ?></td>
-                    <td class="admintd"><?= $data[$i][7] ?></td>
-                </tr>
-                <?php
-            }
+            ?>
+            <tr>
+                <td class="admintd"><?= $data[$i][1] ?></td>
+                <td class="admintd"><?= $data[$i][2] ?></td>
+                <td class="admintd"><?= $data[$i][3] ?></td>
+                <td class="admintd"><?= $data[$i][4] ?></td>
+                <td class="admintd"><?= $data[$i][5] ?></td>
+                <td class="admintd"><?= $data[$i][6] ?></td>
+                <td class="admintd"><?= $data[$i][7] ?></td>
+            </tr>
+            <?php
         }
     }
 
     function down($data,$comper){
         usort($data,function($a,$b)use($comper){ return $a[$comper]<$b[$comper]||($a[$comper]==$b[$comper])&&$a[0]>$b[0]; });
         for($i=0;$i<count($data);$i++){
-            if($data[$i][1]=="0000"||$data[$i][1]=="未知"){
-                ?>
-                <tr>
-                    <td class="admintd"><?= $data[$i][1] ?></td>
-                    <td class="admintd"><?= $data[$i][2] ?></td>
-                    <td class="admintd"><?= $data[$i][3] ?></td>
-                    <td class="admintd"><?= $data[$i][4] ?></td>
-                    <td class="admintd"><?= $data[$i][5] ?></td>
-                    <td class="admintd"><?= $data[$i][6] ?></td>
-                    <td class="admintd"><?= $data[$i][7] ?></td>
-                </tr>
-                <?php
-            }else{
-                ?>
-                <tr>
-                    <td class="admintd"><?= $data[$i][1] ?></td>
-                    <td class="admintd"><?= $data[$i][2] ?></td>
-                    <td class="admintd"><?= $data[$i][3] ?></td>
-                    <td class="admintd"><?= $data[$i][4] ?></td>
-                    <td class="admintd"><?= $data[$i][5] ?></td>
-                    <td class="admintd"><?= $data[$i][6] ?></td>
-                    <td class="admintd"><?= $data[$i][7] ?></td>
-                </tr>
-                <?php
-            }
+            ?>
+            <tr>
+                <td class="admintd"><?= $data[$i][1] ?></td>
+                <td class="admintd"><?= $data[$i][2] ?></td>
+                <td class="admintd"><?= $data[$i][3] ?></td>
+                <td class="admintd"><?= $data[$i][4] ?></td>
+                <td class="admintd"><?= $data[$i][5] ?></td>
+                <td class="admintd"><?= $data[$i][6] ?></td>
+                <td class="admintd"><?= $data[$i][7] ?></td>
+            </tr>
+            <?php
         }
     }
 

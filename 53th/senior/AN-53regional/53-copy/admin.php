@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <?php
+        include("link.php");
+        if(!isset($_SESSION["data"])){ header("location:index.php"); }
+    ?>
     <form action="">
         <div class="nbar">
             <div class="title">咖啡商品管理系統-會員管理</div>
@@ -36,7 +40,6 @@
                     <td class="admintd">動作</td>
                 </tr>
                 <?php
-                    include("link.php");
                     if(isset($_SESSION["type"])){
                         $type=$_SESSION["type"];
                         if($type==""){

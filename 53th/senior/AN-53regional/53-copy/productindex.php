@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,10 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <?php
+            include("link.php");
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+        ?>
         <form>
             <div class="nbar">
                 <div class="title">咖啡商品管理系統-選擇版型</div>
@@ -34,7 +38,6 @@
         </form>
         <table class="maintable">
             <?php
-                include("link.php");
                 function data2($p){
                     if($p=="name"){
                         ?>商品名稱<?php

@@ -37,14 +37,3 @@ function switchlanguage(language){
 
 // 切換到預設語言
 switchlanguage(languagelogin[defaultlanguage]);
-
-// 語言切換按鈕事件
-// document.getElementById("switchlanguagebutton").addEventListener("click",function(){
-//     // 切換語言
-//     if(defaultlanguage=="en"){
-//         defaultlanguage="zn"
-//     }else{
-//         defaultlanguage="en"
-//     }
-//     switchlanguage(languagelogin[defaultlanguage])
-// })

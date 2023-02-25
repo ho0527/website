@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,10 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <?php
+            include("link.php");
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+        ?>
         <div class="verifytable">
             <form>
                 <table class="verify">
@@ -24,10 +28,7 @@
                 <input type="submit" onclick="location.reload()" value="重設">
                 <input type="button" onclick="check()" value="確定">
             </form>
-    </div>
-    <?php
-        include("link.php")
-    ?>
-    <script src="verify.js"></script>
+        </div>
+        <script src="verify.js"></script>
     </body>
 </html>
