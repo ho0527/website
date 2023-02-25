@@ -18,6 +18,6 @@
             <input type="button" class="productbutton" onclick="location.href='chat/index.php'" value="Chatcom">
         </div>
         <div class="footer" id="footer"></div>
-        <script src="index.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

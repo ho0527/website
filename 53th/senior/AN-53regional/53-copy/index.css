@@ -31,7 +31,7 @@ table{
 }
 
 .verify{
-    position: relative;
+    position: relative; 
     left: 15px;
 }
 
@@ -50,7 +50,7 @@ table{
 
 .nbar{
     position: absolute;
-    top: 0px;
+    top: 3px;
     left: 0px;
     width: 100%;
 }
@@ -91,7 +91,7 @@ table{
 }
 
 .table{
-    position: relative;
+    position: relative; 
     top: 0px;
     left: 0px;
     border: 1px black solid;
@@ -99,7 +99,7 @@ table{
 
 .admindivtop{
     position: absolute;
-    top: 60px;
+    top: 70px;
     max-height: 450px;
     overflow-y: auto;
 }
@@ -127,13 +127,17 @@ table{
 }
 
 .table2{
-    position: relative;
+    position: absolute;
     top: 50px;
-    width: 50%;
+    width: 40%;
+    font-size: 30px;
+    text-align: center;
 }
+
 .div2{
-    position: relative;
+    position: absolute;
     top: 50px;
+    left: 850px;
 }
 
 .maintable{
@@ -145,7 +149,7 @@ table{
 
 .ptd{
     border: 1px black solid;
-    padding: 10px;
+    padding: 20px;
 }
 
 .coffeetable{
@@ -182,4 +186,32 @@ table{
 
 .ttd{
     border: 1px black solid;
+}
+
+.lightbox{
+    background-color: rgb(146, 146, 146);
+    border-radius: 15px;
+    width: 75px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(5);
+}   
+
+.searchdiv{
+    display: inline-block;
+    position: relative;
+    left: 40%;
+    transform: translate(-50%,0%);
+}
+
+.search1{
+    position: absolute;
+    top: 40px;
+    width: 99%;
+}
+
+.producteditbut{
+    font-size: 20px;
 }

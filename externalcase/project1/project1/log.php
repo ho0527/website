@@ -50,6 +50,18 @@
                 <td class="date">2023/02/21</td>
                 <td class="depiction">版面美化 login介面</td>
             </tr>
+            <tr class="log">
+                <td class="version">0.0.0.0</td>
+                <td class="logtitle">版面更新及翻譯</td>
+                <td class="date">2023/02/24</td>
+                <td class="depiction">版面login介面 login介面翻譯完成(EN)</td>
+            </tr>
+            <tr class="log">
+                <td class="version">0.0.0.0</td>
+                <td class="logtitle">版面更新及翻譯</td>
+                <td class="date">2023/02/25</td>
+                <td class="depiction">版面login/signup介面 導覽列翻譯完成(EN)</td>
+            </tr>
         </table>
         <div class="footer" id="footer"></div>
         <script src="index.js"></script>

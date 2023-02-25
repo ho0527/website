@@ -25,6 +25,5 @@ function nono(){
 }
 
 function sub(){
-    let form=document.getElementById("form")
-    form.submit()
+    document.getElementById("form").submit.click()
 }

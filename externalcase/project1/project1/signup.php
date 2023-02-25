@@ -14,14 +14,18 @@
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>
-        <input type="button" id="switchlanguagebutton" value="切換語言">
         <div class="form">
             <div class="formbox">
                 <form method="POST">
-                    <h2 id="loginheader"></h2>
+                    <h2 id="signupheader"></h2>
                     <div class="inputbox">
                         <img src="image/mail-outline.svg" class="loginicon">
-                        <input type="text" name="username" autocomplete="off">
+                        <input type="text" name="name" autocomplete="off">
+                        <div class="logintext" id="name"></div>
+                    </div>
+                    <div class="inputbox">
+                        <img src="image/mail-outline.svg" class="loginicon">
+                        <input type="text" name="email" autocomplete="off">
                         <div class="logintext" id="email"></div>
                     </div>
                     <div class="inputbox">
@@ -29,14 +33,10 @@
                         <input type="password" name="password" autocomplete="off">
                         <div class="logintext" id="password"></div>
                     </div>
-                    <div class="forget">
-                        <div><input type="checkbox" class="remembermecheckbox"><span id="rememberme"></span></div>
-                        <a href="#" class="loginsignupa" id="forgetpassword"></a>
-                    </div>
-                    <input type="submit" class="loginbutton" id="loginbutton" value="">
+                    <input type="submit" class="loginbutton" id="signupbutton" value="">
                     <div class="signup">
-                        <class id="signuptext"></class>
-                        <a href="signup.php" id="signuplink" class="loginsignupa"></a>
+                        <class id="logintext"></class>
+                        <a href="login.php" id="loginlink" class="loginsignupa"></a>
                     </div>
                 </form>
             </div>
@@ -45,6 +45,6 @@
         <script src="js/index.js"></script>
         <script src="js/changelanguage/"></script>
         <script src="js/changelanguage/changelanguage.js"></script>
-        <script src="js/changelanguage/changelanguagelogin.js"></script>
+        <script src="js/changelanguage/changelanguagesignup.js"></script>
     </body>
 </html>

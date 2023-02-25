@@ -24,6 +24,9 @@
                                 <input type="submit" class="hbutton" name="logout" value="登出">
                             </div>
                         </div>
+                        <table class="maintable">
+                            <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),0,$db) ?>
+                        </table>
                         <?php
                     }else{
                         ?>
@@ -36,12 +39,12 @@
                                 <input type="submit" class="hbutton" name="logout" value="登出">
                             </div>
                         </div>
+                        <table class="maintable">
+                            <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),1,$db) ?>
+                        </table>
                         <?php
                     }
                 ?>
             </form>
-            <table class="maintable">
-                <?php product($db) ?>
-            </table>
     </body>
 </html>

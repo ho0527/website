@@ -18,6 +18,8 @@
                 <input type="button" class="hbutton" onclick="location.href='serch.php'" value="查詢">
                 <input type="button" class="hbutton selt" onclick="location.href='admin.php'" value="會員管理">
                 <input type="submit" class="hbutton" name="logout" value="登出">
+                <input type="text" name="type" placeholder="查詢">
+                <input type="submit" name="submit" value="送出">
             </div>
         </div>
     </form>
@@ -25,17 +27,27 @@
         <form>
             <table class="table">
                 <tr>
-                    <td class="admintd">編號</td>
-                    <td class="admintd">帳號</td>
-                    <td class="admintd">密碼</td>
-                    <td class="admintd">姓名</td>
+                    <td class="admintd">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
+                    <td class="admintd">使用者帳號<input type="submit" name="user-up-down" id="user-up-down" value="升冪"></td>
+                    <td class="admintd">密碼<input type="submit" name="code-up-down" id="code-up-down" value="升冪"></td>
+                    <td class="admintd">名稱<input type="submit" name="name-up-down" id="name-up-down" value="升冪"></td>
                     <td class="admintd">權限</td>
-                    <td class="admintd">動作時間</td>
+                    <td class="admintd">時間</td>
                     <td class="admintd">動作</td>
                 </tr>
                 <?php
                     include("link.php");
-                    up($db,1);
+                    if(isset($_SESSION["type"])){
+                        $type=$_SESSION["type"];
+                        if($type==""){
+                            unset($_SESSION["type"]);
+                            header("location:admin.php");
+                        }else{
+                            updown(fetchall(query($db,"SELECT*FROM `data` WHERE `number`LIKE'%$type%' or `username`LIKE'%$type%' or `code`LIKE'%$type%' or `name`LIKE'%$type%' or `premission`LIKE'%$type%' or `movetime`LIKE'%$type%' or `move`LIKE'%$type%'")));
+                        }
+                    }else{
+                        updown(fetchall(query($db,"SELECT*FROM `data`")));
+                    }
                 ?>
             </table>
         </form>
@@ -72,8 +84,8 @@
                             <tr>
                                 <td class="admintd">
                                     <?= $a[$i][4] ?>
-                                    <input type="button" onclick="location.href='edit.php?e=<?= $a[$i][1] ?>'" value="編輯">
-                                    <input type="button" onclick="location.href='admin.php?del=<?= $a[$i][1] ?>'" value="刪除帳號">
+                                    <input type="button" onclick="location.href='edit.php?e=<?= $a[$i][4] ?>'" value="編輯">
+                                    <input type="button" onclick="location.href='admin.php?del=<?= $a[$i][4] ?>'" value="刪除帳號">
                                 </td>
                                 <td class="admintd"><?= $a[$i][1] ?></td>
                                 <td class="admintd"><?= $a[$i][2] ?></td>
@@ -101,10 +113,19 @@
             <td class="ttd"><input type="button" onclick="location.reload()" value="重新計時"></td>
         </tr>
     </table>
+    <div class="lightbox" id="lightbox">
+        繼續操作?<br>
+        <input type="button" onclick="location.reloa()" value="Yes">
+        <input type="button" onclick="location.href='link.php?logout='" value="否">
+    </div>
     <?php
         if(isset($_GET["ct"])){
             $_SESSION["timer"]=$_GET["timer"];
             ?><script>alert("更改成功");location.href="admin.php"</script><?php
+        }
+        if(isset($_GET["submit"])){
+            $_SESSION["type"]=$_GET["type"];
+            ?><script>location.href="admin.php"</script><?php
         }
         if(isset($_GET["del"])){
             $num=$_GET["del"];

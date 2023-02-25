@@ -1,11 +1,11 @@
 <?php
     session_start();//開始session
     $captchacode="";//定訂字串
-    $characters=array_merge(range('A','Z'),range(2,9));//A~Z/2~9
+    $characters=array_merge(range("A","Z"),range(2,9));//A~Z/2~9
     for($i=0;$i<4;$i++){//4碼驗證
         $captchacode=$captchacode.$characters[array_rand($characters)];//將文字加入字串
     }
-    $_SESSION['captcha_code']=$captchacode;
+    $_SESSION["captcha_code"]=$captchacode;
     $canva=imagecreate(150,70);//創建畫布
     imagecolorallocate($canva,255,255,255);//創建背景顏色
     $paint=imagecolorallocate($canva,255,0,0);//創建畫筆顏色

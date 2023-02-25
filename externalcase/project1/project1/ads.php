@@ -60,7 +60,7 @@
         </table>
         <div class="lightboxdiv" id="lightbox"></div>
         <div class="footer" id="footer"></div>
-        <script src="ads.js"></script>
-        <script src="index.js"></script>
+        <script src="js/ads.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

@@ -1,4 +1,14 @@
-let language={
+let languagelogin={
+    zhtw:{
+        login:"登入",
+        email:"信箱",
+        password:"密碼",
+        rememberme:"記住此帳號密碼",
+        forgetpassword:"忘記密碼",
+        loginbutton:"登入",
+        signuptext:"還沒有帳號?",
+        signuplink:"註冊",
+    },
     en:{
         login:"LogIn",
         email:"Email",
@@ -9,23 +19,11 @@ let language={
         signuptext:"Don\'t have an account?",
         signuplink:"signup",
     },
-    zh:{
-        login:"登入",
-        email:"信箱",
-        password:"密碼",
-        rememberme:"記住此帳號密碼",
-        forgetpassword:"忘記密碼",
-        loginbutton:"登入",
-        signuptext:"還沒有帳號?",
-        signuplink:"註冊",
-    }
 }
 
 
-let defaultlanguage="zh"; // 預設語言為英文
-
 // 語言切換功能
-function switchLang(language){
+function switchlanguage(language){
     // 更改文本內容
     document.getElementById("loginheader").innerHTML=language.login
     document.getElementById("email").innerHTML=language.email
@@ -38,15 +36,15 @@ function switchLang(language){
 }
 
 // 切換到預設語言
-switchLang(language[defaultlanguage]);
+switchlanguage(languagelogin[defaultlanguage]);
 
 // 語言切換按鈕事件
-document.getElementById("switchLangButton").addEventListener("click", function() {
-    // 切換語言
-    if(defaultlanguage=="en"){
-        defaultlanguage="zn"
-    }else{
-        defaultlanguage="en"
-    }
-    switchLang(language[defaultlanguage]);
-})
+// document.getElementById("switchlanguagebutton").addEventListener("click",function(){
+//     // 切換語言
+//     if(defaultlanguage=="en"){
+//         defaultlanguage="zn"
+//     }else{
+//         defaultlanguage="en"
+//     }
+//     switchlanguage(languagelogin[defaultlanguage])
+// })

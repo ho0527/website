@@ -49,7 +49,6 @@
                     }
                 }
                 $val=$_SESSION["val"];
-                echo "\$_SESSION[\"val\"] ="; print_r($_SESSION["picture"]); echo "\n";
                 $product=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
                 for($i=0;$i<count($product);$i++){
                     ?>
@@ -60,7 +59,7 @@
                                     if($product[$i][1]=="picture"){
                                         ?>
                                             <tr>
-                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                                 <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
                                             </tr>
                                             <tr>
@@ -78,7 +77,7 @@
                                         ?>
                                             <tr>
                                                 <td class="coffeetd"><?php data2($product[$i][1]) ?></td>
-                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                             </tr>
                                             <tr>
                                                 <td class="coffeetd"><?php data2($product[$i][3]) ?></td>
@@ -98,7 +97,7 @@
                                                 <td class="coffeetd"><?php data2($product[$i][2]) ?></td>
                                             </tr>
                                             <tr>
-                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                                 <td class="coffeetd"><?php data2($product[$i][4]) ?></td>
                                             </tr>
                                             <tr>
@@ -116,7 +115,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="coffeetd"><?php data2($product[$i][3]) ?></td>
-                                                <td class="coffeetd" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
+                                                <td class="coffeetd" rowspan="3"><img src="<?= @$_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                             </tr>
                                             <tr>
                                                 <td class="coffeetd"><?php data2($product[$i][5]) ?></td>

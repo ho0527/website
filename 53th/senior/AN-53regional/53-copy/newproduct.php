@@ -20,42 +20,40 @@
                     <input type="submit" class="hbutton" name="logout" value="登出">
                 </div>
             </div>
-            <div class="pbar">
-                <div class="pbut">
-                    <div style="float:right">
-                        <input type="button" onclick="location.href='newproduct.php'" class="hbutton" value="返回">
-                    </div>
+        </form>
+        <div class="pbar">
+            <div class="pbut">
+            <div class="newproduct">
+                <table class="table2">
+                    <tr>
+                        <td class="td">1</td>
+                        <td class="td">2</td>
+                    </tr>
+                    <tr>
+                        <td class="td">3</td>
+                        <td class="td">4</td>
+                    </tr>
+                    <tr>
+                        <td class="td">5</td>
+                        <td class="td">6</td>
+                    </tr>
+                    <tr>
+                        <td class="td">7</td>
+                        <td class="td">8</td>
+                    </tr>
+                </table>
+                <div class="div2">
+                    <form>
+                        圖片: <input type="text" name="picture" placeholder="1~4(會往下戰2格)"><br>
+                        商品名稱: <input type="text" name="name"><br>
+                        商品簡介: <input type="text" name="intr"><br>
+                        費用: <input type="text" name="cost"><br>
+                        日期: <input type="text" name="date"><br>
+                        相關連結: <input type="text" name="link"><br>
+                        <input type="submit" name="s" value="送出">
+                    </form>
                 </div>
             </div>
-        </form>
-        <table class="table2">
-            <tr>
-                <td class="td">1</td>
-                <td class="td">2</td>
-            </tr>
-            <tr>
-                <td class="td">3</td>
-                <td class="td">4</td>
-            </tr>
-            <tr>
-                <td class="td">5</td>
-                <td class="td">6</td>
-            </tr>
-            <tr>
-                <td class="td">7</td>
-                <td class="td">8</td>
-            </tr>
-        </table>
-        <div class="div2">
-            <form>
-                圖片: <input type="text" name="picture" placeholder="1~4(會往下戰2格)"><br>
-                商品名稱: <input type="text" name="name"><br>
-                商品簡介: <input type="text" name="intr"><br>
-                費用: <input type="text" name="cost"><br>
-                日期: <input type="text" name="date"><br>
-                相關連結: <input type="text" name="link"><br>
-                <input type="submit" name="s" value="送出">
-            </form>
         </div>
         <?php
             include("link.php");

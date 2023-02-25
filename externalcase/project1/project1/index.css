@@ -387,9 +387,11 @@ login
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    width: 100%;
     background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-35%) scale(1.25);
 }
 
 .formbox{
@@ -403,6 +405,7 @@ login
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
 }
 
 h2{
@@ -442,35 +445,36 @@ input:focus ~ .logintext,input:valid ~ .logintext{
     font-size: 1em;
     padding:0 35px 0 5px;
     color: #fff;
+    font-size: 25px;
 }
 
-.inputbox ion-icon{
+.loginicon{
     position: absolute;
-    right: 8px;
-    color: #fff;
-    font-size: 1.2em;
     top: 20px;
+    right: 8px;
+    width: 25px;
+}
+
+.remembermecheckbox{
+    transform: scale(1.75);
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .forget{
     margin: -15px 0 15px ;
-    font-size: .9em;
+    font-size: 15px;
     color: #fff;
     display: flex;
     justify-content: space-between;  
 }
 
-
-.forget .logintext input{
-    margin-right: 3px;
-}
-
-.forget .logintext a{
+.loginsignupa{
     color: #fff;
     text-decoration: none;
 }
 
-.forget .logintext a:hover{
+.loginsignupa:hover{
     text-decoration: underline;
 }
 
@@ -493,13 +497,13 @@ input:focus ~ .logintext,input:valid ~ .logintext{
     margin: 25px 0 10px;
 }
 
-.signup p a{
+.signup a{
     text-decoration: none;
     color: #fff;
     font-weight: 600;
 }
 
-.signup p a:hover{
+.signup a:hover{
     text-decoration: underline;
 }
 
