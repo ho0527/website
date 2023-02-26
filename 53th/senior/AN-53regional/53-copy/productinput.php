@@ -2,8 +2,6 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>上架商品精靈</title>
         <link rel="stylesheet" href="index.css">
     </head>
@@ -37,41 +35,40 @@
             </div>
         </form>
         <div class="main">
-        <form id="form" method="post" enctype="multipart/form-data">
-            商品名稱: <input type="text" name="name" value="<?= @$_SESSION["name"] ?>"><br>
-            費用: <input type="text" name="cost" value="<?= @$_SESSION["cost"] ?>"><br>
-            相關連結: <input type="text" name="link" value="<?= @$_SESSION["link"] ?>"><br>
-            商品簡介:<br> <textarea name="intr" id="" cols="30" rows="3"><?= @$_SESSION["intr"] ?></textarea><br>
-            <input type="file" name="picture" id="" style="width:175px">
-            <input type="submit" name="clear" value="清除">
-            <input type="submit" name="new" value="送出">
-        </form>
-    </div>
-    <?php
-        echo($_SESSION['val']);
-        if(isset($_POST["new"])){
-            $_SESSION["name"]=$_POST["name"];
-            $_SESSION["cost"]=$_POST["cost"];
-            $_SESSION["link"]=$_POST["link"];
-            $_SESSION["intr"]=$_POST["intr"];
-            if(!empty($_FILES["picture"]["name"])){
-                move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
-                $_SESSION["picture"]="image/".$_FILES["picture"]["name"];
+            <form id="form" method="post" enctype="multipart/form-data">
+                商品名稱: <input type="text" name="name" value="<?= @$_SESSION["name"] ?>"><br>
+                費用: <input type="text" name="cost" value="<?= @$_SESSION["cost"] ?>"><br>
+                相關連結: <input type="text" name="link" value="<?= @$_SESSION["link"] ?>"><br>
+                商品簡介:<br> <textarea name="intr" id="" cols="30" rows="3"><?= @$_SESSION["intr"] ?></textarea><br>
+                <input type="file" name="picture" id="" style="width:175px">
+                <input type="submit" name="clear" value="清除">
+                <input type="submit" name="new" value="送出">
+            </form>
+        </div>
+        <?php
+            if(isset($_POST["new"])){
+                $_SESSION["name"]=$_POST["name"];
+                $_SESSION["cost"]=$_POST["cost"];
+                $_SESSION["link"]=$_POST["link"];
+                $_SESSION["intr"]=$_POST["intr"];
+                if(!empty($_FILES["picture"]["name"])){
+                    move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
+                    $_SESSION["picture"]="image/".$_FILES["picture"]["name"];
+                }
+                header("location:productpreview.php");
             }
-            header("location:productpreview.php");
-        }
-        if(isset($_POST["clear"])){
-            unset($_SESSION["name"]);
-            unset($_SESSION["cost"]);
-            unset($_SESSION["link"]);
-            unset($_SESSION["intr"]);
-            unset($_SESSION["picture"]);
-            header("location:productinput.php");
-        }
-        if(!isset($_SESSION["val"])){
-            ?><script>alert("請先選擇版型");location.href="productindex.php"</script><?php
-        }
-    ?>
-    <script src="product.js"></script>
+            if(isset($_POST["clear"])){
+                unset($_SESSION["name"]);
+                unset($_SESSION["cost"]);
+                unset($_SESSION["link"]);
+                unset($_SESSION["intr"]);
+                unset($_SESSION["picture"]);
+                header("location:productinput.php");
+            }
+            if(!isset($_SESSION["val"])){
+                ?><script>alert("請先選擇版型");location.href="productindex.php"</script><?php
+            }
+        ?>
+        <script src="product.js"></script>
     </body>
 </html>

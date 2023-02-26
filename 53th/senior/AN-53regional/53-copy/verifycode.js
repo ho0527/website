@@ -7,8 +7,8 @@ drags.forEach(function(e){
 })
 
 drops.forEach(function(e){
-    e.addEventListener("dragenter",drag)
     e.addEventListener("dragover",drag)
+    e.addEventListener("dragenter",drag)
     e.addEventListener("dragleave",drag)
     e.addEventListener("drop",drop)
 })
@@ -24,7 +24,7 @@ function drag(e){
 function drop(e){
     let id=e.dataTransfer.getData("text")
     let g=document.getElementById(id)
-    a=a+id
+    a+=id
     e.target.appendChild(g)
 }
 

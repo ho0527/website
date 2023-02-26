@@ -1,5 +1,5 @@
 let languagesignup={
-    zhtw:{
+    zhtw:{//繁體中文
         signup:"註冊",
         name:"姓名",
         email:"信箱",
@@ -11,7 +11,7 @@ let languagesignup={
         loginlink:"登入",
         formal:"格式",
     },
-    en:{
+    en:{//美式英文
         signup:"signup",
         name:"name",
         email:"Email",

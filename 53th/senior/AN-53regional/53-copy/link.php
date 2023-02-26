@@ -18,7 +18,7 @@
 
     if(isset($_GET["logout"])){
         $data=$_SESSION["data"];
-        if($row=fetch(query($db,"SELECT * FROM `user` WHERE `number`='$data'"))){
+        if($row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"))){
             query($db,"INSERT INTO `data`(`number`, `username`, `code`, `name`,`premission` ,`movetime`, `move`) VALUES ('$row[4]','$row[1]','$row[2]','$row[3]','$row[5]','$time','登出成功')");
             session_unset();
             ?><script>alert("登出成功");location.href="index.php"</script><?php
@@ -34,13 +34,13 @@
         for($i=0;$i<count($data);$i++){
             ?>
             <tr>
-                <td class="admintd"><?= $data[$i][1] ?></td>
-                <td class="admintd"><?= $data[$i][2] ?></td>
-                <td class="admintd"><?= $data[$i][3] ?></td>
-                <td class="admintd"><?= $data[$i][4] ?></td>
-                <td class="admintd"><?= $data[$i][5] ?></td>
-                <td class="admintd"><?= $data[$i][6] ?></td>
-                <td class="admintd"><?= $data[$i][7] ?></td>
+                <?php
+                for($j=1;$j<=7;$j++){
+                    ?>
+                    <td class="admintd"><?= $data[$i][$j] ?></td>
+                    <?php
+                }
+                ?>
             </tr>
             <?php
         }
@@ -51,13 +51,13 @@
         for($i=0;$i<count($data);$i++){
             ?>
             <tr>
-                <td class="admintd"><?= $data[$i][1] ?></td>
-                <td class="admintd"><?= $data[$i][2] ?></td>
-                <td class="admintd"><?= $data[$i][3] ?></td>
-                <td class="admintd"><?= $data[$i][4] ?></td>
-                <td class="admintd"><?= $data[$i][5] ?></td>
-                <td class="admintd"><?= $data[$i][6] ?></td>
-                <td class="admintd"><?= $data[$i][7] ?></td>
+                <?php
+                for($j=1;$j<=7;$j++){
+                    ?>
+                    <td class="admintd"><?= $data[$i][$j] ?></td>
+                    <?php
+                }
+                ?>
             </tr>
             <?php
         }
