@@ -79,7 +79,7 @@ try{
     }catch{
         document.getElementById("navigationbarlogin").classList.add("selectbutton")
     }
-
+    
     document.getElementById(footerbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbutton2")
 }catch(error){
     console.log( error.message)

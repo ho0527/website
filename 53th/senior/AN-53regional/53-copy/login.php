@@ -5,7 +5,7 @@
     $username=$_GET["username"];
     $code=$_GET["code"];
     if(!isset($_SESSION["error"])){ $_SESSION["error"]=0; }
-    if($row=fetch(query($db,"SELECT * FROM `user` WHERE `username`='$username'"))){
+    if($row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"))){
         if($row[2]==$code){
             $verify=str_split($_SESSION["verify"]);
             if($_SESSION["key"]==0){ rsort($verify); }else{ sort($verify); }

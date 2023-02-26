@@ -1,9 +1,7 @@
 let tds=document.querySelectorAll(".verifytd")
-console.log(tds);
 
 tds.forEach(function(e){
     e.addEventListener("click",function(){
-        console.log(e);
         if(e.style.backgroundColor=="black"){
             e.style.backgroundColor="white"
         }else{

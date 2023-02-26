@@ -359,7 +359,7 @@ login
     font-size: 15px;
     color: white;
     text-align: center;
-    margin: 5px 0px 10px;
+    margin: 10px 0px 10px;
 }
 
 .a{
@@ -383,7 +383,8 @@ login
 
 .warning{
     color: red;
-    font-weight: inherit;
+    font-weight: lighter;
+    font-size: 25px;
 }
 
 .formform{

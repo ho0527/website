@@ -16,7 +16,7 @@
         </div>
         <div class="form">
             <div class="formbox">
-                <form method="POST">
+                <form method="POST" class="formform">
                     <div class="title" id="signupheader"></div>
                     <div class="inputbox">
                         <img src="image/person-sharp.svg" class="loginicon" draggable="false">
@@ -46,7 +46,7 @@
                         <div>
                             <input type="checkbox" class="loginsignupcheckbox">
                             <span id="check"></span>
-                            <a href="terms.php" id="checklink"></a>
+                            <a href="terms.php" class="a" id="checklink"></a>
                         </div>
                         <a href="#" class="a" id="signupformal"></a>
                     </div>
