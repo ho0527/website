@@ -114,9 +114,10 @@ table{
 
 .pbar{
     position: absolute;
-    top: 35%;
-    left: 20%;
-    transform: scale(1.25);
+    top: 35px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
 }
 
 .td{

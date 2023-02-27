@@ -1,0 +1,100 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(153, 153, 153, 0.494);
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1.75);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.dragbox{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 1px black solid;
+}
+
+.dropbox{
+    display: inline-block;
+    width: 170px;
+    height: 40px;
+    border: 1px black solid;
+}
+
+.verifytd{
+    border: 1px black solid;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+}
+
+.head{
+    background-color: rgb(152, 152, 152);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+}
+
+.title{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 97%;
+    font-size: 25px;
+}
+
+.hbut{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: right;
+    width: 97%;
+}
+
+.headbut{
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.top{
+    border: 1px black solid;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    overflow-y: auto;
+}
+
+.bottom{
+    border: 1px black solid;
+    position: absolute;
+    bottom: 125px;
+    left: 0px;
+    overflow-y: auto;
+}
+
+.admintd{
+    border: 1px black solid;
+    width: 505px;
+    text-align: center;
+}
+
+
+
+.selt{
+    color: orange;
+}

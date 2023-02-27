@@ -396,9 +396,25 @@ login
 */
 
 /*
-
+terms
 ########################################################################
 */
+
+.terms{
+    position: absolute;
+    top: 100px;
+}
+
+
+.termstitle{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.termsdepiction{
+    font-size: 25px;
+}
+
 
 /*
 ########################################################################

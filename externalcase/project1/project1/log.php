@@ -21,7 +21,7 @@
                 <td class="depiction">簡述</td>
             </tr>
             <tr class="log">
-                <td class="version">0.0.0</td>
+                <td class="version">0.0.0.0</td>
                 <td class="logtitle">首頁版型製作</td>
                 <td class="date">2023/02/16</td>
                 <td class="depiction">將首頁框架完成</td>
@@ -61,6 +61,12 @@
                 <td class="logtitle">版面更新及翻譯</td>
                 <td class="date">2023/02/25</td>
                 <td class="depiction">版面login/signup介面 導覽列翻譯完成(EN)</td>
+            </tr>
+            <tr class="log">
+                <td class="version">0.0.0.0</td>
+                <td class="logtitle">版面製作</td>
+                <td class="date">2023/02/27</td>
+                <td class="depiction">版面terms製作</td>
             </tr>
         </table>
         <div class="footer" id="footer"></div>

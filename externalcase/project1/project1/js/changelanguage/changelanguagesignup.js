@@ -23,6 +23,18 @@ let languagesignup={
         loginlink:"login",
         formal:"formal",
     },
+    jp:{//日文
+        signup:"",
+        name:"",
+        email:"",
+        password:"",
+        check:"",
+        checklink:"",
+        signupbutton:"",
+        logintext:"",
+        loginlink:"",
+        formal:"",
+    }
 }
 
 

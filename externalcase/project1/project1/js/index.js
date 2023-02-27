@@ -42,7 +42,7 @@ try{
             }else{
                 location.href=button.path
             }
-       }
+        }
         navigationbar.appendChild(element)
     })
 
@@ -70,17 +70,20 @@ try{
             }else{
                 location.href=button.path
             }
-       }
+        }
         footer.appendChild(element)
     })
 
     try{
         document.getElementById(navigationbarbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbutton")
     }catch{
-        document.getElementById("navigationbarlogin").classList.add("selectbutton")
+        try{
+            document.getElementById("navigationbarlogin").classList.add("selectbutton")
+        }catch{}
     }
-    
-    document.getElementById(footerbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbutton2")
+    try{
+        document.getElementById(footerbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbutton2")
+    }catch{}
 }catch(error){
     console.log( error.message)
 }
