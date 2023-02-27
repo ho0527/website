@@ -26,6 +26,9 @@
                     </div>
                 </form>
             </div>
+            <table class="productmain">
+                <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,0); ?>
+            </table>
             <?php
         }else{
             ?>
@@ -34,12 +37,15 @@
                     <div class="title">咖啡商品展示系統-首頁</div>
                     <div class="hbut">
                         <input type="button" class="headbut selt" onclick="location.href='main.php'" value="首頁">
-                        <input type="button" class="headbut" onclick="location.href='productindex.php'" value="上架商品">
+                        <input type="button" class="headbut" value="上架商品">
                         <input type="button" class="headbut" onclick="location.href='search.php'" value="查詢">
                         <input type="submit" class="headbut" name="logout" value="登出">
                     </div>
                 </form>
             </div>
+            <table class="productmain">
+                <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,1); ?>
+            </table>
             <?php
         }
     ?>
