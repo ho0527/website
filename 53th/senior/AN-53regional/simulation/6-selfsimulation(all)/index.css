@@ -1,0 +1,44 @@
+body{
+    background-color: rgba(125, 125, 125, 0.656);
+    user-select: none;
+    word-break: break-all;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.dragbox{
+    display: inline-block;
+    border: 1px black solid;
+    width: 40px;
+    height: 40px;
+}
+
+.dropbox{
+    border: 1px black solid;
+    width: 170px;
+    height: 40px;
+    
+}
+
+.verifytd{
+    border: 1px rgb(98, 98, 98) solid;
+    width: 40px;
+    height: 40px;
+}
+
+.verifytable{
+    position: relative;
+    left: 20px;
+}
