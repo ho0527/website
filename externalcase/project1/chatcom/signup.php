@@ -18,14 +18,14 @@
             <div class="formbox">
                 <form method="POST" class="formform">
                     <div class="title" id="signupheader"></div>
-                    <div class="inputbox">
+                    <!-- <div class="inputbox">
                         <img src="image/person-sharp.svg" class="loginicon" draggable="false">
                         <input type="text" name="name" class="loginsignupinput" autocomplete="off">
                         <div class="loginsignuptext">
                             <span id="name"></span>
                             <span class="warning" id="namewarning"></span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="inputbox">
                         <img src="image/mail-outline.svg" class="loginicon" draggable="false">
                         <input type="text" name="email" class="loginsignupinput" autocomplete="off">

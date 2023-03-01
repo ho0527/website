@@ -10,14 +10,14 @@ let languagelogin={
         signuplink:"註冊",
     },
     en:{
-        login:"LogIn",
+        login:"Log In",
         email:"Email",
         password:"Password",
         rememberme:"Remember Me",
         forgetpassword:"Forget Password",
-        loginbutton:"Login",
+        loginbutton:"Log in",
         signuptext:"Don\'t have an account?",
-        signuplink:"signup",
+        signuplink:"sign up",
     },
 }
 

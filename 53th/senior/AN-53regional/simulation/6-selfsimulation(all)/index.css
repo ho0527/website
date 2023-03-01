@@ -13,7 +13,7 @@ table{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) scale(2);
+    transform: translate(-50%,-50%) scale(3);
     border-radius: 10px;
     padding: 20px;
     color: white;

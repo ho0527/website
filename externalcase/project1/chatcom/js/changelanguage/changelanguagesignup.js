@@ -1,7 +1,7 @@
 let languagesignup={
     zhtw:{//繁體中文
         signup:"註冊",
-        name:"姓名",
+        // name:"姓名",
         email:"信箱",
         password:"密碼",
         check:"我已同意",
@@ -12,20 +12,20 @@ let languagesignup={
         formal:"格式",
     },
     en:{//美式英文
-        signup:"signup",
-        name:"name",
+        signup:"sign up",
+        // name:"name",
         email:"Email",
         password:"Password",
         check:"I agree with",
         checklink:"this statment",
-        signupbutton:"signup",
+        signupbutton:"sign up",
         logintext:"have an account?",
-        loginlink:"login",
+        loginlink:"log in",
         formal:"formal",
     },
     jp:{//日文
         signup:"",
-        name:"",
+        // name:"",
         email:"",
         password:"",
         check:"",
@@ -42,7 +42,7 @@ let languagesignup={
 function switchlanguage(language){
     // 更改文本內容
     document.getElementById("signupheader").innerHTML=language.signup
-    document.getElementById("name").innerHTML=language.name
+    // document.getElementById("name").innerHTML=language.name
     document.getElementById("email").innerHTML=language.email
     document.getElementById("password").innerHTML=language.password
     document.getElementById("check").innerHTML=language.check

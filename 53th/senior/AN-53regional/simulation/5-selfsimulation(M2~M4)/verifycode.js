@@ -1,4 +1,4 @@
-let drags=document.querySelectorAll(".dragimg")
+let drags=document.querySelectorAll(".drag")
 let drops=document.querySelectorAll(".dropbox")
 let a=""
 
@@ -8,10 +8,11 @@ drags.forEach(function(e){
 
 drops.forEach(function(e){
     e.addEventListener("dragover",drag)
-    e.addEventListener("dragenter",drag)
     e.addEventListener("dragleave",drag)
+    e.addEventListener("dragenter",drag)
     e.addEventListener("drop",drop)
 })
+
 
 function dragstart(e){
     e.dataTransfer.setData("text",e.target.id)
@@ -31,5 +32,5 @@ function drop(e){
 function login(){
     let username=document.getElementById("username").value
     let code=document.getElementById("code").value
-    location.href="login.php?code="+code+"&username="+username+"&verify="+a
+    location.href="login.php?username="+username+"&code="+code+"&verify="+a
 }

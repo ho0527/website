@@ -1,0 +1,41 @@
+body{
+    background-color: rgba(145, 145, 145, 0.656);
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(3);
+    background: none;
+    padding: 20px;
+}
+
+.dragbox{
+    display: inline-block;
+    border: 1px black solid;
+    width: 40px;
+    height: 40px;
+}
+
+.dropbox{
+    border: 1px black solid;
+    width: 170px;
+    height: 40px;
+}
+
+.verifytable{
+    position: relative;
+    left: 20px;
+}
+
+.verifytd{
+    border: 1px rgb(82, 82, 82) solid;
+    width: 40px;
+    height: 40px;
+}
