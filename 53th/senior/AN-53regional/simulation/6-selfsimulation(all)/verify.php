@@ -22,7 +22,7 @@
                 <td class="verifytd"></td>
                 <td class="verifytd"></td>
             </tr>
-        </table>
+        </table><br>
         <div>
             <form action="">
                 <input type="submit" name="logout" value="登出">
