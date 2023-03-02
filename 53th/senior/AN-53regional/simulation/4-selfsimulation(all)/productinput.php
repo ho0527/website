@@ -38,11 +38,11 @@
         </div>
         <div class="main">
             <form id="form" method="POST" enctype="multipart/form-data">
-                商品名稱: <input type="text" name="name" id="" value="<?= @$_SESSION["name"] ?>"><br>
-                費用: <input type="text" name="cost" id="" value="<?= @$_SESSION["cost"] ?>"><br>
-                相關連結: <input type="text" name="link" id="" value="<?= @$_SESSION["link"] ?>"><br>
-                商品簡介: <textarea name="intr" id="" cols="30" rows="3"><?= @$_SESSION["intr"] ?></textarea><br>
-                <input type="file" name="picture" id="" style="width:175px;">
+                商品名稱: <input type="text" name="name" value="<?= @$_SESSION["name"] ?>"><br>
+                費用: <input type="text" name="cost" value="<?= @$_SESSION["cost"] ?>"><br>
+                相關連結: <input type="text" name="link" value="<?= @$_SESSION["link"] ?>"><br>
+                商品簡介: <textarea name="intr" cols="30" rows="3"><?= @$_SESSION["intr"] ?></textarea><br>
+                <input type="file" name="picture" style="width:175px;">
                 <input type="submit" name="clear" value="清除">
                 <input type="submit" name="submit" value="送出">
             </form>

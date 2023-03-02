@@ -15,7 +15,7 @@
         <div class="head">
             <div class="title">咖啡商品展示系統-確定送出</div>
             <div class="hbut">
-                <form action="">
+                <form>
                     <input type="button" class="headbut" onclick="location.href='edit.php'" value="新增使用者">
                     <input type="button" class="headbut" onclick="location.href='main.php'" value="首頁">
                     <input type="button" class="headbut selt" onclick="location.href='productindex.php'" value="上架商品">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="pbar">
-            <form action="">
+            <form>
                 <input type="button" class="headbut" onclick="location.href='productindex.php'" value="選擇版型">
                 <input type="button" class="headbut" onclick="location.href='productinput.php'" value="填寫資料">
                 <input type="button" class="headbut" onclick="location.href='productperview.php'" value="預覽">
@@ -37,7 +37,7 @@
             </form>
         </div>
         <div class="main" style="text-align:center;">
-            <form action="">
+            <form>
                 確定?<br>
                 <input type="submit" name="submit" value="取消">
                 <input type="submit" name="submit" value="確定">

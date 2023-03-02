@@ -43,13 +43,13 @@
         ?>
     </table>
     <div class="main newproduct">
-        <form action="">
-            照片: <input type="text" name="picture" id="" placeholder="1~4(會往下佔2格)"><br>
-            商品名稱: <input type="text" name="name" id=""><br>
-            費用: <input type="text" name="cost" id=""><br>
-            相關連結: <input type="text" name="link" id=""><br>
-            發佈日期: <input type="text" name="date" id=""><br>
-            商品簡介: <input type="text" name="intr" id=""><br>
+        <form>
+            照片: <input type="text" name="picture" placeholder="1~4(會往下佔2格)"><br>
+            商品名稱: <input type="text" name="name"><br>
+            費用: <input type="text" name="cost"><br>
+            相關連結: <input type="text" name="link"><br>
+            發佈日期: <input type="text" name="date"><br>
+            商品簡介: <input type="text" name="intr"><br>
             <input type="submit" name="submit" value="送出">
         </form>
     </div>

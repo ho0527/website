@@ -30,13 +30,13 @@
             </div>
             <div class="main">
                 <form id="form" method="POST" enctype="multipart/form-data">
-                    編號: <input type="text" name="number" id="" value="<?= $row[0] ?>" readonly><br>
-                    商品名稱: <input type="text" name="name" id="" value="<?= @$row[2] ?>"><br>
-                    費用: <input type="text" name="cost" id="" value="<?= @$row[4] ?>"><br>
-                    相關連結: <input type="text" name="link" id="" value="<?= @$row[3] ?>"><br>
-                    商品簡介: <textarea name="intr" id="" cols="30" rows="3"><?= @$row[6] ?></textarea><br>
-                    <input type="file" name="picture" id="" style="width:175px;"><br>
-                    版型: <input type="text" name="val" id="" value="<?= @$row[7] ?>"><br>
+                    編號: <input type="text" name="number" value="<?= $row[0] ?>" readonly><br>
+                    商品名稱: <input type="text" name="name" value="<?= @$row[2] ?>"><br>
+                    費用: <input type="text" name="cost" value="<?= @$row[4] ?>"><br>
+                    相關連結: <input type="text" name="link" value="<?= @$row[3] ?>"><br>
+                    商品簡介: <textarea name="intr" cols="30" rows="3"><?= @$row[6] ?></textarea><br>
+                    <input type="file" name="picture" style="width:175px;"><br>
+                    版型: <input type="text" name="val" value="<?= @$row[7] ?>"><br>
                     <input type="button" onclick="location.href='main.php'" value="取消">
                     <input type="button" onclick="location.reload()" value="重設">
                     <input type="submit" name="peditsubmit" value="送出">
@@ -62,18 +62,18 @@
             </div>
             <div class="main">
                 <form action="">
-                    姓名: <input type="text" name="number" value="<?= $row[1] ?>" id=""><br>
-                    姓名: <input type="text" name="name" value="<?= $row[4] ?>" id=""><br>
-                    帳號: <input type="text" name="username" value="<?= $row[2] ?>" id=""><br>
-                    密碼: <input type="text" name="code" value="<?= $row[3] ?>" id=""><br>
+                    姓名: <input type="text" name="number" value="<?= $row[1] ?>"><br>
+                    姓名: <input type="text" name="name" value="<?= $row[4] ?>"><br>
+                    帳號: <input type="text" name="username" value="<?= $row[2] ?>"><br>
+                    密碼: <input type="text" name="code" value="<?= $row[3] ?>"><br>
                     <?php
                         if($row[5]=="管理者"){
                             ?>
-                            管理員權限 <input type="checkbox" name="admin" id="" checked>
+                            管理員權限 <input type="checkbox" name="admin" checked>
                             <?php
                         }else{
                             ?>
-                            管理員權限 <input type="checkbox" name="admin" id="">
+                            管理員權限 <input type="checkbox" name="admin">
                             <?php
                         }
                     ?>
@@ -100,10 +100,10 @@
             </div>
             <div class="main">
                 <form action="">
-                    姓名: <input type="text" name="name" id=""><br>
-                    帳號: <input type="text" name="username" id=""><br>
-                    密碼: <input type="text" name="code" id=""><br>
-                    管理員權限 <input type="checkbox" name="admin" id="">
+                    姓名: <input type="text" name="name"><br>
+                    帳號: <input type="text" name="username"><br>
+                    密碼: <input type="text" name="code"><br>
+                    管理員權限 <input type="checkbox" name="admin">
                     <input type="button" onclick="location.href='main.php'" value="取消">
                     <input type="button" onclick="location.reload()" value="重設">
                     <input type="submit" name="new" value="送出">

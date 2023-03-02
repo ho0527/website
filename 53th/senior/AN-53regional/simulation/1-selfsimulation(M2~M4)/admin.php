@@ -17,13 +17,13 @@
             <input type="button" class="ubutton" onclick="location.href=''" value="查詢">
             <input type="button" class="ubutton select" onclick="location.href='admin.php'" value="會員管理">
             <input type="submit" class="ubutton" name="logout" value="登出">
-            <input type="text" name="search" id="" placeholder="查詢">
+            <input type="text" name="search" placeholder="查詢">
             <input type="submit" name="submit" value="送出">
         </form>
     </div>
     <table class="atable">
         <tr>
-            <form action="">
+            <form>
                 <td class="admtable">編號<input type="submit" name="num" id="num" value="升冪"></td>
                 <td class="admtable">帳號<input type="submit" name="username" id="username" value="升冪"></td>
                 <td class="admtable">密碼<input type="submit" name="code" id="code" value="升冪"></td>
@@ -47,7 +47,7 @@
             </form>
         </tr>
     </table>
-    <form action="">
+    <form>
         <table class="timer">
             <tr>
                 <td rowspan="2" class="time">

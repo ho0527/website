@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="main" style="text-align:center; ">
-        <form action="">
+        <form>
             確定送出?<br>
             <input type="submit" name="submit" value="取消">
             <input type="submit" name="submit" value="確認送出">

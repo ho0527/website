@@ -14,7 +14,7 @@
         if($_SESSION["permission"]=="管理者"){
             ?>
             <div class="head">
-                <form action="">
+                <form>
                     <div class="title">咖啡商品展示系統-查詢</div>
                     <div class="hbut">
                         <input type="button" class="headbut" onclick="location.href='edit.php'" value="新增使用者">
@@ -30,7 +30,7 @@
         }else{
             ?>
             <div class="head">
-                <form action="">
+                <form>
                     <div class="title">咖啡商品展示系統-查詢</div>
                     <div class="hbut">
                         <input type="button" class="headbut" onclick="location.href='main.php'" value="首頁">
@@ -46,13 +46,13 @@
     <div class="search">
         <form style="display:inline-block">
             數字範圍
-            <input type="text" name="start" id="">~
-            <input type="text" name="end" id="">
+            <input type="text" name="start">~
+            <input type="text" name="end">
             <input type="submit" name="nsubmit" value="送出">
         </form>
         <form style="display:inline-block">
             關鍵字
-            <input type="text" name="text" id="">
+            <input type="text" name="text">
             <input type="submit" name="tsubmit" value="送出">
         </form>
     </div>

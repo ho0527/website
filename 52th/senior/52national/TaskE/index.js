@@ -128,7 +128,7 @@ addsut.onclick=function(){
                         <input type="tel" name="phone[]" class="input" placeholder="手機"><br>
                         <input type="text" name="address" class="input" placeholder="住址"><br>
                         <select name="class" id="class"></select><br>
-                        <textarea name="note" id="" cols="20" rows="1" class="note"></textarea><br>
+                        <textarea name="note" cols="20" rows="1" class="note"></textarea><br>
                         <div class="button">
                             <button type="button" id="close" class="close">取消</button>
                             <button id="submit" name="enter" class="submit">確定</button>
@@ -200,7 +200,7 @@ editstu.onclick=function(){
                         <input type="tel" name="phone[]" class="input" placeholder="手機"><br>
                         <input type="text" name="address" class="input" placeholder="住址"><br>
                         <select name="class" id="class"></select><br>
-                        <textarea name="note" id="" cols="20" rows="1" class="note"></textarea><br>
+                        <textarea name="note" cols="20" rows="1" class="note"></textarea><br>
                         <div class="button">
                             <button type="button" id="close" class="close">取消</button>
                             <button id="submit" name="enter" class="submit">確定</button>

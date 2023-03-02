@@ -15,7 +15,7 @@
         <div class="head">
             <div class="title">咖啡商品展示系統-新增版型</div>
             <div class="hbut">
-                <form action="">
+                <form>
                     <input type="button" class="headbut" onclick="location.href='edit.php'" value="新增使用者">
                     <input type="button" class="headbut" onclick="location.href='main.php'" value="首頁">
                     <input type="button" class="headbut selt" onclick="location.href='productindex.php'" value="上架商品">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="pbar">
-            <form action="">
+            <form>
                 <div style="float:right;">
                     <input type="button" class="headbut" onclick="location.href='productindex.php'" value="返回">
                 </div>
@@ -50,13 +50,13 @@
                 <td class="newcoffeetd">8</td>
             </tr>
         </table>
-        <form action="" class="newform">
-            圖片: <input type="text" name="picture" id="" placeholder="1~4會往下佔3格"><br>
-            商品名稱: <input type="text" name="name" id=""><br>
-            相關連結: <input type="text" name="link" id=""><br>
-            商品簡介: <input type="text" name="intr" id=""><br>
-            發佈日期: <input type="text" name="date" id=""><br>
-            費用: <input type="text" name="cost" id=""><br>
+        <form class="newform">
+            圖片: <input type="text" name="picture" placeholder="1~4會往下佔3格"><br>
+            商品名稱: <input type="text" name="name"><br>
+            相關連結: <input type="text" name="link"><br>
+            商品簡介: <input type="text" name="intr"><br>
+            發佈日期: <input type="text" name="date"><br>
+            費用: <input type="text" name="cost"><br>
             <input type="submit" name="submit" value="送出">
         </form>
         <?php

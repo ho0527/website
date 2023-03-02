@@ -8,8 +8,8 @@ drags.forEach(function(e){
 
 drops.forEach(function(e){
     e.addEventListener("dragover",drag)
-    e.addEventListener("dragleave",drag)
     e.addEventListener("dragenter",drag)
+    e.addEventListener("dragleave",drag)
     e.addEventListener("drop",drop)
 })
 
@@ -23,13 +23,13 @@ function drag(e){
 
 function drop(e){
     let id=e.dataTransfer.getData("text")
-    let drag=document.getElementById(id)
+    let g=document.getElementById(id)
     a=a+id
-    e.target.appendChild(drag)
+    e.target.appendChild(g)
 }
 
 function login(){
     let username=document.getElementById("username").value
     let code=document.getElementById("code").value
-    location.href="login.php?verify="+a+"&username="+username+"&code="+code
+    location.href="login.php?username="+username+"&code="+code+"&verify="+a
 }

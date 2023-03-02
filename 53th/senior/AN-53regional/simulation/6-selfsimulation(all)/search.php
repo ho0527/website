@@ -42,13 +42,13 @@
     
     <div class="pbut">
         <div class="ppbut">
-            <form action="">
+            <form>
                 數字範圍<input type="text" name="start" placeholder="最高價位">~
                 <input type="text" name="end" placeholder="最低價位">
                 <input type="submit" name="num" value="送出">
             </form>
-            <form action="">
-                關鍵字<input type="text" name="text" id="">
+            <form>
+                關鍵字<input type="text" name="text">
                 <input type="submit" name="texts" value="送出">
             </form>
         </div>

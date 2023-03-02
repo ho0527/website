@@ -15,7 +15,7 @@
         <div class="head">
             <div class="title">咖啡商品展示系統-會員管理</div>
             <div class="hbut">
-                <form action="">
+                <form>
                     <input type="button" class="headbut" onclick="location.href='edit.php'" value="新增使用者">
                     <input type="button" class="headbut" onclick="location.href='main.php'" value="首頁">
                     <input type="button" class="headbut" onclick="location.href='productindex.php'" value="上架商品">
@@ -23,13 +23,13 @@
                     <input type="button" class="headbut selt" onclick="location.href='admin.php'" value="會員管理">
                     <input type="submit" class="headbut" name="logout" value="登出">
                 </form><br>
-                <form action="">
+                <form>
                     <input type="text" name="search" placeholder="查詢">
                     <input type="submit" name="submit" value="送出">
                 </form>
             </div>
         </div>
-        <form action="">
+        <form>
             <div class="top">
                 <table>
                     <tr>
@@ -52,7 +52,7 @@
                 </table>
             </div>
         </form>
-        <form action="">
+        <form>
             <div class="bottom">
                 <table>
                     <tr>
@@ -97,7 +97,7 @@
                 </table>
             </div>
         </form>
-        <form action="">
+        <form>
             <div class="timer">
                 <table class="timetable">
                     <tr>
@@ -105,7 +105,7 @@
                             <input type="text" name="" class="timeinputmain" value="<?= $_SESSION["timer"] ?>" id="timer" readonly>
                         </td>
                         <td class="timertd">
-                            <input type="text" name="time" class="timeinput" value="<?= $_SESSION["timer"] ?>" id="">
+                            <input type="text" name="time" class="timeinput" value="<?= $_SESSION["timer"] ?>">
                         </td>
                     </tr>
                     <tr>

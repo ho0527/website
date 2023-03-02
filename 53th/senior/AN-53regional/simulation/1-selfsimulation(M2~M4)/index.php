@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="index">
-        <form action="">
+        <form>
             <?php session_start() ?>
             咖啡商品展示系統<br>
             帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br>

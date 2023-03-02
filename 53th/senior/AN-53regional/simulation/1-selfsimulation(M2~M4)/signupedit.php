@@ -26,7 +26,7 @@
                     </form>
                 </div>
                 <div class="signup">
-                    <form action="">
+                    <form>
                         編號: <input type="text" name="number" value="<?= $row[4] ?>" readonly><br>
                         姓名: <input type="text" name="name" value="<?= $row[3] ?>"><br>
                         帳號: <input type="text" name="username" value="<?= $row[1] ?>"><br>
@@ -34,11 +34,11 @@
                         <?php
                         if($row[5]=="管理者"){
                             ?>
-                            管理員權限: <input type="checkbox" name="adminbox" id="" checked><br>
+                            管理員權限: <input type="checkbox" name="adminbox" checked><br>
                             <?php
                         }else{
                             ?>
-                            管理員權限: <input type="checkbox" name="adminbox" id=""><br>
+                            管理員權限: <input type="checkbox" name="adminbox"><br>
                             <?php
                         }
                         ?>
@@ -64,11 +64,11 @@
                 </form>
             </div>
             <div class="signup">
-                <form action="">
+                <form>
                     姓名: <input type="text" name="name"><br>
                     帳號: <input type="text" name="username"><br>
                     密碼: <input type="text" name="code"><br>
-                    管理員權限: <input type="checkbox" name="adminbox" id=""><br>
+                    管理員權限: <input type="checkbox" name="adminbox"><br>
                     <input type="button" onclick="location.href='user.php'" value="取消">
                     <input type="submit" name="sign" value="送出">
                 </form>

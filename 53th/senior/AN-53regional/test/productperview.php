@@ -13,7 +13,7 @@
         if(!isset($_SESSION["data"])){ header("location:index.php"); }
     ?>
     <div class="head">
-        <div class="title">咖啡商品展示系統-選擇版型</div>
+        <div class="title">咖啡商品展示系統-預覽</div>
         <div class="but">
             <input type="button" class="hbut" onclick="location.href='edit.php'" value="新增使用者">
             <input type="button" class="hbut" onclick="location.href='main.php'" value="首頁">
@@ -25,10 +25,10 @@
     </div>
     <div class="pbut">
         <div class="ppbut">
-            <input type="button" class="hbut selt" onclick="location.href='productindex.php'" value="選擇版型">
-            <input type="button" class="hbut" onclick="check()" value="填寫資料">
-            <input type="button" class="hbut" onclick="nono()" value="預覽">
-            <input type="button" class="hbut" onclick="nono()" value="確定送出">
+            <input type="button" class="hbut" onclick="location.href='productindex.php'" value="選擇版型">
+            <input type="button" class="hbut" onclick="location.href='productinput.php'" value="填寫資料">
+            <input type="button" class="hbut selt" onclick="location.href='productpreview.php'" value="預覽">
+            <input type="button" class="hbut" onclick="location.href='productsubmit.php'" value="確定送出">
             <div style="float:right;">
                 <input type="button" class="hbut" onclick="location.href='newproduct.php'" value="新增版型">
             </div>
@@ -38,29 +38,29 @@
         <?php
             function data2($p){
                 if($p=="name"){
-                    ?>商品名稱:<?php 
+                    ?>商品名稱: <?= $_SESSION["name"] ?><?php 
                 }elseif($p=="cost"){
-                    ?>費用:0000<?php 
+                    ?>費用: <?= $_SESSION["cost"] ?><?php 
                 }elseif($p=="link"){
-                    ?>相關連結:<?php 
+                    ?>相關連結: <?= $_SESSION["link"] ?><?php 
                 }elseif($p=="date"){
-                    ?>發佈日期:<?php 
+                    ?>發佈日期:(發佈後產生)<?php 
                 }else{
-                    ?>商品簡介:<?php 
+                    ?>商品簡介: <?= $_SESSION["intr"] ?><?php 
                 }
             }
-
-            $product=fetchall(query($db,"SELECT*FROM `product`"));
+            $val=$_SESSION["val"];
+            $product=fetchall(query($db,"SELECT*FROM `product` WHERE `id`='$val'"));
             for($j=0;$j<count($product);$j++){
                 ?>
                 <tr>
                     <td class="producttd">
-                        <table class="coffeetable" id="<?= $product[$j][0] ?>">
+                        <table class="coffeetable">
                             <?php
                             if($product[$j][1]=="picture"){
                                 ?>
                                 <tr>
-                                    <td class="coffee" rowspan="3">圖片</td>
+                                    <td class="coffee" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                     <td class="coffee"><?php data2($product[$j][2]) ?></td>
                                 </tr>
                                 <tr>
@@ -78,7 +78,7 @@
                                 ?>
                                 <tr>
                                     <td class="coffee"><?php data2($product[$j][1]) ?></td>
-                                    <td class="coffee" rowspan="3">圖片</td>
+                                    <td class="coffee" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                 </tr>
                                 <tr>
                                     <td class="coffee"><?php data2($product[$j][3]) ?></td>
@@ -98,7 +98,7 @@
                                     <td class="coffee"><?php data2($product[$j][2]) ?></td>
                                 </tr>
                                 <tr>
-                                    <td class="coffee" rowspan="3">圖片</td>
+                                    <td class="coffee" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                     <td class="coffee"><?php data2($product[$j][4]) ?></td>
                                 </tr>
                                 <tr>
@@ -116,7 +116,7 @@
                                 </tr>
                                 <tr>
                                     <td class="coffee"><?php data2($product[$j][3]) ?></td>
-                                    <td class="coffee" rowspan="3">圖片</td>
+                                    <td class="coffee" rowspan="3"><img src="<?= $_SESSION["picture"] ?>" alt="圖片" width="175px"></td>
                                 </tr>
                                 <tr>
                                     <td class="coffee"><?php data2($product[$j][5]) ?></td>
@@ -127,7 +127,6 @@
                                 <?php
                             }
                             ?>
-                            <?php echo("這是版型".$product[$j][0]); ?>
                         </table>
                     </td>
                 </tr>
@@ -135,6 +134,5 @@
             }
         ?>
     </table>
-    <script src="product.js"></script>
 </body>
 </html>

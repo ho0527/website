@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <form action="" class="verify">
+    <form class="verify">
         <table class="verifytable">
             <tr>
                 <td class="verifytd" id="td1"></td>

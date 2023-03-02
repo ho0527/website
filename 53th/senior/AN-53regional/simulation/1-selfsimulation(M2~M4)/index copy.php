@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="index">
-        <form action="">
+        <form>
             <h1></h1>
         </form>
     </div>

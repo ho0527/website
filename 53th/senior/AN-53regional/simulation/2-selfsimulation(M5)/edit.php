@@ -32,8 +32,8 @@
                     商品名稱: <input type="input" name="name" value="<?= @$row["name"] ?>"><br>
                     費 用: <input type="input" name="cost" value="<?= @$row["cost"] ?>"><br>
                     相關連結: <input type="input" name="link" value="<?= @$row["link"] ?>"><br>
-                    商品簡介: <textarea name="intr" id="" cols="30" rows="3"></textarea><br>
-                    <input type="file" name="picture" id=""><br>
+                    商品簡介: <textarea name="intr" cols="30" rows="3"></textarea><br>
+                    <input type="file" name="picture"><br>
                     版型: <input type="input" name="link" value="<?= @$row["link"] ?>"><br>
                     <input type="hidden" name="id" value="<?= $id ?>">
                     <input type="submit" name="submit" value="返回">
