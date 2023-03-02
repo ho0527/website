@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <form action="">
+    <form>
         <div class="nbar">
             <div class="title">咖啡商品管理系統-會員管理</div>
             <div class="divbut">
@@ -49,7 +49,7 @@
         <tr>
             <td rowspan="2" class="ttd"><input type="text" class="timer" value="<?= $_SESSION["timer"] ?>" id="timer" readonly></td>
             <td class="ttd">
-                <form action="">
+                <form>
                     <input type="text" class="time" name="timer" value="<?= $_SESSION["timer"] ?>">
                     <input type="submit" name="ct" value="送出">
                 </form>

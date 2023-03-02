@@ -44,15 +44,15 @@
     ?>
     <div class="search1">
         <div class="searchdiv">
-            <form action="">
-                <input type="number" name="start" id="" placeholder="開始值">~
-                <input type="number" name="end" id="" placeholder="結束值">
+            <form>
+                <input type="number" name="start" placeholder="開始值">~
+                <input type="number" name="end" placeholder="結束值">
                 <input type="submit" name="se" value="送出">
             </form>
         </div>
         <div class="searchdiv">
-            <form action="">
-                <input type="text" name="text" id="" placeholder="關鍵字">~
+            <form>
+                <input type="text" name="text" placeholder="關鍵字">~
                 <input type="submit" name="t" value="送出">
             </form>
         </div>

@@ -53,14 +53,14 @@
         </table>
     </div>
     <div class="search">
-        <form action="">
-            <input type="text" name="search" id="" placeholder="查詢">
+        <form>
+            <input type="text" name="search" placeholder="查詢">
             <input type="submit" name="searchsubmit" value="送出">
         </form>
     </div>
     <div class="bottom">
         <table class="admintable">
-            <form action="">
+            <form>
                 <tr>
                     <td class="admintd">使用者編號<input type="submit" name="updownnumber" value="升冪" id="updownnumber"></td>
                     <td class="admintd">使用者帳號<input type="submit" name="updownuname" value="升冪" id="updownuname"></td>
@@ -80,7 +80,7 @@
         </table>
     </div>
     <div class="timer">
-        <form action="">
+        <form>
             <table class="timertable">
                 <tr>
                     <td class="timertd" rowspan="2">

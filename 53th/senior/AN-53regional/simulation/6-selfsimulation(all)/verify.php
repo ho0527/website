@@ -24,7 +24,7 @@
             </tr>
         </table><br>
         <div>
-            <form action="">
+            <form>
                 <input type="submit" name="logout" value="登出">
                 <input type="button" onclick="location.reload()" value="重設">
                 <input type="button" onclick="check()" value="確定">

@@ -37,8 +37,8 @@
             商品名稱: <input type="text" name="name" id="name"><br>
             費用: <input type="text" name="cost" id="name"><br>
             相關連結: <input type="text" name="link" id="name"><br>
-            商品簡介:<br> <textarea name="intr" id="" cols="30" rows="3"></textarea><br>
-            <input type="file" name="" id="" style="width:175px">
+            商品簡介:<br> <textarea name="intr" cols="30" rows="3"></textarea><br>
+            <input type="file" name="" style="width:175px">
             <input type="submit" name="clear" onclick="location.reload()" value="清除">
             <input type="submit" name="new" value="送出">   
         </form>

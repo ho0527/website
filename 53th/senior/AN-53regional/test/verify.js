@@ -1,9 +1,13 @@
-let alltd=document.querySelectorAll(".verifytd")
+let ver=document.querySelectorAll(".verifytd")
 
-alltd.forEach(function(td){
-    td.style.backgroundColor="white"
-    td.addEventListener("click",function(){
-        tdclick(td)
+ver.forEach(function(e){
+    e.style.backgroundColor="white"
+    e.addEventListener("click",function(){
+        if(e.style.backgroundColor=="white"){
+            e.style.backgroundColor="black"
+        }else{
+            e.style.backgroundColor="white"
+        }
     })
 })
 
@@ -13,23 +17,9 @@ function pass(){
 }
 
 function check(){
-    if((alltd[0].style.backgroundColor==alltd[1].style.backgroundColor)&&alltd[1].style.backgroundColor=="black"){
-        pass()
-    }else if((alltd[2].style.backgroundColor==alltd[3].style.backgroundColor)&&alltd[3].style.backgroundColor=="black"){
-        pass()
-    }else if((alltd[0].style.backgroundColor==alltd[2].style.backgroundColor)&&alltd[2].style.backgroundColor=="black"){
-        pass()
-    }else if((alltd[1].style.backgroundColor==alltd[3].style.backgroundColor)&&alltd[3].style.backgroundColor=="black"){
-        pass()
-    }else{
-        alert("驗證碼輸入錯誤")
-    }
-}
-
-function tdclick(id){
-    if(id.style.backgroundColor=="black"){
-        id.style.backgroundColor="white"
-    }else{
-        id.style.backgroundColor="black"
-    }
+    if(ver[0].style.backgroundColor==ver[1].style.backgroundColor&&ver[1].style.backgroundColor=="black") pass()
+    else if(ver[2].style.backgroundColor==ver[3].style.backgroundColor&&ver[3].style.backgroundColor=="black") pass()
+    else if(ver[0].style.backgroundColor==ver[2].style.backgroundColor&&ver[2].style.backgroundColor=="black") pass()
+    else if(ver[3].style.backgroundColor==ver[1].style.backgroundColor&&ver[1].style.backgroundColor=="black") pass()
+    else alert("驗證碼有誤")
 }

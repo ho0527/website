@@ -13,7 +13,7 @@
         if(isset($_SESSION["data"])){ header("location:main.php"); }
     ?>
     <div class="main">
-        <form action="">
+        <form>
             咖啡商品展示系統<br>
             帳號: <input type="taext" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br>
             密碼: <input type="text" name="code" id="code" value="<?= @$_SESSION["code"] ?>"><br>

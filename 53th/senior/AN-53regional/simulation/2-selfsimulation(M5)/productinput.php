@@ -37,8 +37,8 @@
                 商品名稱: <input type="input" name="name" value="<?= @$_SESSION["name"] ?>"><br>
                 費 用: <input type="input" name="cost" value="<?= @$_SESSION["cost"] ?>"><br>
                 相關連結: <input type="input" name="link" value="<?= @$_SESSION["link"] ?>"><br>
-                商品簡介: <textarea name="intr" id="" cols="30" rows="3"></textarea><br>
-                <input type="file" name="picture" id=""><br>
+                商品簡介: <textarea name="intr" cols="30" rows="3"></textarea><br>
+                <input type="file" name="picture"><br>
                 <input type="submit" name="clear" value="重設">
                 <input type="submit" name="submit" value="送出">
             </form>

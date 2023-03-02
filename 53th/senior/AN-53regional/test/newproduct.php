@@ -1,70 +1,70 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>管理者專區</title>
-        <link rel="stylesheet" href="index.css">
-   </head>
-   <body>
-        <div class="header">
-            <form class="headerform">
-               <div class="headtitle">咖啡商品展示系統-新增版型</div>
-               <div class="headbut">
-                  <input type="button" class="hbutton" onclick="location.href='signupedit.php'" value="新增">
-                  <input type="button" class="hbutton" onclick="location.href='main.php'" value="首頁">
-                  <input type="button" class="hbutton selectbut" onclick="location.href='productindex.php'" value="上架商品">
-                  <input type="button" class="hbutton" onclick="location.href='search.php'" value="查詢">
-                  <input type="button" class="hbutton" onclick="location.href='admin.php'" value="會員管理">
-                  <input type="submit" class="hbutton" name="logout" value="登出">
-               </div>
-            </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網站前台登入頁面</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <?php
+        include("link.php");
+        if(!isset($_SESSION["data"])){ header("location:index.php"); }
+    ?>
+    <div class="head">
+        <div class="title">咖啡商品展示系統-選擇版型</div>
+        <div class="but">
+            <input type="button" class="hbut" onclick="location.href='edit.php'" value="新增使用者">
+            <input type="button" class="hbut" onclick="location.href='main.php'" value="首頁">
+            <input type="button" class="hbut selt" onclick="location.href='productindex.php'" value="上架商品">
+            <input type="button" class="hbut" onclick="location.href='search.php'" value="查詢">
+            <input type="button" class="hbut" onclick="location.href='admin.php'" value="會員管理">
+            <input type="button" class="hbut" onclick="location.href='link.php?logout='" value="登出">
         </div>
-      <div class="version" id="version1" style="top: 300px;left:225px;">
-         <table class="producttable">
-            <tr>
-               <td class="coffeedata">1</td>
-               <td class="coffeedata">2</td>
-            </tr>
-            <tr>
-               <td class="coffeedata">3</td>
-               <td class="coffeedata">4</td>
-            </tr>
-            <tr>
-               <td class="coffeedata">5</td>
-               <td class="coffeedata">6</td>
-            </tr>
-            <tr>
-                <td class="coffeedata">7</td>
-               <td class="coffeedata">8</td>
-            </tr>
-         </table>
-      </div>
-      <form class="version" style="top: 300px;right:225px;">
-         圖片: <input type="number" name="picture" placeholder="1~4(會往下佔2格)"><br><br>
-         名稱: <input type="number" name="name" placeholder="1~8"><br><br>
-         連結: <input type="number" name="link" placeholder="1~8"><br><br>
-         金額: <input type="number" name="cost" placeholder="1~8"><br><br>
-         日期: <input type="number" name="date" placeholder="1~8"><br><br>
-         敘述: <input type="number" name="introduction" placeholder="1~8"><br>
-         <input type="submit" name="submit" value="送出">
-      </form>
-      <div style="float:right">
-         <button onclick="location.href='productindex.php'">返回</button>
-      </div>
-      <?php
-         include("link.php");
-         if(isset($_GET["submit"])){
+    </div>
+    <div class="pbut">
+        <div class="ppbut">
+            <div style="float:right;">
+                <input type="button" class="hbut" onclick="location.href='productindex.php'" value="返回">
+            </div>
+        </div>
+    </div>
+    <table class="producttable">
+        <?php
+            for($i=1;$i<8;$i=$i+2){
+                ?>
+                <tr>
+                    <td class="coffee"><?= $i ?></td>
+                    <td class="coffee"><?= $i+1 ?></td>
+                </tr>
+                <?php
+            }
+        ?>
+    </table>
+    <div class="main newproduct">
+        <form>
+            照片: <input type="text" name="picture" placeholder="1~4(會往下佔2格)"><br>
+            商品名稱: <input type="text" name="name"><br>
+            費用: <input type="text" name="cost"><br>
+            相關連結: <input type="text" name="link"><br>
+            發佈日期: <input type="text" name="date"><br>
+            商品簡介: <input type="text" name="intr"><br>
+            <input type="submit" name="submit" value="送出">
+        </form>
+    </div>
+    <?php
+        if(isset($_GET["submit"])){
             $picture=$_GET["picture"];
             $name=$_GET["name"];
-            $link=$_GET["link"];
             $cost=$_GET["cost"];
+            $link=$_GET["link"];
             $date=$_GET["date"];
-            $introduction=$_GET["introduction"];
-            query($db,"INSERT INTO `product`(`$picture`, `$name`, `$link`, `$cost`, `$date`, `$introduction`) VALUES ('picture','name','link','cost','date','introduction')");
-            ?><script>alert("完成!");location.href="productindex.php"</script><?php
-         }
-      ?>
-   </body>
+            $intr=$_GET["intr"];
+            query($db,"INSERT INTO `product`(`$picture`,`$name`,`$cost`,`$link`,`$date`,`$intr`)VALUES('picture','name','cost','link','date','intr')");
+            ?><script>alert("新增成功");location.href="productindex.php"</script><?php
+        }
+    ?>
+    <script src="product.js"></script>
+</body>
 </html>
