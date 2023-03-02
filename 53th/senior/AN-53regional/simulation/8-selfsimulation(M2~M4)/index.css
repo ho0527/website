@@ -1,0 +1,46 @@
+body{
+    background-color: rgba(147, 147, 147, 0.509);
+    user-select: none;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(3);
+    border-radius: 25px;
+    color: white;
+    padding: 20px;
+}
+
+.dragbox{
+    border: 1px black solid;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+
+.dropbox{
+    border: 1px black solid;
+    display: inline-block;
+    width: 170px;
+    height: 40px;
+}
+
+.verifytable{
+    position: relative;
+    left: 25px;
+}
+
+.verifytd{
+    border: 1px rgb(109, 109, 109) solid;
+    width: 40px;
+    height: 40px;
+}
+

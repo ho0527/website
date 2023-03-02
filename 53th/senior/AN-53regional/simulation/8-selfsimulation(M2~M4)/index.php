@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>網站前台登入頁面</title>
     <link rel="stylesheet" href="index.css">
 </head>
@@ -17,14 +17,14 @@
             咖啡商品展示系統<br>
             帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br>
             密碼: <input type="text" name="code" id="code" value="<?= @$_SESSION["code"] ?>"><br>
-            驗證碼<br>
+            驗證碼:<br>
             <?php
                 $_SESSION["verify"]="";
                 for($i=0;$i<4;$i++){
                     $str=array_merge(range("0","9"),range("A","Z"),range("a","z"))[rand(0,61)];
                     ?>
                     <div class="dragbox">
-                        <img src="verifycode.php?val=<?= $str ?>" alt="" id="<?= $str ?>" class="drag">
+                        <img src="verifycode.php?val=<?= $str ?>" id="<?= $str ?>" class="drag">
                     </div>
                     <?php
                     $_SESSION["verify"].=$str;
@@ -38,9 +38,9 @@
                 echo($bos[$key]);
                 $_SESSION["key"]=$key;
             ?><br>
-            <div class="dropbox"></div>
+            <div class="dropbox"></div><br>
             <input type="submit" name="clear" value="清除">
-            <input type="button" onclick="login()" value="登入"><br>
+            <input type="button" onclick="login()" value="登入">
         </form>
     </div>
     <?php
