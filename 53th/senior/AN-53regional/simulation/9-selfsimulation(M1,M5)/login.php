@@ -15,7 +15,7 @@
                 $_SESSION["data"]=$row[1];
                 $_SESSION["permission"]=$row[5];
                 $_SESSION["timer"]=60;
-                ?><script>alert("登入成功");location.href="verify.php"</script><?php
+                ?><script>alert("登入成功");location.href="main.php"</script><?php
             }else{
                 $_SESSION["error"]++;
                 if($_SESSION["error"]<3){
