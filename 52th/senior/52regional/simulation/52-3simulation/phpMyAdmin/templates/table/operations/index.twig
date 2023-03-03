@@ -151,7 +151,7 @@
           <label for="collationSelect">{% trans 'Collation' %}</label>
         </div>
         <div class="col-6">
-          <select class="form-control" id="collationSelect" lang="en" dir="ltr" name="tbl_collation">
+          <select class="form-control" id="collationSelect" dir="ltr" name="tbl_collation">
             <option value=""></option>
             {% for charset in charsets %}
               <optgroup label="{{ charset.getName() }}" title="{{ charset.getDescription() }}">

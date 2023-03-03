@@ -63,7 +63,7 @@
                 </label>
             </th>
             <td{{ 'set' != extracted_columnspec['type'] and 'enum' != extracted_columnspec['type'] ? ' class="text-nowrap"' }}>
-                <bdo dir="ltr" lang="en">
+                <bdo dir="ltr">
                     {{ extracted_columnspec['displayed_type']|raw }}
                     {% if relation_parameters.columnCommentsFeature is not null and relation_parameters.browserTransformationFeature is not null and browse_mime
                         and mime_map[row['Field']]['mimetype'] is defined %}

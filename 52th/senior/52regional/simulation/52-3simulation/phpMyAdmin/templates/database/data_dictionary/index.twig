@@ -41,7 +41,7 @@
                     <em>({% trans 'Primary' %})</em>
                   {% endif %}
                 </td>
-                <td lang="en" dir="ltr"{{ 'set' != column.type and 'enum' != column.type ? ' class="text-nowrap"' }}>
+                <td dir="ltr"{{ 'set' != column.type and 'enum' != column.type ? ' class="text-nowrap"' }}>
                   {{ column.print_type }}
                 </td>
                 <td>{{ column.is_nullable ? 'Yes'|trans : 'No'|trans }}</td>

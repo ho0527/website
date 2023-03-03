@@ -3,14 +3,14 @@
 
 <form id="select_lang" method="post">
   {{ get_hidden_inputs() }}
-  <bdo lang="en" dir="ltr">
+  <bdo dir="ltr">
     <label for="lang">
       {% trans 'Language' %}
       {{ 'Language'|trans != 'Language' ? ' - Language' }}
     </label>
   </bdo>
   <br>
-  <select id="lang" name="lang" class="autosubmit" lang="en" dir="ltr">
+  <select id="lang" name="lang" class="autosubmit" dir="ltr">
     {% for language in languages %}
       <option value="{{ language.code }}"{{ language.is_active ? ' selected' }}>{{ language.name|raw }}</option>
     {% endfor %}

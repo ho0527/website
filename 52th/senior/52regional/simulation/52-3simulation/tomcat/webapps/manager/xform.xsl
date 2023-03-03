@@ -24,7 +24,7 @@
               indent="no"/>
 
   <xsl:template match="status">
-    <html lang="en">
+    <html>
       <head>
         <title>Tomcat Status</title>
         <style>

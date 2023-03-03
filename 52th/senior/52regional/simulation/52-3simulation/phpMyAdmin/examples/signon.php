@@ -43,7 +43,7 @@ if (isset($_POST['user'])) {
 
     echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
     echo '<!DOCTYPE HTML>
-<html lang="en" dir="ltr">
+<html dir="ltr">
 <head>
 <link rel="icon" href="../favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
