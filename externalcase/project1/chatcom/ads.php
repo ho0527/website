@@ -62,6 +62,6 @@
         <div class="footer" id="footer"></div>
         <script src="js/ads.js"></script>
         <script src="js/index.js"></script>
-        <script src="js/changelanguage/changelanguage.js"></script>
+        <script src="js/changelanguage/main.js"></script>
     </body>
 </html>
