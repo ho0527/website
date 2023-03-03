@@ -90,7 +90,7 @@ table{
     position: absolute;
     top: 60px;
     left: 0px;
-    max-height: 550px;
+    max-height: 450px;
     overflow-y: auto;
 }
 
@@ -107,7 +107,7 @@ table{
     position: absolute;
     bottom: 100px;
     left: 0px;
-    max-height: 550px;
+    max-height: 450px;
     overflow-y: auto;
 }
 
