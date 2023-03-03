@@ -33,6 +33,14 @@ table{
     height: 40px;
 }
 
+.test{
+    position: absolute;
+    bottom: 45px;
+    background-color: rgba(172, 172, 172, 0);
+    width: 170px;
+    height: 40px;
+}
+
 .verifytable{
     position: relative;
     left: 25px;

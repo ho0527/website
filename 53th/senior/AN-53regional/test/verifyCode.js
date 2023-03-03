@@ -1,5 +1,5 @@
 let drags=document.querySelectorAll(".dragimg")
-let drops=document.querySelectorAll(".dropbox")
+let drops=document.querySelectorAll(".test")
 let a=""
 
 drags.forEach(function(e){
@@ -9,7 +9,7 @@ drags.forEach(function(e){
 drops.forEach(function(e){
     e.addEventListener("dragover",drag)
     e.addEventListener("dragenter",drag)
-    e.addEventListener("dragleave",drag)
+    e.addEventListener("dragleave",drag) 
     e.addEventListener("drop",drop)
 })
 
@@ -25,7 +25,7 @@ function drop(e){
     let id=e.dataTransfer.getData("text")
     let g=document.getElementById(id)
     a=a+id
-    e.target.appendChild(g)
+    document.getElementsByClassName("dropbox")[0].appendChild(g)
 }
 
 function login(){

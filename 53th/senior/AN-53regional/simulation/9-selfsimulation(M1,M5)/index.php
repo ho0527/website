@@ -37,6 +37,7 @@
                 $_SESSION["key"]=$key;
             ?><br>
             <div class="dropbox"></div><br>
+            <div class="test"></div>
             <input type="submit" name="clear" value="清除">
             <input type="button" onclick="login()" value="登入">
         </form>

@@ -32,6 +32,14 @@ table{
     height: 40px;
 }
 
+.test{
+    border: 1px rgba(98, 98, 98,0) solid;
+    position: absolute;
+    bottom: 40px;
+    width: 170px;
+    height: 40px;
+}
+
 .verifytd{
     border: 1px rgb(98, 98, 98) solid;
     width: 40px;
