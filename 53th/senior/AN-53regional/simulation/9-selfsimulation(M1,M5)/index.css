@@ -1,6 +1,8 @@
 body{
+    font-family: Arial, Helvetica, sans-serif;
     background-color: rgba(147, 147, 147, 0.509);
     user-select: none;
+    word-break: break-all;
 }
 
 table{
@@ -140,14 +142,43 @@ table{
     background-color: rgb(84, 84, 84);
 }
 
+.pbut{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(172, 172, 172, 0.892);
+}
 
+.producttable{
+    width: 100%;
+    position: absolute;
+    top: 110px;
+    left: 0px;
+}
 
+.producttd{
+    border: 1px black solid;
+    padding: 10px;
+}
 
+.coffeetable{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
 
+.coffeetd{
+    border: 1px black solid;
+    font-size: 25px;
+    width: 375px;
+}
 
-
-
-
+.newproducttable{
+   position: absolute;
+   top: 130px; 
+}
 
 
 
