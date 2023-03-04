@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-        include("link.php"); 
+        include("link.php");
         if(!isset($_SESSION["data"])){ header("location:index.php"); }
         if($_SESSION["permission"]=="管理者"){
             ?>
