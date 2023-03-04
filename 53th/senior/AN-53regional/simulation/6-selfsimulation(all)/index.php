@@ -37,7 +37,7 @@
                 echo($bos[$key]);
                 $_SESSION["key"]=$key;
             ?>
-            <div class="dropbox"></div>
+            <div class="dropbox" id="drops"></div>
             <input type="submit" name="clear" value="清除">
             <input type="submit" name="clear" value="重設">
             <input type="button" onclick="login()" value="登入">
