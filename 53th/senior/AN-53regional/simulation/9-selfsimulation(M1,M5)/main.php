@@ -22,6 +22,9 @@
                     <input type="button" class="hbut" onclick="location.href='link.php?logout='" value="登出">
                 </div>
             </div>
+            <table class="producttable">
+                <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),0,$db) ?>
+            </table>
             <?php
         }else{
             ?>
@@ -34,6 +37,9 @@
                     <input type="button" class="hbut" onclick="location.href='link.php?logout='" value="登出">
                 </div>
             </div>
+            <table class="producttable">
+                <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),1,$db) ?>
+            </table>
             <?php
         }
     ?>
