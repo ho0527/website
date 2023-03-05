@@ -1,0 +1,45 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(141, 141, 141, 0.675);
+    user-select: none;
+    word-break: break-all;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-40%) scale(3);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.dragbox{
+    display: inline-block;
+    border: 1px black solid;
+    width: 40px;
+    height: 40px;
+}
+
+.dropbox{
+    border: 1px black solid;
+    width: 170px;
+    height: 40px;
+}
+
+.verifytable{
+    position: relative;
+    left: 20px;
+}
+
+.verifytd{
+    border: 1px rgb(99, 99, 99) solid;
+    width: 40px;
+    height: 40px;
+}

@@ -24,7 +24,7 @@
             query($db,"INSERT INTO `data`(`number`, `username`, `code`, `name`, `permission`, `move`, `movertime`) VALUES ('未知','','','','','登出成功','$time')");
         }
         session_unset();
-        ?><script>alert("登出成功");location.href="admin.php"</script><?php
+        ?><script>alert("登出成功");location.href="index.php"</script><?php
     }
 
     function data($a,$i,$p){
