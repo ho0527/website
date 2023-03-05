@@ -8,8 +8,31 @@ let seconds2=0
 let seconds1=0
 let centiseconds2=0
 let centiseconds1=0
-
 //訂定變數
+
+for(let i=1;i<=5;i=i+1){
+    document.getElementById("digit"+i).innerHTML=`
+        <div class="seg1"></div>
+        <div class="seg2"></div>
+        <div class="seg3"></div>
+        <div class="seg4"></div>
+        <div class="seg5"></div>
+        <div class="seg6"></div>
+        <div class="seg7"></div>
+    `
+}
+
+function seg1(){
+    document.querySelectorAll(".seg1").style.backgroundColor="red"
+    document.querySelectorAll(".seg2").style.backgroundColor="rgba(red,0.3)"
+    document.querySelectorAll(".seg3").style.backgroundColor="rgba(red,0.3)"
+    document.querySelectorAll(".seg4").style.backgroundColor="rgba(red,0.3)"
+    document.querySelectorAll(".seg5").style.backgroundColor="rgba(red,0.3)"
+    document.querySelectorAll(".seg6").style.backgroundColor="rgba(red,0.3)"
+    document.querySelectorAll(".seg7").style.backgroundColor="rgba(red,0.3)"
+}
+
+
 startButton.disabled=false
 stopButton.disabled=true
 //設定disabled
