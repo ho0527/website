@@ -1,5 +1,5 @@
 <?php
-    $db=new PDO("mysql:host=localhost;dbname=db06;charset=utf8","admin","1234");
+    $db=new PDO("mysql:host=localhost;dbname=db10;charset=utf8","admin","1234");
     date_default_timezone_set("Asia/Taipei");
     $time=date("Y-m-d H:i:s");
     session_start();
@@ -11,128 +11,130 @@
     function fetch($data){
         return $data->fetch();
     }
-    
+
     function fetchall($data){
-       return $data->fetchall();
+        return $data->fetchall();
     }
-    
+
     if(isset($_GET["logout"])){
         $data=$_SESSION["data"];
         if($row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"))){
-            query($db,"INSERT INTO `data`(`number`, `username`, `code`, `name`, `permission`, `move`, `movertime`) VALUES ('$row[1]','$row[2]','$row[3]','$row[4]','$row[5]','登出成功','$time')");
+            query($db,"INSERT INTO `data`(`number`, `username`, `code`, `name`, `permission`, `move`, `movetime`)VALUES('$row[1]','$row[2]','$row[3]','$row[4]','$row[5]','登出成功','$time')");
+            session_unset();
+            ?><script>alert("登出成功");location.href="index.php"</script><?php
         }else{
-            query($db,"INSERT INTO `data`(`number`, `username`, `code`, `name`, `permission`, `move`, `movertime`) VALUES ('未知','','','','','登出成功','$time')");
+            query($db,"INSERT INTO `data`(`number`, `username`, `code`, `name`, `permission`, `move`, `movetime`)VALUES('未知','','','','','登出成功','$time')");
+            session_unset();
+            ?><script>alert("登出成功");location.href="index.php"</script><?php
         }
-        session_unset();
-        ?><script>alert("登出成功");location.href="index.php"</script><?php
     }
 
-    function up($a,$comper){
-        usort($a,function($a,$b)use($comper){ return $a[$comper]>$b[$comper]||$a[$comper]==$b[$comper]&&$a[1]>$b[1]; });
-        for($i=0;$i<count($a);$i++){
-            if($a[$i][1]=="0000"){
+    function up($row,$comp){
+        usort($row,function($a,$b)use($comp){ return $a[$comp]>$b[$comp]||$a[$comp]==$b[$comp]&&$a[0]>$b[0]; });
+        for($i=0;$i<count($row);$i++){
+            if($row[$i][1]=="0000"){
                 ?>
                 <tr>
-                    <td class="admintd">
-                        <?= $a[$i][1] ?>
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $a[$i][1] ?>'" value="修改" disabled>
-                        <input type="button" onclick="location.href='admin.php?del=<?= $a[$i][1] ?>'" value="刪除" disabled>
+                    <td class="td">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
                     </td>
-                    <td class="admintd"><?= $a[$i][2] ?></td>
-                    <td class="admintd"><?= $a[$i][3] ?></td>
-                    <td class="admintd"><?= $a[$i][4] ?></td>
-                    <td class="admintd"><?= $a[$i][5] ?></td>
+                    <td class="td"><?= $row[$i][2] ?></td>
+                    <td class="td"><?= $row[$i][3] ?></td>
+                    <td class="td"><?= $row[$i][4] ?></td>
+                    <td class="td"><?= $row[$i][5] ?></td>
                 </tr>
                 <?php
             }else{
                 ?>
                 <tr>
-                    <td class="admintd">
-                        <?= $a[$i][1] ?>
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $a[$i][1] ?>'" value="修改">
-                        <input type="button" onclick="location.href='admin.php?del=<?= $a[$i][1] ?>'" value="刪除">
+                    <td class="td">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除">
                     </td>
-                    <td class="admintd"><?= $a[$i][2] ?></td>
-                    <td class="admintd"><?= $a[$i][3] ?></td>
-                    <td class="admintd"><?= $a[$i][4] ?></td>
-                    <td class="admintd"><?= $a[$i][5] ?></td>
+                    <td class="td"><?= $row[$i][2] ?></td>
+                    <td class="td"><?= $row[$i][3] ?></td>
+                    <td class="td"><?= $row[$i][4] ?></td>
+                    <td class="td"><?= $row[$i][5] ?></td>
                 </tr>
                 <?php
             }
         }
     }
 
-    function down($a,$comper){
-        usort($a,function($a,$b)use($comper){ return $a[$comper]<$b[$comper]||$a[$comper]==$b[$comper]&&$a[1]>$b[1]; });
-        for($i=0;$i<count($a);$i++){
-            if($a[$i][1]=="0000"){
+    function down($row,$comp){
+        usort($row,function($a,$b)use($comp){ return $a[$comp]<$b[$comp]||$a[$comp]==$b[$comp]&&$a[0]>$b[0]; });
+        for($i=0;$i<count($row);$i++){
+            if($row[$i][1]=="0000"){
                 ?>
                 <tr>
-                    <td class="admintd">
-                        <?= $a[$i][1] ?>
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $a[$i][1] ?>'" value="修改" disabled>
-                        <input type="button" onclick="location.href='admin.php?del=<?= $a[$i][1] ?>'" value="刪除" disabled>
+                    <td class="td">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
                     </td>
-                    <td class="admintd"><?= $a[$i][2] ?></td>
-                    <td class="admintd"><?= $a[$i][3] ?></td>
-                    <td class="admintd"><?= $a[$i][4] ?></td>
-                    <td class="admintd"><?= $a[$i][5] ?></td>
+                    <td class="td"><?= $row[$i][2] ?></td>
+                    <td class="td"><?= $row[$i][3] ?></td>
+                    <td class="td"><?= $row[$i][4] ?></td>
+                    <td class="td"><?= $row[$i][5] ?></td>
                 </tr>
                 <?php
             }else{
                 ?>
                 <tr>
-                    <td class="admintd">
-                        <?= $a[$i][1] ?>
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $a[$i][1] ?>'" value="修改">
-                        <input type="button" onclick="location.href='admin.php?del=<?= $a[$i][1] ?>'" value="刪除">
+                    <td class="td">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除">
                     </td>
-                    <td class="admintd"><?= $a[$i][2] ?></td>
-                    <td class="admintd"><?= $a[$i][3] ?></td>
-                    <td class="admintd"><?= $a[$i][4] ?></td>
-                    <td class="admintd"><?= $a[$i][5] ?></td>
+                    <td class="td"><?= $row[$i][2] ?></td>
+                    <td class="td"><?= $row[$i][3] ?></td>
+                    <td class="td"><?= $row[$i][4] ?></td>
+                    <td class="td"><?= $row[$i][5] ?></td>
                 </tr>
                 <?php
             }
         }
     }
 
-    function updown($a){
-        if(@$_GET["updownnumber"]=="升冪"){
-            down($a,1);
-            ?><script>document.getElementById("updownnumber").value="降冪"</script><?php
-        }elseif(@$_GET["updownuname"]=="升冪"){
-            down($a,2);
-            ?><script>document.getElementById("updownuname").value="降冪"</script><?php
-        }elseif(@$_GET["updownname"]=="升冪"){
-            down($a,4);
-            ?><script>document.getElementById("updownname").value="降冪"</script><?php
-        }elseif(@$_GET["updownuname"]=="降冪"){
-            up($a,2);
-        }elseif(@$_GET["updownname"]=="降冪"){
-            up($a,4);
+    function updown($row){
+        if(@$_GET["udnb"]=="升冪"){
+            down($row,1);
+            ?><script>document.getElementById("udnb").value="降冪"</script><?php
+        }elseif(@$_GET["udun"]=="升冪"){
+            down($row,2);
+            ?><script>document.getElementById("udun").value="降冪"</script><?php
+        }elseif(@$_GET["udn"]=="升冪"){
+            down($row,4);
+            ?><script>document.getElementById("udn").value="降冪"</script><?php
+        }elseif(@$_GET["udun"]=="降冪"){
+            up($row,2);
+        }elseif(@$_GET["udn"]=="降冪"){
+            up($row,4);
         }else{
-            up($a,1);
+            up($row,1);
         }
     }
 
     function data($a,$i,$p){
         if($p=="name"){
-            ?>商品名稱: <?= $a[$i][2] ?><?php 
+            ?>商品名稱: <?= $a[$i][2] ?><?php
         }elseif($p=="cost"){
-            ?>費用: <?= $a[$i][3] ?><?php 
+            ?>費用: <?= $a[$i][3] ?><?php
         }elseif($p=="link"){
-            ?>相關連結: <?= $a[$i][4] ?><?php 
+            ?>相關連結: <?= $a[$i][4] ?><?php
         }elseif($p=="date"){
-            ?>發佈日期: <?= $a[$i][5] ?><?php 
+            ?>發佈日期: <?= $a[$i][5] ?><?php
         }else{
-            ?>商品簡介: <?= $a[$i][6] ?><?php 
+            ?>商品簡介: <?= $a[$i][6] ?><?php
         }
     }
 
     function product($a,$db,$p){
+        usort($a,function($a,$b){ return $a[0]>$b[0]; });
         $product=fetchall(query($db,"SELECT*FROM `product`"));
-        usort($a,function($a,$b){ return $a<$b; });
         for($i=0;$i<count($a);$i++){
             if($p==0){
                 ?>
@@ -212,12 +214,12 @@
                                 }
                             }
                             ?>
-                            <input type="button" onclick="location.href='edit.php?pedit=<?= $a[$i][0] ?>'" value="修改">
                         </table>
+                        <input type="button" onclick="location.href='edit.php?pedit=<?= $a[$i][0] ?>'" value="修改">
                     </td>
                 </tr>
                 <?php
-            }else{
+            }else{{
                 ?>
                 <tr>
                     <td class="producttd">
@@ -299,6 +301,7 @@
                     </td>
                 </tr>
                 <?php
+                }
             }
         }
     }

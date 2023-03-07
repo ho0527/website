@@ -67,4 +67,30 @@
             echo "0 results";
         }
     }
+
+    function checktable($db,$testdata,$true){
+        if($true){
+            $row=fetchall(query($db,"SELECT*FROM `main`"));
+            for($i=0;$i<count($testdata);$i=$i+1){
+                for($j=0;$j<count($row);$j=$j+1){
+                    if($testdata[$i][0]!=$row[$j][1]){
+                        if($testdata[$i][0]!="main"){
+                            ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><?php
+                        }
+                    }
+                }
+            }
+        }else{
+            $row=fetchall(query($db,"SELECT*FROM `main`"));
+            for($i=0;$i<count($testdata);$i=$i+1){
+                for($j=0;$j<count($row);$j=$j+1){
+                    if($testdata[$i][0]==$row[$j][1]){
+                        if($testdata[$i][0]!="main"){
+                            ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><?php
+                        }
+                    }
+                }
+            }
+        }
+    }
 ?>

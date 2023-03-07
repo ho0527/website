@@ -12,16 +12,9 @@
             include("link.php");
         ?>
         <form>
-            <input type="button" onclick="location.href='log.php'" value="log">
-            <input type="button" onclick="location.href='index.php'" value="返回">
-            <input type="button" onclick="location.href='module.php'" value="模板"><br>
-            <input type="text" name="tablename" placeholder="名稱">
-            <input type="submit" name="module" value="送出"><br>
+            <input type="button" onclick="location.href='index.php'" value="返回"><br><br>
             <?php
-                $row=fetchall(query($db,"SHOW TABLES"));
-                for($i=0;$i<count($row);$i++){
-                    ?><input type="submit" name="table" value="<?= $row[$i][0] ?>"><?php
-                }
+                checktable($db,fetchall(query($db,"SHOW TABLES")),false);
                 if(isset($_GET["table"])){
                     $_SESSION["name"]=$_GET["table"];
                     header("location:log.php");
@@ -29,6 +22,7 @@
                 if(isset($_SESSION["name"])){
                     $name=$_SESSION["name"];
                     $row=fetchall(query($db,"SELECT*FROM `$name`"));
+                    $rowmain=fetchall(query($db,"SELECT*FROM `main` WHERE `tablename`='$name'"));
                     if(1==1){
                         ?>
                         <div class="borad1">
@@ -92,13 +86,13 @@
                                     <td class="border" colspan="7">主觀建議</td>
                                 </tr>
                                 <tr>
-                                    <td class="border" colspan="7"><textarea name="" cols="125" rows="7"><?= $row[$i][6] ?></textarea></td>
+                                    <td class="border" colspan="7"><textarea name="" cols="125" rows="7"><?= $rowmain[$i][2] ?></textarea></td>
                                 </tr>
                                 <tr>
                                     <td class="border" colspan="7">其他建議</td>
                                 </tr>
                                 <tr>
-                                    <td class="border" colspan="7"><textarea name="" cols="125" rows="7"><?= $row[$i][6] ?></textarea></td>
+                                    <td class="border" colspan="7"><textarea name="" cols="125" rows="7"><?= $rowmain[$i][3] ?></textarea></td>
                                 </tr>
                             </table>
                         </div>

@@ -11,9 +11,8 @@
         if(!isset($_SESSION["data"])){ header("location:index.php"); }
     ?>
     <div class="head">
-        <div class="title">咖啡商品展示系統-選擇版型</div>
+        <div class="title">咖啡商品展示系統-新增版型</div>
         <div class="but">
-            <input type="button" class="hbut" onclick="location.href='edit.php'" value="新增使用者">
             <input type="button" class="hbut" onclick="location.href='main.php'" value="首頁">
             <input type="button" class="hbut selt" onclick="location.href='productindex.php'" value="上架商品">
             <input type="button" class="hbut" onclick="location.href='search.php'" value="查詢">

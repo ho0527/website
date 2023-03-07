@@ -10,15 +10,16 @@
     <body>
         <?php
             include("link.php");
-        ?>
-        <form method="POST">
+        ?> 
+        <input type="button" onclick="location.href='index.php'" value="返回"><br>
+        <form>
             <h2>請輸入項目數量</h2>
             <input type="number" name="num" id="num">
-            <input type="submit" name="submit" value="確認"><br><br>
-            <input type="button" onclick="location.href='index.php'" value="返回">
-            <input type="button" onclick="location.href='module.php'" value="模板"><br>
+            <input type="submit" name="numsubmit" value="確認"><br><br>
+        </form>
+        <form method="POST">
             <input type="text" name="tablename" placeholder="模板名稱">
-            <input type="submit" name="modulesubmit" value="送出">
+            <input type="submit" name="submit" value="送出">
             <div class="borad1">
                 <table>
                     <tr>
@@ -53,8 +54,8 @@
             </div>
         </form>
         <?php
-            if(isset($_POST["submit"])){
-                $_SESSION["num"]=$_POST["num"];
+            if(isset($_GET["numsubmit"])){
+                $_SESSION["num"]=$_GET["num"];
                 ?><script>alert("更改成功");location.href="module.php"</script><?php
             }
             if(isset($_POST["modulesubmit"])){

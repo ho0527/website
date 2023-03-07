@@ -1,6 +1,5 @@
 body{
-    background-color: rgba(125, 125, 125, 0.656);
-    user-select: none;
+    background-color: rgba(210, 180, 140, 0.592);
     word-break: break-all;
 }
 
@@ -8,65 +7,102 @@ table{
     border-collapse: collapse;
 }
 
-.main{
-    border: 1px white solid;
+.center{
+    position: relative !important;
+    left: 50% !important;
+    transform: translate(-50%,0%) !important;
+}
+
+.mag{
+    margin-bottom: 10px;
+    display: block;
+}
+
+.hometitle{
+    text-align: center;
+}
+
+.inputbutton{
+    margin-right: 10px;
+}
+
+.text{
+    font-size: 15px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.maindiv{
+    text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) scale(3);
+    transform: translate(-50%,-50%);
+}
+
+.main{
+    border: 1px rgb(0, 0, 0) solid;
     border-radius: 10px;
     padding: 20px;
-    color: white;
+    text-align: left;
 }
 
 .dragbox{
     display: inline-block;
-    border: 1px black solid;
     width: 40px;
     height: 40px;
 }
 
 .dropbox{
     border: 1px black solid;
-    width: 170px;
+    width: 160px;
     height: 40px;
 }
 
 .test{
     border: 1px rgba(98, 98, 98,0) solid;
     position: absolute;
-    bottom: 40px;
-    width: 170px;
+    bottom: 0px;
+    width: 160px;
     height: 40px;
 }
 
 .verifytd{
-    border: 1px rgb(98, 98, 98) solid;
+    border: 1px rgb(143, 143, 143) solid;
     width: 40px;
     height: 40px;
 }
 
 .verifytable{
     position: relative;
-    left: 20px;
+    left: 30px;
+    width: 85px;
+}
+
+.div{
+    position: absolute;
+    left: 50%;
+    top: 2px;
+    transform: translate(-50%,0%);
+    width: 85%;
+    height: 100%;
 }
 
 .head{
-    position: absolute;
+    position: relative;
     top: 0px;
     left: 0px;
-    background-color: rgba(123, 123, 123, 0.783);
-    width: 100%;
     height: 50px;
+    /* background-color: rgba(210, 180, 140); */
 }
 
 .pbut{
-    position: absolute;
-    top: 50px;
+    position: relative;
+    top: 70px;
     left: 0px;
-    background-color: rgba(123, 123, 123, 0.783);
-    width: 100%;
-    height: 50px;
+    padding: 5px;
+    background-color: rgba(210, 180, 140);
+
 }
 
 .ppbut{
@@ -83,22 +119,21 @@ table{
 
 .but{
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
 }
 
 .hbut{
     background: none;
     border: none;
-    font-size: 25px;
+    font-size: 26px;
     cursor: pointer;
 }
 
 .top{
-    position: absolute;
-    top: 60px;
-    left: 0px;
-    max-height: 450px;
+    position: relative;
+    top: 70px;
+    max-height: 37%;
     overflow-y: auto;
 }
 
@@ -113,22 +148,21 @@ table{
 
 .bottom{
     position: absolute;
-    bottom: 100px;
-    left: 0px;
-    max-height: 450px;
+    bottom: 90px;
+    max-height: 37%;
     overflow-y: auto;
 }
 
 .search{
     position: absolute;
-    top: 50%;
-    right: 0px;
+    top: 52%;
+    right: 2px;
 }
 
 .timer{
     position: absolute;
-    bottom: 1px;
-    right: 2px;
+    bottom: 5px;
+    right: 0px;
 }
 
 .timertd{
@@ -155,7 +189,7 @@ table{
 
 .producttable{
     position: relative;
-    top: 120px;
+    top: 0px;
     width: 100%;
 }
 
@@ -165,7 +199,7 @@ table{
 }
 
 .coffeetable{
-    width: 40%;
+    width: 60%;
     position: relative;
     left: 50%;
     transform: translate(-50%,0%);
@@ -173,10 +207,10 @@ table{
 
 .coffee{
     border: 1px black solid;
-    width: 200px;
+    width: 300px;
     font-size: 30px;
 }
 
 .selt{
-    color: orange;
+    color: rgb(255, 255, 255);
 }

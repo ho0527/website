@@ -16,22 +16,19 @@
             <input type="submit" name="testtest" value="評分版">
             <input type="submit" name="test" value="項次版">
             <input type="button" onclick="location.href='module.php'" value="模板"><br>
+            <input type="button" onclick="location.href='edit.php'" value="修改模板"><br>
             <input type="text" name="tablename" placeholder="名稱">
             <input type="submit" name="indexsubmit" value="送出"><br>
             <?php
-                $row=fetchall(query($db,"SHOW TABLES"));
-                for($i=0;$i<count($row);$i=$i+1){
-                    if($row[$i][0]=="main"){ }else{
-                        ?><input type="submit" name="table" value="<?= $row[$i][0] ?>"><?php
-                    }   
-                }
+                checktable($db,fetchall(query($db,"SHOW TABLES")),true);
                 if(isset($_POST["test"])){
                     $_SESSION["usemod"]="item";
                     header("location:index.php");
                 }elseif(isset($_POST["testtest"])){
                     $_SESSION["usemod"]="mark";
                     header("location:index.php");
-                }elseif(isset($_POST["table"])){
+                }
+                if(isset($_POST["table"])){
                     $_SESSION["usingtable"]=$_POST["table"];
                     header("location:index.php");
                 }

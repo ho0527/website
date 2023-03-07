@@ -2,12 +2,12 @@ let coffeetable=document.querySelectorAll(".coffeetable")
 let val
 
 coffeetable.forEach(function(e){
-    e.style.backgroundColor="gray"
+    e.style.backgroundColor=""
     e.addEventListener("click",function(){
         coffeetable.forEach(function(e){
-            e.style.backgroundColor="gray"
+            e.style.backgroundColor=""
         })
-        e.style.backgroundColor="yellow"
+        e.style.backgroundColor="rgb()"
         val=this.id
     })
 })
