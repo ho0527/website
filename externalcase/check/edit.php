@@ -12,14 +12,10 @@
             include("link.php");
         ?>
         <form method="POST">
-            <input type="button" onclick="location.href='index.php'" value="返回"><br>
-            <input type="submit" name="module" value="送出"><br>
+            <input type="button" onclick="location.href='index.php'" value="返回"><br><br>
+            <input type="submit" name="submit" value="送出"><br><br><br>
             <?php
                 checktable($db,fetchall(query($db,"SHOW TABLES")),true);
-                if(isset($_POST["table"])){
-                    $_SESSION["usingtable"]=$_POST["table"];
-                    header("location:edit.php");
-                }
                 if(isset($_SESSION["usingtable"])){
                     $usingtable=$_SESSION["usingtable"];
                     $row=fetchall(query($db,"SELECT*FROM `$usingtable`"));
@@ -83,7 +79,8 @@
                     </div>
                     <?php
                 }
-                if(isset($_POST["indexsubmit"])){
+                
+                if(isset($_POST["submit"])){
                     $usingtable=$_SESSION["usingtable"];
                     $count=fetchall(query($db,"SELECT*FROM `$usingtable`"));
                     for($i=0;$i<count($count);$i=$i+1){
@@ -94,10 +91,15 @@
                         $remark=$_POST["remark".$i];
                         $module=$_POST["module".$i];
                         $id=$i+1;
-                        query($db,"UPDATE `$tablename` SET `item`='$item',`objective`='$objective',`description`='$description',`remark`='$remark',`module`='$module' WHERE `id`='$id'");
+                        query($db,"UPDATE `$usingtable` SET `item`='$item',`objective`='$objective',`description`='$description',`score`='$score',`remark`='$remark',`module`='$module' WHERE `id`='$id'");
                     }
                     session_unset();
                     ?><script>alert("更新成功");location.href="index.php"</script><?php
+                }
+
+                if(isset($_POST["table"])){
+                    $_SESSION["usingtable"]=$_POST["table"];
+                    header("location:edit.php");
                 }
             ?>
         </form>

@@ -28,14 +28,14 @@
             <h1>咖啡商品管理系統</h1>
             <input type="button" class="mainbutton selt" onclick="location.href='main.php'" value="首頁">
             <input type="button" class="mainbutton" onclick="location.href='productindex.php'" value="上架商品">
-            <input type="button" class="mainbutton" onclick="location.href='admin.php'" value="會員管理">
+            <input type="button" class="mainbutton" onclick="" value="會員管理">
             <input type="button" class="mainbutton" onclick="location.href='search.php'" value="查詢">
             <input type="button" class="logout" onclick="location.href='link.php?logout='" value="登出">
             <hr><br><br>
             <div class="main">
                 <h2>首頁</h2>
                 <table class="producttable">
-                    <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,0) ?>
+                    <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,0); ?>
                 </table>
             </div>
             <?php
@@ -43,14 +43,14 @@
             ?>
             <h1>咖啡商品管理系統</h1>
             <input type="button" class="mainbutton selt" onclick="location.href='main.php'" value="首頁">
-            <input type="button" class="mainbutton" onclick="" value="上架商品">
+            <input type="button" class="mainbutton" onclick="location.href='productindex.php'" value="上架商品">
             <input type="button" class="mainbutton" onclick="location.href='search.php'" value="查詢">
             <input type="button" class="logout" onclick="location.href='link.php?logout='" value="登出">
             <hr><br><br>
             <div class="main">
                 <h2>首頁</h2>
                 <table class="producttable">
-                    <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,1) ?>
+                    <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),$db,1); ?>
                 </table>
             </div>
             <?php
