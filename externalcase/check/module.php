@@ -58,6 +58,7 @@
                 $_SESSION["num"]=$_GET["num"];
                 ?><script>alert("更改成功");location.href="module.php"</script><?php
             }
+            
             if(isset($_POST["modulesubmit"])){
                 $tablename=$_POST["tablename"];
                 $row=fetchall(query($db,"SHOW TABLES"));

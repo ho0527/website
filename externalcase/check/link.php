@@ -72,23 +72,27 @@
         if($true){
             $row=fetchall(query($db,"SELECT*FROM `main`"));
             for($i=0;$i<count($testdata);$i=$i+1){
+                $test="no";
                 for($j=0;$j<count($row);$j=$j+1){
-                    if($testdata[$i][0]!=$row[$j][1]){
-                        if($testdata[$i][0]!="main"){
-                            ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><?php
-                        }
+                    if($testdata[$i][0]==$row[$j][1]){
+                        $test="yes";
                     }
+                }
+                if($test=="no"&&$testdata[$i][0]!="main"){
+                    ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><br><br><?php
                 }
             }
         }else{
             $row=fetchall(query($db,"SELECT*FROM `main`"));
             for($i=0;$i<count($testdata);$i=$i+1){
+                $test="no";
                 for($j=0;$j<count($row);$j=$j+1){
                     if($testdata[$i][0]==$row[$j][1]){
-                        if($testdata[$i][0]!="main"){
-                            ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><?php
-                        }
+                        $test="yes";
                     }
+                }
+                if($test=="yes"&&$testdata[$i][0]!="main"){
+                    ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><br><br><?php
                 }
             }
         }
