@@ -1,0 +1,107 @@
+body{
+    background-color: rgba(210, 180, 140, 0.818);
+    user-select: none;
+    word-break: break-all;
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+h2{
+    margin: 0px;
+}
+
+.mag{
+    margin-bottom: 20px;
+}
+
+hr{
+    border: 1px black solid;
+    margin-bottom: 30px;
+}
+
+.main{
+    border: 2px black solid;
+    margin: 0px auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.dragbox{
+    display: inline-block;
+    border: 1px black solid;
+    width: 40px;
+    height: 40px;
+}
+
+.dropbox{
+    display: inline-block;
+    border: 1px black solid;
+    width: 160px;
+    height: 40px;
+}
+
+.verifytd{
+    border: 1px rgb(154, 154, 154) solid;
+    width: 40px;
+    height: 40px;
+}
+
+.mainbutton{
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+.mainbutton:hover{
+    background-color: rgb(229, 189, 137);
+}
+
+.logout{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.admintd{
+    border-bottom: 1px black solid;
+    padding: 15px;
+}
+
+
+.lightbox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(3);
+    background-color: rgba(161, 161, 161, 0.735);
+    padding: 15px;
+}
+
+.timer{
+    display: inline-block;
+    width: 30%;
+}
+
+.ttd{
+    width: 200px;
+    border: 1px black solid;
+}
+
+.times{
+    border: none;
+    background: none;
+    font-size: 50px;
+    width: 200px;
+    text-align: center;
+}
+
+
+.selt{
+    background-color: rgb(229, 189, 137);
+}
