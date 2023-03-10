@@ -17,9 +17,9 @@
                 checktable($db,fetchall(query($db,"SHOW TABLES")),false);
                 if(isset($_GET["table"])){
                     $_SESSION["name"]=$_GET["table"];
-                    header("location:log.php");
+                    ?><script>location.href="log.php"</script><?php
                 }
-                
+
                 if(isset($_SESSION["name"])){
                     $name=$_SESSION["name"];
                     $row=fetchall(query($db,"SELECT*FROM `$name`"));
@@ -168,18 +168,18 @@
                                             <td class="border"><textarea name="description<?= $i ?>" cols="30" rows="5" readonly><?= $row[$i][3] ?></textarea></td>
                                             <td class="border">
                                                 <?php
-                                                if($row[4]=="是"){
+                                                if($row[$i][4]=="是"){
                                                     ?>
                                                     <select name="correct<?= $i ?>">
-                                                        <option value="是">是</option>
+                                                        <option value="是" selected>是</option>
                                                         <option value="否">否</option>
                                                     </select>
                                                     <?php
                                                 }else{
                                                     ?>
                                                     <select name="correct<?= $i ?>">
-                                                        <option value="是" selected>是</option>
-                                                        <option value="否">否</option>
+                                                        <option value="是">是</option>
+                                                        <option value="否" selected>否</option>
                                                     </select>
                                                     <?php
                                                 }

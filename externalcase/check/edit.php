@@ -79,7 +79,7 @@
                     </div>
                     <?php
                 }
-                
+
                 if(isset($_POST["submit"])){
                     $usingtable=$_SESSION["usingtable"];
                     $count=fetchall(query($db,"SELECT*FROM `$usingtable`"));
@@ -97,9 +97,9 @@
                     ?><script>alert("更新成功");location.href="index.php"</script><?php
                 }
 
-                if(isset($_POST["table"])){
-                    $_SESSION["usingtable"]=$_POST["table"];
-                    header("location:edit.php");
+                if(isset($_GET["table"])){
+                    $_SESSION["usingtable"]=$_GET["table"];
+                    ?><script>location.href="edit.php"</script><?php
                 }
             ?>
         </form>

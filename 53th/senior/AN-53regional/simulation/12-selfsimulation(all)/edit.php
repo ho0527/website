@@ -17,7 +17,33 @@
     <?php
         include("link.php");
         if(!isset($_SESSION["data"])){ header("location:index.php"); }
-        if(isset($_GET["edit"])){
+        if(isset($_GET["pedit"])){
+            $number=$_GET["pedit"];
+            $row=fetch(query($db,"SELECT*FROM `coffee` WHERE `id`='$number'"));
+            ?>
+            <h1>咖啡商品展示系統</h1>
+            <input type="button" class="mainbutton" onclick="location.href='main.php'" value="首頁">
+            <input type="button" class="mainbutton" onclick="location.href='productindex.php'" value="上架商品">
+            <input type="button" class="mainbutton selt" onclick="location.href='admin.php'" value="會員管理">
+            <input type="button" class="mainbutton" onclick="location.href='search.php'" value="查尋">
+            <input type="button" class="mainbutton logout" onclick="location.href='link.php?logout='" value="登出">
+            <hr>
+            <div class="main">
+                <h2>編輯商品</h2>
+                <form id="form" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?= @$row["id"] ?>">
+                    商品名稱: <input type="text" name="name" value="<?= @$row["name"] ?>"><br><br>
+                    費用: <input type="text" name="cost" value="<?= @$row["cost"] ?>"><br><br>
+                    相關連結: <input type="text" name="link" value="<?= @$row["link"] ?>"><br><br>
+                    商品簡介: <input type="text" name="intr" value="<?= @$row["intr"] ?>"><br><br>
+                    圖片 <input type="file" name="picture" style="width:175px"><br><br>
+                    商品版型: <input type="text" name="val" value="<?= @$row["val"] ?>"><br><br>
+                    <input type="button" class="mainbutton" onclick="location.href='main.php'" value="返回">
+                    <input type="submit" class="mainbutton" name="psubmit" value="送出">
+                </form>
+            </div>
+            <?php
+        }elseif(isset($_GET["edit"])){
             $number=$_GET["edit"];
             $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"));
             ?>
@@ -29,7 +55,7 @@
             <input type="button" class="mainbutton logout" onclick="location.href='link.php?logout='" value="登出">
             <hr>
             <div class="main">
-                <h2>新增使用者</h2>
+                <h2>編輯使用者</h2>
                 <form action="">
                     編號: <input type="text" class="mag" name="number" value="<?= $row[1] ?>"><br>
                     姓名: <input type="text" class="mag" name="name" value="<?= $row[4] ?>"><br>
@@ -113,6 +139,22 @@
             $number=$_GET["del"];
             query($db,"DELETE FROM `user` WHERE `number`='$number'");
             ?><script>alert("刪除成功");location.href="admin.php"</script><?php
+        }
+        if(isset($_POST["psubmit"])){
+            $id=$_POST["id"];
+            $name=$_POST["name"];
+            $cost=$_POST["cost"];
+            $link=$_POST["link"];
+            $intr=$_POST["intr"];
+            $val=$_POST["val"];
+            if(!empty($_FILES["picture"]["name"])){
+                move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
+                $picture="image/".$_FILES["picture"]["name"];
+                query($db,"UPDATE `coffee` SET `name`='$name',`cost`='$cost',`link`='$link',`intr`='$intr',`val`='$val',`picture`='$picture' WHERE `id`='$id'");
+            }else{
+                query($db,"UPDATE `coffee` SET `name`='$name',`cost`='$cost',`link`='$link',`intr`='$intr',`val`='$val' WHERE `id`='$id'");
+            }
+            ?><script>alert("修改成功");location.href="main.php"</script><?php
         }
     ?>
 </body>
