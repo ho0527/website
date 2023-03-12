@@ -236,7 +236,7 @@
                         }
                         $usemod="mark";
                     }
-                    query($db,"INSERT INTO `main`(`tablename`,`subjectivesuggestion`,`othersuggestion`,`totalscore`,`getscore`,`usemod`,`date`,`moudle`)VALUES('$tablename','$subjectivesuggestion','$othersuggestion','$totalscore','$getscore','$usemod','$time','$usingtable')");
+                    query($db,"INSERT INTO `main`(`tablename`,`subjectivesuggstion`,`othersuggestion`,`totalscore`,`getscore`,`usemod`,`date`,`module`)VALUES('$tablename','$subjectivesuggestion','$othersuggestion','$totalscore','$getscore','$usemod','$time','$usingtable')");
                     session_unset();
                     ?><script>alert("上傳成功");location.href="index.php"</script><?php
                 }else{
@@ -246,17 +246,17 @@
 
             if(isset($_GET["test"])){
                 $_SESSION["usemod"]="item";
-                header("location:index.php");
+                ?><script>location.href="index.php"</script><?php
             }
 
             if(isset($_GET["testtest"])){
                 $_SESSION["usemod"]="mark";
-                header("location:index.php");
+                ?><script>location.href="index.php"</script><?php
             }
             
-            if(isset($_POST["table"])){
-                $_SESSION["usingtable"]=$_POST["table"];
-                header("location:index.php");
+            if(isset($_GET["table"])){
+                $_SESSION["usingtable"]=$_GET["table"];
+                ?><script>location.href="index.php"</script><?php
             }
         ?>
     </body>

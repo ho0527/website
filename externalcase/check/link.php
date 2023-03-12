@@ -36,8 +36,6 @@
                 `inputscore` INT(15) NOT NULL,
                 `remark` TEXT NOT NULL,
                 `module` INT(15) NOT NULL,
-                `subjectivesuggestion` TEXT NOT NULL,
-                `othersuggestion` TEXT NOT NULL,
                 `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )");
         }elseif($type=="correct"){
@@ -48,8 +46,6 @@
                 `correct` TEXT NOT NULL,
                 `remark` TEXT NOT NULL,
                 `module` INT(15) NOT NULL,
-                `subjectivesuggestion` TEXT NOT NULL,
-                `othersuggestion` TEXT NOT NULL,
                 `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )");
         }else{
@@ -79,7 +75,7 @@
                     }
                 }
                 if($test=="no"&&$testdata[$i][0]!="main"){
-                    ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><br><br><?php
+                    ?><input type="button" onclick="location.href='?table=<?= $testdata[$i][0] ?>'" value="<?= $testdata[$i][0] ?>"><br><br><?php
                 }
             }
         }else{
@@ -92,7 +88,7 @@
                     }
                 }
                 if($test=="yes"&&$testdata[$i][0]!="main"){
-                    ?><input type="submit" name="table" value="<?= $testdata[$i][0] ?>"><br><br><?php
+                    ?><input type="button" onclick="location.href='?table=<?= $testdata[$i][0] ?>'" value="<?= $testdata[$i][0] ?>"><br><br><?php
                 }
             }
         }

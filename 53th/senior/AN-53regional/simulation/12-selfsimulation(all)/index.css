@@ -101,6 +101,46 @@ hr{
     text-align: center;
 }
 
+.producttable{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0%);
+    width: 60%;
+}
+
+.coffee{
+    border: 1px black solid;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .selt{
     background-color: rgb(229, 189, 137);

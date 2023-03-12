@@ -12,10 +12,6 @@
             max-height: 400px;
             overflow-y: auto;
         }
-        table{
-            display: inline-block;
-            width: auto;
-        }
     </style>
 </head>
 <body>
@@ -25,19 +21,48 @@
         if($_SESSION["permission"]=="管理者"){
             ?>
             <h1>咖啡商品展示系統</h1>
-            <input type="button" class="mainbutton selt" onclick="location.href='main.php'" value="首頁">
+            <input type="button" class="mainbutton" onclick="location.href='main.php'" value="首頁">
             <input type="button" class="mainbutton" onclick="location.href='productindex.php'" value="上架商品">
             <input type="button" class="mainbutton" onclick="location.href='admin.php'" value="會員管理">
-            <input type="button" class="mainbutton" onclick="location.href='search.php'" value="查尋">
+            <input type="button" class="mainbutton selt" onclick="location.href='search.php'" value="查尋">
             <input type="button" class="mainbutton logout" onclick="location.href='link.php?logout='" value="登出">
             <hr>
-            <div class="main">
-                <table class="producttable">
-                    <?php  ?>
-                </table>
-            </div>
+            <?php
+        }else{
+            ?>
+            <h1>咖啡商品展示系統</h1>
+            <input type="button" class="mainbutton" onclick="location.href='main.php'" value="首頁">
+            <input type="button" class="mainbutton" onclick="" value="上架商品">
+            <input type="button" class="mainbutton selt" onclick="location.href='search.php'" value="查尋">
+            <input type="button" class="mainbutton logout" onclick="location.href='link.php?logout='" value="登出">
             <?php
         }
     ?>
+    <hr>
+    <div class="main">
+        <form class="mag">
+            數字範圍 <input type="text" name="start" placeholder="最低價位">~
+            <input type="text" name="end" placeholder="最高價位">
+            <input type="submit" name="num" value="送出">
+        </form>
+        <form class="mag">
+            關鍵字 <input type="text" name="tex" placeholder="關鍵字">
+            <input type="submit" name="text" value="送出">
+        </form>
+        <table class="producttable">
+            <?php
+                if(isset($_GET["num"])){
+                    $start=$_GET["start"];
+                    $end=$_GET["end"];
+                    product(fetchall(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost`AND`cost`<='$end'")),$db);
+                }elseif(isset($_GET["text"])){
+                    $type=$_GET["tex"];
+                    product(fetchall(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$type%'or`cost`LIKE'%$type%'or`link`LIKE'%$type%'or`intr`LIKE'%$type%'or`date`LIKE'%$type%'")),$db);
+                }else{
+                    product(fetchall(query($db,"SELECT*FROM `coffee`")),$db);
+                }
+            ?>
+        </table>
+    </div>
 </body>
 </html>

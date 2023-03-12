@@ -217,7 +217,7 @@ function updateTimer(){
     }else if(centiseconds2==3){
         seg3(3)
     }else if(centiseconds2==4){
-        seg3(3)
+        seg4(3)
     }else if(centiseconds2==5){
         seg5(3)
     }else if(centiseconds2==6){
@@ -245,7 +245,7 @@ function updateTimer(){
     }else if(seconds1==3){
         seg3(2)
     }else if(seconds1==4){
-        seg3(2)
+        seg4(2)
     }else if(seconds1==5){
         seg5(2)
     }else if(seconds1==6){
@@ -270,7 +270,7 @@ function updateTimer(){
     }else if(seconds2==3){
         seg3(1)
     }else if(seconds2==4){
-        seg3(1)
+        seg4(1)
     }else if(seconds2==5){
         seg5(1)
     }else if(seconds2==6){
@@ -296,7 +296,7 @@ function updateTimer(){
     }else if(seconds3==3){
         seg3(0)
     }else if(seconds3==4){
-        seg3(0)
+        seg4(0)
     }else if(seconds3==5){
         seg5(0)
     }else if(seconds3==6){

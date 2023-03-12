@@ -12,10 +12,6 @@
             max-height: 400px;
             overflow-y: auto;
         }
-        table{
-            display: inline-block;
-            width: auto;
-        }
     </style>
 </head>
 <body>
@@ -33,7 +29,95 @@
             <hr>
             <div class="main">
                 <table class="producttable">
-                    <?php  ?>
+                    <?php
+                        $row=fetchall(query($db,"SELECT*FROM `coffee`"));
+                        $product=fetchall(query($db,"SELECT*FROM `product`"));
+                        usort($row,function($a,$b){ return $a[0]<$b[0]; });
+                        for($i=0;$i<count($row);$i++){
+                            ?>
+                            <tr>
+                                <td class="producttd">
+                                    <table class="coffeetable">
+                                        <?php
+                                        for($j=0;$j<count($product);$j++){
+                                            if($row[$i][7]==$product[$j][0]&&$product[$j][1]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee" rowspan="3"><img src="<?= $row[$i][1] ?>" alt="圖片" width="175px"></td>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][2]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][4]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][6]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][7]) ?></td>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][8]) ?></td>
+                                                </tr>
+                                                <?php
+                                            }elseif($row[$i][7]==$product[$j][0]&&$product[$j][2]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][1]) ?></td>
+                                                    <td class="coffee" rowspan="3"><img src="<?= $row[$i][1] ?>" alt="圖片" width="175px"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][3]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][5]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][7]) ?></td>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][8]) ?></td>
+                                                </tr>
+                                                <?php
+                                            }elseif($row[$i][7]==$product[$j][0]&&$product[$j][3]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][1]) ?></td>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][2]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee" rowspan="3"><img src="<?= $row[$i][1] ?>" alt="圖片" width="175px"></td>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][4]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][6]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][8]) ?></td>
+                                                </tr>
+                                                <?php
+                                            }elseif($row[$i][7]==$product[$j][0]&&$product[$j][4]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][1]) ?></td>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][2]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][3]) ?></td>
+                                                    <td class="coffee" rowspan="3"><img src="<?= $row[$i][1] ?>" alt="圖片" width="175px"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][5]) ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($row,$i,$product[$j][7]) ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </table>
+                                    <input type="button" onclick="location.href='edit.php?pedit=<?= $row[$i][0] ?>'" value="修改">
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                    ?>
                 </table>
             </div>
             <?php
@@ -48,7 +132,7 @@
             <hr>
             <div class="main">
                 <table class="producttable">
-                    <?php  ?>
+                    <?php product(fetchall(query($db,"SELECT*FROM `coffee`")),$db); ?>
                 </table>
             </div>
             <?php

@@ -7,7 +7,7 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-70%);
+    transform: translate(-50%,-50%);
     width: 99%;
 }
 
@@ -26,9 +26,9 @@ body{
 }
 
 .button{
-    display: flex;/* 設定顯示 */
-    align-items: center;/* 垂直置中 */
-    justify-content: center;/* 水平置中 */
+    text-align: center;
+    position: relative;
+    bottom: 70px;
 }
 
 button{
@@ -62,7 +62,7 @@ button:active{
     display: inline-block;
     position: relative;
     bottom: 100px;
-    width: 12%;
+    /* width: 10%; */
     height: 400px;
     color: red;
     animation: 1s colon infinite;
