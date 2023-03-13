@@ -19,6 +19,7 @@
         include("link.php");
         if(!isset($_SESSION["data"])){ header("location:index.php"); }
         if($_SESSION["permission"]=="管理者"){
+            echo "\$_SESSION[\"permission\"] ="; print_r($_SESSION["permission"]); echo "\n";
             ?>
             <h1>咖啡商品展示系統</h1>
             <input type="button" class="mainbutton selt" onclick="location.href='main.php'" value="首頁">
