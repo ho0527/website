@@ -16,6 +16,10 @@
         return $data->fetchall();
     }
 
+    function block($name){
+        return preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$name,$e);
+    }
+
     if(isset($_GET["logout"])){
         $data=$_SESSION["data"];
         if($row=fetch(query($db,"SELECT*FROM `user`"))){
@@ -114,15 +118,5 @@
         }else{
             up($data,1);
         }
-    }
-
-    function data($row,$i,$p){
-
-    }
-
-    function product($row,$db){
-        $product=fetchall(query($db,"SELECT*FROM `product`"));
-        usort($row,function($a,$b){ return $a[0]>$b[0]; });
-        
     }
 ?>

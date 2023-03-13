@@ -30,7 +30,7 @@
                     $str=array_merge(range("0","9"),range("A","Z"),range("a","z"))[rand(0,61)];
                     ?>
                     <div class="dragbox">
-                        <img src="verifycode.php?val=<?= $str ?>" id="<?= $str ?>" class="img">
+                        <img src="verifycode.php?val=<?= $str ?>" id="<?= $i.$str ?>" data-id="<?= $str ?>" class="img">
                     </div>
                     <?php
                     $_SESSION["verify"].=$str;

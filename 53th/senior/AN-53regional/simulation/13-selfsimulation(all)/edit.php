@@ -15,7 +15,7 @@
 <body>
     <?php
         include("link.php");
-        if(!isset($_SESSION["data"])){ header("location:index.php"); }
+        if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         if(isset($_SESSION["edit"])){
             $number=$_SESSION["edit"];
             $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"))
@@ -74,22 +74,24 @@
             $name=$_GET["name"];
             $code=$_GET["code"];
             $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-            if($username==""||$code==""){
-                ?><script>alert("請輸入帳密");location.href="edit.php"</script><?php
-            }elseif($row){
-                ?><script>alert("帳號已被註冊");location.href="edit.php"</script><?php
-            }elseif(preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$username,$e)||preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$code,$e)||preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$name,$e)){
+            if(block($username)||block($code)||block($name)){
                 ?><script>alert("帳密姓名不得有特殊字元");location.href="edit.php"</script><?php
             }else{
-                if(isset($_GET["admin"])){
-                    query($db,"INSERT INTO `user`(`username`,`code`,`name`,`permission`,`timer`)VALUES('$username','$code','$name','管理者','60')");
+                if($username==""||$code==""){
+                    ?><script>alert("請輸入帳密");location.href="edit.php"</script><?php
+                }elseif($row){
+                    ?><script>alert("帳號已被註冊");location.href="edit.php"</script><?php
                 }else{
-                    query($db,"INSERT INTO `user`(`username`,`code`,`name`,`permission`,`timer`)VALUES('$username','$code','$name','一般使用者','60')");
+                    if(isset($_GET["admin"])){
+                        query($db,"INSERT INTO `user`(`username`,`code`,`name`,`permission`,`timer`)VALUES('$username','$code','$name','管理者','60')");
+                    }else{
+                        query($db,"INSERT INTO `user`(`username`,`code`,`name`,`permission`,`timer`)VALUES('$username','$code','$name','一般使用者','60')");
+                    }
+                    $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
+                    $number=str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
+                    query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
+                    ?><script>alert("新增成功");location.href="admin.php"</script><?php
                 }
-                $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                $number=str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
-                query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
-                ?><script>alert("新增成功");location.href="admin.php"</script><?php
             }
         }
 
@@ -115,19 +117,21 @@
             $name=$_GET["name"];
             $code=$_GET["code"];
             $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-            if($username==""||$code==""){
-                ?><script>alert("請輸入帳密");location.href="edit.php"</script><?php
-            }elseif($row&&$row[1]!=$number){
-                ?><script>alert("帳號已被註冊");location.href="edit.php"</script><?php
-            }elseif(preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$username,$e)||preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$code,$e)||preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$name,$e)){
+            if(block($username)||block($code)||block($name)){
                 ?><script>alert("帳密姓名不得有特殊字元");location.href="edit.php"</script><?php
             }else{
-                if(isset($_GET["admin"])){
-                    query($db,"UPDATE `user` SET `username`='$username',`code`='$code',`name`='$name',`permission`='管理者' WHERE `number`='$number'");
+                if($username==""||$code==""){
+                    ?><script>alert("請輸入帳密");location.href="edit.php"</script><?php
+                }elseif($row&&$row[1]!=$number){
+                    ?><script>alert("帳號已被註冊");location.href="edit.php"</script><?php
                 }else{
-                    query($db,"UPDATE `user` SET `username`='$username',`code`='$code',`name`='$name',`permission`='一般使用者' WHERE `number`='$number'");
+                    if(isset($_GET["admin"])){
+                        query($db,"UPDATE `user` SET `username`='$username',`code`='$code',`name`='$name',`permission`='管理者' WHERE `number`='$number'");
+                    }else{
+                        query($db,"UPDATE `user` SET `username`='$username',`code`='$code',`name`='$name',`permission`='一般使用者' WHERE `number`='$number'");
+                    }
+                    ?><script>alert("修改成功");location.href="admin.php"</script><?php
                 }
-                ?><script>alert("修改成功");location.href="admin.php"</script><?php
             }
         }
     ?>

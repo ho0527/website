@@ -22,7 +22,7 @@
 <body>
     <?php
         include("link.php");
-        if(!isset($_SESSION["data"])){ header("location:index.php"); }
+        if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         unset($_SESSION["del"]);
         unset($_SESSION["edit"]);
         $number=$_SESSION["data"];

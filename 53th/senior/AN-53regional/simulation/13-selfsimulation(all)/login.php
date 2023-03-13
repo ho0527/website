@@ -5,7 +5,7 @@
     $username=$_SESSION["username"];
     $code=$_SESSION["code"];
     if(!isset($_SESSION["error"])){ $_SESSION["error"]=0; }
-    if(!preg_match("/([ ,\! \@ \# \$ \% \^ \& \* \( \) \_ \- \+ \= \[ \] \{ \} \' \" \/ \: \; \\\ \> \<  ])/",$username,$e)){
+    if(!block($username)){
         if($row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"))){
             if($row[3]==$code){
                 $verify=str_split($_SESSION["verify"]);

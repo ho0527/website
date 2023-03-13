@@ -15,7 +15,8 @@ drop.forEach(function(e){
     e.addEventListener("drop",function(e){
         let id=e.dataTransfer.getData("text")
         let g=document.getElementById(id)
-        a+=id
+        let data=g.getAttribute("data-id")
+        a+=data
         drop[0].appendChild(g)
     })
 })
