@@ -16,7 +16,41 @@
     <?php
         include("link.php");
         if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
-        if(isset($_SESSION["edit"])){
+        if(isset($_SESSION["pedit"])){
+            $number=$_SESSION["pedit"];
+            $row=fetch(query($db,"SELECT*FROM `coffee` WHERE `id`='$number'"))
+            ?>
+            <h1>咖啡商品展示系統</h1>
+            <input type="button" class="mbutton selt" onclick="location.href='main.php'" value="首頁">
+            <input type="button" class="mbutton" onclick="location.href='productindex.php'" value="上架商品">
+            <input type="button" class="mbutton" onclick="location.href='admin.php'" value="會員管理">
+            <input type="button" class="mbutton" onclick="location.href='search.php'" value="查尋">
+            <input type="button" class="mbutton logout" onclick="location.href='link.php?logout='" value="登出">
+            <hr>
+            <div class="main mag">
+                <form id="form" method="post" enctype="multipart/form-data">
+                    <h2>編輯商品</h2>
+                    商品id <input type="text" name="id" value="<?= @$row["id"] ?>" readonly><br><br>
+                    商品名稱 <input type="text" name="name" value="<?= @$row["name"] ?>"><br><br>
+                    費用 <input type="number" name="cost" value="<?= @$row["cost"] ?>"><br><br>
+                    相關連結 <input type="text" name="link" value="<?= @$row["link"] ?>"><br><br>
+                    商品簡介 <textarea name="intr" id="" cols="25" rows="3"><?= @$row["intr"] ?></textarea><br><br>
+                    圖片
+                    <input type="file" name="picture" accept="image/*" style="width: 175px"><br>
+                    已上傳: <?php 
+                        if($row[1]==""){
+                            echo("無");
+                        }else{
+                            echo(@$row[1]);
+                        }
+                    ?><br><br>
+                    版型(可至上架商品查看id) <input type="text" name="val" value="<?= @$row["val"] ?>"><br><br>
+                    <input type="button" onclick="location.href='main.php'" value="取消">
+                    <input type="submit" name="ps" value="送出">
+                </form>
+            </div>
+            <?php
+        }elseif(isset($_SESSION["edit"])){
             $number=$_SESSION["edit"];
             $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"))
             ?>
@@ -104,7 +138,7 @@
             $_SESSION["del"]=$_GET["del"];
             header("location:edit.php");
         }
-
+        
         if(isset($_SESSION["del"])){
             $number=$_SESSION["del"];
             query($db,"DELETE FROM `user` WHERE `number`='$number'");
@@ -131,6 +165,40 @@
                         query($db,"UPDATE `user` SET `username`='$username',`code`='$code',`name`='$name',`permission`='一般使用者' WHERE `number`='$number'");
                     }
                     ?><script>alert("修改成功");location.href="admin.php"</script><?php
+                }
+            }
+        }
+
+        if(isset($_GET["pedit"])){
+            $_SESSION["pedit"]=$_GET["pedit"];
+            header("location:edit.php");
+        }
+
+        if(isset($_POST["ps"])){
+            if(block($_POST["name"])||block($_POST["cost"])||block($_POST["link"])||block($_POST["intr"])){
+                ?><script>alert("欄位不得有特殊字元");location.href="productinput.php"</script><?php
+            }else{
+                if(block($_FILES["picture"]["name"])){
+                    ?><script>alert("圖片不得有特殊字元");location.href="productinput.php"</script><?php
+                }else{
+                    $name=$_POST["name"];
+                    $cost=$_POST["cost"];
+                    $link=$_POST["link"];
+                    $intr=$_POST["intr"];
+                    $val=$_POST["val"];
+                    $id=$_POST["id"];
+                    if($row=fetch(query($db,"SELECT*FROM `product` WHERE `id`='$val'"))){
+                        if(!empty($_FILES["picture"]["name"])){
+                            move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
+                            $picture="image/".$_FILES["picture"]["name"];   
+                            query($db,"UPDATE `coffee` SET `name`='$name',`cost`='$cost',`link`='$link',`intr`='$intr',`val`='$val',`picture`='$picture' WHERE `id`='$id'");
+                        }else{
+                            query($db,"UPDATE `coffee` SET `name`='$name',`cost`='$cost',`link`='$link',`intr`='$intr',`val`='$val' WHERE `id`='$id'");
+                        }
+                        ?><script>alert("修改成功");location.href="main.php"</script><?php
+                    }else{
+                        ?><script>alert("找不到此版型");location.href="edit.php"</script><?php
+                    }
                 }
             }
         }
