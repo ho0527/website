@@ -1,0 +1,298 @@
+body{
+    background-color: rgba(210, 180, 140, 0.865);
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+hr{
+    border: 1px black solid;
+    margin-bottom: 20px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+h2{
+    margin: 0px;
+}
+
+.mag{
+    margin-bottom: 20px;
+}
+
+.main{
+    margin: 0px auto;
+    border: 2px black solid;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.button{
+    background-color: white;
+    border: none;
+    font-size: 15px;
+    padding: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.dragbox{
+    border: 1px black solid;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+
+.dropbox{
+    border: 1px black solid;
+    width: 160px;
+    height: 40px;
+    display: inline-block;
+}
+
+.td{
+    border: 1px rgb(183, 183, 183) solid;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.button:hover{
+    background-color: gray;
+    color: white;
+}
+
+.selt{
+    background-color: black;
+    color: white;
+}
