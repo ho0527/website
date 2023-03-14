@@ -236,7 +236,7 @@
                         }
                         $usemod="mark";
                     }
-                    query($db,"INSERT INTO `main`(`tablename`,`subjectivesuggstion`,`othersuggestion`,`totalscore`,`getscore`,`usemod`,`date`,`module`)VALUES('$tablename','$subjectivesuggestion','$othersuggestion','$totalscore','$getscore','$usemod','$time','$usingtable')");
+                    query($db,"INSERT INTO `main`(`tablename`,`subjectivesuggestion`,`othersuggestion`,`totalscore`,`getscore`,`usemod`,`date`,`module`)VALUES('$tablename','$subjectivesuggestion','$othersuggestion','$totalscore','$getscore','$usemod','$time','$usingtable')");
                     session_unset();
                     ?><script>alert("上傳成功");location.href="index.php"</script><?php
                 }else{
