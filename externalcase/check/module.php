@@ -12,6 +12,7 @@
             include("link.php");
         ?> 
         <input type="button" onclick="location.href='index.php'" value="返回"><br>
+            <input type="button" class="right" onclick="location.href='index.php?clearall='" value="重整">
         <form>
             <h2>請輸入項目數量</h2>
             <input type="number" name="num" id="num">

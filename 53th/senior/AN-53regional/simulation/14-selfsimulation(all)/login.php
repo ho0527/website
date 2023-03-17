@@ -11,7 +11,7 @@
                 $verify=str_split($_SESSION["verify"]);
                 if($_SESSION["key"]==0){ rsort($verify); }else{ sort($verify); }
                 if($verify==str_split($_GET["verify"])){
-                    query($db,"INSERT INTO `data`(`number`,`move`,`time`)VALUES('$row[1]','登入失敗','$time')");
+                    query($db,"INSERT INTO `data`(`number`,`move`,`time`)VALUES('$row[1]','登入成功','$time')");
                     session_unset();
                     $_SESSION["data"]=$row[1];
                     $_SESSION["permission"]=$row[5];

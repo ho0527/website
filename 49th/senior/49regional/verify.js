@@ -1,6 +1,6 @@
 let verifytd=document.querySelectorAll(".verifytd")
 
-all.forEach(function(td){
+verifytd.forEach(function(td){
     td.addEventListener("click",function(){
         tdclick(this.id)
     })
@@ -25,7 +25,7 @@ function check(){
     }
 }
 
-function allshow(){
+function showall(){
     
 }
 

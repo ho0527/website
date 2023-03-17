@@ -19,9 +19,10 @@
     <body>
         <?php
             include("link.php");
-            if(isset($_SESSION["data"])){ header("main.php"); }
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
         <h1>咖啡商品展示系統</h1>
+        <hr>
         <div class="main">
             <h2>第二層驗證</h2>
             <p>請點選方塊來連成水平或垂直線</p>

@@ -21,13 +21,13 @@
             <input type="button" onclick="location.href='edit.php'" value="修改模板"><br><br>
             <input type="text" name="tablename" placeholder="名稱">
             <input type="submit" name="indexsubmit" value="送出"><br><br><br>
+            <input type="button" class="right" onclick="location.href='index.php?clearall='" value="重整">
             <?php
                 checktable($db,fetchall(query($db,"SHOW TABLES")),true);
                 if(!isset($_SESSION["num"])){ $_SESSION["num"]=0; }
                 if(!isset($_SESSION["usemod"])){ $_SESSION["usemod"]="item"; }
                 if(isset($_SESSION["usingtable"])){
                     @$usingtable=$_SESSION["usingtable"];
-                    @$totalscore=$_SESSION["totalscore"];
                     $row=fetchall(query($db,"SELECT*FROM `$usingtable`"));
                     if($_SESSION["usemod"]=="mark"){
                         ?>
@@ -44,7 +44,7 @@
                                 </tr>
                                 <?php
                                     for($i=0;$i<count($row);$i=$i+1){
-                                        $totalscore=$totalscore+$row[$i][4];
+                                        $_SESSION["totalscore"]=$_SESSION["totalscore"]+$row[$i][4];
                                         ?>
                                         <tr>
                                             <td class="border"><input type="text" name="item<?= $i ?>" value="<?= $row[$i][1] ?>" readonly></td>
@@ -105,8 +105,6 @@
                         </div>
                         <?php
                     }else{
-                        @$usingtable=$_SESSION["usingtable"];
-                        @$totalscore=$_SESSION["totalscore"];
                         ?>
                         <div class="borad1">
                             <table>
@@ -120,7 +118,7 @@
                                 </tr>
                                 <?php
                                     for($i=0;$i<count($row);$i=$i+1){
-                                        $totalscore=$totalscore+1;
+                                        $_SESSION["totalscore"]=$_SESSION["totalscore"]+1;
                                         ?>
                                         <tr>
                                             <td class="border"><input type="text" name="item<?= $i ?>" value="<?= $row[$i][1] ?>" readonly></td>
@@ -257,6 +255,11 @@
             if(isset($_GET["table"])){
                 $_SESSION["usingtable"]=$_GET["table"];
                 ?><script>location.href="index.php"</script><?php
+            }
+
+            if(isset($_GET["clearall"])){
+                session_unset();
+                ?><script>alert("session格式化成功");location.href="index.php"</script><?php
             }
         ?>
     </body>

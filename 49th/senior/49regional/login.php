@@ -16,6 +16,7 @@
                         session_unset();
                         $_SESSION["data"]=$row[1];
                         $_SESSION["permission"]=$row[5];
+                        $_SESSION["timer"]=60;
                         if($_SESSION["data"]=="a0001"){
                             ?><script>alert("登入成功");location.href="verify.php"</script><?php
                         }else{

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>翻牌配對驗證模組</title>
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
@@ -10,20 +10,10 @@
             include("link.php");
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
-        <div class="center">
-            <table class="table">
-                <tr>
-                    <td class="td" id="td1"></td>
-                    <td class="td" id="td2"></td>
-                </tr>
-                <tr>
-                    <td class="td" id="td3"></td>
-                    <td class="td" id="td4"></td>
-                </tr>
-            </table>
-            <input type="button" class="button" onclick="location.href='link.php?logout='" value="返回">
-            <input type="button" class="button" onclick="location.reload()" value="清除">
-            <input type="button" class="button" onclick="check()" value="確定">
+        <div class="main">
+            <input type="button" class="button" onclick="location.href='admin.php'" value="會員管理">
+            <input type="button" class="button" onclick="location.href='productindex.php'" value="上架商品">
+            <input type="button" class="button" onclick="location.href='link.php?logout='" value="登出">
         </div>
         <script src="verify.js"></script>
     </body>

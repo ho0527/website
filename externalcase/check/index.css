@@ -15,6 +15,7 @@ textarea{
     text-align: center;
     padding: 15px;
 }
+
 .borad1{
     position: absolute;
     top: 5px;
@@ -26,6 +27,13 @@ textarea{
     align-items: center;
     padding:15px;
 }
+
 .score{
     width: 70px;  
+}
+
+.right{
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }

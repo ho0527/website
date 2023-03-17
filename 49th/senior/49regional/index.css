@@ -15,9 +15,13 @@ h1{
     margin: 0px;
 }
 
+h2{
+    margin: 0px;
+}
+
 hr{
     border: 1px rgb(255, 255, 255) solid;
-    width: calc(100% + 40px);
+    width: calc(100% + 20px);
     position: relative;
     right: 20px;
 }
@@ -144,51 +148,30 @@ hr{
 
 
 /*admin table*/
-.signupdiv{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin:3px;
-    position: absolute;
-    top: 50%;
+.adminmain{
+    border: 2px rgb(255, 255, 255) solid;
+    position: relative;
     left: 50%;
-    transform:  translate(-50%, -40%) scale(3.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(125, 125, 125);
+    transform:  translate(-50%,0%);
     border-radius: 25px;
-    height: 220px;
-    width: 300px;
-    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+    padding: 20px;
+    color: white;
+    font-size: 15px;
+    font-weight:bold;
+    height: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 75%;
 }
 
-.productinput{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin:3px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:  translate(-50%, -0%) scale(3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(125, 125, 125);
-    border-radius: 25px;
-    height: 200px;
-    width: 300px;
-    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+.admintd{
+    border-bottom: 1px black solid;
+    width: 100px;
+    font-size: 20px;
 }
 
 .admintable{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:265px;
-    height:30px;
+    width:100%;
     text-align: center;
 }
 
@@ -243,33 +226,22 @@ timer與燈箱
     height: 25px;
 }
 
-.lightboxdiv{
+.maintimer{
+    border: none;
+    background: none;
+    font-size: 25px;
+    width: 200px;
+    text-align: center;
+}
+
+.lightbox{
     position: absolute;/* 絕對定位 */
     top: 0px;/* 定位 */
     left: 0px;
-    bottom: 0px;
-    right: 0px;
-    z-index: 999;/*  */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(160, 160, 160, 0.5);
 }
 
-.mask{
-    position: absolute;/* 絕對定位 */
-    top: 0px;/* 定位 */
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    background-color: rgba(100, 100, 100, 0.25);/* 背景顏色 */
-}
-
-.close{
-    font-size:15px;/* 字體大小 */
-    width: 125px;/* 寬度 */
-}
-
-.body{
+.lightboxbody{
     position: absolute;/* 絕對定位 */
     left: 50%;/* 定位 */
     top: 50%;
@@ -356,12 +328,7 @@ verify
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%) scale(5);
-}
-
-.gamebar{
-    transform: scale(0.5);
-    width: 250px;
+    transform: translate(-50%,-50%);
 }
 
 .verifybutton{

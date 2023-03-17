@@ -14,6 +14,7 @@
         <form method="POST">
             <input type="button" onclick="location.href='index.php'" value="返回"><br><br>
             <input type="submit" name="submit" value="送出"><br><br><br>
+            <input type="button" class="right" onclick="location.href='index.php?clearall='" value="重整">
             <?php
                 checktable($db,fetchall(query($db,"SHOW TABLES")),true);
                 if(isset($_SESSION["usingtable"])){
