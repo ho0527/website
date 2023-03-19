@@ -1,0 +1,31 @@
+body{
+    background: rgba(135,135,135,0.65);
+    color: rgb(255,255,255);
+    user-select: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 0px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+}

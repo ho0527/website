@@ -1,50 +1,93 @@
-function displayData(populationData) {
-    let width = 500,
-        height = 500;
-    let svg = d3.select("#chart").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-    let xScale = d3.scaleBand()
-        .domain(populationData.map(function(d) { return d.county; }))
-        .rangeRound([0, width])
-        .padding(0.1)
-    let yScale = d3.scaleLinear()
-        .domain([0, d3.max(populationData, function(d) { return +d.population; })])
-        .range([height, 0])
-    let bars = svg.selectAll(".bar")
-        .data(populationData)
-        .enter()
-        .append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return xScale(d.county); })
-        .attr("y", function(d) { return yScale(d.population); })
-        .attr("width", xScale.bandwidth())
-        .attr("height", function(d) { return height - yScale(d.population); })
-}
+let fileInput = document.getElementById('csvInput');
+let chartDiv = document.getElementById('chartDiv');
+let populationData = [];
 
-function loadCSV(file) {
-    let xhr = new XMLHttpRequest()
-    xhr.open("GET", file, true)
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            parseCSV(xhr.responseText);
-        }
+fileInput.addEventListener('change', function() {
+  let file = fileInput.files[0];
+  let reader = new FileReader();
+
+  reader.onload = function(event) {
+    let csvData = event.target.result;
+    processData(csvData);
+    createChart();
+  };
+
+  reader.readAsText(file);
+});
+
+function processData(csvData) {
+  let lines = csvData.split('\n');
+
+  // extract headers
+  let headers = lines[0].split(',');
+
+  for (let i = 1; i < lines.length; i++) {
+    let data = lines[i].split(',');
+
+    // extract population data
+    let population = parseInt(data[2]) + parseInt(data[3]);
+
+    // check if county exists in populationData array
+    let countyIndex = populationData.findIndex(function(item) {
+      return item.county === data[0];
+    });
+
+    if (countyIndex >= 0) {
+      // county already exists in array, add population to existing data
+      populationData[countyIndex].population += population;
+      populationData[countyIndex].towns.push({
+        town: data[1],
+        population: population
+      });
+    } else {
+      // add county to populationData array
+      populationData.push({
+        county: data[0],
+        population: population,
+        towns: [{
+          town: data[1],
+          population: population
+        }]
+      });
     }
-    xhr.send();
+  }
 }
 
-function parseCSV(data) {
-    let rows = data.split("\n")
-    let header = rows[0].split(",")
-    let populationData = []
-    for (let i = 1; i < rows.length; i++) {
-        let population = {}
-        let values = rows[i].split(",")
-        for (let j = 0; j < header.length; j++) {
-            population[header[j]] = values[j]
+function createChart() {
+  chartDiv.innerHTML = '';
+
+  for (let i = 0; i < populationData.length; i++) {
+    let county = populationData[i];
+    let countyDiv = document.createElement('div');
+    countyDiv.classList.add('countyDiv');
+    countyDiv.textContent = county.county;
+    chartDiv.appendChild(countyDiv);
+
+    countyDiv.addEventListener('click', function() {
+      let townDivs = countyDiv.querySelectorAll('.townDiv');
+      if (townDivs.length > 0) {
+        // town divs already exist, remove them
+        for (let j = 0; j < townDivs.length; j++) {
+          townDivs[j].remove();
         }
-        populationData.push(population)
-    }
-    displayData(populationData)
-}
+      } else {
+        // create town divs
+        for (let j = 0; j < county.towns.length; j++) {
+          let town = county.towns[j];
+          let townDiv = document.createElement('div');
+          townDiv.classList.add('townDiv');
+          townDiv.textContent = town.town + ': ' + town.population;
+          countyDiv.appendChild(townDiv);
+        }
+      }
+    });
 
+    let countyPopulation = county.population.toLocaleString();
+    let barHeight = countyPopulation / 10000;
+    let countyBar = document.createElement('div');
+    countyBar.classList.add('countyBar');
+    countyBar.style.height = barHeight + 'px';
+    countyBar.setAttribute('title', county.county + ': ' + countyPopulation);
+    countyDiv.appendChild(countyBar);
+  }
+}

@@ -1,22 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>011</title>
-        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <title>Population Visualization</title>
     </head>
     <body>
-        <input type="file" id="fileInput"><br>
-        <input type="button" id="submit" value="送出"><br>
+        <h1>Population Visualization</h1>
+        <input type="file" id="fileInput">
         <div id="chart"></div>
-        <script>
-            let fileInput=document.getElementById("fileInput");
-            let submit=document.getElementById("submit");
-            submit.onclick=function(){
-                let file=fileInput.files[0]
-                loadCSV(file)
-            }
-        </script>
-        <script src="index.js"></script>
+        <script src="01.js"></script>
     </body>
 </html>
