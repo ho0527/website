@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>咖啡商品展示系統</title>
+        <title>管理者專區</title>
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
@@ -10,21 +10,21 @@
             include("link.php");
             if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         ?>
-        <h1>咖啡商品展示系統</h1>
-        <input type="button" class="mainbutton" onclick="location.href='main.php'" value="首頁">
-        <input type="button" class="mainbutton" onclick="location.href='productindex.php'" value="上架商品">
-        <input type="button" class="mainbutton selt" onclick="location.href='admin.php'" value="會員管理">
-        <input type="button" class="mainbutton logout" onclick="location.href='link.php?logout='" value="登出">
+        <h1>電子競技網站管理</h1>
+        <input type="button" class="button" onclick="location.href='main.php'" value="首頁">
+        <input type="button" class="button" onclick="location.href='productindex.php'" value="上架商品">
+        <input type="button" class="button selectbutton" onclick="location.href='admin.php'" value="會員管理">
+        <input type="button" class="button logout" onclick="location.href='link.php?logout='" value="登出">
         <hr>
-        <div class="timer mag">
+        <div class="timer">
             <form>
                 <table class="table">
                     <tr>
-                        <td class="td" rowspan="2"><input type="text" class="maintimer" id="timer" value="<?= @$_SESSION["timer"] ?>" readonly></td>
-                        <td class="td"><input type="number" name="timer" value="<?= @$_SESSION["timer"] ?>"></td>
+                        <td class="timertd" rowspan="2"><input type="text" class="maintimer" id="timer" value="<?= @$_SESSION["timer"] ?>" readonly></td>
+                        <td class="timertd"><input type="number" name="timer" value="<?= @$_SESSION["timer"] ?>"></td>
                     </tr>
                     <tr>
-                        <td class="td"><input type="submit" name="ref" value="重新計時"></td>
+                        <td class="timertd"><input type="submit" name="ref" value="重新計時"></td>
                     </tr>
                 </table>
             </form>
@@ -32,13 +32,13 @@
         <div class="lightbox">
             <div class="lightboxbody">
                 是否繼續操作?<br>
-                <input type="button" class="mainbutton" onclick="location.reload()" value="Yes">
-                <input type="button" class="mainbutton" onclick="location.href='link.php?logout='" value="否">
+                <input type="button" class="button" onclick="location.reload()" value="Yes">
+                <input type="button" class="button" onclick="location.href='link.php?logout='" value="否">
             </div>
         </div>
         <div class="adminmain mag">
             <h2>會員管理</h2>
-            <input type="button" onclick="location.href='edit.php'" value="新增使用者">
+            <input type="button" onclick="location.href='signupedit.php'" value="新增使用者">
             <form>
                 <input type="text" name="search">
                 <input type="submit" name="searchs" value="查尋">
@@ -69,8 +69,8 @@
             <table class="admintable">
                 <tr>
                     <td class="admintd">使用者編號</td>
-                    <td class="admintd">時間</td>
                     <td class="admintd">動作</td>
+                    <td class="admintd">時間</td>
                 </tr>
                 <?php
                 $row=fetchall(query($db,"SELECT*FROM `data`"));
@@ -78,8 +78,8 @@
                     ?>
                     <tr>
                         <td class="admintd"><?= $row[$i][1] ?></td>
-                        <td class="admintd"><?= $row[$i][2] ?></td>
                         <td class="admintd"><?= $row[$i][3] ?></td>
+                        <td class="admintd"><?= $row[$i][2] ?></td>
                     </tr>
                     <?php
                 }

@@ -6,17 +6,16 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="container">
+        <div class="main">
             <h1>Image Cropper</h1>
-            <form id="upload-form" method="POST" enctype="multipart/form-data">
-                <input type="file" id="upload-input" accept="image/*" name="image">
-                <button type="submit" id="upload-btn">Upload</button>
+            <form id="form" method="POST" enctype="multipart/form-data">
+                <input type="file" id="input" accept="image/*" name="image">
+                <input type="submit" id="formbutton" value="Submit">
             </form>
-            <div id="image-container"></div>
-            <div id="crop-container"></div>
-            <button type="button" id="crop-btn" disabled>Crop</button>
-            <button type="button" id="download-btn" disabled>Download</button>
+            <div id="imagediv" class="imagediv"></div>
+            <input type="button" class="reflashbutton" id="reflashbutton" value="重整">
+            <input type="button" class="cropdownloadbutton" id="cropdownloadbutton" value="crop" disabled>
         </div>
-        <script src="script.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

@@ -33,8 +33,11 @@ document.getElementById("downloadbutton").onclick=function(){
     if(filename==""){ filename="download" }// 如果檔案名稱為空，預設為 download
     filename=filename+".zip"// 加上 .zip 副檔名
     // 產生壓縮檔
-    zip.generateAsync({ type:"blob" }).then(function(content){
-        saveAs(content,filename)// 使用 FileSaver.js 下載檔案
+    zip.generateAsync({ type:"blob" }).then(function(downloadevent){
+        let downloadLink=document.createElement("a")
+        downloadLink.href=URL.createObjectURL(downloadevent)
+        downloadLink.download=filename
+        downloadLink.click()
     })
 }
 

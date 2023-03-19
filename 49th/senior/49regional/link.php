@@ -46,8 +46,8 @@
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
                     <td class="admintd">
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
-                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
                     </td>
                 </tr>
                 <?php
@@ -62,8 +62,8 @@
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
                     <td class="admintd">
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改">
-                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除">
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
                     </td>
                 </tr>
                 <?php
@@ -85,8 +85,8 @@
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
                     <td class="admintd">
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
-                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
                     </td>
                 </tr>
                 <?php
@@ -101,8 +101,8 @@
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
                     <td class="admintd">
-                        <input type="button" onclick="location.href='edit.php?edit=<?= $row[$i][1] ?>'" value="修改">
-                        <input type="button" onclick="location.href='edit.php?del=<?= $row[$i][1] ?>'" value="刪除">
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
                     </td>
                 </tr>
                 <?php
