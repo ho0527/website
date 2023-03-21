@@ -10,7 +10,7 @@
         <img src="" alt="" class="mainlogo">
         <div class="navigationbar">
             <div class="navigationbardiv">
-                <div class="maintitle">Chatcom</div>
+                <div class="maintitle" id="maintitle">Chatcom</div>
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>

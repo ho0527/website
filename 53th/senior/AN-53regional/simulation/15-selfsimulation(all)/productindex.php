@@ -31,8 +31,8 @@
         }
     ?>
     <h1>咖啡商品展示系統</h1>
-    <input type="button" class="but selt" onclick="location.href='main.php'" value="首頁">
-    <input type="button" class="but" onclick="location.href='productindex.php'" value="上架商品">
+    <input type="button" class="but" onclick="location.href='main.php'" value="首頁">
+    <input type="button" class="but selt" onclick="location.href='productindex.php'" value="上架商品">
     <input type="button" class="but" onclick="location.href='admin.php'" value="會員管理">
     <input type="button" class="but" onclick="location.href='link.php?logout='" value="登出">
     <hr>
@@ -55,7 +55,7 @@
                                 <?php
                                     if($product[$j][0]=="picture"){
                                         ?>
-                                            <tr>
+                                        <tr>
                                             <td class="coffee" rowspan="3">圖片</td>
                                             <td class="coffee"><?php data($product[$j][2]); ?></td>
                                         </tr>
@@ -72,9 +72,9 @@
                                         <?php
                                     }elseif($product[$j][1]=="picture"){
                                         ?>
-                                            <tr>
-                                                <td class="coffee"><?php data($product[$j][1]); ?></td>
-                                                <td class="coffee" rowspan="3">圖片</td>
+                                        <tr>
+                                            <td class="coffee"><?php data($product[$j][1]); ?></td>
+                                            <td class="coffee" rowspan="3">圖片</td>
                                         </tr>
                                         <tr>
                                             <td class="coffee"><?php data($product[$j][3]); ?></td>

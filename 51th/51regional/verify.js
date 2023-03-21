@@ -7,8 +7,8 @@ let verify3=""
 
 function random(div, result){
     result=""
-    const characters="XYZ"
-    const charactersLength=characters.length
+    let characters="XYZ"
+    let charactersLength=characters.length
     result=result+characters.charAt(Math.floor(Math.random()*charactersLength))
     div.innerHTML=result
     console.log(result)

@@ -4,6 +4,7 @@ body{
     user-select: none;
     word-break: break-all;
     text-align: center;
+    padding: 0px 40px;
 }
 
 table{
@@ -13,6 +14,7 @@ table{
 
 h1{
     margin: 0px;
+    margin-bottom: 10px;
 }
 
 h2{
@@ -82,12 +84,12 @@ hr{
 .input{
     border: none;
     width: 75%;
-    height: 20px;
+    height: 40px;
     background-color: white;
     background: none;
     border-bottom: 1px black solid;
     outline: none;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .checkbox{
@@ -123,6 +125,15 @@ hr{
     display: inline-block;
     background-color: white;
     text-align: left;
+}
+
+.block{
+    border: none;
+    height: 80px;
+    width: 210px;
+    display: inline-block;
+    position: absolute;
+    left: 340px;
 }
 
 .dragimg{
@@ -179,7 +190,7 @@ timer與燈箱
     text-align: center;/* 將文字置中 */
 }
 
-.timeerbutton{
+.timerbutton{
     background-color: #ffa07a;/* 背景顏色 */
     border: none;/* 邊框 */
     border-radius: 4px;/* 弧形邊框 */
@@ -218,12 +229,10 @@ timer與燈箱
     top: 50%;
     transform: translate(-50%,-50%) scale(3.5);
     text-align: center;/* 文字置中 */
-    width: 300px;/* 寬度 */
-    height: 50px;/* 高度 */
-    border: 1px rgb(0, 0, 0) solid;/* 邊框 */
+    border: none;/* 邊框 */
     background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
     border-radius: 15px;/* 圓弧邊框 */
-    /* display: block; */
+    padding: 20px;
 }
 /*
 ########################################################################
@@ -344,9 +353,10 @@ verify
     background: white;
     color: black;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 30px;
     padding: 5px 10px;
     border-radius: 10px;
+    height: 50px;
 }
 
 .button:hover{

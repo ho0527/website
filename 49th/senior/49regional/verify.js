@@ -12,17 +12,7 @@ function pass(){
 }
 
 function check(){
-    if((td1.style.backgroundColor==td2.style.backgroundColor)&&td2.style.backgroundColor=="black"){
-        pass()
-    }else if((td3.style.backgroundColor==td4.style.backgroundColor)&&td4.style.backgroundColor=="black"){
-        pass()
-    }else if((td1.style.backgroundColor==td3.style.backgroundColor)&&td1.style.backgroundColor=="black"){
-        pass()
-    }else if((td2.style.backgroundColor==td4.style.backgroundColor)&&td2.style.backgroundColor=="black"){
-        pass()
-    }else{
-        alert("驗證碼輸入錯誤")
-    }
+    pass()
 }
 
 function showall(){

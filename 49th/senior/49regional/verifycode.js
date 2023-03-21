@@ -1,38 +1,26 @@
-let dragimg=document.querySelectorAll(".dragimg")
-let drops=document.querySelectorAll("#dropbox")
 let verifycode=""
 
-dragimg.forEach(function(dragimgs){
-    dragimgs.addEventListener("dragstart",dragstart)
+document.querySelectorAll(".dragimg").forEach(function(event){
+    event.addEventListener("dragstart",function(addeventlistenerevent){
+        addeventlistenerevent.dataTransfer.setData("imgid",addeventlistenerevent.target.id)
+        addeventlistenerevent.dataTransfer.setData("src",addeventlistenerevent.target.src)
+    })
 })
 
-drops.forEach(function(dropbox){
-    dropbox.addEventListener("dragover",drag)
-    dropbox.addEventListener("dragenter",drag)
-    dropbox.addEventListener("dragleave",drag)
-    dropbox.addEventListener("drop",drop)
+document.querySelectorAll(".block").forEach(function(event){
+    event.addEventListener("dragover",function(addeventlistenerevent){
+        addeventlistenerevent.preventDefault()
+    })
+    event.addEventListener("drop",function(addeventlistenerevent){
+        let img=document.createElement("img")
+        img.setAttribute("src",addeventlistenerevent.dataTransfer.getData("src"))
+        verifycode=verifycode+addeventlistenerevent.dataTransfer.getData("imgid")
+        document.querySelectorAll(".dropbox")[0].appendChild(img)
+    })
 })
-
-function dragstart(e){
-    e.dataTransfer.setData("text",e.target.id)
-    e.dataTransfer.setData("src",e.target.src)
-}
-
-function drag(e){
-    e.preventDefault()
-}
-
-function drop(e){
-    let id=e.dataTransfer.getData("text")
-    let draggable=document.getElementById(id)
-    verifycode=verifycode+id
-    let img=document.createElement("img")
-    img.setAttribute("src",e.dataTransfer.getData("src"))
-    drops[0].appendChild(img)
-}
 
 function login(){
     let username=document.getElementById("username").value
-    let code=document.getElementById("code").value
-    location.href="login.php?verifycode="+verifycode+"&username="+username+"&code="+code
+    let password=document.getElementById("password").value
+    location.href="login.php?username="+username+"&password="+password+"&verifycode="+verifycode
 }

@@ -1,89 +1,63 @@
 <?php
-    include('link.php');
+    include("link.php");
     if(isset($_GET["username"])){
         if(!isset($_SESSION["error"])){
             $_SESSION["error"]=0;
         }
-        $username=$_GET['username'];
-        $code=$_GET['code'];
+        $username=$_GET["username"];
+        $code=$_GET["code"];
         $_SESSION["username"]=$username;
         $_SESSION["password"]=$code;
-        $user=mysqli_query($db,"SELECT*FROM `user` WHERE `userName`='$username'");
-        $admin=mysqli_query($db,"SELECT*FROM `admin` WHERE `adminName`='$username'");
-        if($row=mysqli_fetch_row($user)){
-            if($row[2]==$code){
-                if(isset($_GET["vererror"])){
-                    $_SESSION["error"]=$_SESSION["error"]+1;
-                    if($_SESSION["error"]<3){
-                        ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
-                    }else{
-                        ?><script>alert("圖形驗證碼有誤");</script><?php
-                        $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                        VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
-                        header('Location: usererror.php');
+        if(!block($username)){
+            if($row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"))){
+                if($row[3]==$code){
+                    $verifycode=str_split($_SESSION["verifycode"]);
+                    if($_SESSION["key"]==0){ rsort($verifycode); }else{ sort($verifycode); }
+                    if($verifycode==str_split($_GET["verifycode"])){
+                        query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('$row[1]','登入','成功','$time')");
                         session_unset();
+                        $_SESSION["data"]=$row[1];
+                        $_SESSION["permission"]=$row[5];
+                        $_SESSION["timer"]=60;
+                        ?><script>alert("登入成功");location.href="verify.php"</script><?php
+                    }else{
+                        $_SESSION["error"]=$_SESSION["error"]+1;
+                        if($_SESSION["error"]<3){
+                            ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
+                        }else{
+                            query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('$row[1]','登入','失敗','$time')");
+                            session_unset();
+                            ?><script>alert("圖形驗證碼有誤");location.href="usererror.php"</script><?php
+                        }
                     }
                 }else{
-                    ?><script>alert("登入成功");location.href="userWelcome.php"</script><?php
-                    $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                    VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','','登入成功','$time')");
-                    session_unset();
-                    $_SESSION["data"]=$row[4];
-                    $_SESSION["date"]=date("Y-m-d");
-                    $_SESSION["starttime"]="升冪";
+                    $_SESSION["error"]=$_SESSION["error"]+1;
+                    if($_SESSION["error"]<3){
+                        ?><script>alert("密碼有誤");location.href="index.php"</script><?php
+                    }else{
+                        query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('$row[1]','登入','失敗','$time')");
+                        session_unset();
+                        ?><script>alert("密碼有誤");location.href="usererror.php"</script><?php
+                    }
                 }
             }else{
                 $_SESSION["error"]=$_SESSION["error"]+1;
                 if($_SESSION["error"]<3){
-                    ?><script>alert("密碼有誤");location.href="index.php"</script><?php
+                    ?><script>alert("帳號有誤");location.href="index.php"</script><?php
                 }else{
-                    ?><script>alert("密碼有誤");</script><?php
-                    $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                    VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
-                    header('Location:usererror.php');
+                    query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('未知','登入','失敗','$time')");
                     session_unset();
-                }
-            }
-        }elseif($row=mysqli_fetch_row($admin)){
-            if($row[2]==$code){
-                if(isset($_GET["vererror"])){
-                    $_SESSION["error"]=$_SESSION["error"]+1;
-                    if($_SESSION["error"]<3){
-                        ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
-                    }else{
-                        ?><script>alert("圖形驗證碼有誤");</script><?php
-                        $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                        VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
-                        header('Location: usererror.php');
-                        session_unset();
-                    }
-                }else{
-                    ?><script>alert("登入成功");location.href="adminWelcome.php"</script><?php
-                    $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                    VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','','登入成功','$time')");
-                    session_unset();
-                    $_SESSION["data"]=$row[4];
-                }
-            }else{
-                $_SESSION["error"]=$_SESSION["error"]+1;
-                if($_SESSION["error"]<3){
-                    ?><script>alert("密碼有誤");location.href="index.php"</script><?php
-                }else{
-                    ?><script>alert("密碼有誤")</script><?php
-                    $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                    VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
-                    header('Location: usererror.php');
-                    session_unset();
+                    ?><script>alert("帳號有誤");location.href="usererror.php"</script><?php
                 }
             }
         }else{
+            $_SESSION["error"]=$_SESSION["error"]+1;
             if($_SESSION["error"]<3){
                 ?><script>alert("帳號有誤");location.href="index.php"</script><?php
-                $_SESSION["error"]=$_SESSION["error"]+1;
             }else{
-                ?><script>alert("帳號有誤");</script><?php
-                header('Location: usererror.php');
+                query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('未知','登入','失敗','$time')");
                 session_unset();
+                ?><script>alert("帳號有誤");location.href="usererror.php"</script><?php
             }
         }
     }else{

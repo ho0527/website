@@ -1,13 +1,30 @@
 body{
-    width: 1875px;
-    height: 900px;
-    background-color:rgba(244, 236, 236, 0.37);
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(135,135,135,0.65);
     user-select: none;
+    word-break: break-all;
+    text-align: center;
 }
 
 table{
     border-collapse:collapse;
     vertical-align:top;
+}
+
+h1{
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+}
+
+hr{
+    border: 1px rgb(255, 255, 255) solid;
+    width: calc(100% + 80px);
+    position: relative;
+    right: 40px;
+    margin-bottom: 20px;
 }
 
 .indextitle{
@@ -26,39 +43,54 @@ table{
     margin:3px;
 }
 
-.indexdiv{
+.main{
+    border: 2px rgb(255, 255, 255) solid;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:  translate(-50%, -50%) scale(3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(125, 125, 125);
+    transform:  translate(-50%, -50%);
     border-radius: 25px;
-    height: 280px;
-    width: 275px;
-    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+    padding: 40px;
+    color: white;
+    font-size: 35px;
+    font-weight:bold;
 }
 
 .input{
-    border-radius: 25px;
-    width: 175px;
-    height: 20px;
-    border: 1px black solid;
+    border: none;
+    width: 75%;
+    height: 40px;
     background-color: white;
+    background: none;
+    border-bottom: 1px rgb(255, 255, 255) solid;
+    outline: none;
+    font-size: 30px;
 }
 
 .button{
-    border-radius: 25px;
-    background-color: white;
-    border: 0.5px black solid;
-    height: 25px;
-    width: 75px;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .button:hover{
-    background-color: rgba(186, 186, 186, 0.363);
+    background-color: rgba(186,186,186,0.45);
+    color: rgb(255, 255, 255);
+}
+
+.logout{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.selectbutton{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .select{
@@ -67,29 +99,32 @@ table{
 
 .dragbox{
     border: 1px black solid;
-    height: 40px;
-    width: 40px;
+    height: 80px;
+    width: 80px;
     display: inline-block;
     background-color: white;
 }
 
 .dropbox{
     border: 1px black solid;
-    height: 40px;
-    width: 130px;
+    height: 80px;
+    width: 320px;
     display: inline-block;
     background-color: white;
+    text-align: left;
 }
 
 .dragimg{
     cursor: grab;
 }
 
-.block2{
-    border: 1px black solid;
-    height: 40px;
-    width: 40px;
+.block{
+    border: none;
+    height: 80px;
+    width: 320px;
     display: inline-block;
+    position: absolute;
+    left: 160px;
 }
 
 .drag-over{

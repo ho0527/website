@@ -14,7 +14,7 @@
                 ?>
                 <h1>電子競技網站管理</h1><hr>
                 帳號: <input type="text" name="username" class="input" id="username" value="<?= @$_SESSION["username"] ?>"><br><br>
-                密碼: <input type="text" name="code" class="input" id="code" value="<?= @$_SESSION["password"] ?>"><br><br>
+                密碼: <input type="text" name="password" class="input" id="password" value="<?= @$_SESSION["password"] ?>"><br><br>
                 <?php
                     $_SESSION["verifycode1"]="";
                     $_SESSION["verifycode2"]="";
@@ -58,8 +58,7 @@
                         $_SESSION["verifycode"]=((int)$_SESSION["verifycode1"])-((int)$_SESSION["verifycode2"]);
                         if($_SESSION["verifycode"]<=0){ header("location:index.php"); }
                     }
-                ?>
-                <input type="submit" class="button" name="reflashpng" value="驗證碼重新產生"><br><br>
+                ?><br><br>
                 <?php
                     for($i=0;$i<=9;$i=$i+1){
                         ?>
@@ -70,7 +69,9 @@
                     }
                 ?><br><br>
                 圖片驗證碼:<br>
-                <div class="dropbox" id="dropbox"></div><br>
+                <div class="dropbox"></div>
+                <div class="block"></div><br><br>
+                <input type="submit" class="button" name="reflashpng" value="驗證碼重新產生">
                 <input type="submit" class="button" name="clear" value="重設">
                 <input type="button" class="button" onclick="login()" value="送出"><br><br>
                 <input type="button" onclick="location.href='index.php'" value="模組1" disabled>
@@ -81,7 +82,7 @@
                 <?php
                     if(isset($_GET["reflashpng"])){
                         $_SESSION["username"]=$_GET["username"];
-                        $_SESSION["password"]=$_GET["code"];
+                        $_SESSION["password"]=$_GET["password"];
                         ?><script>location.href="index.php"</script><?php
                     }
                     if(isset($_GET["clear"])){

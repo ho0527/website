@@ -10,7 +10,7 @@
         <img src="" alt="" class="mainlogo">
         <div class="navigationbar">
             <div class="navigationbardiv">
-                <div class="maintitle">Chatcom</div>
+                <div class="maintitle" id="maintitle">Chatcom</div>
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                             <a href="terms.php" class="a" id="checklink"></a>
                         </div>
                         <a href="#" class="a" id="signupformal"></a>
-                    </div>
+                    </div><br>
                     <input type="submit" class="loginbutton" id="signupbutton">
                     <div class="loginsignup">
                         <class id="logintext"></class>
@@ -58,6 +58,11 @@
                 </form>
             </div>
         </div>
+        <!-- <div class="form">
+            <div class="formbox">
+                <div class="title" id="signupheader"></div>
+            </div>
+        </div> -->
         <div class="footer" id="footer"></div>
         <script src="js/index.js"></script>
         <script src="js/changelanguage/main.js"></script>

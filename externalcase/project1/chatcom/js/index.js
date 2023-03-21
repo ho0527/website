@@ -84,6 +84,10 @@ try{
     try{
         document.getElementById(footerbuttonandpath.find(function(button){ return path.endsWith(button.path) }).id).classList.add("selectbutton2")
     }catch{}
+
+    document.getElementById("maintitle").onclick=function(){
+        location.href="index.php"
+    }
 }catch(error){
     console.log( error.message)
 }

@@ -24,9 +24,9 @@
         @$data=$_SESSION["data"];
         $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
         if($row){
-            query($db,"INSERT INTO `data`(`number`,`move`,`movetime`)VALUES('$row[1]','$time','登出成功')");
+            query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('$row[1]','登出','成功','$time')");
         }else{
-            query($db,"INSERT INTO `data`(`number`,`move`,`movetime`)VALUES('未知','$time','登出成功')");
+            query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('未知','登出','成功','$time')");
         }
         session_unset();
         ?><script>alert("登出成功!");location.href="index.php"</script><?php
@@ -35,7 +35,7 @@
     function up($row,$com){
         usort($row,function($a,$b)use($com){ return $a[$com]>$b[$com]||$a[$com]==$b[$com]&&$a[0]>$b[0]; });
         for($i=0;$i<count($row);$i++){
-            if($row[$i][1]=="a0001"){
+            if($row[$i][1]=="a0000"){
                 ?>
                 <tr>
                     <td class="admintd">
@@ -74,7 +74,7 @@
     function down($row,$com){
         usort($row,function($a,$b)use($com){ return $a[$com]<$b[$com]||$a[$com]==$b[$com]&&$a[0]>$b[0]; });
         for($i=0;$i<count($row);$i++){
-            if($row[$i][1]=="a0001"){
+            if($row[$i][1]=="a0000"){
                 ?>
                 <tr>
                     <td class="admintd">

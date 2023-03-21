@@ -10,13 +10,19 @@
         <img src="" alt="" class="mainlogo">
         <div class="navigationbar">
             <div class="navigationbardiv">
-                <div class="maintitle">Chatcom</div>
+                <div class="maintitle" id="maintitle">Chatcom</div>
                 <div class="navigationbarbuttondiv" id="navigationbarbuttondiv"></div>
             </div>
         </div>
         <div class="terms">
-            <div class="termstitle" id="title1"></div>
-            <div class="termsdepiction" id="depiction1"></div>
+            <h1 class="" id="termstitle"></h1>
+            <ul class="" id="termsul">
+
+            </ul>
+            <div class="main" id="termsmain">
+                <div class="termstitle" id="title1"></div>
+                <div class="termsdepiction" id="depiction1"></div>
+            </div>
         </div>
         <div class="footer" id="footer"></div>
         <script src="js/index.js"></script>

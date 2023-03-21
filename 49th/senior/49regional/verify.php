@@ -8,7 +8,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }else{ if($_SESSION["data"]!="a0001"){ header("location:main.php"); } }
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }else{ if($_SESSION["data"]!="a0000"){ header("location:main.php"); } }
         ?>
         <div class="main">
             <h1>翻牌配對驗證模組</h1><hr>
