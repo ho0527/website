@@ -4,13 +4,13 @@
         if(!isset($_SESSION["error"])){
             $_SESSION["error"]=0;
         }
-        $username=$_GET["username"];
-        $code=$_GET["code"];
-        $_SESSION["username"]=$username;
-        $_SESSION["password"]=$code;
+        $_SESSION["username"]=$_GET["username"];
+        $_SESSION["password"]=$_GET["password"];
+        $username=$_SESSION["username"];
+        $password=$_SESSION["password"];
         if(!block($username)){
             if($row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"))){
-                if($row[3]==$code){
+                if($row[3]==$password){
                     $verifycode=str_split($_SESSION["verifycode"]);
                     if($_SESSION["key"]==0){ rsort($verifycode); }else{ sort($verifycode); }
                     if($verifycode==str_split($_GET["verifycode"])){

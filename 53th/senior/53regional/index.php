@@ -13,7 +13,6 @@
         <div class="main">
             <form>
                 <h1>咖啡商品展示系統</h1><hr>
-                <class class="indextitle"></class><br>
                 帳號: <input type="text" class="input" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br><br>
                 密碼: <input type="text" class="input" name="password" id="password" value="<?= @$_SESSION["password"] ?>"><br><br>
                 圖形驗證碼<br>
@@ -23,7 +22,7 @@
                         $str=array_merge(range("0","9"),range("A","Z"),range("a","z"))[rand(0,25)];
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?str=<?= $str ?>" class="dragimg" id="<?= $str ?>" data-id="<?= $str ?>" draggable="true">
+                            <img src="verifycode.php?str=<?= $str ?>" class="dragimg" id="<?= $i ?>" data-id="<?= $str ?>" draggable="true">
                         </div>
                         <?php
                         $_SESSION["verifycode"]=$_SESSION["verifycode"].$str;
