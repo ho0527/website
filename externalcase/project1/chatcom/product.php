@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Chatcom</title>
-        <link href="index.css" rel="Stylesheet">
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
         <img src="" alt="" class="mainimage">
@@ -16,6 +16,7 @@
         </div>
         <div class="productmain">
             <input type="button" class="productbutton" onclick="location.href='chat/index.php'" value="Chatcom">
+            <input type="button" class="productbutton" onclick="location.href='zip/index.html'" value="檔案壓縮器">
         </div>
         <div class="footer" id="footer"></div>
         <script src="js/index.js"></script>

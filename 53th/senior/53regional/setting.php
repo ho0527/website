@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>setting</title>
-        <link href="index.css" rel="Stylesheet">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <button id="go_back" onclick="location.href='userWelcome.php'">返回</button><br><br>

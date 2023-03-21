@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="index.css" rel="Stylesheet">
+        <link rel="stylesheet" href="index.css">
         <title>重設帳密</title>
     </head>
     <body>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>網站前台登入頁面</title>
-        <link href="index.css" rel="Stylesheet">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <div class="indexdiv">

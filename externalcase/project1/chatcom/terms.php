@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Chatcom</title>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
         <img src="" alt="" class="mainimage">

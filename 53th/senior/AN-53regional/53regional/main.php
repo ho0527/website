@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>咖啡商品展示系統</title>
-        <link href="index.css" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <?php

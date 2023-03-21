@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>重設帳密</title>
-        <link href="index.css" rel="Stylesheet">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <div class="signupdiv">

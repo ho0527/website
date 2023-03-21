@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>一般會員專區</title>
-        <link href="index.css" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <div class="navigationbar">
