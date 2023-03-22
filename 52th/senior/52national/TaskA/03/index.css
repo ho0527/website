@@ -1,11 +1,36 @@
-.app{
-    background-color:aqua;/* 背景顏色 */
+body{
+    background: rgba(135,135,135,0.65);
+    color: rgb(255,255,255);
+    user-select: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+    margin: 20px 0px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 0px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.main{
+    border: 1px white solid;
     position: absolute;/* 絕對定位 */
     top: 50%;/* 距頂部高度位移 */
     left: 50%;/* 距左邊位移 */
     transform: translate(-50%, -50%);/* 定位 */
     width: 900px;/* 寬度 */
-    height: 55%;/* 高度 */
+    height: 45%;/* 高度 */
+    padding: 20px;
 	border-radius: 15px;/* 圓弧邊框 */
 }
 
@@ -13,18 +38,19 @@
     width: 90px;/* 寬度 */
     height: 80px;/* 高度 */
 	position: absolute;
-	top:10px;/* 距頂部高度位移 */
-	left: 25px;/* 距左邊位移 */
+	top: 15px;/* 距頂部高度位移 */
+	left: 30px;/* 距左邊位移 */
 	border: none;/* 邊框 */
 	border-radius: 15px;/* 圓弧邊框 */
+	font-size: 30px;/* 字體大小 */
 	cursor: pointer;/* 覆蓋指標 */
 }
 
 .output{
 	text-align: right;/* 文字置右 */
 	position: absolute;/* 絕對定位 */
-	top:10px;/* 距頂部高度位移 */
-	right: 5px;/* 距右邊位移 */
+	top: 15px;/* 距頂部高度位移 */
+	right: 25px;/* 距右邊位移 */
 	width: 750px;/* 寬度 */
 	height: 65px;/* 高度 */
     font-size: 50px;/* 字體大小 */
@@ -33,12 +59,12 @@
 
 .keys{
 	position: absolute;/* 絕對定位 */
-	bottom: 5px;/* 距底部高度位移 */
+	bottom: 30px;/* 距底部高度位移 */
 	left: 20px;/* 距左邊位移 */
 }
 
 .key{
-    margin: 3px;/* 物件間格 */
+    margin: 5px;/* 物件間格 */
 }
 
 .calckey{

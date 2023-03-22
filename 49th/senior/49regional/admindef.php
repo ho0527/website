@@ -7,15 +7,13 @@
                 <tr>
                     <td class="admintd">
                         <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
                     </td>
                     <td class="admintd"><?= $row[$i][2] ?></td>
                     <td class="admintd"><?= $row[$i][3] ?></td>
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
-                    <td class="admintd">
-                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
-                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
-                    </td>
                 </tr>
                 <?php
             }else{
@@ -23,15 +21,13 @@
                 <tr>
                     <td class="admintd">
                         <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
                     </td>
                     <td class="admintd"><?= $row[$i][2] ?></td>
                     <td class="admintd"><?= $row[$i][3] ?></td>
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
-                    <td class="admintd">
-                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
-                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
-                    </td>
                 </tr>
                 <?php
             }
@@ -46,15 +42,13 @@
                 <tr>
                     <td class="admintd">
                         <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
                     </td>
                     <td class="admintd"><?= $row[$i][2] ?></td>
                     <td class="admintd"><?= $row[$i][3] ?></td>
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
-                    <td class="admintd">
-                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
-                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
-                    </td>
                 </tr>
                 <?php
             }else{
@@ -62,15 +56,13 @@
                 <tr>
                     <td class="admintd">
                         <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
                     </td>
                     <td class="admintd"><?= $row[$i][2] ?></td>
                     <td class="admintd"><?= $row[$i][3] ?></td>
                     <td class="admintd"><?= $row[$i][4] ?></td>
                     <td class="admintd"><?= $row[$i][5] ?></td>
-                    <td class="admintd">
-                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
-                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
-                    </td>
                 </tr>
                 <?php
             }

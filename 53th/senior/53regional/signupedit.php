@@ -81,9 +81,9 @@
                         }
                         $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
                         if(isset($_GET["admin"])){
-                            $number="a".str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
+                            $number=str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
                         }else{
-                            $number="u".str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
+                            $number=str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
                         }
                         query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
                         ?><script>alert("新增成功!");location.href="admin.php"</script><?php

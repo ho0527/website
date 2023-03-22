@@ -13,22 +13,28 @@
         <div class="main">
             <h1>咖啡商品展示系統</h1><hr>
             <h2>第二層驗證</h2>
-            <p></p>
-            <br>
+            <p>請點選方塊來連成水平或垂直線</p>
             <table class="verifytable">
                 <tr>
                     <td class="verifytd"></td>
                     <td class="verifytd"></td>
+                    <td class="verifytd"></td>
                 </tr>
                 <tr>
                     <td class="verifytd"></td>
                     <td class="verifytd"></td>
+                    <td class="verifytd"></td>
                 </tr>
-            </table>
+                <tr>
+                    <td class="verifytd"></td>
+                    <td class="verifytd"></td>
+                    <td class="verifytd"></td>
+                </tr>
+            </table><br>
             <input type="button" class="button" onclick="location.href='link.php?logout='" value="登出">
             <input type="button" class="button" onclick="location.reload()" value="重設">
             <input type="button" class="button" onclick="check()" value="確定">
         </div>
-        <script src="verifycode.js"></script>
+        <script src="verify.js"></script>
     </body>
 </html>

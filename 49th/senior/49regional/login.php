@@ -1,6 +1,6 @@
 <?php
     include("link.php");
-    if(isset($_GET["username"])){
+    if(isset($_GET["enter"])){
         if(!isset($_SESSION["error"])){
             $_SESSION["error"]=0;
         }
