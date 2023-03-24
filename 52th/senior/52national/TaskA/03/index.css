@@ -1,3 +1,11 @@
+body{
+    background: rgba(135,135,135,0.65);
+    color: rgb(255,255,255);
+    user-select: none;
+    padding: 0px;
+    margin: 0px;
+}
+
 .app{
     background-color:aqua;/* 背景顏色 */
     position: absolute;/* 絕對定位 */
@@ -10,8 +18,8 @@
 }
 
 .c{
-    width: 90px;/* 寬度 */
-    height: 80px;/* 高度 */
+    width: 90px !important;/* 寬度 */
+    height: 80px !important;/* 高度 */
 	position: absolute;
 	top:10px;/* 距頂部高度位移 */
 	left: 25px;/* 距左邊位移 */

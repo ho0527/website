@@ -17,11 +17,14 @@ mod.onclick=function(){
 	}
 }
 
-buttons.forEach(function(button){
-	button.addEventListener('click',function(){
-		if (this.id=='c') {
+document.querySelectorAll(".calckey").forEach(function(event){
+	event.addEventListener("click",function(){
+		console.log("inini")
+		console.log(this)
+		console.log(this.id)
+		if(this.id=="c"){
 			output.value=""//將output清空
-		} else if(this.id=='calc='){
+		}else if(this.id=="calc="){
 			console.log("eq"+a)
 			if(a=="twodecimals"){//判斷a是否為twodecimals
 				let result=eval(output.value)
@@ -29,8 +32,8 @@ buttons.forEach(function(button){
 			}else{
 				output.value=eval(output.value)//印出結果
 			}
-		} else {
-			output.value=output.value+this.textContent//加字串
+		}else{
+			output.value=output.value+this.value//加字串
 		}
 	})
 })
