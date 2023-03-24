@@ -1,3 +1,35 @@
-hr{
+body{
+    background: rgba(135,135,135,0.65);
+    color: rgb(255,255,255);
+    user-select: none;
+    padding: 5px;
+    margin: 10px;
+}
+
+h2{
+    margin: 0px;
     margin: 20px 0px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
 }

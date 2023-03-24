@@ -1,101 +1,104 @@
 <?php
-    function printrow($a){
-        for($row=0;$row<count($a);$row=$row+1){
-            if($a[$row]["username"]=="admin"||$a[$row]["usernumber"]=="null"){
+    function up($row,$com){
+        usort($row,function($a,$b)use($com){ return $a[$com]>$b[$com]||$a[$com]==$b[$com]&&$a[0]>$b[0]; });
+        for($i=0;$i<count($row);$i++){
+            if($row[$i][1]=="a0000"){
                 ?>
-                    <tr>
-                        <td class="admin-table-num" id=<?= $a[$row]["usernumber"]; ?>>
-                            <?php print_r($a[$row]["usernumber"]); ?>
-                            <input type="button" value="修改" disabled>
-                            <button name="del" disabled>刪除帳號</button>
-                        </td>
-                        <td class="admin-table"><?php print_r($a[$row]["username"]); ?></td>
-                        <td class="admin-table"><?php print_r($a[$row]["password"]); ?></td>
-                        <td class="admin-table"><?php print_r($a[$row]["name"]); ?></td>
-                        <td class="admin-table"><?php print_r($a[$row]["permission"]); ?></td>
-                        <td class="admin-table"><?php print_r($a[$row]["logintime"]); ?></td>
-                        <td class="admin-table"><?php print_r($a[$row]["logouttime"]); ?></td>
-                        <td class="admin-table"><?php print_r($a[$row]["move"]); ?></td>
-                        <td class="admin-table"><?php print_r($a[$row]["movetime"]); ?></td>
-                    </tr>
+                <tr>
+                    <td class="admintd">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
+                    </td>
+                    <td class="admintd"><?= $row[$i][2] ?></td>
+                    <td class="admintd"><?= $row[$i][3] ?></td>
+                    <td class="admintd"><?= $row[$i][4] ?></td>
+                    <td class="admintd"><?= $row[$i][5] ?></td>
+                </tr>
                 <?php
             }else{
                 ?>
                 <tr>
-                    <td class="admin-table-num" id=<?= $a[$row]["usernumber"]; ?>>
-                        <?php print_r($a[$row]["usernumber"]); ?>
-                        <input type="button" value="修改" onclick="location.href='adminedit.php?number=<?= $a[$row]['usernumber'] ?>'">
-                        <button name="del" value="<?= $a[$row]["usernumber"]; ?>">刪除帳號</button>
+                    <td class="admintd">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
                     </td>
-                    <td class="admin-table"><?php print_r($a[$row]["username"]); ?></td>
-                    <td class="admin-table"><?php print_r($a[$row]["password"]); ?></td>
-                    <td class="admin-table"><?php print_r($a[$row]["name"]); ?></td>
-                    <td class="admin-table"><?php print_r($a[$row]["permission"]); ?></td>
-                    <td class="admin-table"><?php print_r($a[$row]["logintime"]); ?></td>
-                    <td class="admin-table"><?php print_r($a[$row]["logouttime"]); ?></td>
-                    <td class="admin-table"><?php print_r($a[$row]["move"]); ?></td>
-                    <td class="admin-table"><?php print_r($a[$row]["movetime"]); ?></td>
+                    <td class="admintd"><?= $row[$i][2] ?></td>
+                    <td class="admintd"><?= $row[$i][3] ?></td>
+                    <td class="admintd"><?= $row[$i][4] ?></td>
+                    <td class="admintd"><?= $row[$i][5] ?></td>
                 </tr>
                 <?php
             }
         }
     }
 
-    function up($data,$comper){
-        $a=[];
-        while($row=mysqli_fetch_assoc($data)){
-            array_push($a,$row);
-        }
-        for($i=0;$i<count($a)-1;$i=$i+1){
-            for($j=0;$j<count($a)-$i-1;$j=$j+1){
-                if($a[$j][$comper]>$a[$j+1][$comper]){
-                    $tamp=$a[$j];
-                    $a[$j]=$a[$j+1];
-                    $a[$j+1]=$tamp;
-                }
+    function down($row,$com){
+        usort($row,function($a,$b)use($com){ return $a[$com]<$b[$com]||$a[$com]==$b[$com]&&$a[0]>$b[0]; });
+        for($i=0;$i<count($row);$i++){
+            if($row[$i][1]=="a0000"){
+                ?>
+                <tr>
+                    <td class="admintd">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改" disabled>
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除" disabled>
+                    </td>
+                    <td class="admintd"><?= $row[$i][2] ?></td>
+                    <td class="admintd"><?= $row[$i][3] ?></td>
+                    <td class="admintd"><?= $row[$i][4] ?></td>
+                    <td class="admintd"><?= $row[$i][5] ?></td>
+                </tr>
+                <?php
+            }else{
+                ?>
+                <tr>
+                    <td class="admintd">
+                        <?= $row[$i][1] ?>
+                        <input type="button" onclick="location.href='signupedit.php?edit=<?= $row[$i][1] ?>'" value="修改">
+                        <input type="button" onclick="location.href='signupedit.php?del=<?= $row[$i][1] ?>'" value="刪除">
+                    </td>
+                    <td class="admintd"><?= $row[$i][2] ?></td>
+                    <td class="admintd"><?= $row[$i][3] ?></td>
+                    <td class="admintd"><?= $row[$i][4] ?></td>
+                    <td class="admintd"><?= $row[$i][5] ?></td>
+                </tr>
+                <?php
             }
         }
-        printrow($a);
     }
 
-    function down($data,$comper){
-        $a=[];
-        while($row=mysqli_fetch_assoc($data)){
-            array_push($a,$row);
-        }
-        for($i=0;$i<count($a)-1;$i=$i+1){
-            for($j=0;$j<count($a)-$i-1;$j=$j+1){
-                if($a[$j][$comper]<$a[$j+1][$comper]){
-                    $tamp=$a[$j];
-                    $a[$j]=$a[$j+1];
-                    $a[$j+1]=$tamp;
-                }
-            }
-        }
-        printrow($a);
-    }
-
-    function issetgetupdown($data){
-        @$number=$_GET["num-up-down"];
-        @$user=$_GET["user-up-down"];
-        @$code=$_GET["code-up-down"];
-        @$name=$_GET["name-up-down"];
-        if($number=="升冪"){
-            down($data,"usernumber");
-            ?><script>document.getElementById("num-up-down").value="降冪"</script><?php
-        }elseif($user=="升冪"){
-            down($data,"username");
-            ?><script>document.getElementById("user-up-down").value="降冪"</script><?php
-        }elseif($code=="升冪"){
-            down($data,"password");
-            ?><script>document.getElementById("code-up-down").value="降冪"</script><?php
-        }elseif($name=="升冪"){
-            down($data,"name");
-            ?><script>document.getElementById("name-up-down").value="降冪"</script><?php
-        }elseif(isset($number)||isset($user)||isset($code)||isset($name)){
-            header("location:adminWelcome.php");
+    function updown($row){
+        if(@$_GET["udnb"]=="升冪"){
+            down($row,1);
+            ?><script>document.getElementById("udnb").value="降冪"</script><?php
+        }elseif(@$_GET["udun"]=="升冪"){
+            down($row,2);
+            ?><script>document.getElementById("udun").value="降冪"</script><?php
+        }elseif(@$_GET["udn"]=="升冪"){
+            down($row,4);
+            ?><script>document.getElementById("udn").value="降冪"</script><?php
+        }elseif(@$_GET["udun"]=="降冪"){
+            up($row,2);
+        }elseif(@$_GET["udn"]=="降冪"){
+            up($row,4);
         }else{
-            up($data,"usernumber");
+            up($row,1);
+        }
+    }
+
+    function data($row,$i,$p){
+        if($p=="name"){
+            ?>商品名稱: <?= $row[$i][2] ?><?php
+        }elseif($p=="cost"){
+            ?>費用: <?= $row[$i][3] ?><?php
+        }elseif($p=="link"){
+            ?>相關連結: <?= $row[$i][4] ?><?php
+        }elseif($p=="date"){
+            ?>發佈日期: <?= $row[$i][5] ?><?php
+        }else{
+            ?>商品簡介: <?= $row[$i][6] ?><?php
         }
     }
 ?>

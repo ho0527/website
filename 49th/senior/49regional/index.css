@@ -4,6 +4,7 @@ body{
     user-select: none;
     word-break: break-all;
     text-align: center;
+    padding: 0px 40px;
 }
 
 table{
@@ -13,6 +14,7 @@ table{
 
 h1{
     margin: 0px;
+    margin-bottom: 10px;
 }
 
 h2{
@@ -21,14 +23,21 @@ h2{
 
 hr{
     border: 1px rgb(255, 255, 255) solid;
-    width: calc(100% + 80px);
+    width: calc(100% + 60px);
     position: relative;
-    right: 40px;
+    right: 30px;
     margin-bottom: 20px;
 }
 
 .mag{
     margin-bottom: 20px;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .navigationbar{
@@ -73,21 +82,21 @@ hr{
     left: 50%;
     transform:  translate(-50%, -50%);
     border-radius: 25px;
-    padding: 40px;
+    padding: 30px;
     color: white;
-    font-size: 35px;
+    font-size: 30px;
     font-weight:bold;
 }
 
 .input{
     border: none;
     width: 75%;
-    height: 20px;
+    height: 40px;
     background-color: white;
     background: none;
     border-bottom: 1px black solid;
     outline: none;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .checkbox{
@@ -123,6 +132,15 @@ hr{
     display: inline-block;
     background-color: white;
     text-align: left;
+}
+
+.block{
+    border: none;
+    height: 80px;
+    width: 210px;
+    display: inline-block;
+    position: absolute;
+    left: 340px;
 }
 
 .dragimg{
@@ -179,7 +197,13 @@ timer與燈箱
     text-align: center;/* 將文字置中 */
 }
 
-.timeerbutton{
+.timertable{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+.timerbutton{
     background-color: #ffa07a;/* 背景顏色 */
     border: none;/* 邊框 */
     border-radius: 4px;/* 弧形邊框 */
@@ -190,7 +214,7 @@ timer與燈箱
 
 .timertd{
     border: 1px black solid;
-    width: 200px;
+    width: 250px;
     padding: 5px;
 }
 
@@ -218,12 +242,10 @@ timer與燈箱
     top: 50%;
     transform: translate(-50%,-50%) scale(3.5);
     text-align: center;/* 文字置中 */
-    width: 300px;/* 寬度 */
-    height: 50px;/* 高度 */
-    border: 1px rgb(0, 0, 0) solid;/* 邊框 */
+    border: none;/* 邊框 */
     background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
     border-radius: 15px;/* 圓弧邊框 */
-    /* display: block; */
+    padding: 20px;
 }
 /*
 ########################################################################
@@ -295,27 +317,8 @@ product
 verify
 ########################################################################
 */
-.center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
 
-.verifybutton{
-    border-radius: 25px;
-    background-color: white;
-    border: 0.5px black solid;
-    height: 25px;
-    width: 75px;
-    cursor: pointer;
-}
-
-.verifybutton:hover{
-    background-color: rgba(186, 186, 186, 0.363);
-}
-
-.table{
+.verifytable{
     border-collapse: collapse;
     text-align: center;
     position: relative;
@@ -324,11 +327,12 @@ verify
 }
 
 .verifytd{
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     border: 1px rgb(83, 81, 81) solid;
-    font-size: 30px;
+    font-size: 60px;
     background-color: white;
+    cursor: pointer;
 }
 
 .title{
@@ -344,9 +348,11 @@ verify
     background: white;
     color: black;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 30px;
     padding: 5px 10px;
     border-radius: 10px;
+    height: 50px;
+    transition-duration: 0.5s;
 }
 
 .button:hover{
@@ -356,8 +362,8 @@ verify
 
 .logout{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
 }
 
 .selectbutton{

@@ -1,0 +1,9 @@
+<?php
+    $a="中文";
+    $b="中英";
+    $test=[$a,$b];
+    print_r($test);
+    echo("<br><br>");
+    sort($test);
+    print_r($test);
+?>

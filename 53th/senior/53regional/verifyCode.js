@@ -1,56 +1,24 @@
-let dragimg=document.querySelectorAll(".dragimg")
-let drops=document.querySelectorAll("#dropbox")
-let a=[]
-let b=["","",""]
+let verifycode=""
 
-dragimg.forEach(function(dragimgs){
-    dragimgs.addEventListener("dragstart",dragstart)
+document.querySelectorAll(".dragimg").forEach(function(event){
+    event.addEventListener("dragstart",function(addeventlistenerevent){
+        addeventlistenerevent.dataTransfer.setData("imgid",addeventlistenerevent.target.id)
+    })
 })
 
-drops.forEach(function(dropbox){
-    dropbox.addEventListener("dragover",drag)
-    dropbox.addEventListener("dragenter",drag)
-    dropbox.addEventListener("dragleave",drag)
-    dropbox.addEventListener("drop",drop)
+document.querySelectorAll(".block").forEach(function(event){
+    event.addEventListener("dragover",function(addeventlistenerevent){
+        addeventlistenerevent.preventDefault()
+    })
+    event.addEventListener("drop",function(addeventlistenerevent){
+        let id=document.getElementById(addeventlistenerevent.dataTransfer.getData("imgid"))
+        verifycode=verifycode+id.getAttribute("data-id")
+        document.querySelectorAll(".dropbox")[0].appendChild(id)
+    })
 })
 
-function dragstart(e){
-    e.dataTransfer.setData("text",e.target.id)
-}
-
-function drag(e){
-    e.preventDefault()
-}
-
-function drop(e){
-    let id=e.dataTransfer.getData("text")
-    let draggable=document.getElementById(id)
-    a.push(id)
-    e.target.appendChild(draggable)
-}
-
-function loginclick(key){
+function login(){
     let username=document.getElementById("username").value
-    let code=document.getElementById("code").value
-    for(let i=0;i<3;i=i+1){
-        b[i]=a[i]
-    }
-    if(key==0){
-        b.sort()
-        let temp=b[0]
-        b[0]=b[2]
-        b[2]=temp
-        if(JSON.stringify(a)==JSON.stringify(b)){
-            location.href="login.php?username="+username+"&code="+code
-        }else{
-            location.href="login.php?vererror=&username="+username+"&code="+code
-        }
-    }else{
-        b.sort()
-        if(JSON.stringify(a)==JSON.stringify(b)){
-            location.href="login.php?username="+username+"&code="+code
-        }else{
-            location.href="login.php?vererror=&username="+username+"&code="+code
-        }
-    }
+    let password=document.getElementById("password").value
+    location.href="login.php?username="+username+"&password="+password+"&verifycode="+verifycode
 }

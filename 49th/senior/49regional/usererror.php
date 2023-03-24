@@ -7,7 +7,8 @@
     </head>
     <body>
         <div class="main">
-            <h1>登入失敗</h1><hr>
+            <h1>電子競技網站管理</h1><hr>
+            <h2>登入失敗</h2>
             <p>登入連續誤錯3次</p>
             <input type="button" class="button" onclick="location.href='index.php'" value="返回">
         </div>
