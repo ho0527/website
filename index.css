@@ -2,8 +2,8 @@ body{
     background: rgba(135,135,135,0.65);
     color: rgb(255,255,255);
     user-select: none;
-    padding: 0px;
-    margin: 0px;
+    padding: 5px;
+    margin: 10px;
 }
 
 h2{
@@ -15,6 +15,9 @@ hr{
     border: 1px white solid;
     width: 100%;
     margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 table{

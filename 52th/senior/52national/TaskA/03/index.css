@@ -68,11 +68,12 @@ table{
 }
 
 .calckey{
-    width: 210px;/* 寬度 */
+	width: 210px;/* 寬度 */
     height: 85px;/* 高度 */
 	font-size: 30px;/* 字體大小 */
 	border: none;/* 邊框 */
 	border-radius: 15px;/* 圓弧邊框 */
+	margin: 5px;/* 物件間格 */
 	cursor: pointer;/* 覆蓋指標 */
 }
 
