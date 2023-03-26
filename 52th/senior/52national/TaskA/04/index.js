@@ -3,6 +3,9 @@ let canva=document.getElementById("mycanvas")
 let ctx=canva.getContext("2d")
 let image=null
 let scale=1
+let rotate=0
+let altx=false
+let alty=false
 
 // function to draw the image on canva
 function drawimageoncanva(image){
@@ -58,7 +61,8 @@ document.getElementById("minus").onclick=function(){
 
 document.getElementById("undo").onclick=function(){
     if(image){
-        ctx.rotate(-90 * Math.PI / 180)
+        rotate=rotate-90
+        canva.style.transform="rotate("+rotate+"deg)"
         drawimageoncanva(image)
     }else{
         alert("please upload picture first")
@@ -67,7 +71,8 @@ document.getElementById("undo").onclick=function(){
 
 document.getElementById("redo").onclick=function(){
     if(image){
-        ctx.rotate(90 * Math.PI / 180)
+        rotate=rotate+90
+        canva.style.transform="rotate("+rotate+"deg)"
         drawimageoncanva(image)
     }else{
         alert("please upload picture first")
@@ -76,8 +81,14 @@ document.getElementById("redo").onclick=function(){
 
 document.getElementById("alth").onclick=function(){
     if(image){
-        ctx.scale(-1,1)
-        drawimageoncanva(image)
+        if(altx){
+            canva.style.transform="scaleX(1)"
+            altx=false
+        }else{
+            canva.style.transform="scaleX(-1)"
+            altx=true
+        }
+        drawimageoncanva(image);
     }else{
         alert("please upload picture first")
     }
@@ -85,8 +96,14 @@ document.getElementById("alth").onclick=function(){
 
 document.getElementById("altv").onclick=function(){
     if(image){
-        ctx.scale(1,-1)
-        drawimageoncanva(image)
+        if(alty){
+            canva.style.transform="scaleY(1)"
+            alty=false
+        }else{
+            canva.style.transform="scaleY(-1)"
+            alty=true
+        }
+        drawimageoncanva(image);
     }else{
         alert("please upload picture first")
     }
@@ -98,10 +115,10 @@ document.getElementById("trash").onclick=function(){
 
 document.getElementById("download").onclick=function(){
     if(image){
-        const a=document.createElement("a")
-        a.href=canva.toDataURL("image/jpeg")
-        a.download="image.jpg"
-        a.click()
+        let alink=document.createElement("a")
+        alink.href=canva.toDataURL("image/jpeg")
+        alink.download="image.jpg"
+        alink.click()
     }else{
         alert("please upload picture first")
     }
