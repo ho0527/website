@@ -18,7 +18,7 @@
             if(isset($_SESSION["data"])){ header("location:verify.php"); }
         ?>
         <h1>咖啡商品展示系統</h1><hr>
-        <div class="main">
+        <div class="main">  
             <form action="">
                 帳號 <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br><br>
                 密碼 <input type="text" name="code" id="code" value="<?= @$_SESSION["code"] ?>"><br><br>

@@ -13,7 +13,7 @@
             unset($_SESSION["edit"]);
             unset($_SESSION["del"]);
         ?>
-        <h1>電子競技網站管理</h1>
+        <h1>咖啡商品展示系統</h1>
         <input type="button" class="button" onclick="location.href='main.php'" value="首頁">
         <input type="button" class="button" onclick="location.href='productindex.php'" value="電競活動管理精靈">
         <input type="button" class="button selectbutton" onclick="location.href='admin.php'" value="會員管理">
