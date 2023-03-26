@@ -1,3 +1,12 @@
+body{
+    background: rgba(135,135,135,0.65);
+    color: rgb(255,255,255);
+    user-select: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
 #track {
     width: 800px;
     height: 400px;

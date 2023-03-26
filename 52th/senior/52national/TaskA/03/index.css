@@ -35,8 +35,8 @@ table{
 }
 
 .c{
-    width: 90px;/* 寬度 */
-    height: 80px;/* 高度 */
+    width: 90px !important;/* 寬度 */
+    height: 80px !important;/* 高度 */
 	position: absolute;
 	top: 15px;/* 距頂部高度位移 */
 	left: 30px;/* 距左邊位移 */

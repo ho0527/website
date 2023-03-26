@@ -8,11 +8,12 @@
     <body>
         <div class="main">
             <h1>Image Cropper</h1>
-            <form id="form" method="POST" enctype="multipart/form-data">
-                <input type="file" id="input" accept="image/*" name="image">
-                <input type="submit" id="formbutton" value="Submit">
-            </form>
-            <div id="imagediv" class="imagediv"></div>
+            <input type="file" id="file" accept="image/*" name="image">
+            <input type="submit" id="submit" value="Submit">
+            <div id="container">
+                <img id="img">
+                <div id="crop"></div>
+            </div>
             <input type="button" class="reflashbutton" id="reflashbutton" value="重整">
             <input type="button" class="cropdownloadbutton" id="cropdownloadbutton" value="crop" disabled>
         </div>
