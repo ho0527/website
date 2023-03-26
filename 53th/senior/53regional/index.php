@@ -12,14 +12,16 @@
         ?>
         <div class="main">
             <form>
-                <h1>咖啡商品展示系統</h1><hr>
+                <h1>咖啡商品展示系統</h1>
+                <hr>
                 帳號: <input type="text" class="input" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br><br>
                 密碼: <input type="text" class="input" name="password" id="password" value="<?= @$_SESSION["password"] ?>"><br><br>
                 圖形驗證碼<br>
                 <?php
                     $_SESSION["verifycode"]="";
                     for($i=0;$i<4;$i=$i+1){
-                        $str=array_merge(range("0","9"),range("A","Z"),range("a","z"))[rand(0,25)];
+                        $str=array_merge(range("0","9"),range("A","Z"),range("a","z"))[rand(0,61)];
+                        ?><?php
                         ?>
                         <div class="dragbox">
                             <img src="verifycode.php?str=<?= $str ?>" class="dragimg" id="<?= $i ?>" data-id="<?= $str ?>" draggable="true">

@@ -1,96 +1,103 @@
-let imgcontainer=document.getElementById("imgcontainer")
+let imagecontainer=document.getElementById("imagecontainer")
 let canva=document.getElementById("mycanvas")
 let ctx=canva.getContext("2d")
-let img=null
+let image=null
+let scale=1
 
 // function to draw the image on canva
 function drawimageoncanva(image){
-    canva.width=image.width
-    canva.height=image.height
-    ctx.drawImage(image,0,0)
+    canva.width=image.width*scale
+    canva.height=image.height*scale
+    ctx.drawImage(image,0,0,canva.width,canva.height)
 }
 
 // event listener for drag and drop
-imgcontainer.addEventListener("dragover",function(event){
+imagecontainer.addEventListener("dragover",function(event){
     event.preventDefault()
 })
 
-imgcontainer.addEventListener("drop",function(event){
+imagecontainer.addEventListener("drop",function(event){
     event.preventDefault()
     const file=event.dataTransfer.files[0]
-    const reader=new FileReader()
-    reader.onload=function(loadevent){
-        img=new Image()
-        img.onload=function(){
-            imgcontainer.classList.add("is-drop")
-            drawimageoncanva(img)
+    // 检查文件类型
+    if (file.type=="image/png"||file.type=="image/jpeg") {
+        const reader=new FileReader()
+        reader.onload=function(loadevent){
+            image=new Image()
+            image.onload=function(){
+                imagecontainer.classList.add("is-drop")
+                drawimageoncanva(image)
+            }
+            image.src=loadevent.target.result
         }
-        img.src=loadevent.target.result
+        reader.readAsDataURL(file)
+    } else {
+        alert("只能上傳jpg或png圖檔")
     }
-    reader.readAsDataURL(file)
 })
 
 // button click event listeners
-document.querySelector(".fa-search-plus").addEventListener("click",function(){
-    if(img){
-        img.width *= 1.5
-        drawimageoncanva(img)
+document.getElementById("plus").onclick=function(){
+    if(image){
+        scale=scale+0.5
+        drawimageoncanva(image)
     }else{
         alert("please upload picture first")
     }
-})
+}
 
-document.querySelector(".fa-search-minus").addEventListener("click",function(){
-    if(img){
-        img.width /= 1.5
-        drawimageoncanva(img)
+document.getElementById("minus").onclick=function(){
+    if(image){
+        if(scale>0) scale=scale-0.5
+        else alert("scale 小於0")
+        drawimageoncanva(image)
     }else{
         alert("please upload picture first")
     }
-})
+}
 
-document.querySelector(".fa-undo").addEventListener("click",function(){
-    if(img){
+document.getElementById("undo").onclick=function(){
+    if(image){
         ctx.rotate(-90 * Math.PI / 180)
-        drawimageoncanva(img)
+        drawimageoncanva(image)
     }else{
         alert("please upload picture first")
     }
-})
+}
 
-document.querySelector(".fa-redo").addEventListener("click",function(){
-    if(img){
+document.getElementById("redo").onclick=function(){
+    if(image){
         ctx.rotate(90 * Math.PI / 180)
-        drawimageoncanva(img)
+        drawimageoncanva(image)
     }else{
         alert("please upload picture first")
     }
-})
+}
 
-document.querySelector(".fa-arrows-alt-h").addEventListener("click",function(){
-    if(img){
+document.getElementById("alth").onclick=function(){
+    if(image){
         ctx.scale(-1,1)
-        drawimageoncanva(img)
+        drawimageoncanva(image)
     }else{
         alert("please upload picture first")
     }
-})
+}
 
-document.querySelector(".fa-arrows-alt-v").addEventListener("click",function(){
-    if(img){
+document.getElementById("altv").onclick=function(){
+    if(image){
         ctx.scale(1,-1)
-        drawimageoncanva(img)
+        drawimageoncanva(image)
     }else{
         alert("please upload picture first")
     }
-})
+}
 
-document.getElementById("trash").addEventListener("click",function(){
+document.getElementById("trash").onclick=function(){
     location.reload()
-})
+}
 
-document.getElementById("download").addEventListener("click",function(){
-    if(img){
+document.getElementById("download").onclick=function(){
+    if(image){
         const a=document.createElement("a")
         a.href=canva.toDataURL("image/jpeg")
         a.download="image.jpg"
@@ -98,4 +105,4 @@ document.getElementById("download").addEventListener("click",function(){
     }else{
         alert("please upload picture first")
     }
-})
+}

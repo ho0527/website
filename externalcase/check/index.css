@@ -1,13 +1,62 @@
 body{
-    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(135,135,135,0.65);
+    color: rgb(255,255,255);
+    user-select: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 table{
     border-collapse: collapse;
+    width: 100%;
 }
 
 textarea{
     font-size: 17px;
+}
+
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight:bold;
+    text-align: center;
+}
+
+.input{
+    border: none;
+    width: 75%;
+    height: 40px;
+    background-color: white;
+    background: none;
+    border-bottom: 1px black solid;
+    outline: none;
+    font-size: 30px;
+}
+
+.checkbox{
+    width: 25px;
+    height: 25px;
 }
 
 .border{
@@ -29,11 +78,33 @@ textarea{
 }
 
 .score{
-    width: 70px;  
+    width: 70px;
 }
 
 .right{
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+.button{
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    height: 35px;
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    background-color: rgba(186, 186, 186, 0.45);
+    color: white;
+}
+
+.selectbutton{
+    background-color: black;
+    color: white;
 }

@@ -24,6 +24,11 @@ let trashcan=document.getElementById("trashcan")
 // }
 
 let db=indexedDB.open("students",1)
+db.onerror = function(event) {
+    console.log("error")
+  // Do something with request.errorCode!
+}
+
 //creat a indexedDB
 db.onupgradeneeded=function(event){
     let db=event.target.result
@@ -31,6 +36,8 @@ db.onupgradeneeded=function(event){
 }
 
 db.onsuccess=function(event){
+    console.log("success")
+    console.log(event.target.result)
     let db=event.target.result
     let objectStore=db.transaction("students").objectStore("students")
     let request=objectStore.getAll()

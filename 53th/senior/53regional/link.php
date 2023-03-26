@@ -28,6 +28,6 @@
             query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`time`)VALUES('未知','登出','成功','$time')");
         }
         session_unset();
-        ?><script>alert("登出成功");location.href="verify.php"</script><?php
+        ?><script>alert("登出成功");location.href="index.php"</script><?php
     }
 ?>

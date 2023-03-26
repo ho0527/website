@@ -10,11 +10,12 @@
     <body>
         <?php
             include("link.php");
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
         <form method="POST">
             <input type="button" onclick="location.href='index.php'" value="返回"><br><br>
             <input type="submit" name="submit" value="送出"><br><br><br>
-            <input type="button" class="right" onclick="location.href='index.php?clearall='" value="重整">
+            <input type="button" class="right" onclick="location.href='link.php?logout='" value="登出">
             <?php
                 checktable($db,fetchall(query($db,"SHOW TABLES")),true);
                 if(isset($_SESSION["usingtable"])){
@@ -28,7 +29,6 @@
                                 <td class="border">主、客</td>
                                 <td class="border">評分說明</td>
                                 <td class="border" style="width: 100px;">配分</td>
-                                <td class="border">備註及建議</td>
                                 <td class="border">模組</td>
                             </tr>
                             <?php
@@ -70,7 +70,6 @@
                                     </td>
                                     <td class="border"><textarea name="description<?= $i ?>" cols="30" rows="5"><?= $row[$i][3] ?></textarea></td>
                                     <td class="border"><input type="text" name="score<?= $i ?>" class="score" placeholder="輸入數字" value="<?= $row[$i][4] ?>"></td>
-                                    <td class="border"><textarea name="remark<?= $i ?>" cols="30" rows="5"><?= $row[$i][5] ?></textarea></td>
                                     <td class="border"><input type="text" name="module<?= $i ?>" class="score" placeholder="輸入數字" value="<?= $row[$i][6] ?>"></td>
                                 </tr>
                                 <?php
@@ -89,12 +88,11 @@
                         $objective=$_POST["objective".$i];
                         $description=$_POST["description".$i];
                         $score=$_POST["score".$i];
-                        $remark=$_POST["remark".$i];
                         $module=$_POST["module".$i];
                         $id=$i+1;
-                        query($db,"UPDATE `$usingtable` SET `item`='$item',`objective`='$objective',`description`='$description',`score`='$score',`remark`='$remark',`module`='$module' WHERE `id`='$id'");
+                        query($db,"UPDATE `$usingtable` SET `item`='$item',`objective`='$objective',`description`='$description',`score`='$score',`module`='$module' WHERE `id`='$id'");
                     }
-                    session_unset();
+                    unset($_SESSION["tablename"]);
                     ?><script>alert("更新成功");location.href="index.php"</script><?php
                 }
 

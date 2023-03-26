@@ -1,5 +1,6 @@
 <?php
     $db=new PDO("mysql:host=localhost;dbname=check;charset=utf8","admin","1234");
+    $dbuser=new PDO("mysql:host=localhost;dbname=checkuser;charset=utf8","admin","1234");
     date_default_timezone_set("Asia/Taipei");
     $time=date("Y-m-d H:i:s");
     session_start();
@@ -16,6 +17,21 @@
         return $data->fetchall();
     }
 
+    function block($name){
+        return preg_match("/([ ,\!,\@,\#,\$,\%,\^,\&,\*,\(,\),\_,\-,\+,\=,\{,\},\[,\],\|,\\\,\:,\;,\",\',\<,\>,\,,\.,\?,\/ ])/",$name);
+    }
+
+    if(isset($_GET["logout"])){
+        $data=$_SESSION["data"];
+        if($row=fetch(query($dbuser,"SELECT*FROM `user` WHERE `number`='$data'"))){
+            query($dbuser,"INSERT INTO `data`(`number`,`move`,`time`)VALUES('$row[1]','登出成功','$time')");
+        }else{
+            query($dbuser,"INSERT INTO `data`(`number`,`move`,`time`)VALUES('未知','登出成功','$time')");
+        }
+        session_unset();
+        ?><script>alert("登出成功");location.href="index.php"</script><?php
+    }
+
     function inserttable($db,$tablename,$type){
         if($type=="new"){
             query($db,"CREATE TABLE `$tablename`(`id` INT(15) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -23,7 +39,6 @@
                 `objective` TEXT NOT NULL,
                 `description` TEXT NOT NULL,
                 `score` INT(15) NOT NULL,
-                `remark` TEXT NOT NULL,
                 `module` INT(15) NOT NULL,
                 `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )");

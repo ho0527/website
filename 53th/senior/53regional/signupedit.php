@@ -92,7 +92,7 @@
                     ?><script>alert("禁止輸入特殊字元!");location.href="signupedit.php"</script><?php
                 }
             }
-            
+
             if(isset($_GET["edit"])){
                 if($_GET["edit"]=="a0000"){
                     ?><script>alert("有人說你可以改網址嗎?????");location.href="admin.php"</script><?php

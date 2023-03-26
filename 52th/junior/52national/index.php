@@ -44,7 +44,7 @@
                                     <?php
                                     if($a[$i][9]!=""){
                                         ?>
-                                        <td class="pictre" rowspan="4"><div style="height:100px;width:50px;"><?= $a[$i][9] ?></div></td>
+                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" alt="" width="100px"></td>
                                         <?php
                                     }else{
                                         ?>
@@ -131,11 +131,11 @@
                                 query("UPDATE `comp` SET `ingame`='yes' WHERE `team`='$i'");
                                 ?>
                                 <tr>
-                                    <td class="compplayerhead" name="playerhead<?= $team[0][0] ?>" rowspan="2"><?= $team[0][4] ?></td>
+                                    <td class="compplayerhead" name="playerhead<?= $team[0][0] ?>" rowspan="2"><img src="<?= $team[0][4] ?>" width="100px"></td>
                                     <td class="compusername" name="username<?= $team[0][0] ?>" rowspan="2"><?= $team[0][1] ?></td>
                                     <td class="compemail" name="email<?= $team[0][0] ?>"><?= $team[0][2] ?></td>
                                     <td class="vs" rowspan="2">VS</td>
-                                    <td class="compplayerhead" name="playerhead<?= $team[1] ?>" rowspan="2"><?= $team[1][4] ?></td>
+                                    <td class="compplayerhead" name="playerhead<?= $team[1] ?>" rowspan="2"><img src="<?= $team[1][4] ?>" width="100px"></td>
                                     <td class="compusername" name="username<?= $team[1] ?>" rowspan="2"><?= $team[1][1] ?></td>
                                     <td class="compemail" name="email<?= $team[1] ?>"><?= $team[1][2] ?></td>
                                 </tr>
