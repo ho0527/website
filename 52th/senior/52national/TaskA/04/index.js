@@ -1,51 +1,46 @@
 let imagecontainer=document.getElementById("imagecontainer")
 let canva=document.getElementById("mycanvas")
-let ctx=canva.getContext("2d")
 let image=null
 let scale=1
 let rotate=0
 let altx=false
 let alty=false
 
-// function to draw the image on canva
-function drawimageoncanva(image){
+function drawimage(image){
     canva.width=image.width*scale
     canva.height=image.height*scale
-    ctx.drawImage(image,0,0,canva.width,canva.height)
+    canva.getContext("2d").drawImage(image,0,0,canva.width,canva.height)
 }
 
-// event listener for drag and drop
 imagecontainer.addEventListener("dragover",function(event){
     event.preventDefault()
 })
 
 imagecontainer.addEventListener("drop",function(event){
     event.preventDefault()
-    const file=event.dataTransfer.files[0]
-    // 检查文件类型
-    if (file.type=="image/png"||file.type=="image/jpeg") {
-        const reader=new FileReader()
+    let file=event.dataTransfer.files[0]
+    if(file.type=="image/png"||file.type=="image/jpeg"){
+        let reader=new FileReader()
         reader.onload=function(loadevent){
             image=new Image()
             image.onload=function(){
                 imagecontainer.classList.add("is-drop")
-                drawimageoncanva(image)
+                drawimage(image)
             }
             image.src=loadevent.target.result
         }
         reader.readAsDataURL(file)
-    } else {
+    }else{
         alert("只能上傳jpg或png圖檔")
     }
 })
 
-// button click event listeners
 document.getElementById("plus").onclick=function(){
     if(image){
         scale=scale+0.5
-        drawimageoncanva(image)
+        drawimage(image)
     }else{
-        alert("please upload picture first")
+        alert("請先上傳圖片!")
     }
 }
 
@@ -53,9 +48,9 @@ document.getElementById("minus").onclick=function(){
     if(image){
         if(scale>0) scale=scale-0.5
         else alert("scale 小於0")
-        drawimageoncanva(image)
+        drawimage(image)
     }else{
-        alert("please upload picture first")
+        alert("請先上傳圖片!")
     }
 }
 
@@ -63,9 +58,9 @@ document.getElementById("undo").onclick=function(){
     if(image){
         rotate=rotate-90
         canva.style.transform="rotate("+rotate+"deg)"
-        drawimageoncanva(image)
+        drawimage(image)
     }else{
-        alert("please upload picture first")
+        alert("請先上傳圖片!")
     }
 }
 
@@ -73,9 +68,9 @@ document.getElementById("redo").onclick=function(){
     if(image){
         rotate=rotate+90
         canva.style.transform="rotate("+rotate+"deg)"
-        drawimageoncanva(image)
+        drawimage(image)
     }else{
-        alert("please upload picture first")
+        alert("請先上傳圖片!")
     }
 }
 
@@ -88,9 +83,9 @@ document.getElementById("alth").onclick=function(){
             canva.style.transform="scaleX(-1)"
             altx=true
         }
-        drawimageoncanva(image);
+        drawimage(image);
     }else{
-        alert("please upload picture first")
+        alert("請先上傳圖片!")
     }
 }
 
@@ -103,9 +98,9 @@ document.getElementById("altv").onclick=function(){
             canva.style.transform="scaleY(-1)"
             alty=true
         }
-        drawimageoncanva(image);
+        drawimage(image);
     }else{
-        alert("please upload picture first")
+        alert("請先上傳圖片!")
     }
 }
 
@@ -120,6 +115,6 @@ document.getElementById("download").onclick=function(){
         alink.download="image.jpg"
         alink.click()
     }else{
-        alert("please upload picture first")
+        alert("請先上傳圖片!")
     }
 }

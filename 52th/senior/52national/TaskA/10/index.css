@@ -50,23 +50,8 @@ hr{
     height: 70%;
 }
 
-.filelist{
-    height: 200px;
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 0px;
-}
-
-.filelistli{
-    list-style-type: none;
-}
-
-.filelistli::before{
-    content: "📄";
-}
-
 .reflashbutton{
-    margin-top: 20px;
+    position: relative;
     padding: 5px;
     background-color: rgb(220, 173, 78);
     color: white;
@@ -76,6 +61,7 @@ hr{
     width: 100%;
     font-size: 20px;
     font-weight: bold;
+    z-index: 100;
 }
 
 .reflashbutton:hover{
@@ -97,8 +83,6 @@ hr{
 }
 
 .color{
-    /* display: flex; */
-    /* justify-content: center; */
     margin-top: 10px;
     margin-bottom: 50px;
     width: 100%;

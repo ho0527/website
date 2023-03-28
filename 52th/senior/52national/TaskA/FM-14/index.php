@@ -1,31 +1,31 @@
 <?php
-    // 設置浮水印文字和顏色
-    $text = "WorldSkills";
-    $color = imagecolorallocate($im, 255, 255, 255); // 白色
-
-    // 打開圖片文件
-    $filename = "media/" . basename($_SERVER["REQUEST_URI"]);
-    $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-    if ($extension == "jpg" || $extension == "jpeg") {
-        $im = imagecreatefromjpeg($filename);
-    } else if ($extension == "png") {
-        $im = imagecreatefrompng($filename);
+    // 取得所有副檔名為 png 或 jpg 的檔案清單
+    $files=glob("test/"."*.{png,jpg}",GLOB_BRACE);
+    // 迭代處理每個圖片檔案
+    foreach ($files as $file) {
+        // 讀取圖片檔案
+        $image=imagecreatefromstring(file_get_contents($file));
+        // 設定白色字體
+        $fontColor=imagecolorallocate($image, 255, 255, 255);
+        // 設定文字字型大小及角度
+        $fontSize=30;
+        $angle=0;
+        // 取得圖片寬度及高度
+        $imageWidth=imagesx($image);
+        $imageHeight=imagesy($image);
+        // 設定文字大小
+        $bbox=imagettfbbox($fontSize, $angle, "font.ttf", "WorldSkills");
+        // 設定文字位置
+        $x=$imageWidth - $bbox[2] - 10;
+        $y=$imageHeight - $bbox[1] - 10;
+        // 加上水平的 "WorldSkills" 文字
+        imagettftext($image, $fontSize, $angle, $x, $y, $fontColor, "font.ttf", "WorldSkills");
+        // 設定輸出檔案路徑
+        $outputFile="output/".basename($file);
+        // 確認輸出資料夾存在
+        if (!file_exists($outputDir)) {
+            mkdir($outputDir);
+        }
+        imagepng($image, $outputFile);
     }
-
-    // 添加浮水印文字
-    $font = 5; // 字體大小
-    $padding = 10; // 文字和邊緣的距離
-    $bbox = imagettfbbox($font, 0, "arial.ttf", $text);
-    $text_width = $bbox[2] - $bbox[0];
-    $text_height = $bbox[1] - $bbox[7];
-    $x = imagesx($im) - $text_width - $padding;
-    $y = imagesy($im) - $text_height - $padding;
-    imagettftext($im, $font, 0, $x, $y, $color, "arial.ttf", $text);
-
-    // 輸出圖片
-    header("Content-type: image/jpeg"); // 如果原始圖片是 JPEG 格式
-    imagejpeg($im);
-
-    // 釋放資源
-    imagedestroy($im);
 ?>

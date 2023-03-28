@@ -1,15 +1,27 @@
-const pages={
-    a:{
-        content:'<h1>This is page A</h1>'//A頁內容
-    },
-    b:{
-        content:'<h1>This is page B</h1>'//B頁內容
-    },
-    c:{
-        content:'<h1>This is page C</h1>'//C頁內容
-    }
+let page={
+    "a.html":"This is page A",
+    "b.html":"This is page B",
+    "c.html":"This is page C",
 }
 
-function switchPage(pageId){
-    document.getElementById('content').innerHTML=pages[pageId].content//更換文字
+function check(){
+    let url=(location.href).split("/")
+    let content
+    if(page[url[url.length-1]]!=undefined){
+        content=page[url[url.length-1]]
+    }else{
+        content="page not found"
+    }
+    document.getElementById("content").innerHTML=content
 }
+
+document.addEventListener("click",function(event){
+    if(event.target.matches("[href]")){
+        event.preventDefault()
+        history.pushState(null,null,event.target.href)
+        check()
+    }
+})
+
+window.addEventListener("load",check())
+window.addEventListener("popstate",check())

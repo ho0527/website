@@ -6,10 +6,24 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <input type="file" id="image-input" onchange="loadImage()" class="input">
-        <img id="image" style="display:none;" onmousemove="showColor(event)" draggable="false">
-        <div id="color-display"></div>
-        <canvas id="magnifier"></canvas><!-- 畫布標籤 -->
+        <div class="main" id="main">
+            <div class="area" id="operatearea">
+                <h2>操作區</h2>
+                選擇檔案 <input type="file" class="input" id="input">
+            </div>
+            <hr>
+            <div class="area previewarea" id="previewarea">
+                <h2>圖片顯示區</h2>
+                <img class="image" id="image" draggable="false">
+            </div>
+            <hr>
+            <div class="area downloadarea" id="downloadarea">
+                <h2>色碼顯示區</h2>
+                <div class="coloroutput" id="coloroutput"></div>
+                <input type="button" class="reflashbutton" id="reflashbutton" value="重整">
+            </div>
+        </div>
+        <canvas id="canva"></canvas>
         <script src="index.js"></script>
     </body>
 </html>
