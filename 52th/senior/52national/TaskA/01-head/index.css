@@ -1,0 +1,97 @@
+.slidetitle{
+    display: inline-block;/* 將它設為inline-block */
+    width: 100%;/* 寬度 */
+}
+
+.sitetitle{
+    float: left;
+    background-color: rgb(249, 176, 81);/* 背景顏色 */
+    width: 50%;/* 寬度 */
+    height: 70px;/* 高度 */
+    margin: 5px;/* 物件間格 */
+}
+
+.nav{
+    float: left;
+    background-color: pink;/* 背景顏色 */
+    width: 16%;
+    height: 70px;/* 高度 */
+    margin: 3px;/* 物件間格 */
+}
+
+.posttitle{
+    float: left;
+    background-color: aqua;/* 背景顏色 */
+    width: 80%;/* 寬度 */
+    height: 70px;/* 高度 */
+    margin: 3px;/* 物件間格 */
+}
+
+.right{
+    float:left;
+    width: 19%;/* 寬度 */
+    position:absolute;/* 絕對定位 */
+    top:90px;/* 距頂部高度位移 */
+    right:10px;/* 距右邊位移 */
+}
+
+.sidebar{
+    background-color:orange;/* 背景顏色 */
+    width: 100%;/* 寬度 */
+    height: 140px;/* 高度 */
+    margin-top: 3px;/* 物件間格 */
+    margin-right: 3px;
+}
+
+.ads{
+    background-color:green;/* 背景顏色 */
+    width: 100%;/* 寬度 */
+    height: 140px;/* 高度 */
+    margin-top: 3px;/* 物件間格 */
+    margin-right: 3px;
+}
+
+.otherstuffs{
+    background-color:darkmagenta;/* 背景顏色 */
+    width: 100%;/* 寬度 */
+    height: 140px;/* 高度 */
+    margin-top: 3px;/* 物件間格 */
+    margin-right: 3px;
+}
+
+.div{
+    float: left;
+    width: 100%;/* 寬度 */
+}
+
+.postmeta{
+    float: left;
+    background-color:chartreuse;/* 背景顏色 */
+    width: 19%;/* 寬度 */
+    height: 350px;/* 高度 */
+    margin: 3px;/* 物件間格 */
+}
+
+.maincontent{
+    float: left;
+    background-color:gray;/* 背景顏色 */
+    width: 60%;/* 寬度 */
+    height: 140px;/* 高度 */
+    margin: 3px;/* 物件間格 */
+}
+
+.maincontentimage{
+    float: left;
+    background-color:yellow;/* 背景顏色 */
+    width: 60%;/* 寬度 */
+    height: 210px;/* 高度 */
+    margin: 3px;/* 物件間格 */
+}
+
+.footer{
+    float: left;
+    background-color:goldenrod;/* 背景顏色 */
+    width: 100%;/* 寬度 */
+    height: 70px;/* 高度 */
+    margin: 3px;/* 物件間格 */
+}

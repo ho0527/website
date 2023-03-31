@@ -30,59 +30,54 @@ document.getElementById("submit").addEventListener("click",function(){
 		let y
 		div.style.display="block"
 		img.addEventListener("pointerdown",function(event){
-			x=event.pageX
-			y=event.pageY
-			div.style.left=x+"px"
-			div.style.top=y+"px"
-			drawing=true
+			if(drawing==true){
+				drawing=false
+			}else{
+				x=event.pageX
+				y=event.pageY
+				div.style.left=x+"px"
+				div.style.top=y+"px"
+				drawing=true
+			}
 		})
-		
+
 		img.addEventListener("pointermove",function(event){
-			if(drawing){
+			if(drawing==true){
 				let x2=event.pageX
 				let y2=event.pageY
 				div.style.width=x2-x-5+"px"
 				div.style.height=y2-y-5+"px"
 			}
 		})
-		
-		img.addEventListener("pointerup",function(event){
-			drawing=false
+
+		img.addEventListener("pointerup",function(){
+			if(drawing==true){
+				drawing=false
+			}
 		})
 	},1000)
 })
 
-cropdownloadbutton.addEventListener("",function(){
-	let a
-	let alink
+let iscrop
+cropdownloadbutton.onclick=function(){
 	if(cropdownloadbutton.value=="crop"){
 		let canvas=document.createElement("canvas")
 		let crop=document.getElementById("imagediv")
-		let w=crop.offsetWidth
-		let h=crop.offsetHeight
-		let ctx=canvas.getContext("2d")
-		canvas.width=w
-		canvas.height=h
-		// canvas.getContext("2d").drawImage(document.getElementById("image"),crop.offsetLeft,crop.offsetTop,w,h,0,0,w,h)
-		ctx.drawImage(document.getElementById("image"),crop.offsetLeft,crop.offsetTop,w,h,0,0,w,h)
-		canvas.toBlob(function(blob){
-			a=document.createElement("a")
-			a.href=URL.createObjectURL(blob)
-			a.download="crop_"+image.name
-			a.id="a"
-			// alink=document.getElementById("a")
-			console.log(a)
-			// console.log(alink)
-		})
-		console.log(a)
-		console.log(alink)
+		let width=crop.offsetWidth
+		let height=crop.offsetHeight
+		canvas.width=width
+		canvas.height=height
+		let pos=crop.getBoundingClientRect()
+		canvas.getContext("2d").drawImage(document.getElementById("image"),pos.left,pos.top,width,height,0,0,width,height)
+		let a=document.createElement("a")
+		a.href=canvas.toDataURL()
+		a.download="crop_"+image.name
+		iscrop=a
 		cropdownloadbutton.value="download"
 	}else{
-		let alink=document.getElementById("a")
-		// alink.click()
-		// console.log(alink)
+		iscrop.click()
 	}
-})
+}
 
 // 當按下重整按鈕後，重新載入頁面
 document.getElementById("reflashbutton").onclick=function(){
