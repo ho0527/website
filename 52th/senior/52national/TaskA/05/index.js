@@ -2,15 +2,21 @@ let file=document.getElementById("file")
 let cropdownloadbutton=document.getElementById("cropdownloadbutton")
 let imagediv=document.getElementById("imagediv")
 let image
+let filename
 let drawing=false
 let div=document.getElementById("cropdiv")
+
+file.addEventListener("change",function(event){
+	filename=event.target.files[0].name
+})
 
 // 當按下提交按鈕後，禁用提交按鈕並啟用重整按鈕
 document.getElementById("submit").addEventListener("click",function(){
 	let reader=new FileReader()
 	reader.onload=function(){
-		image=new Image() // 添加这行
+		image=new Image()
 		image.src=reader.result
+		image.name=filename
 		image.onload=function(){
 			document.getElementById("image").src=image.src
 		}
@@ -20,28 +26,35 @@ document.getElementById("submit").addEventListener("click",function(){
 	cropdownloadbutton.disabled=false
 	setTimeout(function(){
 		let img=document.getElementById("image")
+		let x
+		let y
+		div.style.display="block"
 		img.addEventListener("pointerdown",function(event){
-			div.style.display="block"
-			div.style.left=event.pageX+"px"
-			div.style.top=event.pageY+"px"
+			x=event.pageX
+			y=event.pageY
+			div.style.left=x+"px"
+			div.style.top=y+"px"
 			drawing=true
 		})
-
+		
 		img.addEventListener("pointermove",function(event){
 			if(drawing){
-				div.style.width=event.pageX-img.offsetLeft+"px"
-				div.style.height=event.pageY-img.offsetTop+"px"
+				let x2=event.pageX
+				let y2=event.pageY
+				div.style.width=x2-x-5+"px"
+				div.style.height=y2-y-5+"px"
 			}
 		})
-
-		img.addEventListener("pointerup",function(){
+		
+		img.addEventListener("pointerup",function(event){
 			drawing=false
-			console.log("in")
 		})
-	},1000);
+	},1000)
 })
 
-cropdownloadbutton.addEventListener("click",function() {
+cropdownloadbutton.addEventListener("",function(){
+	let a
+	let alink
 	if(cropdownloadbutton.value=="crop"){
 		let canvas=document.createElement("canvas")
 		let crop=document.getElementById("imagediv")
@@ -50,25 +63,28 @@ cropdownloadbutton.addEventListener("click",function() {
 		let ctx=canvas.getContext("2d")
 		canvas.width=w
 		canvas.height=h
-		ctx.drawImage(document.getElementById("img"),crop.offsetLeft,crop.offsetTop,w,h,0,0,w,h)
+		// canvas.getContext("2d").drawImage(document.getElementById("image"),crop.offsetLeft,crop.offsetTop,w,h,0,0,w,h)
+		ctx.drawImage(document.getElementById("image"),crop.offsetLeft,crop.offsetTop,w,h,0,0,w,h)
 		canvas.toBlob(function(blob){
-			const alink=document.createElement("a")
-			alink.href=URL.createObjectURL(blob)
-			alink.download="crop_"+image.name
+			a=document.createElement("a")
+			a.href=URL.createObjectURL(blob)
+			a.download="crop_"+image.name
+			a.id="a"
+			// alink=document.getElementById("a")
+			console.log(a)
+			// console.log(alink)
 		})
+		console.log(a)
+		console.log(alink)
 		cropdownloadbutton.value="download"
 	}else{
-		alink.click()
+		let alink=document.getElementById("a")
+		// alink.click()
+		// console.log(alink)
 	}
 })
 
 // 當按下重整按鈕後，重新載入頁面
 document.getElementById("reflashbutton").onclick=function(){
 	location.reload()
-}
-
-
-function check(){
-	drawing=false
-	console.log("in1")
 }

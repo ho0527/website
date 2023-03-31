@@ -34,6 +34,7 @@ h1{
     border: 2px rgb(90, 90, 90) dashed;
     position: absolute;
     display: none;
+    mix-blend-mode: difference;
 }
 
 .image{
