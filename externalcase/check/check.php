@@ -11,6 +11,7 @@
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
             $_SESSION["getscore"]=0;
             $_SESSION["totalscore"]=0;
+            if(!isset($_SESSION["usemod"])){ $_SESSION["usemod"]=""; }
         ?>
         <form method="POST">
             <input type="button" class="button" onclick="location.href='log.php'" value="log">

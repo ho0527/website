@@ -67,10 +67,10 @@
                     }else{
                         // if(isset($_POST["admin"])){
                         if(false){
-                            query($dbuser,"INSERT INTO `user`(`username`,`password`,`permission`)VALUES('$username','$password','管理者')");
+                            query($dbuser,"INSERT INTO `user`(`username`,`password`,`permission`)VALUES('$username','$password','admin')");
                         }else{
                         }
-                        query($dbuser,"INSERT INTO `user`(`username`,`password`,`permission`)VALUES('$username','$password','一般使用者')");
+                        query($dbuser,"INSERT INTO `user`(`username`,`password`,`permission`)VALUES('$username','$password','user')");
                         $row=fetch(query($dbuser,"SELECT*FROM `user` WHERE `username`='$username'"));
                         $number=str_pad($row[0]-1,8,"0",STR_PAD_LEFT);
                         query($dbuser,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");

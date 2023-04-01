@@ -1,9 +1,0 @@
-<?php
-    $str=$_GET["val"];
-    $cavan=imagecreate(40,40);
-    imagecolorallocate($cavan,255,255,255);
-    $paint=imagecolorallocate($cavan,255,0,0);
-    $font=__DIR__."/CONSOLAB.TTF";
-    imagettftext($cavan,20,0,15,30,$paint,$font,$str);
-    imagepng($cavan)
-?>

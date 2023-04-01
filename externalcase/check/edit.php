@@ -70,7 +70,7 @@
                                     </td>
                                     <td class="border"><textarea name="description<?= $i ?>" cols="30" rows="5"><?= $row[$i][3] ?></textarea></td>
                                     <td class="border"><input type="text" name="score<?= $i ?>" class="score" placeholder="輸入數字" value="<?= $row[$i][4] ?>"></td>
-                                    <td class="border"><input type="text" name="module<?= $i ?>" class="score" placeholder="輸入數字" value="<?= $row[$i][6] ?>"></td>
+                                    <td class="border"><input type="text" name="module<?= $i ?>" class="score" placeholder="輸入數字" value="<?= $row[$i][5] ?>"></td>
                                 </tr>
                                 <?php
                             }
