@@ -29,3 +29,22 @@ table{
     transform: translate(-50%, -50%);
     padding: 20px;
 }
+
+.button{
+    margin-top: 20px;
+    padding: 5px;
+    background-color: rgb(29, 145, 29);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    background-color: rgb(102, 220, 102);
+    color: black;
+}

@@ -4,10 +4,10 @@ body{
     font-size: 20px;
 }
 
-.main{
+.grid{
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(24, 10fr);
+    grid-template-columns: repeat(24, 1fr);
     grid-auto-rows: 75px;
 }
 

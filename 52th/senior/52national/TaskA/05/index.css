@@ -10,7 +10,7 @@ body{
 }
 
 h1{
-    margin: 5px;
+    margin: 15px;
     text-align: center;
 }
 
@@ -26,7 +26,7 @@ hr{
 }
 
 .main{
-    border: 1px white solid;
+    border: 5px white solid;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -37,8 +37,7 @@ hr{
 }
 
 .previewarea{
-    height: 65%;
-    margin-bottom: 20px;
+    height: 60%;
 }
 
 .coloroutput{
@@ -51,10 +50,13 @@ hr{
     margin-bottom: 10px;
 }
 
+.croparea{
+    height: 10%;
+}
+
 .area{
     padding: 20px;
 }
-
 
 .imagediv{
     padding: 10px;

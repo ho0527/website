@@ -15,14 +15,13 @@ document.getElementById("image").addEventListener("mousemove",function(event){
     canvas.height=image.height
     ctx.drawImage(image,0,0,image.width,image.height)
     let pixelData=ctx.getImageData(event.offsetX,event.offsetY,1,1).data
-    console.log("getImageData(event.offsetX,event.offsetY,1,1)="+ctx.getImageData(event.offsetX,event.offsetY,1,1).data)
     let color="rgb("+pixelData[0]+","+pixelData[1]+","+pixelData[2]+")"
     let hex="#"+("000000"+((pixelData[0]<<16)|(pixelData[1]<<8)|pixelData[2]).toString(16)).slice(-6)
-    document.getElementById("coloroutput").innerHTML=`
-        Color: ${color}<br>
-        Hex: ${hex}
+    document.getElementById("colorrgb").innerHTML=`
+        RGB: ${color}
     `
     // 放大鏡功能
+    let magnifier2=document.getElementById("magnifier")
     let magnifier=document.getElementById("canva")
     let magCtx=magnifier.getContext("2d")
     magCtx.clearRect(0,0,100,100)
@@ -31,8 +30,8 @@ document.getElementById("image").addEventListener("mousemove",function(event){
     magCtx.arc(50,50,7,0,2*Math.PI)
     magCtx.stroke()
     magnifier.style.display="block"
-    magnifier.style.left=event.pageX+10+"px"
-    magnifier.style.top=event.pageY+10+"px"
+    magnifier.style.left=event.offsetX+10+"px"
+    magnifier.style.top=event.offsetY+10+"px"
 })
 
 document.getElementById("reflashbutton").onclick=function(){

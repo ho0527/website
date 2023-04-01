@@ -8,7 +8,6 @@ let filelist=document.getElementById("filelist")
 let input=[fileinput,folderinput]
 
 input.forEach(function(event){
-    console.log(event)
     event.addEventListener("change",function(changeevent){
         let files
         if(changeevent.target.id=="fileinput"){
@@ -23,7 +22,6 @@ input.forEach(function(event){
             filelist.appendChild(li)
             zip.file(files[i].name,files[i])// 將檔案加入 JSZip 物件
         }
-        console.log(changeevent.target.id)
     })
 })
 
@@ -34,10 +32,10 @@ document.getElementById("downloadbutton").onclick=function(){
     filename=filename+".zip"// 加上 .zip 副檔名
     // 產生壓縮檔
     zip.generateAsync({ type:"blob" }).then(function(downloadevent){
-        let downloadLink=document.createElement("a")
-        downloadLink.href=URL.createObjectURL(downloadevent)
-        downloadLink.download=filename
-        downloadLink.click()
+        let alink=document.createElement("a")
+        alink.href=URL.createObjectURL(downloadevent)
+        alink.download=filename
+        alink.click()
     })
 }
 

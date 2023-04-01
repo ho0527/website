@@ -6,23 +6,23 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="main" id="main">
-            <div class="area" id="operatearea">
-                <h2>操作區</h2>
+        <div class="grid">
+            <div class="h1">
+                <div class="p">圖片顏色選擇</div>
+            </div>
+            <div class="inputdiv">
                 選擇檔案 <input type="file" class="input" id="input" accept="image/*">
             </div>
-            <hr>
-            <div class="area previewarea" id="previewarea">
-                <h2>圖片顯示區</h2>
+            <div class="imagediv">
                 <img class="image" id="image" draggable="false">
             </div>
-            <hr>
-            <div class="area downloadarea" id="downloadarea">
-                <h2>顏色顯示區塊</h2>
-                <div class="coloroutput" id="coloroutput"></div>
-                <input type="button" class="reflashbutton" id="reflashbutton" value="重整">
+            <div class="colorrgb" id="colorrgb">
+                <div class="p">RGB: none</div>
             </div>
+            <div class="colorshow" id="colorshow"></div>
+            <input type="button" class="reflashbutton" id="reflashbutton" value="重整">
         </div>
+        <div class="magnifier" id="magnifier"></div>
         <canvas id="canva"></canvas>
         <script src="index.js"></script>
     </body>

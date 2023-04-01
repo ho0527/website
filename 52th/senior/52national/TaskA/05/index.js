@@ -4,7 +4,7 @@ let imagediv=document.getElementById("imagediv")
 let image
 let filename
 let drawing=false
-let div=document.getElementById("cropdiv")
+let cropdiv=document.getElementById("cropdiv")
 
 file.addEventListener("change",function(event){
 	filename=event.target.files[0].name
@@ -28,15 +28,15 @@ document.getElementById("submit").addEventListener("click",function(){
 		let img=document.getElementById("image")
 		let x
 		let y
-		div.style.display="block"
+		cropdiv.style.display="block"
 		img.addEventListener("pointerdown",function(event){
 			if(drawing==true){
 				drawing=false
 			}else{
 				x=event.pageX
 				y=event.pageY
-				div.style.left=x+"px"
-				div.style.top=y+"px"
+				cropdiv.style.left=x+"px"
+				cropdiv.style.top=y+"px"
 				drawing=true
 			}
 		})
@@ -45,8 +45,8 @@ document.getElementById("submit").addEventListener("click",function(){
 			if(drawing==true){
 				let x2=event.pageX
 				let y2=event.pageY
-				div.style.width=x2-x-5+"px"
-				div.style.height=y2-y-5+"px"
+				cropdiv.style.width=x2-x-5+"px"
+				cropdiv.style.height=y2-y-5+"px"
 			}
 		})
 
@@ -62,13 +62,19 @@ let iscrop
 cropdownloadbutton.onclick=function(){
 	if(cropdownloadbutton.value=="crop"){
 		let canvas=document.createElement("canvas")
-		let crop=document.getElementById("imagediv")
-		let width=crop.offsetWidth
-		let height=crop.offsetHeight
-		canvas.width=width
-		canvas.height=height
-		let pos=crop.getBoundingClientRect()
-		canvas.getContext("2d").drawImage(document.getElementById("image"),pos.left,pos.top,width,height,0,0,width,height)
+		let image2=document.getElementById("image")
+		canvas.width=imagediv.offsetWidth
+		canvas.height=imagediv.offsetHeight
+		// canvas.width=image2.naturalWidth
+		// canvas.height=image2.naturalHeight
+		let position=cropdiv.getBoundingClientRect()
+		console.log(position.top)
+		console.log(position.bottom)
+		console.log(position.left)
+		console.log(position.right)
+		// canvas.getContext("2d").drawImage(document.getElementById("image"),pos.left,pos.top,cropdiv.offsetWidth,cropdiv.offsetHeight,0,0,cropdiv.offsetWidth,cropdiv.offsetHeight)
+		canvas.getContext("2d").drawImage(document.getElementById("image"),position.left,position.top,position.right-position.left,position.bottom-position.top,position.left,position.top,position.right-position.left,position.bottom-position.top)
+		// canvas.getContext("2d").drawImage(document.getElementById("image"),position.left,position.top,cropdiv.offsetWidth,cropdiv.offsetHeight,0,0,cropdiv.offsetWidth,cropdiv.offsetHeight)
 		let a=document.createElement("a")
 		a.href=canvas.toDataURL()
 		a.download="crop_"+image.name
