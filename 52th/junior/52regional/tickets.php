@@ -1,5 +1,8 @@
 <?php
-    $db=new mysqli("localhost","root","","web3");
+    $db=new PDO("mysql:host=localhost;dbname=web3;charset=utf8","root","");
+    function query($db,$data){
+        return $db->query($data);
+    }
     if(isset($_GET["submit"])){
         $firstname=$_GET["firstname"];
         $lastname=$_GET["lastname"];
@@ -8,7 +11,7 @@
         $verification=$_GET["verification"];
         $ans=$_GET["ans"];
         if($verification==$ans){
-            mysqli_query($db,"INSERT INTO `52j17`(`firstname`, `lastname`, `phone`, `password`) VALUES('$firstname','$lastname','$phone','$password')");
+            query($db,"INSERT INTO `52j17`(`firstname`, `lastname`, `phone`, `password`)VALUES('$firstname','$lastname','$phone','$password')");
             ?><script>alert("新增成功");location.href="home.html"</script><?php
             session_unset();
         }else{

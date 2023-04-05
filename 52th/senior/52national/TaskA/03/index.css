@@ -29,7 +29,7 @@ table{
     left: 50%;/* 距左邊位移 */
     transform: translate(-50%, -50%);/* 定位 */
     width: 900px;/* 寬度 */
-    height: 45%;/* 高度 */
+    height: 60%;/* 高度 */
     padding: 20px;
 	border-radius: 15px;/* 圓弧邊框 */
 }

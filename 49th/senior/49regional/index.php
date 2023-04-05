@@ -13,8 +13,8 @@
                     if(isset($_SESSION["data"])){ header("location:verify.php"); }
                 ?>
                 <h1>電子競技網站管理</h1><hr>
-                帳號: <input type="text" name="username" class="input" id="username" value="<?= @$_SESSION["username"] ?>" maxlength="1250"><br><br>
-                密碼: <input type="text" name="password" class="input" id="password" value="<?= @$_SESSION["password"] ?>" maxlength="1250"><br><br>
+                帳號: <input type="text" class="input" id="username" name="username" value="<?= @$_SESSION["username"] ?>" maxlength="1250"><br><br>
+                密碼: <input type="text" class="input" id="password" name="password" value="<?= @$_SESSION["password"] ?>" maxlength="1250"><br><br>
                 <?php
                     $_SESSION["verifycode1"]="";
                     $_SESSION["verifycode2"]="";

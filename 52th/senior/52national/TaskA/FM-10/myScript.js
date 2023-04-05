@@ -5,23 +5,15 @@ let page={
 }
 
 function check(){
-    let url=(location.href).split("/")
-    let content
-    if(page[url[url.length-1]]!=undefined){
-        content=page[url[url.length-1]]
-    }else{
-        content="page not found"
-    }
-    document.getElementById("content").innerHTML=content
+    let url=location.href.split("/")
+    document.getElementById("content").innerHTML=page[url[url.length-1]]
 }
 
-document.addEventListener("click",function(event){
-    if(event.target.matches("[href]")){
-        event.preventDefault()
-        history.pushState(null,null,event.target.href)
-        check()
-    }
+document.addEventListener("click",function(addeventlistenerevent){
+    console.log(addeventlistenerevent)
+    addeventlistenerevent.preventDefault()
+    history.pushState(null,null,addeventlistenerevent.target.href)
+    check()
 })
 
-window.addEventListener("load",check())
-window.addEventListener("popstate",check())
+check()

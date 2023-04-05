@@ -8,13 +8,16 @@
         $str=trim(fgets(STDIN));
         if(strlen($str)<=65536){
             for($j=0;$j<strlen($str);$j=$j+1){
-                $hashvalue=$hashvalue+((ord($str[$j]))*(31**$j));
+                $hash=(ord($str[$j]))*(31**(strlen($str)-($j+1)));
+                if($hash>(2**31)-1){
+                    $hashvalue=$hashvalue+($hash-2**32);
+                }elseif($hash<-2**31){
+                    $hashvalue=$hashvalue+($hash+2**32);
+                }else{
+                    $hashvalue=$hashvalue+$hash;
+                }
             }
-            if(((-2**31)<=$hashvalue)&&($hashvalue<=((2**31)-1))){
-                $ans[]=$hashvalue;
-            }else{
-                $ans[]="error";
-            }
+            $ans[]=$hashvalue;
         }else{
             echo("輸入未符合要求");
         }

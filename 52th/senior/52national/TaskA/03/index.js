@@ -1,21 +1,9 @@
-let mod=document.getElementById("change")
 let buttons=document.querySelectorAll('button')
 let output=document.getElementById("output")
 let a="twodecimals"
 //訂定變數
 
 output.value=""//將output清空
-
-//變換value
-mod.onclick=function(){
-	if(mod.value=="全部模式"){
-		mod.value="後兩位模式"
-		a="twodecimals"
-	}else{
-		mod.value="全部模式"
-		a="all"
-	}
-}
 
 document.querySelectorAll(".calckey").forEach(function(event){
 	event.addEventListener("click",function(){

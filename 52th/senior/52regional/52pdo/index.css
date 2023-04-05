@@ -1,8 +1,10 @@
 body{
-    width: 1875px;
-    height: 900px;
-    background-color: rgba(244, 236, 236, 0.37);
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(65, 75, 80);
     user-select: none;
+    word-break: break-all;
+    text-align: center;
+    color: white;
 }
 
 table{
@@ -10,20 +12,25 @@ table{
     vertical-align:top;
 }
 
-.indextitle{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:25px;
-    font-weight:bold;
-    text-align: center;
+h1{
+    margin: 0px;
+    margin-bottom: 10px;
 }
 
-.text{
-    font-family: Arial, Helvetica, sans-serif;
+h2{
+    margin: 0px;
+}
+
+hr{
+    border: 1px rgb(255, 255, 255) solid;
+    margin-bottom: 20px;
+}
+
+.indextitle{
     color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin:3px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .indexdiv{
@@ -41,25 +48,44 @@ table{
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
 }
 
+.main{
+    border: 2px rgb(255, 255, 255) solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    border-radius: 25px;
+    padding: 30px 35px;
+    color: white;
+    font-size: 30px;
+    font-weight:bold;
+}
+
 .input{
-    border-radius: 25px;
-    width: 175px;
-    height: 20px;
-    border: 1px black solid;
+    border: none;
+    width: 75%;
+    height: 40px;
     background-color: white;
+    background: none;
+    border-bottom: 1px black solid;
+    outline: none;
+    font-size: 30px;
 }
 
-.button{
-    border-radius: 25px;
+.input{
+    border: none;
+    width: 75%;
+    height: 40px;
     background-color: white;
-    border: 0.5px black solid;
+    background: none;
+    border-bottom: 1px black solid;
+    outline: none;
+    font-size: 30px;
+}
+
+.checkbox{
+    width: 25px;
     height: 25px;
-    width: 75px;
-    cursor: pointer;
-}
-
-.button:hover{
-    background-color: rgba(186, 186, 186, 0.363);
 }
 
 .select{
@@ -68,18 +94,19 @@ table{
 
 .dragbox{
     border: 1px black solid;
-    height: 40px;
-    width: 40px;
+    height: 60px;
+    width: 60px;
     display: inline-block;
     background-color: white;
 }
 
 .dropbox{
     border: 1px black solid;
-    height: 40px;
-    width: 130px;
+    height: 60px;
+    width: 180px;
     display: inline-block;
     background-color: white;
+    text-align: left;
 }
 
 .dragimg{
@@ -133,19 +160,30 @@ table{
 }
 
 .admin-table-num{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:250px;
-    height:30px;
+    border-bottom: 0.5px black solid;
+    width: 300px;
+    height: 30px;
+    color: white;
     text-align: center;
 }
 
-.admin-table{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:250px;
-    height:30px;
+.admin{
+    border: 1px white solid;
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translate(-45%,0%);
+    height: 600px;
     text-align: center;
+    overflow-y: auto;
+}
+
+.admin-table{
+    border-bottom: 0.5px black solid;
+    width: 350px;
+    height: 30px;
+    color: white;
+    font-size: 18px;
 }
 
 /*user table*/
@@ -343,4 +381,46 @@ table{
     position: relative;
     top: 2px;
     margin: 1px;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.xcenter{
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+.ycenter{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%,-50%);
+}
+
+.button{
+    border: 1px black solid;
+    padding: 10px 25px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    background: gray;
+    color: white;
+}
+
+.selectbutton{
+    background-color: rgba(35, 35, 35, 0.75);
+    color: white;
 }

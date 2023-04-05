@@ -6,22 +6,25 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <img src="logo.png" class="logo">
-        <div class="head">
-            <form>
-                <input type="button" id="index" value="玩家留言" class="indexbutton" onclick="location.href='index.php'">
-                <input type="button" id="view" value="玩家參賽" class="indexbutton" onclick="location.href='post.php'">
-                <input type="button" id="signup" value="網站管理" class="indexbutton selectbut" onclick="location.href='login.php'">
-                <input type="submit" id="loggout-button" class="indexbutton" name="logout" value="登出">
-            </form>
+        <img src="banner.png" class="banner">
+        <div class="navigationbar">
+            <img src="logo.png" class="logo">
+            <div class="navigationbarbuttondiv">
+                <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="玩家留言">
+                <input type="button" class="navigationbarbutton" onclick="location.href='post.php'" value="玩家參賽">
+                <input type="button" class="navigationbarbutton selectbutton" onclick="location.href='login.php'" value="網站管理">
+                <input type="button" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
+            </div>
         </div>
         <?php
             include("link.php");
             if(isset($_SESSION["data"])){
                 ?>
                 <div class="loginhead">
-                    <button class="button2" onclick="location.href='login.php'">留言管理</button>
-                    <button class="button2 selectbut" onclick="location.href='comp.php'">賽制管理</button>
+                    <div class="center">
+                        <input type="button" class="loginbutton button" onclick="location.href='login.php'" value="留言管理">
+                        <input type="button" class="loginbutton button selectbutton" onclick="location.href='comp.php'" value="賽制管理">
+                    </div>
                 </div>
                 <div class="compdiv">
                     <form>

@@ -1,23 +1,183 @@
 body{
-    width: 1875px;
-    height: 1080px;
-    background-color:rgba(244, 236, 236, 0.37);
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(65, 75, 80);
+    color: rgb(255, 255, 255);
     user-select: none;
+    word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+h2{
+    margin: 0px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 15px 0px;
 }
 
 table{
-    border-collapse:collapse;
-    vertical-align:top;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.indextitle{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:25px;
-    font-weight:bold;
+.main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.logo{
+    height: 75px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.navigationbartitle{
+    height: 75px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.navigationbar{
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    background: rgba(250, 250, 250, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    z-index: 900;
+}
+
+.navigationbarbuttondiv{
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    margin-bottom: 10px;
+}
+
+.navigationbarbutton{
+    border: 1px black solid;
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    margin: 0px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
     text-align: center;
-    display: flex;
-    justify-content: center;
+    transition-duration: 0.5s;
+}
+
+.navigationbarbutton:hover{
+    background: gray;
+    color: white;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+
+.xcenter{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%,0%);
+    width: 100%;
+}
+
+.ycenter{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%,-50%);
+    width: 100%;
+}
+
+.input{
+    border: none;
+    width: 75%;
+    height: 40px;
+    background-color: white;
+    background: none;
+    border-bottom: 1px black solid;
+    outline: none;
+    font-size: 30px;
+}
+
+.checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+.button{
+    border: 1px black solid;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    background: gray;
+    color: white;
+}
+
+.reflashbutton{
+    margin-top: 20px;
+    padding: 5px;
+    background-color: rgb(220, 173, 78);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.reflashbutton:hover{
+    background-color: rgb(255, 213, 128);
+    color: black;
+}
+
+.selectbutton{
+    background-color: rgba(35, 35, 35, 0.75);
+    color: white;
+}
+
+.maintitle{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .text{
@@ -30,29 +190,9 @@ table{
     justify-content: center;
 }
 
-.button{
-    border-radius: 25px;
-    background-color: white;
-    border: 0.5px black solid;
-    height: 25px;
-    width: 75px;
-}
-
-.button:hover{
-    background-color: rgba(186, 186, 186, 0.363);
-}
-
 .div{
     display: flex;
     justify-content: center;
-}
-
-.input{
-    border-radius: 25px;
-    width: 175px;
-    height: 20px;
-    border: 1px black solid;
-    background-color: white;
 }
 
 .select{
@@ -144,9 +284,9 @@ table{
 
 .divform{
     color: white;
-    font-size:10px;
-    font-weight:bold;
-    margin-top:5px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
     position: relative;
     text-align: center;
     width: 100%;
@@ -154,8 +294,8 @@ table{
 
 .newform{
     color: white;
-    font-size:10px;
-    font-weight:bold;
+    font-size: 20px;
+    font-weight: bold;
     text-align: center;
     background-color: rgb(125, 125, 125);
     width: 100%;
@@ -241,178 +381,6 @@ table{
     text-align: center;
 }
 
-/*user table*/
-.title{
-    border: 0.5px black solid;
-    width:225px;
-    height:25px;
-    font-size:30px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.date{
-    border: 0.5px black solid;
-    width:985px;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.user-table4{
-    border: 0.5px black solid;
-    height:785px;
-    text-align: left;
-    vertical-align: top;
-}
-
-.todo{
-    border: 0.5px black solid;
-    height: 785px;
-    text-align: center;
-}
-
-.usertable{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:100px;
-    height:30px;
-    text-align: center;
-    word-wrap: break-word;
-}
-
-.all{
-    vertical-align: top;
-    border: 0.5px black solid;
-    width: 620px;
-}
-
-.newtodo{
-    text-align: left;
-    vertical-align: bottom;
-}
-
-.todo-title-time{
-    border: 0.5px black solid;
-    background-color: rgb(203, 203, 203);
-    width:155px;
-    height:30px;
-    text-align: center;
-}
-
-.todo-title-work{
-    border: 0.5px black solid;
-    background-color: rgb(203, 203, 203);
-    width:800px;
-    height:30px;
-    text-align: center;
-}
-
-.todo-title-main1{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:155px;
-    height:57px;
-    text-align: center;
-}
-
-.todo-main1{
-    border: 0.5px black solid;
-    background-color: gray;
-    width:800px;
-    height:57px;
-    text-align: center;
-}
-
-.todo-title-main2{
-    border: 0.5px black solid;
-    background-color: rgb(203, 203, 203);
-    width:155px;
-    height:57px;
-    text-align: center;
-}
-
-.todo-main2{
-    border: 0.5px black solid;
-    background-color: rgb(203, 203, 203);
-    width:800px;
-    height:57px;
-    text-align: center;
-}
-
-.work-box{
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 15px;
-    border: 0.5px rgb(0, 0, 0) solid;
-    text-align: center;
-    line-height: 1.1;
-    width: 150px;
-    font-size: 12px;
-    position:absolute;
-    /* user-select: all; */
-}
-
-#button3{
-    width:30px;
-    height:20px;
-    position: absolute;
-    top:0px;
-    right:1px;
-    font-size: 1px;
-    cursor: pointer;
-}
-
-#button4{
-    width:40px;
-    height:20px;
-    position: absolute;
-    bottom:0px;
-    right:1px;
-    font-size: 1px;
-    cursor: pointer;
-}
-
-.right{
-    float: right;
-}
-
-
-.useradd{
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size:10px;
-    font-weight:bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:  translate(-50%, -50%) scale(2.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(125, 125, 125);
-    border-radius: 25px;
-    height: 350px;
-    width: 300px;
-    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
-}
-
-.table4but{
-    width: 150px;
-    text-align: center;
-}
-
-.upusertablediv{
-    width: 100%;
-    height: 12px;
-    position: relative;
-    bottom: 2px;
-    margin: 1px;
-}
-
-.userhalf{
-    border-top: 1px black solid;
-}
-
 .downusertablediv{
     width: 100%;
     height: 12px;
@@ -430,7 +398,11 @@ table{
 .verticalcenter{
     position: relative;
     top:5px;
-    /* transform: translate(0%,-50%); */
+}
+
+.radio{
+    width: 20px;
+    height: 20px;
 }
 
 .yesnodiv{

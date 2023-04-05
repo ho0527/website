@@ -1,39 +1,72 @@
-const carousel=document.querySelector(".carousel")
-const carouselInner=document.querySelector(".carousel-inner")
-const carouselItems=document.querySelectorAll(".carousel-item")
-const carouselControlPrev=document.querySelector(".carousel-control-prev")
-const carouselControlNext=document.querySelector(".carousel-control-next")
+let item=document.querySelectorAll(".item")
+let indicator=document.querySelectorAll(".indicator")
+let prev=document.getElementById("prev")
+let next=document.getElementById("next")
+let itemcount=0
+let count=300
 
-let currentIndex=0
-
-// 切換圖片的函式
-function changeSlide() {
-    // 將目前的圖片移到最左邊
-    carouselItems[currentIndex].style.display="none"
-    // 將下一張圖片移到中間
-    currentIndex=(currentIndex+1)%carouselItems.length
-    carouselItems[currentIndex].style.display="block"
+function clearall(){
+    for(let i=0;i<item.length;i=i+1){
+        item[i].style.display="none"
+    }
 }
 
-// 當使用者點擊控制按鈕時切換圖片
-carouselControlPrev.addEventListener("click",function(){
-    // 停止自動輪播
-    clearInterval(carouselInterval)
-    // 將目前的圖片移到最左邊
-    carouselItems[currentIndex].style.display="none"
-    // 將上一張圖片移到中間
-    currentIndex=(currentIndex-1+carouselItems.length)%carouselItems.length
-    carouselItems[currentIndex].style.display="block"
-    setInterval(changeSlide,5000)
+function changepicture(){
+    if(count>=200){
+        clearall()
+        item[itemcount].style.display="block"
+        itemcount=(itemcount+1)%item.length
+    }
+}
+
+let counter=setInterval(function(){
+    count=count+1
+},10)
+
+changepicture()
+let carousel=setInterval(changepicture,2500)
+
+indicator.forEach(function(event){
+    event.onclick=function(){
+        if(count>300){
+            clearInterval(carousel)
+            clearall()
+            itemcount=event.value-1
+            item[itemcount].style.display="block"
+            setTimeout(function(){
+                count=0
+                setInterval(changepicture,2500)
+            },250)
+        }else{
+            count=0
+        }
+    }
 })
 
-carouselControlNext.addEventListener("click",function(){
-    // 停止自動輪播
-    clearInterval(carouselInterval)
-    // 切換圖片
-    changeSlide()
-    setInterval(changeSlide,5000)
-})
+document.getElementById("prev").onclick=function(){
+    if(count>300){
+        clearInterval(carousel)
+        clearall()
+        itemcount=(itemcount-1+item.length)%item.length
+        item[itemcount].style.display="block"
+        setTimeout(function(){
+            count=0
+            setInterval(changepicture,2500)
+        },250)
+    }else{
+        count=0
+    }
+}
 
-changeSlide()
-let carouselInterval=setInterval(changeSlide,2000) // 自動輪播的間隔時間
+document.getElementById("next").onclick=function(){
+    if(count>300){
+        clearInterval(carousel)
+        changepicture()
+        setTimeout(function(){
+            count=0
+            setInterval(changepicture,2500)
+        },250)
+    }else{
+        count=0
+    }
+}

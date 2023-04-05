@@ -1,5 +1,4 @@
 <?php
-    $finalStr=$_GET['val'];
     $canva=imagecreate(70,80);
     imagecolorallocate($canva,255,255,255);
     if($_GET["val"]==" "){

@@ -1,25 +1,22 @@
-// 讀取圖片
-document.getElementById("input").addEventListener("change",function(event){
-    let input=document.getElementById("input")
-    let image=document.getElementById("image")
-    image.src=URL.createObjectURL(input.files[0])
-    image.style.display="block"
+let image=document.getElementById("image")
+
+document.getElementById("input").addEventListener("change",function(){
+    image.src=URL.createObjectURL(document.getElementById("input").files[0])
 })
 
 // 顯示顏色
 document.getElementById("image").addEventListener("mousemove",function(event){
-    let image=document.getElementById("image")
     let canvas=document.createElement("canvas")
     let ctx=canvas.getContext("2d")
     canvas.width=image.width
     canvas.height=image.height
     ctx.drawImage(image,0,0,image.width,image.height)
-    let pixelData=ctx.getImageData(event.offsetX,event.offsetY,1,1).data
-    let color="rgb("+pixelData[0]+","+pixelData[1]+","+pixelData[2]+")"
-    let hex="#"+("000000"+((pixelData[0]<<16)|(pixelData[1]<<8)|pixelData[2]).toString(16)).slice(-6)
-    document.getElementById("colorrgb").innerHTML=`
-        RGB: ${color}
+    let rgbdata=ctx.getImageData(event.offsetX,event.offsetY,1,1).data
+    let rgb="rgb("+rgbdata[0]+", "+rgbdata[1]+", "+rgbdata[2]+")"
+    document.getElementById("colorrgbtext").innerHTML=`
+        RGB: ${rgb}
     `
+    document.getElementById("colorshow").style.backgroundColor=rgb
     // 放大鏡功能
     let magnifier2=document.getElementById("magnifier")
     let magnifier=document.getElementById("canva")

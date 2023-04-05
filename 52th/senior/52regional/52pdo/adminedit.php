@@ -6,7 +6,7 @@
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
-        <div class="signupdiv">
+        <div class="main">
             <form>
                 <?php
                     include("link.php");
@@ -16,34 +16,31 @@
                         $admin=query("SELECT*FROM `admin` WHERE `adminnumber`='$number'");
                         if($row=fetch($user)){
                             ?>
-                            <from class="text">
-                                編號: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
-                                帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
-                                用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
-                                密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
-                                <button name="enter">更改帳號</button>
-                            </from>
+                            編號: <input type="text" class="input" name="number" value="<?php echo($number); ?>" readonly><br><br>
+                            帳號: <input type="text" class="input" name="username" value="<?php echo($row[1]); ?>"><br><br>
+                            用戶名: <input type="text" class="input" name="name" value="<?php echo($row[3]); ?>"><br><br>
+                            密碼: <input type="text" class="input" name="code" value="<?php echo($row[2]); ?>"><br><br>
+                            <input type="button" class="button" onclick="location.href='adminWelcome.php'" value="返回">
+                            <input type="submit" class="button" name="submit" value="確定">
                             <?php
                         }elseif($row=fetch($admin)){
                             ?>
-                            <from>
-                                編號: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
-                                帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
-                                用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
-                                密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
-                                <button name="enter">更改帳號</button>
-                            </from>
+                            編號: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
+                            帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
+                            用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
+                            密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
+                            <input type="button" class="button" onclick="location.href='adminWelcome.php'" value="返回">
+                            <input type="submit" class="button" name="submit" value="確定">
                             <?php
                         }else{
                             ?><script>alert("帳號已被刪除!");location.href="adminWelcome.php"</script><?php
                         }
                     }
                 ?>
-                <button type="button" id="go_back" onclick="location.href='adminWelcome.php'">返回主頁</button>
             </form>
         </div>
         <?php
-            if(isset($_GET["enter"])){
+            if(isset($_GET["submit"])){
                 $username=$_GET["username"];
                 $code=$_GET["code"];
                 $name=$_GET["name"];

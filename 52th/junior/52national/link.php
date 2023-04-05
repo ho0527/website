@@ -17,6 +17,10 @@
         return $result->fetchAll();
     }
 
+    function block($name){
+        return preg_match("/([ ,\!,\@,\#,\$,\%,\^,\&,\*,\(,\),\_,\-,\+,\=,\{,\},\[,\],\|,\\\,\:,\;,\',\",\<,\>,\,,\.,\?,\/ ])/",$name,$e);
+    }
+
     if(isset($_GET["logout"])){
         if(isset($_SESSION["data"])){
             ?><script>alert("登出成功!");location.href="login.php"</script><?php

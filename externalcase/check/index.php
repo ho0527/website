@@ -13,8 +13,8 @@
         <div class="main">
             <form method="POST">
                 <h2>分數判別</h2><hr>
-                帳號: <input type="text" name="username" class="input" id="username" value="<?= @$_SESSION["username"] ?>" maxlength="1250"><br><br>
-                密碼: <input type="password" name="password" class="input" id="password" value="<?= @$_SESSION["password"] ?>" maxlength="1250"><br><br>
+                帳號: <input type="text" class="input" id="username" name="username" value="<?= @$_SESSION["username"] ?>" maxlength="1250"><br><br>
+                密碼: <input type="password" class="input" id="password" name="password" value="<?= @$_SESSION["password"] ?>" maxlength="1250"><br><br>
                 <input type="button" class="button" onclick="location.href='signupedit.php'" value="註冊">
                 <input type="button" class="button" onclick="location.href='index.php?reset='" value="清除">
                 <input type="submit" class="button" name="loginsubmit" value="登入">

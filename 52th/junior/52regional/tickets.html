@@ -6,22 +6,28 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <center>
-            <img src="logo.png"><br>
-            <input type="button" value="Home" onclick="location.href='home.html'">
-            <input type="button" value="News" onclick="location.href='news.html'">
-            <input type="button" value="Discover" onclick="location.href='discover.html'">
-            <input type="button" value="Tickets" onclick="location.href='tickets.html'"><br><br>
-            <form action="tickets.php">
-                First name: <input type="text" name="firstname"><br><br>
-                Last name: <input type="text" name="lastname"><br><br>
-                Phone: <input type="text" name="phone"><br><br>
-                Password: <input type="text" name="password"><br><br>
-                Verification: <input type="text" name="verification"><br>
+        <div class="navigationbar">
+            <img src="logo.png" class="logo">
+            <div class="navigationbarbutton">
+                <input type="button" class="button" onclick="location.href='home.html'" value="Home">
+                <input type="button" class="button" onclick="location.href='news.html'" value="News">
+                <input type="button" class="button" onclick="location.href='discover.html'" value="Discover">
+                <input type="button" class="button selectbutton" onclick="location.href='tickets.html'" value="Tickets">
+            </div>
+        </div>
+        <form action="tickets.php" class="ticket">
+            <div class="tickettext">名字 (First name)</div><input type="text" class="input" name="firstname"><br>
+            <div class="tickettext">姓氏 (Last name)</div><input type="text" class="input" name="lastname"><br>
+            <div class="tickettext">手機號碼 (Phone)</div><input type="text" class="input" name="phone"><br>
+            <div class="tickettext">會員密碼 (Password)</div><input type="text" class="input" name="password"><br>
+            <div class="tickettext">數字驗證 (Verification)</div><input type="text" class="input" name="verification"><br>
+            <div class="verifycode">
                 <input type="hidden" name="ans" id="ans">
-                <script src="tickets.js"></script><br><br>
-                <input type="submit" value="送出" name="submit"><br>
-            </form><br>
+                <div id="verifycode"></div>
+                <input type="submit" name="submit" value="送出按鈕(Submit)"><br>
+            </div>
+        </form><br>
+        <footer class="footer">
             <button>
                 <img src="fb.png" style="width: 20px;height: 20px;">
                 Facebook
@@ -30,9 +36,12 @@
                 <img src="google.png" style="width: 20px;height: 20px;">
                 Google+
             </button>
-            <footer>
-                Copyright &copy Floriade All Rights Reserved
-            </footer>
-        </center>
+            <button>
+                <img src="twitter.jpg" style="width: 20px;height: 20px;">
+                twitter
+            </button><br><br>
+            Copyright &copy; 2022 Floriade All Rights Reserved
+        </footer>
+        <script src="tickets.js"></script>
     </body>
 </html>

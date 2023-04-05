@@ -65,5 +65,8 @@ newchat.onclick=function(){
     maindiv.style.display="none"
 }
 
+function filechoose(file){
+    document.getElementById(file).click()
+}
 
 window.onbeforeunload="none"

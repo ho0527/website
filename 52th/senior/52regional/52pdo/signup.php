@@ -6,14 +6,14 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="signupdiv">
+        <div class="main">
             <form>
-                用戶帳號: <input type="text" class="input" name="username"><br><br>
+                帳號: <input type="text" class="input" name="username"><br><br>
                 密碼: <input type="text" class="input" name="code"><br><br>
                 用戶名: <input type="text" class="input" name="name"><br><br>
-                管理員權限: <input type="checkbox" name="adminbox"><br><br>
-                <input type="submit" class="button" value="送出">
-                <input type="button" onclick="location.href='adminWelcome.php'" class="button" value="返回"><br>
+                管理員權限: <input type="checkbox" class="checkbox" name="adminbox">
+                <input type="button" onclick="location.href='adminWelcome.php'" class="button" value="返回">
+                <input type="submit" class="button" value="送出"><br>
             </form>
         </div>
     <?php

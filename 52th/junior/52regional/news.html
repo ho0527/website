@@ -6,38 +6,70 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <center>
-            <img src="logo.png"><br>
-            <input type="button" value="Home" onclick="location.href='home.html'">
-            <input type="button" value="News" onclick="location.href='news.html'">
-            <input type="button" value="Discover" onclick="location.href='discover.html'">
-            <input type="button" value="Tickets" onclick="location.href='tickets.html'"><br>
-            <class class="picture">
-                <h1>第一篇</h1>
-                <p>這是一朵紅色的花<p>
-                <img src="redflower.png" style="width: 50px;height: 50px;"><br>
-                <input type="button" value="觀看(View)"><br>
-                <h1>第二篇</h1>
-                <p>這是一朵藍色的花<p>
-                <img src="blueflower.png" style="width: 50px;height: 50px;"><br>
-                <input type="button" value="觀看(View)"><br>
-                <h1>第三篇</h1>
-                <p>這是一朵黑色的花<p>
-                <img src="blackflower.png" style="width: 50px;height: 50px;"><br>
-                <input type="button" value="觀看(View)"><br>
-                <h1>第四篇</h1>
-                <p>這是一朵黃色的花<p>
-                <img src="yellowflower.png" style="width: 50px;height: 50px;"><br>
-                <input type="button" value="觀看(View)"><br>
-                <h1>第五篇</h1>
-                <p>這是一朵粉紅色的花<p>
-                <input type="button" value="觀看(View)"><br>
-                <img src="pinkflower.png" style="width: 50px;height: 50px;"><br>
-                <h1>第六篇</h1>
-                <p>這是一朵紫色的花<p>
-                <input type="button" value="觀看(View)"><br>
-                <img src="Purpleflower.png" style="width: 50px;height: 50px;"><br>
-            </class>
+        <div class="navigationbar">
+            <img src="logo.png" class="logo">
+            <div class="navigationbarbutton">
+                <input type="button" class="button" onclick="location.href='home.html'" value="Home">
+                <input type="button" class="button selectbutton" onclick="location.href='news.html'" value="News">
+                <input type="button" class="button" onclick="location.href='discover.html'" value="Discover">
+                <input type="button" class="button" onclick="location.href='tickets.html'" value="Tickets">
+            </div>
+        </div>
+        <table class="main newstable">
+            <tr>
+                <td class="newstd">
+                    <div class="news">
+                        <h1 class="newstitle">第一篇</h1>
+                        <p class="newsdepiction">這是一朵紅色的花<p>
+                        <img src="picture/redflower.png" class="newsimage"><br>
+                        <input type="button" class="newsbutton" value="觀看(View)"><br>
+                    </div>
+                </td>
+                <td class="newstd">
+                    <div class="news">
+                        <h1 class="newstitle">第二篇</h1>
+                        <p class="newsdepiction">這是一朵藍色的花<p>
+                        <img src="picture/blueflower.png" class="newsimage"><br>
+                        <input type="button" class="newsbutton" value="觀看(View)"><br>
+                    </div>
+                </td>
+                <td class="newstd">
+                    <div class="news">
+                        <h1 class="newstitle">第三篇</h1>
+                        <p class="newsdepiction">這是一朵黑色的花<p>
+                        <img src="picture/blackflower.png" class="newsimage"><br>
+                        <input type="button" class="newsbutton" value="觀看(View)"><br>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="newstd">
+                    <div class="news">
+                        <h1 class="newstitle">第四篇</h1>
+                        <p class="newsdepiction">這是一朵黃色的花<p>
+                        <img src="picture/yellowflower.png" class="newsimage"><br>
+                        <input type="button" class="newsbutton" value="觀看(View)"><br>
+                    </div>
+                </td>
+                <td class="newstd">
+                    <div class="news">
+                        <h1 class="newstitle">第五篇</h1>
+                        <p class="newsdepiction">這是一朵粉紅色的花<p>
+                        <img src="picture/pinkflower.png" class="newsimage"><br>
+                        <input type="button" class="newsbutton" value="觀看(View)"><br>
+                    </div>
+                </td>
+                <td class="newstd">
+                    <div class="news">
+                        <h1 class="newstitle">第六篇</h1>
+                        <p class="newsdepiction">這是一朵紫色的花<p>
+                        <img src="picture/purpleflower.png" class="newsimage"><br>
+                        <input type="button" class="newsbutton" value="觀看(View)"><br>
+                    </div>
+                </td>
+            </tr>
+        </table><br>
+        <footer class="footer">
             <button>
                 <img src="fb.png" style="width: 20px;height: 20px;">
                 Facebook
@@ -46,9 +78,11 @@
                 <img src="google.png" style="width: 20px;height: 20px;">
                 Google+
             </button>
-            <footer style="position: relative;">
-                Copyright &copy Floriade All Rights Reserved
-            </footer>
-        </center>
+            <button>
+                <img src="twitter.jpg" style="width: 20px;height: 20px;">
+                twitter
+            </button><br><br>
+            Copyright &copy; 2022 Floriade All Rights Reserved
+        </footer>
     </body>
 </html>

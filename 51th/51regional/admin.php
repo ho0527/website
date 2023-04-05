@@ -6,40 +6,32 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="admintitle">手機問卷管理系統</div><br>
-        <form class="div">
-            <span class="big3x">
-                <input type="button" value="編輯問卷" class="button" id="editform">
-            </span>
-            <span class="big3x">
-                <input type="button" value="新增問卷" class="button" id="newform">
-            </span>
-            <span class="big3x">
-                <input type="submit" value="登出" class="button" name="logout">
-            </span>
-        </form>
-        <div id="check" class="div">
+        <div class="navigationbar">
+            <div class="navigationbartitle">手機問卷管理系統</div>
+            <div class="navigationbarbuttondiv">
+                <input type="button" class="navigationbarbutton" id="editform" value="編輯問卷">
+                <input type="button" class="navigationbarbutton" id="newform" value="新增問卷">
+                <input type="submit" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
+            </div>
+        </div>
+        <div id="check">
             <div class="mask"></div>
-            <div class="checkdiv">
-                <form class="buttonbar">
-                    問卷名稱: <input type="text" placeholder="問卷名稱" name="title"><br>
-                    問卷題數: <input type="text" placeholder="問卷題數" name="num"><br>
-                    <div class="buttonbar">
-                        <input type="submit" value="取消" name="clear">
-                        <input type="submit" value="確定" name="submit">
-                    </div>
+            <div class="main">
+                <form>
+                    問卷名稱: <input type="text" class="input" name="title" placeholder="問卷名稱"><br><br>
+                    問卷題數: <input type="text" class="input" name="num" placeholder="問卷題數"><br><br>
+                    <input type="submit" class="button" name="clear" value="取消">
+                    <input type="submit" class="button" name="submit" value="確定">
                 </form>
             </div>
         </div>
-        <div id="edit" class="div">
+        <div id="edit">
             <div class="mask"></div>
-            <div class="checkdiv" style="height:55px">
-                <form class="buttonbar">
-                    問卷名稱: <input type="text" placeholder="問卷名稱" name="edittitle"><br>
-                    <div class="buttonbar">
-                        <input type="submit" value="取消" name="clear">
-                        <input type="submit" value="確定" name="enter">
-                    </div>
+            <div class="main">
+                <form>
+                    問卷名稱: <input type="text" class="input" name="edittitle" placeholder="問卷名稱"><br>
+                    <input type="submit" class="button" name="clear" value="取消">
+                    <input type="submit" class="button" name="enter" value="確定">
                 </form>
             </div>
         </div>
@@ -78,10 +70,6 @@
             if(isset($_GET["clear"])){
                 session_unset();
                 header("location:admin.php");
-            }
-            if(isset($_GET["logout"])){
-                session_unset();
-                ?><script>alert("登出成功");location.href="index.php"</script><?php
             }
         ?>
         <script src="admin.js"></script>

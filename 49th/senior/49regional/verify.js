@@ -56,7 +56,7 @@ verifytd.forEach(function(td){
                                 verifytd[tdid2].style.color="black"
                                 if(tdword1=="E"&&tdword2=="E"){
                                     alert("登入成功")
-                                    // location.href="main.php"
+                                    location.href="main.php"
                                 }
                             }else{
                                 verifytd[tdid1].style.backgroundColor="white"

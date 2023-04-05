@@ -31,7 +31,7 @@ function drop(e){
 
 function loginclick(key){
     let username=document.getElementById("username").value
-    let code=document.getElementById("code").value
+    let code=document.getElementById("password").value
     for(let i=0;i<3;i=i+1){
         b[i]=a[i]
     }

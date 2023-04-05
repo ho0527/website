@@ -1,6 +1,6 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background: rgba(135, 135, 135, 0.65);
+    background: rgb(65, 75, 80);
     color: rgb(255, 255, 255);
     user-select: none;
     padding: 0px;
@@ -23,6 +23,7 @@ hr{
     border: 1px white solid;
     width: 100%;
     margin: 0px;
+    margin-bottom: 5px;
 }
 
 .main{
@@ -37,7 +38,7 @@ hr{
 }
 
 .previewarea{
-    height: 60%;
+    height: 70%;
 }
 
 .coloroutput{
@@ -51,15 +52,14 @@ hr{
 }
 
 .croparea{
-    height: 10%;
+    height: 5%;
+    position: absolute;
+	bottom: 20px;
 }
 
 .area{
     padding: 20px;
-}
-
-.imagediv{
-    padding: 10px;
+    position: relative;
 }
 
 .cropdiv{

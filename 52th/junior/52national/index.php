@@ -6,15 +6,16 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <img src="logo.png" class="logo">
-            <div class="head">
-                <form>
-                    <input type="button" id="index" value="玩家留言" class="indexbutton selectbut" onclick="location.href='index.php'">
-                    <input type="button" id="view" value="玩家參賽" class="indexbutton" onclick="location.href='post.php'">
-                    <input type="button" id="signup" value="網站管理" class="indexbutton" onclick="location.href='login.php'">
-                    <input type="submit" id="loggout-button" class="indexbutton" name="logout" value="登出">
-                </form>
+        <img src="banner.png" class="banner">
+        <div class="navigationbar">
+            <img src="logo.png" class="logo">
+            <div class="navigationbarbuttondiv">
+                <input type="button" class="navigationbarbutton selectbutton" onclick="location.href='index.php'" value="玩家留言">
+                <input type="button" class="navigationbarbutton" onclick="location.href='post.php'" value="玩家參賽">
+                <input type="button" class="navigationbarbutton" onclick="location.href='login.php'" value="網站管理">
+                <input type="button" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
             </div>
+        </div>
         <div id="main">
             <div class="pinchat">
                 <div class="pinchattitle">
@@ -25,16 +26,8 @@
                     <?php
                         include("link.php");
                         $a=fetchall(query("SELECT*FROM `message` WHERE `pin`='yes'"));
-                        for($i=0;$i<sizeof($a)-1;$i=$i+1){
-                            for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
-                                if($a[$j][8]<$a[$j+1][8]){
-                                    $tamp=$a[$j];
-                                    $a[$j]=$a[$j+1];
-                                    $a[$j+1]=$tamp;
-                                }
-                            }
-                        }
-                        for($i=0;$i<sizeof($a);$i=$i+1){
+                        usort($a,function($a,$b){ return $a[8]<$b[8]; });
+                        for($i=0;$i<count($a);$i=$i+1){
                             $id=$a[$i][0];
                             ?>
                             <table class="postmessage">
@@ -153,7 +146,7 @@
                             if($row){
                                 ?>
                                 <tr>
-                                    <td class="compplayerhead" name="playerhead<?= $row[$i][0] ?>" rowspan="2"><?= $row[$i][4] ?></td>
+                                    <td class="compplayerhead" name="playerhead<?= $row[$i][0] ?>" rowspan="2"><img src="<?= $row[$i][4] ?>" width="100px"></td>
                                     <td class="compusername" name="username<?= $row[$i][0] ?>" rowspan="2"><?= $row[$i][1] ?></td>
                                     <td class="compemail" name="email<?= $row[$i][0] ?>"><?= $row[$i][2] ?></td>
                                     <td class="vs" rowspan="2">配對中</td>
@@ -275,20 +268,20 @@
                 ?>
             </div>
         </div>
-        <div class="newchatdiv" id="newchatdiv">
-            <div class="signupdiv">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="title">玩家留言-新增</div>
-                    姓&nbsp&nbsp名: <input type="text" class="indexinput" name="username" value="<?= @$_SESSION["name"] ?>"><br>
-                    email: <input type="text" class="indexinput" name="email" placeholder="要有@及一個以上的." value="<?= @$_SESSION["email"] ?>"> 顯示:<input type="checkbox" name="emailbox" checked><br>
-                    電&nbsp&nbsp話: <input type="text" class="indexinput" name="tel" placeholder="只能包含數字或-" value="<?= @$_SESSION["tel"] ?>"> 顯示:<input type="checkbox" name="telbox" checked><br>
-                    留言內容: <textarea name="message" rows="1" cols="25"><?= @$_SESSION["message"] ?></textarea>
-                    <input type="file" name="picture" accept="image/*"><br>
-                    留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$_SESSION["sn"] ?>">
-                    <input type="submit" name="submit" class="button" value="送出">
-                    <input type="button" onclick="location.href='index.php'" class="button" value="返回"><br>
-                </form>
-            </div>
+        <div class="main" id="newchatdiv">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="indextitle">玩家留言-新增</div>
+                <hr>
+                姓&nbsp&nbsp名: <input type="text" class="input2" name="username" value="<?= @$_SESSION["name"] ?>"><br><br>
+                email: <input type="text" class="input2" name="email" placeholder="要有@及一個以上的." value="<?= @$_SESSION["email"] ?>"> 顯示:<input type="checkbox" class="checkbox" name="emailbox" checked><br><br>
+                電&nbsp&nbsp話: <input type="text" class="input2" name="tel" placeholder="只能包含數字或-" value="<?= @$_SESSION["tel"] ?>"> 顯示:<input type="checkbox"  class="checkbox" name="telbox" checked><br><br>
+                留言內容: <textarea name="message" rows="5" cols="50"><?= @$_SESSION["message"] ?></textarea><br><br>
+                留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$_SESSION["sn"] ?>">
+                <input type="button" class="postbutton button" onclick="filechoose('file')" value="上傳頭像">
+                <input type="button" onclick="location.href='index.php'" class="button" value="返回">
+                <input type="submit" name="submit" class="button" value="送出"><br>
+                <input type="file" class="inputfile" id="file" name="picture" accept="image/*">
+            </form>
         </div>
         <?php
             if(isset($_POST["submit"])){

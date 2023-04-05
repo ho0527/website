@@ -16,13 +16,11 @@ document.getElementById("submit").addEventListener("click",function(){
 	reader.onload=function(){
 		image=new Image()
 		image.src=reader.result
-		image.name=filename
 		image.onload=function(){
 			document.getElementById("image").src=image.src
 		}
 	}
 	reader.readAsDataURL(file.files[0])
-	document.getElementById("submit").disabled=true
 	cropdownloadbutton.disabled=false
 	setTimeout(function(){
 		let img=document.getElementById("image")
@@ -63,7 +61,7 @@ cropdownloadbutton.onclick=function(){
 	if(cropdownloadbutton.value=="crop"){
 		let canvas=document.createElement("canvas")
 		let image2=document.getElementById("image")
-		canvas.width=imagediv.offsetWidth
+		canvas.width=imagediv.offsetWidthB
 		canvas.height=imagediv.offsetHeight
 		// canvas.width=image2.naturalWidth
 		// canvas.height=image2.naturalHeight
@@ -74,10 +72,10 @@ cropdownloadbutton.onclick=function(){
 		console.log(position.right)
 		// canvas.getContext("2d").drawImage(document.getElementById("image"),pos.left,pos.top,cropdiv.offsetWidth,cropdiv.offsetHeight,0,0,cropdiv.offsetWidth,cropdiv.offsetHeight)
 		canvas.getContext("2d").drawImage(document.getElementById("image"),position.left,position.top,position.right-position.left,position.bottom-position.top,position.left,position.top,position.right-position.left,position.bottom-position.top)
-		// canvas.getContext("2d").drawImage(document.getElementById("image"),position.left,position.top,cropdiv.offsetWidth,cropdiv.offsetHeight,0,0,cropdiv.offsetWidth,cropdiv.offsetHeight)
+		// canvas.getContext("2d").drawImage(document.getElementyId("image"),position.left,position.top,cropdiv.offsetWidth,cropdiv.offsetHeight,0,0,cropdiv.offsetWidth,cropdiv.offsetHeight)
 		let a=document.createElement("a")
 		a.href=canvas.toDataURL()
-		a.download="crop_"+image.name
+		a.download="crop_"+filename
 		iscrop=a
 		cropdownloadbutton.value="download"
 	}else{

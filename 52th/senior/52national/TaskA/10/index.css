@@ -10,7 +10,7 @@ body{
 
 h1{
     text-align: center;
-    margin-top: 15px;
+    margin: 5px;
 }
 
 h2{
@@ -30,11 +30,8 @@ hr{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: column;
     width: 30%;
-    height: 90%;
-    margin-top: 25px;
+    height: 95%;
     border-radius: 10px;
 }
 
@@ -47,39 +44,17 @@ hr{
 }
 
 .imagearea{
-    height: 70%;
-}
-
-.reflashbutton{
+    height: 45%;
     position: relative;
-    padding: 5px;
-    background-color: rgb(220, 173, 78);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-    z-index: 100;
-}
-
-.reflashbutton:hover{
-    background-color: rgb(255, 213, 128);
-    color: black;
-}
-
-#image-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
 }
 
 .image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     max-width: 95%;
     max-height: 95%;
-    margin-bottom: 20px;
 }
 
 .color{
@@ -105,4 +80,23 @@ hr{
     line-height: 200px;
     color : white;
     mix-blend-mode: difference;
+}
+
+.reflashbutton{
+    position: relative;
+    padding: 5px;
+    background-color: rgb(220, 173, 78);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 100;
+}
+
+.reflashbutton:hover{
+    background-color: rgb(255, 213, 128);
+    color: black;
 }

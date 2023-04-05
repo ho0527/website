@@ -6,6 +6,9 @@
         <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
+        <?php
+            include("link.php");
+        ?>
         <img src="" alt="" class="mainimage">
         <img src="" alt="" class="mainlogo">
         <div class="navigationbar">
@@ -50,7 +53,7 @@
                         </div>
                         <a href="#" class="a" id="signupformal"></a>
                     </div><br>
-                    <input type="submit" class="loginbutton" id="signupbutton">
+                    <input type="submit" name="signupsubmit" class="loginbutton" id="signupbutton">
                     <div class="loginsignup">
                         <class id="logintext"></class>
                         <a href="login.php" class="a" id="loginlink"></a>
@@ -58,12 +61,18 @@
                 </form>
             </div>
         </div>
-        <!-- <div class="form">
-            <div class="formbox">
-                <div class="title" id="signupheader"></div>
-            </div>
-        </div> -->
         <div class="footer" id="footer"></div>
+        <?php
+            if(isset($_POST["signupsubmit"])){
+                $email=$_POST["email"];
+                $password=$_POST["password"];
+                if(blockslash($email)){
+                    ?><script>alert("不得有下列特殊字元:")</script><?php
+                }
+                if($row=fetch(query($db,"SELECT*FROM `user` WHERE `email`='$email'"))){
+                }
+            }
+        ?>
         <script src="js/index.js"></script>
         <script src="js/changelanguage/main.js"></script>
         <script src="js/changelanguage/signup.js"></script>
