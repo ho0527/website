@@ -1,3 +1,3 @@
 document.getElementById("reflashbutton").onclick=function(){
-    location.reload()
+    location.href="index.php"
 }

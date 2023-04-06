@@ -52,7 +52,7 @@
                             <a href="terms.php" class="a" id="checklink"></a>
                         </div>
                         <a href="#" class="a" id="signupformal"></a>
-                    </div><br>
+                    </div>
                     <input type="submit" name="signupsubmit" class="loginbutton" id="signupbutton">
                     <div class="loginsignup">
                         <class id="logintext"></class>
