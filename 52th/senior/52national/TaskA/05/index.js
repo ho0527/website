@@ -27,6 +27,7 @@ document.getElementById("submit").addEventListener("click",function(){
 		let x
 		let y
 		cropdiv.style.display="block"
+		let drawing=false
 		img.addEventListener("pointerdown",function(event){
 			if(drawing==true){
 				drawing=false
