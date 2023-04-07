@@ -8,12 +8,17 @@
         $str=trim(fgets(STDIN));
         if(strlen($str)<=65536){
             for($j=0;$j<strlen($str);$j=$j+1){
+                $true=false;
                 $hash=(ord($str[$j]))*(31**(strlen($str)-($j+1)));
-                if($hash>(2**31)-1){
-                    $hashvalue=$hashvalue+($hash-2**32);
-                }elseif($hash<-2**31){
-                    $hashvalue=$hashvalue+($hash+2**32);
-                }else{
+                if($hashvalue>(2**31)-1){
+                    $hash=$hash+($hash-2**32);
+                    $true=true;
+                }
+                if($hashvalue<-2**31){
+                    $hash=$hash+($hash+2**32);
+                    $true=true;
+                }
+                if($true==false){
                     $hashvalue=$hashvalue+$hash;
                 }
             }
