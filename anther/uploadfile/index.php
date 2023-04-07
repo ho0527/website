@@ -12,7 +12,7 @@
                     <h2>操作區</h2>
                     加入檔案 <input type="file" class="inputfile" id="fileinput" name="file[]" multiple><br><br>
                     加入資料夾 <input type="file" class="inputfile" id="folderinput" name="folder[]" webkitdirectory multiple><br><br>
-                    資料夾名稱 <input type="text" name="folder" placeholder="預設為noname">
+                    資料夾名稱 <input type="text" name="foldername" placeholder="預設為noname">
                 </div>
                 <hr>
                 <div class="area" id="downloadarea">
@@ -29,22 +29,25 @@
         <?php
             if(isset($_POST["submit"])){
                 $rand=str_pad(rand(0,9999999999),10,"0",STR_PAD_LEFT);
-                if(isset($_POST["folder"])){
-                    $folder=$_POST["folder"].$rand;
+                if(isset($_POST["foldername"])){
+                    $folder=$_POST["foldername"].$rand;
                 }else{
                     $folder="noname".$rand;
                 }
+
                 if(isset($folder)){
                     if(!file_exists("file/".$folder)){
                         mkdir("file/".$folder,0777,true);
                     }
                 }
+
                 if(isset($_FILES["file"])){
                     for($i=0;$i<count($_FILES["file"]["name"]);$i=$i+1){
                         $rand=str_pad(rand(0,499999),6,"0",STR_PAD_LEFT);
                         move_uploaded_file($_FILES["file"]["tmp_name"][$i],"file/".$folder."/".$rand.$_FILES["file"]["name"][$i]);
                     }
                 }
+
                 if(isset($_FILES["folder"])){
                     for($i=0;$i<count($_FILES["folder"]["name"]);$i=$i+1){
                         $rand=str_pad(rand(500000,999999),6,"0",STR_PAD_LEFT);
