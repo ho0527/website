@@ -1,20 +1,22 @@
 body{
-    background: rgba(135,135,135,0.65);
-    color: rgb(255,255,255);
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(65, 75, 80);
+    color: rgb(255, 255, 255);
     user-select: none;
+    word-break: break-all;
     padding: 0px;
     margin: 0px;
+    text-align: center;
 }
 
 h2{
     margin: 0px;
-    margin: 20px 0px;
 }
 
 hr{
     border: 1px white solid;
     width: 100%;
-    margin: 0px;
+    margin: 15px 0px;
 }
 
 table{
@@ -22,65 +24,126 @@ table{
     width: 100%;
 }
 
-.main{
-    border: 1px white solid;
-    position: absolute;/* 絕對定位 */
-    top: 50%;/* 距頂部高度位移 */
-    left: 50%;/* 距左邊位移 */
-    transform: translate(-50%, -50%);/* 定位 */
-    width: 900px;/* 寬度 */
-    height: 60%;/* 高度 */
+
+.grid{
+    display: grid;
+    grid-gap: 2.25%;
+    grid-template-columns: repeat(30, 1fr);
+    grid-auto-rows: 18%;
+    border: 5px rgb(255, 221, 0) solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     padding: 20px;
-	border-radius: 15px;/* 圓弧邊框 */
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+    background: rgb(220, 137, 59);
 }
 
 .c{
-    width: 90px !important;/* 寬度 */
-    height: 80px !important;/* 高度 */
-	position: absolute;
-	top: 15px;/* 距頂部高度位移 */
-	left: 30px;/* 距左邊位移 */
-	border: none;/* 邊框 */
-	border-radius: 15px;/* 圓弧邊框 */
-	font-size: 30px;/* 字體大小 */
-	cursor: pointer;/* 覆蓋指標 */
+    grid-column: 2/8;
+    grid-row: 1;
 }
 
-.output{
-	text-align: right;/* 文字置右 */
-	position: absolute;/* 絕對定位 */
-	top: 15px;/* 距頂部高度位移 */
-	right: 25px;/* 距右邊位移 */
-	width: 750px;/* 寬度 */
-	height: 65px;/* 高度 */
-    font-size: 50px;/* 字體大小 */
-    resize: none;/* 禁止移動大小 */
+.k0{
+    grid-column: 2/8;
+    grid-row: 5;
 }
 
-.keys{
-	position: absolute;/* 絕對定位 */
-	bottom: 30px;/* 距底部高度位移 */
-	left: 20px;/* 距左邊位移 */
+.k1{
+    grid-column: 2/8;
+    grid-row: 4;
 }
 
-.key{
-    margin: 5px;/* 物件間格 */
+.k2{
+    grid-column: 9/15;
+    grid-row: 4;
+}
+
+.k3{
+    grid-column: 16/22;
+    grid-row: 4;
+}
+
+.k4{
+    grid-column: 2/8;
+    grid-row: 3;
+}
+
+.k5{
+    grid-column: 9/15;
+    grid-row: 3;
+}
+
+.k6{
+    grid-column: 16/22;
+    grid-row: 3;
+}
+
+.k7{
+    grid-column: 2/8;
+    grid-row: 2;
+}
+
+.k8{
+    grid-column: 9/15;
+    grid-row: 2;
+}
+
+.k9{
+    grid-column: 16/22;
+    grid-row: 2;
+}
+
+.dot{
+    grid-column: 9/15;
+    grid-row: 5;
+}
+
+.equal{
+    grid-column: 16/22;
+    grid-row: 5;
+}
+
+.multiply{
+    grid-column: 23/30;
+    grid-row: 5;
+}
+
+.divide{
+    grid-column: 23/30;
+    grid-row: 4;
+}
+
+.minus{
+    grid-column: 23/30;
+    grid-row: 3;
+}
+
+.plus{
+    grid-column: 23/30;
+    grid-row: 2;
 }
 
 .calckey{
-	width: 210px;/* 寬度 */
-    height: 85px;/* 高度 */
-	font-size: 30px;/* 字體大小 */
 	border: none;/* 邊框 */
-	border-radius: 15px;/* 圓弧邊框 */
-	margin: 5px;/* 物件間格 */
+	border-radius: 10px;/* 圓弧邊框 */
 	cursor: pointer;/* 覆蓋指標 */
+	font-size: 40px;/* 字體大小 */
+    font-weight: bold;
+    background: linear-gradient(to right,rgb(137, 137, 137),white);
 }
 
-.change{
-	position: absolute;/* 絕對定位 */
-    left: 50%;/* 距左邊位移 */
-    width: 145px;/* 寬度 */
-    height: 55px;/* 高度 */
-	font-size: 25px;/* 字體大小 */
+.calckey:hover{
+    background: linear-gradient(to left,rgb(137, 137, 137),white);
+}
+
+.output{
+    grid-column: 9/30;
+    grid-row: 1;
+    font-size: 60px;/* 字體大小 */
+    text-align: right;
+    background: rgb(221, 87, 87);
 }

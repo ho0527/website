@@ -7,16 +7,12 @@ output.value=""//將output清空
 
 document.querySelectorAll(".calckey").forEach(function(event){
 	event.addEventListener("click",function(){
-		console.log("inini")
-		console.log(this)
-		console.log(this.id)
-		if(this.id=="c"){
+		if(this.value=="c"){
 			output.value=""//將output清空
-		}else if(this.id=="calc="){
-			console.log("eq"+a)
+		}else if(this.value=="calc="){
 			if(a=="twodecimals"){//判斷a是否為twodecimals
 				let result=eval(output.value)
-				output.value=Math.round(result * 100) / 100;//四捨五入
+				output.value=Math.round(result*100)/100;//四捨五入
 			}else{
 				output.value=eval(output.value)//印出結果
 			}
