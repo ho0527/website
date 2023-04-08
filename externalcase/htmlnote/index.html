@@ -89,6 +89,15 @@
                 <td class="ps">自動換行</td>
             </tr>
             <tr>
+                <td class="command">&lt;p&gt; <i>[text]</i> &lt;p&gt;</td>
+                <td class="example">
+                    <p>這是一個普通的文字</p>
+                </td>
+                <td class="effect">輸出文字</td>
+                <td class="otheruse">加class,id,name等等</td>
+                <td class="ps">自動換行</td>
+            </tr>
+            <tr>
                 <td class="command">&lt;form&gt;</td>
                 <td class="example">N/A</td>
                 <td class="effect">表單</td>
@@ -117,6 +126,18 @@
                     <i>disabled</i> 禁用
                 </td>
                 <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">&lt;input type="hidden"&gt;</td>
+                <td class="example">
+                    <input type="hidden" name="hiddeninput" value="你還真的來看?">
+                </td>
+                <td class="effect">隱藏起來的輸入框</td>
+                <td class="otheruse">
+                    <i>readonly</i> 唯讀<br>
+                    <i>disabled</i> 禁用
+                </td>
+                <td class="ps">可以按F12來看</td>
             </tr>
             <tr>
                 <td class="command">&lt;input type="button"&gt;</td>
@@ -182,12 +203,14 @@
                 <td class="ps">在name相同時是不可複選的</td>
             </tr>
             <tr>
-                <td class="command">&lt;input type="text"&gt;</td>
+                <td class="command">&lt;input type="file"&gt;</td>
                 <td class="example">
-                    <input type="text" name="" id="">
+                    <input type="file" id="" name="file">
                 </td>
-                <td class="effect"></td>
-                <td class="otheruse"></td>
+                <td class="effect">上傳檔案</td>
+                <td class="otheruse">
+                    <i>disabled</i> 禁用<br>
+                </td>
                 <td class="ps"></td>
             </tr>
             <tr>
@@ -217,23 +240,78 @@
                 <td class="otheruse"></td>
                 <td class="ps"></td>
             </tr>
+            <tr><td colspan="5"></td></tr>
             <tr>
-                <td class="command">&lt;input type="text"&gt;</td>
+                <td class="command">&lt;table&gt;</td>
                 <td class="example">
-                    <input type="text" name="" id="">
+                    <table>
+                        <tr>
+                            <td>hi</td>
+                        </tr>
+                        <tr>
+                            <td>這是</td>
+                        </tr>
+                        <tr>
+                            <td>一個</td>
+                        </tr>
+                        <tr>
+                            <td>表格</td>
+                        </tr>
+                    </table>
                 </td>
-                <td class="effect"></td>
+                <td class="effect">表格</td>
+                <td class="otheruse"></td>
+                <td class="ps">裡面可以加tr td</td>
+            </tr>
+            <tr>
+                <td class="command">&lt;tr&gt;</td>
+                <td class="example">
+                </td>
+                <td class="effect">行</td>
                 <td class="otheruse"></td>
                 <td class="ps"></td>
             </tr>
             <tr>
-                <td class="command">&lt;&gt;</td>
+                <td class="command">&lt;td&gt;</td>
                 <td class="example">
-                    <input type="text" name="" id="">
                 </td>
-                <td class="effect"></td>
-                <td class="otheruse"></td>
+                <td class="effect">列</td>
+                <td class="otheruse">
+                    <i>rowspan</i> 並行<br>
+                    <i>colspan</i> 並列
+                </td>
                 <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5"></td></tr>
+            <tr>
+                <td class="command">&lt;button&gt;</td>
+                <td class="example">
+                </td>
+                <td class="effect">按鈕</td>
+                <td class="otheruse">
+                    <i>type</i>=[ <i>*button|submit<i> ]</i>
+                </td>
+                <td class="ps">在表單中預設是submit</td>
+            </tr>
+            <tr>
+                <td class="command">&lt;div&gt;</td>
+                <td class="example">
+                    <div>這是個div</div>
+                </td>
+                <td class="effect">區塊</td>
+                <td class="otheruse"></td>
+                <td class="ps">自動換行</td>
+            </tr>
+            <tr>
+                <td class="command">&lt;span&gt;</td>
+                <td class="example">
+                    <span>
+                        這是個span
+                    </span>   
+                </td>
+                <td class="effect">區塊</td>
+                <td class="otheruse"></td>
+                <td class="ps">不自動換行</td>
             </tr>
             <tr>
                 <tr><td colspan="5"></td></tr>
@@ -248,7 +326,66 @@
                 <td class="maintitle">附屬功能</td>
                 <td class="maintitle">附註</td>
             </tr>
-
+            <tr>
+                <tr><td colspan="5"></td></tr>
+                <tr><td colspan="5"></td></tr>
+                <tr><td colspan="5"></td></tr>
+                <td class="title" colspan="5">css</td>
+            </tr>
+            <tr>
+                <td class="maintitle">指令</td>
+                <td class="maintitle">範例</td>
+                <td class="maintitle">功用</td>
+                <td class="maintitle">附屬功能</td>
+                <td class="maintitle">附註</td>
+            </tr>
+            <tr><td colspan="5">a</td></tr>
+            <tr>
+                <td class="command">&lt;&gt;</td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">b</td></tr>
+            <tr>
+                <td class="command">&lt;border&gt;</td>
+                <td class="example">
+                </td>
+                <td class="effect">框線</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <tr><td colspan="5"></td></tr>
+                <tr><td colspan="5"></td></tr>
+                <tr><td colspan="5"></td></tr>
+                <td class="title" colspan="5">js</td>
+            </tr>
+            <tr>
+                <td class="maintitle">指令</td>
+                <td class="maintitle">範例</td>
+                <td class="maintitle">功用</td>
+                <td class="maintitle">附屬功能</td>
+                <td class="maintitle">附註</td>
+            </tr>
+            <tr>
+                <td class="command">&lt;&gt;</td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">&lt;&gt;</td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
         </table>
     </body>
 </html>

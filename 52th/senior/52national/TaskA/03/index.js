@@ -17,7 +17,24 @@ document.querySelectorAll(".calckey").forEach(function(event){
 				output.value=eval(output.value)//印出結果
 			}
 		}else{
-			output.value=output.value+this.value//加字串
+			if(this.value=="x"){
+				output.value=output.value+"*"//加字串
+			}else if(this.value=="÷"){
+				output.value=output.value+"/"//加字串
+			}else{
+				output.value=output.value+this.value//加字串
+			}
 		}
 	})
+})
+
+output.addEventListener("keydown",function(event){
+	if(/[0-9]|\+|\-|\*|\/|\.|Backspace/.test(event.key)){
+		console.log(event.key)
+	}else{
+		alert("不行打奇怪的東西喔喔喔喔")
+		setTimeout(function(){
+			output.value=output.value.slice(0,-1)
+		},200);
+	}
 })

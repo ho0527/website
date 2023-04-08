@@ -27,6 +27,7 @@ document.getElementById("submit").addEventListener("click",function(){
 		let x
 		let y
 		cropdiv.style.display="block"
+		let drawing=false
 		img.addEventListener("pointerdown",function(event){
 			if(drawing==true){
 				drawing=false
@@ -56,30 +57,22 @@ document.getElementById("submit").addEventListener("click",function(){
 	},1000)
 })
 
-let iscrop
+let alink
 cropdownloadbutton.onclick=function(){
 	if(cropdownloadbutton.value=="crop"){
 		let canvas=document.createElement("canvas")
-		let image2=document.getElementById("image")
-		canvas.width=imagediv.offsetWidthB
-		canvas.height=imagediv.offsetHeight
-		// canvas.width=image2.naturalWidth
-		// canvas.height=image2.naturalHeight
+		cropdiv=document.getElementById("cropdiv")
+		canvas.width=cropdiv.offsetWidth
+		canvas.height=cropdiv.offsetHeight
 		let position=cropdiv.getBoundingClientRect()
-		console.log(position.top)
-		console.log(position.bottom)
-		console.log(position.left)
-		console.log(position.right)
-		// canvas.getContext("2d").drawImage(document.getElementById("image"),pos.left,pos.top,cropdiv.offsetWidth,cropdiv.offsetHeight,0,0,cropdiv.offsetWidth,cropdiv.offsetHeight)
-		canvas.getContext("2d").drawImage(document.getElementById("image"),position.left,position.top,position.right-position.left,position.bottom-position.top,position.left,position.top,position.right-position.left,position.bottom-position.top)
-		// canvas.getContext("2d").drawImage(document.getElementyId("image"),position.left,position.top,cropdiv.offsetWidth,cropdiv.offsetHeight,0,0,cropdiv.offsetWidth,cropdiv.offsetHeight)
+		canvas.getContext("2d").drawImage(document.getElementById("image"),position.left-5,position.top-5,canvas.width,canvas.height,0,0,canvas.width,canvas.height)
 		let a=document.createElement("a")
-		a.href=canvas.toDataURL()
+		a.href=canvas.toDataURL("image/png",1)
 		a.download="crop_"+filename
-		iscrop=a
+		alink=a
 		cropdownloadbutton.value="download"
 	}else{
-		iscrop.click()
+		alink.click()
 	}
 }
 
