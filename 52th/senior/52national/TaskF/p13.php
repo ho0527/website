@@ -8,18 +8,11 @@
         $str=trim(fgets(STDIN));
         if(strlen($str)<=65536){
             for($j=0;$j<strlen($str);$j=$j+1){
-                $true=false;
-                $hash=(ord($str[$j]))*(31**(strlen($str)-($j+1)));
-                if($hashvalue>(2**31)-1){
-                    $hash=$hash+($hash-2**32);
-                    $true=true;
-                }
-                if($hashvalue<-2**31){
-                    $hash=$hash+($hash+2**32);
-                    $true=true;
-                }
-                if($true==false){
-                    $hashvalue=$hashvalue+$hash;
+                $hashvalue=(31*$hashvalue+ord($str[$j]))%(2**32);
+                if($hashvalue>((2**31)-1)){
+                    $hashvalue=$hashvalue-2**32;
+                }elseif($hashvalue<(-2**31)){
+                    $hashvalue=$hashvalue+2**32;
                 }
             }
             $ans[]=$hashvalue;
@@ -28,7 +21,7 @@
         }
     }
     for($i=0;$i<count($ans);$i=$i+1){
-        echo("output".($i+1)."=>".$ans[$i]."\n");
+        echo($ans[$i]."\n");
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

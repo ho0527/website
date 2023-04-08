@@ -24,7 +24,6 @@ table{
     width: 100%;
 }
 
-
 .grid{
     display: grid;
     grid-gap: 2.25%;
@@ -39,7 +38,7 @@ table{
     width: 50%;
     height: 50%;
     border-radius: 10px;
-    background: rgb(220, 137, 59);
+    background: rgb(233, 156, 83);
 }
 
 .c{
@@ -107,12 +106,12 @@ table{
     grid-row: 5;
 }
 
-.multiply{
+.divide{
     grid-column: 23/30;
     grid-row: 5;
 }
 
-.divide{
+.multiply{
     grid-column: 23/30;
     grid-row: 4;
 }
@@ -145,5 +144,6 @@ table{
     grid-row: 1;
     font-size: 60px;/* 字體大小 */
     text-align: right;
-    background: rgb(221, 87, 87);
+    background: rgb(239, 99, 99);
+    color: white;
 }
