@@ -82,7 +82,7 @@
                             }
                             ?>
                         </table>
-                        <input type="submit" value="亂數配對" name="submit">
+                        <input type="submit" class="random" name="submit" value="亂數配對">
                     </form>
                 </div>
                 <?php

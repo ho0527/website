@@ -20,16 +20,13 @@
             include("link.php");
             if(isset($_SESSION["data"])){
                 ?>
-                <div class="loginhead">
+                <div class="loginhead" id="head">
                     <div class="center">
                         <input type="button" class="loginbutton button selectbutton" onclick="location.href='login.php'" value="留言管理">
                         <input type="button" class="loginbutton button" onclick="location.href='comp.php'" value="賽制管理">
                     </div>
                 </div>
-                <div class="post" id="post">
-                    <div class="posthead">
-                        <div class="posttitle">玩家留言列表</div>
-                    </div>
+                <div class="adminpost" id="main">
                     <div class="postbody">
                         <?php
                             $a=fetchall(query("SELECT*FROM `message`"));
@@ -57,9 +54,9 @@
                                                 ?>
                                                 <td class="edit" rowspan="4">
                                                     <form>
-                                                        <button type="submit" name="edit" value="<?= $a[$i][1] ?>">編輯</button>
+                                                        <button type="submit" class="editbutton" name="edit" value="<?= $a[$i][1] ?>">編輯</button>
                                                         <button type="submit" name="del" value="<?= $a[$i][1] ?>">刪除</button>
-                                                        <button type="submit" name="resp" value="<?= $a[$i][1] ?>">回應</button>
+                                                        <button type="submit" class="resp" name="resp" value="<?= $a[$i][1] ?>">回應</button>
                                                         <?php
                                                         if($a[$i][13]=="yes"){
                                                             ?>
@@ -160,16 +157,16 @@
                     $sn=$_GET["edit"];
                     $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
                     ?>
-                    <div class="newchatdiv" id="editchatdiv">
-                        <form class="signupdiv">
+                    <div class="main" id="editchatdiv">
+                        <form>
                             <div class="title">玩家留言-編輯</div>
-                            姓&nbsp&nbsp名: <input type="text" class="indexinput" name="username" value="<?= @$row[2] ?>"><br>
-                            email: <input type="text" class="indexinput" name="email" placeholder="要有@及一個以上的." value="<?= @$row[4] ?>"> 顯示:<input type="checkbox" name="emailbox" checked><br>
-                            電&nbsp&nbsp話: <input type="text" class="indexinput" name="tel" placeholder="只能包含數字或-" value="<?= @$row[6] ?>"> 顯示:<input type="checkbox" name="telbox" checked><br>
-                            留言內容: <textarea name="message" rows="1" cols="25"><?= @$row[3] ?></textarea>
+                            姓&nbsp&nbsp名: <input type="text" class="input2" name="username" value="<?= @$row[2] ?>"><br><br>
+                            email: <input type="text" class="input2" name="email" placeholder="要有@及一個以上的." value="<?= @$row[4] ?>"> 顯示:<input type="checkbox" class="checkbox" name="emailbox" checked><br><br>
+                            電&nbsp&nbsp話: <input type="text" class="input2" name="tel" placeholder="只能包含數字或-" value="<?= @$row[6] ?>"> 顯示:<input type="checkbox" class="checkbox" name="telbox" checked><br><br>
+                            留言內容: <textarea name="message" rows="5" cols="50"><?= @$row[3] ?></textarea><br><br>
                             留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$sn ?>" readonly>
-                            <input type="submit" name="editsubmit" class="button" value="送出">
-                            <input type="button" onclick="location.href='login.php'" class="button" value="返回"><br>
+                            <input type="button" class="button" onclick="location.href='login.php'" value="返回">
+                            <input type="submit" class="button" name="editsubmit" value="送出">
                         </form>
                     </div>
                     <?php
@@ -211,15 +208,6 @@
                                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
                             }
                         }
-                    }
-                }
-                if(isset($_GET["logout"])){
-                    if(isset($_SESSION["data"])){
-                        ?><script>alert("登出成功!");location.href="login.php"</script><?php
-                        session_unset();
-                    }else{
-                        ?><script>alert("請先登入!");location.href="login.php"</script><?php
-                        session_unset();
                     }
                 }
             }else{
@@ -265,7 +253,7 @@
                                 $verify=$_GET["verify"];
                                 $ans=$_GET["verifyans"];
                                 if(block($username)){
-                                    ?><script>alert("禁止輸入特殊字元");location.href="login.php"</script><?php
+                                    ?><script>alert("帳號有誤");location.href="login.php"</script><?php
                                 }else{
                                     if($row=fetch(query("SELECT*FROM `user` WHERE `username`='$username'"))){
                                         if($row[2]==$code){
@@ -321,6 +309,6 @@
                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
             }
         ?>
-        <script src="index.js"></script>
+        <script src="login.js"></script>
     </body>
 </html>

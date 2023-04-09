@@ -6,6 +6,15 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body class="body">
+        <div class="navigationbar">
+            <div class="navigationbarbuttondiv">
+                <input type="button" class="navigationbarbutton" onclick="location.href='#html'" value="html">
+                <input type="button" class="navigationbarbutton" onclick="location.href='#css'" value="css">
+                <input type="button" class="navigationbarbutton" onclick="location.href='#js'" value="js">
+                <input type="button" class="navigationbarbutton" onclick="location.href='#php'" value="php">
+            </div>
+        </div>
+        <div class="separate" id="html"></div>
         <table class="table">
             <tr>
                 <td class="title" colspan="5">html(主要標籤)</td>
@@ -25,7 +34,7 @@
                 <td class="example"> N/A
                 </td>
                 <td class="effect">html</td>
-                <td class="otheruse">加 等等</td>
+                <td class="otheruse"></td>
                 <td class="ps">N/A</td>
             </tr>
             <tr><td colspan="5"></td></tr>
@@ -36,7 +45,7 @@
                 <td class="example"> N/A
                 </td>
                 <td class="effect">html標頭</td>
-                <td class="otheruse">加 等等</td>
+                <td class="otheruse"></td>
                 <td class="ps">N/A</td>
             </tr>
             <tr>
@@ -44,7 +53,7 @@
                 <td class="example"> N/A
                 </td>
                 <td class="effect">html mata</td>
-                <td class="otheruse">加 等等</td>
+                <td class="otheruse"></td>
                 <td class="ps">N/A</td>
             </tr>
             <tr>
@@ -52,15 +61,15 @@
                 <td class="example"> N/A
                 </td>
                 <td class="effect">html 標題</td>
-                <td class="otheruse">加 等等</td>
+                <td class="otheruse"></td>
                 <td class="ps">N/A</td>
             </tr>
             <tr>
-                <td class="command">&lt;link&gt;</td>
+                <td class="command">&lt;link <div class="need">rel="[rel]" href="[href]"</div> &gt;</td>
                 <td class="example"> N/A
                 </td>
-                <td class="effect">html body</td>
-                <td class="otheruse">加rel,href等等</td>
+                <td class="effect">連結</td>
+                <td class="otheruse"></td>
                 <td class="ps">N/A</td>
             </tr>
             <tr><td colspan="5"></td></tr>
@@ -71,7 +80,7 @@
                 <td class="example">N/A
                 </td>
                 <td class="effect">html body</td>
-                <td class="otheruse">加class等等</td>
+                <td class="otheruse"></td>
                 <td class="ps">N/A</td>
             </tr>
             <tr>
@@ -85,16 +94,16 @@
                     <h6>h6</h6>
                 </td>
                 <td class="effect">更換字體大小</td>
-                <td class="otheruse">加class,id,name等等</td>
+                <td class="otheruse"></td>
                 <td class="ps">自動換行</td>
             </tr>
             <tr>
-                <td class="command">&lt;p&gt; <i>[text]</i> &lt;p&gt;</td>
+                <td class="command">&lt;p&gt;</td>
                 <td class="example">
                     <p>這是一個普通的文字</p>
                 </td>
                 <td class="effect">輸出文字</td>
-                <td class="otheruse">加class,id,name等等</td>
+                <td class="otheruse"></td>
                 <td class="ps">自動換行</td>
             </tr>
             <tr>
@@ -247,14 +256,10 @@
                     <table>
                         <tr>
                             <td>hi</td>
-                        </tr>
-                        <tr>
                             <td>這是</td>
                         </tr>
                         <tr>
                             <td>一個</td>
-                        </tr>
-                        <tr>
                             <td>表格</td>
                         </tr>
                     </table>
@@ -307,16 +312,13 @@
                 <td class="example">
                     <span>
                         這是個span
-                    </span>   
+                    </span>
                 </td>
                 <td class="effect">區塊</td>
                 <td class="otheruse"></td>
                 <td class="ps">不自動換行</td>
             </tr>
             <tr>
-                <tr><td colspan="5"></td></tr>
-                <tr><td colspan="5"></td></tr>
-                <tr><td colspan="5"></td></tr>
                 <td class="title" colspan="5">html(附屬標籤)</td>
             </tr>
             <tr>
@@ -326,10 +328,10 @@
                 <td class="maintitle">附屬功能</td>
                 <td class="maintitle">附註</td>
             </tr>
+
+
+            <tr class="separate" id="css"></tr>
             <tr>
-                <tr><td colspan="5"></td></tr>
-                <tr><td colspan="5"></td></tr>
-                <tr><td colspan="5"></td></tr>
                 <td class="title" colspan="5">css</td>
             </tr>
             <tr>
@@ -341,7 +343,7 @@
             </tr>
             <tr><td colspan="5">a</td></tr>
             <tr>
-                <td class="command">&lt;&gt;</td>
+                <td class="command"></td>
                 <td class="example">
                 </td>
                 <td class="effect"></td>
@@ -350,17 +352,28 @@
             </tr>
             <tr><td colspan="5">b</td></tr>
             <tr>
-                <td class="command">&lt;border&gt;</td>
+                <td class="command">border: <div class="need">[size] [color] [none(不显示边框) | hidden(不显示边框) | dotted(圆点) | dashed(方形虚线) | solid(实线) | double(双实线) | groove(雕刻效果) | ridge(浮雕效果) | inset(陷入效果) | outset (突出效果)]</div></td>
                 <td class="example">
+                    <div style="border: 1px black solid;">border: 1px black solid;</div>
                 </td>
-                <td class="effect">框線</td>
+                <td class="effect">框線樣式</td>
+                <td class="otheruse"></td>
+                <td class="ps">位置不影響</td>
+            </tr>
+            <tr>
+                <td class="command">border-radius: [<i>size</i>]</td>
+                <td class="example">
+                    <div style="border: 1px black solid;border-radius: 10px;">border-radius: 10px;</div>
+                </td>
+                <td class="effect">圓弧邊框</td>
                 <td class="otheruse"></td>
                 <td class="ps"></td>
             </tr>
+
+
+
+            <tr class="separate" id="js"></tr>
             <tr>
-                <tr><td colspan="5"></td></tr>
-                <tr><td colspan="5"></td></tr>
-                <tr><td colspan="5"></td></tr>
                 <td class="title" colspan="5">js</td>
             </tr>
             <tr>
@@ -370,16 +383,331 @@
                 <td class="maintitle">附屬功能</td>
                 <td class="maintitle">附註</td>
             </tr>
+            <tr><td colspan="5">a</td></tr>
             <tr>
-                <td class="command">&lt;&gt;</td>
+                <td class="command">alert(<div class="need">[cont]</div>)</td>
+                <td class="example">
+                    <input type="button" onclick="alert('hi')" value="點我出現測試">
+                </td>
+                <td class="effect">彈出式視窗</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">b</td></tr>
+            <tr>
+                <td class="command"></td>
                 <td class="example">
                 </td>
                 <td class="effect"></td>
                 <td class="otheruse"></td>
                 <td class="ps"></td>
             </tr>
+            <tr><td colspan="5">c</td></tr>
             <tr>
-                <td class="command">&lt;&gt;</td>
+                <td class="command">consloe.log(<i>[cont]</i>)</td>
+                <td class="example">
+                    consloe.log("hi");
+                </td>
+                <td class="effect">在consloe中印出東西</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">d</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">e</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">f</td></tr>
+            <tr>
+                <td class="command">function <div class="need">[name]</div>(<i>[variable]..inf</i>){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<i>[depiction]..inf</i><br>
+                }</td>
+                <td class="example">
+                    function test(a){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;consloe.log(a); // -> $a<br>
+                    }
+                </td>
+                <td class="effect">函式</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">g</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">h</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">i</td></tr>
+            <tr>
+                <td class="command">if(<div class="need">[judgecont]..inf</div>){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<i>[depiction]..inf</i><br>
+                }<i>else if(<div class="need">[judgecont]..inf</div>){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[depiction]..inf<br>
+                }else{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[depiction]..inf<br>
+                }</i></td>
+                <td class="example">
+                    if(true==false){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log("WTF");<br>
+                    }else{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;consloe.log("hi");<br>
+                    } // -> hi
+                </td>
+                <td class="effect">判斷式</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">d</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+
+
+            <tr class="separate" id="php"></tr>
+            <tr>
+                <td class="title" colspan="5">php</td>
+            </tr>
+            <tr>
+                <td class="maintitle">指令</td>
+                <td class="maintitle">範例</td>
+                <td class="maintitle">功用</td>
+                <td class="maintitle">附屬功能</td>
+                <td class="maintitle">附註</td>
+            </tr>
+            <tr><td colspan="5">a</td></tr>
+            <tr>
+                <td class="command">array(<div class="need">[cont]</div><i>..inf</i>)</td>
+                <td class="example">
+                    array("1","2","3")
+                </td>
+                <td class="effect">陣列</td>
+                <td class="otheruse"></td>
+                <td class="ps">通["1","2","3"]</td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">b</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">c</td></tr>
+            <tr>
+                <td class="command">count(<div class="need">[array]</div>)</td>
+                <td class="example">
+                    $a=["1","2","3"];<br>
+                    echo(count($a)); //-> 3
+                </td>
+                <td class="effect">數陣列有幾個值</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">d</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">e</td></tr>
+            <tr>
+                <td class="command">echo(<div class="need">[cont]</div>)</td>
+                <td class="example">echo("1234"); //-> 1234</td>
+                <td class="effect">輸出文字</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">f</td></tr>
+            <tr>
+                <td class="command">function <div class="need">[name]</div>(<i>[variable]..inf</i>){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<i>[depiction]..inf</i><br>
+                }</td>
+                <td class="example">
+                    function test($a){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo($a); // -> $a<br>
+                    }
+                </td>
+                <td class="effect">函式</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">g</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">h</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">i</td></tr>
+            <tr>
+                <td class="command">imagecreate(<div class="need">[(int)width]</div>,<div class="need">[(int)height]</div>)</td>
+                <td class="example">imagecreate(40,40)</td>
+                <td class="effect">畫布</td>
+                <td class="otheruse"></td>
+                <td class="ps">必須開啟gd功能</td>
+            </tr>
+            <tr>
+                <td class="command">imagecolorallocate(<div class="need">[canva]</div>,<div class="need">[rgb(r)]</div>,<div class="need">[rgb(g)]</div>,<div class="need">[rgb(b)]</div>)</td>
+                <td class="example">imagecolorallocate(imagecreate(40,40),255,255,255)</td>
+                <td class="effect">畫筆顏色</td>
+                <td class="otheruse"></td>
+                <td class="ps">必須開啟gd功能</td>
+            </tr>
+            <tr>
+                <td class="command">imagettftext(<div class="need">[canva]</div>,<div class="need">[fontsize]</div>,<div class="need">[xstart]</div>,<div class="need">[ystart]</div>,<div class="need">[rotate]</div>,<div class="need">[cont-color]</div>,<div class="need">[font]</div>,<div class="need">[cont]</div>)</td>
+                <td class="example">imagettftext(imagecreate(40,40),10,20,0,15,imagecolorallocate(imagecreate(40,40),0,0,0),__DIR__."/font.TTF,"HI")</td>
+                <td class="effect">畫出字串</td>
+                <td class="otheruse"></td>
+                <td class="ps">必須開啟gd功能</td>
+            </tr>
+            <tr>
+                <td class="command">imagepng(<div class="need">[canva]</div>)</td>
+                <td class="example">imagepng(imagecreate(40,40))</td>
+                <td class="effect">轉成png</td>
+                <td class="otheruse"></td>
+                <td class="ps">必須開啟gd功能</td>
+            </tr>
+            <tr>
+                <td class="command">imagejpeg(<div class="need">[canva]</div>)</td>
+                <td class="example">imagejpeg(imagecreate(40,40))</td>
+                <td class="effect">轉成jpeg</td>
+                <td class="otheruse"></td>
+                <td class="ps">必須開啟gd功能</td>
+            </tr>
+            <tr>
+                <td class="command">imagecreate(<div class="need">[width]</div>,<div class="need">[height]</div>)</td>
+                <td class="example">imagecreate(40,40)</td>
+                <td class="effect">畫布</td>
+                <td class="otheruse"></td>
+                <td class="ps">必須開啟gd功能</td>
+            </tr>
+            <tr>
+                <td class="command">isset(<div class="need">[variable]</div>)</td>
+                <td class="example">
+                    isset($_GET["submit"]){
+                        echo("in");
+                    }
+                </td>
+                <td class="effect">偵測某一變數是否存在</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">if(<div class="need">[judgecont]..inf</div>){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<i>[depiction]..inf</i><br>
+                }<i>elseif(<div class="need">[judgecont]..inf</div>){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[depiction]..inf<br>
+                }else{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[depiction]..inf<br>
+                }</i></td>
+                <td class="example">
+                    if(true==false){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo("WTF");<br>
+                    }else{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo("hi");<br>
+                    } // -> hi
+                </td>
+                <td class="effect">判斷式</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">j</td></tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr><td colspan="5">k</td></tr>
+            <tr>
+                <td class="command"></td>
                 <td class="example">
                 </td>
                 <td class="effect"></td>

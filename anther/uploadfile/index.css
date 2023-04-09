@@ -99,3 +99,11 @@ hr{
     background-color: rgb(102, 220, 102);
     color: black;
 }
+
+.uploading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}

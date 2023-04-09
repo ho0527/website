@@ -4,11 +4,9 @@
 
     function bruh($ans=[],$numi=[]){
         global $temp;
-
         if(count($ans)==0){
             $temp[]=implode('',$numi);
         }
-
         foreach($ans as $k => $v){
             $new_data=$ans;
             $new_ar=$numi;
@@ -23,7 +21,7 @@
         $numi=array_unique($ans);
         $numi=array_values($numi);
         $index=array_search($value,$numi);
-        return $numi[($index + 1) % count($numi)];
+        return $numi[($index+1)%count($numi)];
     }
 
     $m=trim(fgets(STDIN));
@@ -44,7 +42,7 @@
                 }
                 $temp=[];
                 bruh($numi);
-                $ans[]=bla($temp,implode('',$num));
+                $ans[]=bla($temp,implode("",$num));
             }else{
                 $ans[]="輸入未符合要求(n)";
             }

@@ -40,10 +40,6 @@
                 $tel=$_SESSION["tel"];
                 if(block($username)){
                     ?><script>alert("禁止輸入特殊字元(username)!");location.href="post.php"</script><?php
-                }elseif(block($email)){
-                    ?><script>alert("禁止輸入特殊字元(email)!");location.href="post.php"</script><?php
-                }elseif(block($tel)){
-                    ?><script>alert("禁止輸入特殊字元(tel)!");location.href="post.php"</script><?php
                 }elseif(!preg_match("/^.+\@.+\.([.+\.]+)?$/",$email)) {
                     ?><script>alert("email驗證失敗!");location.href="post.php"</script><?php
                 }elseif(!preg_match("/^[0-9]+(\-[0-9]+)?$/",$tel)){

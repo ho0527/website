@@ -2,19 +2,10 @@
     $memoryBefore=memory_get_usage();
     echo("p15\n");
 
-    $data=preg_split("/\W+/",strtolower(trim(fgets(STDIN))),-1,PREG_SPLIT_NO_EMPTY);
-    $count=array_count_values($data);
+    $count=array_count_values(preg_split("/\W+/",strtolower(trim(fgets(STDIN))),-1,PREG_SPLIT_NO_EMPTY));
 
-    // 將單字按照出現次數和字母順序進行排序
-    uksort($count,function($a,$b)use($count){
-        if($count[$a]==$count[$b]){
-            return strcasecmp($a,$b);
-        }else{
-            return $count[$b]-$count[$a];
-        }
-    });
+    uksort($count,function($a,$b)use($count){ return $count[$a]<$count[$b]||($count[$a]==$count[$b]&&$count[$a]>$count[$b]); });
 
-    // 取出前三個單字
     $ans=array_slice(array_keys($count),0,3);
 
     // 將結果輸出到 STDOUT
