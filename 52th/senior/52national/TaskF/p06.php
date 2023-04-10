@@ -1,6 +1,7 @@
 <?php
     $memoryBefore=memory_get_usage();
     echo("p06\n");
+
     function gcd($a,$b){
         $a=(int)$a;
         $b=(int)$b;
@@ -18,12 +19,12 @@
 
     $n=trim(fgets(STDIN));
     for($i=0;$i<$n;$i=$i+1){
-        $numbers=trim(fgets(STDIN));
+        $number=trim(fgets(STDIN));
         if($i==0){
-            $gcd=$numbers;
+            $gcd=$number;
             continue;
         }
-        $gcd=gcd($gcd,$numbers);
+        $gcd=gcd($gcd,$number);
     }
     echo($gcd.PHP_EOL);
 

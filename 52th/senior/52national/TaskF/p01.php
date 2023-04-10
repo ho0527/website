@@ -1,18 +1,19 @@
 <?php
     $memoryBefore=memory_get_usage();
+
     echo("p01\n");
     $n=trim(fgets(STDIN));
-    $a=[];
+    $ans=[];
     for($i=0;$i<$n;$i=$i+1){
-        $arr=explode(" ",trim(fgets(STDIN)));//將字元拆開
-        $max=max($arr);//最大值
-        $min=min($arr);//最小值
-        $a[]=($max+$min.PHP_EOL);//相加
+        $array=explode(" ",trim(fgets(STDIN)));//將字元拆開
+        rsort($array);
+        $ans[]=($array[0]+$array[count($array)-1]);//相加
     }
-    for($i=0;$i<count($a);$i=$i+1){
-        echo("output".($i+1)."=>".$a[$i].PHP_EOL);
+
+    for($i=0;$i<count($ans);$i=$i+1){
+        echo($ans[$i]."\n");
     }
-    echo("\n");
+
     $memoryAfter=memory_get_usage();
     $memoryDifference=$memoryAfter-$memoryBefore;
     echo("memory used ".($memoryDifference/1048576)."MB");
