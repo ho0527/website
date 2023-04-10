@@ -1,4 +1,3 @@
-// 當使用者選擇背景圖時，將其渲染到畫布上
 let canva=document.createElement("canvas")
 canva.width=1920
 canva.height=1080

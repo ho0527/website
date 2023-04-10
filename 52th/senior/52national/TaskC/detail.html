@@ -6,16 +6,16 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div><img src="" class="headerpng"></div>
+        <div><img src="image/background.jpg" class="headerpng"></div>
         <div class="navigationbar">
             <img src="web00_1.jpg" class="logo">
             <div class="navigationbarbuttondiv">
-                <button class="navigationbarbutton" onclick="location.href='index.html'">首頁</button>
-                <button class="navigationbarbutton selectbutton" onclick="location.href='detail.html'">詳細旅遊資訊頁面</button>
-                <button class="navigationbarbutton" onclick="location.href='new.html'">最新旅遊消息</button>
-                <button class="navigationbarbutton" onclick="location.href='hot.html'">熱門旅遊景點</button>
-                <button class="navigationbarbutton" onclick="location.href='transportation.html'">交通資訊</button>
-                <button class="navigationbarbutton" onclick="location.href='connection.html'">聯絡我們</button>
+                <input type="button" class="navigationbarbutton" onclick="location.href='index.html'" value="首頁">
+                <input type="button" class="navigationbarbutton" onclick="location.href='index#new'" value="最新旅遊消息">
+                <input type="button" class="navigationbarbutton" onclick="location.href='index#hot'" value="熱門旅遊景點">
+                <input type="button" class="navigationbarbutton" onclick="location.href='index#map'" value="交通資訊">
+                <input type="button" class="navigationbarbutton" onclick="location.href='index#connection'" value="聯絡我們">
+                <input type="button" class="navigationbarbutton selectbutton" onclick="location.href='detail.html'" value="詳細旅遊資訊頁面">
             </div>
         </div>
         <div class="slogan">標語標語標語標語標語標語</div>
@@ -23,12 +23,12 @@
         <div class="breadcrumbs"><a href="index.html">首頁</a> > <a>詳細旅遊資訊內頁</a></div>
         <form>
             <input type="text" name="search" placeholder="景點搜索表單">
-            <input type="submit" name="submit" value="送出">
+            <input type="submit" name="submit" value="搜尋">
         </form>
         <div class="hot">
             <div class="box">
                 <div class="hottitle">HIHI</div>
-                <img src="" class="hotimg">
+                <img src="image/image7.jpg" class="hotimg">
                 <div class="hotstar">
                     <div class="phone">電話: 0912345678</div>
                     <div class="addres">地址: 新北市jweipjfiowehiop</div>
@@ -37,7 +37,7 @@
             </div>
             <div class="box">
                 <div class="hottitle">HIHI</div>
-                <img src="" class="hotimg">
+                <img src="image/image8.jpg" class="hotimg">
                 <div class="hotstar">
                     <div class="phone">電話: 0912345678</div>
                     <div class="addres">地址: 新北市jweipjfiowehiop</div>
@@ -46,7 +46,7 @@
             </div>
             <div class="box">
                 <div class="hottitle">HIHI</div>
-                <img src="" class="hotimg">
+                <img src="image/image9.jpg" class="hotimg">
                 <div class="hotstar">
                     <div class="phone">電話: 0912345678</div>
                     <div class="addres">地址: 新北市jweipjfiowehiop</div>
@@ -87,13 +87,13 @@
         <div class="footer">
             Copyright &copy GWTN 2022 - All rights reserved<br>
             <div id="link">
-                <button id="fb" class="footerbutton"><img src="fb.png" alt="" class="img">Facebook</button>
-                <button id="twitter" class="footerbutton"><img src="twitter.jpg" alt="" class="img">Twitter</button>
-                <button id="youtube" class="footerbutton"><img src="yt.jpg" alt="" class="img">Youtube</button>
+                <button id="fb" class="button"><img src="fb.png" class="footericon">Facebook</button>
+                <button id="twitter" class="button"><img src="twitter.jpg" class="footericon">Twitter</button>
+                <button id="youtube" class="button"><img src="yt.jpg" class="footericon">Youtube</button>
             </div>
             <input type="button" id="onoff" value="關閉footer">
         </div>
-        <script src="index.js"></script>
+        <script src="detail.js"></script>
         <script src="footer.js"></script>
     </body>
 </html>

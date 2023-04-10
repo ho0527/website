@@ -1,29 +1,29 @@
-let link=document.querySelectorAll("#link")
-let onoffbutton=document.querySelectorAll("#onoff")
-let fb=document.querySelectorAll("#fb")
-let twitter=document.querySelectorAll("#twitter")
-let youtube=document.querySelectorAll("#youtube")
+let link=document.getElementById("link")
+let onoffbutton=document.getElementById("onoff")
+let fb=document.getElementById("fb")
+let twitter=document.getElementById("twitter")
+let youtube=document.getElementById("youtube")
 
-link[0].style.display="block"
+link.style.display="block"
 
-onoffbutton[0].onclick=function(){
-    if(link[0].style.display=="block"){
-        link[0].style.display="none"
-        onoffbutton[0].innerHTML=`開啟footer`
+onoffbutton.onclick=function(){
+    if(link.style.display=="block"){
+        link.style.display="none"
+        onoffbutton.value=`開啟footer`
     }else{
-        link[0].style.display="block"
-        onoffbutton[0].innerHTML=`關閉footer`
+        link.style.display="block"
+        onoffbutton.value=`關閉footer`
     }
 }
 
-fb[0].onclick=function(){
+fb.onclick=function(){
     location.href="https://www.facebook.com/"
 }
 
-twitter[0].onclick=function(){
+twitter.onclick=function(){
     location.href="https://www.twitter.com/"
 }
 
-youtube[0].onclick=function(){
+youtube.onclick=function(){
     location.href="https://www.youtube.com/"
 }
