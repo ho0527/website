@@ -571,7 +571,7 @@
                 <td class="ps"></td>
             </tr>
             <tr>
-                <td class="title2" colspan="5">以下為apache類在官方API中有提及，但我測試中大部分無法使用，因此不放入範例</td>
+                <td class="title2" colspan="5">apache類</td>
             </tr>
             <tr>
                 <td class="command">apache_child_terminate</td>
@@ -592,6 +592,7 @@
             <tr>
                 <td class="command">apache_get_modules</td>
                 <td class="example">
+                    print_r(apache_get_modules()); //->Array ( [0] => core [1] => mod_win32 [2] => mpm_winnt [3] => http_core [4] => mod_so [5] => mod_access_compat [6] => mod_actions [7] => mod_alias [8] => mod_allowmethods [9] => mod_asis [10] => mod_auth_basic [11] => mod_authn_core [12] => mod_authn_file [13] => mod_authz_core [14] => mod_authz_groupfile [15] => mod_authz_host [16] => mod_authz_user [17] => mod_autoindex [18] => mod_cgi [19] => mod_dav_lock [20] => mod_dir [21] => mod_env [22] => mod_headers [23] => mod_include [24] => mod_info [25] => mod_isapi [26] => mod_log_config [27] => mod_cache_disk [28] => mod_mime [29] => mod_negotiation [30] => mod_proxy [31] => mod_proxy_ajp [32] => mod_rewrite [33] => mod_setenvif [34] => mod_socache_shmcb [35] => mod_ssl [36] => mod_status [37] => mod_version [38] => mod_php )
                 </td>
                 <td class="effect">獲得已加載的Apache模塊列表</td>
                 <td class="otheruse"></td>
@@ -600,14 +601,14 @@
             <tr>
                 <td class="command">apache_get_version</td>
                 <td class="example">
-                    apache_get_version();
+                    echo(apache_get_version()); // -> Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.12
                 </td>
                 <td class="effect">獲得Apache版本信息</td>
                 <td class="otheruse"></td>
                 <td class="ps"></td>
             </tr>
             <tr>
-                <td class="command">apache_lookup_uri</td>
+                <td class="command">apache_lookup_uri(<div class="need">[url]</div>)</td>
                 <td class="example">
                 </td>
                 <td class="effect">對指定的URI執行部分請求並返回所有有關信息</td>
@@ -647,7 +648,919 @@
                 <td class="ps"></td>
             </tr>
             <tr>
-                <td class="title2" colspan="5">以上為apache類</td>
+                <td class="title2" colspan="5">apache類</td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::current</td>
+                <td class="example">
+                </td>
+                <td class="effect">獲取當前項目</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::getTotalCount</td>
+                <td class="example">
+                </td>
+                <td class="effect">獲取總數</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::getTotalHits</td>
+                <td class="example">
+                </td>
+                <td class="effect">獲取緩存總命中數</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::getTotalSize</td>
+                <td class="example">
+                </td>
+                <td class="effect">獲取緩存總大小</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::key</td>
+                <td class="example">
+                </td>
+                <td class="effect">獲取迭代器鍵</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::next</td>
+                <td class="example">
+                </td>
+                <td class="effect">將指針移動到下一個項目</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::rewind</td>
+                <td class="example">
+                </td>
+                <td class="effect">倒帶迭代器</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::valid</td>
+                <td class="example">
+                </td>
+                <td class="effect">檢查當前位置是否有效</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command">APCUIterator::__construct</td>
+                <td class="example">
+                </td>
+                <td class="effect">構造一個APCUIterator迭代器對象</td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
+            </tr>
+            <tr>
+                <td class="command"></td>
+                <td class="example">
+                </td>
+                <td class="effect"></td>
+                <td class="otheruse"></td>
+                <td class="ps"></td>
             </tr>
             <tr>
                 <td class="command"></td>
