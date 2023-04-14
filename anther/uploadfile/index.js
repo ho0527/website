@@ -42,6 +42,7 @@ document.getElementById("submit").onclick=function(){
         if(xhr.readyState==4){
             if(xhr.status==200){
                 let response=JSON.parse(xhr.responseText)
+                console.log("response="+response)
                 if(response.success){
                     Swal.fire({
                         title:"Upload Success",
@@ -79,7 +80,23 @@ document.getElementById("submit").onclick=function(){
             }
         }
     }
-    xhr.send(new FormData(document.getElementById("form")))
+    let form=new FormData(document.getElementById("form"))
+    for(let i=0;i<files.length;i=i+1){
+        let newFileName=file(files[i],form.getAll("file[]"));
+        form.set("file[]",files[i],newFileName)
+    }
+    xhr.send(form)
+}
+
+function file(file,files){
+    let filename=file.name;
+    let i=1;
+    while(files.includes(filename)) {
+        let [name,extension]=filename.split(".");
+        filename=`${i}_${name}.${extension}`;
+        i=i+1;
+    }
+    return filename;
 }
 
 document.getElementById("reflashbutton").onclick=function(){

@@ -1,5 +1,5 @@
 <?php
-    $db=new PDO("mysql:host=localhost;dbname=module2;charset=utf8","admin","1234");
+    $db=new PDO("mysql:host=localhost;dbname=j52national-m2;charset=utf8","admin","1234");
     date_default_timezone_set("Asia/Taipei");
     $date=date("Y-m-d H:i:s");
     session_start();
