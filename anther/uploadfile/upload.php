@@ -1,6 +1,6 @@
 <?php
     $rand=str_pad(rand(0,9999999999),10,"0",STR_PAD_LEFT);
-    if(preg_match("\\|\/|\?|\"|\<|\>|\|",$_POST["foldername"])){
+    if(preg_match("/\\|\/|\?|\"|\<|\>|\|/",$_POST["foldername"])){
         $folder="error".$rand;
     }else{
         if($_POST["foldername"]!=""){
@@ -13,20 +13,42 @@
     if(isset($folder)){
         if(!file_exists("file/".$folder)){
             mkdir("file/".$folder,0777,true);
+        }else{
+            mkdir("file/"."ehqwfjiu",0777,true);
         }
     }
 
-    if(isset($_FILES["file"])){
+    if($_FILES["file"]["name"][0]!=""){
         for($i=0;$i<count($_FILES["file"]["name"]);$i=$i+1){
-            $rand=str_pad(rand(0,499999),6,"0",STR_PAD_LEFT);
-            move_uploaded_file($_FILES["file"]["tmp_name"][$i],"file/".$folder."/".$rand.$_FILES["file"]["name"][$i]);
+            $file="file/".$folder."/".$_FILES["file"]["name"][$i];
+            if(file_exists($file)){
+                $j=1;
+                while(file_exists($file)){
+                    $file="file/".$folder."/".$j."_".$_FILES["file"]["name"][$i];
+                    $j=$j+1;
+                }
+            }
+            move_uploaded_file($_FILES["file"]["tmp_name"][$i],$file);
         }
     }
 
-    if(isset($_FILES["folder"])){
+    if($_FILES["folder"]["name"][0]!=""){
         for($i=0;$i<count($_FILES["folder"]["name"]);$i=$i+1){
-            $rand=str_pad(rand(500000,999999),6,"0",STR_PAD_LEFT);
-            move_uploaded_file($_FILES["folder"]["tmp_name"][$i],"file/".$folder."/".$rand.$_FILES["folder"]["name"][$i]);
+            $file="file/".$folder."/".$_FILES["folder"]["name"][$i];
+            if(file_exists($file)){
+                $j=1;
+                while(file_exists($file)){
+                    $file="file/".$folder."/".$j."_".$_FILES["folder"]["name"][$i];
+                    $j=$j+1;
+                }
+            }
+            move_uploaded_file($_FILES["folder"]["tmp_name"][$i],$file);
         }
     }
+    $response=[
+        "success"=>true,
+        "message"=>"Upload success"
+    ];
+    header("content-type:application/json");
+    echo(json_encode($response));
 ?>
