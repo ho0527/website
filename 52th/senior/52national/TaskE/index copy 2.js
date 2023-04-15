@@ -31,33 +31,34 @@ const openDB=function(name){
     }
 
     db.onsuccess=function(event){
-        let result=event.target.result
         console.log("yes "+event)
         console.log("yes "+db.result)
-        console.log("result="+result)
+        console.log("yes "+event.target.result)
+        let result=event.target.result
     }
 
     if(name=="student"){
         dbonupgradeneeded=function(event){
             let db=event.target.result
-            let objectstore=db.createObjectStore("students",{ keyPath:"id" })
-            // objectstore.createIndex("id","id",{ unique:true })
-            objectstore.createIndex("head","head",{ unique:false })
-            objectstore.createIndex("lastname","lastname",{ unique:false })
-            objectstore.createIndex("firstname","firstname",{ unique:false })
-            objectstore.createIndex("email","email",{ unique:false })
-            objectstore.createIndex("phone","phone",{ unique:false })
-            objectstore.createIndex("address","address",{ unique:false })
-            objectstore.createIndex("class","class",{ unique:false })
+            let objectStore=db.createObjectStore("students",{keyPath:"student_id"})
+            objectStore.createIndex("id","id")
+            objectStore.createIndex("head","head")
+            objectStore.createIndex("lastname","lastname")
+            objectStore.createIndex("firstname","firstname")
+            objectStore.createIndex("email","email")
+            objectStore.createIndex("phone","phone")
+            objectStore.createIndex("address","address")
+            objectStore.createIndex("class","class")
+            console.log("objectStore="+objectStore)
         }
     }else if(name=="class"){
         dbonupgradeneeded=function(event){
             let db=event.target.result
-            let objectstore=db.createObjectStore("class",{ keyPath:"id" })
-            // objectstore.createIndex("id","id",{ unique:true });
-            objectstore.createIndex("name","name",{ unique:false });
-            objectstore.createIndex("count","count",{ unique:false });
-            objectstore.put()
+            let objectStore=db.createObjectStore("students",{keyPath:"student_id"})
+            objectStore.createIndex("id","id");
+            objectStore.createIndex("name","name");
+            objectStore.put()
+            console.log("objectStore="+objectStore)
         }
     }else{
         console.log("error")
