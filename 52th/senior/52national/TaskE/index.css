@@ -276,6 +276,7 @@ table{
 .message{
     font-size: 40px;
     color: red;
+    font-weight: bold;
     margin-top: 50px;
 }
 
