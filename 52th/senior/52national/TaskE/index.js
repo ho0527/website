@@ -2,22 +2,19 @@ let editstu=document.querySelectorAll(".edit")
 let dialog=document.getElementById("dialog")
 let addsut=document.getElementById("addStudent")
 let newstudent=document.getElementById("newStudent")
-// let lastname=document.getElementById("last_name")
-// let firstname=document.getElementById("first_name")
-// let email=document.getElementById("email")
 let lessmoreclass=document.getElementById("allclass")
 let allclass=document.getElementById("class")
-let newclass=document.getElementById("addClass")
+let addclass=document.getElementById("addClass")
 let allstu=document.getElementById("allstu")
 let delstu=document.getElementById("delete")
 let main=document.getElementById("main")
 let trashcan=document.getElementById("trashcan")
-let db
-// let trashcan=document.getElementById("trashcan")
+let studentdb
+let classdb
 
-let openstudentdb=function(){
+function openstudentdb(){
     return new Promise(function(){
-        let dbrequest=indexedDB.open("student",3)
+        let dbrequest=indexedDB.open("student",1)
 
         dbrequest.onerror=function(){
             console.log("the db can\`t open no "+dbrequest.errorCode)
@@ -25,11 +22,12 @@ let openstudentdb=function(){
 
         dbrequest.onsuccess=function(event){
             console.log("Database students opened successfully.")
+            studentdb=event.target.result
         }
 
         dbrequest.dbonupgradeneeded=function(event){
-            let db=event.target.result
-            let objectstore=db.createObjectStore("student",{ keyPath:"id" })
+            studentdb=event.target.result
+            let objectstore=studentdb.createObjectStore("student",{ keyPath:"id" })
             objectstore.createIndex("head","head",{ unique:false })
             objectstore.createIndex("lastname","lastname",{ unique:false })
             objectstore.createIndex("firstname","firstname",{ unique:false })
@@ -42,9 +40,9 @@ let openstudentdb=function(){
     })
 }
 
-let openclassdb=function(){
+function openclassdb(){
     return new Promise(function(){
-        let dbrequest=indexedDB.open("class",3)
+        let dbrequest=indexedDB.open("class",1)
 
         dbrequest.onerror=function(){
             console.log("the db can\`t open no "+dbrequest.errorCode)
@@ -52,11 +50,12 @@ let openclassdb=function(){
 
         dbrequest.onsuccess=function(event){
             console.log("Database class opened successfully.")
+            classdb=event.target.result
         }
 
         dbrequest.dbonupgradeneeded=function(event){
-            db=event.target.result
-            let objectstore=db.createObjectStore("class",{ keyPath:"id" })
+            classdb=event.target.result
+            let objectstore=classdb.createObjectStore("class",{ keyPath:"id" })
             objectstore.createIndex("name","name",{ unique:false })
             objectstore.createIndex("count","count",{ unique:false })
             console.log("objectstore="+objectstore)
@@ -64,45 +63,59 @@ let openclassdb=function(){
     })
 }
 
-function dbinsert(dbname,insertdata){ // 資料庫名 要輸入的值(使用json)
+function dbinsert(db,dbname,insertdata){ // 資料庫名 要輸入的值(使用json)
     let transaction=db.transaction([dbname],"readwrite")
-    let objectStore=transaction.objectStore(dbname)
-    let request=objectStore.add(insertdata)
+    let objectstore=transaction.objectStore(dbname)
+    let request=objectstore.add(insertdata)
+
     request.onsuccess=function(){
-        console.log(dbname+" added to the database success")
+        console.log(dbname+" data= "+insertdata+" added to the database success")
     }
 
+    request.onerror=function(){
+        console.log("[WARNING]"+dbname+" data= "+insertdata+" added to the database error")
+    }
 }
 
-function dbupdate(dbname,updatefield,updatedata,updatevalue){ // 資料庫名 要改的欄位(int) 要更新的欄位 改成的值
+function dbupdate(db,dbname,updatefield,updatedata,updatevalue){ // 資料庫名 要改的欄位(int) 要更新的欄位 改成的值
     let transaction=db.transaction([dbname],"readwrite")
-    let objectStore=transaction.objectStore(dbname)
-    let request=objectStore.get(updatefield)
+    let objectstore=transaction.objectStore(dbname)
+    let request=objectstore.get(updatefield)
+
     request.onsuccess=function(event){
         let result=event.target.result
         result[updatedata]=updatevalue
-        let updaterequest=objectStore.put(result)
+        let updaterequest=objectstore.put(result)
         updaterequest.onsuccess=function(){
             console.log(dbname+" update success")
         }
     }
 
-}
-
-function dbdelete(dbname,deletedata){ // 資料庫名 刪除的欄位(int)
-    let transaction=db.transaction([dbname],"readwrite")
-    let objectStore=transaction.objectStore(dbname)
-    let request=objectStore.delete(deletedata)
-    request.onsuccess=function(){
-        console.log(dbname+" delete success")
+    request.onerror=function(){
+        console.log("[WARNING]"+dbname+" update error")
     }
 }
 
-function dbselect(dbname,selectfield,selectvalue,callback){ // 資料庫名 要查詢的欄位(int) 要找的值 回傳函式
+function dbdelete(db,dbname,deletedata){ // 資料庫名 刪除的欄位(int)
     let transaction=db.transaction([dbname],"readwrite")
-    let objectStore=transaction.objectStore(dbname)
-    let index=objectStore.index(selectfield)
+    let objectstore=transaction.objectStore(dbname)
+    let request=objectstore.delete(deletedata)
+
+    request.onsuccess=function(){
+        console.log(dbname+" delete success")
+    }
+
+    request.onerror=function(){
+        console.log("[WARNING]"+dbname+" delete error")
+    }
+}
+
+function dbselect(db,dbname,selectfield,selectvalue,callback){ // 資料庫名 要查詢的欄位(int) 要找的值 回傳函式
+    let transaction=db.transaction([dbname],"readwrite")
+    let objectstore=transaction.objectStore(dbname)
+    let index=objectstore.index(selectfield)
     let request=index.get(selectfield)
+
     request.onsuccess=function(event){
         let result=event.target.result
         if(result){
@@ -111,6 +124,10 @@ function dbselect(dbname,selectfield,selectvalue,callback){ // 資料庫名 要�
         }else{
             console.log("no result")
         }
+    }
+
+    request.onerror=function(){
+        console.log("[WARNING]"+dbname+" select error")
     }
 }
 
@@ -158,6 +175,10 @@ window.onload=function(){
     allstu.classList.add("current")
     openstudentdb()
     openclassdb()
+    setTimeout(function(){
+        console.log(classdb)
+        console.log(studentdb)
+    },50)
 }
 
 //<tr>
@@ -295,7 +316,7 @@ editstu.onclick=function(){
     }
 }
 
-newclass.addEventListener("click",function(){
+addclass.addEventListener("click",function(){
     dialog.innerHTML=`
         <div class="div">
             <div class="mask"></div>
@@ -314,7 +335,7 @@ newclass.addEventListener("click",function(){
     `
     let classname=document.getElementById("classname")
     let close=document.getElementById("close")
-    newclass.classList.add("current")
+    addclass.classList.add("current")
     close.onclick=function(){
         reload()
     }
@@ -326,26 +347,19 @@ newclass.addEventListener("click",function(){
             return false
         }else{
             console.log(document.getElementById("classname").value)
-            opendb("class").then(function(db){
-                let transaction=db.transaction(["class"],"readwrite")
-                let insert=transaction.objectStore("class")
-                let classdata={
-                    name:document.getElementById("classname").value,
-                    count:0
-                }
-                insert.add(classdata).onsuccess=function(){
-                   console.log("New class added: "+classdata)
-                }
-            })
-            // let db=opendb("class")
-            // let transaction=db.transaction("name","readwrite")
-            // let objectStore=transaction.objectStore("name")
-            // let insert=objectStore.add(document.getElementById("classname"))
-            // insert.onsuccess=function(){
-            //     // request.result contains key of the added object
-            //     console.log(`New class added,name: ${request.result}`)
-            // }
-            // return true
+            try{
+                opendb("class").then(function(){
+                    let classdata={
+                        name:document.getElementById("classname").value,
+                        count:0
+                    }
+                    dbinsert(classdb,"class",classdata)
+                })
+                return true
+            }catch(event){
+                console.log(event)
+                return false
+            }
         }
     }
 })
