@@ -10,6 +10,7 @@ let tool={
 let toolid
 let toolindex
 let toollength
+let oopmode=document.getElementById("oopmode")
 
 function appendchildmain(){
     let target=document.createElement(tool.tag[toolindex])
@@ -26,20 +27,20 @@ function appendchildmain(){
 }
 
 function ulclearall(){
-    document.getElementById("ulmain").style.display="none"
-    document.getElementById("ulinput").style.display="none"
-    document.getElementById("ultext").style.display="none"
-    document.getElementById("ulanthor").style.display="none"
+    document.getElementById("oopulmain").style.display="none"
+    document.getElementById("oopulinput").style.display="none"
+    document.getElementById("oopultext").style.display="none"
+    document.getElementById("oopulanthor").style.display="none"
 }
 
-document.getElementById("mode").onclick=function(){
-    if(document.getElementById("mode").value=="一般模式"){
-        document.getElementById("mode").value="開發者模式"
+oopmode.onclick=function(){
+    if(oopmode.value=="一般模式"){
+        oopmode.value="開發者模式"
         document.querySelectorAll("br").forEach(function(event){
             event.classList.add("br")
         })
     }else{
-        document.getElementById("mode").value="一般模式"
+        oopmode.value="一般模式"
         document.querySelectorAll("br").forEach(function(event){
             event.classList.remove("br")
         })
@@ -49,28 +50,28 @@ document.getElementById("mode").onclick=function(){
 window.onload=function(){
     ulclearall()
     setTimeout(function(){
-        document.getElementById("ulmaintext").onclick=function(){
+        document.getElementById("oopulmaintext").onclick=function(){
             if(document.getElementById("ulmain").style.display=="none"){
                 document.getElementById("ulmain").style.display="block"
             }else{
                 ulclearall()
             }
         }
-        document.getElementById("ulinputtext").onclick=function(){
+        document.getElementById("oopulinputtext").onclick=function(){
             if(document.getElementById("ulinput").style.display=="none"){
                 document.getElementById("ulinput").style.display="block"
             }else{
                 document.getElementById("ulinput").style.display="none"
             }
         }
-        document.getElementById("ultexttext").onclick=function(){
+        document.getElementById("oopultexttext").onclick=function(){
             if(document.getElementById("ultext").style.display=="none"){
                 document.getElementById("ultext").style.display="block"
             }else{
                 document.getElementById("ultext").style.display="none"
             }
         }
-        document.getElementById("ulanthortext").onclick=function(){
+        document.getElementById("oopulanthortext").onclick=function(){
             if(document.getElementById("ulanthor").style.display=="none"){
                 document.getElementById("ulanthor").style.display="block"
             }else{
@@ -111,13 +112,13 @@ window.onload=function(){
                 }
             }
 
-            document.getElementById("main").addEventListener("dragover",function(event){
+            document.getElementById("oopmain").addEventListener("dragover",function(event){
                 event.preventDefault()
             })
 
-            document.getElementById("main").addEventListener("drop",appendchildmain)
+            document.getElementById("oopmain").addEventListener("drop",appendchildmain)
 
-            document.getElementById("downloadwebsite").onclick=function(){
+            document.getElementById("oopdownloadwebsite").onclick=function(){
                 let alink=document.createElement("a")
                 let htmlcontext=`
                     <!DOCTYPE html>
@@ -138,7 +139,7 @@ window.onload=function(){
                 alink.click()
             }
 
-            document.getElementById("download").onclick=function(){
+            document.getElementById("oopdownload").onclick=function(){
                 let alink=document.createElement("a")
                 let downloadcontext="index.js"
                 alink.download=downloadcontext
@@ -146,7 +147,7 @@ window.onload=function(){
                 alink.click()
             }
         }else{
-            document.getElementById("main").innerHTML=`
+            document.getElementById("oopmain").innerHTML=`
                 <h1>程式錯誤請聯絡 @小賀chris#9517(DC) 謝謝</h1>
             `
             console.log("[WARNING] tool count error")
