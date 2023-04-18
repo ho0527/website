@@ -123,11 +123,11 @@ table{
 
 .input{
     border: none;
+    border-bottom: 1px black solid;
+    background: none;
     width: 75%;
     height: 40px;
     background-color: white;
-    background: none;
-    border-bottom: 1px black solid;
     outline: none;
     font-size: 30px;
 }
@@ -156,7 +156,7 @@ table{
 .reflashbutton{
     margin-top: 20px;
     padding: 5px;
-    background-color: rgb(220, 173, 78);
+    background-color: rgb(215, 164, 61);
     color: white;
     border: none;
     border-radius: 5px;

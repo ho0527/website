@@ -55,14 +55,13 @@ table{
 
 .grid{
     display: grid;
-    grid-gap: 0.9%;
+    grid-gap: 7px;
     grid-template-columns: repeat(100, 1fr);
     grid-auto-rows: 5%;
     position: absolute;
-    top: 5px;
-    left: 5px;
     width: calc(100% - 5px);
     height: calc(100% - 5px);
+    padding: 2px;
     overflow-y: auto;
     border-radius: 10px;
 }
@@ -92,6 +91,9 @@ table{
     grid-column: 15/80;
     grid-row: 15/17;
     border: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer{
