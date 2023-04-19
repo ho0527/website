@@ -23,7 +23,7 @@ function appendchildmain(){
     }else if(tool.ps[toolindex]=="soletag"){ }else{
         target.innerHTML=tool.value[toolindex]
     }
-    document.getElementById("main").appendChild(target)
+    document.getElementById("oopmain").appendChild(target)
 }
 
 function ulclearall(){
@@ -51,31 +51,31 @@ window.onload=function(){
     ulclearall()
     setTimeout(function(){
         document.getElementById("oopulmaintext").onclick=function(){
-            if(document.getElementById("ulmain").style.display=="none"){
-                document.getElementById("ulmain").style.display="block"
+            if(document.getElementById("oopulmain").style.display=="none"){
+                document.getElementById("oopulmain").style.display="block"
             }else{
                 ulclearall()
             }
         }
         document.getElementById("oopulinputtext").onclick=function(){
-            if(document.getElementById("ulinput").style.display=="none"){
-                document.getElementById("ulinput").style.display="block"
+            if(document.getElementById("oopulinput").style.display=="none"){
+                document.getElementById("oopulinput").style.display="block"
             }else{
-                document.getElementById("ulinput").style.display="none"
+                document.getElementById("oopulinput").style.display="none"
             }
         }
         document.getElementById("oopultexttext").onclick=function(){
-            if(document.getElementById("ultext").style.display=="none"){
-                document.getElementById("ultext").style.display="block"
+            if(document.getElementById("oopultext").style.display=="none"){
+                document.getElementById("oopultext").style.display="block"
             }else{
                 document.getElementById("ultext").style.display="none"
             }
         }
         document.getElementById("oopulanthortext").onclick=function(){
-            if(document.getElementById("ulanthor").style.display=="none"){
-                document.getElementById("ulanthor").style.display="block"
+            if(document.getElementById("oopulanthor").style.display=="none"){
+                document.getElementById("oopulanthor").style.display="block"
             }else{
-                document.getElementById("ulanthor").style.display="none"
+                document.getElementById("oopulanthor").style.display="none"
             }
         }
         toollength=tool.name.length
@@ -129,7 +129,7 @@ window.onload=function(){
                             <link rel="stylesheet" href="index.css">
                         </head>
                         <body>
-                            ${ document.getElementById("main").innerHTML }
+                            ${ document.getElementById("oopmain").innerHTML }
                             <script src="index.js"></script>
                         </body>
                     </html>
