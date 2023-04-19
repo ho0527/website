@@ -22,7 +22,7 @@
                 }
             }
         ?>
-        <div class="main">
+        <div class="main2">
             您的回覆已提交成功<br>
             請等待回復/修復<br>
             謝謝您的回報<br>

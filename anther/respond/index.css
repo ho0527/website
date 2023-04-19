@@ -51,8 +51,21 @@ table{
     transform: translate(-50%, -50%);
     font-size: 30px;
     font-weight: bold;
-    width: 75%;
+    width: 85%;
     height: 60%;
+    padding: 20px;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.main2{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
     padding: 20px;
     border-radius: 5px;
     overflow-y: auto;
@@ -178,6 +191,7 @@ table{
 .admintable{
     border-bottom: 1px white solid;
     width: 500px;
+    padding: 10px;
 }
 
 .center{
@@ -242,6 +256,24 @@ table{
     color: white;
 }
 
+.button3{
+    border: 1px black solid;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 75%;
+    font-size: 15px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.button3:hover{
+    background: gray;
+    color: white;
+}
+
+
 .reflashbutton{
     margin-top: 20px;
     padding: 5px;
@@ -251,7 +283,8 @@ table{
     border-radius: 5px;
     cursor: pointer;
     width: 45%;
-    height: 40px;
+    height: 35px;
+    margin-bottom: 5px;
     font-size: 20px;
     font-weight: bold;
     transition-duration: 0.5s;
@@ -271,7 +304,7 @@ table{
     border-radius: 5px;
     cursor: pointer;
     width: 45%;
-    height: 40px;
+    height: 35px;
     font-size: 20px;
     font-weight: bold;
     transition-duration: 0.5s;
@@ -285,4 +318,15 @@ table{
 .selectbutton{
     background-color: rgba(35, 35, 35, 0.75);
     color: white;
+}
+
+.a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.a:hover{
+    text-decoration: underline;
 }

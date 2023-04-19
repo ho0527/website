@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>mainadmin</title>
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
@@ -24,18 +24,19 @@
                         <td class="admintable">結果</td>
                         <td class="admintable">新增時間</td>
                         <td class="admintable">完成時間</td>
+                        <td class="admintable">功能區</td>
                     </tr>
                     <?php
                         include("link.php");
                         if(isset($_GET["enter"])){
                             $_SESSION["type"]=$_GET["search"];
-                            header("location:admin.php");
+                            header("location:!mainadmin.php");
                         }
                         if(isset($_SESSION["type"])){
                             $type=$_SESSION["type"];
                             if($type==""){
                                 unset($_SESSION["type"]);
-                                header("location:admin.php");
+                                header("location:!mainadmin.php");
                             }else{
                                 $data=fetchall(query($db,"SELECT*FROM `log` WHERE `id`LIKE'%$type%' or `question`LIKE'%$type%' or `context`LIKE'%$type%' or `email`LIKE'%$type%' or `anthor`LIKE'%$type%' or `finish`LIKE'%$type%' or `posttime`LIKE'%$type%' or `finishtime`LIKE'%$type%'"));
                             }
@@ -54,6 +55,11 @@
                                 <td class="admintable"><?php echo($data[$i][6]); ?></td>
                                 <td class="admintable"><?php echo($data[$i][7]); ?></td>
                                 <td class="admintable"><?php echo($data[$i][8]); ?></td>
+                                <td class="admintable">
+                                    <input type="button" class="button3" onclick="location.href='?id=<?php echo($data[$i][0]) ?>&edit=cencel'" value="取消"><br>
+                                    <input type="button" class="button3" onclick="location.href='?id=<?php echo($data[$i][0]) ?>&edit=updateing'" value="更新中"><br>
+                                    <input type="button" class="button3" onclick="location.href='?id=<?php echo($data[$i][0]) ?>&edit=finish'" value="已完成"><br>
+                                </td>
                             </tr>
                             <?php
                         }
@@ -61,5 +67,16 @@
                 </form>
             </table>
         </div>
+        <?php
+            if(isset($_GET["edit"])){
+                $id=$_GET["id"];
+                $edit=$_GET["edit"];
+                query($db,"UPDATE `log` SET `finish`='$edit' WHERE `id`='$id'");
+                if($_GET["edit"]=="finish"){
+                    query($db,"UPDATE `log` SET `finishtime`='$time' WHERE `id`='$id'");
+                }
+                ?><script>alert("成功");location.href="!mainadmin.php"</script><?php
+            }
+        ?>
     </body>
 </html>
