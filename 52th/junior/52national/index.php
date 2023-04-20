@@ -193,7 +193,7 @@
                                         ?>
                                         <td class="edit" rowspan="4">
                                             <form>
-                                                <input type="text" name="text" placeholder="留言序號" style="width: 75px;">
+                                                <input type="text" name="text" placeholder="留言序號" value="<?php echo($a[$i][1]) ?>" style="width: 75px;">
                                                 <button type="submit" name="edit" value="<?= $a[$i][1] ?>">編輯</button>
                                                 <button type="submit" name="del" value="<?= $a[$i][1] ?>">刪除</button>
                                             </form>

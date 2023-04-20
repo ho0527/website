@@ -1,3 +1,3 @@
 <?php
-    // echo();
+    echo(abs(1));
 ?>

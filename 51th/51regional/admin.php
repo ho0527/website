@@ -9,62 +9,97 @@
         <div class="navigationbar">
             <div class="navigationbartitle">手機問卷管理系統</div>
             <div class="navigationbarbuttondiv">
-                <input type="button" class="navigationbarbutton" id="editform" value="編輯問卷">
                 <input type="button" class="navigationbarbutton" id="newform" value="新增問卷">
                 <input type="submit" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
             </div>
         </div>
+        <table class="formtable">
+            <tr>
+                <td class="formtdtitle">標題</td>
+                <td class="formtdtitle">邀請碼</td>
+                <td class="formtdtitle">填寫份數</td>
+                <td class="formtdtitle">功能</td>
+            </tr>
+            <?php
+            include("link.php");
+            $row=fetchall(query($db,"SELECT*FROM `question`"));
+            for($i=0;$i<count($row);$i=$i+1){
+                ?>
+                <tr>
+                    <td class="formtd"><?php echo($row[$i][1]) ?></td>
+                    <td class="formtd"><?php echo($row[$i][6]) ?></td>
+                    <td class="formtd"><?php echo($row[$i][4]) ?></td>
+                    <td class="formtd">
+                        <?php
+                        if($row[$i][5]=="true"){
+                            ?>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="解鎖"><br>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" disabled><br>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" disabled><br>
+                            <?php
+                        }else{
+                            ?>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="鎖定"><br>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯"><br>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除"><br>
+                            <?php
+                        }
+                        ?>
+                        <input type="button" class="workbutton" onclick="location.href='?mod=results&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
+                        <input type="button" class="workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>
+                        <input type="button" class="workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>
+                        <input type="button" class="workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
         <div id="check">
             <div class="mask"></div>
             <div class="main">
                 <form>
                     問卷名稱: <input type="text" class="input" name="title" placeholder="問卷名稱"><br><br>
-                    問卷題數: <input type="text" class="input" name="num" placeholder="問卷題數"><br><br>
+                    問卷題數: <input type="text" class="input" name="count" placeholder="問卷題數"><br><br>
                     <input type="submit" class="button" name="clear" value="取消">
                     <input type="submit" class="button" name="submit" value="確定">
                 </form>
             </div>
         </div>
-        <div id="edit">
-            <div class="mask"></div>
-            <div class="main">
-                <form>
-                    問卷名稱: <input type="text" class="input" name="edittitle" placeholder="問卷名稱"><br>
-                    <input type="submit" class="button" name="clear" value="取消">
-                    <input type="submit" class="button" name="enter" value="確定">
-                </form>
-            </div>
-        </div>
         <?php
-            include("link.php");
             if(isset($_GET["submit"])){
                 $title=$_GET["title"];
-                $num=$_GET["num"];
-                $row=fetch(query($db,"SELECT*FROM `form` WHERE `title`='$title'"));
+                $count=$_GET["count"];
+                $row=fetch(query($db,"SELECT*FROM `question` WHERE `title`='$title'"));
                 if($title==""){
                     ?><script>alert("請輸入問卷標題");location.href="admin.php"</script><?php
                 }elseif($row){
                     ?><script>alert("問卷已存在");location.href="admin.php"</script><?php
-                }elseif(preg_match("/^[0-9]+$/",$num)){
-                    query($db,"INSERT INTO `form`(`title`, `num`) VALUES ('$title','$num')");
+                }elseif(preg_match("/^[0-9]+$/",$count)){
+                    query($db,"INSERT INTO `question`(`title`,`questioncount`) VALUES ('$title','$count')");
                     $_SESSION["title"]=$title;
-                    $_SESSION["num"]=$num;
+                    $_SESSION["count"]=$count;
                     ?><script>alert("登入成功");location.href="form.php"</script><?php
                 }else{
                     ?><script>alert("問卷題數請輸入數字");location.href="admin.php"</script><?php
                 }
             }
-            if(isset($_GET["enter"])){
-                $title=$_GET["edittitle"];
-                $row=fetch(query($db,"SELECT*FROM `form` WHERE `title`='$title'"));
-                if($title==""){
-                    ?><script>alert("請輸入問卷標題");location.href="admin.php"</script><?php
-                }elseif($row){
-                    $_SESSION["title"]=$title;
-                    $_SESSION["num"]=$row[2];
-                    ?><script>alert("登入成功");location.href="form.php"</script><?php
-                }else{
-                    ?><script>alert("查無此問卷");location.href="admin.php"</script><?php
+            if(isset($_GET["mod"])){
+                if($_GET["mod"]=="lock"){
+                    $id=$_GET["id"];
+                    $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
+                    if($row[5]=="true"){
+                        $row=query($db,"UPDATE `question` SET `lock`='false' WHERE `id`='$id'");
+                    }else{
+                        $row=query($db,"UPDATE `question` SET `lock`='true' WHERE `id`='$id'");
+                    }
+                    ?><script>location.href="admin.php"</script><?php
+                }elseif($_GET["mod"]=="edit"){
+                    $id=$_GET["id"];
+                    $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
+                    $_SESSION["id"]=$row[0];
+                    $_SESSION["count"]=$row[2];
+                    ?><script>location.href="form.php"</script><?php
                 }
             }
             if(isset($_GET["clear"])){

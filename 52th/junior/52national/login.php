@@ -43,7 +43,7 @@
                                         <?php
                                             if($a[$i][9]!=""){
                                                 ?>
-                                                <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" alt="" width="75px"></td>
+                                                <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="75px"></td>
                                                 <?php
                                             }else{
                                                 ?>

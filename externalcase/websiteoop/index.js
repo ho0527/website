@@ -1,11 +1,11 @@
 let tool={
-    name:["checkbox","button","submit","h1","h2","h3","h4","h5","h6","hr","br"],
-    src:["checkbox","button","button","text","text","text","text","text","text","br","hr"],
-    tag:["input","input","input","h1","h2","h3","h4","h5","h6","hr","br"],
-    class:["checkbox","button","button","h1","h2","h3","h4","h5","h6","hr",""],
-    id:["input","input","input","h1","h2","h3","h4","h5","h6","hr","br"],
-    value:["","這是一個按鈕","送出","測試文本","測試文本","測試文本","測試文本","測試文本","測試文本","",""],
-    ps:["inputtag","inputtag","inputtag","","","","","","","soletag","soletag"],
+    name:["inputbox","checkbox","button","submit","p","h1","h2","h3","h4","h5","h6","br","hr"],
+    src:["inputbox","checkbox","button","button","p","text","text","text","text","text","text","br","hr"],
+    tag:["input","input","input","input","p","h1","h2","h3","h4","h5","h6","br","hr"],
+    class:["input","checkbox","button","button","p","h1","h2","h3","h4","h5","h6","","hr"],
+    id:["input","input","input","input","p","h1","h2","h3","h4","h5","h6","br","hr"],
+    value:["這是一個文字","","這是一個按鈕","送出","測試文本","測試文本","測試文本","測試文本","測試文本","測試文本","測試文本","",""],
+    ps:["inputtag","inputtag","inputtag","inputtag","","","","","","","","soletag","soletag"],
 }
 let toolid
 let toolindex
@@ -68,7 +68,7 @@ window.onload=function(){
             if(document.getElementById("oopultext").style.display=="none"){
                 document.getElementById("oopultext").style.display="block"
             }else{
-                document.getElementById("ultext").style.display="none"
+                document.getElementById("oopultext").style.display="none"
             }
         }
         document.getElementById("oopulanthortext").onclick=function(){
@@ -84,6 +84,7 @@ window.onload=function(){
             document.querySelectorAll(".toolitem").forEach(function(event){
                 event.addEventListener("dragstart",function(){
                     toolid=event.id
+                    console.log("toolid="+toolid)
                     for(let i=0;i<toollength;i=i+1){
                         if(tool.name[i]==toolid){
                             toolindex=i

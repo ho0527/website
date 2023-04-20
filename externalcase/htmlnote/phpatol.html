@@ -31,7 +31,7 @@
             <tr>
                 <td class="command">abs</td>
                 <td class="example">
-                    abs(-1); // -> 1
+                    echo(abs(-1)); // -> 1
                 </td>
                 <td class="effect">取絕對值</td>
                 <td class="otheruse"></td>
@@ -40,7 +40,7 @@
             <tr>
                 <td class="command">acos</td>
                 <td class="example">
-                    acos(1/2); // -> 1.0471975511966
+                    echo(acos(1/2)); // -> 1.0471975511966
                 </td>
                 <td class="effect">三角函數csc</td>
                 <td class="otheruse"></td>
@@ -49,14 +49,16 @@
             <tr>
                 <td class="command">acosh</td>
                 <td class="example">
+                    echo(acosh(1)); // -> 0
                 </td>
-                <td class="effect">反雙曲餘弦</td>
+                <td class="effect">反cos</td>
                 <td class="otheruse"></td>
                 <td class="ps"></td>
             </tr>
             <tr>
                 <td class="command">addcslashes</td>
                 <td class="example">
+                    echo(addcslashes("Hello World!","W"));<br> // ->Hello \World!
                 </td>
                 <td class="effect">以C語言風格使用反斜线轉義字符串中的字符</td>
                 <td class="otheruse"></td>

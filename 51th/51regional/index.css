@@ -265,7 +265,6 @@ table{
     top: 5px;
     left: 80px;
     width: 83%;
-    transform: scale(1.2);
 }
 
 .formdiv{
@@ -302,9 +301,10 @@ table{
 }
 
 .formtext{
-    border-radius: 25px;
+    border-radius: 5px;
     width: 195px;
     height: 20px;
+    font-size: 15px;
     border: 1px black solid;
     background-color: white;
 }
@@ -433,11 +433,46 @@ table{
     height: 150px;
 }
 
-
 .formcenter{
     position: absolute;
     top: 50%;
     left: 50%;
     transform:  translate(-50%, -50%);
     width: 100%;
+}
+
+.formtable{
+    margin-top: 120px;
+}
+
+.formtdtitle{
+    border-bottom: 1px white solid;
+    width: 150px;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.formtd{
+    border-bottom: 1px white solid;
+    width: 150px;
+    height: 300px;
+    padding: 15px;
+    font-size: 20px;
+    overflow-y: auto;
+}
+
+.workbutton{
+    border: 1px black solid;
+    padding: 5px;
+    width: 100px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.workbutton:hover{
+    background: gray;
+    color: white;
 }
