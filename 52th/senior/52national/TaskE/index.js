@@ -311,7 +311,7 @@ editstu.onclick=function(){
             alert("請輸入姓名!")
         }else{
             let request=objectStore.put(student)
-            alert("註冊成功")
+            alert("新增成功")
         }
     }
 }
