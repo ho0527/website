@@ -26,13 +26,14 @@ table{
 
 .main{
     border: 1px white solid;
+    background: rgb(33, 42, 54);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 30px;
     font-weight: bold;
-    padding: 20px;
+    padding: 40px 20px;
     border-radius: 5px;
 }
 
@@ -191,8 +192,8 @@ table{
 }
 
 .div{
-    display: flex;
-    justify-content: center;
+    position: relative;
+    top: 110px;
 }
 
 .select{
@@ -328,13 +329,14 @@ table{
 }
 
 
-.mask {
+.mask{
     position: absolute;/* 絕對定位 */
     top: 0px;/* 定位 */
     left: 0px;
     bottom: 0px;
     right: 0px;
-    background-color: rgba(100, 100, 100, 0.25);/* 背景顏色 */
+    background: rgb(33, 42, 54, 0.8);
+    z-index: 999;
 }
 
 .buttonbar{
@@ -408,20 +410,24 @@ table{
 .yesnodiv{
     background-color: rgb(133, 133, 133);
     height: 100px;
+    padding: 10px;
 }
 
 .singlediv{
     background-color: rgb(133, 133, 133);
     height: 100px;
+    padding: 10px;
 }
 
 .forminputtext{
     width: 95px;
+    padding: 10px;
 }
 
 .multidiv{
     background-color: rgb(133, 133, 133);
     height: 150px;
+    padding: 10px;
 }
 
 .forminputlongtext{
@@ -430,7 +436,8 @@ table{
 
 .questiondiv{
     background-color: rgb(133, 133, 133);
-    height: 150px;
+    height: 200px;
+    padding: 10px;
 }
 
 .formcenter{
@@ -475,4 +482,14 @@ table{
 .workbutton:hover{
     background: gray;
     color: white;
+}
+
+.check{
+    display: none;
+}
+
+.warning{
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
 }

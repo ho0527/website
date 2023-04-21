@@ -2,26 +2,28 @@
     $memoryBefore=memory_get_usage();
     echo("p12\n");
 
-    function bruh($ans=[],$numi=[]){
-        global $temp;
-        if(count($ans)==0){
-            $temp[]=implode('',$numi);
+    function permutation($x){
+        $str=strval($x);
+        $result=[];
+        $stack=[["",$str]];
+        while(!empty($stack)){
+            list($prefix,$suffix)=array_pop($stack);
+            $len=strlen($suffix);
+            if($len==1){
+                $result[]=$prefix.$suffix;
+            }else{
+                for($i=0;$i<$len;$i++){
+                    $first=$suffix[$i];
+                    $rest=substr($suffix,0,$i).substr($suffix,$i+1);
+                    $stack[]=[$prefix.$first,$rest];
+                }
+            }
         }
-        foreach($ans as $k => $v){
-            $new_data=$ans;
-            $new_ar=$numi;
-            array_splice($new_data,$k,1);
-            $new_ar[]=$v;
-            bruh($new_data,$new_ar);
+        $result2=[];
+        foreach($result as $perm){
+            $result2[]=$perm;
         }
-    }
-
-    function bla($ans,$value){
-        sort($ans);
-        $numi=array_unique($ans);
-        $numi=array_values($numi);
-        $index=array_search($value,$numi);
-        return $numi[($index+1)%count($numi)];
+        return $result2;
     }
 
     $m=trim(fgets(STDIN));
@@ -33,16 +35,28 @@
             if(1<=$n&&$n<=100){
                 $num=explode(" ",trim(fgets(STDIN)));
                 $numi=[];
+                $str="";
                 for($j=0;$j<$n;$j=$j+1){
                     if(1<=$num[$j]&&$num[$j]<=9){
-                        $numi[]=$num[$j];
+                        $str=$str.$num[$j];
                     }else{
                         $ans[]="輸入未符合要求(num[i])";
+                        break;
                     }
                 }
-                $temp=[];
-                bruh($numi);
-                $ans[]=bla($temp,implode("",$num));
+                $result=permutation($str);
+                rsort($result);
+                if($result[0]==$str){
+                    $ans[]=$result[count($result)-1];
+                }else{
+                    $key=0;
+                    for($k=0;$k<count($result);$k=$k+1){
+                        if($result[$k]==$str){
+                            $key=$k;
+                        }
+                    }
+                    $ans[]=$result[$key-1];
+                }
             }else{
                 $ans[]="輸入未符合要求(n)";
             }

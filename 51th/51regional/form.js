@@ -2,23 +2,21 @@ let none=document.querySelectorAll(".none")
 let yesno=document.querySelectorAll(".yesno")
 let single=document.querySelectorAll(".single")
 let multi=document.querySelectorAll(".multi")
-let question=document.querySelectorAll(".question")
-let all=[none,yesno,single,multi,question]
+let qa=document.querySelectorAll(".qa")
+let all=[none,yesno,single,multi,qa]
 
 all.forEach(function(event){
     event.forEach(function(event){
         event.onclick=function onchange(){
             let id=this.id
             let data=id.split(" ")
-            console.log("data="+data)
-            console.log("output"+data[1])
             output=document.getElementById("output"+data[1])
             if(data[0]=="yesno"){
                 output.innerHTML=`
                     <div class="yesnodiv">
                         <div class="formcenter">
                             必填<input type="checkbox" name="required${data[1]}"><br>
-                            題目說明:<input type="text" class="directions"><br>
+                            題目說明:<input type="text" class="directions" name="direction${data[1]}"><br>
                             是<input type="radio" name="yesno" value="yes">
                             否<input type="radio" name="yesno" value="no">
                         </div>
@@ -62,7 +60,7 @@ all.forEach(function(event){
                             <br>
                             必填<input type="checkbox" name="required${data[1]}"><br>
                             題目說明:<input type="text" class="directions"><br><br>
-                            <textarea rows="5" cols="20" placeholder="問答題"></textarea>
+                            <textarea cols="30" rows="5" placeholder="問答題"></textarea>
                         </div>
                     </div>
                 `

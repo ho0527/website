@@ -16,9 +16,9 @@ function random(div, result){
 }
 
 function change(div, result){
-    if(result == "X"){
+    if(result=="X"){
         result="Y"
-    }else if(result == "Y"){
+    }else if(result=="Y"){
         result="Z"
     }else{
         result="X"
@@ -43,7 +43,6 @@ verifydivc.addEventListener("click",function(){
 
 function verifysubmit(){
     if((verify1==verify2)&&(verify1==verify3)){
-        alert("驗證碼輸入成功!")
         location.href="admin.php"
     }else{
         alert("驗證碼輸入失敗!")

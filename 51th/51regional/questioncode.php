@@ -11,24 +11,22 @@
             $id=$_SESSION["id"];
             $count=$_SESSION["count"];
             $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
-        ?>
+            ?>
+        <div class="div">
+            <div class="formtitle">編輯問卷</div><br>
+        </div>
         <form method="POST">
-            <div class="navigationbar">
-                <div class="navigationbartitle">網路問卷管理系統-編輯問卷</div><br>
-                <div class="navigationbarbuttondiv">
-                    id: <input type="text" class="formtext" name="id" value="<?php echo($row[0]) ?>" style="width:50px" readonly>
-                    標題: <input type="text" class="formtext" name="title" value="<?php echo($row[1]) ?>" style="width:120px">
-                    總數: <input type="text" class="formtext" name="count" value="<?php echo($count) ?>" style="width:35px" readonly>
-                    最大總數: <input type="text" class="formtext" name="max" value="<?php echo($row[7]) ?>" style="width:50px">
-                    <input type="button" class="button" onclick="location.href='questioncode.php'" value="問卷邀請碼">
-                    <input type="submit" class="button" name="lestqust" value="減少">
-                    <input type="submit" class="button" name="newqust" value="新增">
-                    <input type="submit" class="button" name="cancel" value="取消">
-                    <input type="submit" class="button" name="save" value="儲存">
-                    <input type="submit" class="button" name="logout" value="登出">
-                </div>
-            </div>
-            <div class="div">
+            id: <input type="text" class="formtext" name="id" value="<?php echo($row[0]) ?>" style="width:50px" readonly>
+            標題: <input type="text" class="formtext" name="title" value="<?php echo($row[1]) ?>" style="width:120px">
+            總數: <input type="text" class="formtext" name="count" value="<?php echo($count) ?>" style="width:35px" readonly>
+            最大總數: <input type="text" class="formtext" name="count" value="<?php echo($row[7]) ?>" style="width:35px">
+            <input type="button" class="button" name="questioncode" value="問卷邀請碼">
+            <input type="submit" class="button" name="newqust" value="新增">
+            <input type="submit" class="button" name="lestqust" value="減少">
+            <input type="submit" class="button" name="save" value="儲存">
+            <input type="submit" class="button" name="cancel" value="取消">
+            <input type="submit" class="button" name="logout" value="登出">
+            <div class="">
                 <?php
                     $questionrow=fetchall(query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'"));
                     for($i=0;$i<$count;$i=$i+1){
@@ -197,8 +195,7 @@
                     if(isset($_POST["save"])){
                         $title=$_POST["title"];
                         $count=$_POST["count"];
-                        $max=$_POST["max"];
-                        query($db,"UPDATE `question` SET `title`='$title',`questioncount`='$count',`maxlen`='$max' WHERE `id`='$id'");
+                        query($db,"UPDATE `question` SET `title`='$title',`questioncount`='$count' WHERE `id`='$id'");
                         $row=fetchall(query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'"));
                         if($count>count($row)){
                             $m=$count-count($row);

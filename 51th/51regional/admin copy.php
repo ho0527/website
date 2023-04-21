@@ -99,7 +99,7 @@
                     $id=$_GET["id"];
                     $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
                     if($row[5]=="true"){
-                        ?><script>alert("[ERROR] PERMISSION ERROR");location.href="admin.php"</script><?php
+                        ?><script>alert("[ERROR] 幹再亂改阿");location.href="admin.php"</script><?php
                     }else{
                         $_SESSION["id"]=$row[0];
                         $_SESSION["count"]=$row[2];
@@ -109,7 +109,7 @@
                     $id=$_GET["id"];
                     $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
                     if($row[5]=="true"){
-                        ?><script>alert("[ERROR] PERMISSION ERROR");location.href="admin.php"</script><?php
+                        ?><script>alert("[ERROR] 幹再亂改阿");location.href="admin.php"</script><?php
                     }else{
                         ?><script>
                             if(!window.confirm("Are you sure you want to delete this?")){
