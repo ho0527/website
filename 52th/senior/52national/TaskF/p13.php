@@ -8,7 +8,7 @@
         $str=trim(fgets(STDIN));
         if(strlen($str)<=65536){
             for($j=0;$j<strlen($str);$j=$j+1){
-                $hashvalue=(31*$hashvalue+ord($str[$j]))%(2**32);
+                $hashvalue=($hashvalue*31+ord($str[$j]))%(2**32);
                 if($hashvalue>((2**31)-1)){
                     $hashvalue=$hashvalue-2**32;
                 }elseif($hashvalue<(-2**31)){
@@ -27,4 +27,3 @@
     $memoryAfter=memory_get_usage();
     $memoryDifference=$memoryAfter-$memoryBefore;
     echo("memory used: ".($memoryDifference/1048576)."MB");
-?>

@@ -22,7 +22,8 @@
                         <input type="submit" class="button" name="login" value="登入">
                     </form><br>
                     <form method="POST">
-                        填寫問卷網址:<input type="text" class="input" name="text" placeholder="請輸入網址">
+                        填寫問卷網址:<br><br>
+                        <input type="text" class="input" name="text" placeholder="請輸入網址">
                         <input type="submit" class="button" name="submit" value="送出">
                     </form>
                 </div>
@@ -61,6 +62,10 @@
                 }else{
                     ?><script>alert("帳號有誤");location.href="login.php"</script><?php
                 }
+            }
+
+            if(isset($_POST["submit"])){
+                $_SESSION["code"]=$_POST["text"];
             }
         ?>
     </body>

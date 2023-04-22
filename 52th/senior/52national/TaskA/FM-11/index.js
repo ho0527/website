@@ -20,6 +20,13 @@ image.addEventListener("mousemove",function(event){
     document.getElementById("colorshow").style.backgroundColor=rgb
     // 放大鏡功能
     let magnifier=document.getElementById("canva")
+    let x=0
+    let y=0
+    for(let i=0;i<x;i=i+1){
+        for(let j=0;j<y;j=j+1){
+    
+        }
+    }
     // let mctx=magnifier.getContext("2d")
     magnifier.style.left=event.offsetX+"px"
     magnifier.style.top=event.offsetY+"px"

@@ -25,10 +25,18 @@
             include("link.php");
             $row=fetchall(query($db,"SELECT*FROM `question` WHERE `ps`!='del'"));
             for($i=0;$i<count($row);$i=$i+1){
+                $id=$row[$i][0];
+                $coderow=fetchall(query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'"));
                 ?>
                 <tr>
                     <td class="formtd"><?php echo($row[$i][1]) ?></td>
-                    <td class="formtd"><?php echo($row[$i][6]) ?></td>
+                    <td class="formtd">
+                    <?php
+                        for($j=0;$j<count($coderow);$j=$j+1){
+                            echo($coderow[$j][3]);
+                        }
+                    ?>
+                    </td>
                     <td class="formtd"><?php echo($row[$i][4]) ?></td>
                     <td class="formtd">
                         <?php
@@ -112,14 +120,11 @@
                         ?><script>alert("[ERROR] PERMISSION ERROR");location.href="admin.php"</script><?php
                     }else{
                         ?><script>
-                            if(!window.confirm("Are you sure you want to delete this?")){
-                                <?php
-                                query($db,"UPDATE `question` SET `ps`='del' WHERE `id`='$id'");
-                                ?>
+                            if(confirm("Are you sure you want to delete this?")){
+                                location.href="link.php?formdel=&id=<?php echo($id) ?>"
                             }else{
-                                return false
+                                location.href="admin.php"
                             }
-                            location.href="admin.php"
                         </script><?php
                     }
                 }

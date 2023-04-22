@@ -19,13 +19,13 @@
                     id: <input type="text" class="formtext" name="id" value="<?php echo($row[0]) ?>" style="width:50px" readonly>
                     標題: <input type="text" class="formtext" name="title" value="<?php echo($row[1]) ?>" style="width:120px">
                     總數: <input type="text" class="formtext" name="count" value="<?php echo($count) ?>" style="width:35px" readonly>
-                    最大總數: <input type="text" class="formtext" name="max" value="<?php echo($row[7]) ?>" style="width:50px">
+                    最大總數: <input type="text" class="formtext" name="max" value="<?php echo($row[6]) ?>" style="width:50px">
                     <input type="button" class="button" onclick="location.href='questioncode.php'" value="問卷邀請碼">
                     <input type="submit" class="button" name="lestqust" value="減少">
                     <input type="submit" class="button" name="newqust" value="新增">
                     <input type="submit" class="button" name="cancel" value="取消">
                     <input type="submit" class="button" name="save" value="儲存">
-                    <input type="submit" class="button" name="logout" value="登出">
+                    <input type="button" class="button" onclick="location.href='link.php?logout='" value="登出">
                 </div>
             </div>
             <div class="div">

@@ -5,8 +5,6 @@ body{
     padding: 0px;
     margin: 0px;
     text-align: center;
-    width: 1920px;
-    height: 1080px;
 }
 
 h2{
@@ -163,10 +161,10 @@ table{
 .box{
     border: 1px white solid;
     padding: 10px;
-    width: 20%;
-    height: 400px;
+    width: 23%;
+    height: 425px;
     display: inline-block;
-    margin-left: 175px;
+    margin-left: 105px;
 }
 
 .posttitle{
@@ -189,7 +187,8 @@ table{
 
 .hotimg{
     width: 95%;
-    height: 85%;
+    height: 65%;
+    margin: 20px 0px;
 }
 
 .starinput{
@@ -246,54 +245,63 @@ table{
     background-color: rgb(145, 145, 145);
 }
 
-
-.carousel{
+.carouselmain{
     position: relative;
+    top: 50px;
+    margin-bottom: 20px;
 }
 
-.carousel-inner{
+.carousel{
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 
-.carousel-item{
+.item{
     position: relative;
+    left: 500px;
     display: none;
-    width: 100%;
+    width: 100px;
 }
 
-.carousel-item img{
-    width: 100%;
+.carouselimage{
+    width: 1000px;
+    height: 500px;
 }
 
-.carousel-caption{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
+.carouselbutton{
+    border: 1px black solid;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.carouselbutton:hover{
+    background: gray;
     color: white;
-    padding: 20px;
 }
 
-.carousel-control-prev,
-.carousel-control-next{
+.carouseltitle{
     position: absolute;
-    /* top: 50%; */
-    top: 450px;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: transparent;
-    border: 0;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
+    top: -20px;
+    left: 0px;
+    width: 1000px;
+    height: 30px;
+    text-align: center;
+    background-color: rgba(39, 39, 39, 0.464);
 }
 
-.carousel-control-prev:hover,
-.carousel-control-next:hover{
-    color: black;
+.carouseldepiction{
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    height: 30px;
+    width: 1000px;
+    text-align: center;
+    background-color: rgba(39, 39, 39, 0.464);
 }
 
 .breadcrumbs{
@@ -303,6 +311,15 @@ table{
     transform: scale(1.5);
 }
 
+.a{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.a:hover{
+    text-decoration: underline;
+}
 
 /* 電腦版排版 */
 /* @media only screen and (min-width: 1920px){

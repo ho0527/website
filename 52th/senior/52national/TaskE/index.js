@@ -25,7 +25,8 @@ function openstudentdb(){
             studentdb=event.target.result
         }
 
-        dbrequest.dbonupgradeneeded=function(event){
+        dbrequest.onupgradeneeded =function(event){
+            console.log("onupgradeneeded");
             studentdb=event.target.result
             let objectstore=studentdb.createObjectStore("student",{ keyPath:"id" })
             objectstore.createIndex("head","head",{ unique:false })
@@ -35,7 +36,6 @@ function openstudentdb(){
             objectstore.createIndex("phone","phone",{ unique:false })
             objectstore.createIndex("address","address",{ unique:false })
             objectstore.createIndex("class","class",{ unique:false })
-            console.log("objectstore="+objectstore)
         }
     })
 }
@@ -53,19 +53,20 @@ function openclassdb(){
             classdb=event.target.result
         }
 
-        dbrequest.dbonupgradeneeded=function(event){
+        dbrequest.onupgradeneeded=function(event){
             classdb=event.target.result
             let objectstore=classdb.createObjectStore("class",{ keyPath:"id" })
             objectstore.createIndex("name","name",{ unique:false })
             objectstore.createIndex("count","count",{ unique:false })
-            console.log("objectstore="+objectstore)
         }
     })
 }
 
 function dbinsert(db,dbname,insertdata){ // 資料庫名 要輸入的值(使用json)
-    let transaction=db.transaction([dbname],"readwrite")
-    let objectstore=transaction.objectStore(dbname)
+    let objectstore=db
+        .transaction(dbname,"readwrite")
+        .objectStore(dbname)
+    console.log(insertdata)
     let request=objectstore.add(insertdata)
 
     request.onsuccess=function(){
@@ -78,8 +79,9 @@ function dbinsert(db,dbname,insertdata){ // 資料庫名 要輸入的值(使用j
 }
 
 function dbupdate(db,dbname,updatefield,updatedata,updatevalue){ // 資料庫名 要改的欄位(int) 要更新的欄位 改成的值
-    let transaction=db.transaction([dbname],"readwrite")
-    let objectstore=transaction.objectStore(dbname)
+    let objectstore=db
+        .transaction(dbname,"readwrite")
+        .objectStore(dbname)
     let request=objectstore.get(updatefield)
 
     request.onsuccess=function(event){
@@ -97,8 +99,9 @@ function dbupdate(db,dbname,updatefield,updatedata,updatevalue){ // 資料庫名
 }
 
 function dbdelete(db,dbname,deletedata){ // 資料庫名 刪除的欄位(int)
-    let transaction=db.transaction([dbname],"readwrite")
-    let objectstore=transaction.objectStore(dbname)
+    let objectstore=db
+        .transaction(dbname,"readwrite")
+        .objectStore(dbname)
     let request=objectstore.delete(deletedata)
 
     request.onsuccess=function(){
@@ -111,8 +114,9 @@ function dbdelete(db,dbname,deletedata){ // 資料庫名 刪除的欄位(int)
 }
 
 function dbselect(db,dbname,selectfield,selectvalue,callback){ // 資料庫名 要查詢的欄位(int) 要找的值 回傳函式
-    let transaction=db.transaction([dbname],"readwrite")
-    let objectstore=transaction.objectStore(dbname)
+    let objectstore=db
+        .transaction(dbname,"readwrite")
+        .objectStore(dbname)
     let index=objectstore.index(selectfield)
     let request=index.get(selectfield)
 
@@ -176,8 +180,8 @@ window.onload=function(){
     openstudentdb()
     openclassdb()
     setTimeout(function(){
-        console.log(classdb)
         console.log(studentdb)
+        console.log(classdb)
     },50)
 }
 
@@ -346,14 +350,11 @@ addclass.addEventListener("click",function(){
             `
             return false
         }else{
-            console.log(document.getElementById("classname").value)
             try{
-                opendb("class").then(function(){
-                    let classdata={
-                        name:document.getElementById("classname").value,
-                        count:0
-                    }
-                    dbinsert(classdb,"class",classdata)
+                dbinsert(classdb,"class",{
+                    id:7,
+                    name:document.getElementById("classname").value,
+                    count:0
                 })
                 return true
             }catch(event){

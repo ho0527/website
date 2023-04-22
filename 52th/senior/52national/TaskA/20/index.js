@@ -139,6 +139,7 @@ function resettimer(){
     seg0(2)
     seg0(3)
     seg0(4)
+    clearInterval(timerInterval)//暫停執行
 }
 
 resettimer()
