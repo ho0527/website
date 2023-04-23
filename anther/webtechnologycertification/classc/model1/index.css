@@ -1,0 +1,235 @@
+body{
+    border: 1px black solid;
+    position: relative;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%,-0%);
+    width: 1024px;
+    height: 768px;
+    padding: 0px 10px;
+}
+
+.main{
+    position: relative;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%,-0%);
+    width: 1000px;
+    height: 768px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.top{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 65px;
+}
+
+.logo{
+    width: 994px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.marquee{
+    border: 1px black solid;
+    position: absolute;
+    right: 3px;
+    top: 67px;
+    width: 770px;
+    height: 29px;
+    font-family: "標楷體";
+    font-size: 24px;
+    color: #0000FF;
+    background: white;
+}
+
+.menu{
+    position: absolute;
+    left: 3px;
+    top: 67px;
+    width: 215px;
+    height: 650px;
+    font-family: "標楷體";
+    font-size: 24px;
+    font-weight: 500;
+    color: #FF00FF;
+    text-align: center;
+    background: white;
+}
+
+.menubutton{
+    width: 95%;
+    font-family: "標楷體";
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #000000;
+    background: url("material/menu1.png");
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    transition-duration: 0.5s;
+}
+
+.menubutton:hover{
+    background: url("material/menu2.png");
+}
+
+.update{
+    position: absolute;
+    left: 3px;
+    top: 720px;
+    width: 215px;
+    height: 25px;
+    font-family: "標楷體";
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+    background: white;
+}
+
+.context{
+    width: 770px;
+    height: 645px;
+    font-family: "標楷體";
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+    background: url("material/0101.jpg");
+}
+
+.contextmain{
+    position: absolute;
+    right: 3px;
+    top: 100px;
+    width: 770px;
+    height: 645px;
+}
+
+.contextpng{
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%,-0%);
+    width: 200px;
+}
+
+.maincontext{
+    position: absolute;
+    left: 50%;
+    top: 300px;
+    transform: translate(-50%,-0%);
+    width: 100%;
+    font-family: "標楷體";
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+    color: #0000FF;
+}
+
+.footer{
+    position: absolute;
+    left: 4px;
+    bottom: 0px;
+    width: 99%;
+    height: 20px;
+    font-family: "標楷體";
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+    background: white;
+}
+
+/* guitar */
+.guitarmain{
+    width: 100%;
+    height: 100%;
+    background: url("material/0101.jpg");
+    overflow-y: auto;
+}
+
+.guitartitle{
+    position: absolute;
+    top: 2px;
+    font-family: "標楷體";
+    font-size: 18px;
+    color: #FF0000;
+    text-align: center;
+    width: 100%;
+}
+
+.guitartable{
+    position: absolute;
+    top: 40px;
+    font-size: 13px;
+    width: 100%;
+}
+
+.guitartd{
+    position: relative;
+    width: 5000px;
+}
+
+.eventtable{
+    position: absolute;
+    top: 75px;
+    font-size: 13px;
+    width: 100%;
+}
+
+.guitarcontext{
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-family: "標楷體";
+    font-size: 16px;
+    color: #FF0000;
+    text-align: left;
+}
+
+.eventcontext{
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    font-family: "標楷體";
+    font-size: 16px;
+    color: #FF0000;
+    text-align: left;
+}
+
+.event1{
+    color: #800000;
+}
+
+.event2{
+    color: #0000FF;
+}
+
+.event3{
+    color: #FF0000;
+}
+
+.event4{
+    color: #00FF00;
+}
+
+.event5{
+    color: #000000;
+}
+
+.learningmain{
+    position: absolute;
+    top: 80px;
+    width: 30%;
+}
+
+/* ----------------------------------------------------------------------------- */
+.center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}

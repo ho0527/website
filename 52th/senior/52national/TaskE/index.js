@@ -205,10 +205,14 @@ allstu.addEventListener("click",function(){
 
 lessmoreclass.addEventListener("click",function(){
     if(lessmoreclass.innerHTML=="班級(顯示更多)"){
-        // allclass.innerHTML=`${allclass()}`
+        allclass.innerHTML=`
+            ${dbselect(classdb,"class","name","Value", function(result) {
+                console.log(result);
+            })}
+        `
         lessmoreclass.innerHTML=`班級(顯示更少)`
     }else{
-        // allclass.innerHTML=``
+        allclass.innerHTML=``
         lessmoreclass.innerHTML=`班級(顯示更多)`
     }
 })
@@ -352,7 +356,7 @@ addclass.addEventListener("click",function(){
         }else{
             try{
                 dbinsert(classdb,"class",{
-                    id:7,
+                    id:0,
                     name:document.getElementById("classname").value,
                     count:0
                 })
