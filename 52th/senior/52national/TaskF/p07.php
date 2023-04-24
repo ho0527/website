@@ -32,7 +32,7 @@
             $key=array_keys($array);
             for($i=0;$i<count($array);$i=$i+1){
                 if($array[$key[$i]]==$max){
-                    echo($key[$i]);
+                    echo($key[$i]."\n");
                 }
             }
         }

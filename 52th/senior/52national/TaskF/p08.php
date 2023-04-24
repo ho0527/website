@@ -7,14 +7,14 @@
         $ans[]=trim(fgets(STDIN));
     }
     for($i=0;$i<count($ans);$i=$i+1){
-        if((1<$num)&&($num<(2**63-1))){
+        if((1<$ans[$i])&&($ans[$i]<(2**63-1))){
             $all=0;
-            for($i=1;$i<$num;$i=$i+1){
-                if($num%$i==0){
-                    $all=$all+$i;
+            for($j=1;$j<$ans[$i];$j=$j+1){
+                if($ans[$i]%$j==0){
+                    $all=$all+$j;
                 }
             }
-            if($all==$i){
+            if($all==$ans[$i]){
                 echo("Y".PHP_EOL);
             }else{
                 echo("N".PHP_EOL);

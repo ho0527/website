@@ -28,11 +28,11 @@
                 $ans[]=$amount*$data[$from]["cash_buy"];
             }
         }else{
-            echo("至少要有個是TWD");
+            $ans[]="至少要有個是TWD";
         }
     }
     for($i=0;$i<count($ans);$i=$i+1){
-        echo("output".($i+1)."=>".(sprintf("%.5f",$ans[$i])."\n"));
+        echo(sprintf("%.5f",$ans[$i])."\n");
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

@@ -32,7 +32,7 @@
         }
     }
     for($i=0;$i<count($ans);$i=$i+1){
-        echo("output".($i+1)."=>".$ans[$i]."\n");
+        echo($ans[$i]."\n");
     }
     echo("\n");
     $memoryAfter=memory_get_usage();

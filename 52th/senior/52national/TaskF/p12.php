@@ -14,7 +14,7 @@
             }else{
                 for($i=0;$i<$len;$i++){
                     $first=$suffix[$i];
-                    $rest=substr($suffix,0,$i).substr($suffix,$i+1);
+                    $rest=substr($suffix,0,  $i).substr($suffix,$i+1);
                     $stack[]=[$prefix.$first,$rest];
                 }
             }

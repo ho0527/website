@@ -15,7 +15,7 @@ body{
     transform: translate(-50%,-0%);
     width: 1024px;
     height: 768px;
-    background-color: rgb(19, 24, 41);
+    background: rgb(19, 24, 41);
     overflow-y: auto;
 }
 
@@ -111,7 +111,7 @@ body{
 }
 
 .contextleft{
-    border: 1px black solid;
+    border: 1px #999999 solid;
     position: absolute;
     left: 50px;
     top: 50px;
@@ -120,33 +120,82 @@ body{
 }
 
 .contextright{
-    border: 1px black solid;
+    border: 1px #999999 solid;
     position: absolute;
     right: 50px;
     top: 50px;
     width: 590px;
     height: 460px;
+    background: #333333;
+}
+
+.contexttable{
+    width: 100%;
+    text-align: center;
+}
+
+.contexttitle{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.contextmaintopic{
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    background: #3399FF;
+    width: 75%;
+}
+
+.contextmaindate{
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    background: #3399FF;
+    width: 25%;
+}
+
+.contexttopic1{
+    font-size: 12px;
+    line-height: 2;
+    background: #FFFFCC;
+    width: 75%;
+}
+
+.contextdate1{
+    font-size: 12px;
+    line-height: 2;
+    background: #FFFFCC;
+    width: 25%;
+}
+
+.contexttopic2{
+    font-size: 12px;
+    line-height: 2;
+    background: #DDDDDD;
+    width: 75%;
+}
+
+.contextdate2{
+    font-size: 12px;
+    line-height: 2;
+    background: #DDDDDD;
+    width: 25%;
+}
+
+.mainpng{
+    width: 550px;
 }
 
 .contextpng{
-    position: absolute;
-    left: 50%;
-    top: 50px;
-    transform: translate(-50%,-0%);
-    width: 200px;
+    width: 100px;
+    cursor: pointer;
 }
 
-.maincontext{
-    position: absolute;
-    left: 50%;
-    top: 300px;
-    transform: translate(-50%,-0%);
-    width: 100%;
-    font-family: "標楷體";
-    font-size: 24px;
-    font-weight: bold;
-    font-style: italic;
-    color: #0000FF;
+.context2{
+    font-size: 14px;
+    color: #FFFF00;
 }
 
 .footer{

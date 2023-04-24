@@ -1,5 +1,6 @@
 <?php
     $memoryBefore=memory_get_usage();
+
     echo("p13\n");
     $n=(int)(fgets(STDIN));
     $ans=[];
@@ -24,6 +25,7 @@
         echo($ans[$i]."\n");
     }
     echo("\n");
+    
     $memoryAfter=memory_get_usage();
     $memoryDifference=$memoryAfter-$memoryBefore;
     echo("memory used: ".($memoryDifference/1048576)."MB");
