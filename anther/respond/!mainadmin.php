@@ -75,7 +75,7 @@
                 if($_GET["edit"]=="finish"){
                     query($db,"UPDATE `log` SET `finishtime`='$time' WHERE `id`='$id'");
                 }
-                ?><script>alert("成功");location.href="!mainadmin.php"</script><?php
+                ?><script>location.href="!mainadmin.php"</script><?php
             }
         ?>
     </body>
