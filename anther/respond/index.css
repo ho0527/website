@@ -51,8 +51,8 @@ table{
     transform: translate(-50%, -50%);
     font-size: 30px;
     font-weight: bold;
-    width: 85%;
-    height: 60%;
+    width: 90%;
+    height: 80%;
     padding: 20px;
     border-radius: 5px;
     overflow-y: auto;
@@ -191,7 +191,9 @@ table{
 .admintable{
     border-bottom: 1px white solid;
     width: 500px;
-    padding: 10px;
+    max-height: 200px;
+    padding: 15px;
+    overflow-y: auto;
 }
 
 .center{
