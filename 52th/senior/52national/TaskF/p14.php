@@ -14,21 +14,24 @@
                 $left=$left+1;
             }elseif($str[$j]==")"){
                 $right=$right+1;
+                if($right>$left){
+                    $right=-1;
+                    break;
+                }
             }elseif($str[$j]=="*"){
                 if($left>$right){
                     $right=$right+1;
                 }else{
-                    $left=$left+1;
                 }
             }else{
-                echo("內含無效字元");
+                $ans[]="內含無效字元";
                 break;
             }
         }
         if($left==$right){
             $ans[]="Y";
         }else{
-            $ans[]="N";
+            $ans[]="N"; 
         }
     }
     for($i=0;$i<count($ans);$i=$i+1){

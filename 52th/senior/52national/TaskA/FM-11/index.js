@@ -28,8 +28,8 @@ image.addEventListener("mousemove",function(event){
         }
     }
     // let mctx=magnifier.getContext("2d")
-    magnifier.style.left=event.offsetX+"px"
-    magnifier.style.top=event.offsetY+"px"
+    magnifier.style.left=(event.pageX+20)+"px"
+    magnifier.style.top=(event.pageY+20)+"px"
 })
 
 document.getElementById("reflashbutton").onclick=function(){
