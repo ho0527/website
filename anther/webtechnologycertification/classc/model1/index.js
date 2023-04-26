@@ -1,7 +1,3 @@
-setTimeout(function(){
-    location.reload()
-},1000);
-
 let split=location.href.split("=")
 let key=split[split.length-1]
 let ajax=new XMLHttpRequest()

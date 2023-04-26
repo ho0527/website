@@ -37,7 +37,7 @@
                                     <?php
                                     if($a[$i][9]!=""){
                                         ?>
-                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" alt="" width="100px"></td>
+                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="100px"></td>
                                         <?php
                                     }else{
                                         ?>
@@ -121,35 +121,24 @@
                                 }
                             }
                             if(count($team)==2&&$team[0]!=""){
-                                query("UPDATE `comp` SET `ingame`='yes' WHERE `team`='$i'");
                                 ?>
                                 <tr>
-                                    <td class="compplayerhead" name="playerhead<?= $team[0][0] ?>" rowspan="2"><img src="<?= $team[0][4] ?>" width="100px"></td>
-                                    <td class="compusername" name="username<?= $team[0][0] ?>" rowspan="2"><?= $team[0][1] ?></td>
-                                    <td class="compemail" name="email<?= $team[0][0] ?>"><?= $team[0][2] ?></td>
-                                    <td class="vs" rowspan="2">VS</td>
-                                    <td class="compplayerhead" name="playerhead<?= $team[1] ?>" rowspan="2"><img src="<?= $team[1][4] ?>" width="100px"></td>
-                                    <td class="compusername" name="username<?= $team[1] ?>" rowspan="2"><?= $team[1][1] ?></td>
-                                    <td class="compemail" name="email<?= $team[1] ?>"><?= $team[1][2] ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="compphone" name="phone<?= $team[0][0] ?>"><?= $team[0][3] ?></td>
-                                    <td class="compphone" name="phone<?= $team[1] ?>"><?= $team[1][3] ?></td>
+                                    <td class="compplayerhead" name="playerhead<?= $team[0][0] ?>"><img src="<?= $team[0][4] ?>" width="100px"></td>
+                                    <td class="compusername" name="username<?= $team[0][0] ?>"><?= $team[0][1] ?></td>
+                                    <td class="vs">VS</td>
+                                    <td class="compplayerhead" name="playerhead<?= $team[1] ?>"><img src="<?= $team[1][4] ?>" width="100px"></td>
+                                    <td class="compusername" name="username<?= $team[1] ?>"><?= $team[1][1] ?></td>
                                 </tr>
                                 <?php
                             }
                         }
-                        for($i=0;$i<$countcomp;$i=$i+1){
-                            $row=fetchall(query("SELECT*FROM `comp` WHERE `ingame`!='yes'"));
-                        }
+                        $row=fetchall(query("SELECT*FROM `comp` WHERE `team`=''"));
                         for($i=0;$i<count($row);$i=$i+1){
                             if($row){
                                 ?>
                                 <tr>
-                                    <td class="compplayerhead" name="playerhead<?= $row[$i][0] ?>" rowspan="2"><img src="<?= $row[$i][4] ?>" width="100px"></td>
-                                    <td class="compusername" name="username<?= $row[$i][0] ?>" rowspan="2"><?= $row[$i][1] ?></td>
-                                    <td class="compemail" name="email<?= $row[$i][0] ?>"><?= $row[$i][2] ?></td>
-                                    <td class="vs" rowspan="2">配對中</td>
+                                    <td class="compplayerhead" name="playerhead<?= $row[$i][0] ?>"><img src="<?= $row[$i][4] ?>" width="100px"></td>
+                                    <td class="vs">配對中</td>
                                 </tr>
                                 <tr>
                                     <td class="compphone" name="phone<?= $row[$i][0] ?>"><?= $row[$i][3] ?></td>
@@ -182,7 +171,7 @@
                                 <?php
                                     if($a[$i][9]!=""){
                                         ?>
-                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" alt="" width="100px"></td>
+                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="100px"></td>
                                         <?php
                                     }else{
                                         ?>
