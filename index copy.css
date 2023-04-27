@@ -4,6 +4,9 @@ body{
     color: rgb(255, 255, 255);
     user-select: none;
     word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
 }
 
 h2{
@@ -12,6 +15,7 @@ h2{
 
 hr{
     border: 1px white solid;
+    width: 100%;
     margin: 15px 0px;
 }
 

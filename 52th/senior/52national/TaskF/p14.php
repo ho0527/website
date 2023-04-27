@@ -1,43 +1,51 @@
 <?php
     $memoryBefore=memory_get_usage();
     echo("p14\n");
+
     $n=fgets(STDIN);
     $ans=[];
     for($i=0;$i<$n;$i=$i+1){
         $str=trim(fgets(STDIN));
         $len=strlen($str);
-        $left=0;
-        $right=0;
+        $left=[];
+        $star=[];
+        $false=[];
         for($j=0;$j<$len;$j=$j+1){
             if($str[$j]==" "){
             }elseif($str[$j]=="("){
-                $left=$left+1;
+                $left[]=$j;
             }elseif($str[$j]==")"){
-                $right=$right+1;
-                if($right>$left){
-                    $right=-1;
-                    break;
+                if(count($left)>=0){
+                    array_pop($left);
+                }else{
+                    $false=true;
                 }
             }elseif($str[$j]=="*"){
-                if($left>$right){
-                    $right=$right+1;
-                }else{
-                }
+                $star[]=$j;
             }else{
-                $ans[]="內含無效字元";
+                $false=true;
                 break;
             }
         }
-        if($left==$right){
+        while(count($left)>0&&count($star)>0){
+            if(array_slice($left,0,1)[0]<array_slice($star,0,1)[0]){
+                array_pop($left);
+                array_pop($star);
+            }else{
+                $false=true;
+            }
+        }
+        if(count($left)==0&&!$false){
             $ans[]="Y";
         }else{
-            $ans[]="N"; 
+            $ans[]="N";
         }
     }
     for($i=0;$i<count($ans);$i=$i+1){
         echo($ans[$i]."\n");
     }
     echo("\n");
+
     $memoryAfter=memory_get_usage();
     $memoryDifference=$memoryAfter-$memoryBefore;
     echo("memory used ".($memoryDifference/1048576)."MB");

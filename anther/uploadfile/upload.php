@@ -1,7 +1,7 @@
 <?php
     $rand=str_pad(rand(0,9999999999),10,"0",STR_PAD_LEFT);
     if(preg_match("/\\|\/|\?|\"|\<|\>|\|/",$_POST["foldername"])){
-        $folder="error".$rand;
+        $folder="fuckyou".$rand;
     }else{
         if($_POST["foldername"]!=""){
             $folder=$_POST["foldername"].$rand;

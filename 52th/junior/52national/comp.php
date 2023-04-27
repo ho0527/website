@@ -111,8 +111,10 @@
                     for($i=0;$i<count($result);$i=$i+1){
                         $fetch=$comp[$i][0];
                         $notingame=fetch(query("SELECT*FROM `comp` WHERE `id`='$fetch' AND `team`=''"));
-                        $temp=$result[$i];
-                        query("UPDATE `comp` SET `team`='$temp' WHERE `id`='$fetch'");
+                        if($notingame){
+                            $temp=$result[$i];
+                            query("UPDATE `comp` SET `team`='$temp' WHERE `id`='$fetch'");
+                        }
                     }
                     ?><script>alert("亂數成功!");location.href="comp.php"</script><?php
                 }

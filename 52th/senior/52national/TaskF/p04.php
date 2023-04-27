@@ -21,7 +21,7 @@
     }else{
         echo("N".PHP_EOL);
     }
-    
+
     $memoryAfter=memory_get_usage();
     $memoryDifference=$memoryAfter-$memoryBefore;
     echo("memory used ".($memoryDifference/1048576)."MB");
