@@ -86,6 +86,7 @@
                     $result=[];
                     while($totalcount<=$countcomp){
                         $ingame=fetchall(query("SELECT `team` FROM `comp` WHERE `team`!=''"));
+                        // array_rand($ingame,2);
                         $rand=rand(1,($countcomp/2));
                         $result[]=$rand;
                         $time=1;
