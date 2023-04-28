@@ -42,7 +42,7 @@ table{
 .navigationbar{
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     position: fixed;
-    top: 5px;
+    top: 0px;
     left: 0px;
     width: 100%;
     height: 100px;
@@ -80,8 +80,15 @@ table{
 }
 
 .mainbody{
-    position: relative;
-    top: 130px;
+    border: 1px black solid;
+    position: absolute;
+    top: 190px;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    width: 80%;
+    height: 70%;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .center{
@@ -171,15 +178,9 @@ table{
     transform: translate(-50%,-50%);
 }
 
-.productbar{
-    background-color: rgba(245, 245, 245, 0.6);
-    width: 100%;
-    height: 100px;
-}
-
 .productbardiv{
     position: relative;
-    left:10%;
+    left: 10%;
     width: 90%;
 }
 
@@ -375,7 +376,7 @@ product
 .productbar{
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     position: fixed;
-    top: 105px;
+    top: 103px;
     left: 0px;
     width: 100%;
     height: 65px;
@@ -417,10 +418,20 @@ product
 .coffeedata{
     width: 300px;
     height: 50px;
-    border: 1px black solid;
     background-color: aqua;
 }
 
+.coffeetable{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    width: 80%;
+    cursor: pointer;
+}
+
+.coffee{
+    border: 1px black solid;
+}
 
 .check{
     width: 150px;
@@ -504,8 +515,7 @@ verify
 
 .producttd{
     width: 180px;
-    height: 275px;
-    border: 1px black solid;
+    height: 125px;
     position: relative;
 }
 

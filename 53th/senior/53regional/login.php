@@ -10,7 +10,7 @@
         $password=$_SESSION["password"];
         if(!block($username)){
             if($row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"))){
-                if($row[3]==$password){
+                if($row[2]==$password){
                     $verifycode=str_split($_SESSION["verifycode"]);
                     if($_SESSION["key"]==0){ rsort($verifycode); }else{ sort($verifycode); }
                     if($verifycode==str_split($_GET["verifycode"])){

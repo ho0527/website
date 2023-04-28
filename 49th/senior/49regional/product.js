@@ -7,7 +7,7 @@ coffeetable.forEach(function(e){
         coffeetable.forEach(function(e){
             e.style.backgroundColor=""
         })
-        e.style.backgroundColor="rgb(255, 255, 159)"
+        e.style.backgroundColor="rgb(203, 203, 38)"
         val=e.id
     })
 })
