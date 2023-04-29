@@ -15,8 +15,7 @@
     }
     if(!empty($notingame)){
         $rand=array_rand($notingame,2);
-        print_r($rand[0]);
-        print_r($rand[1]);
+        print_r($rand);
     }
     print_r($range);
 ?>

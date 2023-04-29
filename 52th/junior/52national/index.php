@@ -26,6 +26,7 @@
                     <?php
                         include("link.php");
                         $a=fetchall(query("SELECT*FROM `message` WHERE `pin`='yes'"));
+                        //$a=query("SELECT*FROM `message` WHERE `pin`=?",["yes"]);
                         usort($a,function($a,$b){ return $a[8]<$b[8]; });
                         for($i=0;$i<count($a);$i=$i+1){
                             $id=$a[$i][0];

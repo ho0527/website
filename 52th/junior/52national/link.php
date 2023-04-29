@@ -9,12 +9,12 @@
         return $db->query($query);
     }
 
-    // function query($query,$data=[]){
-    //     global $db;
-    //     $prepare=$db->prepare($query);
-    //     $prepare->execute();
-    //     return $prepare->fetchAll();
-    // }
+    //function query($query,$data=[]){
+    //    global $db;
+    //    $prepare=$db->prepare($query);
+    //    $prepare->execute();
+    //    return $prepare->fetchAll();
+    //}
 
     function fetch($result){
         return $result->fetch();

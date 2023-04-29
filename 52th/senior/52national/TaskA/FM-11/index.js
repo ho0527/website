@@ -18,23 +18,23 @@ image.addEventListener("mousemove",function(event){
         RGB: ${rgb}
     `
     document.getElementById("colorshow").style.backgroundColor=rgb
+    
     // // 放大鏡功能
-
     let magnifier=document.getElementById("canva");
-    let mctx=magnifier.getContext("2d");
+    let mmagnifierctx=magnifier.getContext("2d");
     magnifier.width=100;
     magnifier.height=100;
-    mctx.drawImage(canvas,event.offsetX-100/7/2,event.offsetY-100/7/2,100/7,100/7,0,0,100,100)
-    mctx.strokeStyle="black";
-    mctx.lineWidth=1;
+    mmagnifierctx.drawImage(canvas,event.offsetX-100/7/2,event.offsetY-100/7/2,100/7,100/7,0,0,100,100)
+    mmagnifierctx.strokeStyle="black";
+    mmagnifierctx.lineWidth=1;
     for(let i=0;i<100;i=i+10){ //列
         for(let j=0;j<100;j=j+10){ //行
-            mctx.beginPath()
-            mctx.moveTo(i,j)
-            mctx.lineTo(i+10,j)
-            mctx.moveTo(i,j)
-            mctx.lineTo(i,j+10)
-            mctx.stroke()
+            mmagnifierctx.beginPath()
+            mmagnifierctx.moveTo(i,j)
+            mmagnifierctx.lineTo(i+10,j)
+            mmagnifierctx.moveTo(i,j)
+            mmagnifierctx.lineTo(i,j+10)
+            mmagnifierctx.stroke()
         }
     }
     magnifier.style.left=(event.pageX+20)+"px"

@@ -75,6 +75,10 @@ table{
     position: relative;
 }
 
+.image{
+    width: 100%;
+}
+
 .center{
     position: absolute;
     top: 50%;

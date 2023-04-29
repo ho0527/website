@@ -61,7 +61,7 @@ cropdownloadbutton.onclick=function(){
 	if(cropdownloadbutton.value=="crop"){
 		let canvas=document.createElement("canvas")
 		let image2=document.getElementById("image")
-		canvas.width=imagediv.offsetWidthB
+		canvas.width=imagediv.offsetWidth
 		canvas.height=imagediv.offsetHeight
 		// canvas.width=image2.naturalWidth
 		// canvas.height=image2.naturalHeight

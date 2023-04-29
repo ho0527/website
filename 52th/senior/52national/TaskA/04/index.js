@@ -1,15 +1,15 @@
 let imagecontainer=document.getElementById("imagecontainer")
-let canva=document.getElementById("mycanvas")
+let canva=document.getElementById("canva")
 let image=null
 let scale=1
 let rotate=0
-let altx=false
-let alty=false
+let ctx
 
 function drawimage(image){
-    canva.width=image.width*scale
-    canva.height=image.height*scale
-    canva.getContext("2d").drawImage(image,0,0,canva.width,canva.height)
+    canva.width=image.width
+    canva.height=image.height
+    ctx=canva.getContext("2d")
+    ctx.drawImage(image,0,0,canva.width,canva.height)
 }
 
 imagecontainer.addEventListener("dragover",function(event){
@@ -25,7 +25,10 @@ imagecontainer.addEventListener("drop",function(event){
             image=new Image()
             image.onload=function(){
                 imagecontainer.classList.add("is-drop")
-                drawimage(image)
+                canva.width=image.width
+                canva.height=image.height
+                ctx=canva.getContext("2d")
+                ctx.drawImage(image,0,0,canva.width,canva.height)
             }
             image.src=loadevent.target.result
         }
@@ -37,8 +40,8 @@ imagecontainer.addEventListener("drop",function(event){
 
 document.getElementById("plus").onclick=function(){
     if(image){
-        scale=scale+0.5
-        drawimage(image)
+        scale=scale*1.5
+        draw()
     }else{
         alert("請先上傳圖片!")
     }
@@ -46,9 +49,8 @@ document.getElementById("plus").onclick=function(){
 
 document.getElementById("minus").onclick=function(){
     if(image){
-        if(scale>0) scale=scale-0.5
-        else alert("scale 小於0")
-        drawimage(image)
+        scale=scale*0.5
+        draw()
     }else{
         alert("請先上傳圖片!")
     }
@@ -56,9 +58,8 @@ document.getElementById("minus").onclick=function(){
 
 document.getElementById("undo").onclick=function(){
     if(image){
-        rotate=rotate-90
-        canva.style.transform="rotate("+rotate+"deg)"
-        drawimage(image)
+        rotate=rotate - 90
+        draw()
     }else{
         alert("請先上傳圖片!")
     }
@@ -66,24 +67,19 @@ document.getElementById("undo").onclick=function(){
 
 document.getElementById("redo").onclick=function(){
     if(image){
-        rotate=rotate+90
-        canva.style.transform="rotate("+rotate+"deg)"
-        drawimage(image)
+        rotate=rotate + 90
+        draw()
     }else{
         alert("請先上傳圖片!")
     }
 }
 
+let scaleX=1 // -1 or 1
+let scaleY=1 // -1 or 1
 document.getElementById("alth").onclick=function(){
     if(image){
-        if(altx){
-            canva.style.transform="scaleX(1)"
-            altx=false
-        }else{
-            canva.style.transform="scaleX(-1)"
-            altx=true
-        }
-        drawimage(image);
+        scaleX=scaleX*-1
+        draw()
     }else{
         alert("請先上傳圖片!")
     }
@@ -91,17 +87,23 @@ document.getElementById("alth").onclick=function(){
 
 document.getElementById("altv").onclick=function(){
     if(image){
-        if(alty){
-            canva.style.transform="scaleY(1)"
-            alty=false
-        }else{
-            canva.style.transform="scaleY(-1)"
-            alty=true
-        }
-        drawimage(image);
+        scaleY=scaleY*-1
+        draw()
     }else{
         alert("請先上傳圖片!")
     }
+}
+
+function draw(){
+    ctx.clearRect(0,0,canva.width,canva.height)
+    ctx.save()
+    let imageWidth=scaleX*canva.width*scale
+    let imageHeight=scaleY*canva.height*scale
+    ctx.scale(scaleX,scaleY)
+    ctx.translate(canva.width/-2,canva.height/-2)
+    //ctx.rotate(rotate)
+    ctx.drawImage(image,0,0,imageWidth,imageHeight)
+    ctx.restore()
 }
 
 document.getElementById("trash").onclick=function(){
@@ -110,8 +112,10 @@ document.getElementById("trash").onclick=function(){
 
 document.getElementById("download").onclick=function(){
     if(image){
+        let canva=document.getElementById("canva")
         let alink=document.createElement("a")
         alink.href=canva.toDataURL("image/jpeg")
+        console.log("canva.toDataURL(\"image/jpeg\")=" + canva.toDataURL("image/jpeg"))
         alink.download="image.jpg"
         alink.click()
     }else{

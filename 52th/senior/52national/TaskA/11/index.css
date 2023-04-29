@@ -124,6 +124,16 @@ table{
     flex-wrap: wrap;
 }
 
+.table{
+    border-left: 1px white solid;
+    border-bottom: 1px white solid;
+    width: 90%;
+    height: 90%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,-0%);
+}
+
 .bar{
     margin: 10px;
     border: 1px solid black;
