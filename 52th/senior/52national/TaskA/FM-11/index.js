@@ -18,7 +18,7 @@ image.addEventListener("mousemove",function(event){
         RGB: ${rgb}
     `
     document.getElementById("colorshow").style.backgroundColor=rgb
-    
+
     // // 放大鏡功能
     let magnifier=document.getElementById("canva");
     let mmagnifierctx=magnifier.getContext("2d");

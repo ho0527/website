@@ -2,14 +2,21 @@ let imagecontainer=document.getElementById("imagecontainer")
 let canva=document.getElementById("canva")
 let image=null
 let scale=1
+let scaleX=1 // -1 or 1
+let scaleY=1 // -1 or 1
 let rotate=0
 let ctx
 
-function drawimage(image){
-    canva.width=image.width
-    canva.height=image.height
-    ctx=canva.getContext("2d")
-    ctx.drawImage(image,0,0,canva.width,canva.height)
+function draw(){
+    ctx.clearRect(0,0,canva.width,canva.height)
+    ctx.save()
+    let imageWidth=scaleX*canva.width*scale
+    let imageHeight=scaleY*canva.height*scale
+    ctx.scale(scaleX,scaleY)
+    // ctx.translate(canva.width/-2,canva.height/-2)
+    //ctx.rotate(rotate)
+    ctx.drawImage(image,0,0,imageWidth,imageHeight)
+    ctx.restore()
 }
 
 imagecontainer.addEventListener("dragover",function(event){
@@ -74,8 +81,6 @@ document.getElementById("redo").onclick=function(){
     }
 }
 
-let scaleX=1 // -1 or 1
-let scaleY=1 // -1 or 1
 document.getElementById("alth").onclick=function(){
     if(image){
         scaleX=scaleX*-1
@@ -94,18 +99,6 @@ document.getElementById("altv").onclick=function(){
     }
 }
 
-function draw(){
-    ctx.clearRect(0,0,canva.width,canva.height)
-    ctx.save()
-    let imageWidth=scaleX*canva.width*scale
-    let imageHeight=scaleY*canva.height*scale
-    ctx.scale(scaleX,scaleY)
-    ctx.translate(canva.width/-2,canva.height/-2)
-    //ctx.rotate(rotate)
-    ctx.drawImage(image,0,0,imageWidth,imageHeight)
-    ctx.restore()
-}
-
 document.getElementById("trash").onclick=function(){
     location.reload()
 }
@@ -114,9 +107,8 @@ document.getElementById("download").onclick=function(){
     if(image){
         let canva=document.getElementById("canva")
         let alink=document.createElement("a")
-        alink.href=canva.toDataURL("image/jpeg")
-        console.log("canva.toDataURL(\"image/jpeg\")=" + canva.toDataURL("image/jpeg"))
-        alink.download="image.jpg"
+        alink.href=canva.toDataURL("image/png")
+        alink.download="image.png"
         alink.click()
     }else{
         alert("請先上傳圖片!")

@@ -82,39 +82,34 @@
                 </div>
                 <?php
                 if(isset($_GET["submit"])){
-                    $totalcount=1;
-                    $result=[];
-                    while($totalcount<=$countcomp){
-                        $ingame=fetchall(query("SELECT `team` FROM `comp` WHERE `team`!=''"));
-                        // array_rand($ingame,2);
-                        $rand=rand(1,($countcomp/2));
-                        $result[]=$rand;
-                        $time=1;
-                        if(!empty($ingame)){
-                            for($i=0;$i<count($ingame);$i=$i+1){
-                                if($result==$ingame[$i]){
-                                    array_pop($result);
-                                    $totalcount=$totalcount-1;
-                                }
+                    $row=fetchall(query("SELECT*FROM `comp`"));
+                    $ingame=fetchall(query("SELECT*FROM `comp` WHERE `team`!=''"));
+                    $notingame=fetchall(query("SELECT*FROM `comp` WHERE `team`=''"));
+                    $count=(int)(count($row)/2);
+                    $range=range(1,$count);
+                    for($i=0;$i<$count;$i=$i+1){
+                        for($j=0;$j<count($ingame);$j=$j+1){
+                            if($range[$i]==$ingame[$j][5]){
+                                unset($range[$i]);
+                                break;
                             }
                         }
-                        for($i=0;$i<count($result)-1;$i=$i+1){
-                            if($result[$i]==$rand){
-                                $time=$time+1;
-                                if($time>2){
-                                    array_pop($result);
-                                    $totalcount=$totalcount-1;
-                                }
-                            }
-                        }
-                        $totalcount=$totalcount+1;
                     }
-                    for($i=0;$i<count($result);$i=$i+1){
-                        $fetch=$comp[$i][0];
-                        $notingame=fetch(query("SELECT*FROM `comp` WHERE `id`='$fetch' AND `team`=''"));
-                        if($notingame){
-                            $temp=$result[$i];
-                            query("UPDATE `comp` SET `team`='$temp' WHERE `id`='$fetch'");
+                    $range=array_values($range);
+                    $notingameid=[];
+                    for($i=0;$i<count($notingame);$i=$i+1){
+                        $notingameid[]=$notingame[$i][0];
+                    }
+                    if(count($notingameid)>1){
+                        for($i=0;$i<count($range);$i=$i+1){
+                            $rand=array_rand($notingameid,2);
+                            $team=$range[$i];
+                            $id1=$notingameid[$rand[0]];
+                            $id2=$notingameid[$rand[1]];
+                            query("UPDATE `comp` SET `team`='$team' WHERE `id`='$id1'or`id`='$id2'");
+                            unset($notingameid[$rand[0]]);
+                            unset($notingameid[$rand[1]]);
+                            $notingameid=array_values($notingameid);
                         }
                     }
                     ?><script>alert("亂數成功!");location.href="comp.php"</script><?php

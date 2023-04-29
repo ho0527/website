@@ -125,13 +125,29 @@ table{
 }
 
 .table{
-    border-left: 1px white solid;
-    border-bottom: 1px white solid;
-    width: 90%;
-    height: 90%;
+    border: 1px white solid;
+    width: 100%;
+    height: 100%;
     position: relative;
     left: 50%;
     transform: translate(-50%,-0%);
+}
+
+.td{
+    border-right: 1px white solid;
+    border-bottom: 1px white solid;
+}
+
+.tdtitle{
+    width: 5%;
+}
+
+.tdshow{
+    width: 85%;
+}
+
+.tdnumber{
+    width: 10%;
 }
 
 .bar{

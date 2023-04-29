@@ -14,13 +14,12 @@ document.getElementById("file").addEventListener("change",function(event){
             canvas.height=img.height
             let ctx=canvas.getContext("2d")
             ctx.drawImage(img,0,0)
-            let colors=[]
+            let colors={}
             for(let i=0;i<canvas.width;i=i+5){
                 for(let j=0;j<canvas.height;j=j+5){
                     let pixel=ctx.getImageData(i,j,1,1).data
                     let rgb="rgb("+pixel[0]+","+pixel[1]+","+pixel[2]+")"
-                    colors.push([rgb,(colors[rgb]||0)+1])
-                    //colors[rgb]=(colors[rgb]||0)+1
+                    colors[rgb]=(colors[rgb]||0)+1
                 }
             }
             console.log(colors)
