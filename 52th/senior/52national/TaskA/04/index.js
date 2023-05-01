@@ -12,11 +12,27 @@ function draw(){
     ctx.save()
     let imageWidth=scaleX*canva.width*scale
     let imageHeight=scaleY*canva.height*scale
-    ctx.scale(scaleX,scaleY)
-    // ctx.translate(canva.width/-2,canva.height/-2)
-    //ctx.rotate(rotate)
-    ctx.drawImage(image,0,0,imageWidth,imageHeight)
+    ctx.translate(canva.width/2,canva.height/2)
+    ctx.rotate((rotate*Math.PI)/180)
+    ctx.drawImage(image,-canva.width/2,-canva.height/2,imageWidth,imageHeight)
     ctx.restore()
+    // ctx.clearRect(0,0,canva.width,canva.height)
+    // ctx.save()
+
+    // // 計算圖片的寬度和高度
+    // let imageWidth=scaleX*canva.width*scale
+    // let imageHeight=scaleY*canva.height*scale
+
+    // // 計算圖片在畫布中央的位置
+    // let imageX =(canva.width-imageWidth)/2
+    // let imageY =(canva.height-imageHeight)/2
+
+    // ctx.scale(scaleX,scaleY)
+    // ctx.translate(imageX,imageY) // 將圖片移到畫布中央
+    // ctx.rotate((Math.PI/180)*rotate)
+    // ctx.drawImage(image,0,0,imageWidth,imageHeight)
+
+    // ctx.restore()
 }
 
 imagecontainer.addEventListener("dragover",function(event){
@@ -65,7 +81,7 @@ document.getElementById("minus").onclick=function(){
 
 document.getElementById("undo").onclick=function(){
     if(image){
-        rotate=rotate - 90
+        rotate=rotate-90
         draw()
     }else{
         alert("請先上傳圖片!")
@@ -74,7 +90,7 @@ document.getElementById("undo").onclick=function(){
 
 document.getElementById("redo").onclick=function(){
     if(image){
-        rotate=rotate + 90
+        rotate=rotate+90
         draw()
     }else{
         alert("請先上傳圖片!")
@@ -105,7 +121,6 @@ document.getElementById("trash").onclick=function(){
 
 document.getElementById("download").onclick=function(){
     if(image){
-        let canva=document.getElementById("canva")
         let alink=document.createElement("a")
         alink.href=canva.toDataURL("image/png")
         alink.download="image.png"

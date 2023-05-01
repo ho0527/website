@@ -203,3 +203,9 @@ table{
     transform: translate(0%,-50%);
     width: 100%;
 }
+
+.line{
+    height: 75%;
+    width: 0px;
+    background: red;
+}

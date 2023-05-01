@@ -3,7 +3,6 @@ document.getElementById("submit").onclick=function(){
     let county1=[]
     let county2=[]
     let total=[]
-    let countytotaltemp=[]
     let countytotal=[]
     let largestnumber
     let reader=new FileReader()
@@ -15,17 +14,14 @@ document.getElementById("submit").onclick=function(){
             csvdata.push(line)
             ans=ans+"<br>"+line
         }
-        console.log(csvdata)
+        let countytotaltemp=[]
         for(let i=1;i<lines.length;i=i+1){
-            console.log(csvdata[i])
             county1.push(csvdata[i][0])
             county2.push(csvdata[i][1])
             countytotaltemp.push([csvdata[i][0]])
             let totalsum=parseInt(csvdata[i][2])+parseInt(csvdata[i][3])
             total.push(totalsum)
             countytotaltemp[i-1].push(totalsum)
-        }
-        for(let i=0;i<countytotaltemp.length;i=i+1){
         }
         county1=[...new Set(county1)]
         for(let i=0;i<countytotaltemp.length;i=i+1){
@@ -37,8 +33,7 @@ document.getElementById("submit").onclick=function(){
                 countytotal[index][1]=countytotal[index][1]+county[1]
             }
         }
-        countytotal.sort(function(a,b){ return b[1]-a[1] })
-        document.getElementById("log").innerHTML=ans
+        // document.getElementById("log").innerHTML=ans
     }
     reader.readAsText(document.getElementById("inputfile").files[0])
     setTimeout(function(){
@@ -48,7 +43,6 @@ document.getElementById("submit").onclick=function(){
         })
         largestnumber=temptotal[0]
         let x=Math.ceil(largestnumber[1]/1000)*1000
-        let ex=x/100
         document.getElementById("table").innerHTML=``
         for(i=0;i<county1.length;i=i+1){
             let tr=document.createElement("tr")
@@ -65,7 +59,7 @@ document.getElementById("submit").onclick=function(){
             td2.classList.add("tdshow")
             td2.id=i+"2"
             td2.innerHTML=`
-                <div class=""></div>
+            <div class="line"></div>
             `
             document.querySelectorAll(".tr")[i].appendChild(td2)
             let td3=document.createElement("td")
@@ -75,8 +69,18 @@ document.getElementById("submit").onclick=function(){
             td3.innerHTML=`${countytotal[i][1]}`
             document.querySelectorAll(".tr")[i].appendChild(td3)
         }
+        setTimeout(function(){
+            for(i=0;i<county1.length;i=i+1){
+                document.querySelectorAll(".line")[i].style.width=(countytotal[i][1]/x)*100+"%"
+            }
+        },100)
+        document.querySelectorAll(".tdshow").forEach(function(event){
+            event.addEventListener("pointerover",function(addeventlistenerevent){
+            })
+        })
     },100)
 }
+
 
 document.getElementById("reflashbutton").onclick=function(){
     location.reload()
