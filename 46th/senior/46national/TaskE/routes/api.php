@@ -48,9 +48,9 @@
                         "isbn"=>$isbn,
                     ]);
                     $row=DB::table("book")
-                    ->where(function($query)use($isbn){
-                        $query->where("isbn","=",$isbn);
-                    })->select("id")->first();
+                        ->where(function($query)use($isbn){
+                            $query->where("isbn","=",$isbn);
+                        })->select("id")->get()[0];
                     return response()->json([
                         "status"=>"scueess",
                         "data"=>"$row->id"
@@ -66,14 +66,14 @@
         }
     });
 
-    Route::get("/books/:id",function(Request $request)use($booksearchfromid,$booksearchfromiderror){
-        $id=$request->input("id");
+    Route::get("/books/{id}",function(Request $request)use($booksearchfromid,$booksearchfromiderror){
+        $id=$request->route("id");
         $row=DB::table("book")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
             })->select("id","name","isbn")->get();
         if($row->isNotEmpty()){
-            $row=$row->first();
+            $row=$row[0];
             return response()->json([
                 "id"=>"$row->id",
                 "name"=>"$row->name",
@@ -84,8 +84,8 @@
         }
     });
 
-    Route::put("/books",function(Request $request)use($editbook,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$booktomanydata){
-        $id=$request->input("id");
+    Route::put("/books/{id}",function(Request $request)use($editbook,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$booktomanydata){
+        $id=$request->route("id");
         $name=$request->input("name");
         $isbn=$request->input("isbn");
         $rowid=DB::table("book")
@@ -97,15 +97,27 @@
                 $query->where("isbn","=",$isbn);
             })->select("id")->get();
         if($rowid->isNotEmpty()){
-            if($row->isEmpty()/*||$row->first()->id==$id*/){
-                if(count(explode(" ",$isbn))==3||preg_match("/^([0-9] {3}){3}\ [0-9]$/",$isbn)||true){
-                    if(count(array_diff(array_keys($request->all()),["id","name","isbn"]))<=0){
+            if($row->isEmpty()/*||$row[0]->id==$id*/){
+                $isbncheckcode=$isbn[count($isbn)-1];
+                $isbntotal=0;
+                for ($i=0;$i<strlen($isbn);$i=$i+1) {
+                    if($i%2==0){ $multiplier=1; }else{ $multiplier=3; }
+                    $isbntotal=$isbntotal+((int)$isbn[$i]*$multiplier);
+                }
+                $isbntotal=$isbntotal%10;
+                // $isbntotal=(($isbn[0]*1)+($isbn[1]*3)+($isbn[2]*1)+($isbn[4]*3)+($isbn[5]*1)+($isbn[6]*3)+($isbn[8]*1)+($isbn[9]*3)+($isbn[10]*1)+($isbn[12]*3)+($isbn[13]*1)+($isbn[14]*3)%10);
+                $n=10-$isbntotal;
+                if($n==10){ $check=0; }else{ $check=$n; }
+                if($check==$isbncheckcode){ $isbncheck=true; }else{ $isbncheck=false; }
+                $isbncheck=true;
+                if((count(explode(" ",$isbn))==3&&preg_match("/^([0-9] {3}){3}\ [0-9]$/",$isbn))||$isbncheck){
+                    if(count(array_diff(array_keys($request->all()),["name","isbn"]))<=0){
                         DB::table("book")
-                            ->where("id",$id) // replace with the ID of the row you want to update
-                            ->update([
-                                "name"=>$name,
-                                "isbn"=>$isbn,
-                            ]);
+                        ->where("id",$id) // replace with the ID of the row you want to update
+                        ->update([
+                            "name"=>$name,
+                            "isbn"=>$isbn,
+                        ]);
                         return $editbook;
                     }else{
                         return $booktomanydata;
@@ -121,8 +133,8 @@
         }
     });
 
-    Route::delete("/books",function(Request $request)use($ok,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$booktomanydata){
-        $id=$request->input("id");
+    Route::delete("/books/{id}",function(Request $request)use($ok,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$booktomanydata){
+        $id=$request->route("id");
         $row=DB::table("book")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
@@ -138,15 +150,6 @@
     });
 
     Route::get("/books",function(){
-        $row = DB::table("book")
-            ->get();
-        $data = [];
-        for($i=0;$i<count($row);$i=$i+1){
-            $data[] = [
-                "id"=>$row[$i]->id,
-                "name"=>$row[$i]->name,
-                "isbn"=>$row[$i]->isbn
-            ];
-        }
-        return $data;
+        return DB::table("book")->get();
     });
+?>
