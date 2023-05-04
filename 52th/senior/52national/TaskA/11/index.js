@@ -76,6 +76,8 @@ document.getElementById("submit").onclick=function(){
         },100)
         document.querySelectorAll(".tdshow").forEach(function(event){
             event.addEventListener("pointerover",function(addeventlistenerevent){
+                console.log(addeventlistenerevent)
+                //document.getElementById(addeventlistenerevent)
             })
         })
     },100)

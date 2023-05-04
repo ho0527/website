@@ -8,31 +8,20 @@ let rotate=0
 let ctx
 
 function draw(){
-    ctx.clearRect(0,0,canva.width,canva.height)
-    ctx.save()
-    let imageWidth=scaleX*canva.width*scale
-    let imageHeight=scaleY*canva.height*scale
-    ctx.translate(canva.width/2,canva.height/2)
-    ctx.rotate((rotate*Math.PI)/180)
-    ctx.drawImage(image,-canva.width/2,-canva.height/2,imageWidth,imageHeight)
-    ctx.restore()
-    // ctx.clearRect(0,0,canva.width,canva.height)
-    // ctx.save()
-
-    // // 計算圖片的寬度和高度
-    // let imageWidth=scaleX*canva.width*scale
-    // let imageHeight=scaleY*canva.height*scale
-
-    // // 計算圖片在畫布中央的位置
-    // let imageX =(canva.width-imageWidth)/2
-    // let imageY =(canva.height-imageHeight)/2
-
-    // ctx.scale(scaleX,scaleY)
-    // ctx.translate(imageX,imageY) // 將圖片移到畫布中央
-    // ctx.rotate((Math.PI/180)*rotate)
-    // ctx.drawImage(image,0,0,imageWidth,imageHeight)
-
-    // ctx.restore()
+    ctx.clearRect(0,0,canva.width,canva.height);
+    ctx.save();
+    // Calculate image width and height
+    let imageWidth=scaleX*canva.width*scale;
+    let imageHeight=scaleY*canva.height*scale;
+    // Move the canvas origin to the center
+    ctx.translate(canva.width/2,canva.height/2);
+    // Perform scale and rotate operations
+    ctx.scale(scaleX,scaleY);
+    ctx.rotate((Math.PI/180)*rotate);
+    // Draw the image at the center of the canvas
+    ctx.drawImage(image,-imageWidth/2,-imageHeight/2,imageWidth,imageHeight);
+    // Restore the canvas origin
+    ctx.restore();
 }
 
 imagecontainer.addEventListener("dragover",function(event){
