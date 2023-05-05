@@ -99,7 +99,7 @@
         return view("welcome");
     });
 
-    Route::get("/post/favorite",function(Request $request)use($tokenerror,$datatypeerror,){
+    Route::get("/post/favorite",function(Request $request)use($tokenerror,$datatypeerror){
         return view("welcome");
     });
 

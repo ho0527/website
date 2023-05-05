@@ -18,7 +18,7 @@
     // $newbook=["respondcode"=>"200","status"=>"scueess","data"=>$row->id];
     $isbnerror=response()->json(["status"=>"fail","data"=>"ISBN duplicate"],409);
     $isbnincorrect=response()->json(["status"=>"fail","data"=>"ISBN error"],400);
-    $booktomanydata=response()->json(["status"=>"fail","data"=>"input error"],400);
+    $tomanydata=response()->json(["status"=>"fail","data"=>"input error"],400);
     $booksearchfromid=response()->json(["id"=>"{id}","name"=>"{book name}","isbn"=>"{isbn}"],200);
     $booksearchfromiderror=response()->json(["status"=>"fail","data"=>"book not found"],404);
     $editbook=response()->json(["status"=>"scueess","data"=>"OK"],200);
@@ -33,7 +33,7 @@
         return $ok;
     });
 
-    Route::post("/books",function(Request $request)use($isbnerror,$isbnincorrect,$booktomanydata){
+    Route::post("/books",function(Request $request)use($isbnerror,$isbnincorrect,$tomanydata){
         $name=$request->input("name");
         $isbn=$request->input("isbn");
         $row=DB::table("book")
@@ -56,7 +56,7 @@
                         "data"=>"$row->id"
                     ],200);
                 }else{
-                    return $booktomanydata;
+                    return $tomanydata;
                 }
             }else{
                 return $isbnincorrect;
@@ -84,7 +84,7 @@
         }
     });
 
-    Route::put("/books/{id}",function(Request $request)use($editbook,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$booktomanydata){
+    Route::put("/books/{id}",function(Request $request)use($editbook,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$tomanydata){
         $id=$request->route("id");
         $name=$request->input("name");
         $isbn=$request->input("isbn");
@@ -120,7 +120,7 @@
                         ]);
                         return $editbook;
                     }else{
-                        return $booktomanydata;
+                        return $tomanydata;
                     }
                 }else{
                     return ;
@@ -133,7 +133,7 @@
         }
     });
 
-    Route::delete("/books/{id}",function(Request $request)use($ok,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$booktomanydata){
+    Route::delete("/books/{id}",function(Request $request)use($ok,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$tomanydata){
         $id=$request->route("id");
         $row=DB::table("book")
             ->where(function($query)use($id){
