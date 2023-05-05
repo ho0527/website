@@ -55,7 +55,7 @@
     Route::post("/user/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$imageerror){
         $email=$request->input("email");
         $nickname=$request->input("nickname");
-        $password=$request->input("password");
+        $password=$request->input("password");  
         $image=$request->input("image");
         $row=DB::table("users")
             ->where(function($query)use($email){

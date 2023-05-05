@@ -19,22 +19,28 @@ table{
     transform: translate(-50%,-0%);
     width: 1024px;
     height: 768px;
-    background: rgb(19, 24, 41);
+    background: white;
     overflow-y: auto;
 }
 
 .top{
     position: absolute;
+    left: 12px;
     top: 0px;
-    width: 100%;
-    height: 90px;
-    background: #00B0F0;
+    width: 1000px;
+    height: 65px;
+    background: #0000FF;
+    text-align: center;
 }
 
-.logo{
+.image{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,-0%);
     width: 180px;
-    height: 90px;
+    height: 65px;
     cursor: pointer;
+    display: none;
 }
 
 .title{
@@ -52,20 +58,24 @@ table{
 }
 
 .marquee{
-    width: 100%;
-    height: 25px;
-    font-size: 15px;
-    color: #0000FF;
-    background: white;
+    border: 1px black solid;
+    position: absolute;
+    right: 12px;
+    top: 65px;
+    width: 797px;
+    height: 29px;
+    font-size: 20px;
 }
 
 .menu{
+    border: 1px black solid;
     position: absolute;
-    top: 90px;
-    width: 100%;
-    height: 25px;
+    left: 12px;
+    top: 65px;
+    width: 200px;
+    height: 681px;
+    background: #00FFFF;
     text-align: center;
-    background: white;
 }
 
 .menubutton{
@@ -85,89 +95,14 @@ table{
 }
 
 .context{
+    border: 1px black solid;
     position: absolute;
-    right: 0px;
-    top: 115px;
-    width: calc(100% - 40px);
-    height: calc(608px - 40px);
+    right: 12px;
+    top: 96px;
+    width: 797px;
+    height: 650px;
     font-size: 14px;
-    color: #000000;
-    background: #FFFFFF;
-    padding: 20px;
-}
-
-.contextleft{
-    border: 1px #999999 solid;
-    position: absolute;
-    left: 50px;
-    top: 50px;
-    width: 280px;
-    height: 460px;
-}
-
-.contextright{
-    border: 1px #999999 solid;
-    position: absolute;
-    right: 50px;
-    top: 50px;
-    width: 590px;
-    height: 460px;
-    background: #333333;
-}
-
-.contexttable{
-    width: 100%;
-    text-align: center;
-}
-
-.contexttitle{
-    font-size: 16px;
-    font-weight: bold;
-    text-align: left;
-}
-
-.contextmaintopic{
-    font-size: 14px;
-    color: #FFFFFF;
-    text-align: center;
-    background: #3399FF;
-    width: 75%;
-}
-
-.contextmaindate{
-    font-size: 14px;
-    color: #FFFFFF;
-    text-align: center;
-    background: #3399FF;
-    width: 25%;
-}
-
-.contexttopic1{
-    font-size: 12px;
-    line-height: 2;
-    background: #FFFFCC;
-    width: 75%;
-}
-
-.contextdate1{
-    font-size: 12px;
-    line-height: 2;
-    background: #FFFFCC;
-    width: 25%;
-}
-
-.contexttopic2{
-    font-size: 12px;
-    line-height: 2;
-    background: #DDDDDD;
-    width: 75%;
-}
-
-.contextdate2{
-    font-size: 12px;
-    line-height: 2;
-    background: #DDDDDD;
-    width: 25%;
+    background: url("material/park0301.jpg");
 }
 
 .mainpng{
@@ -186,15 +121,15 @@ table{
 }
 
 .footer{
+    border: 1px black solid;
     position: absolute;
-    left: 0px;
+    left: 12px;
     bottom: 0px;
-    width: 100%;
-    height: 45px;
-    font-size: 14px;
+    width: 998px;
+    height: 20px;
+    font-size: 16px;
     text-align: center;
-    color: #FFFFFF;
-    background: #CCCCCC;
+    color: #000000;
 }
 
 .navigationpath{
