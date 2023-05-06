@@ -97,8 +97,8 @@
                 $query->where("isbn","=",$isbn);
             })->select("*")->get();
         if($rowid->isNotEmpty()){
-            if($row->isEmpty()/*||$row[0]->id==$id*/){
-                $isbncheckcode=$isbn[count($isbn)-1];
+            if($row->isEmpty()||$row[0]->id==$id){
+                $isbncheckcode=$isbn[strlen($isbn)-1];
                 $isbntotal=0;
                 for ($i=0;$i<strlen($isbn);$i=$i+1) {
                     if($i%2==0){ $multiplier=1; }else{ $multiplier=3; }

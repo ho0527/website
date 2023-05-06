@@ -102,7 +102,15 @@ table{
     width: 797px;
     height: 650px;
     font-size: 14px;
+    text-align: center;
     background: url("material/park0301.jpg");
+}
+
+.contextfooter{
+    position: relative;
+    bottom: 5px;
+    color: #FF00FF;
+    text-align: right;
 }
 
 .mainpng{
@@ -130,72 +138,6 @@ table{
     font-size: 16px;
     text-align: center;
     color: #000000;
-}
-
-.navigationpath{
-    color: #FF0000;
-    font-weight: bold;
-}
-
-.maincontext{
-    position: absolute;
-    top: 80px;
-    width: 95%;
-    height: 80%;
-    font-size: 15px;
-    padding: 10px;
-    overflow-y: auto;
-    z-index: 100;
-}
-
-.navigationbar{
-    position: absolute;
-    top: 60px;
-}
-
-.contexttitle{
-    color: #0000FF;
-}
-
-.baseballpicture{
-    float: right;
-    width: 200px;
-    height: 133px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
-
-.swimmingpicture{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 1;
-}
-
-.table{
-    position: relative;
-    left: 50%;
-    transform: translate(-50%,-0%);
-}
-
-.td1{
-    border: 1px #DDDDDD solid;
-    width: 120px;
-    display: table-cell;
-    vertical-align: inherit;
-    text-align: center;
-    padding: 2px;
-}
-
-.td2{
-    border: 1px #DDDDDD solid;
-    width: 580px;
-    padding: 2px;
-}
-
-.option{
-    text-align: center;
 }
 
 /* ----------------------------------------------------------------------------- */
