@@ -39,7 +39,7 @@
         $row=DB::table("book")
             ->where(function($query)use($isbn){
                 $query->where("isbn","=",$isbn);
-            })->select("id")->get();
+            })->select("*")->get();
         if($row->isEmpty()){
             if(count(explode(" ",$isbn))==3||preg_match("/^([0-9] {3}){3}\ [0-9]$/",$isbn)||true){
                 if(count(array_diff(array_keys($request->all()),["name","isbn"]))<=0){
@@ -50,7 +50,7 @@
                     $row=DB::table("book")
                         ->where(function($query)use($isbn){
                             $query->where("isbn","=",$isbn);
-                        })->select("id")->get()[0];
+                        })->select("*")->get()[0];
                     return response()->json([
                         "status"=>"scueess",
                         "data"=>"$row->id"
@@ -71,7 +71,7 @@
         $row=DB::table("book")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
-            })->select("id","name","isbn")->get();
+            })->select("*")->get();
         if($row->isNotEmpty()){
             $row=$row[0];
             return response()->json([
@@ -91,11 +91,11 @@
         $rowid=DB::table("book")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
-            })->select("id")->get();
+            })->select("*")->get();
         $row=DB::table("book")
             ->where(function($query)use($isbn){
                 $query->where("isbn","=",$isbn);
-            })->select("id")->get();
+            })->select("*")->get();
         if($rowid->isNotEmpty()){
             if($row->isEmpty()/*||$row[0]->id==$id*/){
                 $isbncheckcode=$isbn[count($isbn)-1];
@@ -113,11 +113,11 @@
                 if((count(explode(" ",$isbn))==3&&preg_match("/^([0-9] {3}){3}\ [0-9]$/",$isbn))||$isbncheck){
                     if(count(array_diff(array_keys($request->all()),["name","isbn"]))<=0){
                         DB::table("book")
-                        ->where("id",$id) // replace with the ID of the row you want to update
-                        ->update([
-                            "name"=>$name,
-                            "isbn"=>$isbn,
-                        ]);
+                            ->where("id","=",$id) // replace with the ID of the row you want to update
+                            ->update([
+                                "name"=>$name,
+                                "isbn"=>$isbn,
+                            ]);
                         return $editbook;
                     }else{
                         return $tomanydata;
@@ -138,7 +138,7 @@
         $row=DB::table("book")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
-            })->select("id")->get();
+            })->select("*")->get();
         if($row->isNotEmpty()){
             DB::table("book")
                 ->where("id",$id)
