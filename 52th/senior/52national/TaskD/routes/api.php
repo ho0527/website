@@ -16,7 +16,7 @@
 
     function logincheck(){
         $row=DB::table("users")
-            ->where(function($query)use($email){
+            ->where(function($query){
                 $query->where("access_token","!=",NULL);
             })->select("*")->get();
         if($row->isNotEmpty()){
@@ -167,11 +167,11 @@
         return view("welcome");
     });
 
-    Route::post("/post",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
+    Route::post("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
         return view("welcome");
     });
 
-    Route::delete("/post",function(Request $request)use($tokenerror,$nopermission,$posterror){
+    Route::delete("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$posterror){
         return view("welcome");
     });
 
