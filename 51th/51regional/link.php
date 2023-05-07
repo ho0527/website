@@ -1,24 +1,30 @@
 <?php
-    $db=new PDO("mysql:host=localhost;dbname=51regional;charset=utf8","admin","1234");
+    $db=new PDO("mysql:host=localhost;dbname=51regional;charset=utf8","root","");
     date_default_timezone_set("Asia/Taipei");
     $time=date("Y-m-d H:i:s");
     session_start();
 
-    function query($db,$query){
-        return $db->query($query);
+    function query($db,$query,$data=[]){
+       $prepare=$db->prepare($query);
+       $prepare->execute($data);
+       return $prepare->fetchAll();
     }
 
-    function fetch($result){
-        return $result->fetch();
-    }
+    // function query($db,$query){
+    //     return $db->query($query);
+    // }
 
-    function fetchall($result){
-        return $result->fetchAll();
-    }
+    // function fetch($result){
+    //     return $result->fetch();
+    // }
 
-    function rowcount($result){
-        return $result->rowCount();
-    }
+    // function fetchall($result){
+    //     return $result->fetchAll();
+    // }
+
+    // function rowcount($result){
+    //     return $result->rowCount();
+    // }
 
     if(isset($_GET["logout"])){
         session_unset();

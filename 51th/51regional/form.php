@@ -10,7 +10,7 @@
             include("link.php");
             $id=$_SESSION["id"];
             $count=$_SESSION["count"];
-            $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
+            $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
         ?>
         <form method="POST">
             <div class="navigationbar">
@@ -30,7 +30,7 @@
             </div>
             <div class="div">
                 <?php
-                    $questionrow=fetchall(query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'"));
+                    $questionrow=query($db,"SELECT*FROM `questionlog` WHERE `questionid`=?",[$id]);
                     for($i=0;$i<$count;$i=$i+1){
                         if(!isset($questionrow[$i][5])||$questionrow[$i][5]=="none"){
                             ?>
@@ -198,14 +198,14 @@
                         $title=$_POST["title"];
                         $count=$_POST["count"];
                         $max=$_POST["max"];
-                        query($db,"UPDATE `question` SET `title`='$title',`questioncount`='$count',`maxlen`='$max' WHERE `id`='$id'");
-                        $row=fetchall(query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'"));
+                        query($db,"UPDATE `question` SET `title`=?,`questioncount`=?,`maxlen`=? WHERE `id`='$id'",[$title,$count,$max]);
+                        $row=query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'");
                         if($count>count($row)){
                             $m=$count-count($row);
                             if(count($row)==0){ $max=0; }else{ $max=(int)$row[count($row)-1][2]; }
                             for($i=0;$i<$m;$i=$i+1){
                                 $order=$i+$max+1;
-                                query($db,"INSERT INTO `questionlog`(`questionid`,`order`)VALUES('$id','$order')");
+                                query($db,"INSERT INTO `questionlog`(`questionid`,`order`)VALUES(?,?)",[$id,$order]);
                             }
                         }elseif($count<count($row)){
                             // $m=count($row)-$count;
@@ -225,7 +225,7 @@
                             }
                             $order=$i+1;
                             $opition="";
-                            query($db,"UPDATE `questionlog` SET `desciption`='$direction',`required`='$required',`mod`='$select',`opition`='$opition' WHERE `questionid`='$id'AND`order`='$order'");
+                            query($db,"UPDATE `questionlog` SET `desciption`=?,`required`=?,`mod`=?,`opition`=? WHERE `questionid`='$id'AND`order`='$order'",[$direction,$required,$select,$opition]);
                         }
                         ?><script>alert("儲存成功");location.href="form.php"</script><?php
                     }

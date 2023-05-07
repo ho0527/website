@@ -51,16 +51,16 @@
             if(isset($_POST["login"])){
                 $username=$_POST["username"];
                 $password=$_POST["password"];
-                if($row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"))){
+                if($row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0]){
                     if($row[2]==$password){
                         ?><script>alert("登入成功");location.href="verify.php"</script><?php
                         session_unset();
                         $_SESSION["login"]=$row[0];
                     }else{
-                        ?><script>alert("密碼有誤");location.href="login.php"</script><?php
+                        ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                     }
                 }else{
-                    ?><script>alert("帳號有誤");location.href="login.php"</script><?php
+                    ?><script>alert("帳號有誤");location.href="index.php"</script><?php
                 }
             }
 

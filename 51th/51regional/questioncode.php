@@ -10,7 +10,7 @@
             include("link.php");
             $id=$_SESSION["id"];
             $count=$_SESSION["count"];
-            $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
+            $row=query($db,"SELECT*FROM `question` WHERE `id`=?",[$id])[0];
             ?>
         <div class="div">
             <div class="formtitle">編輯問卷</div><br>

@@ -12,7 +12,7 @@
     //function query($query,$data=[]){
     //    global $db;
     //    $prepare=$db->prepare($query);
-    //    $prepare->execute();
+    //    $prepare->execute($data);
     //    return $prepare->fetchAll();
     //}
 

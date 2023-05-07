@@ -9,7 +9,7 @@
         <?php
             include("link.php");
             $id=$_SESSION["id"];
-            $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
+            $row=query($db,"SELECT*FROM `question` WHERE `id`=?",[$id])[0];
             if($row[4]==$row[7]){
                 ?>
                 <div class="navigationbar">

@@ -23,19 +23,19 @@
             </tr>
             <?php
             include("link.php");
-            $row=fetchall(query($db,"SELECT*FROM `question` WHERE `ps`!='del'"));
+            $row=query($db,"SELECT*FROM `question` WHERE `ps`!='del'");
             for($i=0;$i<count($row);$i=$i+1){
                 $id=$row[$i][0];
-                $coderow=fetchall(query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'"));
+                $coderow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'");
                 ?>
                 <tr>
                     <td class="formtd"><?php echo($row[$i][1]) ?></td>
                     <td class="formtd">
-                    <?php
-                        for($j=0;$j<count($coderow);$j=$j+1){
-                            echo($coderow[$j][3]);
-                        }
-                    ?>
+                        <?php
+                            for($j=0;$j<count($coderow);$j=$j+1){
+                                echo($coderow[$j][3]);
+                            }
+                        ?>
                     </td>
                     <td class="formtd"><?php echo($row[$i][4]) ?></td>
                     <td class="formtd">
@@ -79,13 +79,13 @@
             if(isset($_GET["submit"])){
                 $title=$_GET["title"];
                 $count=$_GET["count"];
-                $row=fetch(query($db,"SELECT*FROM `question` WHERE `title`='$title'"));
+                $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title])[0];
                 if($title==""){
                     ?><script>alert("請輸入問卷標題");location.href="admin.php"</script><?php
                 }elseif($row){
                     ?><script>alert("問卷已存在");location.href="admin.php"</script><?php
                 }elseif(preg_match("/^[0-9]+$/",$count)){
-                    query($db,"INSERT INTO `question`(`title`,`questioncount`) VALUES ('$title','$count')");
+                    query($db,"INSERT INTO `question`(`title`,`questioncount`)VALUES(?,?)",[$title,$count]);
                     $_SESSION["title"]=$title;
                     $_SESSION["count"]=$count;
                     ?><script>alert("登入成功");location.href="form.php"</script><?php
@@ -96,29 +96,27 @@
             if(isset($_GET["mod"])){
                 if($_GET["mod"]=="lock"){
                     $id=$_GET["id"];
-                    $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
+                    $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
                     if($row[5]=="true"){
-                        query($db,"UPDATE `question` SET `lock`='false' WHERE `id`='$id'");
+                        query($db,"UPDATE `question` SET `lock`=? WHERE `id`='$id'",["false"]);
                     }else{
-                        query($db,"UPDATE `question` SET `lock`='true' WHERE `id`='$id'");
+                        query($db,"UPDATE `question` SET `lock`=? WHERE `id`='$id'",["true"]);
                     }
                     ?><script>location.href="admin.php"</script><?php
                 }elseif($_GET["mod"]=="edit"){
                     $id=$_GET["id"];
-                    $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
-                    if($row[5]=="true"){
-                        ?><script>alert("[ERROR] PERMISSION ERROR");location.href="admin.php"</script><?php
-                    }else{
+                    $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
+                    if($row[5]=="false"){
                         $_SESSION["id"]=$row[0];
                         $_SESSION["count"]=$row[2];
                         ?><script>location.href="form.php"</script><?php
+                    }else{
+                        ?><script>alert("[ERROR]PERMISSION ERROR(幹不要亂搞)");location.href="admin.php"</script><?php
                     }
                 }elseif($_GET["mod"]=="del"){
                     $id=$_GET["id"];
-                    $row=fetch(query($db,"SELECT*FROM `question` WHERE `id`='$id'"));
-                    if($row[5]=="true"){
-                        ?><script>alert("[ERROR] PERMISSION ERROR");location.href="admin.php"</script><?php
-                    }else{
+                    $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
+                    if($row[5]=="false"){
                         ?><script>
                             if(confirm("Are you sure you want to delete this?")){
                                 location.href="link.php?formdel=&id=<?php echo($id) ?>"
@@ -126,6 +124,8 @@
                                 location.href="admin.php"
                             }
                         </script><?php
+                    }else{
+                        ?><script>alert("[ERROR]PERMISSION ERROR(幹不要亂搞)");location.href="admin.php"</script><?php
                     }
                 }
             }
