@@ -11,7 +11,7 @@
             <div class="navigationbarbuttondiv">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">
                 <input type="button" class="navigationbarbutton" id="newform" value="新增問卷">
-                <input type="submit" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
+                <input type="submit" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
         <table class="formtable">

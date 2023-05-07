@@ -35,6 +35,7 @@ table{
     font-weight: bold;
     padding: 40px 20px;
     border-radius: 5px;
+    z-index: 1000;
 }
 
 .logo{
@@ -430,22 +431,14 @@ table{
     padding: 10px;
 }
 
-.forminputlongtext{
-    width: 200px;
-}
-
 .questiondiv{
     background-color: rgb(133, 133, 133);
     height: 200px;
     padding: 10px;
 }
 
-.formcenter{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:  translate(-50%, -50%);
-    width: 100%;
+.forminputlongtext{
+    width: 200px;
 }
 
 .formtable{
@@ -484,12 +477,25 @@ table{
     color: white;
 }
 
-.check{
-    display: none;
+.order{
+    border: 1px black solid;
+    width: 10%;
+    font-size: 25px;
+    background: rgb(213, 109, 12);
 }
 
 .warning{
     color: red;
     font-size: 50px;
     font-weight: bold;
+}
+
+.questioncodemaindiv{
+    position: relative;
+    top: 120px;
+}
+
+.required{
+    color: red;
+    font-size: 15px;
 }

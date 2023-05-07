@@ -8,7 +8,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["login"])){
+            if(!isset($_SESSION["data"])){
                 ?>
                 <div class="navigationbar">
                     <div class="navigationbartitle center">網路問卷調查系統</div>
@@ -34,7 +34,7 @@
                     <div class="navigationbartitle">網路問卷調查系統-已登入</div>
                     <div class="navigationbarbuttondiv">
                         <input type="button" class="navigationbarbutton" onclick="location.href='verify.php'" value="返回">
-                        <input type="submit" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
+                        <input type="submit" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
                 <div class="main">
@@ -55,7 +55,7 @@
                     if($row[2]==$password){
                         ?><script>alert("登入成功");location.href="verify.php"</script><?php
                         session_unset();
-                        $_SESSION["login"]=$row[0];
+                        $_SESSION["data"]=$row[1];
                     }else{
                         ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                     }
@@ -65,7 +65,20 @@
             }
 
             if(isset($_POST["submit"])){
-                $_SESSION["code"]=$_POST["text"];
+                $code=$_POST["text"];
+                if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'")[0]){
+                    if($row[2]!=""){
+                        if($_SESSION["data"]==$row[2]){
+                            $_SESSION["user"]=$row[2];
+                        }else{
+                            ?><script>alert("[WARNING]使用者錯誤");location.href="index.php"</script><?php
+                        }
+                    }
+                    $_SESSION["id"]=$row[1];
+                    ?><script>location.href="user.php"</script><?php
+                }else{
+                    ?><script>alert("查無此邀請碼");location.href="index.php"</script><?php
+                }
             }
         ?>
     </body>

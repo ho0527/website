@@ -25,167 +25,126 @@
                     <input type="submit" class="button" name="newqust" value="新增">
                     <input type="submit" class="button" name="cancel" value="取消">
                     <input type="submit" class="button" name="save" value="儲存">
-                    <input type="button" class="button" onclick="location.href='link.php?logout='" value="登出">
+                    <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                 </div>
             </div>
             <div class="div">
-                <?php
-                    $questionrow=query($db,"SELECT*FROM `questionlog` WHERE `questionid`=?",[$id]);
-                    for($i=0;$i<$count;$i=$i+1){
-                        if(!isset($questionrow[$i][5])||$questionrow[$i][5]=="none"){
+                <table>
+                    <?php
+                        $questionrow=query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'");
+                        for($i=0;$i<$count;$i=$i+1){
+                            $question=[];
+                            if(@$questionrow[$i][6]!=""){ $question=explode(" ",$questionrow[$i][6]); }
+                            for($j=count($question);$j<6;$j=$j+1){
+                                $question[]="";
+                            }
                             ?>
-                            <div class="divform">
-                                <div class="newform">
-                                    未設定<input type="radio" class="radio none" id="none <?php echo($i) ?>" name="select<?= $i ?>" value="none" checked>
-                                    是非題<input type="radio" class="radio yesno" id="yesno <?php echo($i) ?>" name="select<?= $i ?>" value="yesno">
-                                    單選題<input type="radio" class="radio single" id="single <?php echo($i) ?>" name="select<?= $i ?>" value="single">
-                                    多選題<input type="radio" class="radio multi" id="multi <?php echo($i) ?>" name="select<?= $i ?>" value="multi">
-                                    問答題<input type="radio" class="radio qa" id="qa <?php echo($i) ?>" name="select<?= $i ?>" value="qa">
-                                </div>
-                                <div class="output" id="output<?= $i ?>"></div>
-                            </div>
-                            <?php
-                        }elseif($questionrow[$i][5]=="yesno"){
-                            ?>
-                            <div class="divform">
-                                <div class="newform">
-                                    未設定<input type="radio" class="radio none" id="none <?= $i ?>" name="select<?= $i ?>" value="none">
-                                    是非題<input type="radio" class="radio yesno" id="yesno <?= $i ?>" name="select<?= $i ?>" value="yesno" checked>
-                                    單選題<input type="radio" class="radio single" id="single <?= $i ?>" name="select<?= $i ?>" value="single">
-                                    多選題<input type="radio" class="radio multi" id="multi <?= $i ?>" name="select<?= $i ?>" value="multi">
-                                    問答題<input type="radio" class="radio qa" id="qa <?= $i ?>" name="select<?= $i ?>" value="qa">
-                                </div>
-                                <div class="output" id="output<?= $i ?>">
-                                    <div class="yesnodiv">
-                                        <div class="formcenter">
+                            <tr>
+                                <td rowspan="2" class="order"><?php echo($questionrow[$i][2]) ?></td>
+                                <td class="newform">
+                                    <?php
+                                    $mod=["none"=>"未設定","yesno"=>"是非題","single"=>"單選題","multi"=>"多選題","qa"=>"問答題"];
+                                    $key=array_keys($mod);
+                                    for($j=0;$j<count($key);$j=$j+1){
+                                        $type=$key[$j];
+                                        $checked="";
+                                        if($questionrow[$i][5]==$type){
+                                            $checked="checked";
+                                            $check=1;
+                                        }
+                                        echo($mod[$key[$j]]);
+                                        ?><input type="radio" class="radio <?php echo($type) ?>" id="<?php echo($type) ?> <?php echo($i) ?>" name="select<?php echo($i) ?>" value="<?php echo($type) ?>" <?php echo($checked) ?>><?php
+                                    }
+                                    if($check!=1){ ?><script>alert("[ERROR]SQL ERROR 請與程式開發者聯繫(ERROR CODE:001)");location.href="admin.php"</script><?php }
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <?php
+                                if(!isset($questionrow[$i][5])||$questionrow[$i][5]=="none"){
+                                    ?><td class="output" id="output<?= $i ?>"></td><?php
+                                }elseif($questionrow[$i][5]=="yesno"){
+                                    ?>
+                                    <td class="output" id="output<?= $i ?>">
+                                        <div class="yesnodiv">
                                             <?php
                                             if($questionrow[$i][4]=="true"){
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br><?php
                                             }else{
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>"><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>"><br><?php
                                             }
                                             ?>
                                             題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br>
-                                            是<input type="radio" name="yesno" value="yes">
-                                            否<input type="radio" name="yesno" value="no">
+                                            是<input type="radio" name="yesno" value="yes" disabled>
+                                            否<input type="radio" name="yesno" value="no" disabled>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }elseif($questionrow[$i][5]=="single"){
-                            ?>
-                            <div class="divform">
-                                <div class="newform">
-                                    未設定<input type="radio" class="radio none" id="none <?php echo($i) ?>" name="select<?= $i ?>" value="none">
-                                    是非題<input type="radio" class="radio yesno" id="yesno <?php echo($i) ?>" name="select<?= $i ?>" value="yesno">
-                                    單選題<input type="radio" class="radio single" id="single <?php echo($i) ?>" name="select<?= $i ?>" value="single" checked>
-                                    多選題<input type="radio" class="radio multi" id="multi <?php echo($i) ?>" name="select<?= $i ?>" value="multi">
-                                    問答題<input type="radio" class="radio qa" id="qa <?php echo($i) ?>" name="select<?= $i ?>" value="qa">
-                                </div>
-                                <div class="output" id="output<?= $i ?>">
-                                    <div class="singlediv">
-                                        <div class="formcenter">
+                                    </td>
+                                    <?php
+                                }elseif($questionrow[$i][5]=="single"){
+                                    ?>
+                                    <td class="output" id="output<?= $i ?>">
+                                        <div class="singlediv">
                                             <?php
                                             if($questionrow[$i][4]=="true"){
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br><?php
                                             }else{
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>"><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>"><br><?php
                                             }
                                             ?>
                                             題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br>
-                                            1.<input type="text" name="single1" class="forminputtext" value="">
-                                            2.<input type="text" name="single2" class="forminputtext" value="">
-                                            3.<input type="text" name="single3" class="forminputtext" value="">
-                                            4.<input type="text" name="single4" class="forminputtext" value="">
-                                            5.<input type="text" name="single5" class="forminputtext" value="">
-                                            6.<input type="text" name="single6" class="forminputtext" value="">
+                                            1.<input type="text" name="<?php echo($i) ?>single1" class="forminputtext" value="<?php echo($question[0]) ?>">
+                                            2.<input type="text" name="<?php echo($i) ?>single2" class="forminputtext" value="<?php echo($question[1]) ?>">
+                                            3.<input type="text" name="<?php echo($i) ?>single3" class="forminputtext" value="<?php echo($question[2]) ?>">
+                                            4.<input type="text" name="<?php echo($i) ?>single4" class="forminputtext" value="<?php echo($question[3]) ?>">
+                                            5.<input type="text" name="<?php echo($i) ?>single5" class="forminputtext" value="<?php echo($question[4]) ?>">
+                                            6.<input type="text" name="<?php echo($i) ?>single6" class="forminputtext" value="<?php echo($question[5]) ?>">
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }elseif($questionrow[$i][5]=="multi"){
-                            ?>
-                            <div class="divform">
-                                <div class="newform">
-                                    未設定<input type="radio" class="radio none" id="none <?php echo($i) ?>" name="select<?= $i ?>" value="none">
-                                    是非題<input type="radio" class="radio yesno" id="yesno <?php echo($i) ?>" name="select<?= $i ?>" value="yesno">
-                                    單選題<input type="radio" class="radio single" id="single <?php echo($i) ?>" name="select<?= $i ?>" value="single">
-                                    多選題<input type="radio" class="radio multi" id="multi <?php echo($i) ?>" name="select<?= $i ?>" value="multi" checked>
-                                    問答題<input type="radio" class="radio qa" id="qa <?php echo($i) ?>" name="select<?= $i ?>" value="qa">
-                                </div>
-                                <div class="output" id="output<?= $i ?>">
-                                    <div class="multidiv">
-                                        <div class="formcenter">
+                                    </td>
+                                    <?php
+                                }elseif($questionrow[$i][5]=="multi"){
+                                    ?>
+                                    <td class="output" id="output<?= $i ?>">
+                                        <div class="multidiv">
                                             <?php
                                             if($questionrow[$i][4]=="true"){
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br><?php
                                             }else{
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>"><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>"><br><?php
                                             }
                                             ?>
                                             題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br>
-                                            1.<input type="text" name="multi1" class="forminputtext" value="">
-                                            2.<input type="text" name="multi2" class="forminputtext" value="">
-                                            3.<input type="text" name="multi3" class="forminputtext" value="">
-                                            4.<input type="text" name="multi4" class="forminputtext" value="">
-                                            5.<input type="text" name="multi5" class="forminputtext" value="">
-                                            6.<input type="text" name="multi6" class="forminputtext" value=""><br>
-                                            其他:<input type="text" name="multiauther" class="forminputlongtext" value="">
+                                            1.<input type="text" name="<?php echo($i) ?>multi1" class="forminputtext" value="<?php echo($question[0]) ?>">
+                                            2.<input type="text" name="<?php echo($i) ?>multi2" class="forminputtext" value="<?php echo($question[1]) ?>">
+                                            3.<input type="text" name="<?php echo($i) ?>multi3" class="forminputtext" value="<?php echo($question[2]) ?>">
+                                            4.<input type="text" name="<?php echo($i) ?>multi4" class="forminputtext" value="<?php echo($question[3]) ?>">
+                                            5.<input type="text" name="<?php echo($i) ?>multi5" class="forminputtext" value="<?php echo($question[4]) ?>">
+                                            6.<input type="text" name="<?php echo($i) ?>multi6" class="forminputtext" value="<?php echo($question[5]) ?>"><br>
+                                            其他:<input type="text" name="multiauther" class="forminputlongtext" value="" disabled>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }elseif($questionrow[$i][5]=="qa"){
-                            ?>
-                            <div class="divform">
-                                <div class="newform">
-                                    未設定<input type="radio" class="radio none" id="none <?php echo($i) ?>" name="select<?= $i ?>" value="none">
-                                    是非題<input type="radio" class="radio yesno" id="yesno <?php echo($i) ?>" name="select<?= $i ?>" value="yesno">
-                                    單選題<input type="radio" class="radio single" id="single <?php echo($i) ?>" name="select<?= $i ?>" value="single">
-                                    多選題<input type="radio" class="radio multi" id="multi <?php echo($i) ?>" name="select<?= $i ?>" value="multi">
-                                    問答題<input type="radio" class="radio qa" id="qa <?php echo($i) ?>" name="select<?= $i ?>" value="qa" checked>
-                                </div>
-                                <div class="output" id="output<?= $i ?>">
-                                    <div class="questiondiv">
-                                        <div class="formcenter">
-                                            <br>
+                                    </td>
+                                    <?php
+                                }elseif($questionrow[$i][5]=="qa"){
+                                    ?>
+                                    <td class="output" id="output<?= $i ?>">
+                                        <div class="questiondiv">
                                             <?php
                                             if($questionrow[$i][4]=="true"){
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>" checked><br><?php
                                             }else{
-                                                ?>
-                                                必填<input type="checkbox" name="required<?php echo($i) ?>"><br>
-                                                <?php
+                                                ?>必填<input type="checkbox" name="required<?php echo($i) ?>"><br><?php
                                             }
                                             ?>
-                                            題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br>
-                                            <textarea cols="30" rows="5" placeholder="問答題"></textarea>
+                                            題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br><br>
+                                            <textarea cols="30" rows="5" placeholder="問答題" disabled></textarea>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }else{
-                            ?><script>alert("[ERROR]SQL ERROR 請與程式開發者聯繫 (ERROR CODE: 01)");location.href="admin.php"</script><?php
+                                    </td>
+                                    <?php
+                                }else{ ?><script>alert("[ERROR]SQL ERROR 請與程式開發者聯繫(ERROR CODE:001)");location.href="admin.php"</script><?php }
+                            ?></tr><?php
                         }
-                    }
+                    ?>
+                </table>
+                <?php
                     if(isset($_POST["newqust"])){
                         $_SESSION["count"]=$_SESSION["count"]+1;
                         ?><script>location.href="form.php"</script><?php
@@ -216,21 +175,39 @@
                             // }
                         }
                         for($i=0;$i<$count;$i=$i+1){
-                            $select=$_POST["select".$i];
-                            $direction=$_POST["direction".$i];
-                            if(isset($_POST["required".$i])){
-                                $required="true";
+                            $mod=$_POST["select".$i];
+                            if($mod!="none"){
+                                $direction=$_POST["direction".$i];
+                                if(isset($_POST["required".$i])){ $required="true"; }else{ $required="false"; }
+                                if($mod=="single"){
+                                    for($j=1;$j<=6;$j=$j+1){
+                                        if($_POST[$i."single".$j]!=""){
+                                            $opition=$opition.$_POST[$i."single".$j]." ";
+                                        }
+                                    }
+                                }elseif($mod=="multi"){
+                                    for($j=1;$j<=6;$j=$j+1){
+                                        if($_POST[$i."multi".$j]!=""){
+                                            $opition=$opition.$_POST[$i."multi".$j]." ";
+                                        }
+                                    }
+                                }else{
+                                    $opition="";
+                                }
                             }else{
+                                $direction="";
                                 $required="false";
+                                $opition="";
                             }
                             $order=$i+1;
-                            $opition="";
-                            query($db,"UPDATE `questionlog` SET `desciption`=?,`required`=?,`mod`=?,`opition`=? WHERE `questionid`='$id'AND`order`='$order'",[$direction,$required,$select,$opition]);
+                            query($db,"UPDATE `questionlog` SET `desciption`=?,`required`=?,`mod`=?,`opition`=? WHERE `questionid`='$id'AND`order`='$order'",[$direction,$required,$mod,$opition]);
+                            echo "\$opition ="; print_r($opition); echo "<br>";
                         }
                         ?><script>alert("儲存成功");location.href="form.php"</script><?php
                     }
                     if(isset($_POST["cancel"])){
-                        session_unset();
+                        unset($_SESSION["id"]);
+                        unset($_SESSION["count"]);
                         ?><script>location.href="admin.php"</script><?php
                     }
                 ?>
