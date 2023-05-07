@@ -13,9 +13,6 @@
     | is assigned the "api" middleware group. Enjoy building your API!
     |
     */
-    Route::post("/user/logout",function(){
-        return view("welcome");
-    });
 
     date_default_timezone_set("Asia/Taipei");
     $time=date("Y-m-d H:i:s");

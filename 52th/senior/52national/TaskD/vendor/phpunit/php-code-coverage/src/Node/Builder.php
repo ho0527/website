@@ -17,22 +17,22 @@ use function dirname;
 use function explode;
 use function implode;
 use function is_file;
-use function str_ends_with;
 use function str_replace;
-use function str_starts_with;
+use function strpos;
 use function substr;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
-use SebastianBergmann\CodeCoverage\Data\ProcessedCodeCoverageData;
+use SebastianBergmann\CodeCoverage\ProcessedCodeCoverageData;
 use SebastianBergmann\CodeCoverage\StaticAnalysis\FileAnalyser;
 
 /**
  * @internal This class is not covered by the backward compatibility promise for phpunit/php-code-coverage
- *
- * @psalm-import-type TestType from \SebastianBergmann\CodeCoverage\CodeCoverage
  */
 final class Builder
 {
-    private readonly FileAnalyser $analyser;
+    /**
+     * @var FileAnalyser
+     */
+    private $analyser;
 
     public function __construct(FileAnalyser $analyser)
     {
@@ -57,15 +57,12 @@ final class Builder
         return $root;
     }
 
-    /**
-     * @psalm-param array<string, TestType> $tests
-     */
     private function addItems(Directory $root, array $items, array $tests): void
     {
         foreach ($items as $key => $value) {
             $key = (string) $key;
 
-            if (str_ends_with($key, '/f')) {
+            if (substr($key, -2) === '/f') {
                 $key      = substr($key, 0, -2);
                 $filename = $root->pathAsString() . DIRECTORY_SEPARATOR . $key;
 
@@ -131,8 +128,6 @@ final class Builder
      *         )
      * )
      * </code>
-     *
-     * @psalm-return array<string, array<string, array{lineCoverage: array<int, int>, functionCoverage: array<string, array<int, int>>}>>
      */
     private function buildDirectoryStructure(ProcessedCodeCoverageData $data): array
     {
@@ -219,7 +214,7 @@ final class Builder
 
         for ($i = 0; $i < $max; $i++) {
             // strip phar:// prefixes
-            if (str_starts_with($paths[$i], 'phar://')) {
+            if (strpos($paths[$i], 'phar://') === 0) {
                 $paths[$i] = substr($paths[$i], 7);
                 $paths[$i] = str_replace('/', DIRECTORY_SEPARATOR, $paths[$i]);
             }

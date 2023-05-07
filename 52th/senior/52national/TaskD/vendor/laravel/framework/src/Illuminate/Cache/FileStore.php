@@ -12,7 +12,7 @@ use Illuminate\Support\InteractsWithTime;
 
 class FileStore implements Store, LockProvider
 {
-    use InteractsWithTime, RetrievesMultipleKeys;
+    use InteractsWithTime, HasCacheLock, RetrievesMultipleKeys;
 
     /**
      * The Illuminate Filesystem instance.
@@ -27,13 +27,6 @@ class FileStore implements Store, LockProvider
      * @var string
      */
     protected $directory;
-
-    /**
-     * The file cache lock directory.
-     *
-     * @var string|null
-     */
-    protected $lockDirectory;
 
     /**
      * Octal representation of the cache file permissions.
@@ -109,7 +102,7 @@ class FileStore implements Store, LockProvider
 
         try {
             $file->getExclusiveLock();
-        } catch (LockTimeoutException) {
+        } catch (LockTimeoutException $e) {
             $file->close();
 
             return false;
@@ -208,38 +201,6 @@ class FileStore implements Store, LockProvider
     }
 
     /**
-     * Get a lock instance.
-     *
-     * @param  string  $name
-     * @param  int  $seconds
-     * @param  string|null  $owner
-     * @return \Illuminate\Contracts\Cache\Lock
-     */
-    public function lock($name, $seconds = 0, $owner = null)
-    {
-        $this->ensureCacheDirectoryExists($this->lockDirectory ?? $this->directory);
-
-        return new FileLock(
-            new static($this->files, $this->lockDirectory ?? $this->directory, $this->filePermission),
-            $name,
-            $seconds,
-            $owner
-        );
-    }
-
-    /**
-     * Restore a lock instance using the owner identifier.
-     *
-     * @param  string  $name
-     * @param  string  $owner
-     * @return \Illuminate\Contracts\Cache\Lock
-     */
-    public function restoreLock($name, $owner)
-    {
-        return $this->lock($name, 0, $owner);
-    }
-
-    /**
      * Remove an item from the cache.
      *
      * @param  string  $key
@@ -293,7 +254,7 @@ class FileStore implements Store, LockProvider
             $expire = substr(
                 $contents = $this->files->get($path, true), 0, 10
             );
-        } catch (Exception) {
+        } catch (Exception $e) {
             return $this->emptyPayload();
         }
 
@@ -308,7 +269,7 @@ class FileStore implements Store, LockProvider
 
         try {
             $data = unserialize(substr($contents, 10));
-        } catch (Exception) {
+        } catch (Exception $e) {
             $this->forget($key);
 
             return $this->emptyPayload();
@@ -376,19 +337,6 @@ class FileStore implements Store, LockProvider
     public function getDirectory()
     {
         return $this->directory;
-    }
-
-    /**
-     * Set the cache directory where locks should be stored.
-     *
-     * @param  string|null  $lockDirectory
-     * @return $this
-     */
-    public function setLockDirectory($lockDirectory)
-    {
-        $this->lockDirectory = $lockDirectory;
-
-        return $this;
     }
 
     /**
