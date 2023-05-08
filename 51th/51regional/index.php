@@ -66,13 +66,13 @@
 
             if(isset($_POST["submit"])){
                 $code=$_POST["text"];
-                if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'")[0]){
-                    if($row[2]!=""){
-                        if($_SESSION["data"]==$row[2]){
-                            $_SESSION["user"]=$row[2];
-                        }else{
-                            ?><script>alert("[WARNING]使用者錯誤");location.href="index.php"</script><?php
-                        }
+                $data=$_SESSION["data"];
+                if(!isset($data)){ $data=""; }
+                if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'AND(`user`!='$data'OR`user`!='')")[0]){
+                    if($_SESSION["data"]==$row[2]){
+                        $_SESSION["user"]=$row[2];
+                    }else{
+                        ?><script>alert("[WARNING]使用者錯誤");location.href="index.php"</script><?php
                     }
                     $_SESSION["id"]=$row[1];
                     ?><script>location.href="user.php"</script><?php

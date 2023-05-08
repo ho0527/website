@@ -407,34 +407,9 @@ table{
     width: 20px;
     height: 20px;
 }
-
-.yesnodiv{
-    background-color: rgb(133, 133, 133);
-    height: 100px;
-    padding: 10px;
-}
-
-.singlediv{
-    background-color: rgb(133, 133, 133);
-    height: 100px;
-    padding: 10px;
-}
-
-.forminputtext{
-    width: 95px;
-    padding: 10px;
-}
-
-.multidiv{
-    background-color: rgb(133, 133, 133);
-    height: 150px;
-    padding: 10px;
-}
-
 .questiondiv{
     background-color: rgb(133, 133, 133);
-    height: 200px;
-    padding: 10px;
+    padding: 20px;
 }
 
 .forminputlongtext{
@@ -498,4 +473,26 @@ table{
 .required{
     color: red;
     font-size: 15px;
+}
+
+.count{
+    border: none;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    background: none;
+}
+
+.questioncodetable{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    width: 45%;
+}
+
+.questioncodetd{
+    border: 1px black solid;
+    width: 50%;
+    padding: 10px;
 }

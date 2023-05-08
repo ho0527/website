@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <title>編輯問卷</title>
         <link rel="stylesheet" href="index.css">
+        <script src="error.js"></script>
     </head>
     <body>
         <?php
             include("link.php");
             $id=$_SESSION["id"];
-            $row=query($db,"SELECT*FROM `question` WHERE `id`=?",[$id])[0];
+            $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
+            $id=$row[0];
             if($row[4]>=$row[6]&&$row[6]!=""){
                 ?>
                 <div class="navigationbar">
@@ -18,24 +20,36 @@
                         id: <input type="text" class="formtext" name="id" value="<?php echo($row[0]) ?>" style="width:50px" readonly>
                         標題: <input type="text" class="formtext" name="title" value="<?php echo($row[1]) ?>" style="width:120px">
                         <input type="button" class="button" onclick="location.href='index.php'" value="返回">
-                        <input type="submit" class="button" name="save" value="送出">
-                        <input type="submit" class="button" name="logout" value="登出">
                     </div>
                 </div>
                 <div class="warning center">
                     您好~!本問卷已達所需之數量，感謝您的支持
                 </div>
                 <?php
+            }elseif(!query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'")){
+                ?>
+                <div class="navigationbar">
+                    <div class="navigationbartitle">網路問卷管理系統-填寫問卷</div><br>
+                    <div class="navigationbarbuttondiv">
+                        id: <input type="text" class="formtext" name="id" value="<?php echo($row[0]) ?>" style="width:50px" readonly>
+                        標題: <input type="text" class="formtext" name="title" value="<?php echo($row[1]) ?>" style="width:120px">
+                        <input type="button" class="button" onclick="location.href='index.php'" value="返回">
+                    </div>
+                </div>
+                <div class="warning center">
+                    非常抱歉本問卷尚未開放，感謝您的支持
+                </div>
+                <?php
             }else{
                 ?>
                 <form method="POST">
                     <div class="navigationbar">
-                        <div class="navigationbartitle">網路問卷管理系統-編輯問卷</div><br>
+                        <div class="navigationbartitle">網路問卷管理系統-填寫問卷</div><br>
                         <div class="navigationbarbuttondiv">
                             id: <input type="text" class="formtext" name="id" value="<?php echo($row[0]) ?>" style="width:50px" readonly>
                             標題: <input type="text" class="formtext" name="title" value="<?php echo($row[1]) ?>" style="width:120px">
                             總數: <input type="text" class="formtext" name="count" value="<?php echo($row[2]) ?>" style="width:35px" readonly>
-                            <input type="submit" class="button" name="cancel" value="取消">
+                            <input type="submit" class="button" name="cancel" value="返回">
                             <input type="submit" class="button" name="save" value="送出">
                         </div>
                     </div>
@@ -43,9 +57,12 @@
                         <table>
                             <?php
                                 $questionrow=query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'");
+                                $count=count($questionrow);
                                 for($i=0;$i<count($questionrow);$i=$i+1){
                                     $question=[];
-                                    if(@$questionrow[$i][6]!=""){ $question=explode(" ",$questionrow[$i][6]); }
+                                    if(@$questionrow[$i][6]!=""){
+                                        $question=explode("|&|",$questionrow[$i][6]);
+                                    }
                                     for($j=count($question);$j<6;$j=$j+1){
                                         $question[]="";
                                     }
@@ -54,70 +71,53 @@
                                         <?php
                                         if(isset($questionrow[$i][5])&&$questionrow[$i][5]!="none"){
                                             ?><td rowspan="2" class="order">
-                                                <?php
-                                                if($questionrow[$i][4]=="true"){ ?><div class="required">*必填</div><?php }
-                                                echo($questionrow[$i][2]);
-                                                ?>
+                                                <?php if($questionrow[$i][4]=="true"){ ?><div class="required">*必填</div><?php } ?>
+                                                <input type="text" name="count<?php echo($i) ?>" class="count" value="<?php echo($questionrow[$i][2]) ?>" readonly>
                                             </td><?php
                                         }
                                         ?>
                                     </tr>
                                     <tr>
                                         <?php
-                                        if(!isset($questionrow[$i][5])||$questionrow[$i][5]=="none"){}
-                                        elseif($questionrow[$i][5]=="yesno"){
+                                        if(!isset($questionrow[$i][5])||$questionrow[$i][5]=="none"){
+                                            $count=$count-1;
+                                        }else{
                                             ?>
                                             <td class="output" id="output<?= $i ?>">
-                                                <div class="yesnodiv">
-                                                    題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br>
-                                                    是<input type="radio" name="yesno" value="yes">
-                                                    否<input type="radio" name="yesno" value="no">
-                                                </div>
-                                            </td>
-                                            <?php
-                                        }elseif($questionrow[$i][5]=="single"){
-                                            ?>
-                                            <td class="output" id="output<?= $i ?>">
-                                                <div class="singlediv">
-                                                    題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br>
+                                                <div class="questiondiv">
+                                                    題目說明: <?php echo($questionrow[$i][3]) ?><br>
                                                     <?php
-                                                    for($j=0;$j<6;$j=$j+1){
-                                                        if(@$question[$j]!=""){
-                                                            ?><input type="radio" name="single<?php echo($i) ?>" class="radio" value="<?php echo($j+1) ?>"><?php
-                                                            echo($question[$j]." ");
+                                                    if($questionrow[$i][5]=="yesno"){
+                                                        ?>
+                                                        是<input type="radio" name="yesno" class="radio" value="yes">
+                                                        否<input type="radio" name="yesno" class="radio" value="no">
+                                                        <?php
+                                                    }elseif($questionrow[$i][5]=="single"){
+                                                        for($j=0;$j<6;$j=$j+1){
+                                                            if(@$question[$j]!=""){
+                                                                ?><input type="radio" name="single<?php echo($i) ?>" class="radio" value="<?php echo($j+1) ?>"><?php
+                                                                echo($question[$j]." ");
+                                                            }
                                                         }
-                                                    }
+                                                    }elseif($questionrow[$i][5]=="multi"){
+                                                        for($j=0;$j<6;$j=$j+1){
+                                                            if(@$question[$j]!=""){
+                                                                ?><input type="checkbox" name="<?php echo($i) ?>multi<?php echo($j) ?>" class="checkbox" value="<?php echo($j+1) ?>"><?php
+                                                                echo($question[$j]." ");
+                                                            }
+                                                        }
+                                                        ?><br>
+                                                        其他:<input type="text" name="multiauther<?php echo($i) ?>" class="forminputlongtext">
+                                                        <?php
+                                                    }elseif($questionrow[$i][5]=="qa"){
+                                                        ?>
+                                                        <textarea cols="30" rows="5" name="qa<?php echo($i) ?>" placeholder="問答題"></textarea>
+                                                        <?php
+                                                    }else{ ?><script>sql001();location.href="admin.php"</script><?php }
                                                     ?>
                                                 </div>
                                             </td>
                                             <?php
-                                        }elseif($questionrow[$i][5]=="multi"){
-                                            ?>
-                                            <td class="output" id="output<?= $i ?>">
-                                                <div class="multidiv">
-                                                    題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br>
-                                                    <?php
-                                                    for($j=0;$j<6;$j=$j+1){
-                                                        if(@$question[$j]!=""){
-                                                            echo($j+1)?>.<input type="text" name="<?php echo($i) ?>multi1" class="forminputtext" value="<?php echo($question[$j]) ?>"><?php
-                                                        }
-                                                    }
-                                                    ?><br>
-                                                    其他:<input type="text" name="multiauther" class="forminputlongtext" value="">
-                                                </div>
-                                            </td>
-                                            <?php
-                                        }elseif($questionrow[$i][5]=="qa"){
-                                            ?>
-                                            <td class="output" id="output<?= $i ?>">
-                                                <div class="questiondiv">
-                                                    題目說明:<input type="text" class="directions" name="direction<?php echo($i) ?>" value="<?php echo($questionrow[$i][3]) ?>"><br><br>
-                                                    <textarea cols="30" rows="5" placeholder="問答題"></textarea>
-                                                </div>
-                                            </td>
-                                            <?php
-                                        }else{
-                                            ?><script>alert("[ERROR]SQL ERROR 請與程式開發者聯繫(ERROR CODE:001)");location.href="admin.php"</script><?php
                                         }
                                     ?></tr><?php
                                 }
@@ -133,39 +133,36 @@
                                 ?><script>location.href="form.php"</script><?php
                             }
                             if(isset($_POST["save"])){
-                                // $title=$_POST["title"];
-                                // $count=$_POST["count"];
-                                // $max=$_POST["max"];
-                                // for($i=0;$i<$count;$i=$i+1){
-                                //     $mod=$_POST["select".$i];
-                                //     if($mod!="none"){
-                                //         $direction=$_POST["direction".$i];
-                                //         if(isset($_POST["required".$i])){ $required="true"; }else{ $required="false"; }
-                                //         if($mod=="single"){
-                                //             for($j=1;$j<=6;$j=$j+1){
-                                //                 if($_POST[$i."single".$j]!=""){
-                                //                     $opition=$opition.$_POST[$i."single".$j]." ";
-                                //                 }
-                                //             }
-                                //         }elseif($mod=="multi"){
-                                //             for($j=1;$j<=6;$j=$j+1){
-                                //                 if($_POST[$i."multi".$j]!=""){
-                                //                     $opition=$opition.$_POST[$i."multi".$j]." ";
-                                //                 }
-                                //             }
-                                //         }else{
-                                //             $opition="";
-                                //         }
-                                //     }else{
-                                //         $direction="";
-                                //         $required="false";
-                                //         $opition="";
-                                //     }
-                                //     $order=$i+1;
-                                //     query($db,"UPDATE `questionlog` SET `desciption`=?,`required`=?,`mod`=?,`opition`=? WHERE `questionid`='$id'AND`order`='$order'",[$direction,$required,$mod,$opition]);
-                                //     echo "\$opition ="; print_r($opition); echo "<br>";
-                                // }
-                                ?><script>alert("儲存成功");location.href="index.php"</script><?php
+                                for($i=0;$i<$count;$i=$i+1){
+                                    $respond="";
+                                    $order=$_POST["count".$i];
+                                    if(isset($_POST["required".$i])){ $required="true"; }else{ $required="false"; }
+                                    $mod=$questionrow[$order][5];
+                                    echo "\$mod ="; print_r($mod); echo "<br>";
+                                    if($mod=="yesno"){
+                                        echo "\$in ="; print_r($mod); echo "<br>";
+                                        if(isset($_POST["yesno".$i])){
+                                            $respond=$_POST["yesno".$i];
+                                        }
+                                    }elseif($mod=="single"){
+                                        if(isset($_POST["single".$i])){
+                                            $respond=$respond.$_POST[$i."single"]."|&|";
+                                        }
+                                    }elseif($mod=="multi"){
+                                        for($j=1;$j<=6;$j=$j+1){
+                                            if(isset($_POST[$i."multi".$j])){
+                                                $respond=$respond.$_POST[$i."multi".$j]."|&|";
+                                            }
+                                        }
+                                        $respond=$respond.$_POST["multiauther".$i];
+                                    }elseif($mod=="qa"){
+                                        $respond=$_POST["qa".$i];
+                                    }else{}
+                                    query($db,"INSERT INTO `respond`(`questionid`,`questionorder`,`respond`)VALUES('$id','$order',?)",[$respond]);
+                                }
+                                $count=(int)$row[4]+1;
+                                query($db,"UPDATE `question` SET `responcount`='$count' WHERE `id`='$id'");
+                                ?><script>//alert("儲存成功");location.href="index.php"</script><?php
                             }
                             if(isset($_POST["cancel"])){
                                 unset($_SESSION["id"]);
