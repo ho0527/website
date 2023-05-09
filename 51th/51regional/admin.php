@@ -92,6 +92,8 @@
                     $_SESSION["title"]=$title;
                     $_SESSION["count"]=$count;
                     $_SESSION["id"]=$row[0];
+                    $id=$_SESSION["id"];
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','新增問卷','$time','qid=$id')");
                     ?><script>location.href="form.php"</script><?php
                 }else{
                     ?><script>alert("[WARNING]問卷題數請輸入數字");location.href="admin.php"</script><?php
@@ -105,9 +107,11 @@
                     if($row[5]=="false"){
                         if($mod=="lock"){
                             query($db,"UPDATE `question` SET `lock`='true' WHERE `id`='$id'");
+                            query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','鎖定問卷','$time','qid=$id')");
                         }elseif($mod=="edit"){
                             $_SESSION["id"]=$row[0];
                             $_SESSION["count"]=$row[2];
+                            query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','編輯問卷','$time','qid=$id')");
                             ?><script>location.href="form.php"</script><?php
                         }elseif($mod=="del"){
                             ?><script>
@@ -116,9 +120,18 @@
                             </script><?php
                         }else{ ?><script>e4032();location.href="admin.php"</script><?php }
                     }elseif($row[5]=="true"){
-                        if($mod=="lock"){ query($db,"UPDATE `question` SET `lock`='false' WHERE `id`='$id'"); }
-                        elseif($mod=="edit"||$mod=="del"){ ?><script>e403();location.href="admin.php"</script><?php }
-                        else{ ?><script>e4032();location.href="admin.php"</script><?php }
+                        if($mod=="lock"){
+                            query($db,"UPDATE `question` SET `lock`='false' WHERE `id`='$id'");
+                            query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','解鎖問卷','$time','qid=$id')");
+                        }
+                        elseif($mod=="edit"||$mod=="del"){
+                            ?><script>e403();location.href="admin.php"</script><?php
+                            query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','一個白癡改了原始碼','$time','')");
+                        }
+                        else{
+                            ?><script>e4032();location.href="admin.php"</script><?php
+                            query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','一個白癡改了getname','$time','')");
+                        }
                     }else{ ?><script>sql001();location.href="admin.php"</script><?php }
                     ?><script>location.href="admin.php"</script><?php
                 }elseif($mod=="copyquestion"||$mod=="copyall"){
@@ -138,10 +151,14 @@
                             query($db,"INSERT INTO `questionlog`(`questionid`,`order`,`desciption`,`required`,`mod`,`opition`)VALUES(?,?,?,?,?,?)",[$newrow[0],$questionlogrow[$i][2],$questionlogrow[$i][3],$questionlogrow[$i][4],$questionlogrow[$i][5],$questionlogrow[$i][6]]);
                         }
                     }
+                    $temp="all";
+                    if($mod=="copyquestion"){ $temp="question"; }
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','複製問卷\($temp\)','$time','qid=$id')");
                     ?><script>alert("成功");location.href="admin.php"</script><?php
                 }elseif($mod=="respone"){
                     $id=$_GET["id"];
-                    $_SESSION["id"]=$_GET["id"];
+                    $_SESSION["id"]=$id;
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','填寫問卷','$time','qid=$id')");
                     ?><script>location.href="user.php"</script><?php
                 }else{
                     ?><script>e404();location.href="admin.php"</script><?php

@@ -41,117 +41,117 @@
             <h2>選擇版型</h2>
             <input type="button" class="mag" onclick="check('newproduct.php')" value="新增版型">
             <table class="producttable">
-                        <?php
-                            $product=fetchall(query($db,"SELECT*FROM `product`"));
-                            for($j=0;$j<count($product);$j++){
-                                ?>
-                                <tr>
-                                    <td class="producttd">
-                                        版型<?= $product[$j][0] ?>
-                                        <table class="coffeetable mag" id="<?= $product[$j][0] ?>">
-                                            <?php
-                                                    if($product[$j][1]=="picture"){
-                                                        ?>
-                                                        <tr>
-                                                            <td class="coffee" rowspan="3">圖片</td>
-                                                            <td class="coffee"><?php data($product[$j][2]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][4]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][6]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][7]); ?></td>
-                                                            <td class="coffee"><?php data($product[$j][8]); ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }elseif($product[$j][2]=="picture"){
-                                                        ?>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][1]); ?></td>
-                                                            <td class="coffee" rowspan="3">圖片</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][3]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][5]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][7]); ?></td>
-                                                            <td class="coffee"><?php data($product[$j][8]); ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }elseif($product[$j][3]=="picture"){
-                                                        ?>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][1]); ?></td>
-                                                            <td class="coffee"><?php data($product[$j][2]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee" rowspan="3">圖片</td>
-                                                            <td class="coffee"><?php data($product[$j][4]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][6]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][8]); ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }elseif($product[$j][4]=="picture"){
-                                                        ?>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][1]); ?></td>
-                                                            <td class="coffee"><?php data($product[$j][2]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][3]); ?></td>
-                                                            <td class="coffee" rowspan="3">圖片</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][5]); ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="coffee"><?php data($product[$j][7]); ?></td>
-                                                        </tr>
-                                                        <?php
-                                                    }
-                                            ?>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                            if(isset($_GET["val"])){
-                                if($_GET["val"]=="no"){
-                                    if(!isset($_SESSION["val"])){
-                                        $_SESSION["val"]="1";
-                                    }
-                                }else{
-                                    $_SESSION["val"]=$_GET["val"];
-                                }
-                                ?><script>location.href="productindex.php"</script><?php
-                            }else{
-                                if(!isset($_SESSION["val"])){
-                                    $_SESSION["val"]="1";
-                                    ?><script>location.href="productindex.php"</script><?php
-                                }
-                            }
-                            if(isset($_GET["clearall"])){
-                                unset($_SESSION["name"]);
-                                unset($_SESSION["picture"]);
-                                unset($_SESSION["cost"]);
-                                unset($_SESSION["link"]);
-                                unset($_SESSION["intr"]);
-                                unset($_SESSION["val"]);
-                                ?><script>location.href="main.php"</script><?php
-                            }
+                <?php
+                    $product=fetchall(query($db,"SELECT*FROM `product`"));
+                    for($j=0;$j<count($product);$j++){
                         ?>
-                    </table>
-                </div>
+                        <tr>
+                            <td class="producttd">
+                                版型<?= $product[$j][0] ?>
+                                <table class="coffeetable mag" id="<?= $product[$j][0] ?>">
+                                    <?php
+                                            if($product[$j][1]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee" rowspan="3">圖片</td>
+                                                    <td class="coffee"><?php data($product[$j][2]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][4]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][6]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][7]); ?></td>
+                                                    <td class="coffee"><?php data($product[$j][8]); ?></td>
+                                                </tr>
+                                                <?php
+                                            }elseif($product[$j][2]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][1]); ?></td>
+                                                    <td class="coffee" rowspan="3">圖片</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][3]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][5]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][7]); ?></td>
+                                                    <td class="coffee"><?php data($product[$j][8]); ?></td>
+                                                </tr>
+                                                <?php
+                                            }elseif($product[$j][3]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][1]); ?></td>
+                                                    <td class="coffee"><?php data($product[$j][2]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee" rowspan="3">圖片</td>
+                                                    <td class="coffee"><?php data($product[$j][4]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][6]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][8]); ?></td>
+                                                </tr>
+                                                <?php
+                                            }elseif($product[$j][4]=="picture"){
+                                                ?>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][1]); ?></td>
+                                                    <td class="coffee"><?php data($product[$j][2]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][3]); ?></td>
+                                                    <td class="coffee" rowspan="3">圖片</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][5]); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="coffee"><?php data($product[$j][7]); ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                    ?>
+                                </table>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                    if(isset($_GET["val"])){
+                        if($_GET["val"]=="no"){
+                            if(!isset($_SESSION["val"])){
+                                $_SESSION["val"]="1";
+                            }
+                        }else{
+                            $_SESSION["val"]=$_GET["val"];
+                        }
+                        ?><script>location.href="productindex.php"</script><?php
+                    }else{
+                        if(!isset($_SESSION["val"])){
+                            $_SESSION["val"]="1";
+                            ?><script>location.href="productindex.php"</script><?php
+                        }
+                    }
+                    if(isset($_GET["clearall"])){
+                        unset($_SESSION["name"]);
+                        unset($_SESSION["picture"]);
+                        unset($_SESSION["cost"]);
+                        unset($_SESSION["link"]);
+                        unset($_SESSION["intr"]);
+                        unset($_SESSION["val"]);
+                        ?><script>location.href="main.php"</script><?php
+                    }
+                ?>
+            </table>
+        </div>
         <script src="porduct.js"></script>
         <script>
             document.getElementById(<?= $_SESSION["val"] ?>).style.backgroundColor="rgb(255, 255, 160)"

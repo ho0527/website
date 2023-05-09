@@ -107,12 +107,12 @@
                                                             }
                                                         }
                                                         ?><br>
-                                                        其他:<input type="text" name="multiauther<?php echo($i) ?>" class="forminputlongtext">
                                                         <?php
+                                                        if($questionrow[$i][7]==""||$questionrow[$i][7]=="true"){
+                                                            ?>其他:<input type="text" name="multiauther<?php echo($i) ?>" class="forminputlongtext"><?php
+                                                        }
                                                     }elseif($questionrow[$i][5]=="qa"){
-                                                        ?>
-                                                        <textarea cols="30" rows="5" name="qa<?php echo($i) ?>" placeholder="問答題"></textarea>
-                                                        <?php
+                                                        ?><textarea cols="30" rows="5" name="qa<?php echo($i) ?>" placeholder="問答題"></textarea><?php
                                                     }else{ ?><script>sql001();location.href="admin.php"</script><?php }
                                                     ?>
                                                 </div>
@@ -162,7 +162,7 @@
                                 }
                                 $count=(int)$row[4]+1;
                                 query($db,"UPDATE `question` SET `responcount`='$count' WHERE `id`='$id'");
-                                ?><script>//alert("儲存成功");location.href="index.php"</script><?php
+                                ?><script>alert("儲存成功");location.href="index.php"</script><?php
                             }
                             if(isset($_POST["cancel"])){
                                 unset($_SESSION["id"]);

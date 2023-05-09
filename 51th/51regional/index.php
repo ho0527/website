@@ -54,13 +54,16 @@
                 if($row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0]){
                     if($row[2]==$password){
                         ?><script>alert("登入成功");location.href="verify.php"</script><?php
+                        query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入系統','$time')");
                         session_unset();
                         $_SESSION["data"]=$row[1];
                     }else{
                         ?><script>alert("密碼有誤");location.href="index.php"</script><?php
+                        query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入失敗(password)','$time')");
                     }
                 }else{
                     ?><script>alert("帳號有誤");location.href="index.php"</script><?php
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入失敗(account)','$time')");
                 }
             }
 
@@ -68,14 +71,14 @@
                 $code=$_POST["text"];
                 $data=$_SESSION["data"];
                 if(!isset($data)){ $data=""; }
-                if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'AND(`user`!='$data'OR`user`!='')")[0]){
-                    if($_SESSION["data"]==$row[2]){
-                        $_SESSION["user"]=$row[2];
+                if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'")[0]){
+                    if($data==$row[2]||$row[2]==""){
+                        $_SESSION["id"]=$row[1];
+                        ?><script>location.href="user.php"</script><?php
+                        query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$data','填寫問卷','$time')");
                     }else{
                         ?><script>alert("[WARNING]使用者錯誤");location.href="index.php"</script><?php
                     }
-                    $_SESSION["id"]=$row[1];
-                    ?><script>location.href="user.php"</script><?php
                 }else{
                     ?><script>alert("查無此邀請碼");location.href="index.php"</script><?php
                 }

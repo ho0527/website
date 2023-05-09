@@ -99,9 +99,12 @@
                                                 4.<input type="text" name="<?php echo($i) ?>multi4" class="forminputtext" value="<?php echo($question[3]) ?>">
                                                 5.<input type="text" name="<?php echo($i) ?>multi5" class="forminputtext" value="<?php echo($question[4]) ?>">
                                                 6.<input type="text" name="<?php echo($i) ?>multi6" class="forminputtext" value="<?php echo($question[5]) ?>"><br>
-                                                其他:<input type="text" name="multiauther" class="forminputlongtext" disabled>
-                                                顯示<input type="checkbox" name="showauther<?php echo($i) ?>" checked>
                                                 <?php
+                                                    if($questionrow[$i][7]==""||$questionrow[$i][7]=="true"){
+                                                        ?>顯示其他選項<input type="checkbox" name="showauther<?php echo($i) ?>" checked><?php
+                                                    }else{
+                                                        ?>顯示其他選項<input type="checkbox" name="showauther<?php echo($i) ?>"><?php
+                                                    }
                                             }elseif($questionrow[$i][5]=="qa"){
                                                 ?>
                                                 <textarea cols="30" rows="5" placeholder="問答題" disabled></textarea>
@@ -151,6 +154,7 @@
                             if($mod!="none"){
                                 $direction=$_POST["direction".$i];
                                 $badbadcheck="";
+                                $showantherans="true";
                                 if(isset($_POST["required".$i])){ $required="true"; }else{ $required="false"; }
                                 if($mod=="single"||$mod=="multi"){
                                     for($j=1;$j<=6;$j=$j+1){
@@ -162,6 +166,7 @@
                                 }else{
                                     $opition="";
                                 }
+                                if(!isset($_POST["showauther".$i])){ $showantherans="false"; }
                             }else{
                                 $direction="";
                                 $required="false";
@@ -171,9 +176,10 @@
                             if(preg_match("/\|\&\|/",$badbadcheck)){
                                 ?><script>alert("禁止連續輸入|&| 位於第"+<?php echo($order) ?>+"欄")</script><?php
                             }else{
-                                query($db,"UPDATE `questionlog` SET `desciption`=?,`required`=?,`mod`=?,`opition`=? WHERE `questionid`='$id'AND`order`='$order'",[$direction,$required,$mod,$opition]);
+                                query($db,"UPDATE `questionlog` SET `desciption`=?,`required`=?,`mod`=?,`opition`=?,`showmultimorerespond`='$showantherans' WHERE `questionid`='$id'AND`order`='$order'",[$direction,$required,$mod,$opition]);
                             }
                         }
+                        query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','儲存問卷成功','$time','qid=$id')");
                         ?><script>alert("儲存成功");location.href="form.php"</script><?php
                     }
                     if(isset($_POST["cancel"])){
