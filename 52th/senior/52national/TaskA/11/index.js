@@ -63,7 +63,7 @@ document.getElementById("submit").onclick=function(){
             td2.classList.add("tdshow")
             td2.id=i+"2"
             td2.innerHTML=`
-            <div class="line"></div>
+                <div class="line"></div>
             `
             document.querySelectorAll(".tr")[i].appendChild(td2)
             let td3=document.createElement("td")
