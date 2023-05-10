@@ -1,5 +1,6 @@
 document.getElementById("submit").onclick=function(){
     let csvdata=[]
+    let county=[]
     let county1=[]
     let county2=[]
     let total=[]
@@ -16,12 +17,15 @@ document.getElementById("submit").onclick=function(){
         }
         let countytotaltemp=[]
         for(let i=1;i<lines.length;i=i+1){
-            county1.push(csvdata[i][0])
-            county2.push(csvdata[i][1])
-            countytotaltemp.push([csvdata[i][0]])
-            let totalsum=parseInt(csvdata[i][2])+parseInt(csvdata[i][3])
-            total.push(totalsum)
-            countytotaltemp[i-1].push(totalsum)
+            if(csvdata[i][0]!=""){
+                county1.push(csvdata[i][0])
+                county2.push(csvdata[i][1])
+                county.push(csvdata[i][0]+" "+csvdata[i][1])
+                countytotaltemp.push([csvdata[i][0]])
+                let totalsum=parseInt(csvdata[i][2])+parseInt(csvdata[i][3])
+                total.push(totalsum)
+                countytotaltemp[i-1].push(totalsum)
+            }
         }
         county1=[...new Set(county1)]
         for(let i=0;i<countytotaltemp.length;i=i+1){
@@ -76,7 +80,11 @@ document.getElementById("submit").onclick=function(){
         },100)
         document.querySelectorAll(".tdshow").forEach(function(event){
             event.addEventListener("pointerover",function(addeventlistenerevent){
-                console.log(addeventlistenerevent)
+                // console.log(addeventlistenerevent)
+                for(let i=0;i<county.length;i=i+1){
+                    console.log("county.length="+county.length)
+                    console.log(i+"="+county[i])
+                }
                 //document.getElementById(addeventlistenerevent)
             })
         })

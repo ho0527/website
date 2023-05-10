@@ -163,7 +163,7 @@
                 }else{
                     ?><script>e404();location.href="admin.php"</script><?php
                 }
-            }
+                }
         ?>
         <script src="admin.js"></script>
     </body>
