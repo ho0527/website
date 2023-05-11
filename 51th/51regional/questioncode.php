@@ -4,11 +4,13 @@
         <meta charset="UTF-8">
         <title>編輯問卷</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="plugin/css/macossection.css">
         <script src="error.js"></script>
     </head>
     <body>
         <?php
             include("link.php");
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
             $id=$_SESSION["id"];
             $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
             $id=$row[0];
@@ -24,7 +26,7 @@
                     <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                 </div>
             </div>
-            <div class="questioncodemaindiv">
+            <div class="questioncodemaindiv macosmaindiv macossectiondiv">
                 <?php
                 if(!isset($coderow)||@$coderow[0][2]==""){
                     if(@$_GET["key"]=="user"){

@@ -1,61 +1,37 @@
 <?php
-    $num = readline();
-    $data = [];
+$n = 0;
+fscanf(STDIN, "%d\n", $n);
 
-    foreach(range(1,$num) as $i){
-        $nn = readline();
-        $t = explode(" ",readline());
-        $ar = [];
-        foreach(range(1,$nn) as $j){
-            $ar[] = $t[$j-1];
+if (1 <= $n && $n <= (2 ** 31 - 1)) {
+    $ans = [];
+    $max = 0;
+
+    for ($i = 0; $i < $n; $i++) {
+        fscanf(STDIN, "%d\n", $num);
+
+        if (isset($ans[$num])) {
+            $ans[$num]++;
+        } else {
+            $ans[$num] = 1;
         }
-        $abc=[];
-        bruh($ar);
-        $data[] = bla($abc,implode('',$t));
-    }
-    foreach($data as $m){
-        print $m."\n";
-    }
 
-    function bruh($data = [],$ar = []){
-        global $abc;
-
-        if(count($data) == 0) $abc[] = implode('',$ar);
-
-        foreach($data as $k => $v){
-            $new_data = $data;
-            $new_ar = $ar;
-
-            array_splice($new_data,$k,1);
-            $new_ar[] = $v;
-
-            bruh($new_data,$new_ar);
+        if ($ans[$num] > $max) {
+            $max = $ans[$num];
         }
     }
 
-    function bla($data,$value){
-        sort($data);
-        $ar = array_unique($data);
-        $ar = array_values($ar);
-        $index = array_search($value,$ar);
-        return $ar[($index + 1) % count($ar)];
-    }
+    if ($max == 1) {
+        echo "-1" . PHP_EOL;
+    } else {
+        ksort($ans);
 
-    function is_prime($num){
-        if(($num<1)&&($num>(2**31-1))){//判斷是否再要求內
-            return false;
-        }else{
-            $all=0;
-            for($i=1;$i<=$num;$i=$i+1){
-                if($num%$i==0){//判斷是否是num因數
-                    $all=$all+1;
-                }
-            }
-            if($all<=2){//判斷是否為質數
-                return true;
-            }else{
-                return false;
+        foreach ($ans as $key => $value) {
+            if ($value == $max) {
+                echo $key . PHP_EOL;
             }
         }
     }
+} else {
+    echo "輸入未符合要求";
+}
 ?>

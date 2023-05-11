@@ -1,0 +1,47 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(26, 34, 51);
+    color: rgb(255, 255, 255);
+    user-select: none;
+    word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+.macossectiondiv{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 500px;
+    overflow: overlay;
+    background: rgb(193, 135, 29);
+}
+
+::-webkit-scrollbar{
+    width: 20px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    border: 5px transparent solid;
+    background-clip: content-box;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 1000px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    border: 5px transparent solid;
+    background-clip: content-box;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 1000px;
+}
+
+body[scroll] ::-webkit-scrollbar-thumb{
+    border: 5px transparent solid;
+    background-clip: content-box;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 1000px;
+}

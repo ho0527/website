@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>編輯問卷</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="plugin/css/macossection.css">
         <script src="error.js"></script>
     </head>
     <body>
@@ -12,6 +13,7 @@
             $id=$_SESSION["id"];
             $count=$_SESSION["count"];
             $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
         <form method="POST">
             <div class="navigationbar">
@@ -29,7 +31,7 @@
                     <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                 </div>
             </div>
-            <div class="div">
+            <div class="div macosmaindiv macossectiondiv">
                 <table>
                     <?php
                         $questionrow=query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'");

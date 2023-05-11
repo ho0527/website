@@ -1,3 +1,16 @@
+function removearrayduplicate(array){
+    let uniquearray=[];
+    let seenelement={};
+    for(let i=0;i<array.length;i=i+1){
+        let element=array[i];
+        if(!seenelement[element]){
+            uniquearray.push(element);
+            seenelement[element]=true;
+        }
+    }
+    return uniquearray;
+}
+
 document.getElementById("submit").onclick=function(){
     let csvdata=[]
     let county=[]
@@ -20,21 +33,19 @@ document.getElementById("submit").onclick=function(){
             if(csvdata[i][0]!=""){
                 county1.push(csvdata[i][0])
                 county2.push(csvdata[i][1])
-                county.push(csvdata[i][0]+" "+csvdata[i][1])
-                countytotaltemp.push([csvdata[i][0]])
                 let totalsum=parseInt(csvdata[i][2])+parseInt(csvdata[i][3])
                 total.push(totalsum)
-                countytotaltemp[i-1].push(totalsum)
+                county.push([csvdata[i][0]+" "+csvdata[i][1],totalsum])
+                countytotaltemp.push([csvdata[i][0],totalsum])
             }
         }
-        county1=[...new Set(county1)]
+        county1=removearrayduplicate(county1)
         for(let i=0;i<countytotaltemp.length;i=i+1){
-            let county=countytotaltemp[i]
-            let index=countytotal.findIndex(function(c){ return c[0]==county[0] })
+            let index=countytotal.findIndex(function(c){ return c[0]==countytotaltemp[i][0] })
             if(index==-1){
-                countytotal.push([county[0],1])
+                countytotal.push([countytotaltemp[i][0],1])
             }else{
-                countytotal[index][1]=countytotal[index][1]+county[1]
+                countytotal[index][1]=countytotal[index][1]+countytotaltemp[i][1]
             }
         }
         // document.getElementById("log").innerHTML=ans
@@ -79,18 +90,15 @@ document.getElementById("submit").onclick=function(){
             }
         },100)
         document.querySelectorAll(".tdshow").forEach(function(event){
-            event.addEventListener("pointerover",function(addeventlistenerevent){
-                // console.log(addeventlistenerevent)
+            event.onclick=function(){
                 for(let i=0;i<county.length;i=i+1){
                     console.log("county.length="+county.length)
                     console.log(i+"="+county[i])
                 }
-                //document.getElementById(addeventlistenerevent)
-            })
+            }
         })
     },100)
 }
-
 
 document.getElementById("reflashbutton").onclick=function(){
     location.reload()

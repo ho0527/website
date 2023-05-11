@@ -1,6 +1,7 @@
 <?php
     $memoryBefore=memory_get_usage();
     echo("p07\n");
+
     $n=trim(fgets(STDIN));
     $ans=[];
     $max=0;

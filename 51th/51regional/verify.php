@@ -6,6 +6,10 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <?php
+            include("link.php");
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+        ?>
         <div class="main">
             請點擊驗證碼讓三字母相同<br><br>
             <div class="verifydiv" id="verifydiva"></div>

@@ -60,16 +60,17 @@
                 <td class="example">
                     echo(addcslashes("Hello World!","W"));<br> // ->Hello \World!
                 </td>
-                <td class="effect">以C語言風格使用反斜线轉義字符串中的字符</td>
+                <td class="effect">將一值前加上\</td>
                 <td class="otheruse"></td>
                 <td class="ps"></td>
             </tr>
             <tr>
-                <td class="command">addslashes</td>
+                <td class="command">addslashes([<div class="need">str</div>])</td>
                 <td class="example">
+                    echo(addslashes("Hello'World"));<br> // ->Hello\'World
                 </td>
-                <td class="effect">使用反斜線引用字符串</td>
-                <td class="otheruse"></td>
+                <td class="effect">將 ' " \ NUL字節 前加上\</td>
+                <td class="otheruse">防SQL注入</td>
                 <td class="ps"></td>
             </tr>
             <tr>
