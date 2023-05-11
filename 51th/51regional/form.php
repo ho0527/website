@@ -22,9 +22,9 @@
                     總數: <input type="text" class="formtext" name="count" value="<?php echo($count) ?>" style="width:35px" readonly>
                     最大總數: <input type="text" class="formtext" name="max" value="<?php echo($row[6]) ?>" style="width:50px">
                     <input type="button" class="button" onclick="location.href='questioncode.php'" value="問卷邀請碼">
-                    <input type="submit" class="button" name="lestqust" value="減少">
+                    <input type="button" class="button" name="lestqust" value="減少" disabled>
                     <input type="submit" class="button" name="newqust" value="新增">
-                    <input type="submit" class="button" name="cancel" value="返回">
+                    <input type="button" class="button" onclick="location.href='api.php?cancel='" value="返回">
                     <input type="submit" class="button" name="save" value="儲存">
                     <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                 </div>
@@ -129,26 +129,12 @@
                         ?><script>location.href="form.php"</script><?php
                     }
                     if(isset($_POST["save"])){
+                        $data=$_SESSION["data"];
                         $title=$_POST["title"];
                         $count=$_POST["count"];
                         $max=$_POST["max"];
-                        query($db,"UPDATE `question` SET `title`=?,`questioncount`=?,`maxlen`=? WHERE `id`='$id'",[$title,$count,$max]);
                         $row=query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'");
-                        if($count>count($row)){
-                            $m=$count-count($row);
-                            if(count($row)==0){ $max=0; }else{ $max=(int)$row[count($row)-1][2]; }
-                            for($i=0;$i<$m;$i=$i+1){
-                                $order=$i+$max+1;
-                                query($db,"INSERT INTO `questionlog`(`questionid`,`order`)VALUES(?,?)",[$id,$order]);
-                            }
-                        }elseif($count<count($row)){
-                            // $m=count($row)-$count;
-                            // if(count($row)!=0){ $max=0; }else{ $max=(int)$row[count($row)-1][2]; }
-                            // for($i=0;$i<$m;$i=$i+1){
-                            //     $order=$i+$max+1;
-                            //     query($db,"INSERT INTO `questionlog`(`questionid`,`order`)VALUES('$id','$order')");
-                            // }
-                        }
+                        query($db,"DELETE FROM `questionlog` WHERE `questionid`='$id'");
                         for($i=0;$i<$count;$i=$i+1){
                             $mod=$_POST["select".$i];
                             if($mod!="none"){
@@ -174,18 +160,20 @@
                             }
                             $order=$i+1;
                             if(preg_match("/\|\&\|/",$badbadcheck)){
-                                ?><script>alert("禁止連續輸入|&| 位於第"+<?php echo($order) ?>+"欄")</script><?php
+                                ?><script>alert("禁止連續輸入|&| 位於第"+<?php echo($order) ?>+"欄，故選項不儲存")</script><?php
+                                query($db,"INSERT INTO `questionlog`(`questionid`,`order`,`desciption`,`required`,`mod`,`opition`,`showmultimorerespond`)VALUES(?,?,?,?,?,?,?)",[$id,$order,$direction,$required,$mod,"",$showantherans]);
                             }else{
-                                query($db,"UPDATE `questionlog` SET `desciption`=?,`required`=?,`mod`=?,`opition`=?,`showmultimorerespond`='$showantherans' WHERE `questionid`='$id'AND`order`='$order'",[$direction,$required,$mod,$opition]);
+                                query($db,"INSERT INTO `questionlog`(`questionid`,`order`,`desciption`,`required`,`mod`,`opition`,`showmultimorerespond`)VALUES(?,?,?,?,?,?,?)",[$id,$order,$direction,$required,$mod,$opition,$showantherans]);
                             }
+                        }
+                        if($max==""||preg_match("/^[0-9]+$/",$max)){
+                            query($db,"UPDATE `question` SET `title`=?,`questioncount`=?,`maxlen`=? WHERE `id`='$id'",[$title,$count,$max]);
+                        }else{
+                            query($db,"UPDATE `question` SET `title`=?,`questioncount`=? WHERE `id`='$id'",[$title,$count]);
+                            ?><script>alert("最大長度只能是數字或空白")</script><?php
                         }
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','儲存問卷成功','$time','qid=$id')");
                         ?><script>alert("儲存成功");location.href="form.php"</script><?php
-                    }
-                    if(isset($_POST["cancel"])){
-                        unset($_SESSION["id"]);
-                        unset($_SESSION["count"]);
-                        ?><script>location.href="admin.php"</script><?php
                     }
                 ?>
             </div>

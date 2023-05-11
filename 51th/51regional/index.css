@@ -27,7 +27,7 @@ table{
 .main{
     border: 1px white solid;
     background: rgb(26, 34, 51);
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -331,7 +331,7 @@ table{
 
 
 .mask{
-    position: absolute;/* 絕對定位 */
+    position: fixed;
     top: 0px;/* 定位 */
     left: 0px;
     bottom: 0px;
@@ -412,6 +412,17 @@ table{
     padding: 20px;
 }
 
+.inputshort{
+    border: none;
+    width: 35%;
+    height: 40px;
+    background-color: white;
+    background: none;
+    border-bottom: 1px black solid;
+    outline: none;
+    font-size: 30px;
+}
+
 .forminputlongtext{
     width: 200px;
 }
@@ -431,8 +442,9 @@ table{
     border-bottom: 1px white solid;
     width: 150px;
     height: 300px;
-    padding: 15px;
     font-size: 20px;
+    padding: 15px;
+    user-select: text;
     overflow-y: auto;
 }
 
