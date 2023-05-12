@@ -7,13 +7,6 @@
     background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb{
-    border: 5px transparent solid;
-    background-clip: content-box;
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 1000px;
-}
-
 ::-webkit-scrollbar-thumb:hover{
     border: 5px transparent solid;
     background-clip: content-box;
@@ -21,7 +14,7 @@
     border-radius: 1000px;
 }
 
-body[scroll] ::-webkit-scrollbar-thumb{
+.macossectiondiv[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
     background-color: rgba(0,0,0,0.3);

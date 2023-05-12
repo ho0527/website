@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <title>編輯問卷</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="plugin/css/macossection.css">
         <script src="error.js"></script>
+        <link rel="stylesheet" href="plugin/css/macossection.css">
+        <script src="plugin/js/macossection.js"></script>
     </head>
     <body>
         <?php

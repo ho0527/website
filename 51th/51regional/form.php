@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <title>編輯問卷</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="plugin/css/macossection.css">
         <script src="error.js"></script>
+        <link rel="stylesheet" href="plugin/css/macossection.css">
+        <script src="plugin/js/macossection.js"></script>
     </head>
     <body>
         <?php
@@ -43,7 +44,10 @@
                             }
                             ?>
                             <tr>
-                                <td rowspan="2" class="order"><?php echo($questionrow[$i][2]) ?></td>
+                                <td rowspan="2" class="order">
+                                    <div class="questiondel">X</div>
+                                    <?php echo($questionrow[$i][2]) ?>
+                                </td>
                                 <td class="newform">
                                     <?php
                                     $mod=["none"=>"未設定","yesno"=>"是非題","single"=>"單選題","multi"=>"多選題","qa"=>"問答題"];
