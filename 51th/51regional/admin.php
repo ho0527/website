@@ -67,7 +67,8 @@
                         <input type="button" class="workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>
                         <input type="button" class="workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
                         <?php
-                            if(query($db,"SELECT*FROM `questioncode` WHERE `user`='$data'OR`user`=''")){
+                            $checkrow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'AND(`user`='$data'OR`user`='')");
+                            if($checkrow||count($coderow)==0){
                                 ?><input type="button" class="workbutton" onclick="location.href='?mod=respone&id=<?php echo($row[$i][0]) ?>'" value="填寫問卷"><?php
                             }
                         ?>
@@ -82,13 +83,14 @@
             if(isset($_GET["submit"])){
                 $title=$_GET["title"];
                 $count=$_GET["count"];
+                $pagelen=$_POST["pagelen"];
                 $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title])[0];
                 if($title==""){
                     ?><script>alert("[WARNING]請輸入問卷標題");location.href="admin.php"</script><?php
                 }elseif($row){
                     ?><script>alert("[WARNING]問卷已存在");location.href="admin.php"</script><?php
-                }elseif(preg_match("/^[0-9]+$/",$count)){
-                    query($db,"INSERT INTO `question`(`title`,`questioncount`,`lock`)VALUES(?,?,'false')",[$title,$count]);
+                }elseif(preg_match("/^[0-9]+$/",$count)&&preg_match("/^[0-9]+$/",$pagelen)){
+                    query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`lock`)VALUES(?,?,'$pagelen','false')",[$title,$count]);
                     $_SESSION["title"]=$title;
                     $_SESSION["count"]=$count;
                     $_SESSION["id"]=$row[0];
@@ -96,7 +98,7 @@
                     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','新增問卷','$time','qid=$id')");
                     ?><script>location.href="form.php"</script><?php
                 }else{
-                    ?><script>alert("[WARNING]問卷題數請輸入數字");location.href="admin.php"</script><?php
+                    ?><script>alert("[WARNING]問卷題數和分頁長度請輸入數字");location.href="admin.php"</script><?php
                 }
             }
             if(isset($_GET["mod"])){

@@ -26,29 +26,21 @@
             </div>
             <div class="questioncodemaindiv">
                 <?php
-                if(!isset($coderow)||$coderow[0][2]==""){
+                if(!isset($coderow)||@$coderow[0][2]==""){
                     if(@$_GET["key"]=="user"){
                         ?>
                         全體 <input type="radio" name="mod" class="radio" value="all">
                         單一用戶 <input type="radio" name="mod" class="radio" value="user" checked><br><br>
                         <table class="questioncodetable">
                             <?php
-                            for($i=0;$i<count($coderow);$i=$i+1){
-                                for($j=0;$j<count($userrow);$j=$j+1){
+                                for($i=0;$i<count($userrow);$i=$i+1){
                                     ?>
                                     <tr>
-                                        <td class="questioncodetd"><?php echo($userrow[$j][1]) ?></td>
-                                        <td class="questioncodetd"><input type="text" name="code" value="<?php
-                                            if(isset($coderow[$i][3])){
-                                                if($coderow[$i][2]==$userrow[$i][1]){
-                                                    echo($coderow[$i][3]);
-                                                }
-                                            }
-                                        ?>"></td>
+                                        <td class="questioncodetd"><?php echo($userrow[$i][1]) ?></td>
+                                        <td class="questioncodetd"><input type="text" name="code<?php echo($i) ?>" value=""></td>
                                     </tr>
                                     <?php
                                 }
-                            }
                             ?>
                         </table>
                         <?php
@@ -102,30 +94,25 @@
                 ?><script>location.href="form.php"</script><?php
             }
             if(isset($_POST["save"])){
-                $row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'");
                 query($db,"DELETE FROM `questioncode` WHERE `questionid`='$id'");
                 if($_POST["mod"]=="all"){
                     $code=$_POST["code"];
-                    if(preg_match("/^[0-9]+$/",$code)){
-                        if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'")){
-                            query($db,"INSERT INTO `questioncode`(`questionid`,`user`,`code`)VALUES('$id','','$code')");
-                        }else{
-                            ?><script>alert("邀請碼已存在")</script><?php
-                        }
+                    $row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'");
+                    if($row){
+                        query($db,"INSERT INTO `questioncode`(`questionid`,`user`,`code`)VALUES('$id','','$code')");
                     }else{
-                        ?><script>alert("邀請碼只能輸入數字");location.href="questioncode.php"</script><?php
+                        ?><script>alert("邀請碼已存在")</script><?php
                     }
                 }elseif($_POST["mod"]=="user"){
                     for($i=0;$i<count($userrow);$i=$i+1){
                         $code=$_POST["code".$i];
-                        if(preg_match("/^[0-9]+$/",$code)){
+                        $row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'");
+                        if($code!=""){
                             if(!$row||$row[$i][1]==$id){
                                 query($db,"INSERT INTO `questioncode`(`questionid`,`user`,`code`)VALUES('$id',?,'$code')",[$userrow[$i][1]]);
                             }else{
-                                ?><script>alert("邀請碼已存在user<?php echo($userrow[$i][1]) ?>")</script><?php
+                                ?><script>alert("邀請碼已存在錯誤user=><?php echo($userrow[$i][1]) ?>")</script><?php
                             }
-                        }else{
-                            ?><script>alert("邀請碼只能輸入數字user<?php echo($userrow[$i][1]) ?>")</script><?php
                         }
                     }
                 }else{ ?><script>e404();location.href="questioncode.php"</script><?php }

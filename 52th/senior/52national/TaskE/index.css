@@ -176,6 +176,8 @@ table{
 
 .maintd{
     width: 10000px;
+    height: 40px;
+    padding: 10px;
 }
 
 .avatar{

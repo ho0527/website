@@ -39,7 +39,7 @@ all.forEach(function(event){
                     4.<input type="text" name="multi4" class="forminputtext">
                     5.<input type="text" name="multi5" class="forminputtext">
                     6.<input type="text" name="multi6" class="forminputtext"><br>
-                    其他:<input type="text" name="multiauther" class="forminputlongtext" disabled>
+                    顯示其他選項<input type="checkbox" name="showauther<?php echo($i) ?>" checked>
                 `
             }else if(data[0]=="qa"){
                 output.innerHTML=`
@@ -52,4 +52,10 @@ all.forEach(function(event){
             }
         }
     })
+})
+
+document.addEventListener("keydown",function(event){
+    if(event.key=="Escape"){
+        location.href="api.php?cancel="
+    }
 })

@@ -14,4 +14,10 @@
         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','刪除問卷','$time','qid=$id')");
         ?><script>location.href="admin.php"</script><?php
     }
+
+    if(isset($_GET["cancel"])){
+        unset($_SESSION["id"]);
+        unset($_SESSION["count"]);
+        ?><script>location.href="admin.php"</script><?php
+    }
 ?>
