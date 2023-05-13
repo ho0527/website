@@ -16,27 +16,39 @@
             $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
-        <script>let row=<?php echo(json_encode(query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'"))) ?></script>
+        <script>
+            let count="<?php echo($_SESSION["count"]) ?>"
+            let row=[<?php query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'") ?>]
+        </script>
         <form method="POST">
             <div class="navigationbar">
                 <div class="navigationbartitle">網路問卷管理系統-編輯問卷</div><br>
                 <div class="navigationbarbuttondiv">
                     id: <input type="text" class="formtext" name="id" value="<?php echo($row[0]) ?>" style="width:50px" readonly>
                     標題: <input type="text" class="formtext" name="title" value="<?php echo($row[1]) ?>" style="width:120px">
-                    總數: <input type="text" class="formtext" id="count" name="count" value="<?php echo($count) ?>" style="width:35px" readonly>
+                    總數: <input type="text" class="formtext" name="count" value="<?php echo($count) ?>" style="width:35px" readonly>
                     最大總數: <input type="text" class="formtext" name="max" value="<?php echo($row[6]) ?>" style="width:50px">
                     <input type="button" class="button" onclick="location.href='questioncode.php'" value="問卷邀請碼">
-                    <input type="button" class="button" onclick="newquestion()" value="新增">
+                    <input type="submit" class="button" name="newqust" value="新增">
                     <input type="button" class="button" onclick="location.href='api.php?cancel='" value="返回">
                     <input type="submit" class="button" name="save" value="儲存">
                     <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                 </div>
             </div>
             <div class="div macosmaindiv macossectiondiv">
-                <table id="maintable"></table>
+                <table>
+                    <tr class="div<?php echo($i) ?>">
+                        <td class="newform"></td>
+                        <td class="newform"></td>
+                    </tr>
+                </table>
             </div>
         </form>
         <?php
+            if(isset($_POST["newqust"])){
+                $_SESSION["count"]=$_SESSION["count"]+1;
+                ?><script>location.href="form.php"</script><?php
+            }
             if(isset($_POST["save"])){
                 $data=$_SESSION["data"];
                 $title=$_POST["title"];

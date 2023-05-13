@@ -36,20 +36,42 @@
     Route::post("/books",function(Request $request)use($isbnerror,$isbnincorrect,$tomanydata){
         $name=$request->input("name");
         $isbn=$request->input("isbn");
+        $isbnold=$isbn;
         $row=DB::table("book")
             ->where(function($query)use($isbn){
                 $query->where("isbn","=",$isbn);
             })->select("*")->get();
         if($row->isEmpty()){
-            if(count(explode(" ",$isbn))==3||preg_match("/^([0-9] {3}){3}\ [0-9]$/",$isbn)||true){
+            $isbncheck=true;
+            if(count(explode(" ",$isbn))==5||(count(explode("-",$isbn))==5)){
+                if(count(explode(" ",$isbn))==4){
+                    $isbn=explode(" ",$isbn);
+                }else{
+                    $isbn=explode("-",$isbn);
+                }
+                $isbn=$isbn[0].$isbn[1].$isbn[2].$isbn[3].$isbn[4];
+                $isbncheckcode=$isbn[strlen($isbn)-1];
+                $isbntotal=0;
+                for($i=0;$i<11;$i=$i+1){
+                    if(($i+1)%2==0){ $multiplier=1; }else{ $multiplier=3; }
+                    $isbntotal=$isbntotal+((int)$isbn[$i]*$multiplier);
+                }
+                $isbntotal=$isbntotal%10;
+                $n=10-$isbntotal;
+                if($n==10){ $check=0; }else{ $check=$n; }
+                if($check!=$isbncheckcode){ $isbncheck=false; }
+            }else{
+                $isbncheck=false;
+            }
+            if($isbncheck){
                 if(count(array_diff(array_keys($request->all()),["name","isbn"]))<=0){
                     DB::table("book")->insert([
                         "name"=>$name,
-                        "isbn"=>$isbn,
+                        "isbn"=>$isbnold,
                     ]);
                     $row=DB::table("book")
-                        ->where(function($query)use($isbn){
-                            $query->where("isbn","=",$isbn);
+                        ->where(function($query)use($isbnold){
+                            $query->where("isbn","=",$isbnold);
                         })->select("*")->get()[0];
                     return response()->json([
                         "status"=>"scueess",
@@ -83,11 +105,13 @@
             return $booksearchfromiderror;
         }
     });
+    // Route::put("/books/{id}",[Controller::class,""]);
 
     Route::put("/books/{id}",function(Request $request)use($editbook,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$tomanydata){
         $id=$request->route("id");
         $name=$request->input("name");
         $isbn=$request->input("isbn");
+        $isbnold=$isbn;
         $rowid=DB::table("book")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
@@ -98,32 +122,41 @@
             })->select("*")->get();
         if($rowid->isNotEmpty()){
             if($row->isEmpty()||$row[0]->id==$id){
-                $isbncheckcode=$isbn[strlen($isbn)-1];
-                $isbntotal=0;
-                for ($i=0;$i<strlen($isbn);$i=$i+1) {
-                    if($i%2==0){ $multiplier=1; }else{ $multiplier=3; }
-                    $isbntotal=$isbntotal+((int)$isbn[$i]*$multiplier);
-                }
-                $isbntotal=$isbntotal%10;
-                // $isbntotal=(($isbn[0]*1)+($isbn[1]*3)+($isbn[2]*1)+($isbn[4]*3)+($isbn[5]*1)+($isbn[6]*3)+($isbn[8]*1)+($isbn[9]*3)+($isbn[10]*1)+($isbn[12]*3)+($isbn[13]*1)+($isbn[14]*3)%10);
-                $n=10-$isbntotal;
-                if($n==10){ $check=0; }else{ $check=$n; }
-                if($check==$isbncheckcode){ $isbncheck=true; }else{ $isbncheck=false; }
                 $isbncheck=true;
-                if((count(explode(" ",$isbn))==3&&preg_match("/^([0-9] {3}){3}\ [0-9]$/",$isbn))||$isbncheck){
+                if(count(explode(" ",$isbn))==5||(count(explode("-",$isbn))==5)){
+                    if(count(explode(" ",$isbn))==5){
+                        $isbn=explode(" ",$isbn);
+                    }else{
+                        $isbn=explode("-",$isbn);
+                    }
+                    $isbn=$isbn[0].$isbn[1].$isbn[2].$isbn[3].$isbn[4];
+                    $isbncheckcode=$isbn[strlen($isbn)-1];
+                    $isbntotal=0;
+                    for($i=0;$i<11;$i=$i+1){
+                        if(($i+1)%2==0){ $multiplier=1; }else{ $multiplier=3; }
+                        $isbntotal=$isbntotal+((int)$isbn[$i]*$multiplier);
+                    }
+                    $isbntotal=$isbntotal%10;
+                    $n=10-$isbntotal;
+                    if($n==10){ $check=0; }else{ $check=$n; }
+                    if($check!=$isbncheckcode){ $isbncheck=false; }
+                }else{
+                    $isbncheck=false;
+                }
+                if($isbncheck){
                     if(count(array_diff(array_keys($request->all()),["name","isbn"]))<=0){
                         DB::table("book")
-                            ->where("id","=",$id) // replace with the ID of the row you want to update
+                            ->where("id","=",$id)
                             ->update([
                                 "name"=>$name,
-                                "isbn"=>$isbn,
+                                "isbn"=>$isbnold,
                             ]);
                         return $editbook;
                     }else{
                         return $tomanydata;
                     }
                 }else{
-                    return ;
+                    return $isbnincorrect;
                 }
             }else{
                 return $isbnerror;

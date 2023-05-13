@@ -5,6 +5,7 @@
     製作及log:
     2023/05/11 21:30:30 BATA 1.0.0
     2023/05/12 18:57:56 BATA 2.0.0
+    2023/05/13 08:56:46 BATA 2.1.0
 
         |-------    -----    -                     -     -----     -------|
        |-------    -        -            - - -          -         -------|
@@ -18,20 +19,18 @@
 }
 
 ::-webkit-scrollbar{
-    width: 20px;
+    width: 15px;
     background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover{
     border: 5px transparent solid;
-    background-clip: content-box;
     background-color: rgba(0,0,0,0.3);
     border-radius: 1000px;
 }
 
 .macossectiondiv[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
-    background-clip: content-box;
     background-color: rgba(0,0,0,0.3);
     border-radius: 1000px;
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-05-28 14:30:38
--- 伺服器版本： 10.4.22-MariaDB
--- PHP 版本： 8.1.2
+-- 產生時間： 2023-05-13 07:42:12
+-- 伺服器版本： 10.4.28-MariaDB
+-- PHP 版本： 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `web52_module_backend`
+-- 資料庫： `52nationaltaskd`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `comments` (
   `post_id` int(11) NOT NULL COMMENT '所屬貼文',
   `content` varchar(300) NOT NULL COMMENT '內容',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `comments`
@@ -53,19 +53,21 @@ CREATE TABLE `posts` (
   `author_id` int(11) NOT NULL COMMENT '發布者',
   `content` varchar(300) NOT NULL COMMENT '內文',
   `type` enum('public','only_follow','only_self') NOT NULL COMMENT '貼文的類型',
+  `tag` text DEFAULT NULL,
+  `location` text DEFAULT NULL,
   `place_lat` decimal(10,5) DEFAULT NULL COMMENT '地點的經度',
   `place_lng` decimal(10,5) DEFAULT NULL COMMENT '地點的緯度',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `posts`
 --
 
-INSERT INTO `posts` (`id`, `author_id`, `content`, `type`, `place_lat`, `place_lng`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hello World', 'public', NULL, NULL, '2022-05-28 11:27:59', NULL),
-(2, 1, 'Taipei 101', 'public', '25.03366', '121.56224', '2022-05-28 11:28:50', NULL);
+INSERT INTO `posts` (`id`, `author_id`, `content`, `type`, `tag`, `location`, `place_lat`, `place_lng`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Hello World', 'public', NULL, NULL, NULL, NULL, '2022-05-28 11:27:59', NULL),
+(2, 1, 'Taipei 101', 'public', NULL, NULL, 25.03366, 121.56224, '2022-05-28 11:28:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,7 @@ CREATE TABLE `post_images` (
   `height` int(11) NOT NULL COMMENT '圖片高度',
   `filename` varchar(1024) NOT NULL COMMENT '檔案名稱',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `post_images`
@@ -101,7 +103,7 @@ CREATE TABLE `post_tags` (
   `id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `post_tags`
@@ -122,7 +124,7 @@ CREATE TABLE `tags` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL COMMENT '標籤名稱',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `tags`
@@ -141,12 +143,12 @@ INSERT INTO `tags` (`id`, `name`, `created_at`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Email',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '密碼',
-  `nickname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '暱稱',
-  `profile_image` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `access_token` char(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Login Token',
-  `type` enum('USER','ADMIN') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'USER' COMMENT '身分',
+  `email` varchar(255) NOT NULL COMMENT 'Email',
+  `password` varchar(255) DEFAULT NULL COMMENT '密碼',
+  `nickname` varchar(255) NOT NULL COMMENT '暱稱',
+  `profile_image` varchar(1024) NOT NULL,
+  `access_token` char(64) DEFAULT NULL COMMENT 'Login Token',
+  `type` enum('USER','ADMIN') NOT NULL DEFAULT 'USER' COMMENT '身分',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT '建立時間',
   `updated_at` timestamp NULL DEFAULT NULL COMMENT '更新時間'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='使用者';
@@ -170,7 +172,7 @@ CREATE TABLE `user_follows` (
   `user_id` int(11) NOT NULL,
   `follow_user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `user_follows`
@@ -190,7 +192,7 @@ CREATE TABLE `user_likes` (
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `user_likes`

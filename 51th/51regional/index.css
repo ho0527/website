@@ -526,3 +526,14 @@ table{
     color: rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
+
+/* .input::-internal-autofill-selected{
+    border: none;
+    width: 75%;
+    height: 40px;
+    background-color: white;
+    background: none;
+    border-bottom: 1px black solid;
+    outline: none;
+    font-size: 30px;
+} */

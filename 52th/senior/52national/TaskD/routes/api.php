@@ -156,9 +156,9 @@
             $row=DB::table("posts")
                 ->where("type","=","public")
                 ->where(function($query)use($content,$tag,$location){
-                    $query->where("content","LIKE","%".$content."%");
-                        // ->orwhere("tag","LIKE","%".$tag."%")
-                        // ->orwhere("location","LIKE","%".$location."%"); // todo 資料庫是不是有誤?
+                    $query->where("content","LIKE","%".$content."%")
+                        ->orwhere("tag","LIKE","%".$tag."%")
+                        ->orwhere("location","LIKE","%".$location."%"); // todo 資料庫是不是有誤?
                 })
                 ->orderBy($orderby,$ordertype)
                 ->skip(($page-1)*$pagesize)
