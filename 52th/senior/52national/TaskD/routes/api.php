@@ -139,6 +139,7 @@
     });
 
     Route::get("/post/public",function(Request $request)use($datatypeerror){
+        $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
         $content=$request->input("content");
         $tag=$request->input("tag");
@@ -157,8 +158,8 @@
                 ->where("type","=","public")
                 ->where(function($query)use($content,$tag,$location){
                     $query->where("content","LIKE","%".$content."%")
-                        ->orwhere("tag","LIKE","%".$tag."%")
-                        ->orwhere("location","LIKE","%".$location."%"); // todo 資料庫是不是有誤?
+                        ->where("tag","LIKE","%".$tag."%")
+                        ->where("location","LIKE","%".$location."%");
                 })
                 ->orderBy($orderby,$ordertype)
                 ->skip(($page-1)*$pagesize)
@@ -238,11 +239,69 @@
     });
 
     Route::get("/user/{user_id}/post",function(Request $request)use($datatypeerror,$usererror){
-        return view("welcome");
+        $userid=$request->route("user_id");
+        $ordertype=$request->input("order_by");
+        $ordertype=$request->input("order_type");
+        $content=$request->input("content");
+        $tag=$request->input("tag");
+        $location=$request->input("location_name");
+        $page=$request->input("page");
+        $pagesize=$request->input("page_size");
+        if(!($request->has("order_by"))){ $orderby="created_at"; }
+        if(!($request->has("order_type"))){ $ordertype="desc"; }
+        if(!($request->has("content"))){ $content=""; }
+        if(!($request->has("tag"))){ $tag=""; }
+        if(!($request->has("location_name"))){ $location=""; }
+        if(!($request->has("page"))){ $page=1; }
+        if(!($request->has("pagesize"))){ $pagesize=10; }
+        $row=DB::table("users")
+            ->where(function($query)use($userid){
+                $query->where("id","=",$userid);
+            })->select("*")->get();
+        if($row->isNotEmpty()){
+            if(($orderby=="created_at"||$orderby=="like_count")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
+                $row=DB::table("posts")
+                    ->where("author_id","=",$userid)
+                    ->where(function($query)use($content,$tag,$location){
+                        $query->where("content","LIKE","%".$content."%")
+                            ->where("tag","LIKE","%".$tag."%")
+                            ->where("location","LIKE","%".$location."%");
+                    })
+                    ->orderBy($orderby,$ordertype)
+                    ->skip(($page-1)*$pagesize)
+                    ->take($pagesize)
+                    ->select("*")->get();
+                return response()->json([
+                    "success"=>true,
+                    "message"=>"",
+                    "data"=>[
+                        "total_count"=>$row->count(),
+                        "posts"=>$row
+                    ]
+                ]);
+            }else{
+                return $datatypeerror;
+            }
+        }else{
+            return $usererror;
+        }
     });
 
-    Route::get("/user/{user_id}/profile",function(Request $request)use($usererror){
-        return view("welcome");
+    Route::get("/user/{user_id}/",function(Request $request)use($usererror){
+        $id=$request->route("user_id");
+        $row=DB::table("users")
+            ->where(function($query)use($id){
+                $query->where("id","=",$id);
+            })->select("*")->get();
+        if($row->isNotEmpty()){
+            return response()->json([
+                "success"=>true,
+                "message"=>"",
+                "data"=>$row
+            ]);
+        }else{
+            return $usererror;
+        }
     });
 
     Route::post("/user/{user_id}/profile",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){

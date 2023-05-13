@@ -90,7 +90,7 @@
             if(isset($_GET["submit"])){
                 $title=$_GET["title"];
                 $count=$_GET["count"];
-                $pagelen=$_POST["pagelen"];
+                $pagelen=$_GET["pagelen"];
                 $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title])[0];
                 if($title==""){
                     ?><script>alert("[WARNING]請輸入問卷標題");location.href="admin.php"</script><?php
@@ -100,6 +100,7 @@
                     query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`lock`)VALUES(?,?,'$pagelen','false')",[$title,$count]);
                     $_SESSION["title"]=$title;
                     $_SESSION["count"]=$count;
+                    $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title]);
                     $_SESSION["id"]=$row[0];
                     $id=$_SESSION["id"];
                     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','新增問卷','$time','qid=$id')");

@@ -9,14 +9,34 @@
         <script src="plugin/js/macossection.js"></script>
     </head>
     <body>
+        <script>let row=[];</script>
         <?php
             include("link.php");
             $id=$_SESSION["id"];
             $count=$_SESSION["count"];
             $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            echo "\$row ="; print_r($row); echo "<br>";
+            for($i=0;$i<(count($row)/2);$i=$i+1){
+                if($i==7){
+                    ?><script>row.push(<?php echo([]) ?>)</script><?php
+                    $questionrow=$row[$i];
+                    $json=json_decode($questionrow);
+                    for($j=0;$j<count($json);$j=$j+1){
+                        ?><script>row[$i].push(<?php echo([]) ?>)</script><?php
+                        for($k=0;$k<count($json[$j]);$k=$k+1){
+                            ?><script>row[$j].push(<?php echo($row[$j][$k]) ?>)</script><?php
+                        }
+                    }
+                }else{
+                    ?><script>row.push(<?php echo($row[$i]) ?>)</script><?php
+                }
+            }
         ?>
-        <script>let row=<?php echo(json_encode(query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'"))) ?></script>
+        <script>
+            // console.log(row)
+            // let row=<?php //echo(json_encode(query($db,"SELECT*FROM `question` WHERE `id`='$id'"))) ?>;
+            // let questionrow=<?php //print_r(json_decode(query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0][7])) ?>
+        </script>
         <form method="POST">
             <div class="navigationbar">
                 <div class="navigationbartitle">網路問卷管理系統-編輯問卷</div><br>
@@ -28,7 +48,7 @@
                     <input type="button" class="button" onclick="location.href='questioncode.php'" value="問卷邀請碼">
                     <input type="button" class="button" onclick="newquestion()" value="新增">
                     <input type="button" class="button" onclick="location.href='api.php?cancel='" value="返回">
-                    <input type="submit" class="button" name="save" value="儲存">
+                    <input type="button" class="button" onclick="save()" value="儲存">
                     <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                 </div>
             </div>
