@@ -97,7 +97,7 @@
                 }elseif($row){
                     ?><script>alert("[WARNING]問卷已存在");location.href="admin.php"</script><?php
                 }elseif(preg_match("/^[0-9]+$/",$count)&&preg_match("/^[0-9]+$/",$pagelen)){
-                    query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`lock`)VALUES(?,?,'$pagelen','false')",[$title,$count]);
+                    query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`responcount`,`lock`)VALUES(?,?,'$pagelen','0','false')",[$title,$count]);
                     $_SESSION["title"]=$title;
                     $_SESSION["count"]=$count;
                     $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title]);
@@ -128,7 +128,10 @@
                                 if(confirm("Are you sure you want to delete?")){ location.href="api.php?formdel=&id=<?php echo($id) ?>" }
                                 else{ location.href="admin.php" }
                             </script><?php
-                        }else{ ?><script>e4032();location.href="admin.php"</script><?php }
+                        }else{
+                            ?><script>e4032();location.href="admin.php"</script><?php
+                            query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','一個白癡改了getname','$time','')");
+                        }
                     }elseif($row[5]=="true"){
                         if($mod=="lock"){
                             query($db,"UPDATE `question` SET `lock`='false' WHERE `id`='$id'");
@@ -151,15 +154,11 @@
                         if($mod=="copyquestion"){ $title="copy ".$title; }else{ $title=$title." copy"; }
                         if(!query($db,"SELECT*FROM `question` WHERE `title`='$title'")[0]){ break; }
                     }
-                    query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`responcount`,`lock`,`maxlen`)VALUES(?,?,?,?,?,?)",[$title,$row[2],$row[3],0,"false",$row[6]]);
-                    $newrow=query($db,"SELECT*FROM `question` WHERE `title`='$title'")[0];
-                    $questionlogrow=query($db,"SELECT*FROM `questionlog` WHERE `questionid`='$id'");
-                    for($i=0;$i<count($questionlogrow);$i=$i+1){
-                        if($mod=="copyquestion"){
-                            query($db,"INSERT INTO `questionlog`(`questionid`,`order`,`required`,`mod`)VALUES(?,?,?,?)",[$newrow[0],$questionlogrow[$i][2],"false","none"]);
-                        }else{
-                            query($db,"INSERT INTO `questionlog`(`questionid`,`order`,`desciption`,`required`,`mod`,`opition`)VALUES(?,?,?,?,?,?)",[$newrow[0],$questionlogrow[$i][2],$questionlogrow[$i][3],$questionlogrow[$i][4],$questionlogrow[$i][5],$questionlogrow[$i][6]]);
-                        }
+                    $questionlog=$row[7];
+                    if($mod=="copyquestion"){
+                        query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`responcount`,`lock`,`maxlen`,`log`,`updatetime`,`ps`)VALUES(?,?,?,?,?,?,?,'$time','')",[$title,$row[2],$row[3],0,"false",$row[6],'']);
+                    }else{
+                        query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`responcount`,`lock`,`maxlen`,`log`,`updatetime`,`ps`)VALUES(?,?,?,?,?,?,?,'$time','')",[$title,$row[2],$row[3],0,"false",$row[6],$questionlog]);
                     }
                     $temp="all";
                     if($mod=="copyquestion"){ $temp="question"; }

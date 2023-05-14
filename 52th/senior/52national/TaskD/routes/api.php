@@ -99,6 +99,7 @@
             $nickname=$request->input("nickname");
             $password=$request->input("password");
             $image=$request->file("profile_image");
+            $imagetype=array("image/png","image/jpeg");
             $row=DB::table("users")
                 ->where(function($query)use($email){
                     $query->where("email","=",$email);
@@ -106,8 +107,8 @@
             if($row->isEmpty()){
                 if(filter_var($email,FILTER_VALIDATE_EMAIL)&&is_string($email)&&is_string($nickname)&&is_string($password)){
                     if(8<=strlen($password)&&strlen($password)<=24){
-                        if(mime_content_type($image)=="png"||mime_content_type($image)=="jpg"){
-                            $imagepath=$image->store("profile_images","public"); // todo 圖片上傳
+                        if(!in_array($image->getMimeType(),$imagetype)){
+                            $imagepath=$image->storePublicly("profile_image","public"); // todo 圖片上傳
                             $row=DB::table("users")->insert([
                                 "email"=>$email,
                                 "password"=>$password,

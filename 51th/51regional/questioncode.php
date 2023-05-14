@@ -102,9 +102,9 @@
                     $code=$_POST["code"];
                     $row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'");
                     if($row){
-                        query($db,"INSERT INTO `questioncode`(`questionid`,`user`,`code`)VALUES('$id','','$code')");
-                    }else{
                         ?><script>alert("邀請碼已存在")</script><?php
+                    }else{
+                        query($db,"INSERT INTO `questioncode`(`questionid`,`user`,`code`)VALUES('$id','','$code')");
                     }
                 }elseif($_POST["mod"]=="user"){
                     for($i=0;$i<count($userrow);$i=$i+1){
