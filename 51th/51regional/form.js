@@ -135,11 +135,11 @@ function main(){
         let check=0
         if(questionrow==""){
             for(let j=0;j<modkey.length;j=j+1){
-                let type=modkey[j];
-                let checked="";
+                let type=modkey[j]
+                let checked=""
                 if(type=="none"){
-                    checked="checked";
-                    check=1;
+                    checked="checked"
+                    check=1
                 }
                 all=all+"<input type='radio' class='radio "+type+" select"+i+"' data-id='"+type+" "+i+"' name='select"+i+"' value='"+type+"' "+checked+">"+mod[modkey[j]]
             }
@@ -149,18 +149,19 @@ function main(){
                 let checked="";
                 if(questionrow[i][3]==undefined){
                     if(type=="none"){
-                        checked="checked";
-                        check=1;
+                        checked="checked"
+                        check=1
                     }
                 }else{
                     if(type==questionrow[i][3]){
-                        checked="checked";
-                        check=1;
+                        checked="checked"
+                        check=1
                     }
                 }
                 all=all+"<input type='radio' class='radio "+type+" select"+i+"' data-id='"+type+" "+i+"' name='select"+i+"' value='"+type+"' "+checked+">"+mod[modkey[j]]
             }
-        }if(check!=1){ sql001();location.href="admin.php" }
+        }
+        if(check!=1){ sql001();location.href="admin.php" }
         td2.innerHTML=`${all}`
         document.getElementById("tr1"+i).appendChild(td1)
         document.getElementById("tr1"+i).appendChild(td2)
@@ -310,6 +311,7 @@ document.querySelectorAll(".questiondel").forEach(function(event){
         }
     }
 })
+
 document.querySelectorAll(".order").forEach(function(event){
     let mousecheck=false
     event.addEventListener("mousedown",function(){
@@ -323,6 +325,7 @@ document.querySelectorAll(".order").forEach(function(event){
         mousecheck=false
     })
 })
+
 document.addEventListener("keydown",function(event){
     if(event.key=="Escape"){
         location.href="api.php?cancel="
