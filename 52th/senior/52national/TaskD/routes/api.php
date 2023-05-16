@@ -17,7 +17,7 @@
     date_default_timezone_set("Asia/Taipei");
     $time=date("Y-m-d H:i:s");
 
-    function logincheck(){
+    $logincheck=function(){
         $row=DB::table("users")
             ->where(function($query){
                 $query->whereNotNull("access_token");
@@ -27,7 +27,71 @@
         }else{
             return NULL;
         }
-    }
+    };
+
+    $user=function($row,$type){
+        $mainrow=[
+            "id"=>$row[0]->id,
+            "email"=>$row[0]->email,
+            "nickname"=>$row[0]->nickname,
+            "profile_image"=>$row[0]->profile_image,
+            "type"=>$row[0]->type,
+        ];
+        if($type=="login"){
+            $mainrow["access_token"]=$row[0]->access_token;
+        }
+        return $mainrow;
+    };
+
+    $post=function($row)use($user,$logincheck){
+        $data=[];
+        for($i=0;$i<$row->count();$i=$i+1){
+            $id=$row[$i]->id;
+            $likerow=DB::table("user_likes")
+                ->where(function($query)use($id){
+                    $query->where("post_id","=",$id);
+                })->select("*")->get();
+            $imagerow=DB::table("post_images")
+                ->where(function($query)use($id){
+                    $query->where("post_id","=",$id);
+                })->select("*")->get();
+            $userrow=DB::table("users")
+                ->where(function($query)use($row,$i){
+                    $query->where("id","=",$row[$i]->author_id);
+                })->select("*")->get();
+            if($row[$i]->location==""){ $location=NULL; }
+            else{ $location=$row[$i]->location; }
+            $mainrow=[
+                "id"=>$row[$i]->id,
+                "author"=>$user($userrow,"normal"),
+                "image"=>$imagerow,
+                "like_count"=>$likerow->count(),
+                "content"=>$row[$i]->content,
+                "type"=>$row[$i]->type,
+                "tag"=>explode(" ",$row[$i]->tag),
+                "location_name"=>$location,
+            ];
+            if($logincheck()==NULL){
+                $mainrow["updated_at"]=$row[$i]->updated_at;
+                $mainrow["created_at"]=$row[$i]->created_at;
+            }else{
+                $likerow2=DB::table("user_likes")
+                    ->where(function($query)use($id,$logincheck){
+                        $query->where("post_id","=",$id)
+                            ->where("user_id","=",$logincheck());
+                    })->select("*")->get();
+                if($likerow2->isNotEmpty()){
+                    $mainrow["liked"]=true;
+                }else{
+                    $mainrow["liked"]=false;
+                }
+                $mainrow["updated_at"]=$row[$i]->updated_at;
+                $mainrow["created_at"]=$row[$i]->created_at;
+            }
+            $data[]=$mainrow;
+        }
+        return $data;
+    };
 
     $loginerror=response()->json(["success"=>false,"message"=>"MSG_INVALID_LOGIN","data"=>""],403);
     $userexist=response()->json(["success"=>false,"message"=>"MSG_USER_EXISTS","data"=>""],409);
@@ -41,8 +105,8 @@
     $commenterror=response()->json(["success"=>false,"message"=>"MSG_COMMENT_NOT_EXISTS","data"=>""],404);
     $usererror=response()->json(["success"=>false,"message"=>"MSG_USER_NOT_EXISTS","data"=>""],404);
 
-    Route::post("/user/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror){
-        if(logincheck()==NULL){
+    Route::post("/user/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user,$logincheck){
+        if($logincheck()==NULL){
             if($request->has("email")&&$request->has("password")){
                 $email=$request->input("email");
                 $password=$request->input("password");
@@ -57,10 +121,14 @@
                             ->update([
                                 "access_token"=>hash("sha256",$email),
                             ]);
+                        $row=DB::table("users")
+                            ->where(function($query)use($email){
+                                $query->where("email","=",$email);
+                            })->select("*")->get();
                         return response()->json([
                             "success"=>true,
                             "message"=>"",
-                            "data"=>$row[0]
+                            "data"=>$user($row,"login")
                         ]);
                     }else{
                         return $datatypeerror;
@@ -76,10 +144,10 @@
         }
     });
 
-    Route::post("/user/logout",function(Request $request)use($tokenerror){
-        if(logincheck()!=NULL){
+    Route::post("/user/logout",function(Request $request)use($tokenerror,$logincheck){
+        if($logincheck()!=NULL){
             $row=DB::table("users")
-                ->where("id","=",logincheck())
+                ->where("id","=",$logincheck())
                 ->update([
                     "access_token"=>NULL,
                 ]);
@@ -139,7 +207,7 @@
         }
     });
 
-    Route::get("/post/public",function(Request $request)use($datatypeerror){
+    Route::get("/post/public",function(Request $request)use($datatypeerror,$post){
         $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
         $content=$request->input("content");
@@ -171,7 +239,7 @@
                 "message"=>"",
                 "data"=>[
                     "total_count"=>$row->count(),
-                    "posts"=>$row
+                    "posts"=>$post($row)
                 ]
             ]);
         }else{
@@ -179,18 +247,18 @@
         }
     });
 
-    Route::get("/post/{post_id}",function(Request $request)use($nopermission,$posterror){
+    Route::get("/post/{post_id}",function(Request $request)use($nopermission,$posterror,$logincheck){
         $id=$request->route("post_id");
         $row=DB::table("posts")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
             })->select("*")->get();
-        $commentrow=DB::table("comments")
-            ->where(function($query)use($id){
-                $query->where("post_id","=",$id);
-            })->select("*")->get();
         if($row->isNotEmpty()){
-            if((logincheck()==NULL&&$row[0]->type=="public")||(logincheck()!=NULL&&$row[0]->type=="public")){
+            if(($logincheck()==NULL&&$row[0]->type=="public")||($logincheck()!=NULL&&$row[0]->type=="public")){
+                $commentrow=DB::table("comments")
+                    ->where(function($query)use($id){
+                        $query->where("post_id","=",$id);
+                    })->select("*")->get();
                 return response()->json([
                     "success"=>true,
                     "message"=>"",
@@ -239,7 +307,7 @@
         return view("welcome");
     });
 
-    Route::get("/user/{user_id}/post",function(Request $request)use($datatypeerror,$usererror){
+    Route::get("/user/{user_id}/post",function(Request $request)use($datatypeerror,$usererror,$post){
         $userid=$request->route("user_id");
         $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
@@ -277,7 +345,7 @@
                     "message"=>"",
                     "data"=>[
                         "total_count"=>$row->count(),
-                        "posts"=>$row
+                        "posts"=>$post($row)
                     ]
                 ]);
             }else{
@@ -288,7 +356,7 @@
         }
     });
 
-    Route::get("/user/{user_id}/",function(Request $request)use($usererror){
+    Route::get("/user/{user_id}/",function(Request $request)use($usererror,$user){
         $id=$request->route("user_id");
         $row=DB::table("users")
             ->where(function($query)use($id){
@@ -298,7 +366,7 @@
             return response()->json([
                 "success"=>true,
                 "message"=>"",
-                "data"=>$row
+                "data"=>$user($row,"normal")
             ]);
         }else{
             return $usererror;
