@@ -218,7 +218,7 @@ function main(){
     }
 }
 
-editform(document.getElementById("htmlform"))
+editformnavigationbar(document.getElementById("htmlform"))
 let count=0
 let id=row[0]
 let maincount

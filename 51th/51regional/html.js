@@ -1,4 +1,4 @@
-function editform(output){
+function editformnavigationbar(output){
     output.innerHTML=`
     <div class="navigationbar">
         <div class="navigationbartitle">網路問卷管理系統-編輯問卷</div><br>
