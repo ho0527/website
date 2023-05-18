@@ -17,14 +17,10 @@
             </div>
         </div>
         <div class="indexmain">
-            <div class="indexmainbody macossectiondiv">
-                <div class="circle">
-                    <div class="outcircle">
-                        <div class="incircle"></div>
-                    </div>
-                </div>
+            <div class="indexmainbody macossectiondiv" id="maindiv">
                 <div class="line"></div>
             </div>
         </div>
+        <script src="index.js"></script>
     </body>
 </html>

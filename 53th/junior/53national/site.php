@@ -26,32 +26,34 @@
                 ?>
                 <div class="loginhead" id="head">
                     <div class="center">
-                        <input type="button" class="loginbutton button selectbutton" onclick="location.href='busmanagement.php'" value="接駁車管理">
-                        <input type="button" class="loginbutton button" onclick="location.href='sitemanagement.php'" value="站點管理">
+                        <input type="button" class="loginbutton button" onclick="location.href='bus.php'" value="接駁車管理">
+                        <input type="button" class="loginbutton button selectbutton" onclick="location.href='site.php'" value="站點管理">
                     </div>
                 </div>
                 <div class="adminpost" id="main">
                     <div class="postbody macossectiondiv">
                         <div class="posttitle">
-                            接駁車管理
-                            <input type="button" class="buttonlittle" onclick="location.href='edit.php?key=newbus'" value="新增">
+                            站點管理
+                            <input type="button" class="buttonlittle" onclick="location.href='edit.php?key=newsite'" value="新增">
                         </div>
                         <table class="postmessage">
                             <tr>
-                                <td class="td">車牌</td>
-                                <td class="td">已行駛時間</td>
+                                <td class="td">站點名稱</td>
+                                <td class="td">行駛時間(min)</td>
+                                <td class="td">停留時間(min)</td>
                                 <td class="td">操作</td>
                             </tr>
                             <?php
-                            $row=query($db,"SELECT*FROM `busmanagement`");
+                            $row=query($db,"SELECT*FROM `site`");
                             for($i=0;$i<count($row);$i=$i+1){
                                 ?>
                                 <tr>
                                     <td class="td"><?= $row[$i][1] ?></td>
                                     <td class="td"><?= $row[$i][2] ?>min</td>
+                                    <td class="td"><?= $row[$i][3] ?>min</td>
                                     <td class="td">
-                                        <input type="button" class="buttonlittle" onclick="location.href='edit.php?key=editbus&id=<?= $row[$i][0] ?>'" value="編輯">
-                                        <input type="button" class="buttonlittle" onclick="location.href='edit.php?key=delbus&id=<?= $row[$i][0] ?>'" value="刪除">
+                                        <input type="button" class="buttonlittle" onclick="location.href='edit.php?key=editsite&id=<?= $row[$i][0] ?>'" value="編輯">
+                                        <input type="button" class="buttonlittle" onclick="location.href='edit.php?key=delsite&id=<?= $row[$i][0] ?>'" value="刪除">
                                     </td>
                                 </tr>
                                 <?php
@@ -63,5 +65,6 @@
                 <?php
             }else{ header("location:login.php"); }
         ?>
+        <script src="login.js"></script>
     </body>
 </html>

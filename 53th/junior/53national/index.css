@@ -560,3 +560,9 @@ table{
     background-color: rgba(35, 35, 35, 0.75);
     color: white;
 }
+
+.div{
+    width: calc(100% / 10);
+    height: calc(100% / 7);
+    display: inline-block;
+}

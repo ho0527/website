@@ -45,7 +45,7 @@
                     </form>
                 </div>
                 <?php
-            }else{ header("location:busmanagement.php"); }
+            }else{ header("location:bus.php"); }
             if(isset($_POST["reflashpng"])){
                 @$_SESSION["username"]=$_POST["username"];
                 @$_SESSION["password"]=$_POST["password"];
@@ -69,7 +69,7 @@
                     if($row[2]==$password){
                         if($ans==$verify){
                             $_SESSION["data"]=$row[0];
-                            ?><script>alert("登入成功");location.href="busmanagement.php"</script><?php
+                            ?><script>alert("登入成功");location.href="bus.php"</script><?php
                         }else{
                             ?><script>alert("圖形驗證碼有誤");location.href="login.php"</script><?php
                         }
