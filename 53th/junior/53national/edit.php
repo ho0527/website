@@ -105,53 +105,53 @@
                 if(isset($_POST["newcarsubmit"])){
                     $licenseplate=$_POST["licenseplate"];
                     $traveltime=$_POST["traveltime"];
-                    if(preg_match("/^[0-9]+$/",$traveltime)&&$traveltime>=0){
+                    if(preg_match("/^[0-9]+(\.[0-9]+)?$/",$traveltime)&&$traveltime>=0){
                         query($db,"INSERT INTO `bus`(`licenseplate`,`traveltime`)VALUES(?,?)",[$licenseplate,$traveltime]);
                         ?><script>alert("新增成功");location.href="bus.php"</script><?php
                     }else{
-                        ?><script>alert("已行駛時間只能是數字且大於0");location.href="edit.php"</script><?php
+                        ?><script>alert("已行駛時間只能是數字或浮點數且大於0");location.href="edit.php"</script><?php
                     }
                 }
                 if(isset($_POST["editcarsubmit"])){
                     $id=$_SESSION["id"];
                     $traveltime=$_POST["traveltime"];
-                    if(preg_match("/^[0-9]+$/",$traveltime)&&$traveltime>=0){
+                    if(preg_match("/^[0-9]+(\.[0-9]+)?$/",$traveltime)&&$traveltime>=0){
                         query($db,"UPDATE `bus` SET `traveltime`=? WHERE `id`='$id'",[$traveltime]);
                         unset($_SESSION["id"]);
                         ?><script>alert("修改成功");location.href="bus.php"</script><?php
                     }else{
-                        ?><script>alert("已行駛時間只能是數字且大於0");location.href="edit.php"</script><?php
+                        ?><script>alert("已行駛時間只能是數字或浮點數且大於0");location.href="edit.php"</script><?php
                     }
                 }
                 if(isset($_POST["newsitesubmit"])){
                     $name=$_POST["name"];
                     $traveltime=$_POST["traveltime"];
                     $stoptime=$_POST["stoptime"];
-                    if(preg_match("/^[0-9]+$/",$traveltime)&&$traveltime>=0){
-                        if(preg_match("/^[0-9]+$/",$stoptime)&&$stoptime>=0){
+                    if(preg_match("/^[0-9]+(\.[0-9]+)?$/",$traveltime)&&$traveltime>=0){
+                        if(preg_match("/^[0-9]+(\.[0-9]+)?$/",$stoptime)&&$stoptime>=0){
                             query($db,"INSERT INTO `site`(`name`,`traveltime`,`stoptime`)VALUES(?,?,?)",[$name,$traveltime,$stoptime]);
                             ?><script>alert("新增成功");location.href="site.php"</script><?php
                         }else{
-                            ?><script>alert("停留時間只能是數字且大於0");location.href="edit.php"</script><?php
+                            ?><script>alert("停留時間只能是數字或浮點數且大於0");location.href="edit.php"</script><?php
                         }
                     }else{
-                        ?><script>alert("行駛時間只能是數字且大於0");location.href="edit.php"</script><?php
+                        ?><script>alert("行駛時間只能是數字或浮點數且大於0");location.href="edit.php"</script><?php
                     }
                 }
                 if(isset($_POST["editsitesubmit"])){
                     $id=$_SESSION["id"];
                     $traveltime=$_POST["traveltime"];
                     $stoptime=$_POST["stoptime"];
-                    if(preg_match("/^[0-9]+$/",$traveltime)&&$traveltime>=0){
-                        if(preg_match("/^[0-9]+$/",$stoptime)&&$stoptime>=0){
+                    if(preg_match("/^[0-9]+(\.[0-9]+)?$/",$traveltime)&&$traveltime>=0){
+                        if(preg_match("/^[0-9]+(\.[0-9]+)?$/",$stoptime)&&$stoptime>=0){
                             query($db,"UPDATE `site` SET `traveltime`=?,`stoptime`=? WHERE `id`='$id'",[$traveltime,$stoptime]);
                             unset($_SESSION["id"]);
                             ?><script>alert("修改成功");location.href="site.php"</script><?php
                         }else{
-                            ?><script>alert("停留時間只能是數字且大於0");location.href="edit.php"</script><?php
+                            ?><script>alert("停留時間只能是數字或浮點數且大於0");location.href="edit.php"</script><?php
                         }
                     }else{
-                        ?><script>alert("行駛時間只能是數字且大於0");location.href="edit.php"</script><?php
+                        ?><script>alert("行駛時間只能是數字或浮點數且大於0");location.href="edit.php"</script><?php
                     }
                 }
             }else{ header("location:login.php"); }
