@@ -18,7 +18,6 @@
         </div>
         <div class="indexmain">
             <div class="indexmainbody macossectiondiv" id="maindiv">
-                <div class="line"></div>
             </div>
         </div>
         <script src="index.js"></script>

@@ -475,32 +475,6 @@ table{
     display: none;
 }
 
-.circle{
-    width: 20px;
-    height: 20px;
-}
-
-.outcircle{
-    border: 5px rgb(105, 105, 255) solid;
-    width: 100%;
-    height: 100%;
-    padding: 2px;
-    border-radius: 50%;
-}
-
-.incircle{
-    background:rgb(105, 105, 255);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-
-.line{
-    background:rgb(105, 105, 255);
-    width: calc(100% / 3);
-    height: 15px;
-}
-
 .button{
     border: 1px black solid;
     padding: 10px 20px;
@@ -565,4 +539,78 @@ table{
     width: calc(100% / 10);
     height: calc(100% / 7);
     display: inline-block;
+    position: relative;
+}
+
+.divleft{
+    position: absolute;
+    left: 220px;
+}
+
+.divmid{
+    position: absolute;
+    left: 580px;
+}
+
+.divright{
+    position: absolute;
+    right: 200px;
+}
+
+.circle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15px,-50%);
+    width: 20px;
+    height: 20px;
+}
+
+.outcircle{
+    border: 5px rgb(105, 105, 255) solid;
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.incircle{
+    background:rgb(105, 105, 255);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.line{
+    background:rgb(105, 105, 255);
+    width: calc(100% / 3);
+    position: absolute;
+    height: 15px;
+}
+
+.lineleft{
+    left: 20px;
+    width: 165px;
+}
+
+.linemidleft{
+    left: 300px;
+    width: 330px;
+}
+
+.linemidright{
+    left: 660px;
+    width: 330px;
+}
+
+.lineright{
+    right: 20px;
+    width: 165px;
+}
+
+.site{
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
 }
