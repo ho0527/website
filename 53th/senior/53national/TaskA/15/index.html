@@ -11,12 +11,13 @@
                 <div class="center">資料視覺化</div>
             </div>
             <div class="inputdiv">
-                選擇檔案 <input type="file" id="inputfile" accept=".csv">
+                ans:<input type="file" id="inputfileans" accept=".csv"> respond:<input type="file" id="inputfilerespond" accept=".csv">
             </div>
-            <div class="show">
-                <table id="table" class="table">
+            <div class="showtop">
+                <table class="table" id="table">
                 </table>
             </div>
+            <div class="showbottom" id="score"></div>
             <input type="button" class="reflashbutton" id="reflashbutton" value="重整">
             <input type="button" class="submit" id="submit" value="生成">
         </div>

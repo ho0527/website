@@ -54,11 +54,8 @@ table{
     font-weight: bold;
 }
 
-.p{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+.td{
+    width: 10000px;
 }
 
 .inputdiv{
@@ -70,9 +67,20 @@ table{
     font-weight: bold;
 }
 
-.show{
+.showtop{
     grid-column: 1/31;
-    grid-row: 3/15;
+    grid-row: 3/14;
+    border-bottom: 2px white solid;
+    padding: 5px 20px;
+    font-size: 25px;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+}
+
+.showbottom{
+    grid-column: 1/31;
+    grid-row: 14;
     border-bottom: 2px white solid;
     padding: 5px 20px;
     font-size: 25px;
