@@ -12,7 +12,7 @@ function doinput(){
     // 標題格式
     value=value.replace(/(#{1,6})\s(.*)<br>/g,function(match,hash,context){ return "<h"+hash.length+">"+context+"</h"+hash.length+">" })
     value=value.replace(/(#{1,6})\s(.*)/g,function(match,hash,context){ return "<h"+hash.length+">"+context+"</h"+hash.length+">" })
-    
+
     // 粗體格式
     value=value.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
 
