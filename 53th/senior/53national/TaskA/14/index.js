@@ -16,7 +16,6 @@ setTimeout(function(){
     let color=false
 
     document.querySelectorAll(".td").forEach(function(event){
-        event.style.height=getComputedStyle(event).getPropertyValue("width")
         event.onclick=function(){
             if(color!=false){
                 this.style.backgroundColor=color

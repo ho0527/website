@@ -16,12 +16,12 @@ document.getElementById("submit").onclick=function(){
     let respond
     let ansreader=new FileReader()
     ansreader.onload=function(event){
-        ans=event.target.result.split(",")
+        ans=event.target.result.split("\n")
     }
     ansreader.readAsText(document.getElementById("inputfileans").files[0])
     let respondreader=new FileReader()
     respondreader.onload=function(event){
-        respond=event.target.result.split(",")
+        respond=event.target.result.split("\n")
     }
     respondreader.readAsText(document.getElementById("inputfilerespond").files[0])
     setTimeout(function(){

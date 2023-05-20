@@ -8,7 +8,7 @@ document.getElementById("submit").onclick=function(){
         let data=input.split(",")
         console.log(data)
         console.log(parseInt(data[0]))
-        r=data[0].substring(4)
+        r=parseInt(data[0].substring(4))
         g=parseInt(data[1])
         b=parseInt(data[2])
         r=r.toString(16)
@@ -36,4 +36,9 @@ document.getElementById("submit").onclick=function(){
         Result<br>
         ${maindata}
     `
+}
+
+
+document.getElementById("reflashbutton").onclick=function(){
+    location.reload()
 }

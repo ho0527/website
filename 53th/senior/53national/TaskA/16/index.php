@@ -15,11 +15,8 @@
                 $factor=(int)$_GET["factor"];
 
                 $array=array_map(function($value)use($factor){
-                    if($value%$factor==0){
-                        return $value." is a factor of ".$factor."**"."<br>";
-                    }else{
-                        return $value."<br>";
-                    }
+                    if($value%$factor==0){ return $value." is a factor of ".$factor."**"."<br>"; }
+                    else{ return $value."<br>"; }
                 },$array);
 
                 print_r($array);
