@@ -29,8 +29,12 @@ document.getElementById("submit").onclick=function(){
         let score=0
         data=data+"<tr>"+"<td class='td'>"+"題號"+"</td>"+"<td class='td'>"+"ans"+"</td>"+"<td class='td'>"+"respond"+"</td>"+"</tr>"
         for(let i=0;i<ans.length;i=i+1){
-            data=data+"<tr>"+"<td class='td'>"+(i+1)+"</td>"+"<td class='td'>"+ans[i]+"</td>"+"<td class='td'>"+respond[i]+"</td>"+"</tr>"
-            if(ans[i]==respond[i]){ score=score+1 }
+            if(ans[i]==respond[i]){
+                data=data+"<tr style='background: green'>"+"<td class='td'>"+(i+1)+"</td>"+"<td class='td'>"+ans[i]+"</td>"+"<td class='td'>"+respond[i]+"</td>"+"</tr>"
+                score=score+1
+            }else{
+                data=data+"<tr style='background: red'>"+"<td class='td'>"+(i+1)+"</td>"+"<td class='td'>"+ans[i]+"</td>"+"<td class='td'>"+respond[i]+"</td>"+"</tr>"
+            }
         }
         document.getElementById("table").innerHTML=`
             ${data}

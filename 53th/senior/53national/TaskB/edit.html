@@ -4,18 +4,52 @@
         <meta charset="UTF-8">
         <title>小畫家</title>
         <link rel="stylesheet" href="edit.css">
+        <link rel="stylesheet" href="plugin/css/macossection.css">
+        <script src="plugin/js/macossection.js"></script>
     </head>
     <body>
         <div class="editgrid">
-            <!-- <input type="button" id="undo" value="復原">
-            <input type="button" id="redo" value="重做">
-            寬:<input type="text" class="input" id="width"> 長:<input type="text" class="input" id="height"><br><br>
-            <input type="button" class="submit" id="submit" value="確定"> -->
-            <div class="setting" id="setting"></div>
-            <div class="maindiv">
-                <div class="main" id="main"></div>
+            <div class="top">
+                <input type="button" id="new" value="新增專案">
+                <input type="button" id="undo" value="復原">
+                <input type="button" id="redo" value="重做">
+                寬:<input type="text" class="input" id="width"> 長:<input type="text" class="input" id="height">
+                <input type="button" class="submit" id="submit" value="確定">
+                <input type="button" class="" id="save" value="儲存為圖片">
+                <input type="button" class="" id="savesample" value="儲存為樣章">
+                <input type="button" class="" id="upload" value="上傳圖片">
             </div>
-            <div class="left" id="left"></div>
+            <div class="setting" id="setting">
+                <input type="button" class="button" id="select" value="選取">
+                <input type="button" class="button" id="paint" value="筆刷">
+                <input type="button" class="button" id="bucket" value="油漆桶">
+                <input type="button" class="button" id="sample" value="樣章">
+            </div>
+            <div class="maindiv macossectiondiv">
+                <canvas class="main" id="canva"></canvas>
+            </div>
+            <div class="left" id="left">
+                <div class="maincolor">
+                    <div class="color" id="black"></div>
+                    <div class="color" id="lightgray"></div>
+                    <div class="color" id="gray"></div>
+                    <div class="color" id="pink"></div>
+                    <div class="color" id="red"></div>
+                    <div class="color" id="yellow"></div>
+                    <div class="color" id="orange"></div>
+                    <div class="color" id="orangered"></div>
+                    <div class="color" id="green"></div>
+                    <div class="color" id="lightblue"></div>
+                    <div class="color" id="blue"></div>
+                    <div class="color" id="purple"></div>
+                    <div class="color" id="white"></div>
+                    <div class="color" id="rgb(26, 34, 51)"></div>
+                    <div class="rainbow" id="rainbow"></div>
+                </div>
+                <div class="leftmid">
+                    線條 1 <input type="range" id="thick" min="0" max="100" value="0.1"> 100
+                </div>
+            </div>
         </div>
         <script src="edit.js"></script>
     </body>

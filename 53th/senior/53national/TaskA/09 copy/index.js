@@ -17,10 +17,10 @@ function doinput(){
 
     // 粗體格式
     value=value.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
-    
+
     // 斜體格式
     value=value.replace(/\*(.*?)\*/g,"<i>$1</i>")
-    
+
     // 水平規則格式
     value=value.replace(/---/g,"")
 

@@ -23,21 +23,21 @@ table{
     width: 100%;
 }
 
-@media screen and (max-width: 499px){
-    .grid{
-        display: grid;
-        grid-gap: 1%;
-        grid-template-columns: repeat(100, 1fr);
-        grid-auto-rows: 5%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-    }
+.grid{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
 
+@media screen and (max-width: 499px){
     .header{
         grid-column: 2/100;
         grid-row: 2/4;
@@ -82,19 +82,6 @@ table{
 }
 
 @media screen and (min-width: 500px){
-    .grid{
-        display: grid;
-        grid-gap: 1%;
-        grid-template-columns: repeat(100, 1fr);
-        grid-auto-rows: 5%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-    }
 
     .header{
         grid-column: 2/100;
