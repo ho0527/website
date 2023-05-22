@@ -17,6 +17,18 @@ canva.height=height
 document.getElementById("undo").disabled=true
 document.getElementById("redo").disabled=true
 
+function date(ymdlink,midlink,hmslink){
+    let date=new Date()
+    let year=date.getFullYear().toString().padStart(4,"0")
+    let month=(date.getMonth()+1).toString().padStart(2,"0")
+    let day=date.getDate().toString().padStart(2,"0")
+    let hour=date.getHours().toString().padStart(2,"0")
+    let minute=date.getMinutes().toString().padStart(2,"0")
+    let second=date.getSeconds().toString().padStart(2,"0")
+
+    return year+ymdlink+month+ymdlink+day+midlink+hour+hmslink+minute+hmslink+second
+}
+
 function undo(){
     if(undohistory.length==0){ return }
 
@@ -37,7 +49,10 @@ function redo(){
 }
 
 function save(){
-    // TODO: Implement save functionality
+    let alink=document.createElement("a")
+    alink.href=canva.toDataURL("image/jpg")
+    alink.download=date("","_","")+".jpg"
+    alink.click()
 }
 
 function savesample(){
@@ -159,9 +174,10 @@ document.getElementById("savesample").onclick=function(){ savesample() }
 document.getElementById("upload").onclick=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
 
-document.getElementById("canva").addEventListener("keydown",function(event){
-    if(event.ctrlKey&&event.key=="Z"){ undo() }
-    if(event.ctrlKey&&event.shiftKey&&event.key=="Z"){ redo() }
+document.getElementById("body").addEventListener("keydown",function(event){
+    if(event.ctrlKey&&event.key=="z"){ event.preventDefault();undo() }
+    if(event.ctrlKey&&event.shiftKey&&event.key=="z"){ event.preventDefault();redo() }
+    if(event.ctrlKey&&event.key=="s"){ event.preventDefault();save() }
 })
 
 document.querySelectorAll(".button").forEach(function(event){
@@ -207,6 +223,6 @@ document.getElementById("thick").addEventListener("change",function(){
     thick=parseInt(this.value)
 })
 
-document.getElementById("rainbow").onclick=function(){
-
+document.getElementById("rainbow").onchange=function(){
+    color="rgb("+parseInt(this.value[1]+this.value[2],16)+","+parseInt(this.value[3]+this.value[4],16)+","+parseInt(this.value[5]+this.value[6],16)+")"
 }

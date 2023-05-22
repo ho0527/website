@@ -81,6 +81,7 @@
 
     // 輸出結果
     echo $length;
+
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;
     echo("memory used ".($memorydifference/1048576)."MB");
