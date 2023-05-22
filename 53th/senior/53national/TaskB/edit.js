@@ -20,6 +20,7 @@ document.getElementById("redo").disabled=true
 function undo(){
     if(undohistory.length==0){ return }
 
+    document.getElementById("redo").disabled=false
     redohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     ctx.putImageData(undohistory.pop(),0,0)
     if(undohistory.length==0){ document.getElementById("undo").disabled=true }
@@ -177,6 +178,9 @@ document.querySelectorAll(".button").forEach(function(event){
             canva.addEventListener("pointermove",paintmove)
             canva.addEventListener("pointerup",paintup)
         }else if(mod=="bucket"){
+            removealllistener()
+            canva.addEventListener("pointerdown",bucket)
+        }else if(mod=="sample"){
             removealllistener()
             canva.addEventListener("pointerdown",bucket)
         }else{
