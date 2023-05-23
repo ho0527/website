@@ -105,7 +105,7 @@
     $commenterror=response()->json(["success"=>false,"message"=>"MSG_COMMENT_NOT_EXISTS","data"=>""],404);
     $usererror=response()->json(["success"=>false,"message"=>"MSG_USER_NOT_EXISTS","data"=>""],404);
 
-    Route::post("/user/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user,$logincheck){
+    Route::post("/auth/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user,$logincheck){
         if($logincheck()==NULL){
             if($request->has("email")&&$request->has("password")){
                 $email=$request->input("email");
@@ -144,7 +144,7 @@
         }
     });
 
-    Route::post("/user/logout",function(Request $request)use($tokenerror,$logincheck){
+    Route::post("/auth/logout",function(Request $request)use($tokenerror,$logincheck){
         if($logincheck()!=NULL){
             $row=DB::table("users")
                 ->where("id","=",$logincheck())
@@ -161,7 +161,7 @@
         }
     });
 
-    Route::post("/user/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$imageerror,$time){
+    Route::post("/auth/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$imageerror,$time){
         if($request->has("email")&&$request->has("nickname")&&$request->has("password")&&$request->has("profile_image")){
             $email=$request->input("email");
             $nickname=$request->input("nickname");
@@ -207,7 +207,7 @@
         }
     });
 
-    Route::get("/post/public",function(Request $request)use($datatypeerror,$post){
+    Route::get("/images/public",function(Request $request)use($datatypeerror,$post){
         $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
         $content=$request->input("content");
@@ -247,7 +247,7 @@
         }
     });
 
-    Route::get("/post/{post_id}",function(Request $request)use($nopermission,$posterror,$logincheck){
+    Route::get("/images/popular",function(Request $request)use($nopermission,$posterror,$logincheck){
         $id=$request->route("post_id");
         $row=DB::table("posts")
             ->where(function($query)use($id){
@@ -275,39 +275,7 @@
         }
     });
 
-    Route::post("/post",function(Request $request)use($tokenerror,$missingfield,$datatypeerror,$imageerror){
-        return view("welcome");
-    });
-
-    Route::post("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
-        return view("welcome");
-    });
-
-    Route::delete("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$posterror){
-        return view("welcome");
-    });
-
-    Route::post("/post/{post_id}/favorite",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
-        return view("welcome");
-    });
-
-    Route::get("/post/favorite",function(Request $request)use($tokenerror,$datatypeerror){
-        return view("welcome");
-    });
-
-    Route::post("/post/{post_id}/comment",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
-        return view("welcome");
-    });
-
-    Route::post("/post/{post_id}/comment/{comment_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$commenterror){
-        return view("welcome");
-    });
-
-    Route::delete("/post/{post_id}/comment/{comment_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$commenterror){
-        return view("welcome");
-    });
-
-    Route::get("/user/{user_id}/post",function(Request $request)use($datatypeerror,$usererror,$post){
+    Route::get("/users/{user_id}/images",function(Request $request)use($datatypeerror,$usererror,$post){
         $userid=$request->route("user_id");
         $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
@@ -356,7 +324,7 @@
         }
     });
 
-    Route::get("/user/{user_id}/",function(Request $request)use($usererror,$user){
+    Route::post("/images/upload",function(Request $request)use($usererror,$user){
         $id=$request->route("user_id");
         $row=DB::table("users")
             ->where(function($query)use($id){
@@ -373,19 +341,27 @@
         }
     });
 
-    Route::post("/user/{user_id}/profile",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    Route::put("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
         return view("welcome");
     });
 
-    Route::get("/user/{user_id}/follow",function(Request $request)use($tokenerror,$datatypeerror){
+    Route::get("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
         return view("welcome");
     });
 
-    Route::post("/user/{user_id}/follow",function(Request $request)use($tokenerror,$datatypeerror,$usererror){
+    Route::delete("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
         return view("welcome");
     });
 
-    Route::delete("/user/{user_id}/follow",function(Request $request){
+    Route::get("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+        return view("welcome");
+    });
+
+    Route::post("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+        return view("welcome");
+    });
+
+    Route::delete("/comments/{comments_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
         return view("welcome");
     });
 ?>

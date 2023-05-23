@@ -1,0 +1,70 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(26, 34, 51);
+    color: rgb(255, 255, 255);
+    user-select: none;
+    word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mainimage{
+    position: absolute;
+    width: 100%;
+    height: 95%;
+}
+
+.cloud{
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    width: 15%;
+    height: 95%;
+    animation: 100s cloudmove infinite;
+}
+
+.cloud1{
+    position: absolute;
+    top: 5%;
+    right: 10px;
+    width: 75px;
+}
+
+.cloud2{
+    position: absolute;
+    top: 15%;
+    left: 5px;
+    width: 125px;
+}
+
+.sun{
+    position: absolute;
+    right: 50%;
+    transform: translate(-50%,-0%);
+    width: 200px;
+    display: none;
+}
+
+.moon{
+    position: absolute;
+    /* top: 5%; */
+    left: 50%;
+    width: 200px;
+    transform: translate(-50%,-0%);
+}
+
+.mainbutton{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+@keyframes cloudmove{
+    50%{
+        right: 85%;
+    }
+    100%{
+        right: 5px;
+    }
+}

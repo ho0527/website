@@ -109,6 +109,34 @@ function bucket(event){
     fillBucket(ctx,color,x,y)
 }
 
+function sampledown(event){
+    undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
+    redohistory.length=0
+    document.getElementById("redo").disabled=true
+    document.getElementById("undo").disabled=false
+    x=event.offsetX
+    y=event.offsetY
+    isdrawing=true
+}
+
+function samplemove(event){
+    if(isdrawing){
+        drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
+        x=event.offsetX
+        y=event.offsetY
+    }
+}
+
+function sampleup(event){
+    if(isdrawing){
+        drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
+        x=0
+        y=0
+        isdrawing=false
+    }
+}
+
+
 function removealllistener(){
     canva.removeEventListener("pointerdown",paintdown)
     canva.removeEventListener("pointermove",paintmove)
@@ -198,7 +226,9 @@ document.querySelectorAll(".button").forEach(function(event){
             canva.addEventListener("pointerdown",bucket)
         }else if(mod=="sample"){
             removealllistener()
-            canva.addEventListener("pointerdown",bucket)
+            canva.addEventListener("pointerdown",sampledown)
+            canva.addEventListener("pointermove",samplemove)
+            canva.addEventListener("pointerup",sampleup)
         }else{
             removealllistener()
         }
