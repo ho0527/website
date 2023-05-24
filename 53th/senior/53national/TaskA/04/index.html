@@ -2,20 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>資料視覺化</title>
+        <title>嗨</title>
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <img src="image/1.png" class="mainimage" id="mainimage" draggable="false">
-        <img src="image/2.png" class="sun" id="sun" draggable="false">
-        <img src="image/3.png" class="moon" id="moon" draggable="false">
-        <div class="cloud">
-            <img src="image/4.png" class="cloud1" draggable="false">
-            <img src="image/4.png" class="cloud2" draggable="false">
+        <div class="body" id="body">
+            <img src="image/1.png" class="mainimage" id="mainimage" draggable="false">
+            <img src="image/3.png" class="moonandsun" id="moonandsun" draggable="false">
+            <div class="cloud">
+                <img src="image/4.png" class="cloud1" draggable="false">
+                <img src="image/4.png" class="cloud2" draggable="false">
+            </div>
         </div>
         <div class="mainbutton">
-            <input type="button" class="button" value="Day">
-            <input type="button" class="button" value="Night">
+            <input type="button" class="button buttonday" id="day" value="Day">
+            <input type="button" class="button buttonnight" id="night" value="Night">
         </div>
         <script src="index.js"></script>
     </body>
