@@ -36,6 +36,7 @@ table{
     height: 100%;
     border-radius: 10px;
 }
+
 .header{
     grid-column: 2/100;
     grid-row: 2/5;

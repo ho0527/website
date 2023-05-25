@@ -238,7 +238,7 @@ document.querySelectorAll(".button").forEach(function(event){
             canva.addEventListener("pointerdown",paintdown)
             canva.addEventListener("pointermove",paintmove)
             canva.addEventListener("pointerup",paintup)
-        }else if(mod=="bucket"){            
+        }else if(mod=="bucket"){
             removealllistener()
             canva.addEventListener("pointerdown",bucket)
         }else if(mod=="sample"){
@@ -261,6 +261,7 @@ document.querySelectorAll(".color").forEach(function(event){
         document.querySelectorAll(".color").forEach(function(event2){
             event2.style.borderColor="black"
         })
+        document.getElementById("rainbow").style.borderColor="black"
         this.style.borderColor="yellow"
         color=this.id
     }
@@ -272,6 +273,10 @@ document.getElementById("thick").addEventListener("change",function(){
 
 document.getElementById("rainbow").onchange=function(){
     color="rgb("+parseInt(this.value[1]+this.value[2],16)+","+parseInt(this.value[3]+this.value[4],16)+","+parseInt(this.value[5]+this.value[6],16)+")"
+    document.querySelectorAll(".color").forEach(function(event2){
+        event2.style.borderColor="black"
+    })
+    this.style.borderColor="yellow"
 }
 
 document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })

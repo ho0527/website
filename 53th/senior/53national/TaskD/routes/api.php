@@ -134,7 +134,7 @@
         }
     });
 
-    Route::post("/auth/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$time){
+    Route::post("/auth/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$user,$time){
         if($request->has("email")&&$request->has("nickname")&&$request->has("password")&&$request->has("profile_image")){
             $email=$request->input("email");
             $nickname=$request->input("nickname");

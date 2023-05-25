@@ -2,8 +2,8 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(26, 34, 51);
     color: rgb(255, 255, 255);
-    user-select: none;
     word-break: break-all;
+    user-select: none;
     padding: 0px;
     margin: 0px;
     text-align: center;
@@ -46,9 +46,7 @@ table{
 .navigationbarleft{
     height: 75px;
     position: absolute;
-    top: 50%;
     left: 20px;
-    transform: translate(0%,-50%);
     font-size: 50px;
     font-weight: bold;
 }
