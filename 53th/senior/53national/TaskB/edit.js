@@ -63,6 +63,18 @@ function upload(){
     // TODO: Implement upload functionality
 }
 
+function selectdown(){
+
+}
+
+function selectmove(){
+
+}
+
+function selectup(){
+
+}
+
 function drawline(canvactx,strokestyle,linewidth,x0,y0,x1,y1){
     canvactx.beginPath()
     canvactx.strokeStyle=strokestyle
@@ -216,12 +228,17 @@ document.querySelectorAll(".button").forEach(function(event){
             else{ event.classList.remove("selectbutton") }
         })
 
-        if(mod=="paint"){
+        if(mod=="select"){
+            removealllistener()
+            canva.addEventListener("pointerdown",selectdown)
+            canva.addEventListener("pointermove",selectmove)
+            canva.addEventListener("pointerup",selectup)
+        }else if(mod=="paint"){
             removealllistener()
             canva.addEventListener("pointerdown",paintdown)
             canva.addEventListener("pointermove",paintmove)
             canva.addEventListener("pointerup",paintup)
-        }else if(mod=="bucket"){
+        }else if(mod=="bucket"){            
             removealllistener()
             canva.addEventListener("pointerdown",bucket)
         }else if(mod=="sample"){
@@ -256,3 +273,5 @@ document.getElementById("thick").addEventListener("change",function(){
 document.getElementById("rainbow").onchange=function(){
     color="rgb("+parseInt(this.value[1]+this.value[2],16)+","+parseInt(this.value[3]+this.value[4],16)+","+parseInt(this.value[5]+this.value[6],16)+")"
 }
+
+document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })
