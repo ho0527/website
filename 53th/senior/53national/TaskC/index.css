@@ -306,7 +306,7 @@ table{
     border: 1px white solid;
     position: relative;
     top: 100px;
-    height: 200px;
+    height: 150px;
 }
 
 .aboutmain{
@@ -321,7 +321,7 @@ table{
 }
 
 .aboutimage{
-    width: 10%;
+    width: 5%;
 }
 
 @keyframes cardhover{
