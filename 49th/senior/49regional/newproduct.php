@@ -10,16 +10,25 @@
             include("link.php");
             if(!isset($_SESSION["data"])&&$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         ?>
-        <h1>咖啡商品展示系統</h1>
-        <input type="button" class="button" onclick="location.href='main.php'" value="首頁">
-        <input type="button" class="button selt" onclick="location.href='productindex.php'" value="上架商品">
-        <input type="button" class="button" onclick="location.href='admin.php'" value="會員管理">
-        <input type="button" class="button" onclick="location.href='link.php?logout='" value="登出">
-        <hr>
-        <input type="button" class="button selt" onclick="location.href='productindex.php'" value="選擇版型">
-        <input type="button" class="button" onclick="location.href='productinput.php'" value="選擇版型">
-        <input type="button" class="button" onclick="location.href='productperview.php'" value="選擇版型">
-        <input type="button" class="button" onclick="location.href='productsubmit.php'" value="選擇版型"><br><br>
+        <div class="navigationbar">
+            <div class="maintitle">電子競技網站管理-選擇版型</div>
+            <div class="navigationbarbuttondiv">
+                <input type="button" class="navigationbarbutton" onclick="location.href='main.php'" value="首頁">
+                <input type="button" class="navigationbarbutton selectbutton" onclick="location.href='productindex.php'" value="電競活動管理精靈">
+                <input type="button" class="navigationbarbutton" onclick="location.href='search.php'" value="查尋">
+                <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
+                <input type="button" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
+            </div>
+        </div>
+        <div class="productbar">
+            <div class="center">
+                <input type="button" class="navigationbarbutton" onclick="location.href='productindex.php'" value="選擇版型">
+                <input type="button" class="navigationbarbutton" onclick="location.href='productinput.php'" value="填寫資料">
+                <input type="button" class="navigationbarbutton" onclick="location.href='productpreview.php'" value="預覽">
+                <input type="button" class="navigationbarbutton" onclick="location.href='productsumbit.php'" value="確定送出">
+                <input type="button" class="navigationbarbutton selectbutton" onclick="location.reload()" value="新增版型">
+            </div>
+        </div>
         <div class="main">
             <form>
                 <h2>新增版型</h2>
@@ -40,24 +49,28 @@
                         <td class="coffee" id="7">7</td>
                         <td class="coffee" id="8">8</td>
                     </tr>
+                    <tr>
+                        <td class="coffee" id="9">9</td>
+                        <td class="coffee" id="10">10</td>
+                    </tr>
                 </table><br><br>
                 圖片會往下佔2格<br>
                 <?php
-                    for($i=1;$i<=8;$i++){
+                    for($i=1;$i<=10;$i=$i+1){
                         ?>
                         <?= $i ?>
                         <select name="s<?= $i ?>" class="select" id="<?= $i ?>">
                             <option value="none">請選擇</option>
                             <option value="picture">圖片</option>
-                            <option value="name">商品名稱</option>
-                            <option value="link">相關連結</option>
-                            <option value="cost">費用</option>
-                            <option value="date">發佈日期</option>
-                            <option value="intr">商品簡介</option>
+                            <option value="name">電競名稱</option>
+                            <option value="date">競賽日期</option>
+                            <option value="link">電競活動簡介</option>
+                            <option value="intr">活動新聞連結</option>
+                            <option value="cost">報名</option>
                         </select>
                         <?php
                     }
-                ?>
+                ?><br>
                 <input type="button" onclick="location.href='productindex.php'" value="取消">
                 <input type="submit" name="submit" value="送出">
             </form>

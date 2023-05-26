@@ -28,18 +28,16 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='productsumbit.php'" value="確定送出">
             </div>
         </div>
-        <div class="mainbody">
-            <table class="producttable">
-                <tr>
-                    <td>
-                        <table class="coffeetable">
-                            <tr>
-                                <td class="coffee"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+        <div class="main">
+            <form method="POST" enctype="multipart/form-data">
+                電競名稱:<input type="text" name="name"><br><br>
+                電競名稱:<input type="text" name="name"><br><br>
+                電競名稱:<input type="text" name="name"><br><br>
+                電競名稱:<input type="text" name="name"><br><br>
+                電競名稱:<input type="text" name="name"><br><br>
+                <input type="button" class="button" value="取消">
+                <input type="submit" class="button" value="送出">
+            </form>
         </div>
     </body>
 </html>

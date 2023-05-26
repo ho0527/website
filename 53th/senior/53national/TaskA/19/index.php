@@ -13,8 +13,8 @@
             if(isset($_POST["submit"])){
                 $text=$_POST["code"];
                 $base64=str_replace("data:image/png;base64,","",$text);
-                if(!file_exists("img/")){ mkdir("img/",0777,true); }
-                file_put_contents("img/img".rand(0,99999999).".png",base64_decode($base64));
+                if(!file_exists("image/")){ mkdir("image/",0777,true); }
+                file_put_contents("image/img".rand(0,99999999).".png",base64_decode($base64));
                 echo("轉換完成");
             }
         ?>
