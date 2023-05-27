@@ -40,10 +40,7 @@ table{
 
 .text{
     grid-column: 2/100;
-    grid-row: 2/15;
-    line-height: 50px;
-    font-size: 30px;
-    padding: 10px;
+    grid-row: 2/6;
 }
 
 .textarea{
@@ -55,7 +52,13 @@ table{
 
 .input{
     grid-column: 2/100;
-    grid-row: 16;
+    grid-row: 7;
+}
+
+.show{
+    grid-column: 2/100;
+    grid-row: 9/16;
+    border: 2px white solid;
 }
 
 .center{

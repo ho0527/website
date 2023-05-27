@@ -2,7 +2,7 @@ let input=document.getElementById("input")
 let show=document.getElementById("show")
 let change=document.getElementById("change")
 
-function doinput(){
+function inputchange(){
     let value=input.value
 
     // 段落和換行格式
@@ -20,8 +20,8 @@ function doinput(){
     value=value.replace(/---/g,"<hr>")
 
     // 列表格式
-    value=value.replace(/-\s(.*)/g,"<li>$1</li>")
-    // value=value.replace(/(<ul>^)<li>(.*)<\/li>/gm,"<ul><li>$1</li></ul>")
+    value=value.replace(/-\s(.+)<br>/g,"<li>$1</li>")
+    value=value.replace(/-\s(.+)/g,"<li>$1</li>")
     value=value.replace(/<li>(.*)<\/li>/g,"<ul><li>$1</li></ul>")
 
     // 圖片格式
@@ -46,7 +46,7 @@ input.addEventListener("keydown",function(event){
 change.onclick=function(){
     if(change.value=="ON"){ change.value="OFF" }
     else{ change.value="ON" }
-    doinput()
+    inputchange()
 }
 
-input.addEventListener("input",function(){ doinput() })
+input.addEventListener("input",function(){ inputchange() })

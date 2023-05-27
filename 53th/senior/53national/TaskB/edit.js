@@ -14,8 +14,6 @@ let paintstin=1
 
 canva.width=width
 canva.height=height
-document.getElementById("undo").disabled=true
-document.getElementById("redo").disabled=true
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -32,11 +30,8 @@ function date(ymdlink,midlink,hmslink){
 function undo(){
     if(undohistory.length==0){ return }
 
-    document.getElementById("redo").disabled=false
     redohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     ctx.putImageData(undohistory.pop(),0,0)
-    if(undohistory.length==0){ document.getElementById("undo").disabled=true }
-    else{ document.getElementById("undo").disabled=false }
 }
 
 function redo(){
@@ -44,8 +39,6 @@ function redo(){
 
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     ctx.putImageData(redohistory.pop(),0,0)
-    if(redohistory.length==0){ document.getElementById("redo").disabled=true }
-    else{ document.getElementById("redo").disabled=false }
 }
 
 function save(){
@@ -87,8 +80,6 @@ function drawline(canvactx,strokestyle,linewidth,x0,y0,x1,y1){
 function paintdown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     redohistory.length=0
-    document.getElementById("redo").disabled=true
-    document.getElementById("undo").disabled=false
     x=event.offsetX
     y=event.offsetY
     isdrawing=true
@@ -114,8 +105,6 @@ function paintup(event){
 function bucket(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     redohistory.length=0
-    document.getElementById("redo").disabled=true
-    document.getElementById("undo").disabled=false
     x=event.offsetX
     y=event.offsetY
     fillBucket(ctx,color,x,y)
@@ -124,8 +113,6 @@ function bucket(event){
 function sampledown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     redohistory.length=0
-    document.getElementById("redo").disabled=true
-    document.getElementById("undo").disabled=false
     x=event.offsetX
     y=event.offsetY
     isdrawing=true
@@ -214,7 +201,7 @@ document.getElementById("savesample").onclick=function(){ savesample() }
 document.getElementById("upload").onclick=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
 
-document.getElementById("body").addEventListener("keydown",function(event){
+document.addEventListener("keydown",function(event){
     if(event.ctrlKey&&event.key=="z"){ event.preventDefault();undo() }
     if(event.ctrlKey&&event.shiftKey&&event.key=="z"){ event.preventDefault();redo() }
     if(event.ctrlKey&&event.key=="s"){ event.preventDefault();save() }
@@ -267,16 +254,14 @@ document.querySelectorAll(".color").forEach(function(event){
     }
 })
 
-document.getElementById("thick").addEventListener("change",function(){
-    thick=parseInt(this.value)
-})
-
 document.getElementById("rainbow").onchange=function(){
-    color="rgb("+parseInt(this.value[1]+this.value[2],16)+","+parseInt(this.value[3]+this.value[4],16)+","+parseInt(this.value[5]+this.value[6],16)+")"
+    color=this.value
     document.querySelectorAll(".color").forEach(function(event2){
         event2.style.borderColor="black"
     })
     this.style.borderColor="yellow"
 }
+
+document.getElementById("thick").addEventListener("change",function(){ thick=parseInt(this.value) })
 
 document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })
