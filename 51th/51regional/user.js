@@ -69,17 +69,17 @@ function main(){
             }else if(questionrow[i][3]=="single"){
                 for(let j=0;j<6;j=j+1){
                     if(!checknull(option[j])){
-                        output=output+("  "+"<input type='radio' id='"+(i+"option"+j)+"' name='single"+i+"' class='forminputtext' value='"+option[j]+"'>"+option[j])
+                        output=output+("  "+"<input type='radio' class='forminputtext' id='"+(i+"option"+j)+"' name='single"+i+"' value='"+option[j]+"'>"+option[j])
                     }
                 }
             }else if(questionrow[i][3]=="multi"){
                 for(let j=0;j<6;j=j+1){
                     if(!checknull(option[j])){
-                        output=output+("  "+"<input type='checkbox' id='"+(i+"option"+j)+"' name='"+i+"multi"+(j+1)+"' class='forminputtext' value='"+option[j]+"'>"+option[j])
+                        output=output+("  "+"<input type='checkbox' class='forminputtext' id='"+(i+"option"+j)+"' name='"+i+"multi"+(j+1)+"' value='"+option[j]+"'>"+option[j])
                     }
                 }
                 if(questionrow[i][5]==true){
-                    output=output+"<br><input type='text' id='multimorerespond"+i+"' name='multiauther"+i+"' class='forminputlongtext'>"
+                    output=output+"<br><input type='text' class='forminputtext' id='multimorerespond"+i+"' name='multiauther"+i+"'>"
                 }
             }else if(questionrow[i][3]=="qa"){
                 output=output+"<textarea cols='30' rows='5' placeholder='問答題'></textarea>"

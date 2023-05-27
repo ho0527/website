@@ -31,27 +31,42 @@
 
     $user=function($row,$type){
         $mainrow=[
-            "id"=>$row[0]->id,
-            "email"=>$row[0]->email,
-            "nickname"=>$row[0]->nickname,
-            "profile_image"=>$row[0]->profile_image,
-            "type"=>$row[0]->type,
+            "id"=>$row->id,
+            "email"=>$row->email,
+            "nickname"=>$row->nickname,
+            "profile_image"=>$row->profile_image,
+            "type"=>$row->type,
         ];
         if($type=="login"){
-            $mainrow["access_token"]=$row[0]->access_token;
+            $mainrow["access_token"]=$row->access_token;
         }
         return $mainrow;
     };
 
-    $post=function($row)use($user,$logincheck){
+    $image=function($row){
+        $data=[];
+        $id=$row->id;
+        $imagerow=DB::table("post_images")
+            ->where(function($query)use($id){
+                $query->where("post_id","=",$id);
+            })->select("*")->get();
+        for($i=0;$i<$imagerow->count();$i=$i+1){
+            $data[]=[
+                "id"=>$imagerow[$i]->id,
+                "url"=>$imagerow[$i]->filename,
+                "width"=>$imagerow[$i]->width,
+                "height"=>$imagerow[$i]->height,
+                "created_at"=>$imagerow[$i]->created_at
+            ];
+        }
+        return $data;
+    };
+
+    $post=function($row)use($user,$logincheck,$image){
         $data=[];
         for($i=0;$i<$row->count();$i=$i+1){
             $id=$row[$i]->id;
             $likerow=DB::table("user_likes")
-                ->where(function($query)use($id){
-                    $query->where("post_id","=",$id);
-                })->select("*")->get();
-            $imagerow=DB::table("post_images")
                 ->where(function($query)use($id){
                     $query->where("post_id","=",$id);
                 })->select("*")->get();
@@ -64,7 +79,7 @@
             $mainrow=[
                 "id"=>$row[$i]->id,
                 "author"=>$user($userrow,"normal"),
-                "image"=>$imagerow,
+                "image"=>$image($row[$i]),
                 "like_count"=>$likerow->count(),
                 "content"=>$row[$i]->content,
                 "type"=>$row[$i]->type,
@@ -89,6 +104,24 @@
                 $mainrow["created_at"]=$row[$i]->created_at;
             }
             $data[]=$mainrow;
+        }
+        return $data;
+    };
+
+    $comment=function($row)use($user){
+        $data=[];
+        $id=$row->id;
+        $commentrow=DB::table("comments")
+            ->where(function($query)use($id){
+                $query->where("post_id","=",$id);
+            })->select("*")->get();
+        for($i=0;$i<$commentrow->count();$i=$i+1){
+            $data[]=[
+                "id"=>$commentrow[$i]->id,
+                "user"=>$user($commentrow[$i],"normal"),
+                "context"=>$commentrow[$i]->context,
+                "created_at"=>$commentrow[$i]->created_at
+            ];
         }
         return $data;
     };
@@ -128,7 +161,7 @@
                         return response()->json([
                             "success"=>true,
                             "message"=>"",
-                            "data"=>$user($row,"login")
+                            "data"=>$user($row[0],"login")
                         ]);
                     }else{
                         return $datatypeerror;
@@ -161,7 +194,7 @@
         }
     });
 
-    Route::post("/user/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$imageerror,$time){
+    Route::post("/user/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$imageerror,$time,$user){
         if($request->has("email")&&$request->has("nickname")&&$request->has("password")&&$request->has("profile_image")){
             $email=$request->input("email");
             $nickname=$request->input("nickname");
@@ -188,7 +221,7 @@
                             return response()->json([
                                 "success"=>true,
                                 "message"=>"",
-                                "data"=>$row
+                                "data"=>$user($row[0],"normal")
                             ]);
                         }else{
                             return $imageerror;
@@ -366,7 +399,7 @@
             return response()->json([
                 "success"=>true,
                 "message"=>"",
-                "data"=>$user($row,"normal")
+                "data"=>$user($row[0],"normal")
             ]);
         }else{
             return $usererror;

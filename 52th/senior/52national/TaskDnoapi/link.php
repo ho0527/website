@@ -4,20 +4,10 @@
     $time=date("Y-m-d H:i:s");
     session_start();
 
-    function query($db,$data){
-        return $db->query($data);
-    }
-
-    function fetch($data){
-        return $data->fetch();
-    }
-
-    function fetchall($data){
-        return $data->fetchall();
-    }
-
-    function block($name){
-        return preg_match("/([ ,\!,\@,\#,\$,\%,\^,\&,\*,\(,\),\_,\-,\+,\=,\{,\},\[,\],\|,\\\,\:,\;,\",\',\<,\>,\,,\.,\?,\/ ])/",$name);
+    function query($db,$query,$data=[]){
+        $prepare=$db->prepare($query);
+        $prepare->execute($data);
+        return $prepare->fetchAll();
     }
 
     if(isset($_GET["logout"])){

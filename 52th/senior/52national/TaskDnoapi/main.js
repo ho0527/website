@@ -1,0 +1,1 @@
+document.getElementById("newpost").onclick=function(){ location.href="newpost.php" }

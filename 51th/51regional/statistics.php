@@ -75,7 +75,7 @@
                                         if(isset($questionrow[$i][5])&&$questionrow[$i][5]!="none"){
                                             ?><td rowspan="2" class="order">
                                                 <?php if($questionrow[$i][4]=="true"){ ?><div class="required">*必填</div><?php } ?>
-                                                <input type="text" name="count<?php echo($i) ?>" class="count" value="<?php echo($questionrow[$i][2]) ?>" readonly>
+                                                <input type="text" class="count" name="count<?php echo($i) ?>" value="<?php echo($questionrow[$i][2]) ?>" readonly>
                                             </td><?php
                                         }
                                         ?>
@@ -92,8 +92,8 @@
                                                     <?php
                                                     if($questionrow[$i][5]=="yesno"){
                                                         ?>
-                                                        是<input type="radio" name="yesno" class="radio" value="yes">
-                                                        否<input type="radio" name="yesno" class="radio" value="no">
+                                                        是<input type="radio" class="radio" name="yesno" value="yes">
+                                                        否<input type="radio" class="radio" name="yesno" value="no">
                                                         <?php
                                                     }elseif($questionrow[$i][5]=="single"){
                                                         for($j=0;$j<6;$j=$j+1){

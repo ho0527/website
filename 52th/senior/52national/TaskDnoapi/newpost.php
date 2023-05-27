@@ -2,17 +2,17 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>重設帳密</title>
+        <title>新增貼文</title>
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
         <?php
             include("link.php");
-            if(isset($_SESSION["data"])){ header("location:main.php"); }
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
         <div class="main">
             <form method="POST" enctype="multipart/form-data">
-                <h2>新增使用者</h2>
+                <h2>新增貼文</h2>
                 <hr>
                 email <input type="text" class="input" name="email"><br><br>
                 密碼 <input type="text" class="input" name="password"><br><br>
@@ -21,7 +21,7 @@
                 <input type="button" class="button" name="password" onclick="document.getElementById('selfimage').click()" value="上傳頭像"><br><br>
                 <input type="button" class="longbutton" onclick="location.href='index.php'" value="返回主頁">
                 <input type="submit" class="longbutton" name="signupsubmit" value="送出">
-                <input type="file" class="file" name="selfimage" accept=".png,   .jpg">
+                <input type="file" class="file" name="postimage[]" accept=".png,.jpg">
             </form>
         </div>
         <?php
