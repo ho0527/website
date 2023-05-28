@@ -9,11 +9,4 @@
         $prepare->execute($data);
         return $prepare->fetchAll();
     }
-
-    if(isset($_GET["logout"])){
-        $data=$_SESSION["data"];
-        query($db,"UPDATE `user` SET `token`='' WHERE `id`='$data'");
-        session_unset();
-        ?><script>alert("登出成功");location.href="index.php"</script><?php
-    }
 ?>

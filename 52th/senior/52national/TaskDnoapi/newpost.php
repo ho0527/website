@@ -14,46 +14,65 @@
             <form method="POST" enctype="multipart/form-data">
                 <h2>新增貼文</h2>
                 <hr>
-                email <input type="text" class="input" name="email"><br><br>
-                密碼 <input type="text" class="input" name="password"><br><br>
-                暱稱 <input type="text" class="input" name="nickname"><br><br>
-                管理員權限<input type="checkbox" class="checkbox" name="admin">
-                <input type="button" class="button" name="password" onclick="document.getElementById('selfimage').click()" value="上傳頭像"><br><br>
-                <input type="button" class="longbutton" onclick="location.href='index.php'" value="返回主頁">
-                <input type="submit" class="longbutton" name="signupsubmit" value="送出">
-                <input type="file" class="file" name="postimage[]" accept=".png,.jpg">
+                <div class="inputdiv">
+                    <div class="inputhint">*context</div><textarea class="context" name="context"></textarea>
+                </div>
+                <div class="inputdiv">
+                    <div class="inputhint">*type</div>
+                    <select class="select" name="type">
+                        <option value="none">none</option>
+                        <option value="public">public</option>
+                        <option value="follow">only follow</option>
+                        <option value="self">only self</option>
+                    </select>
+                </div>
+                <div class="inputdiv">
+                    <div class="inputhint">tag</div><input type="text" class="input" name="tag" placeholder="空白分隔每個tag">
+                </div>
+                <div class="inputdiv">
+                    <div class="inputhint">location name</div><input type="text" class="input" name="location">
+                </div>
+                *<input type="button" class="button" name="password" onclick="document.getElementById('file').click()" value="上傳頭像"><br><br>
+                <input type="button" class="longbutton" onclick="location.href='main.php'" value="返回主頁">
+                <input type="submit" class="longbutton" name="submit" value="送出">
+                <input type="file" class="file" id="file" name="postimage[]" accept=".png,.jpg" multiple="multiple">
             </form>
         </div>
         <?php
-            if(isset($_POST["signupsubmit"])){
-                $email=$_POST["email"];
-                $password=$_POST["password"];
-                $nickname=$_POST["nickname"];
-                $row=query($db,"SELECT*FROM `user` WHERE `email`='$email'");
-                if($email==""||$password==""){
-                    ?><script>alert("請填寫帳密!");location.href="signupedit.php"</script><?php
-                }elseif($row){
-                    ?><script>alert("帳號已存在");location.href="signupedit.php"</script><?php
+            if(isset($_POST["submit"])){
+                $context=$_POST["context"];
+                $type=$_POST["type"];
+                $tag=$_POST["tag"];
+                $location=$_POST["location"];
+                if($context==""){
+                    ?><script>alert("請填寫內容!");location.href="newpost.php"</script><?php
+                }elseif($type=="none"){
+                    ?><script>alert("請選擇類型");location.href="newpost.php"</script><?php
+                }elseif($_FILES["postimage"]["name"][0]==""){
+                    ?><script>alert("請上傳圖片");location.href="newpost.php"</script><?php
                 }else{
+                    $data=$_SESSION["data"];
+                    query($db,"INSERT INTO `post`(`userid`,`linkcount`,`context`,`permission`,`location`,`time`)VALUES('$data','0',?,?,?,'$time')",[$context,$type,$location]);
+                    $row=query($db,"SELECT*FROM `post`");
+                    rsort($row);
+                    $postid=$row[0][0];
                     $file="";
-                    if(isset($_FILES["selfimage"]["name"])){
-                        $file="image/selfimage/".$_FILES["selfimage"]["name"];
-                        if(file_exists($file)){
-                            $j=1;
-                            while(file_exists($file)){
-                                $file="image/selfimage/".$j."_".$_FILES["selfimage"]["name"];
-                                $j=$j+1;
-                            }
+                    $tag=explode(" ",$tag);
+                    for($i=0;$i<count($tag);$i=$i+1){
+                        query($db,"INSERT INTO `tag`(`postid`,`tag`,`time`)VALUES('$postid',?,'$time')",[$tag[$i]]);
+                    }
+                    for($i=0;$i<count($_FILES["postimage"]["name"]);$i=$i+1){
+                        $file="image/postimage/".$_FILES["postimage"]["name"][$i];
+                        $j=1;
+                        while(file_exists($file)){
+                            $file="image/postimage/".$j."_".$_FILES["postimage"]["name"][$i];
+                            $j=$j+1;
                         }
-                        move_uploaded_file($_FILES["selfimage"]["tmp_name"],$file);
+                        move_uploaded_file($_FILES["postimage"]["tmp_name"][$i],$file);
+                        query($db,"INSERT INTO `postimage`(`postid`,`imageurl`,`time`)VALUES('$postid',?,'$time')",[$file]);
                     }
-                    if(isset($_POST["admin"])){
-                        query($db,"INSERT INTO `user`(`selfimage`,`email`,`nickname`,`password`,`permission`)VALUES(?,?,?,?,'admin')",[$file,$email,$nickname,$password]);
-                    }else{
-                        query($db,"INSERT INTO `user`(`selfimage`,`email`,`nickname`,`password`,`permission`)VALUES(?,?,?,?,'user')",[$file,$email,$nickname,$password]);
-                    }
-                    $row=query($db,"SELECT*FROM `user` WHERE `email`='$email'");
-                    ?><script>alert("新增成功!");location.href="index.php"</script><?php
+                    query($db,"INSERT INTO `log`(`number`,`move`,`time`)VALUES('$data','登入成功','$time')");
+                    ?><script>alert("新增成功!");location.href="main.php"</script><?php
                 }
             }
         ?>

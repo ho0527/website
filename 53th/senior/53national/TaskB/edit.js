@@ -11,9 +11,17 @@ let ctx=canva.getContext("2d")
 let color="black"
 let thick=1
 let paintstin=1
+let x1=0
+let y1=0
+let x2=0
+let y2=0
 
+document.getElementById("width").value=width
+document.getElementById("height").value=height
 canva.width=width
 canva.height=height
+ctx.fillStyle="white"
+ctx.fillRect(0,0,width,height)
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -49,11 +57,9 @@ function save(){
 }
 
 function savesample(){
-    // TODO: Implement savesample functionality
 }
 
 function upload(){
-    // TODO: Implement upload functionality
 }
 
 function selectdown(){
@@ -68,36 +74,32 @@ function selectup(){
 
 }
 
-function drawline(canvactx,strokestyle,linewidth,x0,y0,x1,y1){
-    canvactx.beginPath()
-    canvactx.strokeStyle=strokestyle
-    canvactx.lineWidth=linewidth
-    canvactx.moveTo(x0,y0)
-    canvactx.lineTo(x1,y1)
-    canvactx.stroke()
-}
-
 function paintdown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
-    redohistory.length=0
-    x=event.offsetX
-    y=event.offsetY
+    ctx.strokeStyle=color
+    ctx.lineWidth=thick
+    x1=event.offsetX
+    y1=event.offsetY
+    ctx.lineCap="round"
+    ctx.lineJoin="round"
     isdrawing=true
 }
 
 function paintmove(event){
     if(isdrawing){
-        drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
-        x=event.offsetX
-        y=event.offsetY
+        x2=event.offsetX
+        y2=event.offsetY
+        ctx.beginPath()
+        ctx.moveTo(x1, y1)
+        ctx.lineTo(x2, y2)
+        ctx.stroke()
+        x1=x2
+        y1=y2
     }
 }
 
-function paintup(event){
+function paintup(e){
     if(isdrawing){
-        drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
-        x=0
-        y=0
         isdrawing=false
     }
 }
@@ -134,7 +136,6 @@ function sampleup(event){
         isdrawing=false
     }
 }
-
 
 function removealllistener(){
     canva.removeEventListener("pointerdown",paintdown)
@@ -233,6 +234,8 @@ document.querySelectorAll(".button").forEach(function(event){
             canva.addEventListener("pointerdown",sampledown)
             canva.addEventListener("pointermove",samplemove)
             canva.addEventListener("pointerup",sampleup)
+        }else if(mod=="setcanva"){
+            removealllistener()
         }else{
             removealllistener()
         }
@@ -251,6 +254,10 @@ document.querySelectorAll(".color").forEach(function(event){
         document.getElementById("rainbow").style.borderColor="black"
         this.style.borderColor="yellow"
         color=this.id
+        if(mod=="setcanva"){
+            ctx.fillStyle=color
+            ctx.fillRect(0,0,width,height)
+        }
     }
 })
 
@@ -260,8 +267,22 @@ document.getElementById("rainbow").onchange=function(){
         event2.style.borderColor="black"
     })
     this.style.borderColor="yellow"
+    if(mod=="setcanva"){
+        ctx.fillStyle=color
+        ctx.fillRect(0,0,width,height)
+    }
 }
 
 document.getElementById("thick").addEventListener("change",function(){ thick=parseInt(this.value) })
 
 document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })
+
+document.getElementById("submit").onclick=function(){
+    let width=document.getElementById("width").value
+    let height=document.getElementById("height").value
+    if(/^[0-9]+$/.test(width)&&/^[0-9]+$/.test(height)){
+        location.href="edit.html"
+        localStorage.setItem("width",width)
+        localStorage.setItem("height",height)
+    }else{ alert("長寬要是整數") }
+}
