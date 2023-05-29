@@ -191,3 +191,9 @@ table{
 .a:hover{
     text-decoration: underline;
 }
+
+.nonebutton{
+    border: none;
+    background: rgb(26, 34, 51);
+    cursor: pointer;
+}
