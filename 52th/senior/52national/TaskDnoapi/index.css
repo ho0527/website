@@ -251,7 +251,7 @@ table{
     position: absolute;
     left: 50%;
     transform: translate(-50%,0%);
-    height: 95%;
+    height: 100%;
 }
 
 .grid{

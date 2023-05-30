@@ -20,11 +20,11 @@
                         <div class="nickname"><?php echo($row[3]) ?></div>
                     </div>
                     <div class="navigationbarright">
+                        <input type="button" class="navigationbarbutton" id="newpost" value="新增貼文">
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
                 <div class="mainmain">
-                    <input type="button" class="button" id="newpost" value="新增貼文">
                     <div class="postmain macossectiondiv">
                         <?php
                         $row=query($db,"SELECT*FROM `post` WHERE `permission`='public'");
