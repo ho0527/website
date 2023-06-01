@@ -46,7 +46,7 @@
     $data[]=$end;
 
     // 建立單字圖
-    for($i=0;$i<count($dataz);$i=$i+1){
+    for($i=0;$i<count($data);$i=$i+1){
         for($j=$i+1;$j<count($data);$j=$j+1){
             // 判斷兩個單字是否相鄰
             $wordcheck=0;

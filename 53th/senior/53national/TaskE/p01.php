@@ -51,7 +51,7 @@
     for($i=0;$i<$n;$i=$i+1){
         if($player!=$data[$i][$i]){
             $win=false;
-        }        
+        }
     }
 
     if($win&&$player!="-"){
@@ -64,7 +64,7 @@
     for($i=0;$i<$n;$i=$i+1){
         if($player!=$data[$i][$n-1-$i]){
             $win=false;
-        }        
+        }
     }
 
     if($win&&$player!="-"){
