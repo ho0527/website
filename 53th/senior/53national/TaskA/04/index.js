@@ -2,7 +2,7 @@ let time="night"
 
 document.getElementById("day").onclick=function(){
     if(time=="night"){
-        document.getElementById("body").style.backgroundColor="rgb(246, 246, 131)"
+        document.getElementById("body").style.backgroundColor="rgb(197, 159, 5)"
         document.getElementById("sun").style.display="block"
         document.getElementById("sun").style.animation="1s up 1"
         document.getElementById("moon").style.animation="1s down 1"
