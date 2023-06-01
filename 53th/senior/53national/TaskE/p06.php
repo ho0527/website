@@ -27,7 +27,7 @@
             }elseif($token=="("){
                 $stack[]=$token;
             }elseif($token==")"){
-                while(!empty($stack) && end($stack) !="("){
+                while(!empty($stack)&&end($stack)!="("){
                     $postfix[]=array_pop($stack);
                 }
                 array_pop($stack);
@@ -50,7 +50,6 @@
             if(isOperator($token)){
                 $operand2=array_pop($stack);
                 $operand1=array_pop($stack);
-
                 switch($token){
                     case "+":
                         $result=$operand1 + $operand2;
@@ -65,7 +64,6 @@
                         $result=$operand1 / $operand2;
                         break;
                 }
-
                 $stack[]=$result;
             }else{
                 $stack[]=$token;

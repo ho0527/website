@@ -2,55 +2,24 @@
     $memorybefore=memory_get_usage();
 
     echo("p01\n");
-    // 判斷兩個單字是否相鄰
-    function isAdjacent($word1, $word2) {
-        $diff = 0;
-        $length = strlen($word1);
-
-        for ($i = 0; $i < $length; $i++) {
-            if ($word1[$i] != $word2[$i]) {
-                $diff++;
-            }
-        }
-
-        return $diff === 1;
-    }
-
-    // 建立單字圖
-    function buildGraph($words) {
-        $graph = array();
-        $length = count($words);
-
-        for ($i = 0; $i < $length; $i++) {
-            for ($j = $i + 1; $j < $length; $j++) {
-                if (isAdjacent($words[$i], $words[$j])) {
-                    // 將相鄰的單字加入到圖中
-                    $graph[$words[$i]][] = $words[$j];
-                    $graph[$words[$j]][] = $words[$i];
-                }
-            }
-        }
-
-        return $graph;
-    }
 
     // 使用 BFS 尋找最短路徑
-    function shortestPath($graph, $start, $end) {
-        $queue = new SplQueue();
-        $queue->enqueue(array($start, 1)); // 儲存單字和步數
-        $visited = array($start); // 儲存已訪問過的單字
+    function shortestPath($graph,$start,$end){
+        $queue=new SplQueue();
+        $queue->enqueue(array($start,1)); // 儲存單字和步數
+        $visited=array($start); // 儲存已訪問過的單字
 
-        while (!$queue->isEmpty()) {
-            list($word, $steps) = $queue->dequeue();
+        while(!$queue->isEmpty()){
+            list($word,$steps)=$queue->dequeue();
 
-            if ($word === $end) {
+            if($word === $end){
                 return $steps;
             }
 
-            foreach ($graph[$word] as $neighbor) {
-                if (!in_array($neighbor, $visited)) {
-                    $visited[] = $neighbor;
-                    $queue->enqueue(array($neighbor, $steps + 1));
+            foreach($graph[$word] as $neighbor){
+                if(!in_array($neighbor,$visited)){
+                    $visited[]=$neighbor;
+                    $queue->enqueue(array($neighbor,$steps+1));
                 }
             }
         }
@@ -59,28 +28,47 @@
     }
 
     // 讀取起始單字和終止單字
-    list($start, $end) = explode(" ", trim(fgets(STDIN)));
+    $word=explode(" ",trim(fgets(STDIN)));
+    $start=$word[0];
+    $end=$word[1];
 
     // 讀取單字表數量和單字表
-    $N = intval(trim(fgets(STDIN)));
-    $wordList = array();
+    $n=(int)trim(fgets(STDIN));
+    $data=[];
+    $worddata=[];
 
-    for ($i = 0; $i < $N; $i++) {
-        $wordList[] = trim(fgets(STDIN));
+    for($i=0;$i<$n;$i++){
+        $data[]=trim(fgets(STDIN));
     }
 
     // 將起始單字和終止單字加入到單字表中
-    $wordList[] = $start;
-    $wordList[] = $end;
+    $data[]=$start;
+    $data[]=$end;
 
     // 建立單字圖
-    $graph = buildGraph($wordList);
+    for($i=0;$i<count($dataz);$i=$i+1){
+        for($j=$i+1;$j<count($data);$j=$j+1){
+            // 判斷兩個單字是否相鄰
+            $wordcheck=0;
+            for($i=0;$i<strlen($data[$i]);$i=$i+1){
+                if($data[$i][$i]!=$data[$j][$i]){
+                    $wordcheck=$wordcheck+1;
+                }
+            }
+
+            if($wordcheck==1){
+                // 將相鄰的單字加入到圖中
+                $worddata[$data[$i]][]=$data[$j];
+                $worddata[$data[$j]][]=$data[$i];
+            }
+        }
+    }
 
     // 尋找最短路徑
-    $length = shortestPath($graph, $start, $end);
+    $length=shortestPath($graph,$start,$end);
 
     // 輸出結果
-    echo $length;
+    echo($length.PHP_EOL);
 
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;
