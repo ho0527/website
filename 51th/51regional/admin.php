@@ -54,20 +54,16 @@
                         </td>
                         <td class="formtd">
                             <?php
+                            $value="鎖定";
+                            $disabled="";
                             if($row[$i][5]=="true"){
-                                ?>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="解鎖"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" disabled><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" disabled><br>
-                                <?php
-                            }else{
-                                ?>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="鎖定"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除"><br>
-                                <?php
+                                $value="解鎖";
+                                $disabled="disabled";
                             }
                             ?>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php  echo($disabled) ?>><br>
+                            <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php  echo($disabled) ?>><br>
                             <input type="button" class="workbutton" onclick="location.href='?mod=results&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
                             <input type="button" class="workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>
                             <input type="button" class="workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>

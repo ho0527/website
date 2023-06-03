@@ -1,31 +1,7 @@
 <?php
     $memorybefore=memory_get_usage();
 
-    echo("p01\n");
-
-    // 使用 BFS 尋找最短路徑
-    function shortestPath($graph,$start,$end){
-        $queue=new SplQueue();
-        $queue->enqueue(array($start,1)); // 儲存單字和步數
-        $visited=array($start); // 儲存已訪問過的單字
-
-        while(!$queue->isEmpty()){
-            list($word,$steps)=$queue->dequeue();
-
-            if($word === $end){
-                return $steps;
-            }
-
-            foreach($graph[$word] as $neighbor){
-                if(!in_array($neighbor,$visited)){
-                    $visited[]=$neighbor;
-                    $queue->enqueue(array($neighbor,$steps+1));
-                }
-            }
-        }
-
-        return 0; // 若無法轉換為終止單字，回傳 0
-    }
+    echo("p07\n");
 
     // 讀取起始單字和終止單字
     $word=explode(" ",trim(fgets(STDIN)));
@@ -37,38 +13,28 @@
     $data=[];
     $worddata=[];
 
-    for($i=0;$i<$n;$i++){
+    for($i=0;$i<$n;$i=$i+1){
         $data[]=trim(fgets(STDIN));
     }
 
-    // 將起始單字和終止單字加入到單字表中
-    $data[]=$start;
-    $data[]=$end;
+    $maindata=[];
+    $ans=0;
 
     // 建立單字圖
     for($i=0;$i<count($data);$i=$i+1){
-        for($j=$i+1;$j<count($data);$j=$j+1){
-            // 判斷兩個單字是否相鄰
-            $wordcheck=0;
-            for($i=0;$i<strlen($data[$i]);$i=$i+1){
-                if($data[$i][$i]!=$data[$j][$i]){
-                    $wordcheck=$wordcheck+1;
+        for($j=0;$j<strlen($start);$j=$j+1){
+            $count=0;
+            for($k=0;$k<strlen($data[$i]);$k=$k+1){
+                if($start[$j]!=$data[$i][$k]){
+                    $count=$count+1;
                 }
             }
-
-            if($wordcheck==1){
-                // 將相鄰的單字加入到圖中
-                $worddata[$data[$i]][]=$data[$j];
-                $worddata[$data[$j]][]=$data[$i];
-            }
+            if($count==1){ $maindata[]=$data[$i]; }
         }
     }
 
-    // 尋找最短路徑
-    $length=shortestPath($graph,$start,$end);
-
     // 輸出結果
-    echo($length.PHP_EOL);
+    echo($ans.PHP_EOL);
 
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;

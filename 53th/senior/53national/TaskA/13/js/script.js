@@ -20,7 +20,6 @@ document.querySelectorAll(".card").forEach(function(card){
             card.style.top=offsety+"px"
             document.querySelectorAll(".group").forEach(function(groupevent){
                 groupevent.addEventListener("hover",function(){
-                    console.log("in")
                 })
             })
         }

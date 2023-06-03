@@ -146,6 +146,27 @@ table{
     width: 80%;
 }
 
+.layerdiv{
+    border-top: 1px white solid;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50%;
+}
+
+.newlayer{
+    border: none;
+    position: fixed;
+    bottom: 5%;
+    right: 20px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+    z-index: 100;
+}
+
 .center{
     position: absolute;
     top: 50%;
@@ -168,10 +189,4 @@ table{
     left: 0px;
     transform: translate(0%,-50%);
     width: 100%;
-}
-
-.line{
-    height: 75%;
-    width: 0px;
-    background: red;
 }

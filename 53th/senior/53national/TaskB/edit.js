@@ -20,8 +20,7 @@ document.getElementById("width").value=width
 document.getElementById("height").value=height
 canva.width=width
 canva.height=height
-ctx.fillStyle="white"
-ctx.fillRect(0,0,width,height)
+canva.style.backgroundColor="white"
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -76,6 +75,7 @@ function selectup(){
 
 function paintdown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
+    redohistory.length=0
     ctx.strokeStyle=color
     ctx.lineWidth=thick
     x1=event.offsetX
@@ -255,8 +255,7 @@ document.querySelectorAll(".color").forEach(function(event){
         this.style.borderColor="yellow"
         color=this.id
         if(mod=="setcanva"){
-            ctx.fillStyle=color
-            ctx.fillRect(0,0,width,height)
+            canva.style.backgroundColor=color
         }
     }
 })
@@ -268,12 +267,18 @@ document.getElementById("rainbow").onchange=function(){
     })
     this.style.borderColor="yellow"
     if(mod=="setcanva"){
-        ctx.fillStyle=color
-        ctx.fillRect(0,0,width,height)
+        canva.style.backgroundColor=color
     }
 }
 
-document.getElementById("thick").addEventListener("change",function(){ thick=parseInt(this.value) })
+document.getElementById("thick").onchange=function(){ thick=parseInt(this.value) }
+
+document.getElementById("newlayer").onclick=function(){
+    console.log("ininini")
+    document.getElementById("layer").innerHTML=document.getElementById("layer").innerHTML+`
+        <div class="layer">2123321231</div>
+    `
+}
 
 document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })
 

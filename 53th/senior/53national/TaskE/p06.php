@@ -2,54 +2,45 @@
     $memorybefore=memory_get_usage();
 
     echo("p06\n");
-    function getPrecedence($operator){
-        if($operator=="+"||$operator=="-"){ return 1; }
-        elseif($operator=="*"||$operator=="/"){ return 2; }
-        else{ return 0; }
-    }
-
-    function infixToPostfix($data){
-        $stack=[];
-        $postfix=[];
-        $maindata=explode(" ",$data);
-        // for($i=0;$i<count($maindata);$i=$i+1){
-
-        // }
-        foreach($maindata as $token){
-            if(in_array($token,["+","-","*","/"])){
-                while(!empty($stack)&&in_array(end($stack),["+","-","*","/"])&&getPrecedence($token)<=getPrecedence(end($stack))){
-                    $postfix[]=array_pop($stack);
-                }
-                $stack[]=$token;
-            }elseif($token=="("){
-                $stack[]=$token;
-            }elseif($token==")"){
-                while(!empty($stack)&&end($stack)!="("){
-                    $postfix[]=array_pop($stack);
-                }
-                array_pop($stack);
-            }else{
-                $postfix[]=$token;
-            }
-        }
-        while(!empty($stack)){
-            $postfix[]=array_pop($stack);
-        }
-        return implode(" ",$postfix);
-    }
-
-    // 從標準輸入讀取中綴表達式
     $data=trim(fgets(STDIN));
-
-    // 轉換為後綴表達式
+    $rpn=[];
+    $operand=[];
     $maindata=explode(" ",$data);
-    for($i=0;$i<count($maindata);$i=$i+1){
 
+    for($i=0;$i<count($maindata);$i=$i+1){
+        if(in_array($maindata[$i],["+","-","*","/"])){
+            $datacheck=-1;
+            $enddatacheck=-1;
+
+            if($maindata[$i]=="+"||$maindata[$i]=="-"){ $datacheck=0; }
+            elseif($maindata[$i]=="*"||$maindata[$i]=="/"){ $datacheck=1; }
+
+            if(!empty($operand)){
+                if($operand[count($operand)-1]=="+"||$operand[count($operand)-1]=="-"){ $enddatacheck=0; }
+                elseif($operand[count($operand)-1]=="*"||$operand[count($operand)-1]=="/"){ $enddatacheck=1; }
+            }
+
+            while(!empty($operand)&&in_array($operand[count($operand)-1],["+","-","*","/"])&&($datacheck<=$enddatacheck)){
+                $rpn[]=array_pop($operand);
+            }
+            $operand[]=$maindata[$i];
+        }elseif($maindata[$i]=="("){
+            $operand[]=$maindata[$i];
+        }elseif($maindata[$i]==")"){
+            while($operand[count($operand)-1]!="("){
+                $rpn[]=array_pop($operand);
+            }
+            array_pop($operand);
+        }else{
+            $rpn[]=$maindata[$i];
+        }
     }
 
-    $postfixexpression=infixToPostfix($data);
-    // 計算後綴表達式的結果
-    echo($postfixexpression."\n");
+    for($i=count($operand)-1;$i>=0;$i=$i-1){
+        $rpn[]=$operand[$i];
+    }
+
+    echo(implode(" ",$rpn)."\n");
     echo(eval("return ".$data.";").PHP_EOL);
 
     $memoryafter=memory_get_usage();
