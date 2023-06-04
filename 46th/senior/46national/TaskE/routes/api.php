@@ -185,8 +185,4 @@
     Route::get("/books",function(){
         return DB::table("book")->get();
     });
-
-    Route::get('/books/{any}',function()use($urlnotfound){
-        return $urlnotfound;
-    })
 ?>
