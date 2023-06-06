@@ -15,6 +15,7 @@ let x1=0
 let y1=0
 let x2=0
 let y2=0
+let canvacount=1
 
 document.getElementById("width").value=width
 document.getElementById("height").value=height
@@ -274,10 +275,32 @@ document.getElementById("rainbow").onchange=function(){
 document.getElementById("thick").onchange=function(){ thick=parseInt(this.value) }
 
 document.getElementById("newlayer").onclick=function(){
-    console.log("ininini")
-    document.getElementById("layer").innerHTML=document.getElementById("layer").innerHTML+`
-        <div class="layer">2123321231</div>
+    canvacount=canvacount+1
+    let tr=document.createElement("tr")
+    tr.classList.add("layer")
+    tr.id="layertr"+canvacount
+    tr.draggable=true
+    document.getElementById("layer").appendChild(tr)
+    let tdname=document.createElement("td")
+    tdname.classList.add("layername")
+    tdname.innerHTML=`
+        圖層${canvacount}
     `
+    document.getElementById("layertr"+canvacount).appendChild(tdname)
+    let tddef=document.createElement("td")
+    tddef.classList.add("layerdef")
+    tddef.innerHTML=`
+        <input type="button" class="layeredit" value="編輯">
+        <input type="button" class="layerdel" value="刪除">
+    `
+    document.getElementById("layertr"+canvacount).appendChild(tddef)
+    let tdmove=document.createElement("td")
+    tdmove.classList.add("layermove")
+    document.getElementById("layertr"+canvacount).appendChild(tdmove)
+    let canvas=document.createElement("canvas")
+    canvas.id="canva"+canvacount
+    canva.classList.add("main")
+    document.getElementById("main").appendChild(canvas)
 }
 
 document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })

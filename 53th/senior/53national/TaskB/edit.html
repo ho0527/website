@@ -26,7 +26,7 @@
                 <input type="button" class="button" id="sample" value="樣章">
                 <input type="button" class="button" id="setcanva" value="調整畫布">
             </div>
-            <div class="maindiv macossectiondiv">
+            <div class="maindiv macossectiondiv" id="main">
                 <canvas class="main" id="canva"></canvas>
             </div>
             <div class="left" id="left">
@@ -50,7 +50,18 @@
                 <div class="leftmid">
                     線條 <input type="range" class="range" id="thick" min="1" max="100" value="0.1">
                 </div>
-                <div class="layerdiv macossectiondiv" id="layer"></div>
+                <div class="layerdiv macossectiondiv">
+                    <table id="layer">
+                        <tr class="layer" id="layertd1" draggable="true">
+                            <td calss="layername">圖層1</td>
+                            <td class="layerdef">
+                                <input type="button" class="layeredit" value="編輯">
+                                <input type="button" class="layerdel" value="刪除">
+                            </td>
+                            <td class="layermove"></td>
+                        </tr>
+                    </table>
+                </div>
                 <input type="button" class="newlayer" id="newlayer" value="+">
             </div>
         </div>

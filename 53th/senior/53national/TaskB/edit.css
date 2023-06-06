@@ -167,6 +167,23 @@ table{
     z-index: 100;
 }
 
+.layer{
+    border-bottom: 1px white solid;
+}
+
+.layername{
+    width: 50%;
+}
+
+.layerdef{
+    padding: 10px;
+    width: 30%;
+}
+
+.layermove{
+    width: 20%;
+}
+
 .center{
     position: absolute;
     top: 50%;
