@@ -7,7 +7,7 @@ function inputchange(){
 
     // 段落和換行格式
     if(change.value=="ON"){ value=value.replace(/\n/g,"<br>") }
-    else{ value=value.replace(/\\n/g,"<br>") }
+    else{ value=value.replace(/\n/g,"<br>") }
 
     // 標題格式
     value=value.replace(/(#{1,6})\s(.*)<br>/g,function(match,hash,context){ return "<h"+hash.length+">"+context+"</h"+hash.length+">" })
@@ -33,15 +33,6 @@ function inputchange(){
     console.log(value)
     show.innerHTML=value
 }
-
-input.addEventListener("keydown",function(event){
-    if(event.key=="Tab"){
-        event.preventDefault()
-        this.value=this.value.substring(0,this.selectionStart)+"    "+this.value.substring(this.selectionEnd)
-        this.selectionStart=this.selectionStart+4
-        this.selectionEnd=this.selectionStart+4
-    }
-})
 
 change.onclick=function(){
     if(change.value=="ON"){ change.value="OFF" }
