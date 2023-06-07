@@ -17,7 +17,8 @@
                 <input type="button" class="submit" id="submit" value="確定">
                 <input type="button" class="" id="save" value="儲存為圖片">
                 <input type="button" class="" id="savesample" value="儲存為樣章">
-                <input type="button" class="" id="upload" value="上傳圖片">
+                <input type="button" class="" id="uploadpicture" value="上傳圖片">
+                <input type="file" class="file" id="file" accept="image/*">
             </div>
             <div class="setting" id="setting">
                 <input type="button" class="button" id="select" value="選取">
@@ -27,7 +28,7 @@
                 <input type="button" class="button" id="setcanva" value="調整畫布">
             </div>
             <div class="maindiv macossectiondiv" id="main">
-                <canvas class="main" id="canva"></canvas>
+                <canvas class="maincanva" id="canva1"></canvas>
             </div>
             <div class="left" id="left">
                 <div class="maincolor">
@@ -52,11 +53,11 @@
                 </div>
                 <div class="layerdiv macossectiondiv">
                     <table id="layer">
-                        <tr class="layer" id="layertd1" draggable="true">
+                        <tr class="layer" id="layertr1" draggable="true">
                             <td calss="layername">圖層1</td>
                             <td class="layerdef">
                                 <input type="button" class="layeredit" value="編輯">
-                                <input type="button" class="layerdel" value="刪除">
+                                <input type="button" class="layerdel" data-id="1" value="刪除">
                             </td>
                             <td class="layermove"></td>
                         </tr>

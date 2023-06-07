@@ -200,8 +200,7 @@ document.getElementById("undo").onclick=function(){ undo() }
 document.getElementById("redo").onclick=function(){ redo() }
 document.getElementById("save").onclick=function(){ save() }
 document.getElementById("savesample").onclick=function(){ savesample() }
-document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
-document.getElementById("file").onchange=function(){ upload() }
+document.getElementById("upload").onclick=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
 
 document.addEventListener("keydown",function(event){

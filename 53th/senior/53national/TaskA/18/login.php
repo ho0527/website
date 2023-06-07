@@ -45,7 +45,7 @@
             if(isset($_POST["submit"])){
                 $input=$_POST["input"];
                 query($db,"INSERT INTO `log`(`username`,`context`)VALUES('test1',?)",[$input]);
-                ?><script>alert("success");location.href="login.php"</script><?php
+                ?><script>location.href="login.php"</script><?php
             }
         ?>
     </body>
