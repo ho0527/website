@@ -18,7 +18,7 @@ setTimeout(function(){
 
             document.getElementById("left").onclick=function(){
                 count=count-1
-                document.getElementById("right").disabled=false 
+                document.getElementById("right").disabled=false
                 if(count==0){ document.getElementById("left").disabled=true }
                 document.getElementById("wtfpluginmainimage").src=document.querySelectorAll("img")[count].src
             }
@@ -38,7 +38,7 @@ setTimeout(function(){
                 location.reload()
             }
 
-            document.getElementById("lightbox").style.position="absolute"
+            document.getElementById("lightbox").style.position="fixed"
             document.getElementById("lightbox").style.top="0px"
             document.getElementById("lightbox").style.left="0px"
             document.getElementById("lightbox").style.bottom="0px"
@@ -50,11 +50,12 @@ setTimeout(function(){
             document.getElementById("lightbox").style.color="white"
             document.getElementById("lightbox").style.userSelect="none"
 
-            document.getElementById("mask").style.position="absolute"
+            document.getElementById("mask").style.position="fixed"
             document.getElementById("mask").style.top="0px"
             document.getElementById("mask").style.left="0px"
             document.getElementById("mask").style.bottom="0px"
             document.getElementById("mask").style.right="0px"
+            document.getElementById("mask").style.height="100%"
             document.getElementById("mask").style.backgroundColor="rgba(41, 41, 41, 0.718)"
 
             document.getElementById("lightboxbody").style.position="absolute"

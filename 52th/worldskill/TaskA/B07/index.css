@@ -1,0 +1,129 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(26, 34, 51);
+    color: rgb(255, 255, 255);
+    user-select: none;
+    word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 0px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.korean-flag{
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.korean-flag:before,
+.korean-flag:after{
+    content: "";
+    position: absolute;
+}
+
+.korean-flag:before{
+    width: 100%;
+    height: 40%;
+    top: 0;
+    background-color: #003478;
+}
+
+.korean-flag:after{
+    width: 20%;
+    height: 100%;
+    right: 0;
+    background-color: #c60c30;
+}
+
+.korean-flag .yin-yang{
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid #003478;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.korean-flag .yin-yang:before,
+.korean-flag .yin-yang:after{
+    content: "";
+    position: absolute;
+    background-color: #003478;
+}
+
+.korean-flag .yin-yang:before{
+    width: 50%;
+    height: 100%;
+    border-radius: 50% 0 0 50%;
+    left: 0;
+}
+
+.korean-flag .yin-yang:after{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.korean-flag .yin-yang.left:before{
+    transform: rotate(180deg);
+}
+
+.korean-flag .yin-yang.right:before{
+    transform: rotate(180deg);
+}
+
+.korean-flag .yin-yang.right:after{
+    background-color: #fff;
+}
+
+.korean-flag .yin-yang.left:after{
+    background-color: #003478;
+}
+
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.xcenter{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100%;
+}
+
+.ycenter{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%, -50%);
+    width: 100%;
+}

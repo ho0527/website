@@ -1,0 +1,85 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>title</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Counter</title>
+    <style>
+        .box {
+            width: 80px;
+            height: 80px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .box:hover {
+            border-width: 4px;
+        }
+
+        .box.clicked {
+            background-color: gold;
+        }
+
+        #total {
+            margin-top: 20px;
+        }
+
+        #checkbox1:checked ~ #total1 {
+            display: block;
+        }
+
+        #checkbox2:checked ~ #total2 {
+            display: block;
+        }
+
+        #checkbox3:checked ~ #total3 {
+            display: block;
+        }
+
+        #checkbox4:checked ~ #total4 {
+            display: block;
+        }
+
+        #checkbox5:checked ~ #total5 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="checkbox1" />
+    <label class="box" for="checkbox1">10</label>
+
+    <input type="checkbox" id="checkbox2" />
+    <label class="box" for="checkbox2">64</label>
+
+    <input type="checkbox" id="checkbox3" />
+    <label class="box" for="checkbox3">35</label>
+
+    <input type="checkbox" id="checkbox4" />
+    <label class="box" for="checkbox4">22</label>
+
+    <input type="checkbox" id="checkbox5" />
+    <label class="box" for="checkbox5">50</label>
+
+    <div id="total">
+        Total: 
+        <span id="total1">0</span>
+        <span id="total2">0</span>
+        <span id="total3">0</span>
+        <span id="total4">0</span>
+        <span id="total5">0</span>
+    </div>
+</body>
+</html>

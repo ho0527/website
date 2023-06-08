@@ -1,0 +1,96 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(26, 34, 51);
+    color: rgb(255, 255, 255);
+    user-select: none;
+    word-break: break-all;
+    padding: 0px;
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 0px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.rotating-star{
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    position: relative;
+    animation: rotate 4s linear infinite;
+}
+
+.rotating-star:before,
+.rotating-star:after{
+    content: "";
+    position: absolute;
+}
+
+.rotating-star:before{
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid yellow;
+    border-left: 30px solid transparent;
+    transform: rotate(35deg);
+    transform-origin: 50% 75%;
+}
+
+.rotating-star:after{
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid yellow;
+    border-left: 30px solid transparent;
+    transform: rotate(-35deg);
+    transform-origin: 50% 75%;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.xcenter{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100%;
+}
+
+.ycenter{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%, -50%);
+    width: 100%;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+
+    100%{
+        transform: rotate(1turn);
+    }
+}
