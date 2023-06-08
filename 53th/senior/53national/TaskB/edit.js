@@ -99,7 +99,7 @@ function paintmove(event){
     }
 }
 
-function paintup(e){
+function paintup(){
     if(isdrawing){
         isdrawing=false
     }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>Customer Reviews</title>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <div class="flex items-start justify-between w-full pt-5">
+        <div class="flex flex-col w-2/3" id="reviews">
+          <div class="user-review-container mt-0">
+            <article>
+              <h3>
+                Username
+                <span class="certified-badge">
+                  <img src="certified.svg" alt="certified" class="w-4" />
+                </span>
+              </h3>
+              <div class="stars">
+                <img src="star.svg" alt="star" class="w-4" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+              </div>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Quaerat odit, mollitia dignissimos est cupiditate ipsum aperiam
+                distinctio doloribus eius aliquid ex suscipit repudiandae
+                dolores maxime. Asperiores quas saepe voluptates unde.
+              </p>
+            </article>
+          </div>
+          <div class="user-review-container">
+            <article>
+              <h3>Username</h3>
+              <div class="stars">
+                <img src="star.svg" alt="star" class="w-4" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+              </div>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Quaerat odit, mollitia dignissimos est cupiditate ipsum aperiam
+                distinctio doloribus eius aliquid ex suscipit repudiandae
+                dolores maxime. Asperiores quas saepe voluptates unde.
+              </p>
+            </article>
+          </div>
+          <div class="user-review-container">
+            <article>
+              <h3>
+                Username
+                <span class="certified-badge">
+                  <img src="certified.svg" alt="certified" class="w-4" />
+                </span>
+              </h3>
+              <div class="stars">
+                <img src="star.svg" alt="star" class="w-4" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+                <img src="star.svg" alt="star" class="w-4 ml-1" />
+              </div>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Quaerat odit, mollitia dignissimos est cupiditate ipsum aperiam
+                distinctio doloribus eius aliquid ex suscipit repudiandae
+                dolores maxime. Asperiores quas saepe voluptates unde.
+              </p>
+            </article>
+          </div>
+        </div>
+        <div class="shadow w-1/5 ml-10 px-4 py-2">
+          <h2>Average rate</h2>
+          <p class="text-3xl font-bold text-green-500">
+            <span id="average">4.3</span
+            ><small class="text-sm inline-block ml-1 text-gray-700">/5</small>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const reviews = fetch("./data.json").then(async (res) => {
+          const data = await res.json();
+        });
+      });
+    </script>
+  </body>
+</html>
