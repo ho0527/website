@@ -21,7 +21,7 @@ document.getElementById("width").value=width
 document.getElementById("height").value=height
 canva.width=width
 canva.height=height
-canva.style.backgroundColor="white"
+canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -258,6 +258,7 @@ document.querySelectorAll(".color").forEach(function(event){
         color=this.id
         if(mod=="setcanva"){
             canva.style.backgroundColor=color
+            localStorage.setItem("backgroundcolor",color)
         }
     }
 })
@@ -270,6 +271,7 @@ document.getElementById("rainbow").onchange=function(){
     this.style.borderColor="yellow"
     if(mod=="setcanva"){
         canva.style.backgroundColor=color
+        localStorage.setItem("backgroundcolor",color)
     }
 }
 
