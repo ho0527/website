@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function getType(value){
+                console.log("value=", value);
+                if(value==true||value==false){
+                    return "boolean";
+                }
+                if(Array.isArray(value)){
+                    return "array";
+                }
+                if(/^[0-9]+(\.[0-9]+)?$/.test(value)){
+                    return "number";
+                }
+                if(/^[0-9]+(\.[0-9]+)?/.test(value)){
+                    return "bigint";
+                }
+                if(/^\{.+\}$/.test(value)){
+                    return "object";
+                }
+                if(/^\/.+\/$/.test(value)){
+                    return "regexp";
+                }
+                if(value===null){
+                    return "null";
+                }
+                if(value===undefined){
+                    return "undefined";
+                }
+                return "string";
+            }
+        </script>
+        <script src="test.js"></script>
+    </body>
+</html>

@@ -1,0 +1,4 @@
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('20', 'User 20', 'email20@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('21', 'User 21', 'email21@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('22', 'User 22', 'email22@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('23', 'User 23', 'email23@mail.com');
