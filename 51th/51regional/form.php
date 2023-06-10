@@ -7,7 +7,10 @@
         <script src="error.js"></script>
         <script src="html.js"></script>
         <link rel="stylesheet" href="plugin/css/macossection.css">
+        <link rel="stylesheet" href="plugin/css/sort.css">
         <script src="plugin/js/macossection.js"></script>
+        <script src="sort.js"></script>
+        <!-- <script src="plugin/js/sort.js"></script> -->
     </head>
     <body>
         <?php
@@ -22,9 +25,7 @@
         </script>
         <form method="POST">
             <div id="htmlform"></div>
-            <div class="macosmaindiv macossectiondiv">
-                <table id="maintable"></table>
-            </div>
+            <div class="macosmaindiv macossectiondiv" id="maindiv"></div>
         </form>
         <script src="form.js"></script>
     </body>

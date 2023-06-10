@@ -1,0 +1,8 @@
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('92', 'User 92', 'email92@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('93', 'User 93', 'email93@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('94', 'User 94', 'email94@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('95', 'User 95', 'email95@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('96', 'User 96', 'email96@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('97', 'User 97', 'email97@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('98', 'User 98', 'email98@mail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('99', 'User 99', 'email99@mail.com');

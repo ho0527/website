@@ -10,42 +10,59 @@ function pregmatch(context,data){ return context.test(data) }
 function newquestion(){
     questionrow.push([(count+1).toString(),"","false","none","",false,""])
     console.log(questionrow[count])
-    let tr1=document.createElement("tr")
-    tr1.classList.add("div"+count)
-    tr1.id="tr1"+count
-    tr1.draggable=true
-    document.getElementById("maintable").appendChild(tr1)
-    let td1=document.createElement("td")
-    td1.rowSpan=2
-    td1.classList.add("order")
-    td1.innerHTML=`
-        <div class="questiondel" id="${count}">X</div>
-        <div id="count${count}">${count+1}</div>
-    `
-    let td2=document.createElement("td")
-    td2.classList.add("newform")
-    td2.innerHTML=`
-        <input type="radio" class="radio none select${count}" data-id="none ${count}" name="select${count}" value="none" checked>未設定
-        <input type="radio" class="radio yesno select${count}" data-id="yesno ${count}" name="select${count}" value="yesno">是非題
-        <input type="radio" class="radio single select${count}" data-id="single ${count}" name="select${count}" value="single">單選題
-        <input type="radio" class="radio multi select${count}" data-id="multi ${count}" name="select${count}" value="multi">多選題
-        <input type="radio" class="radio qa select${count}" data-id="qa ${count}" name="select${count}" value="qa">問答題
-    `
-    document.getElementById("tr1"+count).appendChild(td1)
-    document.getElementById("tr1"+count).appendChild(td2)
-    let tr2=document.createElement("tr")
-    tr2.classList.add("div"+count)
-    tr2.id="tr2"+count
-    document.getElementById("maintable").appendChild(tr2)
-    let td3=document.createElement("td")
-    td3.classList.add("output")
-    td3.innerHTML=`
-        <div class="questiondiv" id="output${count}"></div>
-    `
-    document.getElementById("tr2"+count).appendChild(td3)
     maincount=maincount+1
     count=count+1
+    document.getElementById("maindiv").innerHTML=document.getElementById("maindiv").innerHTML+`
+    <div class="grid" id="${count}">
+        <div class="order">
+            <div class="questiondel" data-id="${count}">X</div>
+            <div id="count${count}">${count}</div>
+        </div>
+        <div class="newform">
+            <input type="radio" class="radio none select${count}" value="none" checked>未設定
+            <input type="radio" class="radio yesno select${count}" value="yesno">是非題
+            <input type="radio" class="radio single select${count}" value="single">單選題
+            <input type="radio" class="radio multi select${count}" value="multi">多選題
+            <input type="radio" class="radio qa select${count}" value="qa">問答題
+        </div>
+        <div class="output">
+            <div class="questiondiv" id="output${count}"></div>
+        </div>
+    </div>
+    `
     document.getElementById("count").value=count
+    sort(".grid","grid","#maindiv")
+}
+
+function tempsave(){
+    questionrow=[]
+    for(let i=0;i<count;i=i+1){
+        let mod
+        document.querySelectorAll(".select"+i).forEach(function(event){
+            if(event.checked==true){ mod=event.value }
+        })
+        let desciption=""
+        let required=false
+        let option=""
+        let showmultimorerespond=false
+        if(mod!="none"){
+            desciption=document.querySelectorAll(".desciption")[i].value
+            required=document.querySelectorAll(".required")[i].checked
+            option=""
+            if(mod=="single"||mod=="multi"){
+                document.querySelectorAll(".option"+i).forEach(function(event){
+                    if(!checknull(event.value)){
+                        if(event.value!="|&|"){ option=option+event.value+"|&|" }
+                        else{ alert("選項禁止輸入|&| 位於第"+i+"欄，故選項不儲存") }
+                    }
+                })
+            }
+            showmultimorerespond=false
+            if(document.querySelectorAll(".showmultimorerespond")[0].checked==true){ showmultimorerespond=true }
+        }
+        questionrow.push([i+1,desciption,required,mod,option,showmultimorerespond,""])
+    }
+    console.log(questionrow)
 }
 
 function save(){
@@ -61,68 +78,23 @@ function save(){
         pagelen=oldpagelen
     }
     insertdata.push([id,document.getElementById("title").value,count,pagelen,maxcount])
-    for(let i=0;i<count;i=i+1){
-        let mod
-        document.querySelectorAll(".select"+i).forEach(function(event){
-            if(event.checked==true){ mod=event.value }
-        })
-        let count
-        let desciption
-        let required
-        let option
-        let showmultimorerespond
-        if(mod=="none"){
-            count=document.getElementById("count"+i).innerHTML
-            desciption=""
-            required="false"
-            option=""
-            showmultimorerespond=false
-        }else{
-            count=document.getElementById("count"+i).innerHTML
-            desciption=document.getElementById("desciption"+i).value
-            required=document.getElementById("required"+i).checked
-            option=""
-            if(mod=="single"||mod=="multi"){
-                for(let j=0;j<6;j=j+1){
-                    if(!checknull(document.getElementById(i+"option"+j).value)){
-                        option=option+document.getElementById(i+"option"+j).value+"|&|"
-                    }
-                }
-            }else{ option="" }
-            showmultimorerespond=true
-            if(document.getElementById("showmultimorerespond"+i)==null||document.getElementById("showmultimorerespond"+i).checked==false){ showmultimorerespond=false }
-        }
-        insertdata.push([count,desciption,required,mod,option,showmultimorerespond,""])
-    }
+    tempsave()
+    insertdata.push(questionrow)
     fetch("newform.php",{
         method:"POST",
         body:JSON.stringify(insertdata),
         headers:{ "Content-Type":"application/json" },
     }).then(function(response){ return response.text() })
     .catch(function(event){ console.error("Error:",event) })
-    .then(function(){ alert("儲存成功");location.href="form.php" })
+    .then(function(){ alert("儲存成功");location.reload() })
 }
 
 function main(){
     count=0
-    document.getElementById("maintable").innerHTML=``
+    document.getElementById("maindiv").innerHTML=``
     for(let i=0;i<maincount;i=i+1){
         console.log(questionrow[i])
         count=count+1
-        let tr1=document.createElement("tr")
-        tr1.classList.add("div"+i)
-        tr1.id="tr1"+i
-        tr1.draggable=true
-        document.getElementById("maintable").appendChild(tr1)
-        let td1=document.createElement("td")
-        td1.rowSpan=2
-        td1.classList.add("order")
-        td1.innerHTML=`
-            <div class="questiondel" id="${i}">X</div>
-            <div id="count${i}">${i+1}</div>
-        `
-        let td2=document.createElement("td")
-        td2.classList.add("newform")
         let mod={
             "none":"未設定",
             "yesno":"是非題",
@@ -162,59 +134,61 @@ function main(){
             }
         }
         if(check!=1){ sql001();location.href="admin.php" }
-        td2.innerHTML=`${all}`
-        document.getElementById("tr1"+i).appendChild(td1)
-        document.getElementById("tr1"+i).appendChild(td2)
-        let tr2=document.createElement("tr")
-        tr2.classList.add("div"+i)
-        tr2.id="tr2"+i
-        document.getElementById("maintable").appendChild(tr2)
-        let td3=document.createElement("td")
-        td3.classList.add("output")
         let output=""
         if(questionrow==""||questionrow[i][3]==undefined||questionrow[i][3]=="none"){
-            output=""
+            output="<input type='hidden' class='desciption required showmultimorerespond option"+i+"'>"
         }else{
             let option=questionrow[i][4].split("|&|")
             if(questionrow[i][2]==true){
-                output=output+"必填<input type='checkbox' id='required"+i+"' checked><br>"
+                output=output+"必填<input type='checkbox' class='required' checked><br>"
             }else{
-                output=output+"必填<input type='checkbox' id='required"+i+"'><br>"
+                output=output+"必填<input type='checkbox' class='required'><br>"
             }
-            output=output+"題目說明:<input type='text' id='desciption"+i+"' class='directions' name='direction"+i+"' value='"+questionrow[i][1]+"'><br>"
+            output=output+"題目說明:<input type='text' class='desciption' value='"+questionrow[i][1]+"'><br>"
             if(questionrow[i][3]=="yesno"){
-                output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled>"
+                output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled><br><input type='hidden' class='showmultimorerespond option"+i+"'>"
             }else if(questionrow[i][3]=="single"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
-                        output=output+(j+1+".<input type='text' id='"+(i+"option"+j)+"' name='"+i+"single"+(j+1)+"' class='forminputtext' value=''>")
+                        output=output+(j+1+".<input type='text' class='option"+i+"' value=''>")
                     }else{
-                        output=output+(j+1+".<input type='text' id='"+(i+"option"+j)+"' name='"+i+"single"+(j+1)+"' class='forminputtext' value='"+option[j]+"'>")
+                        output=output+(j+1+".<input type='text' class='option"+i+"' value='"+option[j]+"'>")
                     }
                 }
+                output=output+"<br><input type='hidden' class='showmultimorerespond'>"
             }else if(questionrow[i][3]=="multi"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
-                        output=output+(j+1+".<input type='text' id='"+(i+"option"+j)+"' name='"+i+"multi"+(j+1)+"' class='forminputtext' value=''>")
+                        output=output+(j+1+".<input type='text' class='option"+i+"' value=''>")
                     }else{
-                        output=output+(j+1+".<input type='text' id='"+(i+"option"+j)+"' name='"+i+"multi"+(j+1)+"' class='forminputtext' value='"+option[j]+"'>")
+                        output=output+(j+1+".<input type='text' class='option"+i+"' value='"+option[j]+"'>")
                     }
                 }
                 if(questionrow[i][5]==true||questionrow[i][5]==undefined){
-                    output=output+"<br>顯示其他選項<input type='checkbox' id='showmultimorerespond"+i+"' checked>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond' checked>"
                 }else{
-                    output=output+"<br>顯示其他選項<input type='checkbox' id='showmultimorerespond"+i+"'>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond'>"
                 }
             }else if(questionrow[i][3]=="qa"){
-                output=output+"<textarea cols='30' rows='5' placeholder='問答題' disabled></textarea>"
+                output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimorerespond option"+i+"'>"
             }else{ sql001();location.href="admin.php" }
         }
-        td3.innerHTML=`
-            <div class="questiondiv" id="output${i}">
-                ${output}
+        document.getElementById("maindiv").innerHTML=document.getElementById("maindiv").innerHTML+`
+            <div class="grid" id="${i}">
+                <div class="order">
+                    <div class="questiondel" data-id="${i}">X</div>
+                    <div id="count${i}">${i+1}</div>
+                </div>
+                <div class="newform">
+                    ${all}
+                </div>
+                <div class="output">
+                    <div class="questiondiv" id="output${i}">
+                        ${output}
+                    </div>
+                </div>
             </div>
         `
-        document.getElementById("tr2"+i).appendChild(td3)
     }
 }
 
@@ -233,6 +207,7 @@ let oldmaxcount=document.getElementById("maxcount").value
 let oldpagelen=document.getElementById("pagelen").value
 
 main()
+sort(".grid","grid","#maindiv")
 
 document.getElementById("id").value=row[0]
 document.getElementById("title").value=row[1]
@@ -255,38 +230,39 @@ all.forEach(function(event){
             let option=questionrow[data[1]][4].split("|&|")
             let output=""
             if(questionrow[data[1]][2]==true){
-                output=output+"必填<input type='checkbox' id='required"+data[1]+"' checked><br>"
+                output=output+"必填<input type='checkbox' class='required' id='required"+data[1]+"' checked><br>"
             }else{
-                output=output+"必填<input type='checkbox' id='required"+data[1]+"'><br>"
+                output=output+"必填<input type='checkbox' class='required' id='required"+data[1]+"'><br>"
             }
-            output=output+"題目說明:<input type='text' id='desciption"+data[1]+"' class='directions' name='direction"+data[1]+"' value='"+questionrow[data[1]][1]+"'><br>"
-            if(data[0]==""){
-                output=""
+            output=output+"題目說明:<input type='text' class='desciption' id='desciption"+data[1]+"' name='direction"+data[1]+"' value='"+questionrow[data[1]][1]+"'><br>"
+            if(data[0]=="none"){
+                output="<input type='hidden' class='desciption required showmultimorerespond option"+data[1]+"'>"
             }else if(data[0]=="yesno"){
-                    output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled>"
+                    output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled><br><input type='hidden' class='showmultimorerespond option"+data[1]+"'>"
             }else if(data[0]=="single"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
-                        output=output+(j+1+".<input type='text' id='"+(data[1]+"option"+j)+"' name='"+data[1]+"single"+(j+1)+"' class='forminputtext' value=''>")
+                        output=output+(j+1+".<input type='text' class='option"+data[1]+"' value=''>")
                     }else{
-                        output=output+(j+1+".<input type='text' id='"+(data[1]+"option"+j)+"' name='"+data[1]+"single"+(j+1)+"' class='forminputtext' value='"+option[j]+"'>")
+                        output=output+(j+1+".<input type='text' class='option"+data[1]+"' value='"+option[j]+"'>")
                     }
                 }
+                output=output+"<br><input type='hidden' class='showmultimorerespond'>"
             }else if(data[0]=="multi"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
-                        output=output+(j+1+".<input type='text' id='"+(data[1]+"option"+j)+"' name='"+data[1]+"multi"+(j+1)+"' class='forminputtext' value=''>")
+                        output=output+(j+1+".<input type='text' class='option"+data[1]+"' value=''>")
                     }else{
-                        output=output+(j+1+".<input type='text' id='"+(data[1]+"option"+j)+"' name='"+data[1]+"multi"+(j+1)+"' class='forminputtext' value='"+option[j]+"'>")
+                        output=output+(j+1+".<input type='text' class='option"+data[1]+"' value='"+option[j]+"'>")
                     }
                 }
                 if(questionrow[data[1]][5]==true||questionrow[data[1]][5]==undefined){
-                    output=output+"<br>顯示其他選項<input type='checkbox' id='showmultimorerespond"+data[1]+"' checked>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond' checked>"
                 }else{
-                    output=output+"<br>顯示其他選項<input type='checkbox' id='showmultimorerespond"+data[1]+"'>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond'>"
                 }
             }else if(data[0]=="qa"){
-                output=output+"<textarea cols='30' rows='5' placeholder='問答題' disabled></textarea>"
+                output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimorerespond option"+data[1]+"'>"
             }else{ sql001();location.href="admin.php" }
             document.getElementById("output"+data[1]).innerHTML=`
                 ${output}
@@ -294,36 +270,28 @@ all.forEach(function(event){
         }
     })
 })
+
 document.querySelectorAll(".questiondel").forEach(function(event){
     event.onclick=function(){
-        let id=parseInt(this.id)
-        document.querySelectorAll(".div"+id).forEach(function(event2){
-            event2.innerHTML=``
-            event2.classList.remove("div"+id)
-        })
+        let id=parseInt(event.dataset.id("data-id"))
+        document.getElementById(id).remove()
         for(let i=id;i<count-1;i=i+1){
+            document.getElementById(i+1).id=i
             document.getElementById("count"+(i+1)).innerHTML=`${i+1}`
-            document.querySelectorAll(".div"+(i+1)).forEach(function(event2){
-                event2.classList.remove("div"+(i+1))
-                event2.classList.add("div"+i)
-            })
             document.getElementById("count"+(i+1)).id="count"+i
+            document.getElementById("output"+(i+1)).id="output"+i
+            document.querySelectorAll(".select"+i).forEach(function(event){
+                event.classList.remove("select"+i)
+                event.classList.add("select"+(i-1))
+            })
+            document.querySelectorAll(".option"+i).forEach(function(event){
+                event.classList.remove("option"+i)
+                event.classList.add("option"+(i-1))
+            })
         }
+        count=count-1
+        tempsave()
     }
-})
-
-document.querySelectorAll(".order").forEach(function(event){
-    let mousecheck=false
-    event.addEventListener("mousedown",function(){
-        mousecheck=true
-    })
-    event.addEventListener("mousemove",function(){
-        if(mousecheck==true){
-        }
-    })
-    event.addEventListener("mouseup",function(){
-        mousecheck=false
-    })
 })
 
 document.addEventListener("keydown",function(event){
@@ -335,4 +303,3 @@ document.addEventListener("keydown",function(event){
         save()
     }
 })
-// alert("禁止連續輸入|&| 位於第"+<?php echo($order) ?>+"欄，故選項不儲存")

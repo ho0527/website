@@ -1,0 +1,29 @@
+body {
+    font-family: "Arial";
+    color: #333333;
+}
+
+.form__fieldwrap {
+    margin-bottom: 40px;
+}
+
+.form__input {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #4a4a4a;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.5em;
+    border-radius: 0;
+    padding-top: .7em;
+    padding-bottom: .7em;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: inherit;
+    outline: none;
+}
+
+.form__input:focus {
+    outline: 3px solid #000000;
+}

@@ -13,119 +13,106 @@
     $data=[];
     $worddata=[];
 
+
     for($i=0;$i<$n;$i=$i+1){
         $data[]=trim(fgets(STDIN));
     }
 
-    $maindata=[];
-    $ans=0;
+    // $maindata=[];
+    $ans=0;// 無法轉換到終止單字，返回 0
+    // 將單字表轉換為集合，以便快速查找
+    $maindata=array_flip($data);
 
-    // 建立單字圖
-    for($i=0;$i<count($data);$i=$i+1){
-        for($j=0;$j<strlen($start);$j=$j+1){
-            $count=0;
-            for($k=0;$k<strlen($data[$i]);$k=$k+1){
-                if($start[$j]!=$data[$i][$k]){
-                    $count=$count+1;
+    // 如果終止單字不在單字表中，無法轉換，返回 0
+    if(!isset($maindata[$end])){
+        $ans=0;
+    }else{
+        // 初始化佇列，起始單字和其轉換步數
+        $queue=[[$start,1]];
+
+        // 開始廣度優先搜索
+        while(!empty($queue)){
+            [$word,$steps]=array_shift($queue);
+
+            if($word==$end){
+                $ans=$steps; // 找到終止單字，返回步數
+                break;
+            }
+
+            // 對於當前單字的每個字母進行替換
+            for($i=0;$i<strlen($word);$i=$i+1){
+                $oldword=$word[$i];
+                // 替換為不同的字母
+                for($j=0;$j<26;$j=$j+1){
+                    $newword=chr(ord("a")+$j);
+
+                    if($newword==$oldword){ continue; } // 跳過相同的字母
+
+                    // 替換字母
+                    $newWord=substr_replace($word,$newword,$i,1);
+
+                    // 如果新單字在單字表中，將其加入佇列並從單字表中移除
+                    if(isset($maindata[$newWord])){
+                        $queue[]=[$newWord,$steps+1];
+                        unset($maindata[$newWord]);
+                    }
                 }
             }
-            if($count==1){ $maindata[]=$data[$i]; }
         }
+
+        // // 初始化佇列，起始單字和其轉換步數
+        // $queue=[[$start,1]];
+
+        // // 開始廣度優先搜索
+        // while(!empty($queue)){
+        //     [$word,$steps]=array_shift($queue);
+        //     // 對於當前單字的每個字母進行替換
+        //     for($i=0;$i<strlen($word);$i=$i+1){
+        //         $oldword=$word[$i];
+
+        //         // 替換為不同的字母
+        //         for($j=0;$j<26;$j=$j+1){
+        //             $newword=chr(ord("a")+$j);
+
+        //             if($newword==$oldword){ continue;}  // 跳過相同的字母
+
+        //             // 替換字母
+        //             $newWord=substr_replace($word,$newword,$i,1);
+
+        //             // 如果新單字在單字表中，將其加入佇列並從單字表中移除
+        //             if(isset($maindata[$newword])){
+        //                 $queue[]=[$newword,$steps+1];
+        //                 unset($maindata[$newword]);
+        //             }
+
+        //             if($newword == $end){
+        //                 $ans= $steps+1; // 找到終止單字，返回步數
+        //             }
+        //         }
+        //     }
+        // }
+        // echo($ans.PHP_EOL);
     }
 
-    // 輸出結果
     echo($ans.PHP_EOL);
+
+    // $ans=ladderLength($start,$end,$data);
+    // // 建立單字圖
+    // for($i=0;$i<count($data);$i=$i+1){
+    //     for($j=0;$j<strlen($start);$j=$j+1){
+    //         $count=0;
+    //         for($k=0;$k<strlen($data[$i]);$k=$k+1){
+    //             if($start[$j]!=$data[$i][$k]){
+    //                 $count=$count+1;
+    //             }
+    //         }
+    //         if($count==1){ $maindata[]=$data[$i];}
+    //     }
+    // }
+
+    // 輸出結果
 
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;
     echo("memory used ".($memorydifference/1048576)."MB");
-?>
-
-<?php
-    // $memorybefore=memory_get_usage();
-
-    // echo("p01\n");
-    // // 判斷兩個單字是否相鄰
-    // function isAdjacent($word1, $word2) {
-    //     $diff=0;
-    //     $length=strlen($word1);
-
-    //     for ($i=0; $i < $length; $i++) {
-    //         if ($word1[$i] != $word2[$i]) {
-    //             $diff++;
-    //         }
-    //     }
-
-    //     return $diff === 1;
-    // }
-
-    // // 建立單字圖
-    // function buildGraph($words) {
-    //     $graph=array();
-    //     $length=count($words);
-
-    //     for ($i=0; $i < $length; $i++) {
-    //         for ($j=$i + 1; $j < $length; $j++) {
-    //             if (isAdjacent($words[$i], $words[$j])) {
-    //                 // 將相鄰的單字加入到圖中
-    //                 $graph[$words[$i]][]=$words[$j];
-    //                 $graph[$words[$j]][]=$words[$i];
-    //             }
-    //         }
-    //     }
-
-    //     return $graph;
-    // }
-
-    // // 使用 BFS 尋找最短路徑
-    // function shortestPath($graph, $start, $end) {
-    //     $queue=new SplQueue();
-    //     $queue->enqueue(array($start, 1)); // 儲存單字和步數
-    //     $visited=array($start); // 儲存已訪問過的單字
-
-    //     while (!$queue->isEmpty()) {
-    //         list($word, $steps)=$queue->dequeue();
-
-    //         if ($word === $end) {
-    //             return $steps;
-    //         }
-
-    //         foreach ($graph[$word] as $neighbor) {
-    //             if (!in_array($neighbor, $visited)) {
-    //                 $visited[]=$neighbor;
-    //                 $queue->enqueue(array($neighbor, $steps + 1));
-    //             }
-    //         }
-    //     }
-
-    //     return 0; // 若無法轉換為終止單字，回傳 0
-    // }
-
-    // // 讀取起始單字和終止單字
-    // list($start, $end)=explode(" ", trim(fgets(STDIN)));
-
-    // // 讀取單字表數量和單字表
-    // $N=intval(trim(fgets(STDIN)));
-    // $wordList=array();
-
-    // for ($i=0; $i < $N; $i++) {
-    //     $wordList[]=trim(fgets(STDIN));
-    // }
-
-    // // 將起始單字和終止單字加入到單字表中
-    // $wordList[]=$start;
-    // $wordList[]=$end;
-
-    // // 建立單字圖
-    // $graph=buildGraph($wordList);
-
-    // // 尋找最短路徑
-    // $length=shortestPath($graph, $start, $end);
-
-    // // 輸出結果
-    // echo $length;
-
-    // $memoryafter=memory_get_usage();
-    // $memorydifference=$memoryafter-$memorybefore;
-    // echo("memory used ".($memorydifference/1048576)."MB");
 ?>

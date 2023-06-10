@@ -43,14 +43,6 @@ table{
     left: 20px;
 }
 
-.navigationbarleft{
-    height: 75px;
-    position: absolute;
-    left: 20px;
-    font-size: 50px;
-    font-weight: bold;
-}
-
 .maintitle{
     color: white;
     font-size: 40px;

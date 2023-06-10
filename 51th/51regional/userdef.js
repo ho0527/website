@@ -15,9 +15,7 @@ function user(key){
                         <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="macosmaindiv macossectiondiv">
-                    <table id="maintable"></table>
-                </div>
+                <div class="macosmaindiv macossectiondiv" id="maindiv"></div>
             </form>
         `
     }else{
