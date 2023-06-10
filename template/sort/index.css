@@ -216,3 +216,26 @@ table{
 .a:hover{
     text-decoration: underline;
 }
+
+/* .sort{
+
+} */
+
+.card{
+    border: 1px white solid;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: move;
+}
+
+.sort{
+    width: 30%;
+    vertical-align: top;
+    display: inline-block;
+    padding: 10px;
+    margin: 0px 10px;
+}
+
+.dragging{
+    opacity: 0.5;
+}

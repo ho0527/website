@@ -22,6 +22,7 @@ document.getElementById("height").value=height
 canva.width=width
 canva.height=height
 canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
+if(localStorage.getItem("count")==null){ localStorage.setItem("count",0); }
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -57,6 +58,11 @@ function save(){
 }
 
 function savesample(){
+    data=canva.toDataURL("image/jpg")
+    let count=parseInt(localStorage.getItem("count"))
+    localStorage.setItem("image"+(count+1),data)
+    localStorage.setItem("count",count+1)
+    location.reload()
 }
 
 function upload(){
@@ -199,7 +205,7 @@ document.getElementById("new").onclick=function(){ if(confirm("是否裡開編�
 document.getElementById("undo").onclick=function(){ undo() }
 document.getElementById("redo").onclick=function(){ redo() }
 document.getElementById("save").onclick=function(){ save() }
-document.getElementById("savesample").onclick=function(){ savesample() }
+document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=function(){ savesample() } })
 document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
 document.getElementById("file").onchange=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
@@ -208,6 +214,8 @@ document.addEventListener("keydown",function(event){
     if(event.ctrlKey&&event.key=="z"){ event.preventDefault();undo() }
     if(event.ctrlKey&&event.shiftKey&&event.key=="z"){ event.preventDefault();redo() }
     if(event.ctrlKey&&event.key=="s"){ event.preventDefault();save() }
+    if(event.key=="Escape"){ event.preventDefault();location.reload() } 
+    
 })
 
 document.querySelectorAll(".button").forEach(function(event){
@@ -233,6 +241,15 @@ document.querySelectorAll(".button").forEach(function(event){
             canva.addEventListener("pointerdown",bucket)
         }else if(mod=="sample"){
             removealllistener()
+            document.getElementById("samplelightbox").style.display="block"
+            document.querySelectorAll(".sampleimage").forEach(function(event){
+                event.onclick=function(){
+                    document.querySelectorAll(".sampleimage").forEach(function(event){
+                        event.style.border="1px black solid"
+                    })
+                    event.style.border="1px yellow solid"
+                }
+            })
             canva.addEventListener("pointerdown",sampledown)
             canva.addEventListener("pointermove",samplemove)
             canva.addEventListener("pointerup",sampleup)
@@ -320,6 +337,32 @@ document.querySelectorAll(".layerdel").forEach(function(event){
         document.getElementById("canva"+id).style.display="none"
     }
 })
+
+document.getElementById("uplaodsample").onclick=function(){ document.getElementById("samplefile").click() }
+
+document.getElementById("samplefile").onchange=function(event){
+    let file=event.target.files[0]
+    let reader=new FileReader()
+    reader.onload=function(){
+        let count=parseInt(localStorage.getItem("count"))
+        localStorage.setItem("image"+(count+1),reader.result)
+        localStorage.setItem("count",count+1)
+    }
+    reader.readAsDataURL(file)
+    location.reload()
+}
+
+document.getElementById("samplesubmit").onclick=function(){ document.getElementById("samplelightbox").style.display="none" }
+
+document.getElementById("close").onclick=function(){ document.getElementById("samplelightbox").style.display="none" }
+
+let count=parseInt(localStorage.getItem("count"))
+console.log("count="+count)
+for(let i=1;i<=count;i=i+1){
+    document.getElementById("choosesample").innerHTML=document.getElementById("choosesample").innerHTML+`
+        <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
+    `
+}
 
 document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })
 

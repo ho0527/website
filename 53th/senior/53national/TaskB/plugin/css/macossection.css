@@ -1,5 +1,5 @@
 .macossectiondiv{
-    overflow: overlay;
+    overflow: auto;
 }
 
 ::-webkit-scrollbar{
