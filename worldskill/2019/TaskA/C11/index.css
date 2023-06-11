@@ -61,3 +61,13 @@ table{
     transform: translate(0%,-50%);
     width: 100%;
 }
+
+.canva{
+    background: white;
+}
+
+.main{
+    position: absolute;
+    width: 400px;
+    height: 320px;
+}

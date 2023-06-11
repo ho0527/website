@@ -3,8 +3,11 @@ body {
     color: #333333;
 }
 
-.form__fieldwrap {
+.form__fieldwrap--input{
     margin-bottom: 40px;
+    display: inline-block;
+    width: 45%;
+    margin: 20px 20px;
 }
 
 .form__input {
@@ -26,4 +29,16 @@ body {
 
 .form__input:focus {
     outline: 3px solid #000000;
+}
+
+.form__fieldset{
+    border: 1px black dotted;
+}
+
+.button--submit{
+    border: none;
+    width: 100%;
+    height: 50px;
+    background: rgba(188, 188, 188, 0.509);
+    cursor: pointer;
 }

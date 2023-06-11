@@ -13,7 +13,7 @@
 
     <body>
 
-        <h1>Task X - Contact Form with conditional form elements</h1>
+        <h1>Task 2 - Contact Form with conditional form elements</h1>
 
         <form enctype="multipart/form-data" name="field" class="form" method="post">
             <section class="form__section">
@@ -22,19 +22,19 @@
                 <fieldset class="form__fieldset">
                     <legend class="form__legend">User data</legend>
                     <div class="form__fieldwrap form__fieldwrap--input">
-                        <label for="field_firstname" class="form__label">First name</label>
+                        <label for="field_firstname" class="form__label">First name</label><br>
                         <input class="form__input" id="field_firstname" type="text" name="firstname">
                     </div>
                     <div class="form__fieldwrap form__fieldwrap--input">
-                        <label for="field_lastname" class="form__label">Last name</label>
+                        <label for="field_lastname" class="form__label">Last name</label><br>
                         <input required class="form__input" id="field_lastname" type="text" name="lastname">
                     </div>
                     <div class="form__fieldwrap form__fieldwrap--input">
-                        <label for="field_telephone" class="form__label">Telephone</label>
+                        <label for="field_telephone" class="form__label">Telephone</label><br>
                         <input pattern="^(\+\d{1,4}|0+\d{1,5}|\(\d{1,5})[\d\s\/\(\)-]*\d+$" class="form__input" id="field_telephone" type="tel" name="telephone">
                     </div>
                     <div class="form__fieldwrap form__fieldwrap--input">
-                        <label for="field_e_mail" class="form__label">E mail</label>
+                        <label for="field_e_mail" class="form__label">E mail</label><br>
                         <input required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" class="form__input" id="field_e_mail" type="email" name="e_mail">
                     </div>
                 </fieldset>
