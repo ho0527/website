@@ -1,4 +1,11 @@
 let sortPositive = arr => {
+	let data=[]
+	for(let i=0;i<=arr.length;i=i+1){
+		if(/^[0-9]+$/.test(arr[i])){
+			data.push(arr[i])
+		}
+	}
+	console.log(data)
 	// put your code here
 }
 

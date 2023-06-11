@@ -8,6 +8,8 @@
 	<?php
 
 	function removeDuplicates($arr){
+		print_r(array_unique($arr));
+		echo("<br>");
 		//put your code here
 	}
 

@@ -2,11 +2,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(35, 35, 35);
     color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 20px;
     word-break: break-all;
     user-select: none;
     padding: 0px;
     margin: 0px;
-    text-align: center;
 }
 
 h2{
@@ -22,18 +23,6 @@ hr{
 table{
     border-collapse: collapse;
     width: 100%;
-}
-
-.main{
-    border: 1px white solid;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-weight: bold;
-    padding: 20px;
-    border-radius: 5px;
 }
 
 .navigationbar{
@@ -122,4 +111,81 @@ table{
     left: 0px;
     transform: translate(0%,-50%);
     width: 100%;
+}
+
+.main{
+    margin-top: 150px;
+}
+
+.card{
+    border: 2px white solid;
+    width: 20%;
+    padding: 15px;
+    margin: 5px 10px;
+    display: inline-block;
+}
+
+.image{
+    border: 1px white solid;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.footer{
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+}
+
+.latestcourse{
+    border: 2px white solid;
+    position: relative;
+    height: 150px;
+    padding: 10px;
+    margin: 20px 0px;
+}
+
+.intorduction{
+    position: absolute;
+    left: 5%;
+    width: 40%;
+    display: inline-block;
+}
+
+.title{
+    position: absolute;
+    right: 5%;
+    width: 45%;
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.ul{
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    width: 45%;
+    display: inline-block;
+}
+
+.gallery{
+    margin: 20px 0px;
+}
+
+.contact{
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactright{
+    width: 50%;
+    display: inline-block;
+}
+
+.contactleft{
+    width: 45%;
+    display: inline-block;
 }

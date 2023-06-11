@@ -15,9 +15,10 @@ body{
 }
 
 #square{
+	position: absolute;
 	width: 100px;
 	height: 100px;
-	background-image: url('image.png'); 
+	background-image: url('image.png');
 	background-size: cover;
 	background-position: center center;
 }

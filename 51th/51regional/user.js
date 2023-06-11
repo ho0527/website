@@ -97,7 +97,7 @@ function main(){
             let option=questionrow[i][4].split("|&|")
             output=output+"題目說明:"+questionrow[i][1]+"<br>"
             if(questionrow[i][3]=="yesno"){
-                output=output+"是<input type='radio' class='yesno' name='yesno' value='yes'>否<input type='radio' name='yesno' value='no'>"
+                output=output+"是<input type='radio' class='yesno radio' name='yesno' value='yes'>否<input type='radio' class='radio' name='yesno' value='no'>"
             }else if(questionrow[i][3]=="single"){
                 for(let j=0;j<6;j=j+1){
                     if(!checknull(option[j])){

@@ -3,10 +3,17 @@
 *{
 	margin: 0;
 	padding: 0;
+	text-align: center;
 }
 
 /*PUT YOUR CSS CODE HERE*/
 
 img{
 	width: 50vh;
+	cursor: pointer;
+}
+
+img:hover{
+	filter: grayscale(1);
+	transition: 1s linear;
 }
