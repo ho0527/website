@@ -6,6 +6,7 @@ body{
     word-break: break-all;
     padding: 0px;
     margin: 0px;
+    text-align: center;
 }
 
 h2{
@@ -60,4 +61,8 @@ table{
     left: 0px;
     transform: translate(0%,-50%);
     width: 100%;
+}
+
+.textarea{
+    resize: none;
 }
