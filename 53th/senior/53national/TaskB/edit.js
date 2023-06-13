@@ -137,8 +137,8 @@ function samplemove(event){
         },500)
     }else{
         if(document.getElementById("mainimage")){
-            document.getElementById("mainimage").style.top=(event.offsetY+50)+"px"
-            document.getElementById("mainimage").style.left=(event.offsetX+50)+"px"
+            document.getElementById("mainimage").style.top=(event.offsetY+30)+"px"
+            document.getElementById("mainimage").style.left=(event.offsetX+30)+"px"
         }
     }
 }

@@ -1,4 +1,52 @@
 <?php
+    $memorybefore=memory_get_usage();
+
+    echo("p07\n");
+
+    // 讀取起始單字和終止單字
+    $input=explode(" ", trim(fgets(STDIN)));
+    $start=$input[0];
+    $end=$input[1];
+
+    // 讀取單字表數量和單字表
+    $n=(int)trim(fgets(STDIN));
+    $data=[];
+
+    for($i=0;$i<$n;$i=$i+1){
+        $data[]=trim(fgets(STDIN));
+    }
+    $ans=0; // 無法轉換到終止單字，返回 0
+
+    // 將所有可能的單字組合成二維陣列
+    $combination=[];
+    $mainleangh=[];
+    for($i=0;$i<count($data);$i=$i+1){
+        $str=[$start];
+        for($j=0;$j<strlen($data[$i]);$j=$j+1){
+            if($start[$j]!=$data[$i][$j]){
+                $str[]=substr_replace($start,$data[$i][$j],$j,1);
+            }
+        }
+        $combination[]=$str;
+    }
+
+    // 比較所有單字鏈的長度，找出最短的
+    for($i=0;$i<$combination;$i=$i+1){
+        if($combination[$i][count($combination[$i])-1]==$end){
+            $mainleangh[]=count($combination);
+        }
+    }
+
+    sort($mainleangh);
+
+    print_r($combinations);
+    echo($mainleangh[0].PHP_EOL);
+
+    $memoryafter=memory_get_usage();
+    $memorydifference=$memoryafter - $memorybefore;
+    echo("memory used " . ($memorydifference / 1048576) . "MB");
+?>
+<?php
 //     $memorybefore=memory_get_usage();
 
 //     echo("p07\n");
@@ -48,7 +96,7 @@
 //                     if($newword!=$oldword){
 //                         // 替換字母
 //                         $newWord=substr_replace($word,$newword,$i,1);
-    
+
 //                         // 如果新單字在單字表中，將其加入佇列並從單字表中移除
 //                         if(isset($maindata[$newWord])){
 //                             $queue[]=[$newWord,$steps+1];
@@ -81,52 +129,4 @@
 //     $memoryafter=memory_get_usage();
 //     $memorydifference=$memoryafter-$memorybefore;
 //     echo("memory used ".($memorydifference/1048576)."MB");
-?>
-<?php
-$memorybefore = memory_get_usage();
-
-echo "p07\n";
-
-// 讀取起始單字和終止單字
-$input = explode(" ", trim(fgets(STDIN)));
-$start = $input[0];
-$end = $input[1];
-
-// 讀取單字表數量和單字表
-$n =  (int)trim(fgets(STDIN));
-$data = [];
-
-for ($i = 0; $i < $n; $i++) {
-    $data[] = trim(fgets(STDIN));
-}
-$ans = 0; // 無法轉換到終止單字，返回 0
-
-// 將所有可能的單字組合成二維陣列
-$combinations = [];
-foreach ($data as $word) {
-    $combination = [$start];
-    for ($i = 0; $i < strlen($word); $i++) {
-        if ($start[$i] != $word[$i]) {
-            $combination[] = substr_replace($start, $word[$i], $i, 1);
-        }
-    }
-    $combinations[] = $combination;
-}
-
-// 比較所有單字鏈的長度，找出最短的
-foreach ($combinations as $combination) {
-    if ($combination[count($combination) - 1] == $end) {
-        $length = count($combination);
-        if ($ans == 0 || $length < $ans) {
-            $ans = $length;
-        }
-    }
-}
-
-print_r ($combinations);
-echo ($ans . PHP_EOL);
-
-$memoryafter = memory_get_usage();
-$memorydifference = $memoryafter - $memorybefore;
-echo ("memory used " . ($memorydifference / 1048576) . "MB");
 ?>
