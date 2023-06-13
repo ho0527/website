@@ -17,7 +17,6 @@
     date_default_timezone_set("Asia/Taipei");
     $time=date("Y-m-d\TH:i:s");
     session_start();
-    $_SESSION["login"]="";
 
     $logincheck=function(){
         $row=DB::table("users")
@@ -116,6 +115,7 @@
                             ->where(function($query)use($email){
                                 $query->where("email","=",$email);
                             })->select("*")->get();
+                        $_SESSION["login"]=$row[0]->id;
                         return response()->json([
                             "success"=>true,
                             "data"=>$user($row,"login")
@@ -186,6 +186,7 @@
                 ->update([
                     "access_token"=>NULL,
                 ]);
+            unset($_SESSION["login"]);
             return response()->json([
                 "success"=>true,
                 "data"=>""

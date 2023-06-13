@@ -16,6 +16,7 @@ let y1=0
 let x2=0
 let y2=0
 let canvacount=1
+let sampleselect=""
 
 document.getElementById("width").value=width
 document.getElementById("height").value=height
@@ -129,9 +130,16 @@ function sampledown(event){
 
 function samplemove(event){
     if(isdrawing){
-        drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
-        x=event.offsetX
-        y=event.offsetY
+        setTimeout(function(){
+            drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
+            x=event.offsetX
+            y=event.offsetY
+        },500)
+    }else{
+        if(document.getElementById("mainimage")){
+            document.getElementById("mainimage").style.top=(event.offsetY+50)+"px"
+            document.getElementById("mainimage").style.left=(event.offsetX+50)+"px"
+        }
     }
 }
 
@@ -145,6 +153,9 @@ function sampleup(event){
 }
 
 function removealllistener(){
+    if(mod=="sample"&&document.getElementById("mainimage")){
+        document.getElementById("mainimage").remove()
+    }
     canva.removeEventListener("pointerdown",paintdown)
     canva.removeEventListener("pointermove",paintmove)
     canva.removeEventListener("pointerup",paintup)
@@ -209,13 +220,20 @@ document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=
 document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
 document.getElementById("file").onchange=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
+let count=parseInt(localStorage.getItem("count"))
+console.log("count="+count)
+for(let i=1;i<=count;i=i+1){
+    document.getElementById("choosesample").innerHTML=document.getElementById("choosesample").innerHTML+`
+        <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
+    `
+}
 
 document.addEventListener("keydown",function(event){
     if(event.ctrlKey&&event.key=="z"){ event.preventDefault();undo() }
     if(event.ctrlKey&&event.shiftKey&&event.key=="z"){ event.preventDefault();redo() }
     if(event.ctrlKey&&event.key=="s"){ event.preventDefault();save() }
     if(event.key=="Escape"){ event.preventDefault();location.reload() } 
-    
+
 })
 
 document.querySelectorAll(".button").forEach(function(event){
@@ -225,7 +243,6 @@ document.querySelectorAll(".button").forEach(function(event){
             if(event.id==mod){ event.classList.add("selectbutton") }
             else{ event.classList.remove("selectbutton") }
         })
-
         if(mod=="select"){
             removealllistener()
             canva.addEventListener("pointerdown",selectdown)
@@ -243,6 +260,11 @@ document.querySelectorAll(".button").forEach(function(event){
             removealllistener()
             document.getElementById("samplelightbox").style.display="block"
             document.querySelectorAll(".sampleimage").forEach(function(event){
+                if(sampleselect!=""){
+                    if(event.src==sampleselect){
+                        event.style.border="1px yellow solid"
+                    }
+                }
                 event.onclick=function(){
                     document.querySelectorAll(".sampleimage").forEach(function(event){
                         event.style.border="1px black solid"
@@ -352,17 +374,23 @@ document.getElementById("samplefile").onchange=function(event){
     location.reload()
 }
 
-document.getElementById("samplesubmit").onclick=function(){ document.getElementById("samplelightbox").style.display="none" }
+document.getElementById("samplesubmit").onclick=function(){
+    document.querySelectorAll(".sampleimage").forEach(function(event){
+        if(event.style.border=="1px solid yellow"){
+            if(document.getElementById("mainimage")){ document.getElementById("mainimage").remove() }
+            sampleselect=event.src
+            img=document.createElement("img")
+            img.src=sampleselect
+            img.id="mainimage"
+            img.style.position="absolute"
+            img.style.opacity=0.5
+            document.getElementById("main").appendChild(img)
+        }
+        document.getElementById("samplelightbox").style.display="none"
+    })
+}
 
 document.getElementById("close").onclick=function(){ document.getElementById("samplelightbox").style.display="none" }
-
-let count=parseInt(localStorage.getItem("count"))
-console.log("count="+count)
-for(let i=1;i<=count;i=i+1){
-    document.getElementById("choosesample").innerHTML=document.getElementById("choosesample").innerHTML+`
-        <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
-    `
-}
 
 document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })
 

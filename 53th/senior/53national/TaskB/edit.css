@@ -108,6 +108,7 @@ table{
 .maindiv{
     grid-column: 15/85;
     grid-row: 4/17;
+    position: relative;
     padding: 20px;
 }
 
