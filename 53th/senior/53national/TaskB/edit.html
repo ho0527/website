@@ -5,7 +5,9 @@
         <title>小畫家</title>
         <link rel="stylesheet" href="edit.css">
         <link rel="stylesheet" href="plugin/css/macossection.css">
+        <link rel="stylesheet" href="plugin/css/sort.css">
         <script src="plugin/js/macossection.js"></script>
+        <script src="plugin/js/sort.js"></script>
     </head>
     <body>
         <div class="grid">
@@ -56,17 +58,16 @@
                 <div class="leftmid">
                     線條 <input type="range" class="range" id="thick" min="1" max="100" value="0.1">
                 </div>
-                <div class="layerdiv macossectiondiv">
-                    <table id="layer">
-                        <tr class="layer" id="layertr1" draggable="true">
-                            <td calss="layername">圖層1</td>
-                            <td class="layerdef">
-                                <input type="button" class="layeredit" value="編輯">
-                                <input type="button" class="layerdel" data-id="1" value="刪除">
-                            </td>
-                            <td class="layermove"></td>
-                        </tr>
-                    </table>
+                <div class="layerdiv macossectiondiv" id="layer">
+                    <div class="layergrid" id="layer1">
+                        <div class="layername">
+                            圖層1
+                        </div>
+                        <div class="layerdef">
+                            <input type="button" class="layeredit" value="編輯">
+                            <input type="button" class="layerdel" data-id="1" value="刪除">
+                        </div>
+                    </div>
                 </div>
                 <input type="button" class="newlayer" id="newlayer" value="+">
             </div>

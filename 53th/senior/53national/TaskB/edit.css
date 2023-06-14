@@ -229,21 +229,28 @@ table{
     z-index: 100;
 }
 
-.layer{
+.layergrid{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
     border-bottom: 1px white solid;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
 }
 
 .layername{
-    width: 50%;
+    grid-column: 10/60;
+    grid-row: 2/17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .layerdef{
-    padding: 10px;
-    width: 30%;
-}
-
-.layermove{
-    width: 20%;
+    grid-column: 65/95;
+    grid-row: 2/17;
 }
 
 .center{

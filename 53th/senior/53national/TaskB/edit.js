@@ -69,16 +69,21 @@ function savesample(){
 function upload(){
 }
 
-function selectdown(){
-
+function selectdown(event){
+    isdrawing=true
+    console.log(event)
 }
 
-function selectmove(){
-
+function selectmove(event){
+    if(isdrawing){
+        console.log(event)
+    }
 }
 
-function selectup(){
-
+function selectup(event){
+    if(isdrawing){
+        isdrawing=false
+    }
 }
 
 function paintdown(event){
@@ -117,28 +122,32 @@ function bucket(event){
     redohistory.length=0
     x=event.offsetX
     y=event.offsetY
-    fillBucket(ctx,color,x,y)
 }
 
 function sampledown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     redohistory.length=0
-    x=event.offsetX
-    y=event.offsetY
+    x=event.offsetX+40
+    y=event.offsetY+40
+    console.log(sampleselect)
+    // let image=document.getElementById("mainimage")
+    ctx.drawImage(sampleselect,x,y)
+    // ctx.drawImage(image.src,0,0,0,0,x,y,image.width,image.height)
     isdrawing=true
 }
 
 function samplemove(event){
     if(isdrawing){
         setTimeout(function(){
-            drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
-            x=event.offsetX
-            y=event.offsetY
+            // drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
+            x=event.offsetX+40
+            y=event.offsetY+40
+            ctx.drawImage(sampleselect,x,y)
         },500)
     }else{
         if(document.getElementById("mainimage")){
-            document.getElementById("mainimage").style.top=(event.offsetY+30)+"px"
-            document.getElementById("mainimage").style.left=(event.offsetX+30)+"px"
+            document.getElementById("mainimage").style.top=(event.offsetY+40)+"px"
+            document.getElementById("mainimage").style.left=(event.offsetX+40)+"px"
         }
     }
 }
@@ -149,67 +158,20 @@ function sampleup(event){
         x=0
         y=0
         isdrawing=false
-    }
+    } 
 }
 
 function removealllistener(){
-    if(mod=="sample"&&document.getElementById("mainimage")){
+    if(mod!="sample"&&document.getElementById("mainimage")){
         document.getElementById("mainimage").remove()
     }
+    canva.removeEventListener("pointerdown",selectdown)
+    canva.removeEventListener("pointermove",selectmove)
+    canva.removeEventListener("pointerup",selectup)
     canva.removeEventListener("pointerdown",paintdown)
     canva.removeEventListener("pointermove",paintmove)
     canva.removeEventListener("pointerup",paintup)
     canva.removeEventListener("pointerdown",bucket)
-}
-
-function fillBucket(canvactx,color,x,y){
-    let imageData=canvactx.getImageData(0,0,canva.width,canva.height)
-    let pixels=imageData.data
-    let width=canvactx.width
-    let height=canvactx.height
-    let targetColor=getPixelColor(pixels,width,height,x,y)
-    let stack=[]
-    stack.push({ x:x,y:y })
-
-    while(stack.length>0){
-        let pixel=stack.pop()
-        let { x,y }=pixel
-
-        if(x<0||x>=width||y<0||y>=height){ continue }
-
-        let pixelColor=getPixelColor(pixels,width,height,x,y)
-
-        if(pixelColor!=targetColor){ continue }
-
-        // 填充当前像素
-        setPixelColor(pixels,width,height,x,y,color)
-
-        // 将相邻像素添加到堆栈
-        stack.push({ x:x-1,y:y })
-        stack.push({ x:x+1,y:y })
-        stack.push({ x:x,y:y-1 })
-        stack.push({ x:x,y:y+1 })
-    }
-
-    // 更新画布
-    canvactx.putImageData(imageData,0,0)
-    console.log("inini")
-}
-
-function getPixelColor(pixels,width,height,x,y){
-    let index=(y*width+x)*4
-    let r=pixels[index]
-    let g=pixels[index+1]
-    let b=pixels[index+2]
-    return [r,g,b]
-}
-
-function setPixelColor(pixels,width,height,x,y,color){
-    let index=(y*width+x)*4
-    let [r,g,b]=color
-    pixels[index]=r
-    pixels[index+1]=g
-    pixels[index+2]=b
 }
 
 document.getElementById("new").onclick=function(){ if(confirm("是否裡開編輯頁面?")){ location.href="index.html" } }
@@ -220,8 +182,11 @@ document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=
 document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
 document.getElementById("file").onchange=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
+canva.addEventListener("pointerdown",selectdown)
+canva.addEventListener("pointermove",selectmove)
+canva.addEventListener("pointerup",selectup)
+
 let count=parseInt(localStorage.getItem("count"))
-console.log("count="+count)
 for(let i=1;i<=count;i=i+1){
     document.getElementById("choosesample").innerHTML=document.getElementById("choosesample").innerHTML+`
         <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
@@ -318,36 +283,27 @@ document.getElementById("thick").onchange=function(){ thick=parseInt(this.value)
 
 document.getElementById("newlayer").onclick=function(){
     canvacount=canvacount+1
-    let tr=document.createElement("tr")
-    tr.classList.add("layer")
-    tr.id="layertr"+canvacount
-    tr.draggable=true
-    document.getElementById("layer").appendChild(tr)
-    let tdname=document.createElement("td")
-    tdname.classList.add("layername")
-    tdname.innerHTML=`
-        圖層${canvacount}
+    document.getElementById("layer").innerHTML=document.getElementById("layer").innerHTML+`
+        <div class="layergrid" id="layer${canvacount}">
+            <div class="layername">
+                圖層${canvacount}
+            </div>
+            <div class="layerdef">
+                <input type="button" class="layeredit" value="編輯">
+                <input type="button" class="layerdel" data-id="${canvacount}" value="刪除">
+            </div>
+        </div>
     `
-    document.getElementById("layertr"+canvacount).appendChild(tdname)
-    let tddef=document.createElement("td")
-    tddef.classList.add("layerdef")
-    tddef.innerHTML=`
-        <input type="button" class="layeredit" value="編輯">
-        <input type="button" class="layerdel" data-id="${canvacount}" value="刪除">
-    `
-    document.getElementById("layertr"+canvacount).appendChild(tddef)
-    let tdmove=document.createElement("td")
-    tdmove.classList.add("layermove")
-    document.getElementById("layertr"+canvacount).appendChild(tdmove)
     let canvas=document.createElement("canvas")
     canvas.classList.add("canva")
     canvas.id="canva"+canvacount
     document.getElementById("main").appendChild(canvas)
+    sort("layergrid","#layer")
     document.querySelectorAll(".layerdel").forEach(function(event){
         event.onclick=function(){
             let id=this.getAttribute("data-id")
-            document.getElementById("layertr"+id).innerHTML=``
-            document.getElementById("canva"+id).style.display="none"
+            document.getElementById("layer"+id).remove()
+            document.getElementById("canva"+id).remove()
         }
     })
 }

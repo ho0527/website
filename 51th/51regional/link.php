@@ -5,9 +5,9 @@
     session_start();
 
     function query($db,$query,$data=[]){
-       $prepare=$db->prepare($query);
-       $prepare->execute($data);
-       return $prepare->fetchAll();
+        $prepare=$db->prepare($query);
+        $prepare->execute($data);
+        return $prepare->fetchAll();
     }
 
     function removearraykey($array,$removeplace){
