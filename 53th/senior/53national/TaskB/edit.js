@@ -127,23 +127,21 @@ function bucket(event){
 function sampledown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     redohistory.length=0
-    x=event.offsetX+40
-    y=event.offsetY+40
-    console.log(sampleselect)
-    // let image=document.getElementById("mainimage")
-    ctx.drawImage(sampleselect,x,y)
-    // ctx.drawImage(image.src,0,0,0,0,x,y,image.width,image.height)
+    x=event.offsetX+20
+    y=event.offsetY+20
+    let image=document.getElementById("mainimage")
+    ctx.drawImage(image,x,y,image.width,image.height)
     isdrawing=true
 }
 
 function samplemove(event){
     if(isdrawing){
+        x=event.offsetX+20
+        y=event.offsetY+20
+        let image=document.getElementById("mainimage")
         setTimeout(function(){
-            // drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
-            x=event.offsetX+40
-            y=event.offsetY+40
-            ctx.drawImage(sampleselect,x,y)
-        },500)
+            ctx.drawImage(image,x,y,image.width,image.height)
+        },100)
     }else{
         if(document.getElementById("mainimage")){
             document.getElementById("mainimage").style.top=(event.offsetY+40)+"px"
@@ -152,11 +150,10 @@ function samplemove(event){
     }
 }
 
-function sampleup(event){
+function sampleup(){
     if(isdrawing){
-        drawline(ctx,color,thick,x,y,event.offsetX,event.offsetY)
-        x=0
-        y=0
+        // x=0
+        // y=0
         isdrawing=false
     } 
 }
