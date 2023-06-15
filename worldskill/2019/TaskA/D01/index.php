@@ -71,7 +71,9 @@
 
                                 // 循环遍历每一天
                                 $firstdayweeknumber=date("N",strtotime($firstday));
-                                $lastdayweeknumber=date("N",strtotime($lastday));
+                                if($firstdayweeknumber==7){ $firstdayweeknumber=0; }
+                                $lastdayweeknumber=date("N",strtotime($lastday))+1;
+                                if($lastdayweeknumber==8){ $lastdayweeknumber=1; }
                                 for($i=$firstday;$i<=$lastday;$i=date("Y-m-d",strtotime($i."+1 day"))){
                                     $day=(int)(explode("-",$i)[2]);
                                     $weeknumber=date("N",strtotime($i));
@@ -101,7 +103,7 @@
                                         elseif($weeknumber%7==6){ ?><div><span class="fc-date"><?php echo($day); ?></span></div><?php }
                                     }
                                     if($day==(int)(explode("-",$lastday)[2])){
-                                        for($j=$lastdayweeknumber;$j<=7;$j=$j+1){
+                                        for($j=$lastdayweeknumber;$j<7;$j=$j+1){
                                             ?><div><span class="fc-date"></span></div><?php
                                         }
                                     }
