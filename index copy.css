@@ -98,6 +98,11 @@ table{
     color: white;
 }
 
+.navigationbarselect{
+    background: gray;
+    color: white;
+}
+
 .center{
     position: absolute;
     top: 50%;
@@ -125,7 +130,6 @@ table{
     background: none;
     width: 75%;
     height: 40px;
-    background-color: white;
     outline: none;
     font-size: 30px;
 }

@@ -17,14 +17,14 @@
                 <img src="icon/logo.png" class="logo">
             </div>
             <div class="navigationbarright">
-                <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">
+                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='index.php'" value="首頁">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="貨幣">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="進行">
                 <?php
-                    if(isset($_SESSION["login"])){
-                        ?><input type="button" class="navigationbarbutton" onclick="location.href='login.php'" value="登出"><?php
+                    if(isset($_SESSION["data"])){
+                        ?><input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出"><?php
                     }else{
-                        ?><input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登入"><?php
+                        ?><input type="button" class="navigationbarbutton" onclick="location.href='login.php'" value="登入"><?php
                     }
                 ?>
             </div>
@@ -32,31 +32,22 @@
         <div class="main">
             <div class="grid">
                 <div class="mainleft macossectiondiv">
-                    <div class="mainleftgrid" id="1">
-                        <div class="mainleftleft"></div>
-                        <div class="mainleftright"></div>
-                    </div>
-                    <div class="mainleftgrid">
-                        <div class="mainleftleft"></div>
-                        <div class="mainleftright"></div>
-                    </div>
-                    <div class="mainleftgrid">
-                        <div class="mainleftleft"></div>
-                        <div class="mainleftright"></div>
-                    </div>
-                    <div class="mainleftgrid">
-                        <div class="mainleftleft"></div>
-                        <div class="mainleftright"></div>
-                    </div>
-                    <div class="mainleftgrid">
-                        <div class="mainleftleft"></div>
-                        <div class="mainleftright"></div>
-                    </div>
+                    <?php
+                        $row=query($db,"SELECT*FROM `subject`");
+                        for($i=0;$i<count($row);$i=$i+1){
+                            ?>
+                            <div class="mainleftgrid" id="<?php echo($row[$i][0]); ?>">
+                                <div class="mainleftleft"><?php echo($row[$i][1]); ?></div>
+                                <div class="mainleftright"><?php echo($row[$i][2]); ?></div>
+                            </div>
+                            <?php
+                        }
+                    ?>
                 </div>
                 <div class="mainright">
                     <div class="mainrightgrid">
-                        <img src="" class="mainimage"><br>
-                        <div class="context"></div><br>
+                        <img src="icon/image-01.jpg" class="mainimage"><br>
+                        <div class="context">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque aliquam officiis modi eaque nisi voluptates incidunt eos architecto inventore beatae non doloribus ab tempora animi eligendi officia, quos dolore. Obcaecati!</div><br>
                         <input type="button" class="button" onclick="location.href='index.php'" value="line">
                         <input type="button" class="button" onclick="location.href='index.php'" value="message">
                     </div>
