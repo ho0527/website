@@ -1,16 +1,15 @@
 let width=localStorage.getItem("width")
 let height=localStorage.getItem("height")
-let mod="select"
 let canva=document.getElementById("canva1")
+let ctx=canva.getContext("2d")
+let isdrawing=false
+let mod="select"
 let undohistory=[]
 let redohistory=[]
-let isdrawing=false
-let x=0
-let y=0
-let ctx=canva.getContext("2d")
 let color="black"
 let thick=1
-let paintstin=1
+let x=0
+let y=0
 let x1=0
 let y1=0
 let x2=0
@@ -80,12 +79,6 @@ function selectmove(event){
     }
 }
 
-function selectup(event){
-    if(isdrawing){
-        isdrawing=false
-    }
-}
-
 function paintdown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     redohistory.length=0
@@ -95,6 +88,10 @@ function paintdown(event){
     y1=event.offsetY
     ctx.lineCap="round"
     ctx.lineJoin="round"
+    ctx.beginPath()
+    ctx.moveTo(x1,y1)
+    ctx.lineTo(x1,y1)
+    ctx.stroke()
     isdrawing=true
 }
 
@@ -103,17 +100,11 @@ function paintmove(event){
         x2=event.offsetX
         y2=event.offsetY
         ctx.beginPath()
-        ctx.moveTo(x1, y1)
-        ctx.lineTo(x2, y2)
+        ctx.moveTo(x1,y1)
+        ctx.lineTo(x2,y2)
         ctx.stroke()
         x1=x2
         y1=y2
-    }
-}
-
-function paintup(){
-    if(isdrawing){
-        isdrawing=false
     }
 }
 
@@ -136,9 +127,11 @@ function sampledown(event){
 
 function samplemove(event){
     if(isdrawing){
+        let image=document.getElementById("mainimage")
+
         x=event.offsetX+20
         y=event.offsetY+20
-        let image=document.getElementById("mainimage")
+        document.getElementById("mainimage").style.display="none"
         setTimeout(function(){
             ctx.drawImage(image,x,y,image.width,image.height)
         },100)
@@ -150,25 +143,15 @@ function samplemove(event){
     }
 }
 
-function sampleup(){
-    if(isdrawing){
-        // x=0
-        // y=0
-        isdrawing=false
-    } 
-}
-
 function removealllistener(){
-    if(mod!="sample"&&document.getElementById("mainimage")){
-        document.getElementById("mainimage").remove()
-    }
+    if(mod!="sample"&&document.getElementById("mainimage")){ document.getElementById("mainimage").remove() }
     canva.removeEventListener("pointerdown",selectdown)
     canva.removeEventListener("pointermove",selectmove)
-    canva.removeEventListener("pointerup",selectup)
     canva.removeEventListener("pointerdown",paintdown)
     canva.removeEventListener("pointermove",paintmove)
-    canva.removeEventListener("pointerup",paintup)
     canva.removeEventListener("pointerdown",bucket)
+    canva.removeEventListener("pointerdown",sampledown)
+    canva.removeEventListener("pointermove",samplemove)
 }
 
 document.getElementById("new").onclick=function(){ if(confirm("是否裡開編輯頁面?")){ location.href="index.html" } }
@@ -181,7 +164,6 @@ document.getElementById("file").onchange=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
 canva.addEventListener("pointerdown",selectdown)
 canva.addEventListener("pointermove",selectmove)
-canva.addEventListener("pointerup",selectup)
 
 let count=parseInt(localStorage.getItem("count"))
 for(let i=1;i<=count;i=i+1){
@@ -209,12 +191,10 @@ document.querySelectorAll(".button").forEach(function(event){
             removealllistener()
             canva.addEventListener("pointerdown",selectdown)
             canva.addEventListener("pointermove",selectmove)
-            canva.addEventListener("pointerup",selectup)
         }else if(mod=="paint"){
             removealllistener()
             canva.addEventListener("pointerdown",paintdown)
             canva.addEventListener("pointermove",paintmove)
-            canva.addEventListener("pointerup",paintup)
         }else if(mod=="bucket"){
             removealllistener()
             canva.addEventListener("pointerdown",bucket)
@@ -236,7 +216,6 @@ document.querySelectorAll(".button").forEach(function(event){
             })
             canva.addEventListener("pointerdown",sampledown)
             canva.addEventListener("pointermove",samplemove)
-            canva.addEventListener("pointerup",sampleup)
         }else if(mod=="setcanva"){
             removealllistener()
         }else{
@@ -286,7 +265,6 @@ document.getElementById("newlayer").onclick=function(){
                 圖層${canvacount}
             </div>
             <div class="layerdef">
-                <input type="button" class="layeredit" value="編輯">
                 <input type="button" class="layerdel" data-id="${canvacount}" value="刪除">
             </div>
         </div>
@@ -345,7 +323,12 @@ document.getElementById("samplesubmit").onclick=function(){
 
 document.getElementById("close").onclick=function(){ document.getElementById("samplelightbox").style.display="none" }
 
-document.addEventListener("pointerup",function(){ if(isdrawing){ isdrawing=false } })
+document.addEventListener("pointerup",function(){
+    if(isdrawing){
+        if(document.getElementById("mainimage")){ document.getElementById("mainimage").style.display="block" }
+        isdrawing=false
+    }
+})
 
 document.getElementById("submit").onclick=function(){
     let width=document.getElementById("width").value
