@@ -16,6 +16,8 @@ let x2=0
 let y2=0
 let canvacount=1
 let sampleselect=""
+let data=[]
+let datacount=0
 
 document.getElementById("width").value=width
 document.getElementById("height").value=height
@@ -70,12 +72,11 @@ function upload(){
 
 function selectdown(event){
     isdrawing=true
-    console.log(event)
 }
 
 function selectmove(event){
     if(isdrawing){
-        console.log(event)
+    }else{
     }
 }
 
@@ -91,6 +92,7 @@ function paintdown(event){
     ctx.beginPath()
     ctx.moveTo(x1,y1)
     ctx.lineTo(x1,y1)
+    data.push([[x1],[y1]])
     ctx.stroke()
     isdrawing=true
 }
@@ -102,6 +104,8 @@ function paintmove(event){
         ctx.beginPath()
         ctx.moveTo(x1,y1)
         ctx.lineTo(x2,y2)
+        data[datacount][0].push(x2)
+        data[datacount][1].push(y2)
         ctx.stroke()
         x1=x2
         y1=y2
@@ -326,6 +330,32 @@ document.getElementById("close").onclick=function(){ document.getElementById("sa
 document.addEventListener("pointerup",function(){
     if(isdrawing){
         if(document.getElementById("mainimage")){ document.getElementById("mainimage").style.display="block" }
+        if(mod=="paint"){
+            let tempdata=data[datacount]
+            let minx = Math.min(...tempdata[0])
+            let miny = Math.min(...tempdata[1])
+            let maxx = Math.max(...tempdata[0])
+            let maxy = Math.max(...tempdata[1])
+
+            ctx.rect(minx-5, miny-5, maxx - minx+5, maxy - miny+5)
+
+            // let datasortx = tempdata[0].sort((a, b) => { return a - b })
+            // console.log(datasortx);
+            // let datasorty = tempdata[1].sort()
+            // data[datacount].push([datasortx[0], datasorty[0], datasortx[datasortx.length - 1], datasorty[datasorty.length - 1]])
+            // ctx.moveTo(data[datacount][2][0]-5,data[datacount][2][1]-5)
+            // ctx.lineTo(data[datacount][2][0]-5,data[datacount][2][3]+5)
+            // ctx.lineTo(data[datacount][2][2]+5,data[datacount][2][3]+5)
+            // ctx.lineTo(data[datacount][2][2]+5,data[datacount][2][1]-5)
+            // ctx.lineTo(data[datacount][2][0]-5,data[datacount][2][1]-5)
+            // ctx.stroke()
+            console.log(data)
+            datacount=datacount+1
+            console.log(minx)
+            console.log(maxx)
+            console.log(miny)
+            console.log(maxy)
+        }
         isdrawing=false
     }
 })
