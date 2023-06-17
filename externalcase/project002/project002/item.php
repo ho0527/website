@@ -31,8 +31,42 @@
         </div>
         <div class="main">
             <div class="grid">
+                <?php
+                    $id=$_GET["id"];
+                    $row=query($db,"SELECT*FROM `item` WHERE `id`='$id'")[0];
+                    $imagerow=query($db,"SELECT*FROM `itemimage` WHERE `itemid`='$id'");
+                ?>
+                <div class="carousel">
+                    <?php
+                        for($i=0;$i<count($imagerow);$i=$i+1){
+                            ?>
+                            <div class="carouselitem">
+                                <img src="<?php echo($imagerow[$i][2]) ?>" class="carouselimage">
+                            </div>
+                            <?php
+                        }
+                    ?>
+                    <div class="carouselbuttondiv">
+                        <input type="button" class="carouselbutton prevnext" id="prev" value="prev">
+                        <?php
+                            for($i=0;$i<count($imagerow);$i=$i+1){
+                                ?><input type="button" class="carouselbutton indicator" value="<?php echo($i+1) ?>"><?php
+                            }
+                        ?>
+                        <input type="button" class="carouselbutton prevnext" id="next" value="next">
+                    </div>
+                </div>
+                <div class="subject">主題:<?php echo(query($db,"SELECT*FROM `subject` WHERE `id`='$row[1]'")[0][1]); ?></div>
+                <div class="itemcontext">
+                    詳細介紹:<br>
+                    <?php echo($row[2]); ?>
+                </div>
+                <div class="price">價格: <?php echo($row[3]); ?> TWD</div>
+                <a class="linkline a" href="<?php echo($row[5]); ?>">Line link</a>
+                <a class="linkmessenger a" href="<?php echo($row[6]); ?>">Messenger link</a>
+                <a class="link8591 a" href="<?php echo($row[7]); ?>">8591 link</a>
             </div>
         </div>
-        <script src="index.js"></script>
+        <script src="item.js"></script>
     </body>
 </html>

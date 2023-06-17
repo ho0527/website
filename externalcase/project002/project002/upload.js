@@ -1,0 +1,1 @@
+function click(file){ document.getElementById(file).click() }

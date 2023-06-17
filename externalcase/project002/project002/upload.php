@@ -22,27 +22,37 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="loginmain">
+        <div class="uploadmain">
             <form method="POST" enctype="multipart/form-data">
-                <div class="right">
-                    價格: <input type="text" class="input" name="price" placeholder="只支援正整數"><br><br>
-                    主題: <select name="subject">
-                        <?php
-                            $row=query($db,"SELECT*FROM `subject`");
-                            for($i=0;$i<count($row);$i=$i+1){
-                                ?><option value="<?php echo($row[$i][0]); ?>"><?php echo($row[$i][1]); ?></option><?php
-                            }
-                            ?>
-                    </select><br><br>
-                    圖片(可複選): <input type="file" name="file[]" accept="image/*" multiple><br><br>
-                    內文: <textarea name="context" cols="30" rows="10"></textarea><br><br>
-                </div>
-                <div class="left">
-                    line: <input type="text" class="input" name="linelink"><br><br>
-                    messenger: <input type="text" class="input" name="messenglink"><br><br>
-                    8591: <input type="text" class="input" name="8591link"><br><br>
-                    <input type="reset" class="button" value="清除">
-                    <input type="submit" class="button" name="submit" value="送出">
+                <div class="grid">
+                    <div class="uploadright">
+                        <div class="ycenter">
+                            價格: <input type="text" class="input" name="price" placeholder="只支援正整數"><br><br>
+                            主題: <select class="select" name="subject">
+                                <?php
+                                    $row=query($db,"SELECT*FROM `subject`");
+                                    for($i=0;$i<count($row);$i=$i+1){
+                                        ?><option value="<?php echo($row[$i][0]); ?>"><?php echo($row[$i][1]); ?></option><?php
+                                    }
+                                    ?>
+                            </select><br><br>
+                            圖片(可複選): <input type="reset" class="navigationbarbutton" onclick="click('file')" value="上傳圖片"><br><br>
+                            <textarea class="textarea" name="context" cols="30" rows="10" placeholder="內文"></textarea><br><br>
+                            <input type="file" class="file" name="file[]" id="file" accept="image/*" multiple>
+                        </div>
+                    </div>
+                    <div class="uploadleft">
+                        <div class="ycenter">
+                            line<br>
+                            <input type="text" class="input" name="linelink"><br><br>
+                            messenger<br>
+                            <input type="text" class="input" name="messenglink"><br><br>
+                            8591<br>
+                            <input type="text" class="input" name="8591link"><br><br>
+                            <input type="reset" class="button" value="清除">
+                            <input type="submit" class="button" name="submit" value="送出">
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -58,7 +68,7 @@
                 if(!preg_match("/^[0-9]+$/",$price)){
                     ?><script>alert("價格有誤(只支援正整數)");location.href="upload.php"</script><?php
                 }else{
-                    query($db,"INSERT INTO `item`(`subjectid`,`context`,`imagecount`,`linelink`,`messengerlink`,`8591link`)VALUES(?,?,?,?,?,?)",[$subject,$context,count($_FILES["file"]["name"]),$linkline,$linkmessenger,$link8591]);
+                    query($db,"INSERT INTO `item`(`subjectid`,`context`,`price`,`imagecount`,`linelink`,`messengerlink`,`8591link`)VALUES(?,?,?,?,?,?,?)",[$subject,$context,$price,count($_FILES["file"]["name"]),$linkline,$linkmessenger,$link8591]);
                     $row=query($db,"SELECT*FROM `item`");
                     $row=$row[count($row)-1][0];
                     echo "\$row ="; print_r($row); echo "<br>";
@@ -81,5 +91,6 @@
                 }
             }
         ?>
+        <script src="upload.js"></script>
     </body>
 </html>

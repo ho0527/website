@@ -211,6 +211,9 @@ table{
     color: white;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .a:hover{
@@ -302,6 +305,8 @@ table{
     grid-column: 20/100;
     grid-row: 3/18;
     border: 1px white solid;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .listname{
@@ -334,7 +339,6 @@ table{
     width: 20%;
     height: 50%;
     margin: 20px;
-    display: inline-block;
     cursor: pointer;
 }
 
@@ -365,7 +369,144 @@ table{
 
 
 
+/* ----------------------------------item START---------------------------------------- */
+
+.carousel{
+    grid-column: 2/60;
+    grid-row: 2/15;
+    border: 1px white solid;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subject{
+    grid-column: 65/100;
+    grid-row: 2/4;
+    border: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemcontext{
+    grid-column: 65/100;
+    grid-row: 4/15;
+    text-align: justify;
+    border: 1px white solid;
+    padding: 20px;
+}
+
+.price{
+    grid-column: 65/100;
+    grid-row: 15/17;
+    border: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkline{
+    grid-column: 2/20;
+    grid-row: 15/17;
+}
+
+.linkmessenger{
+    grid-column: 22/40;
+    grid-row: 15/17;
+}
+
+.link8591{
+    grid-column: 42/60;
+    grid-row: 15/17;
+}
+
+.carouselitem{
+    position: absolute;
+    width: 100%;
+    max-height: 90%;
+    overflow: hidden;
+}
+
+.carouselimage{
+    width: 90%;
+}
+
+.carouselbuttondiv{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.carouselbutton{
+    border: 1px black solid;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.carouselbutton:hover{
+    background: gray;
+    color: white;
+}
+
+/* ----------------------------------item END---------------------------------------- */
+
+
+
+/* ----------------------------------login START---------------------------------------- */
+
+.uploadmain{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 60%;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.uploadright{
+    grid-column: 2/50;
+    grid-row: 1/18;
+    position: relative;
+    padding: 20px;
+}
+
+.uploadleft{
+    grid-column: 50/100;
+    grid-row: 1/18;
+    position: relative;
+    padding: 20px;
+}
+
+.select{
+    width: 70%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.textarea{
+    width: 90%;
+    height: 40%;
+    font-size: 20px;
+}
+
+/* ----------------------------------login END---------------------------------------- */
+
 .warning{
     color: red;
     font-size: 50px;
+}
+
+.file{
+    display: none;
 }
