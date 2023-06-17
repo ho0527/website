@@ -45,21 +45,22 @@
                 </div>
                 <div class="listright macossectiondiv">
                     <?php
-                        $row=query($db,"SELECT*FROM `item` WHERE `subjectid`='$id'");
-                        if(count($row)>0){
-                            for($i=0;$i<count($row);$i=$i+1){
-                                @$imagerow=query($db,"SELECT*FROM `itemimage` WHERE `itemid`='{$row[$i][0]}'")[0];
-                                ?>
-                                <div class="item" id="<?php echo($row[$i][0]); ?>">
-                                    <?php
-                                    if(isset($imagerow)){ ?><img src="<?php echo($imagerow[2]); ?>" class="itemimage"><?php }
+                        if($row=query($db,"SELECT*FROM `item` WHERE `subjectid`='$id'")){
+                            if(count($row)>0){
+                                for($i=0;$i<count($row);$i=$i+1){
+                                    @$imagerow=query($db,"SELECT*FROM `itemimage` WHERE `itemid`='{$row[$i][0]}'")[0];
                                     ?>
-                                </div>
-                                <?php
+                                    <div class="item" id="<?php echo($row[$i][0]); ?>">
+                                        <?php
+                                        if(isset($imagerow)){ ?><img src="<?php echo($imagerow[2]); ?>" class="itemimage"><?php }
+                                        ?>
+                                    </div>
+                                    <?php
+                                }
+                            }else{
+                                ?><div class="warning">目前無商品</div><?php
                             }
-                        }else{
-                            ?><div class="warning">目前無商品</div><?php
-                        }
+                        }else{ ?><script>alert("查無此項目");location.href="index.php"</script><?php }
                     ?>
                 </div>
             </div>
