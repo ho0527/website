@@ -33,40 +33,37 @@
             <div class="grid">
                 <?php
                     $id=$_GET["id"];
-                    $row=query($db,"SELECT*FROM `item` WHERE `id`='$id'")[0];
-                    $imagerow=query($db,"SELECT*FROM `itemimage` WHERE `itemid`='$id'");
+                    $row=query($db,"SELECT*FROM `subject` WHERE `id`='$id'")[0];
                 ?>
-                <div class="carousel">
+                <div class="listtopgrid" id="<?php echo($row[0]); ?>">
+                    <div class="listname"><?php echo($row[1]); ?></div>
+                    <div class="listcontext"><?php echo($row[2]); ?></div>
+                    <input type="button" class="listupload button" onclick="location.href='login.php'" value="上架商品">
+                </div>
+                <div class="listleft macossectiondiv">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum harum dolor provident odio eum corporis, ratione alias, doloribus voluptate labore, repellat animi? Molestiae fugiat non doloribus in. Illum, consectetur aliquam.<br>
+                </div>
+                <div class="listright macossectiondiv">
                     <?php
-                        for($i=0;$i<count($imagerow);$i=$i+1){
-                            ?>
-                            <div class="carouselitem">
-                                <img src="<?php echo($imagerow[$i][2]) ?>" class="carouselimage">
-                            </div>
-                            <?php
+                        $row=query($db,"SELECT*FROM `item` WHERE `subjectid`='$id'");
+                        if(count($row)>0){
+                            for($i=0;$i<count($row);$i=$i+1){
+                                @$imagerow=query($db,"SELECT*FROM `itemimage` WHERE `itemid`='{$row[$i][0]}'")[0];
+                                ?>
+                                <div class="item" id="<?php echo($row[$i][0]); ?>">
+                                    <?php
+                                    if(isset($imagerow)){ ?><img src="<?php echo($imagerow[2]); ?>" class="itemimage"><?php }
+                                    ?>
+                                </div>
+                                <?php
+                            }
+                        }else{
+                            ?><div class="warning">目前無商品</div><?php
                         }
                     ?>
-                    <div class="carouselbuttondiv">
-                        <input type="button" class="carouselbutton prevnext" id="prev" value="prev">
-                        <?php
-                            for($i=0;$i<count($imagerow);$i=$i+1){
-                                ?><input type="button" class="carouselbutton indicator" value="<?php echo($i+1) ?>"><?php
-                            }
-                        ?>
-                        <input type="button" class="carouselbutton prevnext" id="next" value="next">
-                    </div>
                 </div>
-                <div class="subject">主題:<?php echo(query($db,"SELECT*FROM `subject` WHERE `id`='$row[1]'")[0][1]); ?></div>
-                <div class="itemcontext">
-                    詳細介紹:<br>
-                    <?php echo($row[2]); ?>
-                </div>
-                <div class="price">價格: <?php echo($row[3]); ?> TWD</div>
-                <a class="linkline a" href="<?php echo($row[5]); ?>">Line</a>
-                <a class="linkmessenger a" href="<?php echo($row[6]); ?>">Messenger</a>
-                <a class="link8591 a" href="<?php echo($row[7]); ?>">8591</a>
             </div>
         </div>
-        <script src="item.js"></script>
+        <script src="list.js"></script>
     </body>
 </html>

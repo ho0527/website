@@ -1,1 +1,1 @@
-function click(file){ document.getElementById(file).click() }
+function fileclick(file){ document.getElementById(file).click() }
