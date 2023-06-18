@@ -1,0 +1,11 @@
+<?php
+    $str=$_GET["str"];
+    $canva=imagecreate(50,50);
+    imagecolorallocate($canva,255,255,255);
+    $paint=imagecolorallocate($canva,0,0,0);
+    $font=__DIR__."/font.TTF";
+    imagettftext($canva,30,0,15,40,$paint,$font,$str);
+    header("content-type:image/png");
+    imagepng($canva);
+    imagedestroy($canva);
+?>

@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="../index.css">
+        <!-- <link rel="stylesheet" href="../index.css"> -->
+        <link rel="stylesheet" href="../phone.css">
         <link rel="stylesheet" href="../plugin/css/macossection.css">
         <link rel="stylesheet" href="../plugin/css/sort.css">
         <script src="../plugin/js/macossection.js"></script>

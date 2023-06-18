@@ -1,0 +1,60 @@
+<?php
+    include('link.php');
+    if(isset($_GET["username"])){
+        if(!isset($_SESSION["error"])){
+            $_SESSION["error"]=0;
+        }
+        $username=$_GET["username"];
+        $password=$_GET["password"];
+        $_SESSION["username"]=$username;
+        $_SESSION["password"]=$password;
+        if($row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0]){
+            if($row[2]==$password){
+                $verifyans=str_split($_SESSION["verifycode"]);
+                $verify=str_split($_GET["verifycode"]);
+                if($_SESSION["key"]==0){
+                    rsort($verifyans);
+                }else{
+                    sort($verifyans);
+                }
+                if($verifyans==$verify){
+                    query($db,"INSERT INTO `data`(`number`,`username`,`password`,`name`,`permission`,`move1`,`move2`,`movetime`)VALUES(?,?,?,?,?,'登入','成功','$time')",[$row[4],$row[1],$row[2],$row[3],$row[5]]);
+                    session_unset();
+                    $_SESSION["data"]=$row[4];
+                    $_SESSION["permission"]=$row[5];
+                    $_SESSION["timer"]=30;
+                    ?><script>alert("登入成功");location.href="verify.php"</script><?php
+                }else{
+                    $_SESSION["error"]=$_SESSION["error"]+1;
+                    if($_SESSION["error"]<3){
+                        ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
+                    }else{
+                        query($db,"INSERT INTO `data`(`number`,`username`,`password`,`name`,`permission`,`move1`,`move2`,`movetime`)VALUES(?,?,?,?,?,'登入','失敗','$time')",[$row[4],$row[1],$row[2],$row[3],$row[5]]);
+                        session_unset();
+                        ?><script>alert("圖形驗證碼有誤");location.href="usererror.php"</script><?php
+                    }
+                }
+            }else{
+                $_SESSION["error"]=$_SESSION["error"]+1;
+                if($_SESSION["error"]<3){
+                    ?><script>alert("密碼有誤");location.href="index.php"</script><?php
+                }else{
+                    query($db,"INSERT INTO `data`(`number`,`username`,`password`,`name`,`permission`,`move1`,`move2`,`movetime`)VALUES(?,?,?,?,?,'登入','失敗','$time')",[$row[4],$row[1],$row[2],$row[3],$row[5]]);
+                    session_unset();
+                    ?><script>alert("密碼有誤");location.href="usererror.php"</script><?php
+                }
+            }
+        }else{
+            $_SESSION["error"]=$_SESSION["error"]+1;
+            if($_SESSION["error"]<3){
+                ?><script>alert("帳號有誤");location.href="index.php"</script><?php
+            }else{
+                query($db,"INSERT INTO `data`(`number`,`username`,`password`,`name`,`permission`,`move1`,`move2`,`movetime`)VALUES('N/A','','','','','登入','失敗','$time')",[$row[4],$row[1],$row[2],$row[3],$row[5]]);
+                session_unset();
+                ?><script>alert("帳號有誤");location.href="usererror.php"</script><?php
+            }
+        }
+    }else{
+        ?><script>alert("未知錯誤請重新登入");location.href="index.php"</script><?php
+    }
+?>
