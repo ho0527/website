@@ -8,7 +8,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
@@ -85,13 +85,13 @@
                     if(isset($_POST["adminbox"])){
                         query($db,"INSERT INTO `user`(`username`,`password`,`name`,`permission`)VALUES(?,?,?,'管理者')",[$username,$password,$name]);
                         $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
-                        $number=str_pad(($row[0]-1),4,"0",STR_PAD_LEFT);
+                        $number=str_pad(($row[0]-1),5,"0",STR_PAD_LEFT);
                         query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
                         ?><script>alert("新增成功!");location.href="admin.php"</script><?php
                     }else{
                         query($db,"INSERT INTO `user`(`username`,`password`,`name`,`permission`)VALUES(?,?,?,'一般使用者')",[$username,$password,$name]);
                         $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
-                        $number=str_pad(($row[0]-1),4,"0",STR_PAD_LEFT);
+                        $number=str_pad(($row[0]-1),5,"0",STR_PAD_LEFT);
                         query($db,"UPDATE `user` SET `number`='$number' WHERE `username`=?",[$username]);
                         ?><script>alert("新增成功!");location.href="admin.php"</script><?php
                     }

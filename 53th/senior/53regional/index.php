@@ -20,7 +20,7 @@
             <form method="POST">
                 帳號: <input type="text" class="input" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br><br>
                 密碼: <input type="text" class="input" name="password" id="password" value="<?= @$_SESSION["password"] ?>"><br><br>
-                <div class="dragdiv">驗證碼</div>
+                <div class="dragdiv">圖形驗證碼</div>
                 <?php
                     $_SESSION["verifycode"]="";
                     for($i=0;$i<4;$i=$i+1){
@@ -47,12 +47,12 @@
                 </div>
                 <div class="dropbox" id="dropbox"></div><br><br>
                 <input type="submit" class="button" name="reflashpng" value="重新產生">
-                <input type="button" class="button" name="clear" onclick="location.href='?clear='" value="清除">
-                <button type="button" class="button" onclick="loginclick()">登入</button><br><br>
+                <input type="button" class="button" onclick="location.href='?clear='" value="清除">
+                <input type="button" class="button" onclick="loginclick()" value="登入">
                 <?php
                     if(isset($_POST["reflashpng"])){
-                        @$_SESSION["username"]=$_POST["username"];
-                        @$_SESSION["password"]=$_POST["password"];
+                        $_SESSION["username"]=$_POST["username"];
+                        $_SESSION["password"]=$_POST["password"];
                         header("location:index.php");
                     }
                     if(isset($_GET["clear"])){

@@ -8,6 +8,10 @@
         <script src="plugin/js/macossection.js"></script>
     </head>
     <body>
+        <?php
+            include("link.php");
+            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
+        ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
                 <div class="navigationbartitle">咖啡商品展示系統-選擇版型</div>
@@ -30,28 +34,7 @@
             </div>
         </div>
         <div class="productmain macossectiondiv">
-            <!-- <div class="producttest">
-                <div class="productleft">
-                    <div class="id">id=2</div>
-                    <div class="name" style="grid-column: 50/100;grid-row: 3/5;">商品名稱: test</div>
-                    <div class="cost" style="grid-column: 50/100;grid-row: 16/18;">費用: 41100</div>
-                    <div class="date" style="grid-column: 50/100;grid-row: 13/15;">發布日期: 212121</div>
-                    <div class="link" style="grid-column: 1/50;grid-row: 16/18;">相關連結: hear</div>
-                    <div class="introduction" style="grid-column: 50/100;grid-row: 6/12;">商品簡介: test</div>
-                    <div class="picture" style="grid-column: 1/50;grid-row: 3/15;">圖片: test1</div>
-                </div>
-                <div class="productright">
-                    <div class="id" style="grid-column: 1/100;grid-row: 1;">id=2</div>
-                    <div class="name" style="grid-column: 50/100;grid-row: 3/5;">商品名稱: test</div>
-                    <div class="cost" style="grid-column: 50/100;grid-row: 15/18">費用: 41100</div>
-                    <div class="date" style="grid-column: 50/100;grid-row: 12/14;">發布日期: 212121</div>
-                    <div class="link" style="grid-column: 1/50;grid-row: 15/18;">相關連結: hear</div>
-                    <div class="introduction" style="grid-column: 50/100;grid-row: 6/11;">商品簡介: test</div>
-                    <div class="picture" style="grid-column: 1/50;grid-row: 3/14;">圖片: test1</div>
-                </div>
-            </div> -->
             <?php
-                include("link.php");
                 $row=query($db,"SELECT*FROM `product`");
                 $count=0;
                 for($i=0;$i<count($row);$i=$i+1){
@@ -72,6 +55,7 @@
                     if($count%2==1||count($row)-1==$i){ ?></div><?php }
                     $count=$count+1;
                 }
+
                 if(isset($_GET["val"])){
                     if(isset($_SESSION["val"])){
                     ?><script>location.href="productinput.php"</script><?php

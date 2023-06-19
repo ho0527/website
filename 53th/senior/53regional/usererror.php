@@ -15,7 +15,7 @@
         </div>
         <div class="main">
             <h2>登入失敗</h2>
-            <h3>登入連續誤錯3次</h3>
+            <h3>登入連續錯誤3次</h3>
             <input type="button" class="button" onclick="location.href='index.php'" value="返回登入介面">
         </div>
     </body>

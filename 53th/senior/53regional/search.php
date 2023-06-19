@@ -4,59 +4,115 @@
         <meta charset="UTF-8">
         <title>一般會員專區</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="plugin/css/macossection.css">
+        <script src="plugin/js/macossection.js"></script>
     </head>
     <body>
         <div class="navigationbar">
             <form class="navigationbardiv">
                 <?php
                     include("link.php");
+                    if(!isset($_SESSION["data"])){ header("location:index.php"); }
                     if($_SESSION["permission"]=="管理者"){
                         ?>
-                        咖啡商品展示系統-&nbsp&nbsp查詢&nbsp&nbsp
-                        <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
-                        <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
-                        <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-                        <input type="button" class="adminbutton selectbut" onclick="location.href='search.php'" value="查詢">
-                        <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-                        <input type="submit" class="adminbutton" name="logout" value="登出">
+                        <div class="navigationbar">
+                            <div class="navigationbarleft">
+                                <div class="navigationbartitle">咖啡商品展示系統-查詢</div>
+                            </div>
+                            <div class="navigationbarright">
+                                <input type="button" class="navigationbarbutton" onclick="location.href='main.php'" value="首頁">
+                                <input type="button" class="navigationbarbutton" onclick="location.href='productindex.php'" value="上架商品">
+                                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='search.php'" value="查詢">
+                                <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
+                                <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
+                            </div>
+                        </div>
                         <?php
                     }else{
                         ?>
-                        咖啡商品展示系統-&nbsp&nbsp查詢&nbsp&nbsp
-                        <input type="button" class="adminbutton" onclick="location.href='main.php'" value="首頁">
-                        <input type="button" class="adminbutton" value="上架商品">
-                        <input type="button" class="adminbutton selectbut" onclick="location.href='search.php'" value="查詢">
-                        <input type="submit" class="adminbutton" name="logout" value="登出">
+                        <div class="navigationbar">
+                            <div class="navigationbarleft">
+                                <div class="navigationbartitle">咖啡商品展示系統-查詢</div>
+                            </div>
+                            <div class="navigationbarright">
+                                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.php'" value="首頁">
+                                <input type="button" class="navigationbarbutton" value="標題">
+                                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='search.php'" value="查詢">
+                                <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
+                            </div>
+                        </div>
                         <?php
                     }
                     ?>
             </form>
         </div>
-        <div class="searchtd1">
+        <div class="searchbar">
             <form>
-                <div class="radiobox">
+                <div class="center">
                     數字範圍:<input type="radio" class="radio" name="but" id="numb" value="num">
                     關鍵字:<input type="radio" class="radio" name="but" id="text" value="text">
                 </div>
                 <div class="radiosearchtext" id="radiosearchtext"></div>
             </form>
         </div>
-        <table class="maintable">
-            <?php
-                if(isset($_GET["submit"])){
-                    if($_GET["but"]=="num"){
-                        $start=$_GET["start"];
-                        $end=$_GET["end"];
-                        product(query($db,"SELECT*FROM `coffee` WHERE '$start'<=`cost` AND `cost`<='$end'"),1,$db);
-                    }else{
-                        $text=$_GET["maintext"];
-                        product(query($db,"SELECT*FROM `coffee` WHERE `name`LIKE'%$text%' or `introduction`LIKE'%$text%' or `cost`LIKE'%$text%' or `date`LIKE'%$text%' or `link`LIKE'%$text%'"),1,$db);
+        <?php
+            if($_SESSION["permission"]=="管理者"){
+                ?>
+                <div class="productmain macossectiondiv">
+                    <?php
+                    $row=query($db,"SELECT*FROM `coffee`");
+                    $count=0;
+                    for($i=0;$i<count($row);$i=$i+1){
+                        $data="productleft";
+                        if($count%2==0){ ?><div class="productdiv"><?php }
+                        if($count%2==1){ $data="productright"; }
+                        $productrow=query($db,"SELECT*FROM `product` WHERE `id`=?",[$row[$i][7]])[0];
+                        ?>
+                        <div class="<?php echo($data); ?> product">
+                            <div class="id"><input type="button" onclick="location.href='productedit.php?id=<?php echo($row[$i][0]+1); ?>'" value="修改"></div>
+                            <div class="name macossectiondiv" style="<?php echo($productrow[1]) ?>">商品名稱: <?php echo($row[$i][2]); ?></div>
+                            <div class="cost macossectiondiv" style="<?php echo($productrow[2]) ?>">費用: <?php echo($row[$i][4]); ?></div>
+                            <div class="date macossectiondiv" style="<?php echo($productrow[3]) ?>">發布日期: <?php echo($row[$i][5]); ?></div>
+                            <div class="link macossectiondiv" style="<?php echo($productrow[4]) ?>">相關連結: <?php echo($row[$i][6]); ?></div>
+                            <div class="introduction macossectiondiv" style="<?php echo($productrow[5]) ?>">商品簡介: <?php echo($row[$i][3]); ?></div>
+                            <div class="picture macossectiondiv" style="<?php echo($productrow[6]) ?>"><img src="<?php echo($row[$i][1]); ?>" class="img" width="175px"></div>
+                        </div>
+                        <?php
+                        if($count%2==1||count($row)-1==$i){ ?></div><?php }
+                        $count=$count+1;
                     }
-                }else{
-                    product(query($db,"SELECT*FROM `coffee`"),1,$db);
-                }
-            ?>
-        </table>
+                    ?>
+                </div>
+                <?php
+            }else{
+                ?>
+                <div class="productmain macossectiondiv">
+                    <?php
+                    $row=query($db,"SELECT*FROM `coffee`");
+                    $count=0;
+                    for($i=0;$i<count($row);$i=$i+1){
+                        $data="productleft";
+                        if($count%2==0){ ?><div class="productdiv"><?php }
+                        if($count%2==1){ $data="productright"; }
+                        $productrow=query($db,"SELECT*FROM `product` WHERE `id`=?",[$row[$i][7]])[0];
+                        ?>
+                        <div class="<?php echo($data); ?> product">
+                            <div class="name macossectiondiv" style="<?php echo($productrow[1]) ?>">商品名稱: <?php echo($row[$i][2]); ?></div>
+                            <div class="cost macossectiondiv" style="<?php echo($productrow[2]) ?>">費用: <?php echo($row[$i][4]); ?></div>
+                            <div class="date macossectiondiv" style="<?php echo($productrow[3]) ?>">發布日期: <?php echo($row[$i][5]); ?></div>
+                            <div class="link macossectiondiv" style="<?php echo($productrow[4]) ?>">相關連結: <?php echo($row[$i][6]); ?></div>
+                            <div class="introduction macossectiondiv" style="<?php echo($productrow[5]) ?>">商品簡介: <?php echo($row[$i][3]); ?></div>
+                            <div class="picture macossectiondiv" style="<?php echo($productrow[6]) ?>"><img src="<?php echo($row[$i][1]); ?>" class="img" width="175px"></div>
+                        </div>
+                        <?php
+                        if($count%2==1||count($row)-1==$i){ ?></div><?php }
+                        $count=$count+1;
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+        ?>
         <script src="usersearch.js"></script>
     </body>
 </html>

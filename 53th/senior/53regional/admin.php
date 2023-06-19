@@ -11,7 +11,7 @@
         <?php
             include("link.php");
             include("admindef.php");
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">

@@ -8,6 +8,7 @@
    <body>
         <?php
             include("link.php");
+            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
             if(isset($_GET["id"])){
                 $_SESSION["id"]=$_GET["id"];
             }
@@ -15,24 +16,25 @@
             $row=query($db,"SELECT*FROM `coffee` WHERE `id`='$id'");
         ?>
         <div class="navigationbar">
-            <form class="navigationbardiv">
-                咖啡商品展示系統-編輯
-                <input type="button" class="adminbutton" onclick="location.href='signupedit.php'" value="新增">
-                <input type="button" class="adminbutton selectbut" onclick="location.href='main.php'" value="首頁">
-                <input type="button" class="adminbutton" onclick="location.href='productindex.php'" value="上架商品">
-                <input type="button" class="adminbutton" onclick="location.href='search.php'" value="查詢">
-                <input type="button" class="adminbutton" onclick="location.href='manage.php'" value="會員管理">
-                <input type="submit" class="adminbutton" name="logout" value="登出">
-            </form>
+            <div class="navigationbarleft">
+                <div class="navigationbartitle">咖啡商品展示系統-編輯商品</div>
+            </div>
+            <div class="navigationbarright">
+                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.php'" value="首頁">
+                <input type="button" class="navigationbarbutton" onclick="location.href='productindex.php'" value="上架商品">
+                <input type="button" class="navigationbarbutton" onclick="location.href='search.php'" value="查詢">
+                <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
+                <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
+            </div>
         </div>
-        <div class="signupdiv">
+        <div class="main">
             <form id="form" enctype="multipart/form-data">
-                商品名稱: <input type="text" class="indexinput" name="name" value="<?= @$row[2] ?>"><br>
-                費用: <input type="number" class="indexinput" name="cost" placeholder="只能是數字" value="<?= @$row[4] ?>"><br>
-                相關連結: <input type="text" class="indexinput" name="link" placeholder="" value="<?= @$row[6] ?>"><br>
+                商品名稱: <input type="text" class="input" name="name" value="<?= @$row[2] ?>"><br>
+                費用: <input type="number" class="input" name="cost" placeholder="只能是數字" value="<?= @$row[4] ?>"><br>
+                相關連結: <input type="text" class="input" name="link" placeholder="" value="<?= @$row[6] ?>"><br>
                 <textarea name="introduction" cols="30" rows="2" placeholder="商品簡介"><?= @$row[3] ?></textarea><br>
                 <input type="file" name="picture" accept="image/*" style="width:200px" value="上傳圖片"><br>
-                版型: <input type="text" class="indexinput" name="val" placeholder="1or2" value="<?= @$row[7] ?>"><br>
+                版型: <input type="text" class="input" name="val" placeholder="1or2" value="<?= @$row[7] ?>"><br>
                 <input type="button" onclick="location.href='productedit.php'" class="button" value="重設">
                 <input type="button" onclick="location.href='main.php'" class="button" value="返回">
                 <input type="submit" class="button" name="submit" value="完成"><br>
