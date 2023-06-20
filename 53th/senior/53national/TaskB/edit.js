@@ -181,7 +181,6 @@ document.addEventListener("keydown",function(event){
     if(event.ctrlKey&&event.shiftKey&&event.key=="z"){ event.preventDefault();redo() }
     if(event.ctrlKey&&event.key=="s"){ event.preventDefault();save() }
     if(event.key=="Escape"){ event.preventDefault();location.reload() } 
-
 })
 
 document.querySelectorAll(".button").forEach(function(event){
@@ -276,8 +275,21 @@ document.getElementById("newlayer").onclick=function(){
     let canvas=document.createElement("canvas")
     canvas.classList.add("canva")
     canvas.id="canva"+canvacount
+    canvas.width=width
+    canvas.height=height
     document.getElementById("main").appendChild(canvas)
+    canva=document.getElementById("canva"+canvacount)
+    ctx=canva.getContext("2d")
     sort("layergrid","#layer")
+    document.querySelectorAll(".layergrid").forEach(function(event){
+        event.style.borderBottom="1px white solid"
+        event.onclick=function(){
+            event.style.borderBottom="1px yellow solid"
+            document.querySelectorAll(".layergrid").forEach(function(foreachevent){
+                foreachevent.style.borderBottom="1px white solid"
+            })
+        }
+    })
     document.querySelectorAll(".layerdel").forEach(function(event){
         event.onclick=function(){
             let id=this.getAttribute("data-id")
