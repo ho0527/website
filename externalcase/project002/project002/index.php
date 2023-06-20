@@ -48,12 +48,15 @@
                     <div class="mainrightgrid">
                         <img src="icon/image-01.jpg" class="mainimage"><br>
                         <div class="context">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque aliquam officiis modi eaque nisi voluptates incidunt eos architecto inventore beatae non doloribus ab tempora animi eligendi officia, quos dolore. Obcaecati!</div><br>
-                        <input type="button" class="button" onclick="location.href='index.php'" value="line">
-                        <input type="button" class="button" onclick="location.href='index.php'" value="message">
+                        <div class="indexbuttondiv">
+                            <a class="a" href="">Line</a>
+                            <a class="a" href="">Messenger</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <script src="index.js"></script>
+        <script src="windowsize.js"></script>
     </body>
 </html>

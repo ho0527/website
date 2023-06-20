@@ -332,23 +332,29 @@ document.addEventListener("pointerup",function(){
         if(document.getElementById("mainimage")){ document.getElementById("mainimage").style.display="block" }
         if(mod=="paint"){
             let tempdata=data[datacount]
-            let minx = Math.min(...tempdata[0])
-            let miny = Math.min(...tempdata[1])
-            let maxx = Math.max(...tempdata[0])
-            let maxy = Math.max(...tempdata[1])
 
-            ctx.rect(minx-5, miny-5, maxx - minx+5, maxy - miny+5)
+            let datasortx=tempdata[0].sort(function(a,b){ return a-b })
+            let datasorty=tempdata[1].sort(function(a,b){ return a-b })
+            let minx=datasortx[0]
+            let miny=datasorty[0]
+            let maxx=datasortx[datasortx.length-1]
+            let maxy=datasorty[datasorty.length-1]
 
-            // let datasortx = tempdata[0].sort((a, b) => { return a - b })
-            // console.log(datasortx);
-            // let datasorty = tempdata[1].sort()
-            // data[datacount].push([datasortx[0], datasorty[0], datasortx[datasortx.length - 1], datasorty[datasorty.length - 1]])
-            // ctx.moveTo(data[datacount][2][0]-5,data[datacount][2][1]-5)
-            // ctx.lineTo(data[datacount][2][0]-5,data[datacount][2][3]+5)
-            // ctx.lineTo(data[datacount][2][2]+5,data[datacount][2][3]+5)
-            // ctx.lineTo(data[datacount][2][2]+5,data[datacount][2][1]-5)
-            // ctx.lineTo(data[datacount][2][0]-5,data[datacount][2][1]-5)
-            // ctx.stroke()
+            // let minx=Math.min(...tempdata[0])
+            // let miny=Math.min(...tempdata[1])
+            // let maxx=Math.max(...tempdata[0])
+            // let maxy=Math.max(...tempdata[1])
+
+            // let minx=tempdata[0].reduce(function(a,b){ return Math.min(a,b) })
+            // let miny=tempdata[1].reduce(function(a,b){ return Math.min(a,b) })
+            // let maxx=tempdata[0].reduce(function(a,b){ return Math.max(a,b) })
+            // let maxy=tempdata[1].reduce(function(a,b){ return Math.max(a,b) })
+
+            data[datacount].push([minx,miny,maxx,maxy])
+            ctx.strokeStyle="blue"
+            ctx.lineWidth=1
+            ctx.rect(minx-5-thick,miny-5-thick,maxx-minx+5+thick*2,maxy-miny+5+thick*2)
+            ctx.stroke()
             console.log(data)
             datacount=datacount+1
             console.log(minx)
