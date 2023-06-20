@@ -639,6 +639,17 @@ usersearch
     margin: 20px 0px;
 }
 
+.productmid{
+    grid-column: 25/75;
+    grid-row: 1/18;
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    border: 1px white solid;
+    padding: 20px;
+}
+
 .productleft{
     grid-column: 1/50;
     grid-row: 1/18;
@@ -685,6 +696,7 @@ usersearch
 
 .introduction{
     background: rgb(253, 159, 76);
+    text-align: left;
 }
 
 .picture{
@@ -696,4 +708,8 @@ usersearch
 
 .file{
     display: none;
+}
+
+.shortinput{
+    width: 50%;
 }

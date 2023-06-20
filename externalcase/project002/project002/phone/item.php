@@ -5,18 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="plugin/css/macossection.css">
-        <link rel="stylesheet" href="plugin/css/sort.css">
-        <script src="plugin/js/macossection.js"></script>
-        <script src="plugin/js/sort.js"></script>
+        <!-- <link rel="stylesheet" href="../phone.css"> -->
+        <link rel="stylesheet" href="../plugin/css/macossection.css">
+        <link rel="stylesheet" href="../plugin/css/sort.css">
+        <script src="../plugin/js/macossection.js"></script>
+        <script src="../plugin/js/sort.js"></script>
     </head>
     <body>
-        <?php include("link.php"); ?>
+        <?php include("../link.php"); ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
-                <img src="icon/logo.png" class="logo">
+                <img src="../icon/logo.png" class="logo">
             </div>
             <div class="navigationbarright">
+                <img src="../icon/menu-outline.svg" class="menu" id="menubutton" draggable="false">
+            </div>
+            <div class="menudiv" id="menu">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="貨幣">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="進行">
@@ -24,7 +28,7 @@
                     if(isset($_SESSION["data"])){
                         ?><input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出"><?php
                     }else{
-                        ?><input type="button" class="navigationbarbutton" onclick="location.href='login.php'" value="登入"><?php
+                        ?><input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='login.php'" value="登入"><?php
                     }
                 ?>
             </div>
@@ -41,7 +45,7 @@
                         for($i=0;$i<count($imagerow);$i=$i+1){
                             ?>
                             <div class="carouselitem">
-                                <img src="<?php echo($imagerow[$i][2]) ?>" class="carouselimage">
+                                <img src="../<?php echo($imagerow[$i][2]) ?>" class="carouselimage">
                             </div>
                             <?php
                         }
@@ -67,6 +71,6 @@
                 <a class="link8591 a" href="<?php echo($row[7]); ?>">8591</a>
             </div>
         </div>
-        <script src="item.js"></script>
+        <script src="../item.js"></script>
     </body>
 </html>

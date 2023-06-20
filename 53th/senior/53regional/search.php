@@ -55,64 +55,32 @@
                 <div class="radiosearchtext" id="radiosearchtext"></div>
             </form>
         </div>
-        <?php
-            if($_SESSION["permission"]=="管理者"){
+        <div class="productmain macossectiondiv">
+            <?php
+            $row=query($db,"SELECT*FROM `coffee`");
+            usort($row,function($a,$b){ return $b[0]-$a[0]; });
+            $count=0;
+            for($i=0;$i<count($row);$i=$i+1){
+                $data="productleft";
+                if($count%2==0){ ?><div class="productdiv"><?php }
+                if($count%2==1){ $data="productright"; }
+                $productrow=query($db,"SELECT*FROM `product` WHERE `id`=?",[$row[$i][7]])[0];
                 ?>
-                <div class="productmain macossectiondiv">
-                    <?php
-                    $row=query($db,"SELECT*FROM `coffee`");
-                    $count=0;
-                    for($i=0;$i<count($row);$i=$i+1){
-                        $data="productleft";
-                        if($count%2==0){ ?><div class="productdiv"><?php }
-                        if($count%2==1){ $data="productright"; }
-                        $productrow=query($db,"SELECT*FROM `product` WHERE `id`=?",[$row[$i][7]])[0];
-                        ?>
-                        <div class="<?php echo($data); ?> product">
-                            <div class="id"><input type="button" onclick="location.href='productedit.php?id=<?php echo($row[$i][0]+1); ?>'" value="修改"></div>
-                            <div class="name macossectiondiv" style="<?php echo($productrow[1]) ?>">商品名稱: <?php echo($row[$i][2]); ?></div>
-                            <div class="cost macossectiondiv" style="<?php echo($productrow[2]) ?>">費用: <?php echo($row[$i][4]); ?></div>
-                            <div class="date macossectiondiv" style="<?php echo($productrow[3]) ?>">發布日期: <?php echo($row[$i][5]); ?></div>
-                            <div class="link macossectiondiv" style="<?php echo($productrow[4]) ?>">相關連結: <?php echo($row[$i][6]); ?></div>
-                            <div class="introduction macossectiondiv" style="<?php echo($productrow[5]) ?>">商品簡介: <?php echo($row[$i][3]); ?></div>
-                            <div class="picture macossectiondiv" style="<?php echo($productrow[6]) ?>"><img src="<?php echo($row[$i][1]); ?>" class="img" width="175px"></div>
-                        </div>
-                        <?php
-                        if($count%2==1||count($row)-1==$i){ ?></div><?php }
-                        $count=$count+1;
-                    }
-                    ?>
+                <div class="<?php echo($data); ?> product">
+                    <?php if($_SESSION["permission"]=="管理者"){ ?><div class="id"><input type="button" onclick="location.href='productedit.php?id=<?php echo($row[$i][0]+1); ?>'" value="修改"></div><?php } ?>
+                    <div class="name macossectiondiv" style="<?php echo($productrow[1]) ?>">商品名稱: <?php echo($row[$i][2]); ?></div>
+                    <div class="cost macossectiondiv" style="<?php echo($productrow[2]) ?>">費用: <?php echo($row[$i][4]); ?></div>
+                    <div class="date macossectiondiv" style="<?php echo($productrow[3]) ?>">發布日期: <?php echo($row[$i][5]); ?></div>
+                    <div class="link macossectiondiv" style="<?php echo($productrow[4]) ?>">相關連結: <?php echo($row[$i][6]); ?></div>
+                    <div class="introduction macossectiondiv" style="<?php echo($productrow[5]) ?>">商品簡介: <?php echo($row[$i][3]); ?></div>
+                    <div class="picture macossectiondiv" style="<?php echo($productrow[6]) ?>"><img src="<?php echo($row[$i][1]); ?>" class="img" width="175px"></div>
                 </div>
                 <?php
-            }else{
-                ?>
-                <div class="productmain macossectiondiv">
-                    <?php
-                    $row=query($db,"SELECT*FROM `coffee`");
-                    $count=0;
-                    for($i=0;$i<count($row);$i=$i+1){
-                        $data="productleft";
-                        if($count%2==0){ ?><div class="productdiv"><?php }
-                        if($count%2==1){ $data="productright"; }
-                        $productrow=query($db,"SELECT*FROM `product` WHERE `id`=?",[$row[$i][7]])[0];
-                        ?>
-                        <div class="<?php echo($data); ?> product">
-                            <div class="name macossectiondiv" style="<?php echo($productrow[1]) ?>">商品名稱: <?php echo($row[$i][2]); ?></div>
-                            <div class="cost macossectiondiv" style="<?php echo($productrow[2]) ?>">費用: <?php echo($row[$i][4]); ?></div>
-                            <div class="date macossectiondiv" style="<?php echo($productrow[3]) ?>">發布日期: <?php echo($row[$i][5]); ?></div>
-                            <div class="link macossectiondiv" style="<?php echo($productrow[4]) ?>">相關連結: <?php echo($row[$i][6]); ?></div>
-                            <div class="introduction macossectiondiv" style="<?php echo($productrow[5]) ?>">商品簡介: <?php echo($row[$i][3]); ?></div>
-                            <div class="picture macossectiondiv" style="<?php echo($productrow[6]) ?>"><img src="<?php echo($row[$i][1]); ?>" class="img" width="175px"></div>
-                        </div>
-                        <?php
-                        if($count%2==1||count($row)-1==$i){ ?></div><?php }
-                        $count=$count+1;
-                    }
-                    ?>
-                </div>
-                <?php
+                if($count%2==1||count($row)-1==$i){ ?></div><?php }
+                $count=$count+1;
             }
-        ?>
+            ?>
+        </div>
         <script src="usersearch.js"></script>
     </body>
 </html>

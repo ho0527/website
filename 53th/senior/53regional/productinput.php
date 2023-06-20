@@ -32,11 +32,11 @@
         </div>
         <div class="main">
             <form id="form" method="POST" enctype="multipart/form-data">
-                商品名稱: <input type="text" class="input" name="name" value="<?= @$_SESSION["name"] ?>"><br><br>
-                費用: <input type="number" class="input" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br><br>
-                相關連結: <input type="text" class="input" name="link" value="<?= @$_SESSION["link"] ?>"><br><br>
+                商品名稱: <input type="text" class="input shortinput" name="name" value="<?= @$_SESSION["name"] ?>"><br><br>
+                費&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用: <input type="number" class="input shortinput" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br><br>
+                相關連結: <input type="text" class="input shortinput" name="link" value="<?= @$_SESSION["link"] ?>"><br><br>
                 <textarea name="introduction" cols="30" rows="4" placeholder="商品簡介"><?= @$_SESSION["introduction"] ?></textarea><br><br>
-                <input type="button" onclick="document.getElementById('file').click()" class="button" value="重設">
+                <input type="button" onclick="document.getElementById('file').click()" class="button" value="上傳圖片">
                 <input type="button" onclick="location.href='productinput.php?clear='" class="button" value="重設">
                 <input type="submit" class="button" name="submit" value="完成">
                 <input type="file" class="file" name="picture" id="file" accept="image/*" >
@@ -54,6 +54,9 @@
                     if(!empty($_FILES["picture"]["name"])){
                         move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
                         $_SESSION["picture"]="image/".$_FILES["picture"]["name"];
+                    }
+                    if(preg_match("/^[0-9]+(\.[0-9]+)$/",$_SESSION["cost"])){
+                        ?><script>alert("費用錯誤");location.href="productinput.php"</script><?php
                     }
                     header("location:productpreview.php");
                 }
