@@ -312,26 +312,19 @@ document.getElementById("newlayer").onclick=function(){
             document.getElementById("canva"+id).remove()
         }
     })
+    removealllistener()
     if(mod=="select"){
-        removealllistener()
         canva.addEventListener("pointerdown",selectdown)
         canva.addEventListener("pointermove",selectmove)
     }else if(mod=="paint"){
-        removealllistener()
         canva.addEventListener("pointerdown",paintdown)
         canva.addEventListener("pointermove",paintmove)
     }else if(mod=="bucket"){
-        removealllistener()
         canva.addEventListener("pointerdown",bucket)
     }else if(mod=="sample"){
-        removealllistener()
         canva.addEventListener("pointerdown",sampledown)
         canva.addEventListener("pointermove",samplemove)
-    }else if(mod=="setcanva"){
-        removealllistener()
-    }else{
-        removealllistener()
-    }
+    }else{ }
 }
 
 document.querySelectorAll(".layerdel").forEach(function(event){
