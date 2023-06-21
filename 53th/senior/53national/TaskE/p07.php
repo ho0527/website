@@ -4,7 +4,7 @@
     echo("p07\n");
 
     // 讀取起始單字和終止單字
-    $input=explode(" ", trim(fgets(STDIN)));
+    $input=explode(" ",trim(fgets(STDIN)));
     $start=$input[0];
     $end=$input[1];
 
@@ -15,11 +15,12 @@
     for($i=0;$i<$n;$i=$i+1){
         $data[]=trim(fgets(STDIN));
     }
+
     $ans=0; // 無法轉換到終止單字，返回 0
 
     // 將所有可能的單字組合成二維陣列
     $combination=[];
-    $mainleangh=[];
+    $leanghdata=[];
     for($i=0;$i<count($data);$i=$i+1){
         $str=[$start];
         for($j=0;$j<strlen($data[$i]);$j=$j+1){
@@ -33,14 +34,14 @@
     // 比較所有單字鏈的長度，找出最短的
     for($i=0;$i<$combination;$i=$i+1){
         if($combination[$i][count($combination[$i])-1]==$end){
-            $mainleangh[]=count($combination);
+            $leanghdata[]=count($combination);
         }
     }
 
-    sort($mainleangh);
+    sort($leanghdata);
 
     print_r($combinations);
-    echo($mainleangh[0].PHP_EOL);
+    echo($leanghdata[0].PHP_EOL);
 
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter - $memorybefore;

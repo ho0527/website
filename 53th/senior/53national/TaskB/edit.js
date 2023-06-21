@@ -166,6 +166,8 @@ document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=
 document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
 document.getElementById("file").onchange=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
+document.getElementById("layer1").style.background="yellow"
+document.getElementById("layer1").style.color="black"
 document.getElementById("layer1").style.borderBottom="1px yellow solid"
 canva.addEventListener("pointerdown",selectdown)
 canva.addEventListener("pointermove",selectmove)
@@ -284,16 +286,24 @@ document.getElementById("newlayer").onclick=function(){
     ctx=canva.getContext("2d")
     sort("layergrid","#layer")
     document.querySelectorAll(".layergrid").forEach(function(event){
+        event.style.background="none"
+        event.style.color="white"
         event.style.borderBottom="1px white solid"
         event.querySelectorAll(".layername")[0].onclick=function(){
             document.querySelectorAll(".layergrid").forEach(function(foreachevent){
+                foreachevent.style.background="none"
+                foreachevent.style.color="white"
                 foreachevent.style.borderBottom="1px white solid"
             })
+            event.style.background="yellow"
+            event.style.color="black"
             event.style.borderBottom="1px yellow solid"
             canva=document.getElementById("canva"+event.dataset.id)
             ctx=canva.getContext("2d")
         }
     })
+    document.getElementById("layer"+canvacount).style.background="yellow"
+    document.getElementById("layer"+canvacount).style.color="black"
     document.getElementById("layer"+canvacount).style.borderBottom="1px yellow solid"
     document.querySelectorAll(".layerdel").forEach(function(event){
         event.onclick=function(){
@@ -332,11 +342,13 @@ document.querySelectorAll(".layerdel").forEach(function(event){
         if(id==canvacount){ canvacount=canvacount-1 }
         canva=document.getElementById("canva"+canvacount)
         ctx=canva.getContext("2d")
+        document.getElementById("canva"+canvacount).style.background="yellow"
+        document.getElementById("canva"+canvacount).style.color="white"
         document.getElementById("canva"+canvacount).style.borderBottom="1px yellow solid"
     }
 })
 
-document.getElementById("uplaodsample").onclick=function(){ document.getElementById("samplefile").click() }
+document.getElementById("uplaodsample").onclick=function(){ docment.getElementById("samplefile").click() }
 
 document.getElementById("samplefile").onchange=function(event){
     let file=event.target.files[0]
@@ -360,6 +372,7 @@ document.getElementById("samplesubmit").onclick=function(){
             img.id="mainimage"
             img.style.position="absolute"
             img.style.opacity=0.5
+            img.style.zIndex=999
             document.getElementById("main").appendChild(img)
         }
         document.getElementById("samplelightbox").style.display="none"
