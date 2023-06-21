@@ -26,7 +26,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="進行">
                 <?php
                     if(isset($_SESSION["data"])){
-                        ?><input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出"><?php
+                        ?><input type="button" class="navigationbarbutton" onclick="location.href='../api.php?logout='" value="登出"><?php
                     }else{
                         ?><input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='login.php'" value="登入"><?php
                     }
@@ -35,10 +35,12 @@
         </div>
         <div class="loginmain">
             <form method="POST">
-                帳號: <input type="text" class="input" name="username"><br><br>
-                密碼: <input type="text" class="input" name="password"><br><br>
-                <input type="reset" class="button" value="清除">
-                <input type="submit" class="button" name="submit" value="註冊">
+                帳號 <input type="text" class="input" name="username"><br><br>
+                密碼 <input type="text" class="input" name="password"><br><br>
+                <div class="xcenter">
+                    <input type="reset" class="button" value="清除">
+                    <input type="submit" class="button" name="submit" value="註冊">
+                </div>
             </form>
         </div>
         <?php
@@ -61,5 +63,6 @@
                 }
             }
         ?>
+        <script src="menu.js"></script>
     </body>
 </html>

@@ -230,7 +230,7 @@ table{
 .mainright{
     grid-column: 2/100;
     grid-row: 15/18;
-    /* border: 1px white solid; */
+    word-break: keep-all;
 }
 
 .mainleftgrid{
@@ -412,8 +412,8 @@ table{
 /* ----------------------------------item START---------------------------------------- */
 
 .carousel{
-    grid-column: 2/60;
-    grid-row: 2/15;
+    grid-column: 2/100;
+    grid-row: 2/11;
     border: 1px white solid;
     position: relative;
     display: flex;
@@ -422,8 +422,8 @@ table{
 }
 
 .subject{
-    grid-column: 65/100;
-    grid-row: 2/4;
+    grid-column: 2/50;
+    grid-row: 11/13;
     border: 1px white solid;
     display: flex;
     align-items: center;
@@ -431,16 +431,16 @@ table{
 }
 
 .itemcontext{
-    grid-column: 65/100;
-    grid-row: 4/15;
+    grid-column: 2/50;
+    grid-row: 13/18;
     text-align: justify;
     border: 1px white solid;
     padding: 20px;
 }
 
 .price{
-    grid-column: 65/100;
-    grid-row: 15/17;
+    grid-column: 50/100;
+    grid-row: 11/13;
     border: 1px white solid;
     display: flex;
     align-items: center;
@@ -448,18 +448,19 @@ table{
 }
 
 .linkline{
-    grid-column: 2/20;
-    grid-row: 15/17;
+    grid-column: 50/100;
+    grid-row: 14;
 }
 
 .linkmessenger{
-    grid-column: 22/40;
-    grid-row: 15/17;
+    grid-column: 50/100;
+    grid-row: 15;
+    word-break: keep-all;
 }
 
 .link8591{
-    grid-column: 42/60;
-    grid-row: 15/17;
+    grid-column: 50/100;
+    grid-row: 16;
 }
 
 .carouselitem{

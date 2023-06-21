@@ -27,7 +27,7 @@
                 名稱: <input type="text" class="input" name="name"><br><br>
                 敘述: <input type="text" class="input" name="context"><br><br>
                 <input type="reset" class="button" value="清除">
-                <input type="submit" class="button" name="submit" value="登入">
+                <input type="submit" class="button" name="submit" value="確定">
             </form>
         </div>
         <?php

@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <title>管理者專區</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="plugin/css/macossection.css">
+        <link rel="stylesheet" href="plugin/css/sort.css">
+        <script src="plugin/js/macossection.js"></script>
+        <script src="plugin/js/sort.js"></script>
     </head>
     <body>
         <?php
@@ -31,49 +35,34 @@
                 <input type="button" class="navigationbarbutton" onclick="nono()" value="確定送出">
             </div>
         </div>
-        <div class="version" id="version1" style="top: 300px;left:225px;">
-            <table class="producttable">
-                <tr>
-                <td class="coffeedata">1</td>
-                <td class="coffeedata">2</td>
-                </tr>
-                <tr>
-                <td class="coffeedata">3</td>
-                <td class="coffeedata">4</td>
-                </tr>
-                <tr>
-                <td class="coffeedata">5</td>
-                <td class="coffeedata">6</td>
-                </tr>
-                <tr>
-                    <td class="coffeedata">7</td>
-                <td class="coffeedata">8</td>
-                </tr>
-            </table>
-        </div>
-        <form class="version" style="background: none;top: 300px;right:225px;">
-            圖片: <input type="number" name="picture" placeholder="1~4(會往下佔3格)"><br><br>
-            名稱: <input type="number" name="name" placeholder="1~8"><br><br>
-            連結: <input type="number" name="link" placeholder="1~8"><br><br>
-            金額: <input type="number" name="cost" placeholder="1~8"><br><br>
-            日期: <input type="number" name="date" placeholder="1~8"><br><br>
-            敘述: <input type="number" name="introduction" placeholder="1~8"><br>
-            <input type="submit" name="submit" value="送出">
-        </form>
-        <div style="float:right">
-            <button onclick="location.href='productindex.php'">返回</button>
+        <div class="main">
+            <div class="grid">
+                <div class="newproductleft newproduct">
+                    <div class="list small cost" id="cost">費用</div>
+                    <div class="list mid introduction" id="introduction">商品簡介</div>
+                    <div class="list small date" id="date">發布日期</div>
+                    <div class="list small link" id="link">相關連結</div>
+                </div>
+                <div class="newproductright newproduct">
+                    <div class="list small name" id="name">商品名稱</div>
+                    <div class="list large picture" id="picture">圖片</div>
+                </div>
+            </div>
+            <input type="button" class="button" onclick="location.href='productindex.php'" value="返回">
+            <input type="button" class="button" id="submit" value="送出">
         </div>
         <?php
-            if(isset($_GET["submit"])){
-                $picture=$_GET["picture"];
-                $name=$_GET["name"];
-                $link=$_GET["link"];
+            if(isset($_GET["key"])){
                 $cost=$_GET["cost"];
-                $date=$_GET["date"];
                 $introduction=$_GET["introduction"];
-                query($db,"INSERT INTO `product`(`$picture`, `$name`, `$link`, `$cost`, `$date`, `$introduction`) VALUES ('picture','name','link','cost','date','introduction')");
-                header("location:productindex.php");
+                $date=$_GET["date"];
+                $link=$_GET["link"];
+                $name=$_GET["name"];
+                $picture=$_GET["picture"];
+                query($db,"INSERT INTO `product`(`name`,`cost`,`date`,`link`,`introduction`,`picture`)VALUES('$name','$cost','$date','$link','$introduction','$picture')");
+                ?><script>alert("上傳成功");location.href="productindex.php"</script><?php
             }
         ?>
+        <script src="newproduct.js"></script>
     </body>
 </html>

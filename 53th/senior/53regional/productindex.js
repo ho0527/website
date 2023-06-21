@@ -9,13 +9,13 @@ version.forEach(function(event){
             event.style.backgroundColor="rgb(35, 35, 35)"
         })
         this.style.backgroundColor="yellow"
-        val=this.id
+        val=this.dataset.id
     })
 })
 
 function data(){
     if(val!=undefined){
-        location.href="productinput.php?val="+val[7]
+        location.href="productinput.php?val="+val
     }else{
         location.href="productindex.php?val=no"
     }

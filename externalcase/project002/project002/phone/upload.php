@@ -30,7 +30,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="進行">
                 <?php
                     if(isset($_SESSION["data"])){
-                        ?><input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出"><?php
+                        ?><input type="button" class="navigationbarbutton" onclick="location.href='../api.php?logout='" value="登出"><?php
                     }else{
                         ?><input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='login.php'" value="登入"><?php
                     }
@@ -47,7 +47,7 @@
                             ?><option value="<?php echo($row[$i][0]); ?>"><?php echo($row[$i][1]); ?></option><?php
                         }
                         ?>
-                </select><br><br>
+                </select><input type="button" onclick="location.href='subject.php'" value="新增主題"><br><br>
                 <input type="reset" class="button" onclick="fileclick('file')" value="上傳圖片(可複選)"><br><br>
                 <textarea class="textarea" name="context" cols="30" rows="10" placeholder="內文"></textarea><br><br>
                 line<br>

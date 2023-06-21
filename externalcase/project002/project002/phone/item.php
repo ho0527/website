@@ -26,7 +26,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="進行">
                 <?php
                     if(isset($_SESSION["data"])){
-                        ?><input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出"><?php
+                        ?><input type="button" class="navigationbarbutton" onclick="location.href='../api.php?logout='" value="登出"><?php
                     }else{
                         ?><input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='login.php'" value="登入"><?php
                     }
@@ -71,6 +71,7 @@
                 <a class="link8591 a" href="<?php echo($row[7]); ?>">8591</a>
             </div>
         </div>
+        <script src="menu.js"></script>
         <script src="../item.js"></script>
     </body>
 </html>

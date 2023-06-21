@@ -16,7 +16,6 @@
 
 function sort(card,sortdiv){ // card 放要被拖的物件 cardclass(不加選擇器) sortdiv 放要放的物件(加選擇器)
     let data=[]
-    let copy
 
     document.querySelectorAll("."+card).forEach(function(event){
         event.draggable="true"

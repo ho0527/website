@@ -42,8 +42,8 @@
                     if($count%2==0){ ?><div class="productdiv"><?php }
                     if($count%2==1){ $data="productright"; }
                     ?>
-                    <div class="<?php echo($data); ?> product" id="version<?= $i+1 ?>">
-                        <div class="id">版型: <?php echo($i+1); ?></div>
+                    <div class="<?php echo($data); ?> product macossectiondiv" data-id="<?= $productrow[$i][0] ?>">
+                        <div class="id">版型: <?= $productrow[$i][0] ?></div>
                         <div class="name" style="<?php echo($row[$i][1]) ?>">商品名稱</div>
                         <div class="cost" style="<?php echo($row[$i][2]) ?>">費用</div>
                         <div class="date" style="<?php echo($row[$i][3]) ?>">發布日期</div>
