@@ -166,6 +166,7 @@ document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=
 document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
 document.getElementById("file").onchange=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
+document.getElementById("layer1").style.borderBottom="1px yellow solid"
 canva.addEventListener("pointerdown",selectdown)
 canva.addEventListener("pointermove",selectmove)
 
@@ -263,7 +264,7 @@ document.getElementById("thick").onchange=function(){ thick=parseInt(this.value)
 document.getElementById("newlayer").onclick=function(){
     canvacount=canvacount+1
     document.getElementById("layer").innerHTML=document.getElementById("layer").innerHTML+`
-        <div class="layergrid" id="layer${canvacount}">
+        <div class="layergrid" id="layer${canvacount}" data-id="${canvacount}">
             <div class="layername">
                 圖層${canvacount}
             </div>
@@ -277,19 +278,23 @@ document.getElementById("newlayer").onclick=function(){
     canvas.id="canva"+canvacount
     canvas.width=width
     canvas.height=height
+    canvas.style.zIndex=canvacount
     document.getElementById("main").appendChild(canvas)
     canva=document.getElementById("canva"+canvacount)
     ctx=canva.getContext("2d")
     sort("layergrid","#layer")
     document.querySelectorAll(".layergrid").forEach(function(event){
         event.style.borderBottom="1px white solid"
-        event.onclick=function(){
-            event.style.borderBottom="1px yellow solid"
+        event.querySelectorAll(".layername")[0].onclick=function(){
             document.querySelectorAll(".layergrid").forEach(function(foreachevent){
                 foreachevent.style.borderBottom="1px white solid"
             })
+            event.style.borderBottom="1px yellow solid"
+            canva=document.getElementById("canva"+event.dataset.id)
+            ctx=canva.getContext("2d")
         }
     })
+    document.getElementById("layer"+canvacount).style.borderBottom="1px yellow solid"
     document.querySelectorAll(".layerdel").forEach(function(event){
         event.onclick=function(){
             let id=this.getAttribute("data-id")
@@ -297,13 +302,37 @@ document.getElementById("newlayer").onclick=function(){
             document.getElementById("canva"+id).remove()
         }
     })
+    if(mod=="select"){
+        removealllistener()
+        canva.addEventListener("pointerdown",selectdown)
+        canva.addEventListener("pointermove",selectmove)
+    }else if(mod=="paint"){
+        removealllistener()
+        canva.addEventListener("pointerdown",paintdown)
+        canva.addEventListener("pointermove",paintmove)
+    }else if(mod=="bucket"){
+        removealllistener()
+        canva.addEventListener("pointerdown",bucket)
+    }else if(mod=="sample"){
+        removealllistener()
+        canva.addEventListener("pointerdown",sampledown)
+        canva.addEventListener("pointermove",samplemove)
+    }else if(mod=="setcanva"){
+        removealllistener()
+    }else{
+        removealllistener()
+    }
 }
 
 document.querySelectorAll(".layerdel").forEach(function(event){
     event.onclick=function(){
         let id=this.getAttribute("data-id")
-        document.getElementById("layertr"+id).innerHTML=``
-        document.getElementById("canva"+id).style.display="none"
+        document.getElementById("layertr"+id).remove()
+        document.getElementById("canva"+id).remove()
+        if(id==canvacount){ canvacount=canvacount-1 }
+        canva=document.getElementById("canva"+canvacount)
+        ctx=canva.getContext("2d")
+        document.getElementById("canva"+canvacount).style.borderBottom="1px yellow solid"
     }
 })
 
@@ -342,15 +371,15 @@ document.getElementById("close").onclick=function(){ document.getElementById("sa
 document.addEventListener("pointerup",function(){
     if(isdrawing){
         if(document.getElementById("mainimage")){ document.getElementById("mainimage").style.display="block" }
-        if(mod=="paint"){
-            let tempdata=data[datacount]
+        // if(mod=="paint"){
+        //     let tempdata=data[datacount]
 
-            let datasortx=tempdata[0].sort(function(a,b){ return a-b })
-            let datasorty=tempdata[1].sort(function(a,b){ return a-b })
-            let minx=datasortx[0]
-            let miny=datasorty[0]
-            let maxx=datasortx[datasortx.length-1]
-            let maxy=datasorty[datasorty.length-1]
+            // let datasortx=tempdata[0].sort(function(a,b){ return a-b })
+            // let datasorty=tempdata[1].sort(function(a,b){ return a-b })
+            // let minx=datasortx[0]
+            // let miny=datasorty[0]
+            // let maxx=datasortx[datasortx.length-1]
+            // let maxy=datasorty[datasorty.length-1]
 
             // let minx=Math.min(...tempdata[0])
             // let miny=Math.min(...tempdata[1])
@@ -362,18 +391,18 @@ document.addEventListener("pointerup",function(){
             // let maxx=tempdata[0].reduce(function(a,b){ return Math.max(a,b) })
             // let maxy=tempdata[1].reduce(function(a,b){ return Math.max(a,b) })
 
-            data[datacount].push([minx,miny,maxx,maxy])
-            ctx.strokeStyle="blue"
-            ctx.lineWidth=1
-            ctx.rect(minx-5-thick,miny-5-thick,maxx-minx+5+thick*2,maxy-miny+5+thick*2)
-            ctx.stroke()
-            console.log(data)
-            datacount=datacount+1
-            console.log(minx)
-            console.log(maxx)
-            console.log(miny)
-            console.log(maxy)
-        }
+            // data[datacount].push([minx,miny,maxx,maxy])
+            // ctx.strokeStyle="blue"
+            // ctx.lineWidth=1
+            // ctx.rect(minx-5-thick,miny-5-thick,maxx-minx+5+thick*2,maxy-miny+5+thick*2)
+            // ctx.stroke()
+            // console.log(data)
+            // datacount=datacount+1
+            // console.log(minx)
+            // console.log(maxx)
+            // console.log(miny)
+            // console.log(maxy)
+        // }
         isdrawing=false
     }
 })
