@@ -64,5 +64,37 @@ table{
 }
 
 .textarea{
+    font-size: 25px;
     resize: none;
+}
+
+.group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.key{
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(204, 204, 204);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.key-shift{
+    width: 100px;
+}
+
+.key:hover{
+    background-color: rgb(242, 242, 242);
+    color: black;
+}
+
+.key.active{
+    background-color: rgb(143, 143, 143);
 }
