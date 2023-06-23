@@ -55,7 +55,6 @@ hr{
 .checkbox:checked+.label{
     text-decoration: line-through;
     font-style: italic;
-    transition: all 1s ease-out;
 }
 
 .checkbox:checked+.label:before{
