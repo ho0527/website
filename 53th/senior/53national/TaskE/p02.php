@@ -2,19 +2,14 @@
     $memorybefore=memory_get_usage();
 
     echo("p02\n");
-    function fibonacci($n){
-        if($n==0){
-            return 0;
-        }elseif($n==1){
-            return 1;
-        }else{
-            return fibonacci($n-1)+fibonacci($n-2);
-        }
+    function fibonacci($a,$b,$n){
+        if($n==0){ return $a; }
+        else{ return fibonacci($b,$a+$b,$n-1); }
     }
 
     $n=(int)trim(fgets(STDIN));
     if($n<=93){
-        echo(fibonacci($n).PHP_EOL);
+        echo(fibonacci(0,1,$n).PHP_EOL);
     }else{
         echo("[ERROR]n error".PHP_EOL);
     }

@@ -1,4 +1,5 @@
 let fontsize=30
+let difficulty="normal"
 
 document.getElementById("sizelow").onclick=function(){
     if(fontsize>=12){
@@ -25,16 +26,25 @@ document.getElementById("easy").onclick=function(){
     document.getElementById("easy").classList.add("selectbutton")
     document.getElementById("normal").classList.remove("selectbutton")
     document.getElementById("hard").classList.remove("selectbutton")
+    difficulty="easy"
 }
 
 document.getElementById("normal").onclick=function(){
     document.getElementById("normal").classList.add("selectbutton")
     document.getElementById("easy").classList.remove("selectbutton")
     document.getElementById("hard").classList.remove("selectbutton")
+    difficulty="normal"
 }
 
 document.getElementById("hard").onclick=function(){
     document.getElementById("hard").classList.add("selectbutton")
     document.getElementById("easy").classList.remove("selectbutton")
     document.getElementById("normal").classList.remove("selectbutton")
+    difficulty="hard"
+}
+
+document.getElementById("startgame").onclick=function(){
+    localStorage.setItem("difficulty",difficulty)
+    localStorage.setItem("name",document.getElementById("username").value)
+    location.href="main.html"
 }

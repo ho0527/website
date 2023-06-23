@@ -100,5 +100,5 @@ function file(file,files){
 }
 
 document.getElementById("reflashbutton").onclick=function(){
-    location.href="index.php"
+    location.href="index.html"
 }

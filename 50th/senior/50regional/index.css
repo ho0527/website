@@ -217,3 +217,14 @@ table{
 .a:hover{
     text-decoration: underline;
 }
+
+
+.admintd{
+    border-bottom: 1px white solid;
+    width: 60vw;
+    padding: 10px;
+}
+
+.adminmain{
+    height: 65vh;
+}
