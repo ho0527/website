@@ -9,7 +9,7 @@ version.forEach(function(event){
             event.style.backgroundColor="rgb(35, 35, 35)"
         })
         this.style.backgroundColor="yellow"
-        val=this.dataset.id
+        val=this.id
     })
 })
 

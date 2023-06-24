@@ -39,15 +39,15 @@
                 <div class="productmain">
                     <div class="productdiv">
                         <div class="productmid product">
-                            <div class="name macossectiondiv" style="<?php echo($row[1]) ?>">商品名稱: <?php echo($_SESSION["name"]); ?></div>
-                            <div class="cost macossectiondiv" style="<?php echo($row[2]) ?>">費用: <?php echo($_SESSION["cost"]); ?></div>
+                            <div class="name macossectiondiv" style="<?php echo($row[1]) ?>">商品名稱: <?php echo(@$_SESSION["name"]); ?></div>
+                            <div class="cost macossectiondiv" style="<?php echo($row[2]) ?>">費用: <?php echo(@$_SESSION["cost"]); ?></div>
                             <div class="date macossectiondiv" style="<?php echo($row[3]) ?>">發布日期: 發布後產生</div>
-                            <div class="link macossectiondiv" style="<?php echo($row[4]) ?>">相關連結: <?php echo($_SESSION["link"]); ?></div>
+                            <div class="link macossectiondiv" style="<?php echo($row[4]) ?>">相關連結: <?php echo(@$_SESSION["link"]); ?></div>
                             <div class="introduction macossectiondiv" style="<?php echo($row[5]) ?>">
-                                商品簡介
-                                <br><?php echo($_SESSION["introduction"]); ?>
+                                商品簡介<br>
+                                <?php echo(@$_SESSION["introduction"]); ?>
                             </div>
-                            <div class="picture macossectiondiv" style="<?php echo($row[6]) ?>"><img src="<?php echo($_SESSION["picture"]); ?>" width="175px" height="150px"></div>
+                            <div class="picture macossectiondiv" style="<?php echo($row[6]) ?>"><img src="<?php echo(@$_SESSION["picture"]); ?>" width="175px" height="150px"></div>
                         </div>
                     </div>
                 </div>

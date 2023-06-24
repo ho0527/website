@@ -37,6 +37,20 @@ table{
     border-radius: 5px;
 }
 
+.adminmain{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    width: 90vw;
+    height: 70vh;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 .logo{
     width: 75px;
 }
@@ -356,7 +370,7 @@ timer與燈箱
 
 .timerbox{
     width: 150px;
-    height: 50px;
+    height: 80px;
     text-align: center;
     background: none;
     outline: none;

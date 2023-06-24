@@ -16,18 +16,8 @@
 
     date_default_timezone_set("Asia/Taipei");
     $time=date("Y-m-d H:i:s");
-
-    $logincheck=function(){
-        $row=DB::table("users")
-            ->where(function($query){
-                $query->whereNotNull("access_token");
-            })->select("*")->get();
-        if($row->isNotEmpty()){
-            return $row[0]->id;
-        }else{
-            return NULL;
-        }
-    };
+    session_start();
+    if(!isset($_SESSION["data"])){ $_SESSION["data"]=""; }
 
     $user=function($row,$type){
         $mainrow=[
@@ -62,9 +52,9 @@
         return $data;
     };
 
-    $post=function($row)use($user,$logincheck,$image){
+    $post=function($row)use($user,$image){
         $data=[];
-        for($i=0;$i<$row->count();$i=$i+1){
+        for($i=0;$i<count($row);$i=$i+1){
             $id=$row[$i]->id;
             $likerow=DB::table("user_likes")
                 ->where(function($query)use($id){
@@ -77,32 +67,29 @@
             if($row[$i]->location==""){ $location=NULL; }
             else{ $location=$row[$i]->location; }
             $mainrow=[
-                "id"=>$row[$i]->id,
-                "author"=>$user($userrow,"normal"),
+                "id"=>$id,
+                "author"=>$user($userrow[0],"normal"),
                 "image"=>$image($row[$i]),
-                "like_count"=>$likerow->count(),
+                "like_count"=>count($likerow),
                 "content"=>$row[$i]->content,
                 "type"=>$row[$i]->type,
                 "tag"=>explode(" ",$row[$i]->tag),
                 "location_name"=>$location,
             ];
-            if($logincheck()==NULL){
-                $mainrow["updated_at"]=$row[$i]->updated_at;
-                $mainrow["created_at"]=$row[$i]->created_at;
-            }else{
+            if($_SESSION["data"]!=""){
                 $likerow2=DB::table("user_likes")
-                    ->where(function($query)use($id,$logincheck){
+                    ->where(function($query)use($id){
                         $query->where("post_id","=",$id)
-                            ->where("user_id","=",$logincheck());
+                            ->where("user_id","=",$_SESSION["data"]);
                     })->select("*")->get();
                 if($likerow2->isNotEmpty()){
                     $mainrow["liked"]=true;
                 }else{
                     $mainrow["liked"]=false;
                 }
-                $mainrow["updated_at"]=$row[$i]->updated_at;
-                $mainrow["created_at"]=$row[$i]->created_at;
             }
+            $mainrow["updated_at"]=$row[$i]->updated_at;
+            $mainrow["created_at"]=$row[$i]->created_at;
             $data[]=$mainrow;
         }
         return $data;
@@ -110,17 +97,15 @@
 
     $comment=function($row)use($user){
         $data=[];
-        $id=$row->id;
-        $commentrow=DB::table("comments")
-            ->where(function($query)use($id){
-                $query->where("post_id","=",$id);
-            })->select("*")->get();
-        for($i=0;$i<$commentrow->count();$i=$i+1){
+        for($i=0;$i<count($row);$i=$i+1){
+            $userrow=DB::table("users")
+                ->where("id","=",$row[$i]->user_id)
+                ->select("*")->get();
             $data[]=[
-                "id"=>$commentrow[$i]->id,
-                "user"=>$user($commentrow[$i],"normal"),
-                "context"=>$commentrow[$i]->context,
-                "created_at"=>$commentrow[$i]->created_at
+                "id"=>$row[$i]->id,
+                "user"=>$user($userrow[0],"normal"),
+                "content"=>$row[$i]->content,
+                "created_at"=>$row[$i]->created_at
             ];
         }
         return $data;
@@ -138,52 +123,52 @@
     $commenterror=response()->json(["success"=>false,"message"=>"MSG_COMMENT_NOT_EXISTS","data"=>""],404);
     $usererror=response()->json(["success"=>false,"message"=>"MSG_USER_NOT_EXISTS","data"=>""],404);
 
-    Route::post("/user/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user,$logincheck){
-        if($logincheck()==NULL){
-            if($request->has("email")&&$request->has("password")){
-                $email=$request->input("email");
-                $password=$request->input("password");
-                $row=DB::table("users")
-                    ->where(function($query)use($email){
-                        $query->where("email","=",$email);
-                    })->select("*")->get();
-                if($row->isNotEmpty()&&$row[0]->password==$password){
-                    if(is_string($email)&&is_string($password)){
-                        DB::table("users")
-                            ->where("id","=",$row[0]->id)
-                            ->update([
-                                "access_token"=>hash("sha256",$email),
-                            ]);
-                        $row=DB::table("users")
-                            ->where(function($query)use($email){
-                                $query->where("email","=",$email);
-                            })->select("*")->get();
-                        return response()->json([
-                            "success"=>true,
-                            "message"=>"",
-                            "data"=>$user($row[0],"login")
+    # api 01
+    Route::POST("/user/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user){
+        if($request->has("email")&&$request->has("password")){
+            $email=$request->input("email");
+            $password=$request->input("password");
+            $row=DB::table("users")
+                ->where(function($query)use($email){
+                    $query->where("email","=",$email);
+                })->select("*")->get();
+            if($row->isNotEmpty()&&$row[0]->password==$password){
+                if(is_string($email)&&is_string($password)){
+                    DB::table("users")
+                        ->where("id","=",$row[0]->id)
+                        ->update([
+                            "access_token"=>hash("sha256",$email),
                         ]);
-                    }else{
-                        return $datatypeerror;
-                    }
+                    $row=DB::table("users")
+                        ->where(function($query)use($email){
+                            $query->where("email","=",$email);
+                        })->select("*")->get();
+                    $_SESSION["data"]=$row[0]->id;
+                    return response()->json([
+                        "success"=>true,
+                        "message"=>"",
+                        "data"=>$user($row[0],"login")
+                    ]);
                 }else{
-                    return $loginerror;
+                    return $datatypeerror;
                 }
             }else{
-                return $missingfield;
+                return $loginerror;
             }
         }else{
-            return "alredlogin";
+            return $missingfield;
         }
     });
 
-    Route::post("/user/logout",function(Request $request)use($tokenerror,$logincheck){
-        if($logincheck()!=NULL){
-            $row=DB::table("users")
-                ->where("id","=",$logincheck())
+    # api 02
+    Route::POST("/user/logout",function(Request $request)use($tokenerror){
+        if($_SESSION["data"]!=""){
+            DB::table("users")
+                ->where("id","=",$_SESSION["data"])
                 ->update([
                     "access_token"=>NULL,
                 ]);
+            $_SESSION["data"]="";
             return response()->json([
                 "success"=>true,
                 "message"=>"",
@@ -194,13 +179,13 @@
         }
     });
 
-    Route::post("/user/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$imageerror,$time,$user){
-        if($request->has("email")&&$request->has("nickname")&&$request->has("password")&&$request->has("profile_image")){
+    # api 03
+    Route::POST("/user/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$imageerror,$time,$user){
+        if($request->has("email")&&$request->has("nickname")&&$request->has("password")&&$request->hasFile("profile_image")){
             $email=$request->input("email");
             $nickname=$request->input("nickname");
             $password=$request->input("password");
             $image=$request->file("profile_image");
-            $imagetype=array("image/png","image/jpeg");
             $row=DB::table("users")
                 ->where(function($query)use($email){
                     $query->where("email","=",$email);
@@ -208,16 +193,20 @@
             if($row->isEmpty()){
                 if(filter_var($email,FILTER_VALIDATE_EMAIL)&&is_string($email)&&is_string($nickname)&&is_string($password)){
                     if(8<=strlen($password)&&strlen($password)<=24){
-                        if(!in_array($image->getMimeType(),$imagetype)){
-                            $imagepath=$image->storePublicly("profile_image","public"); // todo 圖片上傳
-                            $row=DB::table("users")->insert([
+                        if(in_array($image->extension(),["png","jpg"])){
+                            $path=$image->store("upload/profile");
+                            DB::table("users")->insert([
                                 "email"=>$email,
                                 "password"=>$password,
-                                "nick_name"=>$nickname,
-                                "profile_image"=>$imagepath,
+                                "nickname"=>$nickname,
+                                "profile_image"=>$path,
                                 "type"=>"USER",
                                 "created_at"=>$time
                             ]);
+                            $row=DB::table("users")
+                                ->where(function($query)use($email){
+                                    $query->where("email","=",$email);
+                                })->select("*")->get();
                             return response()->json([
                                 "success"=>true,
                                 "message"=>"",
@@ -240,8 +229,9 @@
         }
     });
 
-    Route::get("/post/public",function(Request $request)use($datatypeerror,$post){
-        $ordertype=$request->input("order_by");
+    # api 04
+    Route::GET("/post/public",function(Request $request)use($datatypeerror,$post){
+        $orderby=$request->input("order_by");
         $ordertype=$request->input("order_type");
         $content=$request->input("content");
         $tag=$request->input("tag");
@@ -280,14 +270,20 @@
         }
     });
 
-    Route::get("/post/{post_id}",function(Request $request)use($nopermission,$posterror,$logincheck){
+    # api 05
+    Route::GET("/post/{post_id}",function(Request $request)use($nopermission,$posterror,$post,$comment){
         $id=$request->route("post_id");
         $row=DB::table("posts")
             ->where(function($query)use($id){
                 $query->where("id","=",$id);
             })->select("*")->get();
         if($row->isNotEmpty()){
-            if(($logincheck()==NULL&&$row[0]->type=="public")||($logincheck()!=NULL&&$row[0]->type=="public")){
+            $follow=DB::table("user_follows")
+                ->where("user_id","=",$row[0]->author_id,"AND","followe_user_id","=",$_SESSION["data"])
+                ->select("*")->get();
+            echo "\$follow ="; print_r($follow); echo "<br>";
+            echo($_SESSION["data"]);
+            if(($row[0]->type=="public")||(($follow->isNotEmpty()||$_SESSION["data"]==$row[0]->author_id)&&$row[0]->type=="only_follow")||($_SESSION["data"]==$row[0]->author_id&&$row[0]->type=="only_self")){
                 $commentrow=DB::table("comments")
                     ->where(function($query)use($id){
                         $query->where("post_id","=",$id);
@@ -296,10 +292,10 @@
                     "success"=>true,
                     "message"=>"",
                     "data"=>[
-                        "post"=>$row[0],
-                        "comments"=>$commentrow
-                    ]
-                ]);
+                        "post"=>$post($row),
+                        "comments"=>$comment($commentrow)
+                        ]
+                    ]);
             }else{
                 return $nopermission;
             }
@@ -308,39 +304,307 @@
         }
     });
 
-    Route::post("/post",function(Request $request)use($tokenerror,$missingfield,$datatypeerror,$imageerror){
+    # api 06
+    Route::POST("/post",function(Request $request)use($tokenerror,$missingfield,$datatypeerror,$imageerror,$time,$post){
+        if($_SESSION["data"]!=""){
+            if($request->has("type")&&$request->has("content")&&$request->hasFile("images")){
+                $type=$request->input("type");
+                $tag=$request->input("tags");
+                $content=$request->input("content");
+                $location=$request->input("location_name");
+                $image=$request->file("images");
+                if(!($request->has("tags"))){ $tag=""; }
+                if(!($request->has("location_name"))){ $location=""; }
+                if(is_string($type)&&is_string($tag)&&is_string($content)&&is_string($location)&&($type=="public"||$type=="only_follow"||$type=="only_self")){
+                    $tagtemp=explode(" ",$tag);
+                    DB::table("posts")->insert([
+                        "author_id"=>$_SESSION["data"],
+                        "content"=>$content,
+                        "type"=>$type,
+                        "tag"=>implode(" ",$tagtemp),
+                        "location"=>$location,
+                        // "place_lat"=>$_SESSION["data"],
+                        // "place_lng"=>$_SESSION["data"],
+                        "created_at"=>$time,
+                    ]);
+                    $row=DB::table("posts")
+                        ->latest()
+                        ->select("*")->get();
+                    $id=$row[0]->id;
+                    $row=DB::table("posts")
+                        ->where(function($query)use($id){
+                            $query->where("id","=",$id);
+                        })
+                        ->select("*")->get();
+                    for($i=0;$i<count($image);$i=$i+1){
+                        if(in_array($image[$i]->extension(),["png","jpg"])){
+                            $path=$image[$i]->store("upload/image");
+                            $imagedata=getimagesize(storage_path("app/".$path));
+                            DB::table("post_images")->insert([
+                                "post_id"=>$id,
+                                "width"=>$imagedata[0],
+                                "height"=>$imagedata[1],
+                                "filename"=>$path,
+                                "created_at"=>$time
+                            ]);
+                        }else{
+                            $row=DB::table("posts")
+                                ->where(function($query)use($id){
+                                    $query->where("id","=",$id);
+                                })->delete();
+                            $row=DB::table("post_images")
+                                ->where(function($query)use($id){
+                                    $query->where("id","=",$id);
+                                })->delete();
+                            return $imageerror;
+                        }
+                    }
+                    return response()->json([
+                        "success"=>true,
+                        "message"=>"",
+                        "data"=>$post($row)
+                    ]);
+                }else{
+                    return $datatypeerror;
+                }
+            }else{
+                return $missingfield;
+            }
+        }else{
+            return $tokenerror;
+        }
+    });
+
+    # api 07
+    Route::POST("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$time,$post){
+        if($_SESSION["data"]!=""){
+            $id=$request->route("post_id");
+            $row=DB::table("posts")
+                ->where(function($query)use($id){
+                    $query->where("id","=",$id);
+                })->select("*")->get();
+            if($row->isNotEmpty()){
+                if($row[0]->author_id==$_SESSION["data"]){
+                    if($request->has("type")&&$request->has("content")){
+                        $type=$request->input("type");
+                        $tag=$request->input("tags");
+                        $content=$request->input("content");
+                        if(!($request->has("tags"))){ $tag=""; }
+                        if(is_string($type)&&is_string($tag)&&is_string($content)&&($type=="public"||$type=="only_follow"||$type=="only_self")){
+                            $tagtemp=explode(" ",$tag);
+                            DB::table("posts")
+                                ->where("id","=",$id)
+                                ->update([
+                                    "content"=>$content,
+                                    "type"=>$type,
+                                    "tag"=>implode(" ",$tagtemp),
+                                    "updated_at"=>$time,
+                                ]);
+                            $row=DB::table("posts")
+                                ->where(function($query)use($id){
+                                    $query->where("id","=",$id);
+                                })
+                                ->select("*")->get();
+                            return response()->json([
+                                "success"=>true,
+                                "message"=>"",
+                                "data"=>$post($row)
+                            ]);
+                        }else{
+                            return $datatypeerror;
+                        }
+                    }else{
+                        return $missingfield;
+                    }
+                }else{
+                    return $nopermission;
+                }
+            }else{
+                return $posterror;
+            }
+        }else{
+            return $tokenerror;
+        }
+    });
+
+    # api 08
+    Route::DELETE("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$posterror){
+        if($_SESSION["data"]!=""){
+            $id=$request->route("post_id");
+            $row=DB::table("posts")
+                ->where(function($query)use($id){
+                    $query->where("id","=",$id);
+                })->select("*")->get();
+            if($row->isNotEmpty()){
+                if($row[0]->author_id==$_SESSION["data"]){
+                    $row=DB::table("posts")
+                        ->where("id","=",$id)
+                        ->delete();
+                    return response()->json([
+                        "success"=>true,
+                        "message"=>"",
+                        "data"=>""
+                    ]);
+                }else{
+                    return $nopermission;
+                }
+            }else{
+                return $posterror;
+            }
+        }else{
+            return $tokenerror;
+        }
+    });
+
+    # api 09
+    Route::POST("/post/{post_id}/favorite",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
+        if($_SESSION["data"]!=""){
+            $id=$request->route("post_id");
+            $userid=$_SESSION["data"];
+            $row=DB::table("posts")
+                ->where(function($query)use($id){
+                    $query->where("id","=",$id);
+                })->select("*")->get();
+            if($row->isNotEmpty()){
+                if($row[0]->author_id!=$_SESSION["data"]){
+                    if($request->has("favorite")){
+                        $type=$request->input("favorite");
+                        if($type==true){
+                            $row=DB::table("user_likes")
+                                ->where(function($query)use($id,$userid){
+                                    $query->where("post_id","=",$id,"AND","user_id","=",$userid);
+                                })
+                                ->select("*")->get();
+                            if($row->isEmpty()){
+                                $row=DB::table("user_likes")->insert([
+                                    "user_id"=>$userid,
+                                    "post_id"=>$id,
+                                ]);
+                            }else{
+                                $row=DB::table("user_likes")
+                                    ->where("post_id","=",$id,"AND","user_id","=",$userid)
+                                    ->delete();
+                            }
+                            return response()->json([
+                                "success"=>true,
+                                "message"=>"",
+                                "data"=>""
+                            ]);
+                        }else{
+                            return $datatypeerror;
+                        }
+                    }else{
+                        return $missingfield;
+                    }
+                }else{
+                    return $nopermission;
+                }
+            }else{
+                return $posterror;
+            }
+        }else{
+            return $tokenerror;
+        }
+    });
+
+    # api 10
+    Route::GET("/post/favorite",function(Request $request)use($tokenerror,$datatypeerror,$post){
+        echo("yuewiqedhyfegwrveiwehdygf");
+        if($_SESSION["data"]!=""){
+            $id=$_SESSION["data"];
+            $orderby=$request->input("order_by");
+            $ordertype=$request->input("order_type");
+            $page=$request->input("page");
+            $pagesize=$request->input("page_size");
+            if(!($request->has("order_by"))){ $orderby="created_at"; }
+            if(!($request->has("order_type"))){ $ordertype="desc"; }
+            if(!($request->has("page"))){ $page=1; }
+            if(!($request->has("pagesize"))){ $pagesize=10; }
+            if(($orderby=="created_at"||$orderby=="like_count")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
+                $row=DB::table("user_likes")
+                    ->where("id","=",$id)
+                    ->orderBy($orderby,$ordertype)
+                    ->skip(($page-1)*$pagesize)
+                    ->take($pagesize)
+                    ->select("*")->get();
+                return response()->json([
+                    "success"=>true,
+                    "message"=>"",
+                    "data"=>[
+                        "posts"=>$post($row)
+                    ]
+                ]);
+            }else{
+                return $datatypeerror;
+            }
+        }else{
+            return $tokenerror;
+        }
+    });
+
+    # api 11
+    Route::POST("/post/{post_id}/comment",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$comment){
+        if($_SESSION["data"]!=""){
+            $id=$request->route("post_id");
+            $userid=$_SESSION["data"];
+            $row=DB::table("posts")
+                ->where(function($query)use($id){
+                    $query->where("id","=",$id);
+                })->select("*")->get();
+            if($row->isNotEmpty()){
+                if($row[0]->author_id!=$_SESSION["data"]){
+                    if($request->has("content")){
+                        $type=$request->input("content");
+                        if($type==true){
+                            $row=DB::table("user_likes")
+                                ->where(function($query)use($id,$userid){
+                                    $query->where("post_id","=",$id,"AND","user_id","=",$userid);
+                                })
+                                ->select("*")->get();
+                            if($row->isEmpty()){
+                                $row=DB::table("user_likes")->insert([
+                                    "user_id"=>$userid,
+                                    "post_id"=>$id,
+                                ]);
+                            }else{
+                                $row=DB::table("user_likes")
+                                    ->where("post_id","=",$id,"AND","user_id","=",$userid)
+                                    ->delete();
+                            }
+                            return response()->json([
+                                "success"=>true,
+                                "message"=>"",
+                                "data"=>$comment
+                            ]);
+                        }else{
+                            return $datatypeerror;
+                        }
+                    }else{
+                        return $missingfield;
+                    }
+                }else{
+                    return $nopermission;
+                }
+            }else{
+                return $posterror;
+            }
+        }else{
+            return $tokenerror;
+        }
+    });
+
+    # api 12
+    Route::POST("/post/{post_id}/comment/{comment_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$commenterror){
         return view("welcome");
     });
 
-    Route::post("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
+    # api 13
+    Route::DELETE("/post/{post_id}/comment/{comment_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$commenterror){
         return view("welcome");
     });
 
-    Route::delete("/post/{post_id}",function(Request $request)use($tokenerror,$nopermission,$posterror){
-        return view("welcome");
-    });
-
-    Route::post("/post/{post_id}/favorite",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
-        return view("welcome");
-    });
-
-    Route::get("/post/favorite",function(Request $request)use($tokenerror,$datatypeerror){
-        return view("welcome");
-    });
-
-    Route::post("/post/{post_id}/comment",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror){
-        return view("welcome");
-    });
-
-    Route::post("/post/{post_id}/comment/{comment_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$commenterror){
-        return view("welcome");
-    });
-
-    Route::delete("/post/{post_id}/comment/{comment_id}",function(Request $request)use($tokenerror,$nopermission,$missingfield,$datatypeerror,$posterror,$commenterror){
-        return view("welcome");
-    });
-
-    Route::get("/user/{user_id}/post",function(Request $request)use($datatypeerror,$usererror,$post){
+    # api 14
+    Route::GET("/user/{user_id}/post",function(Request $request)use($datatypeerror,$usererror,$post){
         $userid=$request->route("user_id");
         $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
@@ -389,7 +653,8 @@
         }
     });
 
-    Route::get("/user/{user_id}/",function(Request $request)use($usererror,$user){
+    # api 15
+    Route::GET("/user/{user_id}/",function(Request $request)use($usererror,$user){
         $id=$request->route("user_id");
         $row=DB::table("users")
             ->where(function($query)use($id){
@@ -406,19 +671,139 @@
         }
     });
 
-    Route::post("/user/{user_id}/profile",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
-        return view("welcome");
+    # api 16
+    Route::POST("/user/{user_id}/profile",function(Request $request)use($tokenerror,$nopermission,$datatypeerror,$usererror,$imageerror,$time,$user){
+        if($_SESSION["data"]!=""){
+            $id=$request->route("user_id");
+            if($id==$_SESSION["data"]){
+                $row=DB::table("users")
+                    ->where("id","=",$id)
+                    ->select()->get();
+                if($row->isNotEmpty()){
+                    if($request->has("nickname")){
+                        $nickname=$request->input("nickname");
+                        if(preg_match("/^[a-z0-9_]{4,16}$/",$nickname)){
+                            DB::table("users")->update([
+                                "nickname"=>$nickname
+                            ]);
+                        }else{
+                            return $datatypeerror;
+                        }
+                    }
+                    if($request->hasFile("profile_image")){
+                        $image=$request->file("profile_image");
+                        if(in_array($image->extension(),["png","jpg"])){
+                            $path=$image->store("upload/profile");
+                            DB::table("users")->update([
+                                "profile_image"=>$path
+                            ]);
+                        }else{
+                            return $imageerror;
+                        }
+                    }
+                    DB::table("users")->update([
+                        "updated_at"=>$time
+                    ]);
+                    $row=DB::table("users")
+                        ->where("id","=",$id)
+                        ->select()->get();
+                    return response()->json([
+                        "success"=>true,
+                        "message"=>"",
+                        "data"=>$user($row[0],"normal")
+                    ]);
+                }else{
+                    return $usererror;
+                }
+            }else{
+                return $nopermission;
+            }
+        }else{
+            return $tokenerror;
+        }
     });
 
-    Route::get("/user/{user_id}/follow",function(Request $request)use($tokenerror,$datatypeerror){
-        return view("welcome");
+    # api 17
+    Route::GET("/user/{user_id}/follow",function(Request $request)use($tokenerror,$datatypeerror,$user){
+        if($_SESSION["data"]!=""){
+            $id=$_SESSION["data"];
+            $id=$request->route("user_id");
+            $orderby=$request->input("order_by");
+            $ordertype=$request->input("order_type");
+            $page=$request->input("page");
+            $pagesize=$request->input("page_size");
+            if(!($request->has("order_by"))){ $orderby="created_at"; }
+            if(!($request->has("order_type"))){ $ordertype="desc"; }
+            if(!($request->has("page"))){ $page=1; }
+            if(!($request->has("pagesize"))){ $pagesize=10; }
+            if(($orderby=="created_at"||$orderby=="like_count")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
+                $row=DB::table("user_follows")
+                    ->where("user_id","=",$id)
+                    ->orderBy($orderby,$ordertype)
+                    ->skip(($page-1)*$pagesize)
+                    ->take($pagesize)
+                    ->select("*")->get();
+                return response()->json([
+                    "success"=>true,
+                    "message"=>"",
+                    "data"=>[
+                        "posts"=>$user($row)
+                    ]
+                ]);
+            }else{
+                return $datatypeerror;
+            }
+        }else{
+            return $tokenerror;
+        }
     });
 
-    Route::post("/user/{user_id}/follow",function(Request $request)use($tokenerror,$datatypeerror,$usererror){
-        return view("welcome");
+    # api 18
+    Route::POST("/user/{user_id}/follow",function(Request $request)use($tokenerror,$usererror){
+        if($_SESSION["data"]!=""){
+            $id=$request->route("user_id");
+            $row=DB::table("users")
+                ->where("id","=",$id)
+                ->select("*")->get();
+            if($row->isNotEmpty()){
+                $row=DB::table("user_follows")->insert([
+                    "user_id"=>$id,
+                    "follow_user_id"=>$_SESSION["data"]
+                ]);
+                return response()->json([
+                    "success"=>true,
+                    "message"=>"",
+                    "data"=>""
+                ]);
+            }else{
+                return $usererror;
+            }
+        }else{
+            return $tokenerror;
+        }
     });
 
-    Route::delete("/user/{user_id}/follow",function(Request $request){
-        return view("welcome");
+    # api 19
+    Route::DELETE("/user/{user_id}/follow",function(Request $request)use($tokenerror,$usererror){
+        if($_SESSION["data"]!=""){
+            $id=$request->route("user_id");
+            $row=DB::table("users")
+                ->where("id","=",$id)
+                ->select("*")->get();
+            if($row->isNotEmpty()){
+                $row=DB::table("user_follows")
+                    ->where("user_id","=",$id,"AND","follow_user_id","=",$_SESSION["data"])
+                    ->delete();
+                return response()->json([
+                    "success"=>true,
+                    "message"=>"",
+                    "data"=>""
+                ]);
+            }else{
+                return $usererror;
+            }
+        }else{
+            return $tokenerror;
+        }
     });
 ?>

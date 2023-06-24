@@ -18,7 +18,7 @@
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
-                <img src="../icon/logo.png" class="logo">
+                <img src="../icon/logo.jpg" class="logo">
             </div>
             <div class="navigationbarright">
                 <img src="../icon/menu-outline.svg" class="menu" id="menubutton" draggable="false">

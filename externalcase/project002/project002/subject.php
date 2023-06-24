@@ -13,7 +13,7 @@
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
-                <img src="icon/logo.png" class="logo">
+                <img src="icon/logo.jpg" class="logo">
             </div>
             <div class="navigationbarright">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">

@@ -44,8 +44,8 @@
                                 ?>
                                 編號: <input type="text" class="input" name="number" value="<?= ($number); ?>" disabled><br><br>
                                 帳號: <input type="text" class="input" name="username" value="<?= ($row[1]); ?>" disabled><br><br>
-                                密碼: <input type="text" class="input" name="password" value="<?= ($row[3]); ?>"><br><br>
-                                姓名: <input type="text" class="input" name="name" value="<?= ($row[2]); ?>"><br><br>
+                                密碼: <input type="text" class="input" name="password" value="<?= ($row[2]); ?>"><br><br>
+                                姓名: <input type="text" class="input" name="name" value="<?= ($row[3]); ?>"><br><br>
                                 <?php
                                 if($row[5]=="管理者"){
                                     ?>管理員權限: <input type="checkbox" class="checkbox" name="adminbox" checked><?php
@@ -101,17 +101,17 @@
                 $password=$_POST["password"];
                 $name=$_POST["name"];
                 $number=$_SESSION["edit"];
-                $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
-                if($username==""&&$password==""){
-                    ?><script>alert("請填寫帳密!")</script><?php
+                $row=query($db,"SELECT*FROM `user` WHERE `number`=?",[$number])[0];
+                if($password==""){
+                    ?><script>alert("請填寫密碼!")</script><?php
                 }elseif($row&&$row[4]!=$number){
                     ?><script>alert("帳號已被註冊")</script><?php
                 }else{
                     if($_POST["adminbox"]){
-                        query($db,"UPDATE `user` SET `name`=?,`password`=?,`permission`='管理者' WHERE `number`='$number'",[$password,$name]);
+                        query($db,"UPDATE `user` SET `name`=?,`password`=?,`permission`='管理者' WHERE `number`='$number'",[$name,$password]);
                         ?><script>alert("更改成功!");location.href="admin.php"</script><?php
                     }else{
-                        query($db,"UPDATE `user` SET `name`=?,`password`=?,`permission`='一般使用者' WHERE `number`='$number'",[$password,$name]);
+                        query($db,"UPDATE `user` SET `name`=?,`password`=?,`permission`='一般使用者' WHERE `number`='$number'",[$name,$password]);
                         ?><script>alert("更改成功!");location.href="admin.php"</script><?php
                     }
                 }

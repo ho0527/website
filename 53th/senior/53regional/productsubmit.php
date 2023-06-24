@@ -38,12 +38,18 @@
             </form>
         </div>
         <?php
-            @$name=$_SESSION["name"];
-            @$introduction=$_SESSION["introduction"];
-            @$cost=$_SESSION["cost"];
-            @$link=$_SESSION["link"];
-            @$val=$_SESSION["val"];
-            @$picture=$_SESSION["picture"];
+            if(!isset($_SESSION["name"])){ $_SESSION["name"]=""; }
+            if(!isset($_SESSION["introduction"])){ $_SESSION["introduction"]=""; }
+            if(!isset($_SESSION["cost"])){ $_SESSION["cost"]=""; }
+            if(!isset($_SESSION["link"])){ $_SESSION["link"]=""; }
+            if(!isset($_SESSION["val"])){ $_SESSION["val"]=""; }
+            if(!isset($_SESSION["picture"])){ $_SESSION["picture"]=""; }
+            $name=$_SESSION["name"];
+            $introduction=$_SESSION["introduction"];
+            $cost=$_SESSION["cost"];
+            $link=$_SESSION["link"];
+            $val=$_SESSION["val"];
+            $picture=$_SESSION["picture"];
             if(isset($_GET["submit"])){
                 if($_GET["submit"]=="確定"){
                     query($db,"INSERT INTO `coffee`(`picture`,`name`,`introduction`,`cost`,`date`,`link`,`product`)VALUES(?,?,?,?,?,?,?)",[$picture,$name,$introduction,$cost,$time,$link,$val]);

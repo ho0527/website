@@ -48,18 +48,19 @@
                 @$_SESSION["introduction"]=$_POST["introduction"];
                 @$_SESSION["cost"]=$_POST["cost"];
                 @$_SESSION["link"]=$_POST["link"];
-                if($_SESSION["name"]==""){
-                    ?><script>alert("請輸入商品!");location.href="productinput.php"</script><?php
-                }else{
-                    if(!empty($_FILES["picture"]["name"])){
-                        move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
-                        $_SESSION["picture"]="image/".$_FILES["picture"]["name"];
+                if(!empty($_FILES["picture"]["name"])){
+                    $file="image/".$folder."/".$_FILES["picture"]["name"];
+                    if(file_exists($file)){
+                        $j=1;
+                        while(file_exists($file)){
+                            $file="image/".$folder."/".$j."_".$_FILES["picture"]["name"];
+                            $j=$j+1;
+                        }
                     }
-                    if(preg_match("/^[0-9]+(\.[0-9]+)$/",$_SESSION["cost"])){
-                        ?><script>alert("費用錯誤");location.href="productinput.php"</script><?php
-                    }
-                    header("location:productpreview.php");
-                }
+                    move_uploaded_file($_FILES["file"]["tmp_name"][$i],$file);
+                    $_SESSION["picture"]="image/".$_FILES["picture"]["name"];
+                }else{ $_SESSION["picture"]=""; }
+                header("location:productpreview.php");
             }
             if(isset($_GET["clear"])){
                 unset($_SESSION["name"]);

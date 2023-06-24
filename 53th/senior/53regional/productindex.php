@@ -11,6 +11,7 @@
         <?php
             include("link.php");
             if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
+            if(!isset($_SESSION["val"])){ $_SESSION["val"]=1; }
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
@@ -30,7 +31,7 @@
                 <input type="button" class="navigationbarbutton selectbut" onclick="location.href='productindex.php'" value="選擇版型">
                 <input type="button" class="navigationbarbutton" onclick="data()" value="填寫資料">
                 <input type="button" class="navigationbarbutton" onclick="location.href='productpreview.php'" value="預覽">
-                <input type="button" class="navigationbarbutton" onclick="nono()" value="確定送出">
+                <input type="button" class="navigationbarbutton" onclick="location.href='productsubmit.php'" value="確定送出">
             </div>
         </div>
         <div class="productmain macossectiondiv">
@@ -42,8 +43,8 @@
                     if($count%2==0){ ?><div class="productdiv"><?php }
                     if($count%2==1){ $data="productright"; }
                     ?>
-                    <div class="<?php echo($data); ?> product macossectiondiv" data-id="<?= $productrow[$i][0] ?>">
-                        <div class="id">版型: <?= $productrow[$i][0] ?></div>
+                    <div class="<?php echo($data); ?> product macossectiondiv" id="<?= $row[$i][0] ?>">
+                        <div class="id">版型: <?= $row[$i][0] ?></div>
                         <div class="name" style="<?php echo($row[$i][1]) ?>">商品名稱</div>
                         <div class="cost" style="<?php echo($row[$i][2]) ?>">費用</div>
                         <div class="date" style="<?php echo($row[$i][3]) ?>">發布日期</div>
@@ -66,5 +67,8 @@
             ?>
         </div>
         <script src="productindex.js"></script>
+        <script>
+            document.getElementById("<?= $_SESSION["val"] ?>").style.backgroundColor="yellow"
+        </script>
     </body>
 </html>

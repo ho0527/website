@@ -60,5 +60,6 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "intervention/image": "^2.6"
 }
