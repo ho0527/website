@@ -279,10 +279,9 @@
             })->select("*")->get();
         if($row->isNotEmpty()){
             $follow=DB::table("user_follows")
-                ->where("user_id","=",$row[0]->author_id,"AND","followe_user_id","=",$_SESSION["data"])
+                ->where("user_id", "=", $row[0]->author_id)
+                ->where("follow_user_id", "=", $_SESSION["data"])
                 ->select("*")->get();
-            echo "\$follow ="; print_r($follow); echo "<br>";
-            echo($_SESSION["data"]);
             if(($row[0]->type=="public")||(($follow->isNotEmpty()||$_SESSION["data"]==$row[0]->author_id)&&$row[0]->type=="only_follow")||($_SESSION["data"]==$row[0]->author_id&&$row[0]->type=="only_self")){
                 $commentrow=DB::table("comments")
                     ->where(function($query)use($id){
@@ -294,8 +293,8 @@
                     "data"=>[
                         "post"=>$post($row),
                         "comments"=>$comment($commentrow)
-                        ]
-                    ]);
+                    ]
+                ]);
             }else{
                 return $nopermission;
             }
@@ -471,9 +470,8 @@
                         $type=$request->input("favorite");
                         if($type==true){
                             $row=DB::table("user_likes")
-                                ->where(function($query)use($id,$userid){
-                                    $query->where("post_id","=",$id,"AND","user_id","=",$userid);
-                                })
+                                ->where("post_id","=",$id)
+                                ->where("user_id","=",$userid)
                                 ->select("*")->get();
                             if($row->isEmpty()){
                                 $row=DB::table("user_likes")->insert([
@@ -482,7 +480,8 @@
                                 ]);
                             }else{
                                 $row=DB::table("user_likes")
-                                    ->where("post_id","=",$id,"AND","user_id","=",$userid)
+                                    ->where("post_id","=",$id)
+                                    ->where("user_id","=",$userid)
                                     ->delete();
                             }
                             return response()->json([
@@ -557,9 +556,8 @@
                         $type=$request->input("content");
                         if($type==true){
                             $row=DB::table("user_likes")
-                                ->where(function($query)use($id,$userid){
-                                    $query->where("post_id","=",$id,"AND","user_id","=",$userid);
-                                })
+                                ->where("post_id","=",$id)
+                                ->where("user_id","=",$userid)
                                 ->select("*")->get();
                             if($row->isEmpty()){
                                 $row=DB::table("user_likes")->insert([
