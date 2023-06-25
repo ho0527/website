@@ -137,6 +137,19 @@ table{
     height: 40px;
     outline: none;
     font-size: 30px;
+    color: white;
+}
+
+.middleinput{
+    border: none;
+    border-bottom: 1px black solid;
+    background: none;
+    width: 35%;
+    height: 40px;
+    outline: none;
+    margin: 0px 5%;
+    font-size: 30px;
+    color: white;
 }
 
 .inputhint{

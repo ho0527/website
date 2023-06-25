@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>網路問卷調查系統</title>
         <link rel="stylesheet" href="index.css">
     </head>
     <body>

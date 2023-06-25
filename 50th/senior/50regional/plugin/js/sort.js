@@ -5,6 +5,7 @@
     製作及log:
     2023/06/10  02:02:10 BATA 1.0.0 // 拖拉完成 等待製作儲存data
     2023/06/10  18:11:15 BATA 1.1.0 // bug fix
+    2023/06/14  04:43:10 BATA 1.2.0 // bug fix
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -13,11 +14,10 @@
     |-------    -----    -     -    -          -     -----         -----  -------|
 */
 
-function sort(card,cardclass,sortdiv){ // card 放要被拖的物件 cardclass 放要被拖的物件的class sortdiv 放要放的物件
+function sort(card,sortdiv){ // card 放要被拖的物件 cardclass(不加選擇器) sortdiv 放要放的物件(加選擇器)
     let data=[]
-    let copy
 
-    document.querySelectorAll(card).forEach(function(event){
+    document.querySelectorAll("."+card).forEach(function(event){
         event.draggable="true"
     })
 
@@ -31,7 +31,7 @@ function sort(card,cardclass,sortdiv){ // card 放要被拖的物件 cardclass �
             let sortableContainer=addeventlistenerevent.target.closest(sortdiv)
             if(sortableContainer){
                 let draggableElements=Array.from(sortableContainer.children).filter(function(child){
-                    return child.classList.contains(cardclass)&&!child.classList.contains("dragging")
+                    return child.classList.contains(card)&&!child.classList.contains("dragging")
                 })
 
                 let afterElement=draggableElements.reduce(function(closest,child){

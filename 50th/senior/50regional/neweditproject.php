@@ -2,24 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>signup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>新增修改專案</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="plugin/css/macossection.css">
+        <link rel="stylesheet" href="plugin/css/sort.css">
+        <script src="plugin/js/macossection.js"></script>
+        <script src="plugin/js/sort.js"></script>
     </head>
     <body>
+        <script> let key=""; </script>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])||$_SESSION["data"]!=1){ header("location:index.php"); }
+            if(!isset($_SESSION["data"])){ header("location:index.php"); }
             if(isset($_GET["edit"])){
                 $id=$_GET["edit"];
                 $_SESSION["id"]=$id;
                 $row=query($db,"SELECT*FROM `user` WHERE `id`='$id'")[0];
                 ?>
+                <script> key="edit"; </script>
                 <div class="navigationbar">
                     <div class="navigationbarleft">
                         <div class="navigationbartitle">專案討論系統</div>
                     </div>
                     <div class="navigationbarright">
-                        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='signupedit.php'" value="修改">
+                        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='neweditproject.php'" value="修改">
                         <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理">
                         <input type="button" class="navigationbarbutton" onclick="location.href='project.php'" value="專案管理">
                         <input type="button" class="navigationbarbutton" onclick="location.href='teamleader.php'" value="組長功能管理">
@@ -39,12 +46,13 @@
                 <?php
             }else{
                 ?>
+                <script> key="new"; </script>
                 <div class="navigationbar">
                     <div class="navigationbarleft">
                         <div class="navigationbartitle">專案討論系統</div>
                     </div>
                     <div class="navigationbarright">
-                        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='signupedit.php'" value="新增">
+                        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='neweditproject.php'" value="新增">
                         <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理">
                         <input type="button" class="navigationbarbutton" onclick="location.href='project.php'" value="專案管理">
                         <input type="button" class="navigationbarbutton" onclick="location.href='teamleader.php'" value="組長功能管理">
@@ -54,11 +62,26 @@
                 </div>
                 <div class="main">
                     <form method="POST">
-                        帳號: <input type="text" class="input" name="username"><br><br>
-                        密碼: <input type="password" class="input" name="password"><br><br>
-                        姓名: <input type="text" class="input" name="name"><br><br>
-                        <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
-                        <input type="submit" class="button" name="signup" value="送出"><br>
+                        <div class="projectgrid">
+                            <div class="product">
+                                <input type="text" class="middleinput" name="name" id="name" placeholder="專案名稱">
+                                <input type="text" class="middleinput" name="desciption" id="desciption" placeholder="專案說明">
+                                <input type="button" class="submitbutton" value="送出">
+                            </div>
+                            <div class="productmember">
+                                <div class="sort a"></div>
+                                <div class="sort b"></div>
+                                <div class="sort c">
+                                    <?php
+                                    $userrow=query($db,"SELECT*FROM `user`");
+                                    for($i=0;$i<count($userrow);$i=$i+1){
+                                        ?><div class="user"><?php echo($userrow[$i][1]); ?></div><?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="productfacing"></div>
+                        </div>
                     </form>
                 </div>
                 <?php
@@ -109,5 +132,6 @@
             }else{ ?><script>alert("帳號已被刪除!");location.href="admin.php"</script><?php }
         }
     ?>
+    <script src="neweditproject.js"></script>
     </body>
 </html>
