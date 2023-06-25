@@ -194,7 +194,7 @@
                 if(filter_var($email,FILTER_VALIDATE_EMAIL)&&is_string($email)&&is_string($nickname)&&is_string($password)){
                     if(8<=strlen($password)&&strlen($password)<=24){
                         if(in_array($image->extension(),["png","jpg"])){
-                            $path=$image->store("upload/profile");
+                            $path="http://localhost/website/52th/senior/52national/TaskD/storage/app/".$image->store("upload/profile");
                             DB::table("users")->insert([
                                 "email"=>$email,
                                 "password"=>$password,
@@ -337,7 +337,7 @@
                         ->select("*")->get();
                     for($i=0;$i<count($image);$i=$i+1){
                         if(in_array($image[$i]->extension(),["png","jpg"])){
-                            $path=$image[$i]->store("upload/image");
+                            $path="http://localhost/website/52th/senior/52national/TaskD/storage/app/".$image[$i]->store("upload/image");
                             $imagedata=getimagesize(storage_path("app/".$path));
                             DB::table("post_images")->insert([
                                 "post_id"=>$id,
@@ -691,7 +691,7 @@
                     if($request->hasFile("profile_image")){
                         $image=$request->file("profile_image");
                         if(in_array($image->extension(),["png","jpg"])){
-                            $path=$image->store("upload/profile");
+                            $path="http://localhost/website/52th/senior/52national/TaskD/storage/app/".$image->store("upload/profile");
                             DB::table("users")->update([
                                 "profile_image"=>$path
                             ]);

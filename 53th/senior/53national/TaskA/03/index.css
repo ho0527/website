@@ -40,16 +40,14 @@ hr{
 
 .ul{
     list-style: none;
-    padding: 0px;
-    margin: 0px;
 }
 
 .li{
-    margin-top: 30px;
+    margin: 30px 0px;
 }
 
 .checkbox{
-    visibility: hidden;
+    display: none;
 }
 
 .checkbox:checked+.label{
@@ -72,35 +70,10 @@ hr{
 
 .label:before{
     content: "";
+    border: 2px white solid;
     position: absolute;
     left: -35px;
-    top: 50%;
-    width: 24px;
-    height: 24px;
-    margin-top: -12px;
-    border: 2px white solid;
-}
-
-.center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
-}
-
-.xcenter{
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translate(-50%,0%);
-    width: 100%;
-}
-
-.ycenter{
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    transform: translate(0%,-50%);
-    width: 100%;
+    width: 25px;
+    height: 25px;
+    margin-top: -5px;
 }
