@@ -1,7 +1,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(35, 35, 35);
-    color: rgb(255, 255, 255);
+    color: gray;
     text-align: center;
     word-break: break-all;
     user-select: none;
@@ -16,12 +16,13 @@ h2{
 hr{
     border: 1px white solid;
     width: 100%;
-    margin: 15px 0px;
+    margin: 10px 0px;
 }
 
 table{
     border-collapse: collapse;
     width: 100%;
+    color: white;
 }
 
 .main{
@@ -34,6 +35,13 @@ table{
     font-weight: bold;
     padding: 20px;
     border-radius: 5px;
+}
+
+.grid{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
 }
 
 .logo{
@@ -57,6 +65,7 @@ table{
     left: 0px;
     width: 100%;
     height: 100px;
+    color: white;
     background: rgba(250, 250, 250, 0.5);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     border-radius: 10px;
@@ -279,25 +288,26 @@ table{
 }
 
 .product{
-    border: 1px white solid;
     grid-column: 2/100;
     grid-row: 2/4;
+    border: 1px white solid;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .productmember{
-    border: 1px white solid;
     grid-column: 2/55;
     grid-row: 5/17;
+    /* border: 1px white solid; */
     position: relative;
+    font-size: 20px;
 }
 
 .productfacing{
-    border: 1px white solid;
     grid-column: 60/100;
     grid-row: 5/17;
+    border: 1px white solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -309,27 +319,23 @@ table{
     cursor: move;
 }
 
-.a{
+.leader{
+    grid-column: 50/100;
+    grid-row: 1/5;
     border: 1px white solid;
-    width: 45%;
-    height: 10%;
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    padding: 10px;
 }
 
-.b{
+.member{
+    grid-column: 50/100;
+    grid-row: 6/18;
     border: 1px white solid;
-    width: 45%;
-    height: 80%;
-    position: absolute;
-    top: 15%;
-    right: 0px;
+    padding: 10px;
 }
 
-.c{
+.userdiv{
+    grid-column: 2/50;
+    grid-row: 1/18;
     border: 1px white solid;
-    width: 45%;
-    height: 100%;
     padding: 10px;
 }

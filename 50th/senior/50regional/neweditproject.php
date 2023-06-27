@@ -68,10 +68,18 @@
                                 <input type="text" class="middleinput" name="desciption" id="desciption" placeholder="專案說明">
                                 <input type="button" class="submitbutton" value="送出">
                             </div>
-                            <div class="productmember">
-                                <div class="sort a"></div>
-                                <div class="sort b"></div>
-                                <div class="sort c">
+                            <div class="productmember grid">
+                                <div class="leader sort macossectiondiv">
+                                    組長
+                                    <hr>
+                                </div>
+                                <div class="member sort macossectiondiv">
+                                    組員
+                                    <hr>
+                                </div>
+                                <div class="userdiv sort macossectiondiv">
+                                    使用者列表
+                                    <hr>
                                     <?php
                                     $userrow=query($db,"SELECT*FROM `user`");
                                     for($i=0;$i<count($userrow);$i=$i+1){

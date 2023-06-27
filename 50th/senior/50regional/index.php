@@ -17,7 +17,7 @@
         <div class="main">
             <form method="POST" action="login.php">
                 帳號: <input type="text" class="input" name="username"><br><br>
-                密碼: <input type="text" class="input" name="password"><br><br>
+                密碼: <input type="password" class="input" name="password"><br><br>
                 <input type="reset" class="button" value="清除">
                 <input type="submit" class="button" name="submit" value="登入">
             </form>
