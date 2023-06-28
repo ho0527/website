@@ -60,7 +60,7 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main noborder">
                     <form method="POST">
                         <div class="projectgrid">
                             <div class="product">
@@ -70,7 +70,7 @@
                             </div>
                             <div class="productmember grid">
                                 <div class="leader sort macossectiondiv">
-                                    組長
+                                組長
                                     <hr>
                                 </div>
                                 <div class="member sort macossectiondiv">
@@ -88,7 +88,16 @@
                                     ?>
                                 </div>
                             </div>
-                            <div class="productfacing"></div>
+                            <div class="productfacing">
+                                <input type="button" class="button" value="新增面向">
+                                <div class="facingdiv">
+                                    <div class="facing grid">
+                                        <input type="text" class="input facingname" value="">
+                                        <input type="text" class="input facingdesciption" value="">
+                                        <input type="button" class="noborderbutton facingdelect" value="X">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
