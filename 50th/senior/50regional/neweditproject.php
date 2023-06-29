@@ -133,7 +133,7 @@
             }elseif($username==""||$password==""){
                 ?><script>alert("請輸入帳密");location.href="signupedit.php"</script><?php
             }else{
-                query($db,"UPDATE`user`SET `username`=?,`password`=?,`name`=? WHERE `id`='$id'",[$username,$password,$name]);
+                query($db,"UPDATE `user` SET `username`=?,`password`=?,`name`=? WHERE `id`='$id'",[$username,$password,$name]);
                 $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$row[0]','註冊使用者','$time','')");
                 ?><script>alert("新增成功");location.href="admin.php"</script><?php

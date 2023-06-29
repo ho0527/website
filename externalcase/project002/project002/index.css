@@ -264,8 +264,6 @@ table{
 
 .mainimage{
     width: 90%;
-    height: 300px;
-    margin: 20px;
 }
 
 .context{
@@ -518,4 +516,16 @@ table{
 
 .file{
     display: none;
+}
+
+.indexcarousel{
+    border: none;
+    width: 100%;
+    height: 300px;
+}
+
+.indexcarouselbuttondiv{
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
 }

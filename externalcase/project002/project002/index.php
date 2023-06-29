@@ -46,7 +46,24 @@
                 </div>
                 <div class="mainright">
                     <div class="mainrightgrid">
-                        <img src="icon/image-01.jpg" class="mainimage"><br>
+                        <div class="carousel indexcarousel">
+                            <div class="carouselitem">
+                                <img src="icon/image1.jpg" class="mainimage">
+                            </div>
+                            <div class="carouselitem">
+                                <img src="icon/image2.jpg" class="mainimage">
+                            </div>
+                            <div class="carouselitem">
+                                <img src="icon/image3.jpg" class="mainimage">
+                            </div>
+                            <div class="indexcarouselbuttondiv">
+                                <input type="button" class="carouselbutton prevnext" id="prev" value="prev">
+                                <input type="button" class="carouselbutton indicator" value="1">
+                                <input type="button" class="carouselbutton indicator" value="2">
+                                <input type="button" class="carouselbutton indicator" value="3">
+                                <input type="button" class="carouselbutton prevnext" id="next" value="next">
+                            </div>
+                        </div><br>
                         <div class="context">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque aliquam officiis modi eaque nisi voluptates incidunt eos architecto inventore beatae non doloribus ab tempora animi eligendi officia, quos dolore. Obcaecati!</div><br>
                         <div class="indexbuttondiv">
                             <a class="a" href="">Line</a>
@@ -57,6 +74,7 @@
             </div>
         </div>
         <script src="index.js"></script>
+        <script src="item.js"></script>
         <script src="windowsize.js"></script>
     </body>
 </html>
