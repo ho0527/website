@@ -20,16 +20,4 @@ document.querySelectorAll(".card").forEach(function(card){
     })
 })
 
-$(function() {
-    $("#sortable1").sortable({
-        connectWith: ".group-sortable"
-    }).disableSelection();
-
-    $("#sortable2").sortable({
-        connectWith: ".group-sortable"
-    }).disableSelection();
-
-    $("#sortable3").sortable({
-        connectWith: ".group-sortable"
-    }).disableSelection();
-});
+$(function(){ $("#sortable1,#sortable2,#sortable3").sortable({ connectWith: ".group-sortable" }) })

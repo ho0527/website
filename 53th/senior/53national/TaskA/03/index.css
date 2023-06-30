@@ -77,3 +77,23 @@ hr{
     height: 25px;
     margin-top: -5px;
 }
+
+/* .checkbox:checked+.label::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    animation: 0.5s line 1;
+}
+
+@keyframes line{
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+} */

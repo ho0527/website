@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+        .strikethrough {
+            position: relative;
+        }
+
+        .strikethrough::after{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: red;
+            transition: width 0.3s ease-out;
+        }
+
+        .strikethrough:hover::after {
+            width: 100%;
+        }
+        </style>
+    </head>
+    <body>
+        <p class="strikethrough">这是一个带有删除线的文本。</p>
+    </body>
+</html>

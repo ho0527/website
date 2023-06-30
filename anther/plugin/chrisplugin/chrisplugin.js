@@ -4,6 +4,7 @@
     作者: 小賀chris
     製作及log:
     2023/06/28  20:10:16 Bata 1.0.0 // 新增macosselection 以及 sort 以及 dget 以及 clog 函式
+    2023/06/30  14:35:45 Bata 1.0.1 // 新增isset函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -126,4 +127,14 @@ function docget(key,selector){ // 傳入 id animation class name tag tagns qtor 
 
 function conlog(data){ // consloe.log 值出來
     console.log(data)
+}
+
+function isset(data){
+    if(data!=null||data!=undefined){ return true }
+    else{ return false }
+}
+
+function blank(data){
+    if(data!=null||data!=undefined||data!=""){ return true }
+    else{ return false }
 }

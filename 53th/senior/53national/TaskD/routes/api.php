@@ -95,7 +95,7 @@
     $usererror=response()->json(["success"=>false,"message"=>"MSG_USER_NOT_EXISTS"],404);
     $fileerror=response()->json(["success"=>false,"message"=>"MSG_INVALID_FILE_FORMAT"],400);
 
-    Route::post("/auth/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user,$logincheck){
+    Route::POST("/auth/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user,$logincheck){
         if($logincheck()==NULL){
             if($request->has("email")&&$request->has("password")){
                 $email=$request->input("email");
@@ -134,7 +134,7 @@
         }
     });
 
-    Route::post("/auth/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$user,$time){
+    Route::POST("/auth/register",function(Request $request)use($userexist,$passworderror,$missingfield,$datatypeerror,$user,$time){
         if($request->has("email")&&$request->has("nickname")&&$request->has("password")&&$request->has("profile_image")){
             $email=$request->input("email");
             $nickname=$request->input("nickname");
@@ -179,7 +179,7 @@
         }
     });
 
-    Route::post("/auth/logout",function(Request $request)use($tokenerror,$logincheck){
+    Route::POST("/auth/logout",function(Request $request)use($tokenerror,$logincheck){
         if($logincheck()!=NULL){
             $row=DB::table("users")
                 ->where("id","=",$logincheck())
@@ -196,7 +196,7 @@
         }
     });
 
-    Route::get("/images/search",function(Request $request)use($datatypeerror,$image){
+    Route::GET("/images/search",function(Request $request)use($datatypeerror,$image){
         $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
         $keyword=$request->input("keyword");
@@ -229,36 +229,30 @@
         }
     });
 
-    Route::get("/images/popular",function(Request $request)use($nopermission,$posterror,$logincheck){
+    Route::GET("/images/popular",function(Request $request)use($nopermission,$posterror,$logincheck){
     });
 
-    Route::get("/users/{user_id}/images",function(Request $request)use($datatypeerror,$usererror,$post){
+    Route::GET("/users/{user_id}/images",function(Request $request)use($datatypeerror,$usererror,$post){
     });
 
-    Route::post("/images/upload",function(Request $request)use($usererror,$user){
+    Route::POST("/images/upload",function(Request $request)use($usererror,$user){
     });
 
-    Route::put("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
-        return view("welcome");
+    Route::PUT("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::get("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
-        return view("welcome");
+    Route::GET("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::delete("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
-        return view("welcome");
+    Route::DELETE("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::get("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
-        return view("welcome");
+    Route::GET("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::post("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
-        return view("welcome");
+    Route::POST("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::delete("/comments/{comments_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
-        return view("welcome");
+    Route::DELETE("/comments/{comments_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 ?>
