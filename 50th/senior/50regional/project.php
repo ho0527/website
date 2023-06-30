@@ -36,6 +36,7 @@
                         <td class="maintd">project desciption</td>
                     </tr>
                     <?php
+                        preg_match("/[0-9]1234567/",$name);
                         $row=query($db,"SELECT*FROM `project`");
                         for($i=0;$i<count($row);$i=$i+1){
                             ?>
