@@ -203,7 +203,7 @@ assertThat([2, 4, 6], either(hasValue(2))->orElse(hasValue(4)));
 ```
 
 * `describedAs` - Wraps an existing matcher and overrides the description when it fails.
-```php 
+```php
 $expected = "Dog";
 $found = null;
 // this assertion would result error message as Expected: is not null but: was null
@@ -278,7 +278,7 @@ assertThat($foo, is(sameInstance($foo)));
 ```
 
 * `typeOf`- check type
-```php 
+```php
 assertThat(1, typeOf("integer"));
 ```
 
@@ -473,10 +473,10 @@ assertThat("", stringValue());
 $xml = <<<XML
 <books>
   <book>
-    <isbn>1</isbn>   
+    <isbn>1</isbn>
   </book>
   <book>
-    <isbn>2</isbn>   
+    <isbn>2</isbn>
   </book>
 </books>
 XML;

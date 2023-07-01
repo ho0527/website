@@ -18,7 +18,7 @@ setTimeout(function(){
 
             document.getElementById("left").onclick=function(){
                 count=count-1
-                document.getElementById("right").disabled=false 
+                document.getElementById("right").disabled=false
                 if(count==0){ document.getElementById("left").disabled=true }
                 document.getElementById("wtfpluginmainimage").src=document.querySelectorAll("img")[count].src
             }

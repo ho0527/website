@@ -5,7 +5,7 @@ function inputchange(){
     let value=input.value
 
     // 段落和換行格式
-    value=value.replace(/\n/g,"<br>") 
+    value=value.replace(/\n/g,"<br>")
 
     // 標題格式
     value=value.replace(/(#{1,6})\s(.*?)<br>/g,function(match,hash,context){ return "<h"+hash.length+">"+context+"</h"+hash.length+">" })

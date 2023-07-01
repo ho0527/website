@@ -16,4 +16,4 @@ your application this is Flysystem) to leak into the application. The most
 important part for Flysystem is that it improves portability and creates a
 solid boundary between your application core and the infrastructure you use.
 The OOP-style handling breaks this principle, therefore I want to stop
-promoting it. 
+promoting it.

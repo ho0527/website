@@ -22,7 +22,7 @@ This release now requires PHP 7.2+
 
 - Upgraded to phar-io/version 3.0
     - Version strings `v1.2.3` will now be converted to valid semantic version strings `1.2.3`
-    - Abreviated strings like `1.0` will get expaneded to `1.0.0`  
+    - Abreviated strings like `1.0` will get expaneded to `1.0.0`
 
 ### Unreleased
 

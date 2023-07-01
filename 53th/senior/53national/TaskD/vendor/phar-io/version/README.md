@@ -58,4 +58,4 @@ $rightVersion = new PharIo\Version\Version('3.0.0-alpha.2');
 $leftVersion->isGreaterThan($rightVersion); // false
 $rightVersion->isGreaterThan($leftVersion); // true
 
-``` 
+```

@@ -29,7 +29,7 @@ class ClassConstFetch extends Expr
     public function getSubNodeNames() : array {
         return ['class', 'name'];
     }
-    
+
     public function getType() : string {
         return 'Expr_ClassConstFetch';
     }

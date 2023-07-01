@@ -57,7 +57,7 @@
         }
         return $data;
     };
-    
+
     $imagedetail=function($row)use($user){
         $data=[];
         for($i=0;$i<$row->count();$i=$i+1){

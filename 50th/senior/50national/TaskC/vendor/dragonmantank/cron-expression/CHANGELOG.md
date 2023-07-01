@@ -125,7 +125,7 @@
 
 `30 0 1 * 1`
 
-would evaluate to "Run 30 minutes after the 0 hour when the Day Of Month is 1 AND a Monday" instead of "Run 30 minutes after the 0 hour on Day Of Month 1 OR a Monday", where the latter is more inline with most cron systems. This means that if your cron expression has both of these fields set, you may see your expression fire more often starting with v3.0.0. 
+would evaluate to "Run 30 minutes after the 0 hour when the Day Of Month is 1 AND a Monday" instead of "Run 30 minutes after the 0 hour on Day Of Month 1 OR a Monday", where the latter is more inline with most cron systems. This means that if your cron expression has both of these fields set, you may see your expression fire more often starting with v3.0.0.
 
 ### Added
 - Additional docblocks for IDE and documentation
@@ -206,7 +206,7 @@ would evaluate to "Run 30 minutes after the 0 hour when the Day Of Month is 1 AN
 
 ## [1.1.0] - 2016-01-26
 ### Added
-- Support for non-hourly offset timezones 
+- Support for non-hourly offset timezones
 - Checks for valid expressions
 
 ### Changed

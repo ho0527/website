@@ -186,7 +186,7 @@ document.addEventListener("keydown",function(event){
     if(event.ctrlKey&&event.key=="z"){ event.preventDefault();undo() }
     if(event.ctrlKey&&event.shiftKey&&event.key=="z"){ event.preventDefault();redo() }
     if(event.ctrlKey&&event.key=="s"){ event.preventDefault();save() }
-    if(event.key=="Escape"){ event.preventDefault();location.reload() } 
+    if(event.key=="Escape"){ event.preventDefault();location.reload() }
 })
 
 docgetall(".button").forEach(function(event){

@@ -72,14 +72,14 @@ but without using eval
 
 - Fixed a bug that prevented signed closures to properly work when the serialized string
 contains invalid UTF-8 chars. Starting with this version `json_encode` is no longer used
-when signing a closure. Backward compatibility is maintained and all closures that were 
+when signing a closure. Backward compatibility is maintained and all closures that were
 previously signed using the old method will continue to work.
 
 ### v3.2.0, 2019.05.05
 
-- Since an unsigned closure can be unserialized when no security provider is set, 
+- Since an unsigned closure can be unserialized when no security provider is set,
 there is no reason to treat differently a signed closure in the same situation.
-Therefore, the `Opis\Closure\SecurityException` exception  is no longer thrown when 
+Therefore, the `Opis\Closure\SecurityException` exception  is no longer thrown when
 unserializing a signed closure, if no security provider is set.
 
 ### v3.1.6, 2019.02.22
@@ -119,8 +119,8 @@ serialized closure
 
 * Added `transformUseVariables` and `resolveUseVariables` to
 `Opis\Closure\SerializableClosure` class.
-* Added `removeSecurityProvider` static method to 
-`Opis\Closure\SerializableClosure` class. 
+* Added `removeSecurityProvider` static method to
+`Opis\Closure\SerializableClosure` class.
 * Fixed some security related issues where a user was able to unserialize an unsigned
 closure, even when a security provider was in use.
 
@@ -138,7 +138,7 @@ closure, even when a security provider was in use.
 
 ### v3.0.9, 2018.01.04
 
-* Fixed a bug where the return type was not properly resolved. 
+* Fixed a bug where the return type was not properly resolved.
 See [issue 17](https://github.com/opis/closure/issues/17)
 * Added more tests
 
@@ -167,15 +167,15 @@ See [issue 17](https://github.com/opis/closure/issues/17)
 
 ### v3.0.3, 2017.09.06
 
-* Fixed a bug related to nested object references 
+* Fixed a bug related to nested object references
 * \[*internal*\] `Opis\Closure\ClosureScope` now extends `SplObjectStorage`
 * \[*internal*\] The `storage` property was removed from `Opis\Closure\ClosureScope`
 * \[*internal*\] The `instances` and `objects` properties were removed from `Opis\Closure\ClosureContext`
 
 ### v3.0.2, 2017.08.28
 
-* Fixed a bug where `$this` object was not handled properly inside the 
-`SerializableClosre::serialize` method. 
+* Fixed a bug where `$this` object was not handled properly inside the
+`SerializableClosre::serialize` method.
 
 ### v3.0.1, 2017.04.13
 

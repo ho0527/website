@@ -5,7 +5,7 @@ document.getElementById("submit").onclick=function(){
         let data=[]
         let line=event.target.result.split("\r\n")
         console.log(line)
-        
+
         for (let i=0;i<line.length;i=i+1){
             if(data.indexOf(line[i])==-1){
                 data.push(line[i]);

@@ -8,7 +8,7 @@ Opis Closure
 Serializable closures
 ---------------------
 **Opis Closure** is a library that aims to overcome PHP's limitations regarding closure
-serialization by providing a wrapper that will make all closures serializable. 
+serialization by providing a wrapper that will make all closures serializable.
 
 **The library's key features:**
 
@@ -49,8 +49,8 @@ The full documentation for this library can be found [here][documentation].
 
 ## Installation
 
-**Opis Closure** is available on [Packagist] and it can be installed from a 
-command line interface by using [Composer]. 
+**Opis Closure** is available on [Packagist] and it can be installed from a
+command line interface by using [Composer].
 
 ```bash
 composer require opis/closure
@@ -69,8 +69,8 @@ Or you could directly reference it into your `composer.json` file as a dependenc
 ### Migrating from 2.x
 
 If your project needs to support PHP 5.3 you can continue using the `2.x` version
-of **Opis Closure**. Otherwise, assuming you are not using one of the removed/refactored classes or features(see 
-[CHANGELOG]), migrating to version `3.x` is simply a matter of updating your `composer.json` file. 
+of **Opis Closure**. Otherwise, assuming you are not using one of the removed/refactored classes or features(see
+[CHANGELOG]), migrating to version `3.x` is simply a matter of updating your `composer.json` file.
 
 ### Semantic versioning
 
@@ -78,9 +78,9 @@ of **Opis Closure**. Otherwise, assuming you are not using one of the removed/re
 
 ### Arbitrary object serialization
 
-We've added this feature in order to be able to support the serialization of a closure's bound object. 
-The implementation is far from being perfect, and it's really hard to make it work flawless. 
-We will try to improve this, but we can't guarantee anything. 
+We've added this feature in order to be able to support the serialization of a closure's bound object.
+The implementation is far from being perfect, and it's really hard to make it work flawless.
+We will try to improve this, but we can't guarantee anything.
 So our advice regarding the `Opis\Closure\serialize|unserialize` functions is to use them with caution.
 
 

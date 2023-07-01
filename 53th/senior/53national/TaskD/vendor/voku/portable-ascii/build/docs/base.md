@@ -2,7 +2,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/gnejjnk7qplr7f5t/branch/master?svg=true)](https://ci.appveyor.com/project/voku/portable-ascii/branch/master)
 [![codecov.io](https://codecov.io/github/voku/portable-ascii/coverage.svg?branch=master)](https://codecov.io/github/voku/portable-ascii?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/997c9bb10d1c4791967bdf2e42013e8e)](https://www.codacy.com/app/voku/portable-ascii)
-[![Latest Stable Version](https://poser.pugx.org/voku/portable-ascii/v/stable)](https://packagist.org/packages/voku/portable-ascii) 
+[![Latest Stable Version](https://poser.pugx.org/voku/portable-ascii/v/stable)](https://packagist.org/packages/voku/portable-ascii)
 [![Total Downloads](https://poser.pugx.org/voku/portable-ascii/downloads)](https://packagist.org/packages/voku/portable-ascii)
 [![License](https://poser.pugx.org/voku/portable-ascii/license)](https://packagist.org/packages/voku/portable-ascii)
 [![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.me/moelleken)
@@ -12,15 +12,15 @@
 
 ## Description
 
-It is written in PHP (PHP 7+) and can work without "mbstring", "iconv" or any other extra encoding php-extension on your server. 
+It is written in PHP (PHP 7+) and can work without "mbstring", "iconv" or any other extra encoding php-extension on your server.
 
 The benefit of Portable ASCII is that it is easy to use, easy to bundle.
 
 The project based on ...
 + Sean M. Burke's work (https://metacpan.org/pod/Text::Unidecode)
 + Tomaz Solc's work (https://pypi.org/project/Unidecode/)
-+ Portable UTF-8 work (https://github.com/voku/portable-utf8) 
-+ Daniel St. Jules's work (https://github.com/danielstjules/Stringy) 
++ Portable UTF-8 work (https://github.com/voku/portable-utf8)
++ Daniel St. Jules's work (https://github.com/danielstjules/Stringy)
 + Johnny Broadway's work (https://github.com/jbroadway/urlify)
 + and many cherry-picks from "github"-gists and "Stack Overflow"-snippets ...
 
@@ -37,7 +37,7 @@ The project based on ...
 
 ## Alternative
 
-If you like a more Object Oriented Way to edit strings, then you can take a look at [voku/Stringy](https://github.com/voku/Stringy), it's a fork of "danielstjules/Stringy" but it used the "Portable ASCII"-Class and some extra methods. 
+If you like a more Object Oriented Way to edit strings, then you can take a look at [voku/Stringy](https://github.com/voku/Stringy), it's a fork of "danielstjules/Stringy" but it used the "Portable ASCII"-Class and some extra methods.
 
 ```php
 // Portable ASCII
@@ -70,12 +70,12 @@ but this repo is more modular and portable, because it has no dependencies.
 Example: ASCII::to_ascii()
 ```php
   echo ASCII::to_ascii('�Düsseldorf�', 'de');
-  
+
   // will output
   // Duesseldorf
 
   echo ASCII::to_ascii('�Düsseldorf�', 'en');
-  
+
   // will output
   // Dusseldorf
 ```

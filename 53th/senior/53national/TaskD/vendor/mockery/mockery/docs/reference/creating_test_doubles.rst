@@ -127,7 +127,7 @@ We create a spy by calling the ``\Mockery::spy()`` method:
 
     $spy = \Mockery::spy('MyClass');
 
-Just as with stubs or mocks, we can tell Mockery to base a spy on any concrete 
+Just as with stubs or mocks, we can tell Mockery to base a spy on any concrete
 or abstract class, or to implement any number of interfaces:
 
 .. code-block:: php

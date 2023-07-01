@@ -115,7 +115,7 @@ All notable changes in `sebastianbergmann/environment` are documented in this fi
 
 ### Added
 
-* [#21](https://github.com/sebastianbergmann/environment/issues/21): Equivalent of `PHP_OS_FAMILY` (for PHP < 7.2) 
+* [#21](https://github.com/sebastianbergmann/environment/issues/21): Equivalent of `PHP_OS_FAMILY` (for PHP < 7.2)
 
 ## [3.0.4] - 2017-06-20
 

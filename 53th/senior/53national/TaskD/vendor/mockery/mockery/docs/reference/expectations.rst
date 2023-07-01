@@ -158,8 +158,8 @@ Check if expected values are included or not, but type should be matched:
 
     $mock->foo(1, 2, 3);  // matches the expectation
     $mock->foo(3, 2, 1);  // matches the expectation (passed order doesn't matter)
-    $mock->foo('1', '2'); // throws a NoMatchingExpectationException (type should be matched) 
-    $mock->foo(3);        // throws a NoMatchingExpectationException 
+    $mock->foo('1', '2'); // throws a NoMatchingExpectationException (type should be matched)
+    $mock->foo(3);        // throws a NoMatchingExpectationException
 
 Any, or no arguments
 ^^^^^^^^^^^^^^^^^^^^

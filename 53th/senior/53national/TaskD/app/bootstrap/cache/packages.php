@@ -1,53 +1,53 @@
 <?php return array (
-  'facade/ignition' => 
+  'facade/ignition' =>
   array (
-    'providers' => 
+    'providers' =>
     array (
       0 => 'Facade\\Ignition\\IgnitionServiceProvider',
     ),
-    'aliases' => 
+    'aliases' =>
     array (
       'Flare' => 'Facade\\Ignition\\Facades\\Flare',
     ),
   ),
-  'fruitcake/laravel-cors' => 
+  'fruitcake/laravel-cors' =>
   array (
-    'providers' => 
+    'providers' =>
     array (
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
-  'laravel/sail' => 
+  'laravel/sail' =>
   array (
-    'providers' => 
+    'providers' =>
     array (
       0 => 'Laravel\\Sail\\SailServiceProvider',
     ),
   ),
-  'laravel/sanctum' => 
+  'laravel/sanctum' =>
   array (
-    'providers' => 
+    'providers' =>
     array (
       0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     ),
   ),
-  'laravel/tinker' => 
+  'laravel/tinker' =>
   array (
-    'providers' => 
+    'providers' =>
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'nesbot/carbon' => 
+  'nesbot/carbon' =>
   array (
-    'providers' => 
+    'providers' =>
     array (
       0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
   ),
-  'nunomaduro/collision' => 
+  'nunomaduro/collision' =>
   array (
-    'providers' => 
+    'providers' =>
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
