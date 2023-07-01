@@ -28,12 +28,12 @@
     $bookdata=response()->json(["id"=>"{id}","name"=>"{book name}","isbn"=>"{isbn}"],200);
     $urlnotfound=response()->json(["status"=>"fail","data"=>"403 Forbidden"],403);
 
-    Route::get("/reset",function()use($ok){
+    Route::GET("/reset",function()use($ok){
         DB::table("book")->truncate();
         return $ok;
     });
 
-    Route::post("/books",function(Request $request)use($isbnerror,$isbnincorrect,$tomanydata){
+    Route::POST("/books",function(Request $request)use($isbnerror,$isbnincorrect,$tomanydata){
         $name=$request->input("name");
         $isbn=$request->input("isbn");
         $isbnold=$isbn;
@@ -88,7 +88,7 @@
         }
     });
 
-    Route::get("/books/{id}",function(Request $request)use($booksearchfromid,$booksearchfromiderror){
+    Route::GET("/books/{id}",function(Request $request)use($booksearchfromid,$booksearchfromiderror){
         $id=$request->route("id");
         $row=DB::table("book")
             ->where(function($query)use($id){
@@ -105,9 +105,9 @@
             return $booksearchfromiderror;
         }
     });
-    // Route::put("/books/{id}",[Controller::class,""]);
+    // Route::PUT("/books/{id}",[Controller::class,""]);
 
-    Route::put("/books/{id}",function(Request $request)use($editbook,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$tomanydata){
+    Route::PUT("/books/{id}",function(Request $request)use($editbook,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$tomanydata){
         $id=$request->route("id");
         $name=$request->input("name");
         $isbn=$request->input("isbn");
@@ -166,7 +166,7 @@
         }
     });
 
-    Route::delete("/books/{id}",function(Request $request)use($ok,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$tomanydata){
+    Route::DELETE("/books/{id}",function(Request $request)use($ok,$booksearchfromiderror,$editbookfromiderror,$isbnerror,$isbnincorrect,$tomanydata){
         $id=$request->route("id");
         $row=DB::table("book")
             ->where(function($query)use($id){
@@ -182,7 +182,7 @@
         }
     });
 
-    Route::get("/books",function(){
+    Route::GET("/books",function(){
         return DB::table("book")->get();
     });
 ?>

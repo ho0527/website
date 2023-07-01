@@ -8,11 +8,8 @@
     }
 
     $n=(int)trim(fgets(STDIN));
-    if($n<=93){
-        echo(fibonacci(0,1,$n).PHP_EOL);
-    }else{
-        echo("[ERROR]n error".PHP_EOL);
-    }
+    $ans=number_format(fibonacci(0,1,$n),0,".","");
+    echo($ans.PHP_EOL);
 
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;

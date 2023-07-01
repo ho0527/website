@@ -1,6 +1,6 @@
 let width=localStorage.getItem("width")
 let height=localStorage.getItem("height")
-let canva=document.getElementById("canva1")
+let canva=docgetid("canva1")
 let ctx=canva.getContext("2d")
 let isdrawing=false
 let mod="select"
@@ -19,8 +19,8 @@ let sampleselect=""
 let data=[]
 let datacount=0
 
-document.getElementById("width").value=width
-document.getElementById("height").value=height
+docgetid("width").value=width
+docgetid("height").value=height
 canva.width=width
 canva.height=height
 canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
@@ -127,31 +127,31 @@ function sampledown(event){
     redohistory.length=0
     x=event.offsetX+20
     y=event.offsetY+20
-    let image=document.getElementById("mainimage")
+    let image=docgetid("mainimage")
     ctx.drawImage(image,x,y,image.width,image.height)
     isdrawing=true
 }
 
 function samplemove(event){
     if(isdrawing){
-        let image=document.getElementById("mainimage")
+        let image=docgetid("mainimage")
 
         x=event.offsetX+20
         y=event.offsetY+20
-        document.getElementById("mainimage").style.display="none"
+        docgetid("mainimage").style.display="none"
         setTimeout(function(){
             ctx.drawImage(image,x,y,image.width,image.height)
         },100)
     }else{
-        if(document.getElementById("mainimage")){
-            document.getElementById("mainimage").style.top=(event.offsetY+40)+"px"
-            document.getElementById("mainimage").style.left=(event.offsetX+40)+"px"
+        if(docgetid("mainimage")){
+            docgetid("mainimage").style.top=(event.offsetY+40)+"px"
+            docgetid("mainimage").style.left=(event.offsetX+40)+"px"
         }
     }
 }
 
 function removealllistener(){
-    if(mod!="sample"&&document.getElementById("mainimage")){ document.getElementById("mainimage").remove() }
+    if(mod!="sample"&&docgetid("mainimage")){ docgetid("mainimage").remove() }
     canva.removeEventListener("pointerdown",selectdown)
     canva.removeEventListener("pointermove",selectmove)
     canva.removeEventListener("pointerdown",paintdown)
@@ -161,23 +161,23 @@ function removealllistener(){
     canva.removeEventListener("pointermove",samplemove)
 }
 
-document.getElementById("new").onclick=function(){ if(confirm("是否裡開編輯頁面?")){ location.href="index.html" } }
-document.getElementById("undo").onclick=function(){ undo() }
-document.getElementById("redo").onclick=function(){ redo() }
-document.getElementById("save").onclick=function(){ save() }
-document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=function(){ savesample() } })
-document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
-document.getElementById("file").onchange=function(){ upload() }
-document.getElementById("black").style.borderColor="yellow"
-document.getElementById("layer1").style.background="yellow"
-document.getElementById("layer1").style.color="black"
-document.getElementById("layer1").style.borderBottom="1px yellow solid"
+docgetid("new").onclick=function(){ if(confirm("是否裡開編輯頁面?")){ location.href="index.html" } }
+docgetid("undo").onclick=function(){ undo() }
+docgetid("redo").onclick=function(){ redo() }
+docgetid("save").onclick=function(){ save() }
+docgetall(".savesample").forEach(function(event){ event.onclick=function(){ savesample() } })
+docgetid("uploadpicture").onclick=function(){ docgetid("file").click() }
+docgetid("file").onchange=function(){ upload() }
+docgetid("black").style.borderColor="yellow"
+docgetid("layer1").style.background="yellow"
+docgetid("layer1").style.color="black"
+docgetid("layer1").style.borderBottom="1px yellow solid"
 canva.addEventListener("pointerdown",selectdown)
 canva.addEventListener("pointermove",selectmove)
 
 let count=parseInt(localStorage.getItem("count"))
 for(let i=1;i<=count;i=i+1){
-    document.getElementById("choosesample").innerHTML=document.getElementById("choosesample").innerHTML+`
+    docgetid("choosesample").innerHTML=docgetid("choosesample").innerHTML+`
         <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
     `
 }
@@ -189,10 +189,10 @@ document.addEventListener("keydown",function(event){
     if(event.key=="Escape"){ event.preventDefault();location.reload() } 
 })
 
-document.querySelectorAll(".button").forEach(function(event){
+docgetall(".button").forEach(function(event){
     event.onclick=function(){
         mod=event.id
-        document.querySelectorAll(".button").forEach(function(event){
+        docgetall(".button").forEach(function(event){
             if(event.id==mod){ event.classList.add("selectbutton") }
             else{ event.classList.remove("selectbutton") }
         })
@@ -209,15 +209,15 @@ document.querySelectorAll(".button").forEach(function(event){
             canva.addEventListener("pointerdown",bucket)
         }else if(mod=="sample"){
             removealllistener()
-            document.getElementById("samplelightbox").style.display="block"
-            document.querySelectorAll(".sampleimage").forEach(function(event){
+            docgetid("samplelightbox").style.display="block"
+            docgetall(".sampleimage").forEach(function(event){
                 if(sampleselect!=""){
                     if(event.src==sampleselect){
                         event.style.border="1px yellow solid"
                     }
                 }
                 event.onclick=function(){
-                    document.querySelectorAll(".sampleimage").forEach(function(event){
+                    docgetall(".sampleimage").forEach(function(event){
                         event.style.border="1px black solid"
                     })
                     event.style.border="1px yellow solid"
@@ -235,14 +235,14 @@ document.querySelectorAll(".button").forEach(function(event){
     else{ event.classList.remove("selectbutton") }
 })
 
-document.querySelectorAll(".color").forEach(function(event){
+docgetall(".color").forEach(function(event){
     event.style.width=getComputedStyle(event).getPropertyValue("height")
     event.style.backgroundColor=event.id
     event.onclick=function(){
-        document.querySelectorAll(".color").forEach(function(event2){
+        docgetall(".color").forEach(function(event2){
             event2.style.borderColor="black"
         })
-        document.getElementById("rainbow").style.borderColor="black"
+        docgetid("rainbow").style.borderColor="black"
         this.style.borderColor="yellow"
         color=this.id
         if(mod=="setcanva"){
@@ -252,9 +252,9 @@ document.querySelectorAll(".color").forEach(function(event){
     }
 })
 
-document.getElementById("rainbow").onchange=function(){
+docgetid("rainbow").onchange=function(){
     color=this.value
-    document.querySelectorAll(".color").forEach(function(event2){
+    docgetall(".color").forEach(function(event2){
         event2.style.borderColor="black"
     })
     this.style.borderColor="yellow"
@@ -264,11 +264,11 @@ document.getElementById("rainbow").onchange=function(){
     }
 }
 
-document.getElementById("thick").onchange=function(){ thick=parseInt(this.value) }
+docgetid("thick").onchange=function(){ thick=parseInt(this.value) }
 
-document.getElementById("newlayer").onclick=function(){
+docgetid("newlayer").onclick=function(){
     canvacount=canvacount+1
-    document.getElementById("layer").innerHTML=document.getElementById("layer").innerHTML+`
+    docgetid("layer").innerHTML=docgetid("layer").innerHTML+`
         <div class="layergrid" id="layer${canvacount}" data-id="${canvacount}">
             <div class="layername">
                 圖層${canvacount}
@@ -284,16 +284,16 @@ document.getElementById("newlayer").onclick=function(){
     canvas.width=width
     canvas.height=height
     canvas.style.zIndex=canvacount
-    document.getElementById("main").appendChild(canvas)
-    canva=document.getElementById("canva"+canvacount)
+    docgetid("main").appendChild(canvas)
+    canva=docgetid("canva"+canvacount)
     ctx=canva.getContext("2d")
     sort("layergrid","#layer")
-    document.querySelectorAll(".layergrid").forEach(function(event){
+    docgetall(".layergrid").forEach(function(event){
         event.style.background="none"
         event.style.color="white"
         event.style.borderBottom="1px white solid"
         event.querySelectorAll(".layername")[0].onclick=function(){
-            document.querySelectorAll(".layergrid").forEach(function(foreachevent){
+            docgetall(".layergrid").forEach(function(foreachevent){
                 foreachevent.style.background="none"
                 foreachevent.style.color="white"
                 foreachevent.style.borderBottom="1px white solid"
@@ -301,18 +301,18 @@ document.getElementById("newlayer").onclick=function(){
             event.style.background="yellow"
             event.style.color="black"
             event.style.borderBottom="1px yellow solid"
-            canva=document.getElementById("canva"+event.dataset.id)
+            canva=docgetid("canva"+event.dataset.id)
             ctx=canva.getContext("2d")
         }
     })
-    document.getElementById("layer"+canvacount).style.background="yellow"
-    document.getElementById("layer"+canvacount).style.color="black"
-    document.getElementById("layer"+canvacount).style.borderBottom="1px yellow solid"
-    document.querySelectorAll(".layerdel").forEach(function(event){
+    docgetid("layer"+canvacount).style.background="yellow"
+    docgetid("layer"+canvacount).style.color="black"
+    docgetid("layer"+canvacount).style.borderBottom="1px yellow solid"
+    docgetall(".layerdel").forEach(function(event){
         event.onclick=function(){
             let id=this.getAttribute("data-id")
-            document.getElementById("layer"+id).remove()
-            document.getElementById("canva"+id).remove()
+            docgetid("layer"+id).remove()
+            docgetid("canva"+id).remove()
         }
     })
     removealllistener()
@@ -330,23 +330,23 @@ document.getElementById("newlayer").onclick=function(){
     }else{ }
 }
 
-document.querySelectorAll(".layerdel").forEach(function(event){
+docgetall(".layerdel").forEach(function(event){
     event.onclick=function(){
         let id=this.getAttribute("data-id")
-        document.getElementById("layertr"+id).remove()
-        document.getElementById("canva"+id).remove()
+        docgetid("layertr"+id).remove()
+        docgetid("canva"+id).remove()
         if(id==canvacount){ canvacount=canvacount-1 }
-        canva=document.getElementById("canva"+canvacount)
+        canva=docgetid("canva"+canvacount)
         ctx=canva.getContext("2d")
-        document.getElementById("canva"+canvacount).style.background="yellow"
-        document.getElementById("canva"+canvacount).style.color="white"
-        document.getElementById("canva"+canvacount).style.borderBottom="1px yellow solid"
+        docgetid("canva"+canvacount).style.background="yellow"
+        docgetid("canva"+canvacount).style.color="white"
+        docgetid("canva"+canvacount).style.borderBottom="1px yellow solid"
     }
 })
 
-document.getElementById("uplaodsample").onclick=function(){ docment.getElementById("samplefile").click() }
+docgetid("uplaodsample").onclick=function(){ docment.getElementById("samplefile").click() }
 
-document.getElementById("samplefile").onchange=function(event){
+docgetid("samplefile").onchange=function(event){
     let file=event.target.files[0]
     let reader=new FileReader()
     reader.onload=function(){
@@ -358,10 +358,10 @@ document.getElementById("samplefile").onchange=function(event){
     location.reload()
 }
 
-document.getElementById("samplesubmit").onclick=function(){
-    document.querySelectorAll(".sampleimage").forEach(function(event){
+docgetid("samplesubmit").onclick=function(){
+    docgetall(".sampleimage").forEach(function(event){
         if(event.style.border=="1px solid yellow"){
-            if(document.getElementById("mainimage")){ document.getElementById("mainimage").remove() }
+            if(docgetid("mainimage")){ docgetid("mainimage").remove() }
             sampleselect=event.src
             img=document.createElement("img")
             img.src=sampleselect
@@ -369,17 +369,17 @@ document.getElementById("samplesubmit").onclick=function(){
             img.style.position="absolute"
             img.style.opacity=0.5
             img.style.zIndex=999
-            document.getElementById("main").appendChild(img)
+            docgetid("main").appendChild(img)
         }
-        document.getElementById("samplelightbox").style.display="none"
+        docgetid("samplelightbox").style.display="none"
     })
 }
 
-document.getElementById("close").onclick=function(){ document.getElementById("samplelightbox").style.display="none" }
+docgetid("close").onclick=function(){ docgetid("samplelightbox").style.display="none" }
 
 document.addEventListener("pointerup",function(){
     if(isdrawing){
-        if(document.getElementById("mainimage")){ document.getElementById("mainimage").style.display="block" }
+        if(docgetid("mainimage")){ docgetid("mainimage").style.display="block" }
         // if(mod=="paint"){
         //     let tempdata=data[datacount]
 
@@ -416,9 +416,9 @@ document.addEventListener("pointerup",function(){
     }
 })
 
-document.getElementById("submit").onclick=function(){
-    let width=document.getElementById("width").value
-    let height=document.getElementById("height").value
+docgetid("submit").onclick=function(){
+    let width=docgetid("width").value
+    let height=docgetid("height").value
     if(/^[0-9]+$/.test(width)&&/^[0-9]+$/.test(height)){
         location.href="edit.html"
         localStorage.setItem("width",width)

@@ -92,7 +92,10 @@ function paintdown(event){
     ctx.beginPath()
     ctx.moveTo(x1,y1)
     ctx.lineTo(x1,y1)
-    data.push([[x1],[y1]])
+    data.push([
+        [x1],
+        [y1]
+    ])
     ctx.stroke()
     isdrawing=true
 }
@@ -380,34 +383,34 @@ document.addEventListener("pointerup",function(){
         // if(mod=="paint"){
         //     let tempdata=data[datacount]
 
-            // let datasortx=tempdata[0].sort(function(a,b){ return a-b })
-            // let datasorty=tempdata[1].sort(function(a,b){ return a-b })
-            // let minx=datasortx[0]
-            // let miny=datasorty[0]
-            // let maxx=datasortx[datasortx.length-1]
-            // let maxy=datasorty[datasorty.length-1]
+        //     let datasortx=tempdata[0].sort(function(a,b){ return a-b })
+        //     let datasorty=tempdata[1].sort(function(a,b){ return a-b })
+        //     let minx=datasortx[0]
+        //     let miny=datasorty[0]
+        //     let maxx=datasortx[datasortx.length-1]
+        //     let maxy=datasorty[datasorty.length-1]
 
-            // let minx=Math.min(...tempdata[0])
-            // let miny=Math.min(...tempdata[1])
-            // let maxx=Math.max(...tempdata[0])
-            // let maxy=Math.max(...tempdata[1])
+        //     // let minx=Math.min(...tempdata[0])
+        //     // let miny=Math.min(...tempdata[1])
+        //     // let maxx=Math.max(...tempdata[0])
+        //     // let maxy=Math.max(...tempdata[1])
 
-            // let minx=tempdata[0].reduce(function(a,b){ return Math.min(a,b) })
-            // let miny=tempdata[1].reduce(function(a,b){ return Math.min(a,b) })
-            // let maxx=tempdata[0].reduce(function(a,b){ return Math.max(a,b) })
-            // let maxy=tempdata[1].reduce(function(a,b){ return Math.max(a,b) })
+        //     // let minx=tempdata[0].reduce(function(a,b){ return Math.min(a,b) })
+        //     // let miny=tempdata[1].reduce(function(a,b){ return Math.min(a,b) })
+        //     // let maxx=tempdata[0].reduce(function(a,b){ return Math.max(a,b) })
+        //     // let maxy=tempdata[1].reduce(function(a,b){ return Math.max(a,b) })
 
-            // data[datacount].push([minx,miny,maxx,maxy])
-            // ctx.strokeStyle="blue"
-            // ctx.lineWidth=1
-            // ctx.rect(minx-5-thick,miny-5-thick,maxx-minx+5+thick*2,maxy-miny+5+thick*2)
-            // ctx.stroke()
-            // console.log(data)
-            // datacount=datacount+1
-            // console.log(minx)
-            // console.log(maxx)
-            // console.log(miny)
-            // console.log(maxy)
+        //     data[datacount].push([minx,miny,maxx,maxy])
+        //     ctx.strokeStyle="blue"
+        //     ctx.lineWidth=1
+        //     ctx.rect(minx-5-thick,miny-5-thick,maxx-minx+5+thick*2,maxy-miny+5+thick*2)
+        //     ctx.stroke()
+        //     console.log(data)
+        //     datacount=datacount+1
+        //     console.log(minx)
+        //     console.log(maxx)
+        //     console.log(miny)
+        //     console.log(maxy)
         // }
         isdrawing=false
     }
