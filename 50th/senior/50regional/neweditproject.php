@@ -92,8 +92,8 @@
                                 <input type="button" class="button" value="新增面向">
                                 <div class="facingdiv">
                                     <div class="facing grid">
-                                        <input type="text" class="input facingname" value="">
-                                        <input type="text" class="input facingdesciption" value="">
+                                        <input type="text" class="input2 facingname" placeholder="面向名稱">
+                                        <input type="text" class="input2 facingdesciption" placeholder="面向說明">
                                         <input type="button" class="noborderbutton facingdelect" value="X">
                                     </div>
                                 </div>
