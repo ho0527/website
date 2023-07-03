@@ -51,7 +51,6 @@ hr{
 }
 
 .checkbox:checked+.label{
-    text-decoration: line-through;
     font-style: italic;
 }
 
@@ -78,22 +77,19 @@ hr{
     margin-top: -5px;
 }
 
-/* .checkbox:checked+.label::after{
+.label::after{
     content: "";
     position: absolute;
     top: 50%;
-    left: 0;
-    width: 0;
+    left: 0px;
+    width: 0px;
     height: 2px;
-    background-color: red;
-    animation: 0.5s line 1;
+    transition: 0.5s;
 }
 
-@keyframes line{
-    from{
-        width: 0%;
-    }
-    to{
-        width: 100%;
-    }
-} */
+.checkbox:checked+.label::after{
+    content: "";
+    width: 100%;
+    background-color: white;
+    transition: 0.5s;
+}

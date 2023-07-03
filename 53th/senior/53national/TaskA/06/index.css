@@ -3,7 +3,7 @@ body{
     background: rgb(35, 35, 35);
     color: rgb(255, 255, 255);
     user-select: none;
-    word-break: break-all;
+    word-wrap: break-word;
     padding: 0px;
     margin: 0px;
 }
@@ -33,9 +33,10 @@ table{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 85%;
-    height: 75%;
+    width: 80%;
+    height: 45%;
     border-radius: 10px;
+    text-align: justify;
 }
 
 .text{

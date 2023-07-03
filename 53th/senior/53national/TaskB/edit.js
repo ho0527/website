@@ -18,13 +18,14 @@ let canvacount=1
 let sampleselect=""
 let data=[]
 let datacount=0
+let nowlayer=1
 
 document.getElementById("width").value=width
 document.getElementById("height").value=height
 canva.width=width
 canva.height=height
 canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
-if(localStorage.getItem("count")==null){ localStorage.setItem("count",0); }
+if(localStorage.getItem("count")==null){ localStorage.setItem("count",0);}
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -71,13 +72,61 @@ function upload(){
 }
 
 function selectdown(event){
-    isdrawing=true
+    for(let i=0;i<data.length;i=i+1){
+        for(let j=0;j<data[i][0].length;j=j+1){
+            let thisx=data[i][0][j]
+            let thisy=data[i][1][j]
+            let nowx=event.offsetX
+            let nowy=event.offsetY
+            let x=Math.abs(thisx-nowx)
+            let y=Math.abs(thisy-nowy)
+            let z=Math.sqrt((x**2)+(y**2))
+            let thisthick=data[i][2][4]
+            let thislayer=data[i][2][5]
+
+            if(thislayer==nowlayer){
+                if(thisthick<=10){
+                    if(z<=(thisthick*20)){
+                        let tempdata=data[i]
+                        let minx=Math.min(...tempdata[0])
+                        let miny=Math.min(...tempdata[1])
+                        let maxx=Math.max(...tempdata[0])
+                        let maxy=Math.max(...tempdata[1])
+                        ctx.strokeStyle="blue"
+                        ctx.lineWidth=1
+                        ctx.rect(minx-5-thisthick,miny-5-thisthick,maxx-minx+5+thisthick*2,maxy-miny+5+thisthick*2)
+                        ctx.stroke()
+                        isdrawing=true
+                        return ;
+                    }
+                } else {
+                    if(z<=(thisthick*5)){
+                        let tempdata=data[i]
+                        let minx=Math.min(...tempdata[0])
+                        let miny=Math.min(...tempdata[1])
+                        let maxx=Math.max(...tempdata[0])
+                        let maxy=Math.max(...tempdata[1])
+                        ctx.strokeStyle="blue"
+                        ctx.lineWidth=1
+                        ctx.rect(minx-5-thisthick,miny-5-thisthick,maxx-minx+5+thisthick*2,maxy-miny+5+thisthick*2)
+                        ctx.stroke()
+                        isdrawing=true
+                        return ;
+                    }
+                }
+            }
+        }
+    }
 }
 
 function selectmove(event){
     if(isdrawing){
-    }else{
+    } else {
     }
+}
+
+function selectclear(){
+    // clear select
 }
 
 function paintdown(event){
@@ -142,7 +191,7 @@ function samplemove(event){
         setTimeout(function(){
             ctx.drawImage(image,x,y,image.width,image.height)
         },100)
-    }else{
+    } else {
         if(document.getElementById("mainimage")){
             document.getElementById("mainimage").style.top=(event.offsetY+40)+"px"
             document.getElementById("mainimage").style.left=(event.offsetX+40)+"px"
@@ -151,7 +200,7 @@ function samplemove(event){
 }
 
 function removealllistener(){
-    if(mod!="sample"&&document.getElementById("mainimage")){ document.getElementById("mainimage").remove() }
+    if(mod !="sample" && document.getElementById("mainimage")){ document.getElementById("mainimage").remove()}
     canva.removeEventListener("pointerdown",selectdown)
     canva.removeEventListener("pointermove",selectmove)
     canva.removeEventListener("pointerdown",paintdown)
@@ -159,15 +208,16 @@ function removealllistener(){
     canva.removeEventListener("pointerdown",bucket)
     canva.removeEventListener("pointerdown",sampledown)
     canva.removeEventListener("pointermove",samplemove)
+    selectclear()
 }
 
 document.getElementById("new").onclick=function(){ if(confirm("是否裡開編輯頁面?")){ location.href="index.html" } }
-document.getElementById("undo").onclick=function(){ undo() }
-document.getElementById("redo").onclick=function(){ redo() }
-document.getElementById("save").onclick=function(){ save() }
-document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=function(){ savesample() } })
-document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
-document.getElementById("file").onchange=function(){ upload() }
+document.getElementById("undo").onclick=function(){ undo()}
+document.getElementById("redo").onclick=function(){ redo()}
+document.getElementById("save").onclick=function(){ save()}
+document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=function(){ savesample()} })
+document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click()}
+document.getElementById("file").onchange=function(){ upload()}
 document.getElementById("black").style.borderColor="yellow"
 document.getElementById("layer1").style.background="yellow"
 document.getElementById("layer1").style.color="black"
@@ -178,69 +228,69 @@ canva.addEventListener("pointermove",selectmove)
 let count=parseInt(localStorage.getItem("count"))
 for(let i=1;i<=count;i=i+1){
     document.getElementById("choosesample").innerHTML=document.getElementById("choosesample").innerHTML+`
-        <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
+       <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
     `
 }
 
 document.addEventListener("keydown",function(event){
-    if(event.ctrlKey&&event.key=="z"){ event.preventDefault();undo() }
-    if(event.ctrlKey&&event.shiftKey&&event.key=="z"){ event.preventDefault();redo() }
-    if(event.ctrlKey&&event.key=="s"){ event.preventDefault();save() }
-    if(event.key=="Escape"){ event.preventDefault();location.reload() }
+    if(event.ctrlKey && event.key=="z"){ event.preventDefault();undo()}
+    if(event.ctrlKey && event.shiftKey && event.key=="z"){ event.preventDefault();redo()}
+    if(event.ctrlKey && event.key=="s"){ event.preventDefault();save()}
+    if(event.key=="Escape"){ event.preventDefault();location.reload()}
 })
 
 document.querySelectorAll(".button").forEach(function(event){
     event.onclick=function(){
         mod=event.id
         document.querySelectorAll(".button").forEach(function(event){
-            if(event.id==mod){ event.classList.add("selectbutton") }
-            else{ event.classList.remove("selectbutton") }
+            if(event.id==mod){ event.classList.add("selectbutton")}
+            else { event.classList.remove("selectbutton")}
         })
         if(mod=="select"){
             removealllistener()
             canva.addEventListener("pointerdown",selectdown)
             canva.addEventListener("pointermove",selectmove)
-        }else if(mod=="paint"){
+        } else if(mod=="paint"){
             removealllistener()
             canva.addEventListener("pointerdown",paintdown)
             canva.addEventListener("pointermove",paintmove)
-        }else if(mod=="bucket"){
+        } else if(mod=="bucket"){
             removealllistener()
             canva.addEventListener("pointerdown",bucket)
-        }else if(mod=="sample"){
+        } else if(mod=="sample"){
             removealllistener()
             document.getElementById("samplelightbox").style.display="block"
-            document.querySelectorAll(".sampleimage").forEach(function(event){
-                if(sampleselect!=""){
-                    if(event.src==sampleselect){
-                        event.style.border="1px yellow solid"
+            document.querySelectorAll(".sampleimage").forEach(function(loopevent){
+                if(sampleselect !=""){
+                    if(loopevent.src==sampleselect){
+                        loopevent.style.border="1px yellow solid"
                     }
                 }
-                event.onclick=function(){
-                    document.querySelectorAll(".sampleimage").forEach(function(event){
-                        event.style.border="1px black solid"
+                loopevent.onclick=function(){
+                    document.querySelectorAll(".sampleimage").forEach(function(loopevent){
+                        loopevent.style.border="1px black solid"
                     })
-                    event.style.border="1px yellow solid"
+                    loopevent.style.border="1px yellow solid"
                 }
             })
             canva.addEventListener("pointerdown",sampledown)
             canva.addEventListener("pointermove",samplemove)
-        }else if(mod=="setcanva"){
+        } else if(mod=="setcanva"){
             removealllistener()
-        }else{
+        } else {
             removealllistener()
         }
     }
-    if(event.id==mod){ event.classList.add("selectbutton") }
-    else{ event.classList.remove("selectbutton") }
+    if(event.id==mod){ event.classList.add("selectbutton")}
+    else { event.classList.remove("selectbutton")}
 })
 
 document.querySelectorAll(".color").forEach(function(event){
     event.style.width=getComputedStyle(event).getPropertyValue("height")
     event.style.backgroundColor=event.id
     event.onclick=function(){
-        document.querySelectorAll(".color").forEach(function(event2){
-            event2.style.borderColor="black"
+        document.querySelectorAll(".color").forEach(function(loopevent){
+            loopevent.style.borderColor="black"
         })
         document.getElementById("rainbow").style.borderColor="black"
         this.style.borderColor="yellow"
@@ -254,8 +304,8 @@ document.querySelectorAll(".color").forEach(function(event){
 
 document.getElementById("rainbow").onchange=function(){
     color=this.value
-    document.querySelectorAll(".color").forEach(function(event2){
-        event2.style.borderColor="black"
+    document.querySelectorAll(".color").forEach(function(event){
+        event.style.borderColor="black"
     })
     this.style.borderColor="yellow"
     if(mod=="setcanva"){
@@ -264,19 +314,19 @@ document.getElementById("rainbow").onchange=function(){
     }
 }
 
-document.getElementById("thick").onchange=function(){ thick=parseInt(this.value) }
+document.getElementById("thick").onchange=function(){ thick=parseInt(this.value)}
 
 document.getElementById("newlayer").onclick=function(){
     canvacount=canvacount+1
     document.getElementById("layer").innerHTML=document.getElementById("layer").innerHTML+`
-        <div class="layergrid" id="layer${canvacount}" data-id="${canvacount}">
-            <div class="layername">
+       <div class="layergrid" id="layer${canvacount}" data-id="${canvacount}">
+           <div class="layername">
                 圖層${canvacount}
-            </div>
-            <div class="layerdef">
-                <input type="button" class="layerdel" data-id="${canvacount}" value="刪除">
-            </div>
-        </div>
+           </div>
+           <div class="layerdef">
+               <input type="button" class="layerdel" data-id="${canvacount}" value="刪除">
+           </div>
+       </div>
     `
     let canvas=document.createElement("canvas")
     canvas.classList.add("canva")
@@ -287,22 +337,24 @@ document.getElementById("newlayer").onclick=function(){
     document.getElementById("main").appendChild(canvas)
     canva=document.getElementById("canva"+canvacount)
     ctx=canva.getContext("2d")
+    nowlayer=canvacount
     sort("layergrid","#layer")
     document.querySelectorAll(".layergrid").forEach(function(event){
         event.style.background="none"
         event.style.color="white"
         event.style.borderBottom="1px white solid"
         event.querySelectorAll(".layername")[0].onclick=function(){
-            document.querySelectorAll(".layergrid").forEach(function(foreachevent){
-                foreachevent.style.background="none"
-                foreachevent.style.color="white"
-                foreachevent.style.borderBottom="1px white solid"
+            document.querySelectorAll(".layergrid").forEach(function(loopevent){
+                loopevent.style.background="none"
+                loopevent.style.color="white"
+                loopevent.style.borderBottom="1px white solid"
             })
             event.style.background="yellow"
             event.style.color="black"
             event.style.borderBottom="1px yellow solid"
             canva=document.getElementById("canva"+event.dataset.id)
             ctx=canva.getContext("2d")
+            nowlayer=event.dataset.id
         }
     })
     document.getElementById("layer"+canvacount).style.background="yellow"
@@ -319,15 +371,15 @@ document.getElementById("newlayer").onclick=function(){
     if(mod=="select"){
         canva.addEventListener("pointerdown",selectdown)
         canva.addEventListener("pointermove",selectmove)
-    }else if(mod=="paint"){
+    } else if(mod=="paint"){
         canva.addEventListener("pointerdown",paintdown)
         canva.addEventListener("pointermove",paintmove)
-    }else if(mod=="bucket"){
+    } else if(mod=="bucket"){
         canva.addEventListener("pointerdown",bucket)
-    }else if(mod=="sample"){
+    } else if(mod=="sample"){
         canva.addEventListener("pointerdown",sampledown)
         canva.addEventListener("pointermove",samplemove)
-    }else{ }
+    } else { }
 }
 
 document.querySelectorAll(".layerdel").forEach(function(event){
@@ -361,7 +413,7 @@ document.getElementById("samplefile").onchange=function(event){
 document.getElementById("samplesubmit").onclick=function(){
     document.querySelectorAll(".sampleimage").forEach(function(event){
         if(event.style.border=="1px solid yellow"){
-            if(document.getElementById("mainimage")){ document.getElementById("mainimage").remove() }
+            if(document.getElementById("mainimage")){ document.getElementById("mainimage").remove()}
             sampleselect=event.src
             img=document.createElement("img")
             img.src=sampleselect
@@ -380,38 +432,16 @@ document.getElementById("close").onclick=function(){ document.getElementById("sa
 document.addEventListener("pointerup",function(){
     if(isdrawing){
         if(document.getElementById("mainimage")){ document.getElementById("mainimage").style.display="block" }
-        // if(mod=="paint"){
-        //     let tempdata=data[datacount]
-
-        //     let datasortx=tempdata[0].sort(function(a,b){ return a-b })
-        //     let datasorty=tempdata[1].sort(function(a,b){ return a-b })
-        //     let minx=datasortx[0]
-        //     let miny=datasorty[0]
-        //     let maxx=datasortx[datasortx.length-1]
-        //     let maxy=datasorty[datasorty.length-1]
-
-        //     // let minx=Math.min(...tempdata[0])
-        //     // let miny=Math.min(...tempdata[1])
-        //     // let maxx=Math.max(...tempdata[0])
-        //     // let maxy=Math.max(...tempdata[1])
-
-        //     // let minx=tempdata[0].reduce(function(a,b){ return Math.min(a,b) })
-        //     // let miny=tempdata[1].reduce(function(a,b){ return Math.min(a,b) })
-        //     // let maxx=tempdata[0].reduce(function(a,b){ return Math.max(a,b) })
-        //     // let maxy=tempdata[1].reduce(function(a,b){ return Math.max(a,b) })
-
-        //     data[datacount].push([minx,miny,maxx,maxy])
-        //     ctx.strokeStyle="blue"
-        //     ctx.lineWidth=1
-        //     ctx.rect(minx-5-thick,miny-5-thick,maxx-minx+5+thick*2,maxy-miny+5+thick*2)
-        //     ctx.stroke()
-        //     console.log(data)
-        //     datacount=datacount+1
-        //     console.log(minx)
-        //     console.log(maxx)
-        //     console.log(miny)
-        //     console.log(maxy)
-        // }
+        if(mod=="paint"){
+            let tempdata=data[datacount]
+            let minx=Math.min(...tempdata[0])
+            let miny=Math.min(...tempdata[1])
+            let maxx=Math.max(...tempdata[0])
+            let maxy=Math.max(...tempdata[1])
+            data[datacount].push([minx,miny,maxx,maxy,nowlayer,thick])
+            datacount=datacount+1 
+            console.log(data)
+        }
         isdrawing=false
     }
 })
@@ -419,9 +449,17 @@ document.addEventListener("pointerup",function(){
 document.getElementById("submit").onclick=function(){
     let width=document.getElementById("width").value
     let height=document.getElementById("height").value
-    if(/^[0-9]+$/.test(width)&&/^[0-9]+$/.test(height)){
+    if(/^[0-9]+$/.test(width)&& /^[0-9]+$/.test(height)){
         location.href="edit.html"
         localStorage.setItem("width",width)
         localStorage.setItem("height",height)
-    }else{ alert("長寬要是整數") }
+    } else { alert("長寬要是整數")}
 }
+
+setInterval(function(){
+    let layer=document.querySelectorAll(".layergrid")
+    for(let i=0;i<layer.length;i=i+1){
+        let id=layer[i].dataset.id
+        document.getElementById("canva"+id).style.zIndex=i+1
+    }
+},100)
