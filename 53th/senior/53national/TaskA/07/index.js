@@ -14,9 +14,9 @@ document.getElementById("submit").onclick=function(){
         r=r.toString(16)
         g=g.toString(16)
         b=b.toString(16)
-        if(r.length == 1) r="0"+r
-        if(g.length==1) g = "0" + g;
-        if(b.length == 1) b = "0" + b
+        if(r.length==1) r="0"+r
+        if(g.length==1) g="0"+g;
+        if(b.length==1) b="0"+b
         maindata="the color type is: RGB<br>"+"HEX value: "+"#"+r+g+b+"<br>"+"RGB value: "+input
     }else if(/^\#(([0-9]|[a-f]|[A-F]){3}){1,2}$/.test(input)){
         if(input.length==4){

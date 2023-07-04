@@ -1,8 +1,5 @@
-let input=document.getElementById("input")
-let show=document.getElementById("show")
-
-function inputchange(){
-    let value=input.value
+document.getElementById("input").oninput=function(){
+    let value=document.getElementById("input").value
 
     // 段落和換行格式
     value=value.replace(/\n/g,"<br>")
@@ -23,13 +20,10 @@ function inputchange(){
     value=value.replace(/<li>(.*)<\/li>/g,"<ul><li>$1</li></ul>")
 
     // 圖片格式
-    value=value.replace(/!\[(.*?)\]\((.*?)\)/g,"<img src='$2' alt='$1'>")
+    value=value.replace(/\!\[(.*?)\]\((.*?)\)/g,"<img src='$2' alt='$1'>")
 
     // 連結格式
     value=value.replace(/\[(.*?)\]\((.*?)\)/g,"<a href='$2'>$1</a>")
 
-    console.log(value)
-    show.innerHTML=value
+    document.getElementById("show").innerHTML=value
 }
-
-input.addEventListener("input",function(){ inputchange() })

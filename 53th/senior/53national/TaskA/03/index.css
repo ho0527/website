@@ -50,18 +50,6 @@ hr{
     display: none;
 }
 
-.checkbox:checked+.label{
-    font-style: italic;
-}
-
-.checkbox:checked+.label:before{
-    content: "V";
-    border: none;
-    background: none;
-    font-style: normal;
-    font-size: 30px;
-}
-
 .label{
     position: relative;
     cursor: pointer;
@@ -85,6 +73,18 @@ hr{
     width: 0px;
     height: 2px;
     transition: 0.5s;
+}
+
+.checkbox:checked+.label{
+    font-style: italic;
+}
+
+.checkbox:checked+.label:before{
+    content: "V";
+    border: none;
+    background: none;
+    font-style: normal;
+    font-size: 30px;
 }
 
 .checkbox:checked+.label::after{
