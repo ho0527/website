@@ -1,5 +1,5 @@
-let width=localStorage.getItem("width")
-let height=localStorage.getItem("height")
+let width=weblsget("width")
+let height=weblsget("height")
 let canva=docgetid("canva1")
 let ctx=canva.getContext("2d")
 let isdrawing=false
@@ -23,8 +23,8 @@ docgetid("width").value=width
 docgetid("height").value=height
 canva.width=width
 canva.height=height
-canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
-if(localStorage.getItem("count")==null){ localStorage.setItem("count",0); }
+canva.style.backgroundColor=weblsget("backgroundcolor")
+if(!isset(weblsget("count"))){ weblsset("count",0); }
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -61,9 +61,9 @@ function save(){
 
 function savesample(){
     data=canva.toDataURL("image/jpg")
-    let count=parseInt(localStorage.getItem("count"))
-    localStorage.setItem("image"+(count+1),data)
-    localStorage.setItem("count",count+1)
+    let count=parseInt(weblsget("count"))
+    weblsset("image"+(count+1),data)
+    weblsset("count",count+1)
     location.reload()
 }
 
@@ -175,10 +175,10 @@ docgetid("layer1").style.borderBottom="1px yellow solid"
 canva.addEventListener("pointerdown",selectdown)
 canva.addEventListener("pointermove",selectmove)
 
-let count=parseInt(localStorage.getItem("count"))
+let count=parseInt(weblsget("count"))
 for(let i=1;i<=count;i=i+1){
     docgetid("choosesample").innerHTML=docgetid("choosesample").innerHTML+`
-        <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
+        <img src="${weblsget("image"+i)}" class="sampleimage" draggable="false">
     `
 }
 
@@ -247,7 +247,7 @@ docgetall(".color").forEach(function(event){
         color=this.id
         if(mod=="setcanva"){
             canva.style.backgroundColor=color
-            localStorage.setItem("backgroundcolor",color)
+            weblsset("backgroundcolor",color)
         }
     }
 })
@@ -260,7 +260,7 @@ docgetid("rainbow").onchange=function(){
     this.style.borderColor="yellow"
     if(mod=="setcanva"){
         canva.style.backgroundColor=color
-        localStorage.setItem("backgroundcolor",color)
+        weblsset("backgroundcolor",color)
     }
 }
 
@@ -350,9 +350,9 @@ docgetid("samplefile").onchange=function(event){
     let file=event.target.files[0]
     let reader=new FileReader()
     reader.onload=function(){
-        let count=parseInt(localStorage.getItem("count"))
-        localStorage.setItem("image"+(count+1),reader.result)
-        localStorage.setItem("count",count+1)
+        let count=parseInt(weblsget("count"))
+        weblsset("image"+(count+1),reader.result)
+        weblsset("count",count+1)
     }
     reader.readAsDataURL(file)
     location.reload()
@@ -421,7 +421,7 @@ docgetid("submit").onclick=function(){
     let height=docgetid("height").value
     if(/^[0-9]+$/.test(width)&&/^[0-9]+$/.test(height)){
         location.href="edit.html"
-        localStorage.setItem("width",width)
-        localStorage.setItem("height",height)
+        weblsset("width",width)
+        weblsset("height",height)
     }else{ alert("長寬要是整數") }
 }

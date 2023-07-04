@@ -96,41 +96,37 @@
     $fileerror=response()->json(["success"=>false,"message"=>"MSG_INVALID_FILE_FORMAT"],400);
 
     Route::POST("/auth/login",function(Request $request)use($loginerror,$missingfield,$datatypeerror,$user,$logincheck){
-        if($logincheck()==NULL){
-            if($request->has("email")&&$request->has("password")){
-                $email=$request->input("email");
-                $password=$request->input("password");
-                $row=DB::table("users")
-                    ->where(function($query)use($email){
-                        $query->where("email","=",$email);
-                    })->select("*")->get();
-                if($row->isNotEmpty()&&$row[0]->password==$password){
-                    if(is_string($email)&&is_string($password)){
-                        DB::table("users")
-                            ->where("id","=",$row[0]->id)
-                            ->update([
-                                "access_token"=>hash("sha256",$email),
-                            ]);
-                        $row=DB::table("users")
-                            ->where(function($query)use($email){
-                                $query->where("email","=",$email);
-                            })->select("*")->get();
-                        $_SESSION["login"]=$row[0]->id;
-                        return response()->json([
-                            "success"=>true,
-                            "data"=>$user($row,"login")
+        if($request->has("email")&&$request->has("password")){
+            $email=$request->input("email");
+            $password=$request->input("password");
+            $row=DB::table("users")
+                ->where(function($query)use($email){
+                    $query->where("email","=",$email);
+                })->select("*")->get();
+            if($row->isNotEmpty()&&$row[0]->password==$password){
+                if(is_string($email)&&is_string($password)){
+                    DB::table("users")
+                        ->where("id","=",$row[0]->id)
+                        ->update([
+                            "access_token"=>hash("sha256",$email),
                         ]);
-                    }else{
-                        return $datatypeerror;
-                    }
+                    $row=DB::table("users")
+                        ->where(function($query)use($email){
+                            $query->where("email","=",$email);
+                        })->select("*")->get();
+                    $_SESSION["login"]=$row[0]->id;
+                    return response()->json([
+                        "success"=>true,
+                        "data"=>$user($row,"login")
+                    ]);
                 }else{
-                    return $loginerror;
+                    return $datatypeerror;
                 }
             }else{
-                return $missingfield;
+                return $loginerror;
             }
         }else{
-            return "alredlogin";
+            return $missingfield;
         }
     });
 

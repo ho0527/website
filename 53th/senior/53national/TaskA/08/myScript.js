@@ -3,13 +3,13 @@ let page={
     "b.html":"This is page B",
     "c.html":"This is page C",
 }
+let url=location.href.split("/")
 
 document.addEventListener("click",function(event){
+    let url=location.href.split("/")
     event.preventDefault()
     history.pushState(null,null,event.target.href)
-    let url=location.href.split("/")
     document.getElementById("content").innerHTML=page[url[url.length-1]]
 })
 
-let url=location.href.split("/")
 document.getElementById("content").innerHTML=page[url[url.length-1]]
