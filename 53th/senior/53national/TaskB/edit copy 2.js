@@ -71,7 +71,51 @@ function upload(){
 }
 
 function selectdown(event){
-    isdrawing=true
+    for(let i=0;i<data.length;i=i+1){
+        for(let j=0;j<data[i][0].length;j=j+1){
+            let thisx=data[i][0][j]
+            let thisy=data[i][1][j]
+            let nowx=event.offsetX
+            let nowy=event.offsetY
+            let x=Math.abs(thisx-nowx)
+            let y=Math.abs(thisy-nowy)
+            let z=Math.sqrt((x**2)+(y**2))
+            let thisthick=data[i][2][4]
+            let thislayer=data[i][2][5]
+
+            if(thislayer==nowlayer){
+                if(thisthick<=10){
+                    if(z<=(thisthick*20)){
+                        let tempdata=data[i]
+                        let minx=Math.min(...tempdata[0])
+                        let miny=Math.min(...tempdata[1])
+                        let maxx=Math.max(...tempdata[0])
+                        let maxy=Math.max(...tempdata[1])
+                        ctx.strokeStyle="black"
+                        ctx.lineWidth=1
+                        ctx.rect(minx-5-thisthick,miny-5-thisthick,maxx-minx+5+thisthick*2,maxy-miny+5+thisthick*2)
+                        ctx.stroke()
+                        isdrawing=true
+                        return ;
+                    }
+                }else{
+                    if(z<=(thisthick*5)){
+                        let tempdata=data[i]
+                        let minx=Math.min(...tempdata[0])
+                        let miny=Math.min(...tempdata[1])
+                        let maxx=Math.max(...tempdata[0])
+                        let maxy=Math.max(...tempdata[1])
+                        ctx.strokeStyle="black"
+                        ctx.lineWidth=1
+                        ctx.rect(minx-5-thisthick,miny-5-thisthick,maxx-minx+5+thisthick*2,maxy-miny+5+thisthick*2)
+                        ctx.stroke()
+                        isdrawing=true
+                        return ;
+                    }
+                }
+            }
+        }
+    }
 }
 
 function selectmove(event){
@@ -80,6 +124,9 @@ function selectmove(event){
     }
 }
 
+function selectclear(){
+    // clear select
+}
 function paintdown(event){
     undohistory.push(ctx.getImageData(0,0,canva.width,canva.height))
     redohistory.length=0
@@ -380,6 +427,15 @@ docgetid("close").onclick=function(){ docgetid("samplelightbox").style.display="
 document.addEventListener("pointerup",function(){
     if(isdrawing){
         if(docgetid("mainimage")){ docgetid("mainimage").style.display="block" }
+        if(mod=="paint"){
+            let tempdata=data[datacount]
+            let minx=Math.min(...tempdata[0])
+            let miny=Math.min(...tempdata[1])
+            let maxx=Math.max(...tempdata[0])
+            let maxy=Math.max(...tempdata[1])
+            data[datacount].push([minx,miny,maxx,maxy,nowlayer,thick])
+            datacount=datacount+1
+        }
         // if(mod=="paint"){
         //     let tempdata=data[datacount]
 
@@ -425,3 +481,11 @@ docgetid("submit").onclick=function(){
         localStorage.setItem("height",height)
     }else{ alert("長寬要是整數") }
 }
+
+setInterval(function(){
+    let layer=docgetall(".layergrid")
+    for(let i=0;i<layer.length;i=i+1){
+        let id=layer[i].dataset.id
+        docgetid("canva"+id).style.zIndex=i+1
+    }
+},100)
