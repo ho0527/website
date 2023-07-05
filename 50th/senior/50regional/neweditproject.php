@@ -7,8 +7,10 @@
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="plugin/css/macossection.css">
         <link rel="stylesheet" href="plugin/css/sort.css">
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
         <script src="plugin/js/macossection.js"></script>
         <script src="plugin/js/sort.js"></script>
+        <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <script> let key=""; </script>
@@ -88,8 +90,8 @@
                                     ?>
                                 </div>
                             </div>
-                            <div class="productfacing">
-                                <input type="button" class="button" value="新增面向">
+                            <div class="productfacing" id="productfacing">
+                                <input type="button" class="button" id="newfacing" value="新增面向">
                                 <div class="facingdiv">
                                     <div class="facing grid">
                                         <input type="text" class="input2 facingname" placeholder="面向名稱">
