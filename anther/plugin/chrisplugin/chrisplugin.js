@@ -20,7 +20,7 @@
     |-------    -----    -     -    -          -     -----         -----  -------|
 */
 
-function startmacos(){
+function startmacossection(){ // start macos section
     let macostimer
     setTimeout(function(){
         document.querySelectorAll(".macossectiondiv").forEach(function(event){

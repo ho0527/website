@@ -4,6 +4,7 @@
     作者: 小賀chris
     製作及log:
     2023/06/28  20:10:16 Bata 1.0.0 // 新增macosselection 以及 sort 函式
+    2023/07/05  19:45:17 v1.0.0 // 修改命名
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -13,15 +14,15 @@
 */
 
 .macossectiondiv{
+    overflow: auto;
+}
+
+.macossectiondivy{
     overflow: hidden auto;
 }
 
 .macossectiondivx{
     overflow: auto hidden;
-}
-
-.macossectiondivall{
-    overflow: auto;
 }
 
 ::-webkit-scrollbar{
