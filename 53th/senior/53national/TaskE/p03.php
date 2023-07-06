@@ -4,7 +4,7 @@
     echo("p03\n");
     $n=(int)trim(fgets(STDIN));
     $ans=[];
-    for($i=0;$i<$n;$i++){
+    for($i=0;$i<$n;$i=$i+1){
         $num=(int)trim(fgets(STDIN));
         if(2<=$num&&$num<=((2**31)-1)){
             $factors=[];
