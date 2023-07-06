@@ -287,7 +287,7 @@ table{
     justify-content: center;
 }
 
-.product{
+.project{
     grid-column: 2/100;
     grid-row: 2/4;
     border: 1px white solid;
@@ -296,7 +296,7 @@ table{
     justify-content: center;
 }
 
-.productmember{
+.projectmember{
     grid-column: 2/55;
     grid-row: 5/17;
     /* border: 1px white solid; */
@@ -304,7 +304,7 @@ table{
     font-size: 20px;
 }
 
-.productfacing{
+.projectfacing{
     grid-column: 55/100;
     grid-row: 5/17;
     border: 1px white solid;

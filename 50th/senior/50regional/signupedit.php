@@ -65,6 +65,7 @@
             }
         ?>
     <?php
+        $data=$_SESSION["data"];
         if(isset($_POST["signup"])){
             $username=$_POST["username"];
             $password=$_POST["password"];
@@ -77,7 +78,7 @@
             }else{
                 query($db,"INSERT INTO `user`(`username`,`password`,`name`)VALUES(?,?,?)",[$username,$password,$name]);
                 $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
-                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$row[0]','新增使用者','$time','')");
+                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"新增使用者",$time,""]);
                 ?><script>alert("新增成功");location.href="admin.php"</script><?php
             }
         }
@@ -95,7 +96,7 @@
             }else{
                 query($db,"UPDATE`user`SET `username`=?,`password`=?,`name`=? WHERE `id`='$id'",[$username,$password,$name]);
                 $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
-                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$row[0]','註冊使用者','$time','')");
+                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"編輯使用者",$time,""]);
                 ?><script>alert("新增成功");location.href="admin.php"</script><?php
             }
         }
@@ -104,7 +105,7 @@
             $id=$_GET["del"];
             if($row=query($db,"SELECT*FROM `user` WHERE `id`='$id'")[0]){
                 query($db,"DELETE FROM `user` WHERE `id`='$id'");
-                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$row[0]','刪除使用者','$time','')");
+                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"刪除使用者",$time,""]);
                 ?><script>alert("刪除成功!");location.href="admin.php"</script><?php
             }else{ ?><script>alert("帳號已被刪除!");location.href="admin.php"</script><?php }
         }
