@@ -209,6 +209,9 @@ function removealllistener(){
     canva.removeEventListener("pointerdown",sampledown)
     canva.removeEventListener("pointermove",samplemove)
     selectclear()
+    document.querySelectorAll(".button").forEach(function(event){
+        event.classList.remove("selectbutton")
+    })
 }
 
 document.getElementById("new").onclick=function(){ if(confirm("是否裡開編輯頁面?")){ location.href="index.html" }}
@@ -246,19 +249,19 @@ document.querySelectorAll(".button").forEach(function(event){
             if(event.id==mod){ event.classList.add("selectbutton")}
             else{} event.classList.remove("selectbutton")
         })
+        removealllistener()
         if(mod=="select"){
-            removealllistener()
             canva.addEventListener("pointerdown",selectdown)
             canva.addEventListener("pointermove",selectmove)
+            document.getElementById("select").classList.add("selectbutton")
         }else if(mod=="paint"){
-            removealllistener()
             canva.addEventListener("pointerdown",paintdown)
             canva.addEventListener("pointermove",paintmove)
+            document.getElementById("paint").classList.add("selectbutton")
         }else if(mod=="bucket"){
-            removealllistener()
             canva.addEventListener("pointerdown",bucket)
+            document.getElementById("bucket").classList.add("selectbutton")
         }else if(mod=="sample"){
-            removealllistener()
             document.getElementById("samplelightbox").style.display="block"
             document.querySelectorAll(".sampleimage").forEach(function(loopevent){
                 if(sampleselect !=""){
@@ -275,11 +278,10 @@ document.querySelectorAll(".button").forEach(function(event){
             })
             canva.addEventListener("pointerdown",sampledown)
             canva.addEventListener("pointermove",samplemove)
+            document.getElementById("sample").classList.add("selectbutton")
         }else if(mod=="setcanva"){
-            removealllistener()
-        }else{
-            removealllistener()
-        }
+            document.getElementById("setcanva").classList.add("selectbutton")
+        }else{ }
     }
     if(event.id==mod){ event.classList.add("selectbutton")}
     else{} event.classList.remove("selectbutton")
@@ -371,15 +373,21 @@ document.getElementById("newlayer").onclick=function(){
     if(mod=="select"){
         canva.addEventListener("pointerdown",selectdown)
         canva.addEventListener("pointermove",selectmove)
+        document.getElementById("select").classList.add("selectbutton")
     }else if(mod=="paint"){
         canva.addEventListener("pointerdown",paintdown)
         canva.addEventListener("pointermove",paintmove)
+        document.getElementById("paint").classList.add("selectbutton")
     }else if(mod=="bucket"){
         canva.addEventListener("pointerdown",bucket)
+        document.getElementById("bucket").classList.add("selectbutton")
     }else if(mod=="sample"){
         canva.addEventListener("pointerdown",sampledown)
         canva.addEventListener("pointermove",samplemove)
-    }else{}
+        document.getElementById("sample").classList.add("selectbutton")
+    }else if(mod=="setcanva"){
+        document.getElementById("setcanva").classList.add("selectbutton")
+    }else{ }
 }
 
 document.querySelectorAll(".layerdel").forEach(function(event){
@@ -462,3 +470,5 @@ setInterval(function(){
         document.getElementById("canva"+id).style.zIndex=i+1
     }
 },100)
+
+document.getElementById("select").classList.add("selectbutton")
