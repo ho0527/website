@@ -117,6 +117,9 @@ function selectdown(event){
             }
         }
     }
+    if(!isdrawing){
+        selectclear()
+    }
 }
 
 function selectmove(event){

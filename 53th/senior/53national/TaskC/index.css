@@ -211,32 +211,12 @@ table{
     text-decoration: underline;
 }
 
-.top{
-    display: grid;
-    grid-gap: 1%;
-    grid-template-columns: repeat(100, 1fr);
-    grid-auto-rows: 5%;
-    border: 1px white solid;
-    margin-top: 175px;
-    height: 30%;
-}
-
-.slogandiv{
-    border-right: 1px white solid;
-    grid-column: 1/40;
-    grid-row: 1/18;
+.slogan{
+    height: 45vh;
+    margin-bottom: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.sloganimage{
-    width: 30%;
-    display: inline-block;
-}
-
-.slogan{
-    margin: 50px 0px;
 }
 
 .goal{
@@ -258,12 +238,8 @@ table{
 }
 
 .goal{
-    margin-right: 50px;
-}
-
-.goalimage{
-    width: 50%;
-    display: inline-block;
+    margin: 100px 0px;
+    overflow: hidden;
 }
 
 .lovediv{
@@ -308,6 +284,12 @@ table{
     width: 95%;
 }
 
+.goaldiv{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .abouttext{
     width: 30%;
@@ -321,7 +303,10 @@ table{
 }
 
 .goaltext{
-    font-size: 20px;
+    font-size: 50px;
+    opacity: 0.75;
+    display: inline-block;
+    margin: 0px 50px;
 }
 
 @keyframes slogan{
@@ -332,16 +317,16 @@ table{
         text-shadow: orange 0 0 20px;
     }
     40%{
-        text-shadow: green 0 0 20px;
+        text-shadow: yellow 0 0 20px;
     }
     60%{
         text-shadow: blue 0 0 20px;
     }
     80%{
-        text-shadow: yellow 0 0 20px;
+        text-shadow: purple 0 0 20px;
     }
     100%{
-        text-shadow: purple 0 0 20px;
+        text-shadow: red 0 0 20px;
     }
 }
 
@@ -351,7 +336,7 @@ table{
         rotate: 0deg;
         box-shadow: red 0 0 20px;
     }
-    50%{
+    40%{
         transform: scale(1.15);
         rotate: 360deg;
     }
