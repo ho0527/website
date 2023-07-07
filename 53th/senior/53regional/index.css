@@ -31,6 +31,7 @@ table{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: white;
     font-size: 30px;
     font-weight: bold;
     padding: 20px;
@@ -640,6 +641,7 @@ usersearch
     transform: translate(-50%,-0%);
     width: 90%;
     height: 75%;
+    color: white;
 }
 
 .productdiv{
