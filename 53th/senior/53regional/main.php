@@ -88,8 +88,21 @@
                         $_SESSION["pagecount"]=$maxpagecount;
                     }else{ ?><script>alert("[ERROR] key type error");location.href="main.php"</script><?php }
                 }else{
-                    $start=0;
-                    $rowcount=4;
+                    $page=$_SESSION["pagecount"];
+                    if($_SESSION["pagecount"]>1){
+                        $start=$_SESSION["pagecount"]*4-4;
+                        $rowcount=$_SESSION["pagecount"]*4;
+                        if($_SESSION["pagecount"]==$maxpagecount){ $rowcount=count($row); }
+                    }elseif($_SESSION["pagecount"]>=$maxpagecount){
+                        $start=floor($pagecount)*4;
+                        $rowcount=(floor($pagecount)*4)+$modpagecount;
+                        $_SESSION["pagecount"]=$maxpagecount;
+                    }else{
+                        $start=0;
+                        $rowcount=4;
+                        if(count($row)<=4){ $rowcount=count($row); }
+                        $_SESSION["pagecount"]=1;
+                    }
                 }
                 ?>
                 商品展示區 頁數: <?= $_SESSION["pagecount"]; ?><br>

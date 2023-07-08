@@ -18,156 +18,29 @@
         ?>
         <div class="macossectiondivy">
             <table class="maintable">
+                <tr>
                 <?php
-                    if($_SESSION["orderkey"]=="name"){
-                        if($_SESSION["ordertype"]=="asc"){
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=desc'" value="name ▲"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
+                    $orderkey=["name","gender","age","company","email","phone"];
+                    $list=[];
+                    $check=false;
+                    for($i=0;$i<count($orderkey);$i=$i+1){
+                        if($_SESSION["orderkey"]==$orderkey[$i]){
+                            if($_SESSION["ordertype"]=="asc"){
+                                ?><td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=<?php echo($orderkey[$i]); ?>&ordertype=desc'" value="<?php echo($orderkey[$i]); ?> ▲"></td><?php
+                            }else{
+                                ?><td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=<?php echo($orderkey[$i]); ?>&ordertype=asc'" value="<?php echo($orderkey[$i]); ?> ▼"></td><?php
+                            }
+                            $check=true;
                         }else{
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name ▼"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
+                            ?><td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=<?php echo($orderkey[$i]); ?>&ordertype=asc'" value="<?php echo($orderkey[$i]); ?> "></td><?php
                         }
-                    }elseif($_SESSION["orderkey"]=="gender"){
-                        if($_SESSION["ordertype"]=="asc"){
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=desc'" value="gender ▲"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }else{
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender ▼"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }
-                    }elseif($_SESSION["orderkey"]=="age"){
-                        if($_SESSION["ordertype"]=="asc"){
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=desc'" value="age ▲"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }else{
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age ▼"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }
-                    }elseif($_SESSION["orderkey"]=="company"){
-                        if($_SESSION["ordertype"]=="asc"){
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=desc'" value="company ▲"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }else{
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company ▼"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }
-                    }elseif($_SESSION["orderkey"]=="email"){
-                        if($_SESSION["ordertype"]=="asc"){
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=desc'" value="email ▲"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }else{
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email ▼"></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone "></td>
-                            </tr>
-                            <?php
-                        }
-                    }elseif($_SESSION["orderkey"]=="phone"){
-                        if($_SESSION["ordertype"]=="asc"){
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=desc'" value="phone ▲"></td>
-                            </tr>
-                            <?php
-                        }else{
-                            ?>
-                            <tr>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=name&ordertype=asc'" value="name "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=gender&ordertype=asc'" value="gender "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=age&ordertype=asc'" value="age "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=company&ordertype=asc'" value="company "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=email&ordertype=asc'" value="email "></td>
-                                <td class="td"><input type="button" class="oderbutton" onclick="location.href='?orderkey=phone&ordertype=asc'" value="phone ▼"></td>
-                            </tr>
-                            <?php
-                        }
-                    }else{
+                    }
+                    if(!$check){
                         $_SESSION["orderkey"]="name";
-                        ?><script>location.href="index.php"</script><?php
+                        ?><script>location.reload()</script><?php
                     }
                 ?>
+                </tr>
                 <?php
                     $pagedatacount=5;
                     if(count($data)<=$pagedatacount){ $rowcount=count($data); }

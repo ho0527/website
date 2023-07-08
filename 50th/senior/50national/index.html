@@ -2,27 +2,45 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Document</title>
+        <style>
+            .nfin{
+                background: red;
+                color: black;
+                cursor: pointer;
+            }
+            .fin{
+                background: green;
+                color: black;
+                cursor: pointer;
+            }
+            .disabled{
+                background: gray;
+                color: rgb(70, 70, 70);
+                cursor: not-allowed;
+            }
+        </style>
     </head>
     <body>
-        <input type="button" onclick="location.href='TaskA/'" value="A"><br><br>
-        <input type="button" onclick="location.href='TaskB/index.php'" value="B-N/A" disabled><br><br>
-        <input type="button" onclick="location.href='TaskC/'" value="C" disabled><br><br>
-        <input type="button" onclick="location.href='TaskD/'" value="D"><br><br>
-        <input type="button" onclick="location.href='TaskE/01/'" value="E01-FIN">
-        <input type="button" onclick="location.href='TaskE/02/'" value="E02">
-        <input type="button" onclick="location.href='TaskE/03/'" value="E03-FIN">
-        <input type="button" onclick="location.href='TaskE/04/'" value="E04-FIN">
-        <input type="button" onclick="location.href='TaskE/05/'" value="E05-FIN">
-        <input type="button" onclick="location.href='TaskE/06/'" value="E06-FIN">
-        <input type="button" onclick="location.href='TaskE/07/'" value="E07">
-        <input type="button" onclick="location.href='TaskE/08/'" value="E08-FIN">
-        <input type="button" onclick="location.href='TaskE/09/'" value="E09">
-        <input type="button" onclick="location.href='TaskE/10/'" value="E10-FIN"><br><br>
-        <input type="button" onclick="location.href='TaskF/p01.php'" value="F01-FIN" disabled>
-        <input type="button" onclick="location.href='TaskF/p02.php'" value="F02" disabled>
-        <input type="button" onclick="location.href='TaskF/p03.php'" value="F03" disabled>
-        <input type="button" onclick="location.href='TaskF/p04.php'" value="F04-FIN" disabled>
-        <input type="button" onclick="location.href='TaskF/p05.php'" value="F05" disabled><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskA/'" value="A"><br><br>
+        <input type="button" class="disabled" onclick="location.href='TaskB/index.php'" value="B-N/A" disabled><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskC/'" value="C" disabled><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskD/'" value="D"><br><br>
+        <input type="button" class="fin" onclick="location.href='TaskE/01/'" value="E01">
+        <input type="button" class="nfin" onclick="location.href='TaskE/02/'" value="E02">
+        <input type="button" class="fin" onclick="location.href='TaskE/03/'" value="E03">
+        <input type="button" class="fin" onclick="location.href='TaskE/04/'" value="E04">
+        <input type="button" class="fin" onclick="location.href='TaskE/05/'" value="E05">
+        <input type="button" class="fin" onclick="location.href='TaskE/06/'" value="E06">
+        <input type="button" class="nfin" onclick="location.href='TaskE/07/'" value="E07">
+        <input type="button" class="fin" onclick="location.href='TaskE/08/'" value="E08">
+        <input type="button" class="nfin" onclick="location.href='TaskE/09/'" value="E09-NMF">
+        <input type="button" class="fin" onclick="location.href='TaskE/10/'" value="E10"><br><br>
+        <input type="button" class="fin" onclick="location.href='TaskF/p01.php'" value="F01" disabled>
+        <input type="button" class="nfin" onclick="location.href='TaskF/p02.php'" value="F02" disabled>
+        <input type="button" class="nfin" onclick="location.href='TaskF/p03.php'" value="F03" disabled>
+        <input type="button" class="fin" onclick="location.href='TaskF/p04.php'" value="F04" disabled>
+        <input type="button" class="nfin" onclick="location.href='TaskF/p05.php'" value="F05" disabled><br><br>
     </body>
 </html>
