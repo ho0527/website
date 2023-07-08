@@ -2,38 +2,41 @@
     $memorybefore=memory_get_usage();
 
     echo("p03\n");
-    $n=(int)trim(fgets(STDIN));
+    $n=trim(fgets(STDIN));
     $ans=[];
     for($i=0;$i<$n;$i=$i+1){
-        $num=(int)trim(fgets(STDIN));
-        if(2<=$num&&$num<=((2**31)-1)){
-            $factors=[];
-            $divisor=2;
-
-            while($num>1){
-                if($num%$divisor==0){
-                    if(!isset($factors[$divisor])){ $factors[$divisor]=0; }
-                    $factors[$divisor]=$factors[$divisor]+1;
-                    $num=$num/$divisor;
+        $data=trim(fgets(STDIN));
+        $ans2=[];
+        $mainans="";
+        for($j=2;$j<=$data;$j=$j+1){
+            while($data%$j==0){
+                if(isset($ans2[$j])){
+                    $ans2[$j]=$ans2[$j]+1;
                 }else{
-                    $divisor=$divisor+1;
+                    $ans2[$j]=1;
                 }
+                $data=(int)$data/$j;
             }
-
-            $output="";
-            $keys=array_keys($factors);
-            for($j=0;$j<count($keys);$j=$j+1){
-                $factor=$keys[$j];
-                $count=$factors[$factor];
-                if($count==1){ $output=$output.$factor."*"; }
-                else{ $output=$output.$factor."^".$count."*"; }
+        }
+        $count=count($ans2);
+        for($k=0;$k<$count;$k=$k+1){
+            $number=array_key_first($ans2);
+            $numberdata=$ans2[$number];
+            if($numberdata>1){
+                $mainans=$mainans.$number."^".$numberdata;
+            }else{
+                $mainans=$mainans.$number;
             }
-            $ans[]=rtrim($output,"*");
-        }else{ $ans[]="number error"; }
+            if($k<$count-1){
+                $mainans=$mainans."*";
+            }
+            unset($ans2[$number]);
+        }
+        $ans[]=$mainans;
     }
 
     for($i=0;$i<count($ans);$i=$i+1){
-        echo($ans[$i].PHP_EOL);
+        echo($ans[$i]."\n");
     }
 
     $memoryafter=memory_get_usage();
