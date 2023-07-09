@@ -14,32 +14,32 @@
     |-------    -----    -     -    -          -     -----         -----  -------|
 */
 
-let timer
+let macostimer
 
 setTimeout(function(){
     document.querySelectorAll(".macossectiondiv").forEach(function(event){
         event.addEventListener("scroll",function(){
-            clearTimeout(timer)
+            clearTimeout(macostimer)
             event.setAttribute("scroll","true")
-            timer=setTimeout(function(){
+            macostimer=setTimeout(function(){
                 event.removeAttribute("scroll")
             },500)
         })
     })
     document.querySelectorAll(".macossectiondivx").forEach(function(event){
         event.addEventListener("scroll",function(){
-            clearTimeout(timer)
+            clearTimeout(macostimer)
             event.setAttribute("scroll","true")
-            timer=setTimeout(function(){
+            macostimer=setTimeout(function(){
                 event.removeAttribute("scroll")
             },500)
         })
     })
     document.querySelectorAll(".macossectiondivall").forEach(function(event){
         event.addEventListener("scroll",function(){
-            clearTimeout(timer)
+            clearTimeout(macostimer)
             event.setAttribute("scroll","true")
-            timer=setTimeout(function(){
+            macostimer=setTimeout(function(){
                 event.removeAttribute("scroll")
             },500)
         })

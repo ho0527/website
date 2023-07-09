@@ -58,7 +58,7 @@ function check(){
     &&td[3].style.backgroundColor=="white"&&td[4].style.backgroundColor=="black"&&td[5].style.backgroundColor=="white"
     &&td[6].style.backgroundColor=="white"&&td[7].style.backgroundColor=="white"&&td[8].style.backgroundColor=="black"){
         pass()
-    }else if(count==2&&td[0].style.backgroundColor=="white"&&td[1].style.backgroundColor=="white"&&td[2].style.backgroundColor=="black"
+    }else if(count==3&&td[0].style.backgroundColor=="white"&&td[1].style.backgroundColor=="white"&&td[2].style.backgroundColor=="black"
     &&td[3].style.backgroundColor=="white"&&td[4].style.backgroundColor=="black"&&td[5].style.backgroundColor=="white"
     &&td[6].style.backgroundColor=="black"&&td[7].style.backgroundColor=="white"&&td[8].style.backgroundColor=="white"){
         pass()

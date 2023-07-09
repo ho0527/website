@@ -284,5 +284,8 @@ table{
 }
 
 .app{
+    border: 1px white solid;
     position: relative;
+    top: 50px;
+    height: 60vh;
 }
