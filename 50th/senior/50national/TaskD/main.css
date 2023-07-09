@@ -286,6 +286,6 @@ table{
 .app{
     border: 1px white solid;
     position: relative;
-    top: 50px;
-    height: 60vh;
+    top: 25px;
+    height: 70vh;
 }
