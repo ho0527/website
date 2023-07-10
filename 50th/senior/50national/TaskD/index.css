@@ -31,7 +31,7 @@ table{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40vw;
+    width: 60vw;
     height: 85vh;
     font-weight: bold;
     padding: 20px;
@@ -133,7 +133,7 @@ table{
 
 .mainimage{
     /* height: 350px; */
-    width: 70%;
+    height: 40%;
     margin: 20px 0px 50px 0px;
 }
 
@@ -141,7 +141,7 @@ table{
     border: none;
     border: 1px black solid;
     background: white;
-    width: 90%;
+    width: 75%;
     height: 40px;
     outline: none;
     font-size: 30px;
