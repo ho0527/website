@@ -12,8 +12,8 @@ function pregmatch(context,data){ return context.test(data) }
 
 function save(){
     let insertdata=[]
-    let maxcount=document.getElementById("maxcount").value
-    let pagelen=document.getElementById("pagelen").value
+    let maxcount=docgetid("maxcount").value
+    let pagelen=docgetid("pagelen").value
     if(!pregmatch(/[0-9]+/,maxcount)&&maxcount!=""){
         alert("最大長度只能是數字或空白")
         maxcount=oldmaxcount
@@ -22,10 +22,10 @@ function save(){
         alert("頁面長度只能是數字")
         pagelen=oldpagelen
     }
-    insertdata.push([id,document.getElementById("title").value,count,pagelen,maxcount])
+    insertdata.push([id,docgetid("title").value,count,pagelen,maxcount])
     for(let i=0;i<count;i=i+1){
         let mod
-        document.querySelectorAll(".select"+i).forEach(function(event){
+        docgetall(".select"+i).forEach(function(event){
             if(event.checked==true){ mod=event.value }
         })
         let count
@@ -34,25 +34,25 @@ function save(){
         let option
         let showmultimorerespond
         if(mod=="none"){
-            count=document.getElementById("count"+i).innerHTML
+            count=docgetid("count"+i).innerHTML
             desciption=""
             required="false"
             option=""
             showmultimorerespond=false
         }else{
-            count=document.getElementById("count"+i).innerHTML
-            desciption=document.getElementById("desciption"+i).value
-            required=document.getElementById("required"+i).checked
+            count=docgetid("count"+i).innerHTML
+            desciption=docgetid("desciption"+i).value
+            required=docgetid("required"+i).checked
             option=""
             if(mod=="single"||mod=="multi"){
                 for(let j=0;j<6;j=j+1){
-                    if(!checknull(document.getElementById(i+"option"+j).value)){
-                        option=option+document.getElementById(i+"option"+j).value+"|&|"
+                    if(!checknull(docgetid(i+"option"+j).value)){
+                        option=option+docgetid(i+"option"+j).value+"|&|"
                     }
                 }
             }else{ option="" }
             showmultimorerespond=true
-            if(document.getElementById("showmultimorerespond"+i)==null||document.getElementById("showmultimorerespond"+i).checked==false){ showmultimorerespond=false }
+            if(docgetid("showmultimorerespond"+i)==null||docgetid("showmultimorerespond"+i).checked==false){ showmultimorerespond=false }
         }
         insertdata.push([count,desciption,required,mod,option,showmultimorerespond,""])
     }
@@ -67,7 +67,7 @@ function save(){
 
 function main(){
     count=0
-    document.getElementById("maindiv").innerHTML=``
+    docgetid("maindiv").innerHTML=``
     for(let i=0;i<maincount;i=i+1){
         console.log(questionrow[i])
         if(questionrow[i][3]!="none"){
@@ -116,7 +116,7 @@ function main(){
             }else if(questionrow[i][3]=="qa"){
                 output=output+"<textarea cols='30' rows='5' class='question' placeholder='問答題'></textarea>"
             }else{ sql001();location.href="admin.php" }
-            document.getElementById("maindiv").innerHTML=document.getElementById("maindiv").innerHTML+`
+            docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
                 <div class="grid" id="${i}">
                     <div class="order">
                         ${required}
@@ -137,14 +137,14 @@ function main(){
     }
 }
 
-document.getElementById("id").value=row[0]
-document.getElementById("title").value=row[1]
+docgetid("id").value=row[0]
+docgetid("title").value=row[1]
 
 if(userkey=="true"){
     questionrow=Object.values(JSON.parse(questionrow))
     maincount=questionrow.length
     main()
-    document.getElementById("count").value=count
+    docgetid("count").value=count
 }
 
 document.addEventListener("keydown",function(event){

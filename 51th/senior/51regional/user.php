@@ -7,7 +7,9 @@
         <script src="error.js"></script>
         <script src="userdef.js"></script>
         <link rel="stylesheet" href="plugin/css/macossection.css">
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
         <script src="plugin/js/macossection.js"></script>
+        <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body id="body">
         <?php
