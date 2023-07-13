@@ -1,0 +1,50 @@
+{
+    "albums": [
+        {
+            "album_artists": ["Ayase","Ikura"],
+            "attr": {
+                "publisher": "發行商",
+                "pubdate": "2023-07-13"
+            },
+            "title": "YOASOBI的專輯",
+            "description": "這是一個YOASOBI的專輯",
+            "cover": "https://upload.wikimedia.org/wikipedia/zh/2/26/YOASOBI_banner.jpg",
+            "tracks": [
+                {
+                    "title": "夜に駆ける",
+                    "duration": "4:21",
+                    "artists": ["ikura"],
+                    "path": "https://www.youtube.com/watch?v=by4SYYWlhEs"
+                },
+                {
+                    "title": "群青",
+                    "duration": "4:22",
+                    "artists": ["ikura"],
+                    "path": "https://www.youtube.com/watch?v=Y4nEEZwckuU"
+                },
+                {
+                    "title": "Idol",
+                    "duration": "3:34",
+                    "artists": ["ikura"],
+                    "path": "https://www.youtube.com/watch?v=JxvvUblf25A"
+                },
+                {
+                    "title": "怪物",
+                    "duration": "3:28",
+                    "artists": ["ikura"],
+                    "path": "https://www.youtube.com/watch?v=dy90tA3TT1c"
+                },
+                {
+                    "title": "たぶん",
+                    "duration": "4:17",
+                    "artists": ["ikura"],
+                    "path": "https://www.youtube.com/watch?v=KS-68n34dGU",
+                    "subtitle": {
+                        "type": "lrc",
+                        "path": "http://hiiamchris.ddns.net/website/50th/senior/50national/TaskA/subtitle/Yoasobi-Tabun by Ayase.lrc"
+                    }
+                }
+            ]
+        }
+    ]
+}

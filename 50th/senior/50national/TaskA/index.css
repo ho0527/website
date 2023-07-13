@@ -1,12 +1,12 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(35, 35, 35);
-    color: rgb(255, 255, 255);
-    user-select: none;
-    word-break: break-all;
-    padding: 0px;
-    margin: 0px;
+    color: gray;
     text-align: center;
+    word-break: break-all;
+    user-select: none;
+    padding: 5px;
+    margin: 0px;
 }
 
 h2{
@@ -22,37 +22,300 @@ hr{
 table{
     border-collapse: collapse;
     width: 100%;
+    color: white;
 }
+
+/* .main{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+} */
+
+.grid{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+}
+
+.logo{
+    height: 75px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.maintitle{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navigationbar{
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    color: white;
+    background: rgba(250, 250, 250, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 10px;
+    z-index: 900;
+}
+
+.navigationbarleft{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(0%,-50%);
+    margin-bottom: 10px;
+}
+
+.navigationbarright{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(0%,-50%);
+    margin-bottom: 10px;
+}
+
+.navigationbartitle{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.navigationbarbutton{
+    border: 1px black solid;
+    background: none;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    padding: 10px;
+    margin: 0px 10px;
+    transition-duration: 0.5s;
+}
+
+.navigationbarbutton:hover{
+    background: gray;
+    color: white;
+}
+
+.navigationbarselect{
+    background: black;
+    color: white;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.xcenter{
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+.ycenter{
+    position: relative;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%,-50%);
+}
+
+.input{
+    border: none;
+    border-bottom: 1px black solid;
+    background: none;
+    width: 75%;
+    height: 40px;
+    outline: none;
+    font-size: 30px;
+    color: white;
+}
+
+.middleinput{
+    border: none;
+    border-bottom: 1px black solid;
+    background: none;
+    width: 35%;
+    height: 40px;
+    outline: none;
+    margin: 0px 5%;
+    font-size: 30px;
+    color: white;
+}
+
+.inputhint{
+    width: 23%;
+    display: inline-block;
+    word-break: normal;
+    word-wrap: break-word;
+}
+
+.inputdiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+.button{
+    border: 1px black solid;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    background: gray;
+    color: white;
+}
+
+.reflashbutton{
+    margin-top: 20px;
+    padding: 5px;
+    background-color: rgb(215, 164, 61);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.reflashbutton:hover{
+    background-color: rgb(255, 213, 128);
+    color: black;
+}
+
+.selectbutton{
+    background-color: rgba(35, 35, 35, 0.75);
+    color: white;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.a:hover{
+    text-decoration: underline;
+}
+/* END */
+
+
+/* program START */
 
 .searchform{
     text-align: right;
 }
 
 .search{
-    width: 82%;
+    width: 99%;
     height: 25px;
     font-size: 20px;
-    position: relative;
-    right: 5px;
 }
 
 .aside{
     position: absolute;/* 絕對定位 */
-    top: 0px;/* 定位 */
+    top: 5px;/* 定位 */
     left: 0px;
-    padding: 20px 5px;
-    width: 16%;/* 寬度 */
-    height: calc(100% - 40px);/* 高度 */
-    float: left;
-    /* margin-top: 55px; */
+    padding: 5px;
+    height: 98%;
     border-right: 2px white solid;
+    background: white;
+    z-index: 1000;
+}
+
+.openasidebutton{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(-0%,-50%);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.album{
+    border: 1px white solid;
+    position: relative;
+    width: 20%;
+    height: 25vh;
+    color: white;
+    cursor: pointer;
+}
+
+.cover{
+    width: 100%;
+}
+
+.albumttext{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.albumtitle{
+    position: relative;
+}
+
+.albumartist{
+    position: relative;
 }
 
 .main{
     position: absolute;/* 絕對定位 */
-    right: 5px;
-    width: 82%;/* 寬度 */
+    /* right: 5px; */
+    width: 99%;/* 寬度 */
     height: 90%;
+    padding: 10px 1%;
+    margin: 5px;
     overflow-y: auto;
 }
 
