@@ -317,31 +317,65 @@ table{
     padding: 10px 1%;
     margin: 5px;
     overflow-y: auto;
+    color: white;
 }
 
-/* 新增學生 */
-.addsut{
-    position: relative;/* 絕對定位 */
-    top:0px;/* 定位 */
-    right: 3px;
-    border: 1px black solid;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
+.menu{
+    position: relative;
+    font-size: 25px;
+    text-align: left;
+    z-index: 100;
+}
+
+.menubutton{
+    font-size: 25px;
     cursor: pointer;
-    width: 90%;/* 寬度 */
-    height: 65px;/* 高度 */
-    font-size: 30px;/* 字體大小 */
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition-duration: 0.5s;
 }
 
-.addsut:hover{
-    background-color: rgba(100, 100, 100,0.35);/* 背景顏色 */
+.top{
+    position: fixed;
+    top: 35px;
+    left: 1%;
+    width: 99%;
+    height: 35vh;
+    overflow: hidden;
 }
+
+.albumcover{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.albumtext{
+    position: relative;
+    z-index: 100;
+}
+
+.title{
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+/* #################################################################### */
+
+
+
+
+
+
+
+
 
 .icon{
     width: 45px;
@@ -428,13 +462,6 @@ table{
 
 .note{
     font-size: 20px;/* 字體大小 */
-}
-
-.title{
-    margin: 5px;
-    font-size: 55px;
-    color: white;
-    text-align: center;
 }
 
 .maintd{
