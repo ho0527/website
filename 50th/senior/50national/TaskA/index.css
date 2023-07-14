@@ -287,6 +287,7 @@ table{
     position: relative;
     width: 20%;
     height: 25vh;
+    margin: 10px;
     color: white;
     cursor: pointer;
 }
@@ -311,11 +312,12 @@ table{
 
 .main{
     position: absolute;/* 絕對定位 */
-    /* right: 5px; */
+    top: 30px;
+    left: 5px;
     width: 99%;/* 寬度 */
-    height: 90%;
-    padding: 10px 1%;
-    margin: 5px;
+    height: 95%;
+    padding: 5px;
+    /* margin: 5px; */
     overflow-y: auto;
     color: white;
 }
@@ -328,14 +330,22 @@ table{
 }
 
 .menubutton{
+    border: none;
+    background: none;
     font-size: 25px;
     cursor: pointer;
+    color: white;
+    transition: 0.5s;
+}
+
+.menubutton:hover{
+    text-decoration: underline;
 }
 
 .top{
     position: fixed;
     top: 35px;
-    left: 1%;
+    left: 10px;
     width: 99%;
     height: 35vh;
     overflow: hidden;
@@ -351,27 +361,97 @@ table{
 .albumtext{
     position: relative;
     z-index: 100;
+    mix-blend-mode: difference;
 }
 
 .title{
     position: absolute;
     top: 0px;
-    right: 10px;
+    right: 5px;
     font-size: 40px;
     font-weight: bold;
 }
 
+.artist{
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    font-size: 25px;
+}
 
+.publicdate{
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    font-size: 20px;
+}
 
+.albumdescription{
+    position: absolute;
+    top: 40px;
+    left: 5px;
+    font-size: 20px;
+}
 
+.trackslengthandtime{
+    position: absolute;
+    bottom: 30px;
+    left: 5px;
+    font-size: 20px;
+}
 
-
+.albummain{
+    position: relative;
+    top: 35vh;
+    left: 10px;
+    width: 99%;
+    padding: 5px;
+    overflow: hidden;
+}
 
 /* #################################################################### */
 
+.tracklist{
+    border-bottom: 1px white solid;
+    width: 100%;
+}
 
+.no{
+    grid-column: 2/10;
+    grid-row: 1/18;
+}
 
+.tracktitle{
+    grid-column: 15/30;
+    grid-row: 1/18;
+}
 
+.artists{
+    grid-column: 35/50;
+    grid-row: 1/18;
+}
+
+.albumtitle{
+    grid-column: 55/70;
+    grid-row: 1/18;
+}
+
+.time{
+    grid-column: 75/85;
+    grid-row: 1/18;
+}
+
+.def{
+    grid-column: 90/100;
+    grid-row: 1/18;
+}
+
+.tracklisttext{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 

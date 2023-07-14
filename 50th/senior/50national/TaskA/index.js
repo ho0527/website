@@ -9,14 +9,14 @@ ajax.onload=function(){
     function main(){ // 主程式(起始)
         docgetid("main").innerHTML=`` // 清空主區域
         data["albums"].sort(function(a,b){ return a["title"].localeCompare(b["title"]) }) // 符合字典檔排序
-    
+
         for(let i=0;i<data["albums"].length;i=i+1){
             let albumartistlist=data["albums"][i]["album_artists"] // 演奏者名字列表
             let albumtitle=data["albums"][i]["title"] // 專輯標題
             let cover=data["albums"][i]["cover"] // 封面
             if(!isset(cover)){ cover="cover/default.png" } // 如果沒有封面就要用預設的
-            let albumartist=albumartistlist.join(", ") // 將陣列變成字串
-    
+            let albumartist=albumartistlist.join(",") // 將陣列變成字串
+
             // 設定每張專輯的div
             let div=doccreate("div")
             div.classList.add("album")
@@ -42,7 +42,7 @@ ajax.onload=function(){
                 let albumtitle=data["albums"][id]["title"]
                 let cover=data["albums"][id]["cover"]
                 if(!isset(cover)){ cover="cover/default.png" }
-                let albumartist=albumartistlist.join(", ")
+                let albumartist=albumartistlist.join(",")
 
                 let date=data["albums"][id]["attr"]["pubdate"] // 拿到上傳的時間
                 let publicdate
@@ -50,8 +50,8 @@ ajax.onload=function(){
                 else{ publicdate=date.split("-").join("/") } // 改成要求形式
                 let totalbefore=0 // MM
                 let totalafter=0 // SS
-                let trackslength=data["albums"][id]["tracks"].length // 歌曲總數
-                for(let i=0;i<trackslength;i=i+1){
+                let tracklength=data["albums"][id]["tracks"].length // 歌曲總數
+                for(let i=0;i<tracklength;i=i+1){
                     // 判斷個專輯的時間並加總
                     let time=data["albums"][id]["tracks"][i]["duration"].split(":")
                     totalafter=totalafter+parseInt(time[1])
@@ -76,13 +76,41 @@ ajax.onload=function(){
                         <div class="albumtext title">專輯名稱: ${albumtitle}</div>
                         <div class="albumtext artist">演唱者: ${albumartist}</div>
                         <div class="albumtext publicdate">發布日期: ${publicdate}</div>
-                        <div class="albumtext trackslength">歌曲總數: ${trackslength}</div>
-                        <div class="albumtext totaltime">專輯總時長: ${totaltime}</div>
+                        <div class="albumtext trackslengthandtime">歌曲總數: ${tracklength} 專輯總時長: ${totaltime}</div>
                         <div class="albumtext albumdescription">專輯描述: ${albumdescription}</div>
                     </div>
-                    <div class="main">
+                    <div class="albummain macossectiondiv" id="albummain">
+                        <div class="tracklist grid">
+                            <div class="tracklisttext no">序號</div>
+                            <div class="tracklisttext tracktitle">歌曲名稱</div>
+                            <div class="tracklisttext artists">演唱者</div>
+                            <div class="tracklisttext albumtitle">專輯名稱</div>
+                            <div class="tracklisttext time">歌曲時間</div>
+                            <div class="tracklisttext def">功能區</div>
+                        </div>
                     </div>
                 `
+
+                for(let i=0;i<tracklength;i=i+1){
+                    // 判斷個專輯的時間並加總
+                    let tracktitle=data["albums"][id]["tracks"][i]["title"]
+                    let time=data["albums"][id]["tracks"][i]["duration"]
+                    let artists=data["albums"][id]["tracks"][i]["artists"].join(",")
+                    let path=data["albums"][id]["tracks"][i]["path"]
+                    let div=doccreate("div")
+                    div.id=id+"_"+i
+                    div.classList.add("tracklist")
+                    div.classList.add("grid")
+                    div.innerHTML=`
+                        <div class="tracklisttext no">${i+1}</div>
+                        <div class="tracklisttext tracktitle">${tracktitle}</div>
+                        <div class="tracklisttext artists">${artists}</div>
+                        <div class="tracklisttext albumtitle">${data["albums"][id]["title"]}</div>
+                        <div class="tracklisttext time">${time}</div>
+                        <div class="tracklisttext def"><input type="button" value="add to list"></div>
+                    `
+                    docappendchild("albummain",div)
+                }
 
                 docgetid("goback").onclick=function(){
                     main() // 重呼叫(開啟主程式)
