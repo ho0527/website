@@ -14,31 +14,31 @@
                     "title": "夜に駆ける",
                     "duration": "04:21",
                     "artists": ["ikura"],
-                    "path": "https://www.youtube.com/watch?v=by4SYYWlhEs"
+                    "path": "track/夜に駆ける.mp3"
                 },
                 {
                     "title": "群青",
                     "duration": "04:22",
                     "artists": ["ikura"],
-                    "path": "https://www.youtube.com/watch?v=Y4nEEZwckuU"
+                    "path": "track/YOASOBI群青Official Music Video.mp3"
                 },
                 {
                     "title": "Idol",
                     "duration": "03:34",
                     "artists": ["ikura"],
-                    "path": "https://www.youtube.com/watch?v=JxvvUblf25A"
+                    "path": "track/Oshi no Ko - Opening FULL _Idol (アイドル)_ by YOASOBI (Lyrics).mp3"
                 },
                 {
                     "title": "怪物",
                     "duration": "03:28",
                     "artists": ["ikura"],
-                    "path": "https://www.youtube.com/watch?v=dy90tA3TT1c"
+                    "path": "track/YOASOBI怪物Official Music Video(YOASOBI - Monster).mp3"
                 },
                 {
                     "title": "たぶん",
                     "duration": "04:17",
                     "artists": ["ikura"],
-                    "path": "https://www.youtube.com/watch?v=KS-68n34dGU",
+                    "path": "track/YOASOBIたぶん(Tabun) from UT  YOASOBISING YOUR WORLD.mp3",
                     "subtitle": {
                         "type": "lrc",
                         "path": "http://hiiamchris.ddns.net/website/50th/senior/50national/TaskA/subtitle/Yoasobi-Tabun by Ayase.lrc"

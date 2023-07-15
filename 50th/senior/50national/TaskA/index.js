@@ -1,10 +1,103 @@
 let count=0
 let aside="close" // 設定aside為關閉
+let data
+
+if(!isset(weblsget("list"))){ weblsset("list","") }
+if(!isset(weblsget("index"))){ weblsset("index",0) }
+
+function createaside(){
+    docgetid("aside").innerHTML=`
+            <div class="asidelist" id="list"></div>
+            <div class="audioplay" id="play"></div>
+    `
+
+    // 創建標題
+    let div=doccreate("div")
+    div.classList.add("list")
+    div.classList.add("grid")
+    div.innerHTML=`
+        <div class="tracklisttext no">序號</div>
+        <div class="tracklisttext tracktitle">歌曲名稱</div>
+        <div class="tracklisttext artists">演唱者</div>
+        <div class="tracklisttext albumtitle">專輯名稱</div>
+        <div class="tracklisttext time">歌曲時間</div>
+        <div class="tracklisttext def">功能區</div>
+    `
+    docappendchild("list",div)
+
+    if(list.length>0){
+        let list=weblsget("list").split(",")
+        let index=weblsget("index")
+        for(let i=0;i<list.length;i=i+1){
+            let id=list[i].split("_")
+            let tracktitle=data["albums"][id[0]]["tracks"][id[1]]["title"] // 歌曲標題
+            let time=data["albums"][id[0]]["tracks"][id[1]]["duration"] // 歌曲時間
+            let artists=data["albums"][id[0]]["tracks"][id[1]]["artists"].join(",") // 歌曲演唱者
+            let path=data["albums"][id[0]]["tracks"][id[1]]["path"] // 歌曲路徑
+
+            // 創建一個div放每個歌曲
+            let div=doccreate("div")
+            div.id="list_"+i
+            div.classList.add("list")
+            div.classList.add("grid")
+            if(i==index){ div.classList.add("playing") }
+            div.innerHTML=`
+                <div class="tracklisttext no">${i+1}</div>
+                <div class="tracklisttext tracktitle">${tracktitle}</div>
+                <div class="tracklisttext artists">${artists}</div>
+                <div class="tracklisttext albumtitle">${data["albums"][id[0]]["title"]}</div>
+                <div class="tracklisttext time">${time}</div>
+                <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${list[i]}" value="-"></div>
+            `
+            docappendchild("list",div)
+        }
+
+        // 新增專輯
+        for(let i=0;i<docgetall(".defbutton").length;i=i+1){
+            docgetall(".defbutton")[i].onclick=function(){
+                let list=weblsget("list").split(",")
+                list.splice(list.indexOf(docgetall(".defbutton")[i].dataset.id),1) // 刪除資料
+                list.join(",") // 回復資料
+                weblsset("list",list)
+                createaside()
+            }
+        }
+
+        let div2=doccreate("div")
+        div2.innerHTML=`
+            <audio src="${data["albums"][list[index].split("_")[0]]["tracks"][list[index].split("_")[1]]["path"]}" class="player" id="player" controls>
+                <a href="${data["albums"][list[index].split("_")[0]]["tracks"][list[index].split("_")[1]]["path"]}">Download audio</a>
+            </audio>
+        `
+        docappendchild("play",div2)
+
+        docgetid("player").addEventListener("keydown",function(event){
+            if(event.key=="ArrowRight"){ // 向后跳转5秒
+                event.preventDefault()
+                docgetid("player").currentTime=docgetid("player").currentTime+2
+            }
+            if(event.key=="ArrowLeft"){ // 向前跳转5秒
+                event.preventDefault()
+                docgetid("player").currentTime=docgetid("player").currentTime-2
+            }
+        })
+
+        docgetid("player").volume=0.5
+    }else{
+        let div=doccreate("div")
+        div.classList.add("list")
+        div.classList.add("warning")
+        div.innerHTML=`
+            目前無歌曲
+        `
+        docappendchild("list",div)
+    }
+}
 
 let ajax=newajax("GET","albumlist.json")
 
 ajax.onload=function(){
-    let data=JSON.parse(ajax.responseText) // 拿到data
+    data=JSON.parse(ajax.responseText) // 拿到data
 
     function main(){ // 主程式(起始)
         docgetid("main").innerHTML=`` // 清空主區域
@@ -108,9 +201,22 @@ ajax.onload=function(){
                         <div class="tracklisttext artists">${artists}</div>
                         <div class="tracklisttext albumtitle">${data["albums"][id]["title"]}</div>
                         <div class="tracklisttext time">${time}</div>
-                        <div class="tracklisttext def"><input type="button" value="add to list"></div>
+                        <div class="tracklisttext def"><input type="button" class="defbutton" value="+"></div>
                     `
                     docappendchild("albummain",div)
+                }
+
+                // 新增專輯
+                for(let i=0;i<docgetall(".defbutton").length;i=i+1){
+                    docgetall(".defbutton")[i].onclick=function(){
+                        trackid=id+"_"+i
+                        if(weblsget("list").split(",").includes(trackid)){ alert("該專輯以存在於撥放清單") } // 判斷專輯是否存在
+                        else{
+                            if(weblsget("list")!=""){ weblsset("list",weblsget("list")+trackid) }
+                            else{ weblsset("list",weblsget("list")+","+trackid) }
+                        }
+                        createaside()
+                    }
                 }
 
                 docgetid("goback").onclick=function(){
@@ -127,24 +233,23 @@ docgetid("aside").style.width="0px"
 // 設定aside的開啟及關閉
 docgetid("openaside").onclick=function(){
     if(aside=="close"){
-        docgetid("aside").style.width="45%"
-        docgetid("openaside").style.left="45%"
+        docgetid("aside").style.width="55%"
+        docgetid("openaside").style.left="55%"
         docgetid("openaside").value="<"
         let div=doccreate("div")
         div.classList.add("mask")
         div.id="asidemask"
         docgetall("body")[0].appendChild(div)
         aside="open"
+        createaside()
     }else{
         docgetid("aside").style.width="0px"
         docgetid("openaside").style.left="0px"
         docgetid("openaside").value=">"
         docgetid("asidemask").remove()
         aside="close"
+        docgetid("aside").innerHTML=``
     }
 }
 
 startmacossection()
-
-
-// <audio></audio>
