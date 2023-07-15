@@ -11,7 +11,7 @@
     2023/07/09  21:54:50 Bata 1.0.5 // 新增newajax函式
     2023/07/12  13:51:52 Bata 1.0.6 // 新增lightbox函式
     2023/07/13  19:08:05 Bata 1.0.7 // 新增docappendchild函式
-    2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
+    2023/07/15  20:22:11 Bata 1.0.8 // 新增regexp函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -200,4 +200,16 @@ function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=tr
 
 function docappendchild(element,chlidelement){
     return docgetid(element).appendChild(chlidelement)
+}
+
+function regexp(regexptext,regexpstring=""){
+    return new RegExp(regexptext,regexpstring)
+}
+
+function regexpmatch(data,regexptext,regexpstring=""){
+    return data.match(regexp(regexptext,regexpstring))
+}
+
+function regexpreplace(data,replacetext,regexptext,regexpstring=""){
+    return data.replace(regexp(regexptext,regexpstring),replacetext)
 }

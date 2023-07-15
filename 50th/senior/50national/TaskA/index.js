@@ -1,6 +1,7 @@
-let count=0
 let aside="close" // 設定aside為關閉
 let data
+let playing=true
+let playindex=0
 
 if(!isset(weblsget("list"))){ weblsset("list","") }
 if(!isset(weblsget("index"))){ weblsset("index",0) }
@@ -25,8 +26,8 @@ function createaside(){
     `
     docappendchild("list",div)
 
-    if(list.length>0){
-        let list=weblsget("list").split(",")
+    let list=weblsget("list").split(",")
+    if(list[0]!=""){
         let index=weblsget("index")
         for(let i=0;i<list.length;i=i+1){
             let id=list[i].split("_")
@@ -92,6 +93,76 @@ function createaside(){
         `
         docappendchild("list",div)
     }
+}
+
+function search(title,artist,album){
+    let count=0
+    let searchdata=data
+
+    docgetid("main").innerHTML=`
+        <div class="counter" id="counter"></div>
+        <div class="list macossectiondiv" id="searchlist">
+            <div class="tracklist grid">
+                <div class="tracklisttext no">序號</div>
+                <div class="tracklisttext tracktitle">歌曲名稱</div>
+                <div class="tracklisttext artists">演唱者</div>
+                <div class="tracklisttext albumtitle">專輯名稱</div>
+                <div class="tracklisttext time">歌曲時間</div>
+                <div class="tracklisttext def">功能區</div>
+            </div>
+        </div>
+    ` // 把主區域消除及放入預設
+
+    for(let i=0;i<searchdata["albums"].length;i=i+1){
+        let track=searchdata["albums"][i]["tracks"]
+        for(let j=0;j<track.length;j=j+1){
+            if(regexpmatch(track[j]["title"],title[0],"gi")&&isset(title[0])){ // 判斷是否查詢結果
+                let tracktitle=regexpreplace(searchdata["albums"][i]["tracks"][j]["title"],"<div class='searchresult'>$1</div>","("+title[0]+")","gi") // 替換成高亮
+                let artists=searchdata["albums"][i]["tracks"][j]["artists"].join(",") // 歌曲作者
+                let albumtitle=searchdata["albums"][i]["title"] // 專輯標題
+                let time=searchdata["albums"][i]["tracks"][j]["duration"] // 歌曲時間
+
+                let div=doccreate("div")
+                div.id=i+"_"+j
+                div.classList.add("tracklist")
+                div.classList.add("grid")
+                div.innerHTML=`
+                    <div class="tracklisttext no">${count+1}</div>
+                    <div class="tracklisttext tracktitle">${tracktitle}</div>
+                    <div class="tracklisttext artists">${artists}</div>
+                    <div class="tracklisttext albumtitle">${albumtitle}</div>
+                    <div class="tracklisttext time">${time}</div>
+                    <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${i}_${j}" value="+"></div>
+                `
+                docappendchild("searchlist",div)
+                count=count+1
+            }
+        }
+    }
+
+    if(count>0){
+        docgetall(".defbutton").forEach(function(event){
+            event.onclick=function(){
+                let id=event.dataset.id
+                if(weblsget("list").split(",").includes(id)){ alert("該專輯以存在於撥放清單") } // 判斷專輯是否存在
+                else{
+                    if(weblsget("list")==""){ weblsset("list",weblsget("list")+id) }
+                    else{ weblsset("list",weblsget("list")+","+id) }
+                }
+            }
+        })
+    }else{
+        let div=doccreate("div")
+        div.classList.add("list")
+        div.classList.add("warning")
+        div.innerHTML=`
+            查無歌曲
+        `
+        docappendchild("searchlist",div)
+    }
+    docgetid("counter").innerHTML=`
+        結果: ${count} 筆
+    `
 }
 
 let ajax=newajax("GET","albumlist.json")
@@ -212,10 +283,9 @@ ajax.onload=function(){
                         trackid=id+"_"+i
                         if(weblsget("list").split(",").includes(trackid)){ alert("該專輯以存在於撥放清單") } // 判斷專輯是否存在
                         else{
-                            if(weblsget("list")!=""){ weblsset("list",weblsget("list")+trackid) }
+                            if(weblsget("list")==""){ weblsset("list",weblsget("list")+trackid) }
                             else{ weblsset("list",weblsget("list")+","+trackid) }
                         }
-                        createaside()
                     }
                 }
 
@@ -225,6 +295,27 @@ ajax.onload=function(){
             }
         })
     }
+
+    docgetid("search").oninput=function(){
+        // testing
+        let value=docgetid("search").value
+        let title=[]
+        let artist=[]
+        let album=[]
+
+        if(regexpmatch(value,"title:","gi")){
+            valuetemp=value.split("title:")
+            title.push(valuetemp[1])
+        }
+
+        // for(let i=0;i<data["albums"].length;i=i+1){
+        //     title.push(data["albums"][i]["title"])
+        //     artist.push(data["albums"][i]["album_artists"].join(","))
+        // }
+        if(value.length>=3){ search(title,artist,album) }
+        else{ main() }
+    }
+
     main() // 開始主程式
 }
 
