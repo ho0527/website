@@ -92,11 +92,12 @@ ajax.onload=function(){
                 `
 
                 for(let i=0;i<tracklength;i=i+1){
-                    // 判斷個專輯的時間並加總
-                    let tracktitle=data["albums"][id]["tracks"][i]["title"]
-                    let time=data["albums"][id]["tracks"][i]["duration"]
-                    let artists=data["albums"][id]["tracks"][i]["artists"].join(",")
-                    let path=data["albums"][id]["tracks"][i]["path"]
+                    let tracktitle=data["albums"][id]["tracks"][i]["title"] // 歌曲標題
+                    let time=data["albums"][id]["tracks"][i]["duration"] // 歌曲時間
+                    let artists=data["albums"][id]["tracks"][i]["artists"].join(",") // 歌曲演唱者
+                    let path=data["albums"][id]["tracks"][i]["path"] // 歌曲路徑
+
+                    // 創建一個div放每個歌曲
                     let div=doccreate("div")
                     div.id=id+"_"+i
                     div.classList.add("tracklist")

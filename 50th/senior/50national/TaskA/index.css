@@ -285,9 +285,9 @@ table{
 .album{
     border: 1px white solid;
     position: relative;
-    width: 20%;
-    height: 25vh;
-    margin: 10px;
+    width: 15%;
+    height: 30vh;
+    margin: 20px;
     color: white;
     cursor: pointer;
 }
