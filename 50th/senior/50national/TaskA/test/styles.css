@@ -1,0 +1,38 @@
+body {
+    font-family: "Consolas", Helvetica, sans-serif;
+    background: rgb(35, 35, 35);
+    color: gray;
+    text-align: center;
+    word-break: break-all;
+    user-select: none;
+    padding: 5px;
+    margin: 0px;
+}
+
+.music-player {
+    /* Your styles for the music player container here */
+}
+
+.album-cover img {
+    /* Your styles for the album cover image here */
+}
+
+.music-info {
+    /* Your styles for the music information here */
+}
+
+.controls {
+    /* Your styles for the controls here */
+}
+
+.progress {
+    /* Your styles for the progress bar and time here */
+}
+
+.volume {
+    /* Your styles for the volume control here */
+}
+
+.lyrics {
+    /* Your styles for the lyrics here */
+}

@@ -126,6 +126,33 @@ function search(title,artist,album){
     let count=0
     let searchdata=data
 
+    // 解析搜尋條件
+    let part=title.concat(artist,album).join(" ").split(" ")
+    let term={
+        title:[],
+        artist:[],
+        album:[],
+    }
+
+    let field="title" // 預設為標題(title)
+
+    part.forEach(function(event){
+        if(event.startsWith("title:")){
+            field="title"
+            term.title.push(event.substring(6)) // 移除 "title:"
+        }else if(event.startsWith("artist:")){
+            field="artist"
+            term.artist.push(event.substring(7)) // 移除 "artist:"
+        }else if(event.startsWith("album:")){
+            field="album"
+            term.album.push(event.substring(6)) // 移除 "album:"
+        }else{
+            // 如果不是以上指定的欄位搜尋，將該部分加入當前的搜尋欄位中
+            term[field].push(event)
+        }
+    })
+
+
     docgetid("main").innerHTML=`
         <div class="counter" id="counter"></div>
         <div class="list macossectiondiv" id="searchlist">
@@ -143,15 +170,38 @@ function search(title,artist,album){
     for(let i=0;i<searchdata["albums"].length;i=i+1){
         let track=searchdata["albums"][i]["tracks"]
         for(let j=0;j<track.length;j=j+1){
-            if(regexpmatch(track[j]["title"],title[0],"gi")&&isset(title[0])){ // 判斷是否查詢結果
+            let titlematch=false
+            let artistmatch=false
+            let albummatch=false
+
+            // 檢查是否符合搜尋條件
+            if(term.title.length>0){
+                titlematch=term.title.some(function(term){ return regexpmatch(track[j]["title"],term,"gi") })
+            }else{
+                titlematch=true // 沒有 title 條件時，預設為 true
+            }
+
+            if(term.artist.length>0){
+                artistmatch=term.artist.some(function(term){ return regexpmatch(track[j]["artists"].join(","),term,"gi") })
+            }else{
+                artistmatch=true // 沒有 artist 條件時，預設為 true
+            }
+
+            if(term.album.length>0){
+                albummatch=term.album.some(function(term){ return regexpmatch(searchdata["albums"][i]["title"],term,"gi") })
+            }else{
+                albummatch=true // 沒有 album 條件時，預設為 true
+            }
+
+            if(titlematch&&artistmatch&&albummatch){
                 let id=searchdata["albums"][i]["tracks"][j]["id"]
-                let tracktitle=regexpreplace(searchdata["albums"][i]["tracks"][j]["title"],"<div class='searchresult'>$1</div>","("+title[0]+")","gi") // 替換成高亮
+                let tracktitle=regexpreplace(searchdata["albums"][i]["tracks"][j]["title"],"<div class='searchresult'>$1</div>","("+title.concat(artist,album).join(" ")+")","gi") // 替換成高亮
                 let artists=searchdata["albums"][i]["tracks"][j]["artists"].join(",") // 歌曲作者
                 let albumtitle=searchdata["albums"][i]["title"] // 專輯標題
                 let time=searchdata["albums"][i]["tracks"][j]["duration"] // 歌曲時間
 
                 let div=doccreate("div")
-                div.id=i+"_"+j
+                div.id=id
                 div.classList.add("tracklist")
                 div.classList.add("grid")
                 div.innerHTML=`
@@ -183,7 +233,7 @@ function search(title,artist,album){
 
     // 輸出結果筆數
     docgetid("counter").innerHTML=`
-        結果: ${count} 筆
+        結果:${count}筆
     `
 }
 
@@ -232,7 +282,7 @@ ajax.onload=function(){
             let albumartistlist=data["albums"][i]["album_artists"] // 演奏者名字列表
             let albumtitle=data["albums"][i]["title"] // 專輯標題
             let cover=data["albums"][i]["cover"] // 封面
-            if(!isset(cover)){ cover="cover/default.png" } // 如果沒有封面就要用預設的
+            if(!isset(cover)){ cover="cover/default.png" }// 如果沒有封面就要用預設的
             let albumartist=albumartistlist.join(",") // 將陣列變成字串
 
             // 設定每張專輯的div
@@ -265,7 +315,7 @@ ajax.onload=function(){
                 let date=data["albums"][id]["attr"]["pubdate"] // 拿到上傳的時間
                 let publicdate
                 if(!isset(date)){ publicdate="N/A" }
-                else{ publicdate=date.split("-").join("/") } // 改成要求形式
+                else{ publicdate=date.split("-").join("/") }// 改成要求形式
                 let totalbefore=0 // MM
                 let totalafter=0 // SS
                 let tracklength=data["albums"][id]["tracks"].length // 歌曲總數
@@ -288,14 +338,14 @@ ajax.onload=function(){
                 docgetid("main").innerHTML=`
                     <div class="top">
                         <div class="menu">
-                            <input type="button" class="menubutton" id="goback" value="index"> > ${albumtitle} 專輯詳細位置
+                            <input type="button" class="menubutton" id="goback" value="index"> > ${albumtitle}專輯詳細位置
                         </div>
                         <img src="${cover}" class="albumcover">
-                        <div class="albumtext title">專輯名稱: ${albumtitle}</div>
-                        <div class="albumtext artist">演唱者: ${albumartist}</div>
-                        <div class="albumtext publicdate">發布日期: ${publicdate}</div>
-                        <div class="albumtext trackslengthandtime">歌曲總數: ${tracklength} 專輯總時長: ${totaltime}</div>
-                        <div class="albumtext albumdescription">專輯描述: ${albumdescription}</div>
+                        <div class="albumtext title">專輯名稱:${albumtitle}</div>
+                        <div class="albumtext artist">演唱者:${albumartist}</div>
+                        <div class="albumtext publicdate">發布日期:${publicdate}</div>
+                        <div class="albumtext trackslengthandtime">歌曲總數:${tracklength}專輯總時長:${totaltime}</div>
+                        <div class="albumtext albumdescription">專輯描述:${albumdescription}</div>
                         <div class="albumplay icondiv" id="albumpaly"><img src="material/play.svg" class="albumicon"></div>
                     </div>
                     <div class="albummain macossectiondiv" id="albummain">
@@ -356,7 +406,6 @@ ajax.onload=function(){
     }
 
     docgetid("search").oninput=function(){
-        // testing
         let value=docgetid("search").value
         let title=[]
         let artist=[]
@@ -367,12 +416,21 @@ ajax.onload=function(){
             title.push(valuetemp[1])
         }
 
-        // for(let i=0;i<data["albums"].length;i=i+1){
-        //     title.push(data["albums"][i]["title"])
-        //     artist.push(data["albums"][i]["album_artists"].join(","))
-        // }
-        if(value.length>=3){ search(title,artist,album) }
-        else{ main() }
+        if(regexpmatch(value,"artist:","gi")){
+            valuetemp=value.split("artist:")
+            artist.push(valuetemp[1])
+        }
+
+        if(regexpmatch(value,"album:","gi")){
+            valuetemp=value.split("album:")
+            album.push(valuetemp[1])
+        }
+
+        if(value.length>=3){
+            search(title,artist,album)
+        }else{
+            main()
+        }
     }
 
     main() // 開始主程式

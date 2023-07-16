@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="music-player">
+        <div class="album-cover">
+            <img src="https://upload.wikimedia.org/wikipedia/zh/2/26/YOASOBI_banner.jpg" alt="Album Cover">
+        </div>
+        <div class="music-info">
+            <h3 class="title">夜に駆ける</h3>
+            <p class="artists">ikura</p>
+        </div>
+        <div class="controls">
+            <button class="prev-btn">Previous</button>
+            <button class="play-btn">Play</button>
+            <button class="next-btn">Next</button>
+        </div>
+        <div class="progress">
+            <div class="progress-bar"></div>
+            <span class="current-time">00:00</span> / <span class="total-time">04:21</span>
+        </div>
+        <div class="volume">
+            <input type="range" class="volume-slider" min="0" max="100" value="100">
+        </div>
+        <div class="lyrics">
+            <!-- Lyrics will be displayed here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
