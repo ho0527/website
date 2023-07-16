@@ -11,7 +11,8 @@
     2023/07/09  21:54:50 Bata 1.0.5 // 新增newajax函式
     2023/07/12  13:51:52 Bata 1.0.6 // 新增lightbox函式
     2023/07/13  19:08:05 Bata 1.0.7 // 新增docappendchild函式
-    2023/07/15  20:22:11 Bata 1.0.8 // 新增regexp函式
+    2023/07/15  20:22:11 Bata 1.0.8 // 新增regexp 及 regexpmatch 及 regexpreplace 函式
+    2023/07/16  15:24:44 Bata 1.0.9 // 修改conlog函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -140,8 +141,8 @@ function docgetall(selector){ // document.querySelectorAll
     return document.querySelectorAll(selector)
 }
 
-function conlog(data){ // consloe.log 值出來
-    console.log(data)
+function conlog(data,color="white",size="12",weight="normal"){ // consloe.log 值出來
+    console.log(`%c${data}`,`color:${color};font-size:${size}px;font-weight:${weight}`)
 }
 
 function isset(data){ // 看值是否存在
@@ -202,7 +203,7 @@ function docappendchild(element,chlidelement){
     return docgetid(element).appendChild(chlidelement)
 }
 
-function regexp(regexptext,regexpstring=""){
+function regexp(regexptext,regexpstring){
     return new RegExp(regexptext,regexpstring)
 }
 

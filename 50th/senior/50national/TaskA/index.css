@@ -409,6 +409,12 @@ table{
     overflow: hidden;
 }
 
+.albumplay{
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+}
+
 /* #################################################################### */
 
 .tracklist{
@@ -463,8 +469,11 @@ table{
 
 .icon{
     width: 45px;
-    height: 45px;
     margin-right: 10px;
+}
+
+.albumicon{
+    width: 75px;
 }
 
 .playing{
@@ -480,6 +489,36 @@ table{
 .counter{
     text-align: right;
 }
+
+.playerror{
+    position: absolute;
+    width: 100%;
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    opacity: 0.65;
+    z-index: 999;
+}
+
+.asidelist{
+    grid-column: 1/101;
+    grid-row: 1/15;
+}
+
+.audioplay{
+    grid-column: 1/101;
+    grid-row: 15/18;
+}
+
+.icondiv{
+    width: 50px;
+    cursor: pointer;
+}
+
+.playerdiv{
+    display: flex;
+}
+
 /*
 燈箱
 #########################################
