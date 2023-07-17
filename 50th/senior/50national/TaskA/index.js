@@ -7,7 +7,7 @@ if(!isset(weblsget("playingindex"))){ weblsset("playingindex",0) }
 
 function createaside(){
     docgetid("aside").innerHTML=`
-            <div class="asidelist" id="list"></div>
+            <div class="asidelist macossectiondiv" id="list"></div>
             <div class="audioplay" id="play"></div>
     `
 
@@ -68,16 +68,38 @@ function createaside(){
         let div2=doccreate("div")
         div2.innerHTML=`
             <div class="playerdiv">
-                <div class="icondiv" id="back"><img src="material/play-skip-back.svg" class="icon"></div>
-                <div class="icondiv" id="palyandpause"><img src="material/play.svg" class="icon"></div>
-                <div class="icondiv" id="forward"><img src="material/play-skip-forward.svg" class="icon"></div>
-                <div class="icondiv" id="volume"><img src="material/volume-high.svg" class="icon"></div>
+                <div class="icondiv" id="back"><img src="material/icon/play-skip-back.svg" class="icon"></div>
+                <div class="icondiv" id="palypause"><img src="material/icon/play.svg" class="icon" id="palypauseicon"></div>
+                <div class="icondiv" id="forward"><img src="material/icon/play-skip-forward.svg" class="icon"></div>
+                <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon"></div>
             </div>
             <audio class="player" id="player" controls>
                 <source src="https://www.youtube.com/watch?v=by4SYYWlhEs?autoplay=1&controls=0" type="audio/mpeg">
             </audio>
         `
         docappendchild("play",div2)
+
+        docgetid("back").onclick=function(){
+
+        }
+
+        docgetid("palypause").onclick=function(){
+            if(playing){
+                docgetid("palypauseicon").src="material/icon/play.svg"
+                playing=false
+            }else{
+                docgetid("palypauseicon").src="material/icon/pause.svg"
+                playing=true
+            }
+        }
+
+        docgetid("forward").onclick=function(){
+
+        }
+
+        docgetid("volume").onclick=function(){
+            // docgetid("volumerange")
+        }
 
         docgetid("player").addEventListener("keydown",function(event){
             if(event.key=="ArrowRight"){ // 向后跳转5秒
@@ -346,7 +368,7 @@ ajax.onload=function(){
                         <div class="albumtext publicdate">發布日期:${publicdate}</div>
                         <div class="albumtext trackslengthandtime">歌曲總數:${tracklength}專輯總時長:${totaltime}</div>
                         <div class="albumtext albumdescription">專輯描述:${albumdescription}</div>
-                        <div class="albumplay icondiv" id="albumpaly"><img src="material/play.svg" class="albumicon"></div>
+                        <div class="albumplay icondiv" id="albumpaly"><img src="material/icon/play.svg" class="albumicon"></div>
                     </div>
                     <div class="albummain macossectiondiv" id="albummain">
                         <div class="tracklist grid">
