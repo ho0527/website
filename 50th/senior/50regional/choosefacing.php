@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>管理者專區</title>
+        <title>選擇討論面向</title>
         <link href="index.css" rel="stylesheet">
         <link rel="stylesheet" href="plugin/css/macossection.css">
         <script src="plugin/js/macossection.js"></script>
@@ -12,6 +12,7 @@
         <?php
             include("link.php");
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            if(!isset($_GET["id"])){ header("location:project.php"); }
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
@@ -31,25 +32,25 @@
         <div class="main mainmain macossectiondiv">
             <table>
                 <tr>
-                    <td class="maintd">project name</td>
-                    <td class="maintd">project desciption</td>
-                    <td class="maintd">project function</td>
+                    <td class="maintd">facing</td>
+                    <td class="maintd">function</td>
                 </tr>
                 <?php
-                    $row=query($db,"SELECT*FROM `project`");
-                    for($i=0;$i<count($row);$i=$i+1){
-                        ?>
-                            <tr>
-                                <td class="maintd"><?php echo($row[$i][1]); ?></td>
-                                <td class="maintd"><?php echo($row[$i][2]); ?></td>
-                                <td class="maintd">
-                                    <input type="button" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                    <input type="button" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
-                                    <input type="button" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
-                                </td>
-                            </tr>
-                        <?php
-                    }
+                    $id=$_GET["id"];
+                    $row=query($db,"SELECT*FROM `project` WHERE `id`='$id'")[0];
+                    if($row){
+                        $data=explode("|&|",$row[5]);
+                        for($i=0;$i<count($data);$i=$i+1){
+                            ?>
+                                <tr>
+                                    <td class="maintd"><?php echo($data[$i]); ?></td>
+                                    <td class="maintd">
+                                        <input type="button" onclick="location.href='newopinion.php?id=<?php echo($id.'_'.$i); ?>'" value="逕入討論">
+                                    </td>
+                                </tr>
+                            <?php
+                        }
+                    }else{ ?><script>alert("專案不存在");location.href="project.php"</script><?php }
                 ?>
             </table>
         </div>

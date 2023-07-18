@@ -385,3 +385,9 @@ table{
     font-size: 20px;
     border-radius: 5px;
 }
+
+.textarea{
+    width: 75%;
+    height: 10vh;
+    font-size: 20px;
+}

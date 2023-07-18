@@ -12,6 +12,7 @@
         <?php
             include("link.php");
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            if(!isset($_GET["id"])){ header("location:project.php"); }
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
@@ -29,6 +30,10 @@
             </div>
         </div>
         <div class="main mainmain macossectiondiv">
+            標題: <input type="text" class="input" name="title"><br><br>
+            說明: <textarea class="textarea" name="description"></textarea><br><br>
+            <input type="reset" class="button" value="清除">
+            <input type="submit" class="button" name="submit" value="送出">
             <table>
                 <tr>
                     <td class="maintd">project name</td>
@@ -36,6 +41,10 @@
                     <td class="maintd">project function</td>
                 </tr>
                 <?php
+                    $id=explode("_",$_GET["id"]);
+                    $projectid=$id[0];
+                    $facingid=$id[1];
+                    print_r($id);
                     $row=query($db,"SELECT*FROM `project`");
                     for($i=0;$i<count($row);$i=$i+1){
                         ?>
@@ -45,7 +54,7 @@
                                 <td class="maintd">
                                     <input type="button" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
                                     <input type="button" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
-                                    <input type="button" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
+                                    <input type="button" onclick="location.href='newopinion.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
                                 </td>
                             </tr>
                         <?php
@@ -53,5 +62,6 @@
                 ?>
             </table>
         </div>
+        <script src="newopinion.js"></script>
     </body>
 </html>
