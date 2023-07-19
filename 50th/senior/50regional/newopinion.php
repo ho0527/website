@@ -52,9 +52,9 @@
                                 <td class="maintd"><?php echo($row[$i][1]); ?></td>
                                 <td class="maintd"><?php echo($row[$i][2]); ?></td>
                                 <td class="maintd">
-                                    <input type="button" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                    <input type="button" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
-                                    <input type="button" onclick="location.href='newopinion.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
+                                    <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
+                                    <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
+                                    <input type="button" class="bluebutton" onclick="location.href='newopinion.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
                                 </td>
                             </tr>
                         <?php

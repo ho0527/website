@@ -32,7 +32,9 @@
                         </div>
                         <div class="navigationbarright">
                             <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='neweditproject.php'" value="修改">
-                            <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理">
+                            <?php
+                                if($_SESSION["data"]==1){ ?><input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理"><?php }
+                            ?>
                             <input type="button" class="navigationbarbutton" onclick="location.href='project.php'" value="專案管理">
                             <input type="button" class="navigationbarbutton" onclick="location.href='teamleader.php'" value="組長功能管理">
                             <input type="button" class="navigationbarbutton" onclick="location.href='statistics.php'" value="統計管理">
@@ -47,21 +49,21 @@
                                 <input type="button" class="submitbutton" id="submit" value="送出">
                             </div>
                             <div class="projectmember grid">
-                                <div class="leader sort macossectiondiv" id="leader">
+                                <div class="leader sort macossectiondivy" id="leader">
                                 組長
                                 <hr>
                                 </div>
-                                <div class="member sort macossectiondiv" id="member">
+                                <div class="member sort macossectiondivy" id="member">
                                     組員
                                     <hr>
                                 </div>
-                                <div class="userdiv sort macossectiondiv" id="user">
+                                <div class="userdiv sort macossectiondivy" id="user">
                                     使用者列表
                                     <hr>
                                     <?php
                                     $userrow=query($db,"SELECT*FROM `user`");
                                     for($i=0;$i<count($userrow);$i=$i+1){
-                                        ?><div class="user"><?php echo($userrow[$i][1]); ?></div><?php
+                                        ?><div class="user" data-id="<?php echo($userrow[$i][0]); ?>"><?php echo($userrow[$i][1]); ?></div><?php
                                     }
                                     ?>
                                 </div>
@@ -82,7 +84,9 @@
                     </div>
                     <div class="navigationbarright">
                         <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='neweditproject.php'" value="新增">
-                        <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理">
+                            <?php
+                                if($_SESSION["data"]==1){ ?><input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理"><?php }
+                            ?>
                         <input type="button" class="navigationbarbutton" onclick="location.href='project.php'" value="專案管理">
                         <input type="button" class="navigationbarbutton" onclick="location.href='teamleader.php'" value="組長功能管理">
                         <input type="button" class="navigationbarbutton" onclick="location.href='statistics.php'" value="統計管理">
@@ -111,7 +115,7 @@
                                 <?php
                                 $userrow=query($db,"SELECT*FROM `user`");
                                 for($i=0;$i<count($userrow);$i=$i+1){
-                                    ?><div class="user"><?php echo($userrow[$i][1]); ?></div><?php
+                                    ?><div class="user" data-id="<?php echo($userrow[$i][0]); ?>"><?php echo($userrow[$i][1]); ?></div><?php
                                 }
                                 ?>
                             </div>

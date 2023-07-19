@@ -45,7 +45,7 @@
                                 <tr>
                                     <td class="maintd"><?php echo($data[$i]); ?></td>
                                     <td class="maintd">
-                                        <input type="button" onclick="location.href='newopinion.php?id=<?php echo($id.'_'.$i); ?>'" value="逕入討論">
+                                        <input type="button" class="bluebutton" onclick="location.href='newopinion.php?id=<?php echo($id.'_'.$i); ?>'" value="進入討論">
                                     </td>
                                 </tr>
                             <?php

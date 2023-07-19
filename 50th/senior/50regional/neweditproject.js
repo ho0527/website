@@ -9,24 +9,26 @@ if(key=="edit"){
     let member=row[4].split("|&|")
     let facingname=row[5].split("|&|")
     let facingdesciption=row[6].split("|&|")
-    let div=doccreate("div")
-    div.classList.add("user")
-    div.innerHTML=`${leader}`
 
-    docgetid("leader").appendChild(div)
     docgetall(".userdiv>.user").forEach(function(event){
-        if(event.innerHTML==leader){
+        if(event.dataset.id==leader){
+            let div=doccreate("div")
+            div.classList.add("user")
+            div.dataset.id=event.dataset.id
+            div.innerHTML=`${event.innerHTML}`
+            docgetid("leader").appendChild(div)
             event.remove()
         }
     })
 
     for(let i=0;i<member.length;i=i+1){
-        let div=doccreate("div")
-        div.classList.add("user")
-        div.innerHTML=`${member[i]}`
-        docgetid("member").appendChild(div)
         docgetall(".userdiv>.user").forEach(function(event){
-            if(event.innerHTML==member[i]){
+            if(event.dataset.id==member[i]){
+                let div=doccreate("div")
+                div.classList.add("user")
+                div.dataset.id=event.dataset.id
+                div.innerHTML=`${event.innerHTML}`
+                docgetid("member").appendChild(div)
                 event.remove()
             }
         })
@@ -103,9 +105,9 @@ docgetid("submit").onclick=function(){
         }else{ conlog("pass") }
     }
     if(docgetall(".leader>.user").length==1){
-        leader=docgetall(".leader>.user")[0].innerHTML
+        leader=docgetall(".leader>.user")[0].dataset.id
         docgetall(".member>.user").forEach(function(event){
-            member.push(event.innerHTML)
+            member.push(event.dataset.id)
         })
         data.push(projectname,projectdesciption,leader,member,facingname,facingdesciption)
         let url="api/newproject.php"
