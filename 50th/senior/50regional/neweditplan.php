@@ -35,6 +35,38 @@
                     <form method="POST">
                         標題: <input type="text" class="input" name="title" value="<?php echo($row[2]); ?>"><br><br>
                         說明: <textarea class="textarea" name="description"><?php echo($row[3]); ?></textarea><br><br>
+                        <?php
+                            $projectid=$_SESSION["id"];
+                            $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$projectid'");
+                            $rowplan=explode("|&|",$row[4]);
+                            for($i=0;$i<count($facingrow);$i=$i+1){
+                                $projectfacingid=$projectid."_".$facingrow[$i][0];
+                                $opinionrow=query($db,"SELECT*FROM `opinion` WHERE `project_facingid`='$projectfacingid'");
+                                ?>
+                                <div class="selectdiv">
+                                    <div class="selecttext"><?php echo($facingrow[$i][2]); ?></div>
+                                    <select class="select" name="facing<?php echo($facingrow[$i][0]); ?>">
+                                        <option value="none">不選擇</option>
+                                        <?php
+                                            for($j=0;$j<count($opinionrow);$j=$j+1){
+                                                $facingopiniionid=$facingrow[$i][0]."_".$opinionrow[$j][0];
+                                                $check=false;
+                                                for($k=0;$k<count($rowplan);$k=$k+1){
+                                                    if($rowplan[$k]==$facingopiniionid){
+                                                        $check=true;
+                                                        ?><option value="<?php echo($opinionrow[$j][0]); ?>" selected><?php echo($opinionrow[$j][4]); ?></option><?php
+                                                    }
+                                                }
+                                                if(!$check){
+                                                    ?><option value="<?php echo($opinionrow[$j][0]); ?>"><?php echo($opinionrow[$j][4]); ?></option><?php
+                                                }
+                                            }
+                                        ?>
+                                    </select><br>
+                                </div>
+                                <?php
+                            }
+                        ?><br>
                         <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
                         <input type="submit" class="button" name="edit" value="送出"><br>
                     </form>
@@ -62,7 +94,7 @@
                         標題: <input type="text" class="input" name="title"><br><br>
                         說明: <textarea class="textarea" name="description"></textarea><br><br>
                         <?php
-                            $projectid=explode("_",$_SESSION["id"])[0];
+                            $projectid=$_SESSION["id"];
                             $projectrow=query($db,"SELECT*FROM `project` WHERE `id`='$projectid'")[0];
                             $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$projectid'");
                             for($i=0;$i<count($facingrow);$i=$i+1){
@@ -96,15 +128,25 @@
             $title=$_POST["title"];
             $description=$_POST["description"];
             $id=$_SESSION["id"];
-            $row=query($db,"SELECT*FROM `plan` WHERE `title`='$title'AND`project_facingid`='$id'")[0];
+            $row=query($db,"SELECT*FROM `plan` WHERE `title`='$title'AND`projectid`='$id'")[0];
             if($row){
-                ?><script>alert("帳號已被註冊");location.href="neweditplan.php?id=<?php echo($id); ?>"</script><?php
+                ?><script>alert("該執行方案已存在");location.href="neweditplan.php?id=<?php echo($id); ?>"</script><?php
             }elseif($title==""){
                 ?><script>alert("請輸入標題");location.href="neweditplan.php?id=<?php echo($id); ?>"</script><?php
             }else{
-                query($db,"INSERT INTO `plan`(`project_facingid`,`title`,`description`)VALUES(?,?,?)",[$id,$title,$description]);
+                $facingopiniionid=[];
+                $projectid=$_SESSION["id"];
+                $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$projectid'");
+                for($i=0;$i<count($facingrow);$i=$i+1){
+                    $id=$facingrow[$i][0];
+                    $select=$_POST["facing".$id];
+                    if($select!="none"){
+                        $facingopiniionid[]=$id."_".$select;
+                    }
+                }
+                query($db,"INSERT INTO `plan`(`projectid`,`title`,`description`,`facing_opinionid`)VALUES(?,?,?,?)",[$id,$title,$description,implode("|&|",$facingopiniionid)]);
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"新增執行方案",$time,""]);
-                ?><script>alert("新增成功");location.href="plan.php?id=<?php echo($id); ?>"</script><?php
+                ?><script>alert("新增成功");location.href="plan.php?id=<?php echo($projectid); ?>"</script><?php
             }
         }
 
@@ -113,15 +155,25 @@
             $description=$_POST["description"];
             $id=$_SESSION["id"];
             $planid=$_SESSION["planid"];
-            $row=query($db,"SELECT*FROM `plan` WHERE `title`='$title'AND`project_facingid`='$id'")[0];
+            $row=query($db,"SELECT*FROM `plan` WHERE `title`='$title'AND`projectid`='$id'")[0];
             if($row&&$row[0]!=$planid){
-                ?><script>alert("帳號已被註冊");location.href="neweditplan.php?id=<?php echo($id); ?>&edit=<?php echo($planid); ?>"</script><?php
+                ?><script>alert("該執行方案已存在");location.href="neweditplan.php?id=<?php echo($id); ?>&edit=<?php echo($planid); ?>"</script><?php
             }elseif($title==""){
                 ?><script>alert("請輸入標題");location.href="neweditplan.php?id=<?php echo($id); ?>&edit=<?php echo($planid); ?>"</script><?php
             }else{
-                query($db,"UPDATE `plan` SET `title`=?,`description`=? WHERE `id`='$planid'",[$title,$description]);
+                $facingopiniionid=[];
+                $projectid=$_SESSION["id"];
+                $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$projectid'");
+                for($i=0;$i<count($facingrow);$i=$i+1){
+                    $id=$facingrow[$i][0];
+                    $select=$_POST["facing".$id];
+                    if($select!="none"){
+                        $facingopiniionid[]=$id."_".$select;
+                    }
+                }
+                query($db,"UPDATE `plan` SET `title`=?,`description`=?,`facing_opinionid`=? WHERE `id`='$planid'",[$title,$description,implode("|&|",$facingopiniionid)]);
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"編輯執行方案",$time,""]);
-                ?><script>alert("修改成功");location.href="plan.php?id=<?php echo($id); ?>"</script><?php
+                ?><script>alert("修改成功");location.href="plan.php?id=<?php echo($projectid); ?>"</script><?php
             }
         }
 

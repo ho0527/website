@@ -19,7 +19,9 @@
         }
         move_uploaded_file($_FILES["file"]["tmp_name"],"../".$file);
     }
-    query($db,"INSERT INTO `opinion`(`userid`,`project_facingid`,`extendid`,`title`,`description`,`fileurl`,`filetype`,`time`)VALUES(?,?,?,?,?,?,?,?)",[$userdata,$id,$extendid,$title,$description,$file,$filetype,$time]);
+    $row=query($db,"SELECT*FROM `opinion` WHERE `project_facingid`='$id'");
+    $number=str_pad((int)($row[count($row)-1][9])+1,3,"0",STR_PAD_LEFT);
+    query($db,"INSERT INTO `opinion`(`userid`,`project_facingid`,`extendid`,`title`,`description`,`fileurl`,`filetype`,`time`,`number`)VALUES(?,?,?,?,?,?,?,?,?)",[$userdata,$id,$extendid,$title,$description,$file,$filetype,$time,$number]);
     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$userdata,"發表意見",$time,""]);
     echo($_SESSION["id"]);
 ?>

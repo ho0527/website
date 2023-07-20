@@ -32,23 +32,22 @@
             <table>
                 <form>
                     <tr>
-                        <td class="maintd">id</td>
                         <td class="maintd">title</td>
                         <td class="maintd">desciption</td>
+                        <td class="maintd">function</td>
                     </tr>
                     <?php
                         $id=$_GET["id"];
-                        $row=query($db,"SELECT*FROM `plan` WHERE `project_facingid`='$id'");
+                        $row=query($db,"SELECT*FROM `plan` WHERE `projectid`='$id'");
                         for($i=0;$i<count($row);$i=$i+1){
                             ?>
                                 <tr>
+                                    <td class="maintd"><?php echo($row[$i][2]); ?></td>
+                                    <td class="maintd"><?php echo($row[$i][3]); ?></td>
                                     <td class="maintd">
-                                        <?php echo($row[$i][0]); ?>
                                         <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($_GET['id']); ?>&edit=<?php echo($row[$i][0]); ?>'" value="修改">
                                         <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($_GET['id']); ?>&del=<?php echo($row[$i][0]); ?>'" value="刪除">
                                     </td>
-                                    <td class="maintd"><?php echo($row[$i][2]); ?></td>
-                                    <td class="maintd"><?php echo($row[$i][3]); ?></td>
                                 </tr>
                             <?php
                         }

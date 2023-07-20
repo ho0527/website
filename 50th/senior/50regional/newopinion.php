@@ -40,7 +40,7 @@
                     <div class="opinionlistdiv">
                         意見列表
                         <hr>
-                        <div class="opinionlist sort macossectiondivy" id="list">
+                        <div class="opinionlist sort macossectiondivy">
                             <?php
                                 $row=query($db,"SELECT*FROM `opinion` WHERE `project_facingid`=?",[$_GET["id"]]);
                                 for($i=0;$i<count($row);$i=$i+1){

@@ -19,7 +19,7 @@ docgetid("submit").onclick=function(){
     ajax.onload=function(){
         let id=ajax.responseText
         alert("新增成功")
-        location.href="../opinion.php?id="+id
+        location.href="opinion.php?id="+id
     }
 }
 

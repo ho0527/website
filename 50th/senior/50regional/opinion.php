@@ -65,7 +65,7 @@
                     }else{ $extend="無引用"; }
                     ?>
                     <div class="opinion" id="opinion<?php echo($row[$i][0]); ?>">
-                        <div class="no">編號: <?php echo(str_pad($row[$i][0],3,"0",STR_PAD_LEFT)); ?></div>
+                        <div class="no">編號: <?php echo($row[$i][9]); ?></div>
                         <div class="extend">引用: <?php echo($extend); ?></div>
                         <div class="postuser">發表者: <?php echo($userrow[1]); ?></div>
                         <div class="title">標題: <?php echo($row[$i][4]); ?></div>
