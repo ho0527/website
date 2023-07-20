@@ -1,14 +1,12 @@
 let facingcount=1
 
 if(key=="edit"){
-    facingcount=row[5].split("|&|").length
+    facingcount=facingrow.length
 
     docgetid("name").value=row[1]
     docgetid("desciption").value=row[2]
     let leader=row[3]
     let member=row[4].split("|&|")
-    let facingname=row[5].split("|&|")
-    let facingdesciption=row[6].split("|&|")
 
     docgetall(".userdiv>.user").forEach(function(event){
         if(event.dataset.id==leader){
@@ -37,10 +35,11 @@ if(key=="edit"){
     for(let i=0;i<facingcount;i=i+1){
         let div=doccreate("div")
         div.classList.add("facingdiv")
+        div.classList.add("macossectiondivy")
         div.innerHTML=`
             <div class="facing grid">
-                <input type="text" class="input2 facingname" value="${facingname[i]}" placeholder="面向名稱">
-                <input type="text" class="input2 facingdesciption" value="${facingdesciption[i]}" placeholder="面向說明">
+                <input type="text" class="input2 facingname" value="${facingrow[i][2]}" placeholder="面向名稱">
+                <input type="text" class="input2 facingdesciption" value="${facingrow[i][3]}" placeholder="面向說明">
                 <input type="button" class="noborderbutton facingdelect" value="X">
             </div>
         `

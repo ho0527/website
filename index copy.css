@@ -269,6 +269,11 @@ table{
 .a:hover{
     text-decoration: underline;
 }
+
+.disabled:hover{
+    background: revert;
+    color: revert;
+}
 /* END */
 
 

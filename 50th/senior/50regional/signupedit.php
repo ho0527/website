@@ -97,7 +97,7 @@
                 query($db,"UPDATE`user`SET `username`=?,`password`=?,`name`=? WHERE `id`='$id'",[$username,$password,$name]);
                 $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"編輯使用者",$time,""]);
-                ?><script>alert("新增成功");location.href="admin.php"</script><?php
+                ?><script>alert("修改成功");location.href="admin.php"</script><?php
             }
         }
 

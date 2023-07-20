@@ -6,8 +6,10 @@
     $projectdesciption=$data[1];
     $leader=$data[2];
     $member=implode("|&|",$data[3]);
-    $facingname=implode("|&|",$data[4]);
-    $facingdesciption=implode("|&|",$data[5]);
-    query($db,"INSERT INTO `project`(`projectname`,`projectdesciption`,`leader`,`member`,`facingname`,`facingdesciption`)VALUES(?,?,?,?,?,?)",[$projectname,$projectdesciption,$leader,$member,$facingname,$facingdesciption]);
+    query($db,"INSERT INTO `project`(`projectname`,`projectdesciption`,`leader`,`member`,`canpostopinion`)VALUES(?,?,?,?,'true')",[$projectname,$projectdesciption,$leader,$member]);
+    $projectid=$db->lastInsertId();
+    for($i=0;$i<count($data[4]);$i=$i+1){
+        query($db,"INSERT INTO `facing`(`projectid`,`name`,`description`)VALUES(?,?,?)",[$projectid,$data[4][$i],$data[5][$i]]);
+    }
     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$userdata,"新增面向",$time,""]);
 ?>

@@ -19,7 +19,6 @@
                 <div class="navigationbartitle">專案討論系統</div>
             </div>
             <div class="navigationbarright">
-                <input type="button" class="navigationbarbutton" onclick="location.href='neweditproject.php'" value="新增">
                 <?php
                     if($_SESSION["data"]==1){ ?><input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理"><?php }
                 ?>
@@ -38,14 +37,14 @@
                 <?php
                     $id=$_GET["id"];
                     $row=query($db,"SELECT*FROM `project` WHERE `id`='$id'")[0];
+                    $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$id'");
                     if($row){
-                        $data=explode("|&|",$row[5]);
-                        for($i=0;$i<count($data);$i=$i+1){
+                        for($i=0;$i<count($facingrow);$i=$i+1){
                             ?>
                                 <tr>
-                                    <td class="maintd"><?php echo($data[$i]); ?></td>
+                                    <td class="maintd"><?php echo($facingrow[$i][2]); ?></td>
                                     <td class="maintd">
-                                        <input type="button" class="bluebutton" onclick="location.href='newopinion.php?id=<?php echo($id.'_'.$i); ?>'" value="進入討論">
+                                        <input type="button" class="bluebutton" onclick="location.href='opinion.php?id=<?php echo($id.'_'.$facingrow[$i][0]); ?>'" value="進入討論">
                                     </td>
                                 </tr>
                             <?php

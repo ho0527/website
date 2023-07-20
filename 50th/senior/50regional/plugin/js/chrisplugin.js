@@ -3,15 +3,17 @@
     參考: 無
     作者: 小賀chris
     製作及log:
-    2023/06/28  20:10:16 Bata 1.0.0 // 新增macosselection 以及 sort 以及 dget 以及 clog 函式
+    2023/06/28  20:10:16 Bata 1.0.0 // 新增macosselection 以及 sort 以及 dget 以及 clog函式
     2023/06/30  14:35:45 Bata 1.0.1 // 新增isset函式
     2023/07/01  12:52:01 Bata 1.0.2 // 修改變數及小問題
-    2023/07/01  12:56:24 Bata 1.0.3 // 新增docgetid 及 docgetall 及 weblsset 及 weblsget 函式
-    2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
-    2023/07/01  12:56:24 Bata 1.0.3 // 新增docgetid 及 docgetall 及 weblsset 及 weblsget 函式
-    2023/07/01  12:56:24 Bata 1.0.3 // 新增docgetid 及 docgetall 及 weblsset 及 weblsget 函式
-    2023/07/01  12:56:24 Bata 1.0.3 // 新增docgetid 及 docgetall 及 weblsset 及 weblsget 函式
-    2023/07/01  12:56:24 Bata 1.0.3 // 新增docgetid 及 docgetall 及 weblsset 及 weblsget 函式
+    2023/07/01  12:56:24 Bata 1.0.3 // 新增docgetid 及 docgetall 及 weblsset 及 weblsget函式
+    2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate函式
+    2023/07/09  21:54:50 Bata 1.0.5 // 新增newajax函式
+    2023/07/12  13:51:52 Bata 1.0.6 // 新增lightbox函式
+    2023/07/13  19:08:05 Bata 1.0.7 // 新增docappendchild函式
+    2023/07/15  20:22:11 Bata 1.0.8 // 新增regexp 及 regexpmatch 及 regexpreplace 函式
+    2023/07/16  15:24:44 Bata 1.0.9 // 修改conlog函式
+    2023/07/20  13:28:05 Bata 1.0.10 // 修改ajaxdata函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -140,8 +142,8 @@ function docgetall(selector){ // document.querySelectorAll
     return document.querySelectorAll(selector)
 }
 
-function conlog(data){ // consloe.log 值出來
-    console.log(data)
+function conlog(data,color="white",size="12",weight="normal"){ // consloe.log 值出來
+    console.log(`%c${data}`,`color:${color};font-size:${size}px;font-weight:${weight}`)
 }
 
 function isset(data){ // 看值是否存在
@@ -164,4 +166,56 @@ function weblsget(data){ // localStorage.getItem
 
 function doccreate(element){ // document.createElement
     return document.createElement(element)
+}
+
+function newajax(method,url,send=null){
+    let ajax=new XMLHttpRequest()
+
+    ajax.open(method,url)
+    ajax.send(send)
+
+    return ajax
+}
+
+function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=true){
+    document.getElementById(element).innerHTML=``
+
+    document.getElementById(clickelement).onclick=function(){
+        html=`
+            <div class="lightboxmask"></div>
+            <div class="lightboxmain">
+        `+lightboxhtml+`
+            </div>
+        `
+        document.getElementById(element).innerHTML=html
+    }
+
+    if(islightboxclosewithkeyesc){
+        document.addEventListener("keydown",function(event){
+            event.preventDefault()
+            if(event.key=="Escape"){
+                document.getElementById(element).innerHTML=``
+            }
+        })
+    }
+}
+
+function docappendchild(element,chlidelement){
+    return docgetid(element).appendChild(chlidelement)
+}
+
+function regexp(regexptext,regexpstring){
+    return new RegExp(regexptext,regexpstring)
+}
+
+function regexpmatch(data,regexptext,regexpstring=""){
+    return data.match(regexp(regexptext,regexpstring))
+}
+
+function regexpreplace(data,replacetext,regexptext,regexpstring=""){
+    return data.replace(regexp(regexptext,regexpstring),replacetext)
+}
+
+function ajaxdata(key,data){
+    return new FormData.append(key,data);
 }

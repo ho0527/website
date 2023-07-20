@@ -51,8 +51,8 @@
                                 <tr>
                                     <td class="maintd">
                                         <?php echo($row[$i][0]); ?>
-                                        <input type="button" onclick="location.href='signupedit.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                        <input type="button" onclick="location.href='signupedit.php?del=<?php echo($row[$i][0]); ?>'" value="刪除">
+                                        <input type="button" class="bluebutton" onclick="location.href='signupedit.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
+                                        <input type="button" class="bluebutton" onclick="location.href='signupedit.php?del=<?php echo($row[$i][0]); ?>'" value="刪除">
                                     </td>
                                     <td class="maintd"><?php echo($row[$i][1]); ?></td>
                                     <td class="maintd"><?php echo($row[$i][2]); ?></td>

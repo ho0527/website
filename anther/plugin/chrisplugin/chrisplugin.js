@@ -13,6 +13,7 @@
     2023/07/13  19:08:05 Bata 1.0.7 // 新增docappendchild函式
     2023/07/15  20:22:11 Bata 1.0.8 // 新增regexp 及 regexpmatch 及 regexpreplace 函式
     2023/07/16  15:24:44 Bata 1.0.9 // 修改conlog函式
+    2023/07/20  13:28:05 Bata 1.0.10 // 修改ajaxdata函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -213,4 +214,8 @@ function regexpmatch(data,regexptext,regexpstring=""){
 
 function regexpreplace(data,replacetext,regexptext,regexpstring=""){
     return data.replace(regexp(regexptext,regexpstring),replacetext)
+}
+
+function ajaxdata(key,data){
+    return new FormData.append(key,data);
 }

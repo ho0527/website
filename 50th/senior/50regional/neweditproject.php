@@ -19,12 +19,14 @@
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
             if(isset($_GET["edit"])){
                 $id=$_GET["edit"];
+                $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$id'");
                 if($row=query($db,"SELECT*FROM `project` WHERE `id`='$id'")[0]){
                     $_SESSION["id"]=$id;
                     ?>
                     <script>
                         key="edit"
                         let row=<?php echo(json_encode($row)) ?>;
+                        let facingrow=<?php echo(json_encode($facingrow)) ?>;
                     </script>
                     <div class="navigationbar">
                         <div class="navigationbarleft">
@@ -68,8 +70,9 @@
                                     ?>
                                 </div>
                             </div>
-                            <div class="projectfacing" id="projectfacing">
+                            <div class="projectfacing macossectiondivy">
                                 <input type="button" class="button" id="newfacing" value="新增面向">
+                                <div class="facingmaindiv macossectiondivy" id="projectfacing"></div>
                             </div>
                         </div>
                     </div>
@@ -101,15 +104,15 @@
                             <input type="button" class="submitbutton" id="submit" value="送出">
                         </div>
                         <div class="projectmember grid">
-                            <div class="leader sort macossectiondiv" id="leader">
+                            <div class="leader sort macossectiondivy" id="leader">
                             組長
                             <hr>
                             </div>
-                            <div class="member sort macossectiondiv" id="member">
+                            <div class="member sort macossectiondivy" id="member">
                                 組員
                                 <hr>
                             </div>
-                            <div class="userdiv sort macossectiondiv" id="user">
+                            <div class="userdiv sort macossectiondivy" id="user">
                                 使用者列表
                                 <hr>
                                 <?php
@@ -120,13 +123,15 @@
                                 ?>
                             </div>
                         </div>
-                        <div class="projectfacing" id="projectfacing">
+                        <div class="projectfacing">
                             <input type="button" class="button" id="newfacing" value="新增面向">
-                            <div class="facingdiv">
-                                <div class="facing grid">
-                                    <input type="text" class="input2 facingname" placeholder="面向名稱">
-                                    <input type="text" class="input2 facingdesciption" placeholder="面向說明">
-                                    <input type="button" class="noborderbutton facingdelect" value="X">
+                            <div class="facingmaindiv macossectiondivy" id="projectfacing">
+                                <div class="facingdiv">
+                                    <div class="facing grid">
+                                        <input type="text" class="input2 facingname" placeholder="面向名稱">
+                                        <input type="text" class="input2 facingdesciption" placeholder="面向說明">
+                                        <input type="button" class="noborderbutton facingdelect" value="X">
+                                    </div>
                                 </div>
                             </div>
                         </div>

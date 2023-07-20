@@ -18,7 +18,7 @@
                 <div class="navigationbartitle">專案討論系統</div>
             </div>
             <div class="navigationbarright">
-                <input type="button" class="navigationbarbutton" onclick="location.href='neweditproject.php'" value="新增">
+                <input type="button" class="navigationbarbutton" onclick="location.href='neweditproject.php'" value="新增專案">
                 <?php
                     if($_SESSION["data"]==1){ ?><input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理"><?php }
                 ?>
@@ -50,15 +50,16 @@
                         }
                         if($data=="1"||$leader==$data||$key==true){
                             ?>
-                                <tr>
-                                    <td class="maintd"><?php echo($row[$i][1]); ?></td>
-                                    <td class="maintd"><?php echo($row[$i][2]); ?></td>
-                                    <td class="maintd">
-                                        <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                        <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
-                                        <input type="button" class="bluebutton" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td class="maintd"><?php echo($row[$i][1]); ?></td>
+                                <td class="maintd"><?php echo($row[$i][2]); ?></td>
+                                <td class="maintd">
+                                    <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
+                                    <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
+                                    <input type="button" class="bluebutton" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
+                                    <input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>'" value="進入執行方案">
+                                </td>
+                            </tr>
                             <?php
                         }
                     }
