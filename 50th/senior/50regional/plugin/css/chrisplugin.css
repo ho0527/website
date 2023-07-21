@@ -61,3 +61,27 @@
 .divsortdragging{
     opacity: 0.5;
 }
+
+.lightboxmask{
+    position: fixed;
+    top: 0px;/* 定位 */
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: rgb(26, 34, 51, 0.8);
+    z-index: 999;
+}
+
+.lightboxmain{
+    border: 1px white solid;
+    background: rgb(35, 35, 35);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 40px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+}

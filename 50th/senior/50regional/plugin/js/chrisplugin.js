@@ -13,7 +13,8 @@
     2023/07/13  19:08:05 Bata 1.0.7 // 新增docappendchild函式
     2023/07/15  20:22:11 Bata 1.0.8 // 新增regexp 及 regexpmatch 及 regexpreplace 函式
     2023/07/16  15:24:44 Bata 1.0.9 // 修改conlog函式
-    2023/07/20  13:28:05 Bata 1.0.10 // 修改ajaxdata函式
+    2023/07/20  13:28:05 Bata 1.0.10 // 新增ajaxdata函式
+    2023/07/21  18:38:23 Bata 1.0.11 // 修改ajaxdata函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -179,21 +180,30 @@ function newajax(method,url,send=null){
 
 function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=true){
     document.getElementById(element).innerHTML=``
-
-    document.getElementById(clickelement).onclick=function(){
+    if(clickelement==null){
         html=`
             <div class="lightboxmask"></div>
-            <div class="lightboxmain">
+            <div class="lightboxmain macossectiondiv">
         `+lightboxhtml+`
             </div>
         `
         document.getElementById(element).innerHTML=html
+    }else{
+        document.getElementById(clickelement).onclick=function(){
+            html=`
+                <div class="lightboxmask"></div>
+                <div class="lightboxmain macossectiondiv">
+            `+lightboxhtml+`
+                </div>
+            `
+            document.getElementById(element).innerHTML=html
+        }
     }
 
     if(islightboxclosewithkeyesc){
         document.addEventListener("keydown",function(event){
-            event.preventDefault()
             if(event.key=="Escape"){
+                event.preventDefault()
                 document.getElementById(element).innerHTML=``
             }
         })
@@ -216,6 +226,10 @@ function regexpreplace(data,replacetext,regexptext,regexpstring=""){
     return data.replace(regexp(regexptext,regexpstring),replacetext)
 }
 
-function ajaxdata(key,data){
-    return new FormData.append(key,data);
+function ajaxdata(data=[]){
+    let formdata=new FormData()
+    for(let i=0;i<data.length;i=i+1){
+        formdata.append(data[i][0],data[i][1])
+    }
+    return formdata
 }
