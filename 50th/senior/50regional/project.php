@@ -39,8 +39,8 @@
                     $data=$_SESSION["data"];
                     $row=query($db,"SELECT*FROM `project`");
                     for($i=0;$i<count($row);$i=$i+1){
-                        $leader=$row[$i][4];
-                        $mamber=explode("|&|",$row[$i][5]);
+                        $leader=$row[$i][3];
+                        $mamber=explode("|&|",$row[$i][4]);
                         $key=false;
                         for($j=0;$j<count($mamber);$j=$j+1){
                             if($mamber[$j]==$data){
@@ -57,7 +57,7 @@
                                     <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
                                     <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
                                     <input type="button" class="bluebutton" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
-                                    <input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>'" value="進入執行方案">
+                                    <input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>'" value="執行方案">
                                 </td>
                             </tr>
                             <?php

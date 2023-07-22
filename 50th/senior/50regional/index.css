@@ -499,3 +499,13 @@ table{
     width: 50vw;
     height: 70vh;
 }
+
+.bluebutton:disabled{
+    background: rgba(45, 171, 249, 0.7);
+}
+
+.warning{
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+}

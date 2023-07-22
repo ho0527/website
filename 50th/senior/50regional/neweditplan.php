@@ -144,7 +144,7 @@
                         $facingopiniionid[]=$id."_".$select;
                     }
                 }
-                query($db,"INSERT INTO `plan`(`projectid`,`title`,`description`,`facing_opinionid`)VALUES(?,?,?,?)",[$id,$title,$description,implode("|&|",$facingopiniionid)]);
+                query($db,"INSERT INTO `plan`(`projectid`,`title`,`description`,`facing_opinionid`,`canscore`)VALUES(?,?,?,?,'false')",[$id,$title,$description,implode("|&|",$facingopiniionid)]);
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"新增執行方案",$time,""]);
                 ?><script>alert("新增成功");location.href="plan.php?id=<?php echo($projectid); ?>"</script><?php
             }

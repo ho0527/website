@@ -27,5 +27,13 @@
                 ?><script>location.href="teamleader.php"</script><?php
             }
         }
+
+        if($_GET["key"]=="plan"){
+            $value=$_GET["value"];
+            $id=$_GET["id"];
+            query($db,"UPDATE `plan` SET `canscore`='$value' WHERE `id`='$id'");
+            query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"停止或開啟執行方案評分功能",$time,"id=".$id]);
+            ?><script>location.href="plan.php?id=<?php echo($_GET["projectid"]) ?>"</script><?php
+        }
     }
 ?>

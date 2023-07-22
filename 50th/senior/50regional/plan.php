@@ -45,8 +45,17 @@
                                     <td class="maintd"><?php echo($row[$i][2]); ?></td>
                                     <td class="maintd"><?php echo($row[$i][3]); ?></td>
                                     <td class="maintd">
-                                        <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($_GET['id']); ?>&edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                        <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($_GET['id']); ?>&del=<?php echo($row[$i][0]); ?>'" value="刪除">
+                                        <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&edit=<?php echo($row[$i][0]); ?>'" value="修改">
+                                        <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
+                                        <?php
+                                            if($row[$i][5]=="true"){
+                                                ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=plan&value=finish&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="結束評分"><?php
+                                            }elseif($row[$i][5]=="false"){
+                                                ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=plan&value=true&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="開始評分"><?php
+                                            }else{
+                                                ?><input type="button" class="bluebutton" value="評分已結束" disabled><?php
+                                            }
+                                        ?>
                                     </td>
                                 </tr>
                             <?php

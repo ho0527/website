@@ -74,7 +74,7 @@
                         <div class="time">評價人數: <?php echo($count); ?></div>
                         <?php
                             if($usercheck){
-                                ?><input type="button" class="button" onclick="location.href='newscore.php?id=<?php echo($_GET['id']); ?>&opinionid=<?php echo($row[$i][0]); ?>'" value="評價"><?php
+                                ?><input type="button" class="button" onclick="location.href='score.php?key=opinion&id=<?php echo($_GET['id']); ?>&opinionid=<?php echo($row[$i][0]); ?>'" value="評價"><?php
                             }else{
                                 ?><input type="button" class="button disabled" value="已完成評價" disabled><?php
                             }
