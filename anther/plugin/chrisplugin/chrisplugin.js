@@ -15,6 +15,7 @@
     2023/07/16  15:24:44 Bata 1.0.9 // 修改conlog函式
     2023/07/20  13:28:05 Bata 1.0.10 // 新增ajaxdata函式
     2023/07/21  18:38:23 Bata 1.0.11 // 修改ajaxdata函式
+    2023/07/23  18:18:28 Bata 1.0.12 // 新增pagechanger函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -232,4 +233,31 @@ function ajaxdata(data=[]){
         formdata.append(data[i][0],data[i][1])
     }
     return formdata
+}
+
+function pagechanger(data,ipp,key,callback){
+    if(!isset(weblsget("pagecount"))){ weblsset("pagecount",1) }
+    let row=data
+    let pagecount=parseInt(weblsget("pagecount"))
+    let itemperpage=ipp
+    let maxpagecount=Math.ceil(row.length/itemperpage)
+    if(key=="first"){
+        pagecount=1
+    }else if(key=="prev"){
+        pagecount=Math.max(1,pagecount-1)
+    }else if(key=="next"){
+        pagecount=Math.min(pagecount+1,maxpagecount)
+    }else if(key=="end"){
+        pagecount=maxpagecount
+    }
+
+    weblsset("pagecount",pagecount)
+    let page=parseInt(weblsget("pagecount"))
+    let start=(page-1)*itemperpage;
+    let rowcount=Math.min(row.length-start,itemperpage);
+    let end=start+rowcount;
+
+    for(let i=start;i<end;i=i+1){
+        callback(row[i])
+    }
 }

@@ -35,7 +35,6 @@
                     </div>
                     <div class="navigationbarright">
                         <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.php'" value="首頁">
-                        <input type="button" class="navigationbarbutton" value="標題">
                         <input type="button" class="navigationbarbutton" onclick="location.href='search.php'" value="查詢">
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
                     </div>
@@ -46,64 +45,27 @@
         <div class="productmain macossectiondiv">
             <?php
                 $row=query($db,"SELECT*FROM `coffee`");
-                usort($row,function($a,$b){ return $b[0]-$a[0]; });
+                usort($row,function($a,$b){ return $b[5]>$a[5]; });
                 $count=0;
-                if(count($row)<=4){ $rowcount=count($row); }
-                $pagecount=count($row)/4;
-                $modpagecount=count($row)%4;
-                $maxpagecount=ceil(count($row)/4);
+                $itemperpage=4;
+                $maxpagecount=ceil(count($row)/$itemperpage);
                 if(isset($_GET["key"])){
                     $key=$_GET["key"];
                     if($key=="first"){
-                        $start=0;
-                        $rowcount=4;
-                        if(count($row)<=4){ $rowcount=count($row); }
                         $_SESSION["pagecount"]=1;
                     }elseif($key=="prev"){
-                        if($_SESSION["pagecount"]>1){
-                            $start=($_SESSION["pagecount"]-1)*4-4;
-                            $rowcount=($_SESSION["pagecount"]-1)*4;
-                            if($_SESSION["pagecount"]-1==$maxpagecount){ $rowcount=count($row); }
-                            $_SESSION["pagecount"]=$_SESSION["pagecount"]-1;
-                        }else{
-                            $start=0;
-                            $rowcount=4;
-                            if(count($row)<=4){ $rowcount=count($row); }
-                            $_SESSION["pagecount"]=1;
-                        }
+                        $_SESSION["pagecount"]=max(1,$_SESSION["pagecount"]-1);
                     }elseif($key=="next"){
-                        if($_SESSION["pagecount"]<$maxpagecount){
-                            $start=$_SESSION["pagecount"]*4;
-                            $rowcount=($_SESSION["pagecount"]+1)*4;
-                            if($_SESSION["pagecount"]+1==$maxpagecount){ $rowcount=(floor($pagecount)*4)+$modpagecount; }
-                            $_SESSION["pagecount"]=$_SESSION["pagecount"]+1;
-                        }else{
-                            $start=floor($pagecount)*4;
-                            $rowcount=(floor($pagecount)*4)+$modpagecount;
-                            $_SESSION["pagecount"]=$maxpagecount;
-                        }
+                        $_SESSION["pagecount"]=min($_SESSION["pagecount"]+1,$maxpagecount);
                     }elseif($key=="end"){
-                        $start=floor($pagecount)*4;
-                        $rowcount=(floor($pagecount)*4)+$modpagecount;
                         $_SESSION["pagecount"]=$maxpagecount;
-                    }else{ ?><script>alert("[ERROR] key type error");location.href="main.php"</script><?php }
-                }else{
-                    $page=$_SESSION["pagecount"];
-                    if($_SESSION["pagecount"]>1){
-                        $start=$_SESSION["pagecount"]*4-4;
-                        $rowcount=$_SESSION["pagecount"]*4;
-                        if($_SESSION["pagecount"]==$maxpagecount){ $rowcount=count($row); }
-                    }elseif($_SESSION["pagecount"]>=$maxpagecount){
-                        $start=floor($pagecount)*4;
-                        $rowcount=(floor($pagecount)*4)+$modpagecount;
-                        $_SESSION["pagecount"]=$maxpagecount;
-                    }else{
-                        $start=0;
-                        $rowcount=4;
-                        if(count($row)<=4){ $rowcount=count($row); }
-                        $_SESSION["pagecount"]=1;
                     }
+                    ?><script>location.href="main.php"</script><?php
                 }
+                $page=$_SESSION["pagecount"];
+                $start=($page-1)*$itemperpage;
+                $rowcount=min(count($row)-$start,$itemperpage);
+                $end=$start+$rowcount;
                 ?>
                 商品展示區 頁數: <?= $_SESSION["pagecount"]; ?><br>
                 <input type="button" onclick="location.href='?key=first'" value="到最前一頁">
@@ -111,7 +73,7 @@
                 <input type="button" onclick="location.href='?key=next'" value="下一頁">
                 <input type="button" onclick="location.href='?key=end'" value="到最後一頁">
                 <?php
-                for($i=$start;$i<$rowcount;$i=$i+1){
+                for($i=$start;$i<$end;$i=$i+1){
                     $data="productleft";
                     if($count%2==0){ ?><div class="productdiv"><?php }
                     if($count%2==1){ $data="productright"; }
