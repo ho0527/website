@@ -21,9 +21,16 @@
                 ?>
                 <input type="button" class="navigationbarbutton" onclick="location.href='project.php'" value="專案管理">
                 <input type="button" class="navigationbarbutton" onclick="location.href='teamleader.php'" value="組長功能管理">
-                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='statistics.php'" value="統計管理">
+                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='statistic.php'" value="統計管理">
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
+        </div>
+        <div class="main">
+            <table class="table">
+                <tr>
+                    <td class="statistictd"></td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
