@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>俄羅斯方塊</title>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
+        <script src="plugin/js/chrisplugin.js"></script>
+    </head>
+    <body>
+        <div class="main grid">
+            <!-- 主程式 -->
+            <div class="app macossectiondiv" id="app"></div>
+
+            <!-- 下方區塊 -->
+            <div class="bottom grid">
+                <div class="time" id="time">時間: 00:00</div> <!-- 顯示時間 -->
+                <div class="difficulty" id="difficulty"></div> <!-- 顯示難易度 -->
+                <div class="line" id="line">行數: 0</div> <!-- 顯示行數 -->
+            </div>
+        </div>
+
+        <!-- 記分板 -->
+        <div class="lightbox">
+            <div class="mask"></div>
+            <div class="lightboxbody"></div>
+        </div>
+
+        <!-- js -->
+        <script src="main.js"></script>
+    </body>
+</html>

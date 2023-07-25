@@ -1,0 +1,19 @@
+<?php
+    include("link.php");
+    if(isset($_GET["logout"])){
+        if(isset($_SESSION["data"])){
+            ?><script>alert("登出成功!");location.href="login.php"</script><?php
+            session_unset();
+        }else{
+            ?><script>alert("請先登入!");location.href="login.php"</script><?php
+        }
+    }
+
+    if(isset($_GET["logincheck"])){
+        if(isset($_SESSION["data"])){
+            echo("true");
+        }else{
+            echo("false");
+        }
+    }
+?>
