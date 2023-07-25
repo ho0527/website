@@ -4,7 +4,8 @@
     作者: 小賀chris
     製作及log:
     2023/06/28  20:10:16 Bata 1.0.0 // 新增macosselection 以及 sort 函式
-    2023/07/05  19:45:17 v1.0.0 // 修改命名
+    2023/07/05  19:45:17 Bata 1.0.1 // 修改命名
+    2023/07/25  22:12:42 Bata 1.0.2 // 修改lightbox css
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -27,34 +28,34 @@
 
 ::-webkit-scrollbar{
     width: 20px;
-    background-color: transparent;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover{
     border: 5px transparent solid;
     background-clip: content-box;
-    background-color: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.3);
     border-radius: 1000px;
 }
 
 .macossectiondiv[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
-    background-color: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.3);
     border-radius: 1000px;
 }
 
 .macossectiondivx[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
-    background-color: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.3);
     border-radius: 1000px;
 }
 
 .macossectiondivall[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
-    background-color: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.3);
     border-radius: 1000px;
 }
 
@@ -64,24 +65,25 @@
 
 .lightboxmask{
     position: fixed;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    background: rgb(26, 34, 51, 0.8);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-100%);
+    display: none;
     z-index: 999;
+    transition: transform 0.3s ease-in-out;
 }
 
 .lightboxmain{
-    border: 1px white solid;
-    background: rgb(35, 35, 35);
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-weight: bold;
-    padding: 40px 20px;
-    border-radius: 5px;
-    z-index: 1000;
+    background: rgb(175, 175, 175);
+    color: black;
+    font-size: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

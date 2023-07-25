@@ -11,7 +11,7 @@ let ajax=newajax("GET","api.php?logincheck=")
 
 ajax.onload=function(){
     let data=ajax.response
-    if(data){
-        location.href="admin.html"
+    if(data=="true"){
+        location.href="admintype.html"
     }
 }

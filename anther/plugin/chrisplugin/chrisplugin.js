@@ -16,6 +16,7 @@
     2023/07/20  13:28:05 Bata 1.0.10 // 新增ajaxdata函式
     2023/07/21  18:38:23 Bata 1.0.11 // 修改ajaxdata函式
     2023/07/23  18:18:28 Bata 1.0.12 // 新增pagechanger函式
+    2023/07/25  22:12:42 Bata 1.0.13 // 修改lightbox函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -180,32 +181,28 @@ function newajax(method,url,send=null){
 }
 
 function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=true){
-    document.getElementById(element).innerHTML=``
-    if(clickelement==null){
-        html=`
-            <div class="lightboxmask"></div>
-            <div class="lightboxmain macossectiondiv">
-        `+lightboxhtml+`
-            </div>
-        `
-        document.getElementById(element).innerHTML=html
-    }else{
-        document.getElementById(clickelement).onclick=function(){
+    docgetid(element).innerHTML=``
+    docgetall(clickelement).forEach(function(event){
+        event.onclick=function(){
+            docgetid(element).style.display="block"
+            setTimeout(function(){
+                docgetid(element).style.transform='translateY(0)'
+            },10)
             html=`
-                <div class="lightboxmask"></div>
                 <div class="lightboxmain macossectiondiv">
-            `+lightboxhtml+`
+            `+lightboxhtml(event)+`
                 </div>
             `
-            document.getElementById(element).innerHTML=html
+            docgetid(element).innerHTML=html
+
         }
-    }
+    })
 
     if(islightboxclosewithkeyesc){
         document.addEventListener("keydown",function(event){
             if(event.key=="Escape"){
                 event.preventDefault()
-                document.getElementById(element).innerHTML=``
+                docgetid(element).innerHTML=``
             }
         })
     }

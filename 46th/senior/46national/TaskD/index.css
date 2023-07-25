@@ -29,7 +29,7 @@ table{
 .main{
     border: 1px white solid;
     position: absolute;
-    top: 50%;
+    top: calc(50% + 50px);
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 30px;
@@ -278,6 +278,13 @@ table{
 
 /* program START */
 
+.admintd{
+    border-bottom: 1px white solid;
+    padding: 10px;
+}
+
+
+
 
 .head{
     height: 60px;
@@ -465,13 +472,13 @@ table{
     color: black;
 }
 
-.posttitle{
+.admintitle{
     position: relative;
     left: 50%;
     transform: translate(-50%, 0%);
     font-weight: bold;
-    font-size: 30px;
-    padding: 20px;
+    font-size: 35px;
+    padding: 10px;
     margin: 5px;
     text-align: center;
 }
@@ -674,3 +681,18 @@ table{
     width: 100%;
 }
 
+.lightboxinput{
+    border: none;
+    border-bottom: 1px white solid;
+    background: none;
+    width: 75%;
+    height: 40px;
+    outline: none;
+    font-size: 30px;
+    color: black;
+}
+
+.tablediv{
+    width: 50vw;
+    max-height: 55vh;
+}

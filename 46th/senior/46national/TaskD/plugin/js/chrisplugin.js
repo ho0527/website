@@ -10,8 +10,13 @@
     2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate函式
     2023/07/09  21:54:50 Bata 1.0.5 // 新增newajax函式
     2023/07/12  13:51:52 Bata 1.0.6 // 新增lightbox函式
-    2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
-    2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
+    2023/07/13  19:08:05 Bata 1.0.7 // 新增docappendchild函式
+    2023/07/15  20:22:11 Bata 1.0.8 // 新增regexp 及 regexpmatch 及 regexpreplace 函式
+    2023/07/16  15:24:44 Bata 1.0.9 // 修改conlog函式
+    2023/07/20  13:28:05 Bata 1.0.10 // 新增ajaxdata函式
+    2023/07/21  18:38:23 Bata 1.0.11 // 修改ajaxdata函式
+    2023/07/23  18:18:28 Bata 1.0.12 // 新增pagechanger函式
+    2023/07/25  22:12:42 Bata 1.0.13 // 修改lightbox函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -140,8 +145,8 @@ function docgetall(selector){ // document.querySelectorAll
     return document.querySelectorAll(selector)
 }
 
-function conlog(data){ // consloe.log 值出來
-    console.log(data)
+function conlog(data,color="white",size="12",weight="normal"){ // consloe.log 值出來
+    console.log(`%c${data}`,`color:${color};font-size:${size}px;font-weight:${weight}`)
 }
 
 function isset(data){ // 看值是否存在
@@ -176,24 +181,79 @@ function newajax(method,url,send=null){
 }
 
 function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=true){
-    document.getElementById(element).innerHTML=``
-
-    document.getElementById(clickelement).onclick=function(){
-        html=`
-            <div class="lightboxmask"></div>
-            <div class="lightboxmain">
-        `+lightboxhtml+`
-            </div>
-        `
-        document.getElementById(element).innerHTML=html
-    }
+    docgetid(element).innerHTML=``
+    docgetall(clickelement).forEach(function(event){
+        event.onclick=function(){
+            docgetid(element).style.display="block"
+            setTimeout(function(){
+                docgetid(element).style.transform='translateY(0)'
+            },10)
+            html=`
+                <div class="lightboxmain macossectiondiv">
+            `+lightboxhtml(event)+`
+                </div>
+            `
+            docgetid(element).innerHTML=html
+        }
+    })
 
     if(islightboxclosewithkeyesc){
         document.addEventListener("keydown",function(event){
-            event.preventDefault()
             if(event.key=="Escape"){
-                document.getElementById(element).innerHTML=``
+                event.preventDefault()
+                docgetid(element).innerHTML=``
             }
         })
+    }
+}
+
+function docappendchild(element,chlidelement){
+    return docgetid(element).appendChild(chlidelement)
+}
+
+function regexp(regexptext,regexpstring){
+    return new RegExp(regexptext,regexpstring)
+}
+
+function regexpmatch(data,regexptext,regexpstring=""){
+    return data.match(regexp(regexptext,regexpstring))
+}
+
+function regexpreplace(data,replacetext,regexptext,regexpstring=""){
+    return data.replace(regexp(regexptext,regexpstring),replacetext)
+}
+
+function ajaxdata(data=[]){
+    let formdata=new FormData()
+    for(let i=0;i<data.length;i=i+1){
+        formdata.append(data[i][0],data[i][1])
+    }
+    return formdata
+}
+
+function pagechanger(data,ipp,key,callback){
+    if(!isset(weblsget("pagecount"))){ weblsset("pagecount",1) }
+    let row=data
+    let pagecount=parseInt(weblsget("pagecount"))
+    let itemperpage=ipp
+    let maxpagecount=Math.ceil(row.length/itemperpage)
+    if(key=="first"){
+        pagecount=1
+    }else if(key=="prev"){
+        pagecount=Math.max(1,pagecount-1)
+    }else if(key=="next"){
+        pagecount=Math.min(pagecount+1,maxpagecount)
+    }else if(key=="end"){
+        pagecount=maxpagecount
+    }
+
+    weblsset("pagecount",pagecount)
+    let page=parseInt(weblsget("pagecount"))
+    let start=(page-1)*itemperpage;
+    let rowcount=Math.min(row.length-start,itemperpage);
+    let end=start+rowcount;
+
+    for(let i=start;i<end;i=i+1){
+        callback(row[i])
     }
 }

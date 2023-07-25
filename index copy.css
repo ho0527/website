@@ -29,9 +29,9 @@ table{
 .main{
     border: 1px white solid;
     position: absolute;
-    top: 50%;
+    top: calc(50% + 50px);
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     font-size: 30px;
     font-weight: bold;
     padding: 20px;
