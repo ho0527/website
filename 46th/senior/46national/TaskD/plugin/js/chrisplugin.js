@@ -17,6 +17,7 @@
     2023/07/21  18:38:23 Bata 1.0.11 // 修改ajaxdata函式
     2023/07/23  18:18:28 Bata 1.0.12 // 新增pagechanger函式
     2023/07/25  22:12:42 Bata 1.0.13 // 修改lightbox函式
+    2023/07/25  10:50:11 Bata 1.0.14 // 修改lightbox函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -180,13 +181,13 @@ function newajax(method,url,send=null){
     return ajax
 }
 
-function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=true){
+function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxclosewithkeyesc=true){
     docgetid(element).innerHTML=``
     docgetall(clickelement).forEach(function(event){
         event.onclick=function(){
             docgetid(element).style.display="block"
             setTimeout(function(){
-                docgetid(element).style.transform='translateY(0)'
+                docgetid(element).style.transform="translateY(0)"
             },10)
             html=`
                 <div class="lightboxmain macossectiondiv">
@@ -194,6 +195,16 @@ function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=tr
                 </div>
             `
             docgetid(element).innerHTML=html
+            if(closelement!=null){
+                docgetid(closelement).onclick=function(){
+                    docgetid(element).style.transform="translateY(-100%)"
+
+                    setTimeout(function(){
+                        docgetid(element).style.display="none"
+                        docgetid(element).innerHTML=``
+                    },300)
+                }
+            }
         }
     })
 
@@ -201,11 +212,17 @@ function lightbox(clickelement,element,lightboxhtml,islightboxclosewithkeyesc=tr
         document.addEventListener("keydown",function(event){
             if(event.key=="Escape"){
                 event.preventDefault()
-                docgetid(element).innerHTML=``
+                docgetid(element).style.transform="translateY(-100%)"
+
+                setTimeout(function() {
+                    docgetid(element).style.display="none"
+                    docgetid(element).innerHTML=``
+                },300)
             }
         })
     }
 }
+
 
 function docappendchild(element,chlidelement){
     return docgetid(element).appendChild(chlidelement)

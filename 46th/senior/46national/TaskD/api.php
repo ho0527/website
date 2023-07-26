@@ -22,11 +22,21 @@
         echo(json_encode($row));
     }
 
+    if(isset($_GET["stationlist"])){
+        $row=query($db,"SELECT*FROM `station`");
+        echo(json_encode($row));
+    }
+
     if(isset($_GET["key"])){
         if($_GET["key"]=="deltraintype"){
             $id=$_GET["id"];
             $row=query($db,"DELETE FROM `type` WHERE `id`=?",[$id]);
             ?><script>alert("刪除成功!");location.href="admintype.html"</script><?php
+        }
+        if($_GET["key"]=="delstation"){
+            $id=$_GET["id"];
+            $row=query($db,"DELETE FROM `station` WHERE `id`=?",[$id]);
+            ?><script>alert("刪除成功!");location.href="adminstation.html"</script><?php
         }
     }
 ?>
