@@ -18,6 +18,7 @@
     2023/07/23  18:18:28 Bata 1.0.12 // 新增pagechanger函式
     2023/07/25  22:12:42 Bata 1.0.13 // 修改lightbox函式
     2023/07/25  10:50:11 Bata 1.0.14 // 修改lightbox函式
+    2023/07/25  19:31:17 Bata 1.0.15 // 修正startmacossection函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -28,7 +29,7 @@
 
 function startmacossection(){ // start macos section
     let macostimer
-    setTimeout(function(){
+    setInterval(function(){
         document.querySelectorAll(".macossectiondiv").forEach(function(event){
             event.addEventListener("scroll",function(){
                 clearTimeout(macostimer)
@@ -47,7 +48,7 @@ function startmacossection(){ // start macos section
                 },500)
             })
         })
-        document.querySelectorAll(".macossectiondivall").forEach(function(event){
+        document.querySelectorAll(".macossectiondivy").forEach(function(event){
             event.addEventListener("scroll",function(){
                 clearTimeout(macostimer)
                 event.setAttribute("scroll","true")

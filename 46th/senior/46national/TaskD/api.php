@@ -27,6 +27,12 @@
         echo(json_encode($row));
     }
 
+    if(isset($_GET["trainlist"])){
+        $row=query($db,"SELECT*FROM `train`");
+        $stoprow=query($db,"SELECT*FROM `stop`");
+        echo(json_encode([$row,$stoprow]));
+    }
+
     if(isset($_GET["key"])){
         if($_GET["key"]=="deltraintype"){
             $id=$_GET["id"];

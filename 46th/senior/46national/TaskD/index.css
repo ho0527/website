@@ -280,6 +280,7 @@ table{
 
 .admintd{
     border-bottom: 1px white solid;
+    width: 1000px;
     padding: 10px;
 }
 
@@ -458,7 +459,9 @@ table{
 }
 
 .select{
-    width:70px;
+    width: 70%;
+    text-align: center;
+    font-size: 20px;
 }
 
 .verifybox{
@@ -693,6 +696,77 @@ table{
 }
 
 .tablediv{
-    width: 50vw;
+    width: 55vw;
     max-height: 55vh;
+}
+
+.trainleft{
+    grid-column: 1/45;
+    grid-row: 1/16;
+}
+
+.trainright{
+    grid-column: 45/100;
+    grid-row: 1/16;
+}
+
+.trainbutton{
+    grid-column: 1/100;
+    grid-row: 16;
+}
+
+.trainlightboxgrid{
+    height: 55vh;
+    width: 65vw;
+}
+
+.stationdiv{
+    height: 40vh;
+}
+
+.stationgrid{
+    border: 1px white solid;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input2{
+    border: 1px black solid;
+    margin: 0px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.facingname{
+    grid-column: 2/45;
+    grid-row: 2/17;
+    width: 100%;
+}
+
+.facingdesciption{
+    grid-column: 45/90;
+    grid-row: 2/17;
+    width: 100%;
+}
+
+.noborderbutton{
+    border: none;
+    background: none;
+    font-size: 30px;
+    color: white;
+}
+
+.stationdelect{
+    grid-column: 90/100;
+    grid-row: 2/17;
+    cursor: pointer;
+}
+
+.admintraintd{
+    width: 1000px;
+    padding: 10px;
 }

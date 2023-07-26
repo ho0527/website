@@ -47,7 +47,7 @@ function startmacossection(){ // start macos section
                 },500)
             })
         })
-        document.querySelectorAll(".macossectiondivall").forEach(function(event){
+        document.querySelectorAll(".macossectiondivy").forEach(function(event){
             event.addEventListener("scroll",function(){
                 clearTimeout(macostimer)
                 event.setAttribute("scroll","true")

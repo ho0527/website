@@ -27,7 +27,7 @@
 }
 
 ::-webkit-scrollbar{
-    width: 20px;
+    width: 10px;
     background: transparent;
 }
 
@@ -52,7 +52,7 @@
     border-radius: 1000px;
 }
 
-.macossectiondivall[scroll]::-webkit-scrollbar-thumb{
+.macossectiondivy[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
     background: rgba(0,0,0,0.3);
