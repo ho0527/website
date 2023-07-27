@@ -3,12 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
+        <style>
+            .nfin{
+                background: red;
+                cursor: pointer;
+            }
+            .fin{
+                background: green;
+                cursor: pointer;
+            }
+            .disabled{
+                background: gray;
+                cursor: not-allowed;
+            }
+        </style>
     </head>
     <body>
-        <input type="button" onclick="location.href='TaskA/01/'" value="A01"><br><br>
-        <input type="button" onclick="location.href='TaskB/index.php'" value="B" disabled><br><br>
-        <input type="button" onclick="location.href='TaskC/'" value="C"><br><br>
-        <input type="button" onclick="location.href='TaskD/'" value="D"><br><br>
-        <input type="button" onclick="location.href='TaskE/'" value="E"><br><br>
+        <input type="button" class="disabled" onclick="location.href='TaskA/'" value="A01" disabled><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskB/'" value="B"><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskC/'" value="C"><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskD/'" value="D"><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskE/'" value="E" disabled><br><br>
     </body>
 </html>

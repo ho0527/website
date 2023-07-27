@@ -700,13 +700,17 @@ table{
     max-height: 55vh;
 }
 
+.traintablediv{
+    width: 75vw;
+}
+
 .trainleft{
-    grid-column: 1/45;
+    grid-column: 1/40;
     grid-row: 1/16;
 }
 
 .trainright{
-    grid-column: 45/100;
+    grid-column: 40/100;
     grid-row: 1/16;
 }
 
@@ -717,7 +721,7 @@ table{
 
 .trainlightboxgrid{
     height: 55vh;
-    width: 65vw;
+    width: 70vw;
 }
 
 .stationdiv{
@@ -767,6 +771,41 @@ table{
 }
 
 .admintraintd{
+    width: 1000px;
+    padding: 10px;
+}
+
+.indexselect{
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+}
+
+.maindiv{
+    height: 65vh;
+}
+
+.indextablediv{
+    width: 80vw;
+    height: 60vh;
+}
+
+.date{
+    font-size: 20px;
+}
+
+.maintop{
+    border-bottom: 2px white solid;
+}
+
+.warning{
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.td{
+    border-bottom: 1px white solid;
     width: 1000px;
     padding: 10px;
 }

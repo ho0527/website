@@ -36,13 +36,39 @@
     if(isset($_GET["key"])){
         if($_GET["key"]=="deltraintype"){
             $id=$_GET["id"];
-            $row=query($db,"DELETE FROM `type` WHERE `id`=?",[$id]);
-            ?><script>alert("刪除成功!");location.href="admintype.html"</script><?php
+            if(!query($db,"SELECT*FROM `train` WHERE `traintypeid`=?",[$id])){
+                $row=query($db,"DELETE FROM `type` WHERE `id`=?",[$id]);
+                ?><script>alert("刪除成功!");location.href="admintype.html"</script><?php
+            }else{
+                ?><script>alert("列車被使用!");location.href="admintype.html"</script><?php
+            }
         }
         if($_GET["key"]=="delstation"){
             $id=$_GET["id"];
             $row=query($db,"DELETE FROM `station` WHERE `id`=?",[$id]);
             ?><script>alert("刪除成功!");location.href="adminstation.html"</script><?php
         }
+        /*
+        status:
+        prepare: 未發車
+        start: 已發車
+        end: 已結束
+        delete: 被刪除
+        */
+        if($_GET["key"]=="deltrain"){
+            $id=$_GET["id"];
+            if(query($db,"SELECT*FROM `ticket` WHERE `trainid`=?AND`status`='prepare'",[$id])){
+                ?><script>if(confirm("列車有被訂票是否繼續刪除?")){ location.href="api.php?deltrain=&id=<?php echo($id) ?>" }else{ location.href="admintrain.html" }</script><?php
+            }else{
+                ?><script>location.href="api.php?deltrain=&id=<?php echo($id) ?>"</script><?php
+            }
+        }
+    }
+
+    if(isset($_GET["deltrain"])){
+        $id=$_GET["id"];
+        query($db,"DELETE FROM `train` WHERE `id`=?",[$id]);
+        query($db,"DELETE FROM `stop` WHERE `trainid`=?",[$id]);
+        ?><script>alert("刪除成功!");location.href="admintrain.html"</script><?php
     }
 ?>
