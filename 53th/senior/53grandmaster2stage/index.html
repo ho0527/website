@@ -2,18 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Document</title>
         <style>
             .nfin{
-                border: 1px black solid;
                 background: red;
-                color: black;
                 cursor: pointer;
             }
             .fin{
-                border: 1px black solid;
                 background: green;
-                color: black;
                 cursor: pointer;
             }
             .disabled{
@@ -23,10 +20,10 @@
         </style>
     </head>
     <body>
-        <input type="button" class="disabled" onclick="location.href='TaskA/'" value="A01" disabled><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskA/'" value="A"><br><br>
         <input type="button" class="nfin" onclick="location.href='TaskB/'" value="B"><br><br>
         <input type="button" class="nfin" onclick="location.href='TaskC/'" value="C"><br><br>
-        <input type="button" class="nfin" onclick="location.href='TaskD/'" value="D"><br><br>
-        <input type="button" class="nfin" onclick="location.href='TaskE/'" value="E" disabled><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskD'" value="D"><br><br>
+        <input type="button" class="nfin" onclick="location.href='TaskE'" value="E">
     </body>
 </html>

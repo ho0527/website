@@ -1,17 +1,17 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(35, 35, 35);
-    color: rgb(255, 255, 255);
+    color: gray;
     text-align: center;
     word-break: break-all;
     user-select: none;
     padding: 0px;
     margin: 0px;
-    font-size: 30px;
 }
 
-h2{
+h1,h2,h3,h4,h5,h6{
     margin: 0px;
+    color: white;
 }
 
 hr{
@@ -23,14 +23,16 @@ hr{
 table{
     border-collapse: collapse;
     width: 100%;
+    color: white;
 }
 
 .main{
     border: 1px white solid;
     position: absolute;
-    top: 50%;
+    top: calc(50% + 50px);
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
+    font-size: 30px;
     font-weight: bold;
     padding: 20px;
     border-radius: 5px;
@@ -43,12 +45,8 @@ table{
     grid-auto-rows: 5%;
 }
 
-
 .logo{
     height: 75px;
-    position: absolute;
-    top: 10px;
-    left: 20px;
 }
 
 .maintitle{
@@ -65,9 +63,10 @@ table{
     left: 0px;
     width: 100%;
     height: 100px;
+    color: white;
     background: rgba(250, 250, 250, 0.5);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    border-radius: 10px;
+    border-radius: 5px;
     z-index: 900;
 }
 
@@ -77,6 +76,8 @@ table{
     left: 20px;
     transform: translate(0%,-50%);
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .navigationbarright{
@@ -94,15 +95,17 @@ table{
 
 .navigationbarbutton{
     border: 1px black solid;
-    width: 125px;
+    background: none;
+    width: 150px;
     height: 50px;
-    padding: 10px;
-    margin: 0px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    color: black;
+    padding: 10px;
+    margin: 0px 10px;
     transition-duration: 0.5s;
 }
 
@@ -112,7 +115,7 @@ table{
 }
 
 .navigationbarselect{
-    background: gray;
+    background: black;
     color: white;
 }
 
@@ -137,20 +140,27 @@ table{
     transform: translate(0%,-50%);
 }
 
-.mainimage{
-    /* height: 350px; */
-    width: 100%;
-    margin: 50px 0px 150px 0px;
-}
-
 .input{
     border: none;
-    border: 1px black solid;
-    background: white;
-    width: 90%;
+    border-bottom: 1px black solid;
+    background: none;
+    width: 75%;
     height: 40px;
     outline: none;
     font-size: 30px;
+    color: white;
+}
+
+.middleinput{
+    border: none;
+    border-bottom: 1px black solid;
+    background: none;
+    width: 35%;
+    height: 40px;
+    outline: none;
+    margin: 0px 5%;
+    font-size: 30px;
+    color: white;
 }
 
 .inputhint{
@@ -187,6 +197,33 @@ table{
 .button:hover{
     background: gray;
     color: white;
+}
+
+.bluebutton{
+	box-shadow: inset 1px -3px 7px 0px #29bbff;
+	background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color: #2dabf9;
+	border-radius: 5px;
+	border: 1px solid #0b0e07;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+    margin: 5px 0px;
+	padding: 10px 20px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #263666;
+}
+
+.bluebutton:hover{
+	background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color: #0688fa;
+}
+
+.bluebutton:active{
+	position: relative;
+	top: 1px;
 }
 
 .reflashbutton{
@@ -231,91 +268,13 @@ table{
 .a:hover{
     text-decoration: underline;
 }
+
+.disabled:hover{
+    background: revert;
+    color: revert;
+}
 /* END */
 
 
 /* program START */
 
-.bottom{
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    width: 100%;
-}
-
-.time{
-    grid-column: 1/40;
-    grid-row: 1/17;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.difficulty{
-    grid-column: 40/70;
-    grid-row: 1/17;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.line{
-    grid-column: 70/100;
-    grid-row: 1/17;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.fontsizebutton{
-    border: none;
-    background: none;
-    font-size: 35px;
-    color: white;
-    cursor: pointer;
-}
-
-.fontsizebutton:active{
-    background: lightblue;
-}
-
-.top{
-    border: 1px white solid;
-    position: relative;
-    height: 50px;
-    width: 100%;
-}
-
-.app{
-    grid-column: 1/70;
-    grid-row: 1/17;
-    border: 1px white solid;
-}
-
-/* .typea{
-
-}
-
-.typeb{
-
-}
-
-.typec{
-
-}
-
-.typed{
-
-}
-
-.typee{
-
-}
-
-.typef{
-
-}
-
-.typeg{
-
-} */
