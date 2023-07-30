@@ -1,15 +1,15 @@
-let difficulty=weblsget("difficulty")
-let timemin=0
-let timesec=0
-let width=innerWidth*0.6
-let height=innerHeight*0.85
+let difficulty:string=weblsget("difficulty")
+let timemin:number=0
+let timesec:number=0
+let width:number=innerWidth*0.6 // innerwidth == 100vw
+let height:number=innerHeight*0.85 // innerHeight == 100vh
 let nowarray=[]
 let blocklist=[]
 let blockarray=[]
 
-function block(key){
+function block(key:"a"|"b"|"c"|"d"|"e"|"f"|"g"){
     if(key=="a"){
-        let div=doccreate("div")
+        let div:HTMLElement=doccreate("div")
         div.classList.add("typea")
         docappendchild("main",div)
         blockarray=[
@@ -19,7 +19,7 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="b"){
-        let div=doccreate("div")
+        let div:HTMLElement=doccreate("div")
         div.classList.add("typeb")
         docappendchild("main",div)
         blockarray=[
@@ -29,7 +29,7 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="c"){
-        let div=doccreate("div")
+        let div:HTMLElement=doccreate("div")
         div.classList.add("typec")
         docappendchild("main",div)
         blockarray=[
@@ -39,7 +39,7 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="d"){
-        let div=doccreate("div")
+        let div:HTMLElement=doccreate("div")
         div.classList.add("typed")
         docappendchild("main",div)
         blockarray=[
@@ -49,7 +49,7 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="e"){
-        let div=doccreate("div")
+        let div:HTMLElement=doccreate("div")
         div.classList.add("typee")
         docappendchild("main",div)
         blockarray=[
@@ -59,7 +59,7 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="f"){
-        let div=doccreate("div")
+        let div:HTMLElement=doccreate("div")
         div.classList.add("typef")
         docappendchild("main",div)
         blockarray=[
@@ -69,7 +69,7 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="g"){
-        let div=doccreate("div")
+        let div:HTMLElement=doccreate("div")
         div.classList.add("typeg")
         docappendchild("main",div)
         blockarray=[
@@ -81,7 +81,7 @@ function block(key){
     }else{ conlog("[ERROR]error key","red","15") }
 }
 
-function test(key){
+function test(key:boolean){
     if(key){
         conlog("teststart","green","15")
         block("a")
@@ -94,44 +94,6 @@ function test(key){
     }
 }
 
-function left(){
-}
-
-function right(){
-}
-
-function rotate(){
-}
-
-function down(){
-}
-
-function downtobottom(){
-}
-
-function stop(){
-    document.addEventListener("keydown",function(event){
-        if(event.key=="ArrowLeft"){ event.preventDefault() }
-        if(event.key=="ArrowRight"){ event.preventDefault() }
-        if(event.key=="ArrowUp"){ event.preventDefault() }
-        if(event.key=="ArrowDown"){ event.preventDefault() }
-        if(event.key==" "){ event.preventDefault() }
-    })
-}
-
-function start(){
-    document.addEventListener("keydown",function(event){
-        if(event.key=="ArrowLeft"){ event.preventDefault();left() }
-        if(event.key=="ArrowRight"){ event.preventDefault();right() }
-        if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
-        if(event.key=="ArrowDown"){ event.preventDefault();down() }
-        if(event.key==" "){ event.preventDefault();downtobottom() }
-    })
-}
-
-function share(){
-}
-
 for(let i=0;i<17;i=i+1){
     nowarray.push([])
     for(let j=0;j<10;j=j+1){
@@ -141,7 +103,7 @@ for(let i=0;i<17;i=i+1){
 
 docgetid("main").style.width=width+"px"
 docgetid("main").style.height=height+"px"
-docgetid("difficulty").innerHTML=difficulty
+docgetid("difficulty").innerHTML=difficulty // 拿到難易度並顯示
 
 setInterval(function(){
     timesec=timesec+1
@@ -149,8 +111,8 @@ setInterval(function(){
         timemin=timemin+1
         timesec=0
     }
-    let min=timemin.toString()
-    let sec=timesec.toString()
+    let min:string=timemin.toString()
+    let sec:string=timesec.toString()
     if(timesec<10){
         sec="0"+sec
     }
@@ -162,34 +124,50 @@ setInterval(function(){
     `
 },1000)
 
-document.addEventListener("keydown",function(event){
-    if(event.key=="ArrowLeft"){ event.preventDefault();left() }
-    if(event.key=="ArrowRight"){ event.preventDefault();right() }
-    if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
-    if(event.key=="ArrowDown"){ event.preventDefault();down() }
-    if(event.key==" "){ event.preventDefault();downtobottom() }
-})
-
-// 顯示下一個方塊
-docgetid("shownext")
-
-// 分享
-docgetid("share").onclick=function(){
-    share()
+function left():any{
 }
 
-// 暫停/開始遊戲
+function right():any{
+}
+
+function rotate():any{
+}
+
+function down():any{
+}
+
+function downtobottom():any{
+}
+
+function stop():any{
+}
+
+function start():any{
+    return
+}
+
+document.addEventListener("keydown",function(event){
+    if(event.key=="ArrowLeft"){ event.preventDefault();left()}
+    if(event.key=="ArrowRight"){ event.preventDefault();right()}
+    if(event.key=="ArrowUp"){ event.preventDefault();rotate()}
+    if(event.key=="ArrowDown"){ event.preventDefault();down()}
+    if(event.key==" "){ event.preventDefault();downtobottom()}
+})
+
+docgetid("share").onclick=function(){
+
+}
+
 docgetid("stop").onclick=function(){
-    if(docgetid("stop").value=="暫停遊戲"){
+    if((docgetid("stop") as HTMLInputElement).value=="暫停遊戲"){
         stop()
-        docgetid("stop").value="繼續遊戲"
+        (docgetid("stop") as HTMLInputElement).value="繼續遊戲"
     }else{
         start()
-        docgetid("stop").value="暫停遊戲"
+        (docgetid("stop") as HTMLInputElement).value="暫停遊戲"
     }
 }
 
-// 放棄遊戲
 docgetid("cancel").onclick=function(){
     stop()
     if(confirm("是否要放棄遊戲?")){
