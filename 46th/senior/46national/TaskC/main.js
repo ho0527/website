@@ -109,6 +109,9 @@ function down(){
 function downtobottom(){
 }
 
+function share(){
+}
+
 function stop(){
     document.addEventListener("keydown",function(event){
         if(event.key=="ArrowLeft"){ event.preventDefault() }
@@ -129,7 +132,13 @@ function start(){
     })
 }
 
-function share(){
+function cancel(){
+    stop()
+    if(confirm("是否要放棄遊戲?")){
+        location.href="index.html"
+    }else{
+        start()
+    }
 }
 
 for(let i=0;i<17;i=i+1){
@@ -168,6 +177,7 @@ document.addEventListener("keydown",function(event){
     if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
     if(event.key=="ArrowDown"){ event.preventDefault();down() }
     if(event.key==" "){ event.preventDefault();downtobottom() }
+    if(event.key=="Escape"){ event.preventDefault();cancel() }
 })
 
 // 顯示下一個方塊
@@ -191,12 +201,7 @@ docgetid("stop").onclick=function(){
 
 // 放棄遊戲
 docgetid("cancel").onclick=function(){
-    stop()
-    if(confirm("是否要放棄遊戲?")){
-        location.href="index.html"
-    }else{
-        start()
-    }
+    cancel()
 }
 
 test(false)
