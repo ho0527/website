@@ -86,7 +86,7 @@ docgetid("game").onpointerdown=function(event){
                     docgetid("audio").src="material/audio/defu.mp3"
                     docgetid("game").value="拆包"
                     min=0
-                    sec=10
+                    sec=40
                     ms=0
                     maintimer=setInterval(function(){
                         let tempsec
