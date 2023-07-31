@@ -149,7 +149,7 @@ window.onload=function(){
             }
         }else{
             document.getElementById("oopmain").innerHTML=`
-                <h1>程式錯誤請聯絡 @小賀chris#9517(DC) 謝謝</h1>
+                <h1>程式錯誤請聯絡 chris0527(DC) 謝謝</h1>
             `
             console.log("[WARNING] tool count error")
             console.log("tool.name.length="+tool.name.length)

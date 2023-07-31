@@ -78,15 +78,15 @@ docgetid("game").onpointerdown=function(event){
         pdtimer=setInterval(function(){
             let tempsec
             let tempms
-            if(ms2==99 ){
+            if(ms2==99){
                 sec2=sec2+1
                 if(sec2==3){
                     clearInterval(pdtimer)
+                    clearInterval(maintimer)
                     docgetid("audio").src="material/audio/defu.mp3"
                     docgetid("game").value="拆包"
-                    clearInterval(maintimer)
                     min=0
-                    sec=40
+                    sec=10
                     ms=0
                     maintimer=setInterval(function(){
                         let tempsec
@@ -155,7 +155,7 @@ docgetid("game").onpointerdown=function(event){
             }else{
                 ms2=ms2+1
             }
-            if(sec2==2&&ms2==50){
+            if(sec2==2&&ms2==40){
                 if(defucheck==0){
                     defucheck=defucheck+1
                     docgetid("right").innerHTML=`Check`
@@ -163,8 +163,8 @@ docgetid("game").onpointerdown=function(event){
                     sec2=0
                     ms2=0
                 }else{
-                    clearInterval(pdtimer)
                     clearInterval(maintimer)
+                    clearInterval(pdtimer)
                     document.onpointerup=function(event){ event.preventDefault() }
                     docgetid("left").innerHTML=`Check`
                     docgetid("left").classList.add("pass")
