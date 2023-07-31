@@ -195,7 +195,7 @@ table{
     transition-duration: 0.5s;
 }
 
-.button:hover{
+.button:focus{
     background: gray;
     color: white;
 }
@@ -279,3 +279,67 @@ table{
 
 /* program START */
 
+.main{
+    top: 50%;
+    width: 80vw;
+    height: 70vh;
+}
+
+.timer{
+    border: 1px white solid;
+    width: 80%;
+    height: 40%;
+    color: white;
+    font-size: 50px;
+    margin: 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer2{
+    border: 1px white solid;
+    width: 80%;
+    height: 10%;
+    color: white;
+    font-size: 40px;
+    margin: 15px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game{
+    width: 95%;
+    height: 30%;
+}
+
+.stop{
+    width: 95%;
+}
+
+.audio{
+    display: none;
+}
+
+.right{
+    border: 1px white solid;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left{
+    border: 1px white solid;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pass{
+    background: green;
+}

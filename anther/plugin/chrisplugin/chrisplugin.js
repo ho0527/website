@@ -182,16 +182,18 @@ function newajax(method,url,send=null){
 }
 
 function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxclosewithkeyesc=true){
-    docgetid(element).innerHTML=``
-    docgetall(clickelement).forEach(function(event){
-        event.onclick=function(){
+    docgetid(element).classList.add("lightboxmask")
+
+    setTimeout(function(){
+        if(clickelement==null){
+            docgetid(element).innerHTML=``
             docgetid(element).style.display="block"
             setTimeout(function(){
                 docgetid(element).style.transform="translateY(0)"
             },10)
             html=`
                 <div class="lightboxmain macossectiondiv">
-            `+lightboxhtml(event)+`
+                    ${lightboxhtml()}
                 </div>
             `
             docgetid(element).innerHTML=html
@@ -205,22 +207,48 @@ function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxc
                     },300)
                 }
             }
+        }else{
+            docgetid(element).innerHTML=``
+            docgetall(clickelement).forEach(function(event){
+                event.onclick=function(){
+                    docgetid(element).style.display="block"
+                    setTimeout(function(){
+                        docgetid(element).style.transform="translateY(0)"
+                    },10)
+                    html=`
+                        <div class="lightboxmain macossectiondiv">
+                            `+lightboxhtml(event)+`
+                        </div>
+                    `
+                    docgetid(element).innerHTML=html
+                    if(closelement!=null){
+                        docgetid(closelement).onclick=function(){
+                            docgetid(element).style.transform="translateY(-100%)"
+
+                            setTimeout(function(){
+                                docgetid(element).style.display="none"
+                                docgetid(element).innerHTML=``
+                            },300)
+                        }
+                    }
+                }
+            })
         }
-    })
 
-    if(islightboxclosewithkeyesc){
-        document.addEventListener("keydown",function(event){
-            if(event.key=="Escape"){
-                event.preventDefault()
-                docgetid(element).style.transform="translateY(-100%)"
+        if(islightboxclosewithkeyesc){
+            document.addEventListener("keydown",function(event){
+                if(event.key=="Escape"){
+                    event.preventDefault()
+                    docgetid(element).style.transform="translateY(-100%)"
 
-                setTimeout(function() {
-                    docgetid(element).style.display="none"
-                    docgetid(element).innerHTML=``
-                },300)
-            }
-        })
-    }
+                    setTimeout(function() {
+                        docgetid(element).style.display="none"
+                        docgetid(element).innerHTML=``
+                    },300)
+                }
+            })
+        }
+    },70)
 }
 
 function docappendchild(element,chlidelement){
