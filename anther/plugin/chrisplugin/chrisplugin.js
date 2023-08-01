@@ -18,6 +18,7 @@
     2023/07/23  18:18:28 Bata 1.0.12 // 新增pagechanger函式
     2023/07/25  22:12:42 Bata 1.0.13 // 修改lightbox函式
     2023/07/25  10:50:11 Bata 1.0.14 // 修改lightbox函式
+    2023/08/01  23:22:33 Bata 1.0.15 // 修改formdata函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -267,7 +268,7 @@ function regexpreplace(data,replacetext,regexptext,regexpstring=""){
     return data.replace(regexp(regexptext,regexpstring),replacetext)
 }
 
-function ajaxdata(data=[]){
+function formdata(data=[]){
     let formdata=new FormData()
     for(let i=0;i<data.length;i=i+1){
         formdata.append(data[i][0],data[i][1])
