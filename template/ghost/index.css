@@ -7,6 +7,7 @@ body{
     display: grid;
     place-content: center;
     cursor: none;
+    overflow: hidden;
 }
 
 .dot{

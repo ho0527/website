@@ -30,6 +30,12 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="b"){
+        div.innerHTML=`
+            <div class="typeb1"></div>
+            <div class="typeb2"></div>
+            <div class="typeb3"></div>
+            <div class="typeb4"></div>
+        `
         blockarray=[
             [0,0,0,0],
             [0,1,0,0],
@@ -37,6 +43,12 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="c"){
+        div.innerHTML=`
+            <div class="typec1"></div>
+            <div class="typec2"></div>
+            <div class="typec3"></div>
+            <div class="typec4"></div>
+        `
         blockarray=[
             [0,0,0,0],
             [0,0,0,1],
@@ -44,6 +56,12 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="d"){
+        div.innerHTML=`
+            <div class="typed1"></div>
+            <div class="typed2"></div>
+            <div class="typed3"></div>
+            <div class="typed4"></div>
+        `
         blockarray=[
             [0,0,0,0],
             [0,1,1,0],
@@ -51,6 +69,12 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="e"){
+        div.innerHTML=`
+            <div class="typee1"></div>
+            <div class="typee2"></div>
+            <div class="typee3"></div>
+            <div class="typee4"></div>
+        `
         blockarray=[
             [0,0,0,0],
             [0,0,1,1],
@@ -58,6 +82,12 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="f"){
+        div.innerHTML=`
+            <div class="typef1"></div>
+            <div class="typef2"></div>
+            <div class="typef3"></div>
+            <div class="typef4"></div>
+        `
         blockarray=[
             [0,0,0,0],
             [0,0,1,0],
@@ -65,6 +95,12 @@ function block(key){
             [0,0,0,0]
         ]
     }else if(key=="g"){
+        div.innerHTML=`
+            <div class="typeg1"></div>
+            <div class="typeg2"></div>
+            <div class="typeg3"></div>
+            <div class="typeg4"></div>
+        `
         blockarray=[
             [0,0,0,0],
             [0,1,1,0],

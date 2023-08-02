@@ -1,6 +1,6 @@
 <?php
     date_default_timezone_set("Asia/Taipei");
-    $time=date("Y-m-d H:i:s");
+    $time=date("YmdHis");
     session_start();
 
     $foldername=$_POST["foldername"];
@@ -14,14 +14,12 @@
     }
 
     if(isset($foldername)){
-        if(!file_exists("upload/".$foldername)){
-            $j=1;
-            while(is_dir($foldername)){
-                $foldername=$foldername.$j;
-                $j=$j+1;
-            }
-            mkdir("upload/".$foldername,0777,true);
+        $j=1;
+        while(is_dir($foldername)){
+            $foldername=$foldername.$j;
+            $j=$j+1;
         }
+        mkdir("upload/".$foldername,0777,true);
     }
 
     if($_FILES["file"]["name"][0]!=""){
@@ -38,13 +36,13 @@
 
     if($_FILES["folder"]["name"][0]!=""){
         for($i=0;$i<count($_FILES["folder"]["name"]);$i=$i+1){
-            $file="file/".$folder."/".$_FILES["folder"]["name"][$i];
+            $file="file/".$foldername."/".$_FILES["folder"]["name"][$i];
             $j=1;
-            while(file_exists($folder)){
-                $file="upload/".$folder."/".$j."_".$_FILES["folder"]["name"][$i];
+            while(file_exists($foldername)){
+                $file="upload/".$foldername."/".$j."_".$_FILES["folder"]["name"][$i];
                 $j=$j+1;
             }
-            mkdir($folder,0777,true);
+            mkdir($foldername,0777,true);
             move_uploaded_file($_FILES["folder"]["tmp_name"][$i],$file);
         }
     }

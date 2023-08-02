@@ -230,7 +230,7 @@ docgetid("submit").onclick=function(){
 
 setInterval(function(){
     main()
-},5000)
+},3000000)
 
 main()
 

@@ -54,7 +54,7 @@
             ?>
         </div>
         <div class="editmaindiv xcenter">
-            <form id="form" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data" id="form">
                 商品名稱: <input type="text" class="input" name="name" value="<?= @$row[2] ?>"><br><br>
                 費用: <input type="number" class="input" name="cost" placeholder="只能是數字" value="<?= @$row[4] ?>"><br><br>
                 相關連結: <input type="text" class="input" name="link" placeholder="" value="<?= @$row[6] ?>"><br><br>
