@@ -1,3 +1,5 @@
+let split=location.href.split("=")
+let key=split[split.length-1]
 let item=document.querySelectorAll(".image")
 let count=0
 
@@ -10,3 +12,16 @@ let carousel=setInterval(function(){
     item[count].style.display="block"
     count=(count+1)%item.length
 },1000)
+
+
+
+if(key=="yangmingshan"||key=="sheipa"){
+    let ajax=new XMLHttpRequest()
+
+    ajax.onload=function(){
+        document.getElementById("context").innerHTML=this.responseText
+    }
+
+    ajax.open("GET","park/"+key+".html",true)
+    ajax.send()
+}

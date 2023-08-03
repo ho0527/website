@@ -10,28 +10,23 @@
     </head>
     <body>
         <div class="main grid" id="main">
-            <div class="right">
+            <div class="left">
                 <div class="shownextdiv" id="shownext"></div>
-                <input type="button" class="bigbutton" id="share" value="畫面分享(s)">
-                <input type="button" class="bigbutton" id="stop" value="暫停遊戲(p)">
-                <input type="button" class="bigbutton" id="cancel" value="放棄遊戲(esc)">
+                <input type="button" class="bigbutton" id="share" value="畫面分享(s)"><br>
+                <input type="button" class="bigbutton" id="stop" value="暫停遊戲(p)"><br>
+                <input type="button" class="bigbutton" id="cancel" value="放棄遊戲(esc)"><br>
             </div>
 
             <!-- 主程式 -->
-            <div class="app macossectiondiv" id="app"></div>
+            <div class="app macossectiondiv" id="app">
+            </div>
 
             <!-- 下方區塊 -->
             <div class="bottom grid">
                 <div class="time" id="time">時間: 00:00</div> <!-- 顯示時間 -->
                 <div class="difficulty" id="difficulty"></div> <!-- 顯示難易度 -->
-                <div class="line" id="line">行數: 0</div> <!-- 顯示行數 -->
+                <div class="line" id="line"></div> <!-- 顯示行數 -->
             </div>
-        </div>
-
-        <!-- 記分板 -->
-        <div class="lightbox">
-            <div class="mask"></div>
-            <div class="lightboxbody"></div>
         </div>
 
         <!-- js -->

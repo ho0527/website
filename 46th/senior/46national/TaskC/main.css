@@ -287,35 +287,112 @@ table{
 }
 
 .app{
-    grid-column: 1/70;
+    grid-column: 1/65;
     grid-row: 1/17;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left{
+    grid-column: 70/100;
+    grid-row: 1/17;
+}
+
+.shownextdiv{
+    border: 1px white solid;
+    width: 90%;
+    height: 30%;
+    margin: 30px 0px;
+}
+
+.bigbutton{
+    width: 90%;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.apptd{
     border: 1px white solid;
 }
 
-.typea1{
-
+.typea1, .typea2, .typea3, .typea4{
+    background: none;
 }
 
-.typeb{
-
+.typea5, .typea6, .typea7, .typea8{
+    border: 1px black solid;
+    background: lightblue;
 }
 
-.typec{
-
+.typeb1, .typeb3, .typeb4, .typeb5{
+    background: none;
 }
 
-.typed{
-
+.typeb2, .typeb6, .typeb7, .typeb8{
+    border: 1px black solid;
+    background: blue;
 }
 
-.typee{
-
+.typec1, .typec2, .typec3, .typec5{
+    background: none;
 }
 
-.typef{
-
+.typec4, .typec6, .typec7, .typec8{
+    border: 1px black solid;
+    background: orange;
 }
 
-.typeg{
+.typed1, .typed4, .typed5, .typed8{
+    background: none;
+}
 
+.typed2, .typed3, .typed6, .typed7{
+    border: 1px black solid;
+    background: yellow;
+}
+
+.typee1, .typee2, .typee5, .typee8{
+    background: none;
+}
+
+.typee3, .typee4, .typee6, .typee7{
+    border: 1px black solid;
+    background: green;
+}
+
+.typef1, .typef2, .typef4, .typef5{
+    background: none;
+}
+
+.typef3, .typef6, .typef7, .typef8{
+    border: 1px black solid;
+    background: purple;
+}
+
+.typeg1, .typeg4, .typeg5, .typeg6{
+    background: none;
+}
+
+.typeg2, .typeg3, .typeg7, .typeg8{
+    border: 1px black solid;
+    background: red;
+}
+
+.mask{
+    background: rgb(100, 100, 100);
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }

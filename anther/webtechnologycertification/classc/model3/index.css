@@ -44,17 +44,17 @@ table{
 }
 
 .title{
-    display: inline-block;
+    font-family: "標楷體";
     position: absolute;
     top:10px;
     right: 0px;
     width: 844px;
-    font-family: "標楷體";
     font-size: 52px;
     font-weight: bold;
     color: #FFFFFF;
     text-shadow: 10px 10px 15px #333333;
     text-align: center;
+    display: inline-block;
 }
 
 .marquee{
@@ -146,4 +146,37 @@ table{
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+
+.td{
+    width: 200px;
+    padding: 5px;
+}
+
+.menuimage{
+    width: 120px;
+    height: 40px;
+}
+
+.menuimage:hover{
+    filter: hue-rotate(180deg);
+    cursor: pointer;
+}
+
+.text{
+    font-family: "標楷體";
+    font-size: 13px;
+    font-weight: bold;
+    font-style: italic;
+    color: #0000FF;
+}
+
+.div2{
+    background: #FFFFCC;
+    height: 100%;
+    padding: 10px;
+}
+
+.stext{
+    text-align: left;
 }
