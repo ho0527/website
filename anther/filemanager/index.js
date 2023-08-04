@@ -17,9 +17,7 @@ function main(){
         }
     }
 
-    let ajax=newajax("GET","filelist.php?folder="+folder)
-
-    ajax.onload=function(){
+    newajax("GET","filelist.php?folder="+folder).onload=function(){
         let data=JSON.parse(this.responseText)
         let folderpath=""
 

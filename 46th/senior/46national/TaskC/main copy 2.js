@@ -238,20 +238,15 @@ function downtobottom(){
 function share(){
 }
 
-function keyevent(event){
-    if(event.key=="Escape"){ event.preventDefault();cancel() }
-    if(event.key=="ArrowLeft"){ event.preventDefault();left() }
-    if(event.key=="ArrowRight"){ event.preventDefault();right() }
-    if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
-    if(event.key=="ArrowDown"){ event.preventDefault();down() }
-    if(event.key==" "){ event.preventDefault();downtobottom() }
-    if(event.key=="s"){ event.preventDefault();share() }
-    if(event.key=="p"){ event.preventDefault();stopstart() }
-}
-
 function stopstart(){
     if(docgetid("stop").value=="暫停遊戲(p)"){
-        document.removeEventListener("keydown",keyevent)
+        document.addEventListener("keydown",function(event){
+            if(event.key=="ArrowLeft"){ event.preventDefault() }
+            if(event.key=="ArrowRight"){ event.preventDefault() }
+            if(event.key=="ArrowUp"){ event.preventDefault() }
+            if(event.key=="ArrowDown"){ event.preventDefault() }
+            if(event.key==" "){ event.preventDefault() }
+        })
         docgetid("app").innerHTML=docgetid("app").innerHTML+`
             <div class="mask" id="mask">暫停</div>
         `
@@ -259,7 +254,13 @@ function stopstart(){
         clearInterval(timer)
         docgetid("stop").value="繼續遊戲(p)"
     }else{
-        document.addEventListener("keydown",keyevent)
+        document.addEventListener("keydown",function(event){
+            if(event.key=="ArrowLeft"){ event.preventDefault() }
+            if(event.key=="ArrowRight"){ event.preventDefault() }
+            if(event.key=="ArrowUp"){ event.preventDefault() }
+            if(event.key=="ArrowDown"){ event.preventDefault() }
+            if(event.key==" "){ event.preventDefault() }
+        })
         docgetid("mask").remove()
         nowblocktimeinterval=setInterval(function(){
             nowblock.style.top=(nowblockpositiony+blocklength)+"px"
@@ -326,7 +327,16 @@ docgetid("main").style.height=height+"px"
 docgetid("difficulty").innerHTML=difficulty
 docgetid("line").innerHTML=`行數: ${line}`
 
-document.addEventListener("keydown",keyevent)
+document.addEventListener("keydown",function(event){
+    if(event.key=="Escape"){ event.preventDefault();cancel() }
+    if(event.key=="ArrowLeft"){ event.preventDefault();left() }
+    if(event.key=="ArrowRight"){ event.preventDefault();right() }
+    if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
+    if(event.key=="ArrowDown"){ event.preventDefault();down() }
+    if(event.key==" "){ event.preventDefault();downtobottom() }
+    if(event.key=="s"){ event.preventDefault();share() }
+    if(event.key=="p"){ event.preventDefault();stopstart() }
+})
 
 // 修改speed
 if(difficulty=="normal"){
