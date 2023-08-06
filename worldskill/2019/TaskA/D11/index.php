@@ -265,7 +265,7 @@
                             ?>
                             <input type="button" class="pagebuttondiabled" value="<" disabled>
                             <input type="button" class="page selectpage" onclick="location.href='?pagecount=<?php echo(1); ?>'" value="<?php echo(1); ?>">
-                            <input type="button" class="page" onclick="location.href='?pagecount=<?php echo($maxpagecount-2); ?>'" value="<?php echo(2); ?>">
+                            <input type="button" class="page" onclick="location.href='?pagecount=<?php echo(2); ?>'" value="<?php echo(2); ?>">
                             <?php
                         }else{
                             ?>
@@ -283,8 +283,8 @@
                     }else{
                         ?>
                         <input type="button" class="pagebutton" onclick="location.href='?key=prev'" value="<">
-                        <input type="button" class="page" onclick="location.href='?pagecount=<?php echo($_SESSION['pagecount']-1); ?>'" value="<?php echo($_SESSION["pagecount"]-2); ?>">
-                        <input type="button" class="page" onclick="location.href='?pagecount=<?php echo($_SESSION['pagecount']-2); ?>'" value="<?php echo($_SESSION["pagecount"]-1); ?>">
+                        <input type="button" class="page" onclick="location.href='?pagecount=<?php echo($_SESSION['pagecount']-2); ?>'" value="<?php echo($_SESSION["pagecount"]-2); ?>">
+                        <input type="button" class="page" onclick="location.href='?pagecount=<?php echo($_SESSION['pagecount']-1); ?>'" value="<?php echo($_SESSION["pagecount"]-1); ?>">
                         <input type="button" class="page selectpage" onclick="location.href='?pagecount=<?php echo($_SESSION['pagecount']); ?>'" value="<?php echo($_SESSION["pagecount"]); ?>">
                         <input type="button" class="page" onclick="location.href='?pagecount=<?php echo($_SESSION['pagecount']+1); ?>'" value="<?php echo($_SESSION["pagecount"]+1); ?>">
                         <input type="button" class="page" onclick="location.href='?pagecount=<?php echo($_SESSION['pagecount']+2); ?>'" value="<?php echo($_SESSION["pagecount"]+2); ?>">
