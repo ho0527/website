@@ -43,7 +43,7 @@ setTimeout(function(){
             let stoplistfilter=stoplist.filter(function(event){ return event[1]==id }) // 拿到sotplist的trainid與id相同的數量
             let traintypename=""
             let stationname=""
-            let week="";
+            let week=""
 
             for(let j=0;j<traintypedata.length;j=j+1){
                 if(traintypedata[j][0]==trainlist[i][1]){

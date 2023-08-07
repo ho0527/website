@@ -45,7 +45,13 @@
         <div class="productmain macossectiondiv">
             <?php
                 $row=query($db,"SELECT*FROM `coffee`");
-                usort($row,function($a,$b){ return $b[5]>$a[5]; });
+                usort($row,function($a,$b){
+                    if($b[5]>$a[5]){
+                        return 1;
+                    }else{
+                        return 0;
+                    }
+                });
                 $count=0;
                 $itemperpage=4;
                 $maxpagecount=ceil(count($row)/$itemperpage);
