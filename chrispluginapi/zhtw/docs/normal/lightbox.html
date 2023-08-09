@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="../index.css">
+        <link rel="stylesheet" href="../code.css">
+        <link rel="stylesheet" href="../../../plugin/css/chrisplugin.css">
+        <script src="../../../plugin/js/chrisplugin.js"></script>
+    </head>
+    <body>
+        <div class="navigationbar">
+            <div class="navigationbarleft">
+                <img src="../../../material/icon/mainicon.png" class="logo">
+                <div class="maintitle">chrisplugin API-divsort </div>
+            </div>
+            <div class="navigationbarright">
+                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='index.html'" value="首頁">
+                <input type="button" class="navigationbarbutton" onclick="location.href='search.html'" value="搜尋">
+                <input type="button" class="navigationbarbutton" onclick="location.href='login.html'" value="登入">
+            </div>
+        </div>
+        <div class="indexmain grid">
+            <div class="left macossectiondivy">
+                <ul>
+                    <li class="li"><a href="index.html" class="a">一般指令</a></li>
+                    <ul>
+                        <li class="li"><a href="startmacossection.html" class="a">startmacossection</a></li>
+                        <li class="li"><a href="divsort.html" class="a">divsort</a></li>
+                        <li class="li"><a href="lightbox.html" class="a aselect">lightbox</a></li>
+                        <li class="li"><a href="pagechanger.html" class="a">pagechanger</a></li>
+                    </ul>
+                    <li class="li"><a href="../short/index.html" class="a">簡化指令</a></li>
+                    <ul>
+                        <li class="li"><a href="../short/docget.html" class="a">docget</a></li>
+                        <li class="li"><a href="../short/docgetid.html" class="a">docgetid</a></li>
+                        <li class="li"><a href="../short/docgetall.html" class="a">docgetall</a></li>
+                        <li class="li"><a href="../short/conlog.html" class="a">conlog</a></li>
+                        <li class="li"><a href="../short/isset.html" class="a">isset</a></li>
+                        <li class="li"><a href="../short/blank.html" class="a">blank</a></li>
+                        <li class="li"><a href="../short/weblsset.html" class="a">weblsset</a></li>
+                        <li class="li"><a href="../short/weblsget.html" class="a">weblsget</a></li>
+                        <li class="li"><a href="../short/doccreate.html" class="a">doccreate</a></li>
+                        <li class="li"><a href="../short/newajax.html" class="a">newajax</a></li>
+                        <li class="li"><a href="../short/docappendchild.html" class="a">docappendchild</a></li>
+                        <li class="li"><a href="../short/regexpmatch.html" class="a">regexpmatch</a></li>
+                        <li class="li"><a href="../short/regexpreplace.html" class="a">regexpreplace</a></li>
+                        <li class="li"><a href="../short/formdata.html" class="a">formdata</a></li>
+                    </ul>
+                    <li class="li"><a href="../test/index.html" class="a">測試用指令</a></li>
+                    <ul>
+                    </ul>
+                    <li class="li"><a href="../about/index.html" class="a">關於</a></li>
+                    <ul>
+                        <li class="li"><a href="../about/credits.html" class="a">製作人員名單</a></li>
+                        <li class="li"><a href="../about/mod.html" class="a">其他模組相關</a></li>
+                        <li class="li"><a href="../about/ps.html" class="a">註記</a></li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="right macossectiondivy" id="main">
+                <div class="command">divsort([<i>class(no selector)</i>],[<i>selector</i>])</div>
+                <div class="commanddescription">讓一群div可以排序</div>
+                <div class="howtouse">語法:
+                    [html]
+                    <div class="code">
+                        <table>
+                            <tr class="codeline">
+                                <td class="line">1</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sortdivclass"</span> <span class="codeattribute">id=</span><span class="codetext">"oryoucanuseid"</span><span class="codetag">&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">2</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">3</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">4</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">5</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    [js]
+                    <div class="code">
+                        <table>
+                            <tr class="codeline">
+                                <td class="line">1</td>
+                                <td class="codecode"><span class="codefunction">divsort("[sort class]","[div selector]")</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="example">
+                    範例:<br>
+                    程式碼:
+                    [html]
+                    <div class="code">
+                        <table>
+                            <tr class="codeline">
+                                <td class="line">1</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;div</span> <span class="codeattribute">id=</span><span class="codetext">"sortdiv"</span><span class="codetag">&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">2</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">3</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">4</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">5</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    [css]
+                    <div class="code">
+                        <table>
+                            .divsortexample{
+                                border: 1px white solid;
+                            }
+                            .sort{
+                                border: 1px gray solid;
+                                height: 5vh;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                cursor: move;
+                            }
+                        </table>
+                    </div>
+                    [js]
+                    <div class="code">
+                        <table>
+                            <tr class="codeline">
+                                <td class="line">1</td>
+                                <td class="codecode"><span class="codefunction">divsort("sort","#sortdiv")</span><span class="codecomment"> // 請記住第一個參數前不能加選擇器</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="divsortexample">
+                        <div id="sortdiv">
+                            <div class="sort">sort1</div>
+                            <div class="sort">sort2</div>
+                            <div class="sort">sort3</div>
+                        </div>
+                    </div>
+                    <script>
+                        divsort("sort","#sortdiv")
+                    </script>
+                    <div class="tip">
+                        當然如果要更多sort div也可以但是你就要用class或其他方式拿值
+                    </div>
+                    範例2:<br>
+                    程式碼:
+                    [html]
+                    <div class="code">
+                        <table>
+                            <tr class="codeline">
+                                <td class="line">1</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sortdiv"</span><span class="codetag">&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">2</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">3</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">4</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">5</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">6</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sortdiv"</span><span class="codetag">&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">7</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">8</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">9</td>
+                                <td class="codecode">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="codetag">&lt;div</span> <span class="codeattribute">class=</span><span class="codetext">"sort"</span><span class="codetag">&gt;</span><span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                            <tr class="codeline">
+                                <td class="line">10</td>
+                                <td class="codecode">
+                                    <span class="codetag">&lt;/div&gt;</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    [css]
+                    <div class="code">
+                        <table>
+                            .divsortexample2{
+                                border: 1px white solid;
+                                display: flex;
+                                align-items: start;
+                                justify-content: center;
+                            }
+                            .sortdiv{
+                                width: 45%;
+                                margin: 0px 5px;
+                            }
+                            .sort{
+                                border: 1px gray solid;
+                                height: 5vh;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                cursor: move;
+                            }
+                        </table>
+                    </div>
+                    [js]
+                    <div class="code">
+                        <table>
+                            <tr class="codeline">
+                                <td class="line">1</td>
+                                <td class="codecode"><span class="codefunction">divsort("sort",".sortdiv")</span><span class="codecomment"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="divsortexample2">
+                        <div class="sortdiv">
+                            <div class="sort">sort1</div>
+                            <div class="sort">sort2</div>
+                            <div class="sort">sort3</div>
+                        </div>
+                        <div class="sortdiv">
+                            <div class="sort">sort4</div>
+                            <div class="sort">sort5</div>
+                            <div class="sort">sort6</div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    divsort("sort",".sortdiv")
+                </script><br><br>
+                <div class="version">版本: Bata1.0.0~</div>
+                <div class="see">
+                    參見:無
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            版本: Bata1.0.16 最後一次更新: 2023/08/09
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

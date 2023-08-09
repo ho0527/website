@@ -342,7 +342,7 @@ table{
     background: rgba(255, 255, 0, 0.25);
     color: white;
     padding: 15px;
-    margin: 5px;
+    margin: 10px 5px;
 }
 
 .warning{
@@ -352,7 +352,7 @@ table{
     background: rgba(255, 0, 0, 0.25);
     color: lightcoral;
     padding: 15px;
-    margin: 5px;
+    margin: 10px 5px;
 }
 
 .admintd{
@@ -379,4 +379,50 @@ table{
     text-align: left;
     color: white;
     font-size: 20px;
+}
+
+.example{
+    color: white;
+    margin: 15px 0px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.macossectionexample{
+    height: 30vh;
+    font-size: 15px;
+}
+
+.divsortexample{
+    border: 1px white solid;
+}
+
+.sort{
+    border: 1px gray solid;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+}
+
+.tip{
+    font-size: 25px;
+    text-align: left;
+    background: rgba(144, 238, 144, 0.6);
+    color: whitesmoke;
+    padding: 15px;
+    margin: 10px 5px;
+}
+
+.divsortexample2{
+    border: 1px white solid;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.sortdiv{
+    width: 45%;
+    margin: 0px 5px;
 }

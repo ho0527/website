@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>管理者專區</title>
         <link href="index.css" rel="stylesheet">
-        <link rel="stylesheet" href="plugin/css/macossection.css">
         <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/macossection.js"></script>
         <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
@@ -65,7 +63,7 @@
                 ?>
             </table>
         </div>
-        <div id="lightbox"></div>
+        <div class="lightboxmask" id="lightbox"></div>
         <script src="viewplan.js"></script>
     </body>
 </html>

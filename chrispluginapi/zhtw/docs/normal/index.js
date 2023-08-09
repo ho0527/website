@@ -226,6 +226,7 @@ function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxc
                     if(closelement!=null){
                         docgetid(closelement).onclick=function(){
                             docgetid(element).style.transform="translateY(-100%)"
+
                             setTimeout(function(){
                                 docgetid(element).style.display="none"
                                 docgetid(element).innerHTML=``
@@ -241,6 +242,7 @@ function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxc
                 if(event.key=="Escape"){
                     event.preventDefault()
                     docgetid(element).style.transform="translateY(-100%)"
+
                     setTimeout(function() {
                         docgetid(element).style.display="none"
                         docgetid(element).innerHTML=``
@@ -252,20 +254,20 @@ function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxc
         if(clickcolse=="body"){
             document.onclick=function(){
                 docgetid(element).style.transform="translateY(-100%)"
+
                 setTimeout(function(){
                     docgetid(element).style.display="none"
                     docgetid(element).innerHTML=``
                 },300)
             }
         }else if(clickcolse=="mask"){
-            docgetid(element).onclick=function(event){
-                if(event.target==docgetid(element)){
-                    docgetid(element).style.transform="translateY(-100%)"
-                    setTimeout(function(){
-                        docgetid(element).style.display="none"
-                        docgetid(element).innerHTML=``
-                    },300)
-                }
+            docgetid(element).onclick=function(){
+                docgetid(element).style.transform="translateY(-100%)"
+
+                setTimeout(function(){
+                    docgetid(element).style.display="none"
+                    docgetid(element).innerHTML=``
+                },300)
             }
         }else if(clickcolse=="none"){
         }else{
