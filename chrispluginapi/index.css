@@ -1,5 +1,5 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Consolas";
     background: rgb(35, 35, 35);
     color: gray;
     text-align: center;
@@ -279,3 +279,87 @@ table{
 
 /* program START */
 
+.left{
+    grid-column: 1/30;
+    grid-row: 1/18;
+    border: 1px black solid;
+    text-align: left;
+}
+
+.li{
+    font-size: 20px;
+    padding: 5px;
+    margin: 0px 5px;
+}
+
+.right{
+    grid-column: 30/100;
+    grid-row: 1/18;
+    border: 1px black solid;
+}
+
+.indexmain{
+    height: 85vh;
+    position: relative;
+    top: 110px;
+}
+
+.footer{
+    bottom: 0px;
+    right: 10px;
+    width: initial;
+    color: white;
+}
+
+.command{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    padding: 10px;
+    margin: 5px 0px;
+}
+
+.commanddescription{
+    font-size: 25px;
+    text-align: left;
+    color: white;
+    padding: 5px;
+    margin: 5px 0px;
+}
+
+.howtouse{
+    font-size: 20px;
+    text-align: left;
+    color: white;
+    padding: 20px 5px;
+    margin: 5px 0px;
+}
+
+.notice{
+    font-size: 25px;
+    text-align: left;
+    background: rgba(255, 255, 0, 0.25);
+    color: white;
+    padding: 15px;
+    margin: 5px;
+}
+
+.warning{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    background: rgba(255, 0, 0, 0.25);
+    color: lightcoral;
+    padding: 15px;
+    margin: 5px;
+}
+
+.admintd{
+    width: 1000px;
+}
+
+.admintable{
+    width: 80vw;
+    height: 30vh;
+}
