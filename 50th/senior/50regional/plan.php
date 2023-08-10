@@ -47,17 +47,6 @@
                                     <td class="maintd">
                                         <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&edit=<?php echo($row[$i][0]); ?>'" value="修改">
                                         <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
-                                        <?php
-                                            if($row[$i][5]=="false"){
-                                                ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=plan&value=true&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="開始評分"><?php
-                                            }elseif($row[$i][5]=="true"){
-                                                ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=plan&value=check&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="結束評分"><?php
-                                            }elseif($row[$i][5]=="check"){
-                                                ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=plan&value=end&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="開放檢視評分結果"><?php
-                                            }else{
-                                                ?><input type="button" class="bluebutton" value="已完成此項目" disabled><?php
-                                            }
-                                        ?>
                                     </td>
                                 </tr>
                             <?php

@@ -67,7 +67,7 @@
                                 <?php
                             }
                         ?><br>
-                        <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
+                        <input type="button" class="button" onclick="location.href='plan.php?id=<?php echo($_GET['id']); ?>'" value="返回">
                         <input type="submit" class="button" name="edit" value="送出"><br>
                     </form>
                 </div>
