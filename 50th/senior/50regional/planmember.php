@@ -44,11 +44,11 @@
                         for($i=0;$i<count($row);$i=$i+1){
                             $planid=$row[$i][0];
                             $scorerow=query($db,"SELECT*FROM `planscore` WHERE `planid`='$planid'");
-                            $usercheck=true;
+                            $uservotecheck=true;
                             for($j=0;$j<count($scorerow);$j=$j+1){
                                 $scoreuserid=$scorerow[$j][1];
                                 $scoreuseerrow=query($db,"SELECT*FROM `user` WHERE `id`='$scoreuserid'")[0];
-                                if($scoreuseerrow[0]==$_SESSION["data"]){ $usercheck=false; }
+                                if($scoreuseerrow[0]==$_SESSION["data"]){ $uservotecheck=false; }
                             }
                             ?>
                             <tr>
@@ -57,17 +57,17 @@
                                 <td class="maintd">
                                     <input type="button" class="bluebutton" onclick="location.href='viewplan.php?id=<?php echo($row[$i][0]); ?>'" value="查看">
                                     <?php
-                                    if($leader!=$_SESSION["data"]){
-                                        if($usercheck){
-                                            if($row[$i][5]=="true"){
-                                                ?><input type="button" class="bluebutton" onclick="location.href='score.php?key=plan&value=finish&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="評分"><div class="warning">尚未填寫此項目!</div><?php
-                                            }elseif($row[$i][5]=="false"){
-                                                ?><input type="button" class="bluebutton" onclick="location.href='score.php?key=plan&value=true&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="評分尚未開始"><?php
+                                    if($leader!=$_SESSION["data"]||$_SESSION["data"]=="1"){
+                                        if($uservotecheck){
+                                            if($projectrow[8]=="true"){
+                                                ?><input type="button" class="bluebutton" onclick="location.href='score.php?key=plan&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="評分"><div class="warning">尚未填寫此項目!</div><?php
+                                            }elseif($projectrow[8]=="false"){
+                                                ?><input type="button" class="bluebutton" value="評分尚未開始" disabled><?php
                                             }else{
                                                 ?><input type="button" class="bluebutton" value="檢視結果"><?php
                                             }
                                         }else{
-                                            if($row[$i][5]=="finish"){
+                                            if($projectrow[8]=="finish"){
                                                 ?><input type="button" class="bluebutton" value="檢視結果"><?php
                                             }else{
                                                 ?><input type="button" class="bluebutton" value="已完成評分" disabled><?php

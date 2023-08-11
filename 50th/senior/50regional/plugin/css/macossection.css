@@ -17,15 +17,15 @@
 */
 
 .macossectiondiv{
+    overflow: auto;
+}
+
+.macossectiondivy{
     overflow: hidden auto;
 }
 
 .macossectiondivx{
     overflow: auto hidden;
-}
-
-.macossectiondivall{
-    overflow: auto;
 }
 
 ::-webkit-scrollbar{

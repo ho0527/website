@@ -128,7 +128,7 @@
             $title=$_POST["title"];
             $description=$_POST["description"];
             $id=$_SESSION["id"];
-            $row=query($db,"SELECT*FROM `plan` WHERE `title`='$title'AND`projectid`='$id'")[0];
+            $row=query($db,"SELECT*FROM `plan` WHERE `title`='$title'AND`projectid`='$id'");
             if($row){
                 ?><script>alert("該執行方案已存在");location.href="neweditplan.php?id=<?php echo($id); ?>"</script><?php
             }elseif($title==""){
@@ -138,13 +138,13 @@
                 $projectid=$_SESSION["id"];
                 $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$projectid'");
                 for($i=0;$i<count($facingrow);$i=$i+1){
-                    $id=$facingrow[$i][0];
-                    $select=$_POST["facing".$id];
+                    $facingid=$facingrow[$i][0];
+                    $select=$_POST["facing".$facingid];
                     if($select!="none"){
-                        $facingopiniionid[]=$id."_".$select;
+                        $facingopiniionid[]=$facingid."_".$select;
                     }
                 }
-                query($db,"INSERT INTO `plan`(`projectid`,`title`,`description`,`facing_opinionid`,`canscore`)VALUES(?,?,?,?,'false')",[$id,$title,$description,implode("|&|",$facingopiniionid)]);
+                query($db,"INSERT INTO `plan`(`projectid`,`title`,`description`,`facing_opinionid`)VALUES(?,?,?,?)",[$id,$title,$description,implode("|&|",$facingopiniionid)]);
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"新增執行方案",$time,""]);
                 ?><script>alert("新增成功");location.href="plan.php?id=<?php echo($projectid); ?>"</script><?php
             }

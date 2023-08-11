@@ -30,7 +30,7 @@
 
 function startmacossection(){ // start macos section
     let macostimer
-    setTimeout(function(){
+    setInterval(function(){
         document.querySelectorAll(".macossectiondiv").forEach(function(event){
             event.addEventListener("scroll",function(){
                 clearTimeout(macostimer)

@@ -6,7 +6,7 @@
     $projectdesciption=$data[1];
     $leader=$data[2];
     $member=implode("|&|",$data[3]);
-    query($db,"INSERT INTO `project`(`projectname`,`projectdesciption`,`leader`,`member`,`canpostopinion`)VALUES(?,?,?,?,'true')",[$projectname,$projectdesciption,$leader,$member]);
+    query($db,"INSERT INTO `project`(`projectname`,`projectdesciption`,`leader`,`member`,`canpostopinion`,`canplanscore`)VALUES(?,?,?,?,'true','false')",[$projectname,$projectdesciption,$leader,$member]);
     $projectid=$db->lastInsertId();
     for($i=0;$i<count($data[4]);$i=$i+1){
         query($db,"INSERT INTO `facing`(`projectid`,`name`,`description`)VALUES(?,?,?)",[$projectid,$data[4][$i],$data[5][$i]]);

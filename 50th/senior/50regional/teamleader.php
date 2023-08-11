@@ -65,11 +65,11 @@
                                     ?>
                                     <?php
                                         if($row[$i][8]=="false"){
-                                            ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=planchange&value=true&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="執行方案開始評分"><?php
+                                            ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=planchange&value=true&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($row[$i][0]); ?>'" value="執行方案開始評分"><?php
                                         }elseif($row[$i][8]=="true"){
-                                            ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=planchange&value=check&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="執行方案結束評分"><?php
+                                            ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=planchange&value=check&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($row[$i][0]); ?>'" value="執行方案結束評分"><?php
                                         }elseif($row[$i][8]=="check"){
-                                            ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=planchange&value=end&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="執行方案開放檢視評分結果"><?php
+                                            ?><input type="button" class="bluebutton" onclick="location.href='api.php?key=planchange&value=end&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($row[$i][0]); ?>'" value="執行方案開放檢視評分結果"><?php
                                         }else{
                                             ?><input type="button" class="bluebutton" value="已完成此項目" disabled><?php
                                         }

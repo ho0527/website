@@ -21,7 +21,7 @@ hr{
 
 table{
     border-collapse: collapse;
-    width: 100%;
+    width: 99%;
     color: white;
 }
 
@@ -297,6 +297,11 @@ table{
 .mainmain{
     height: 65vh;
     width: 50vw;
+}
+
+.mainmainmain{
+    height: 65vh;
+    width: 70vw;
 }
 
 .projectgrid{

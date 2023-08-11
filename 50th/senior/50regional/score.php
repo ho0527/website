@@ -40,6 +40,7 @@
         <div class="main macossectiondiv">
             <form method="POST">
                 分數: <input type="text" class="input" name="score" value="3"><br><br>
+                <input type="button" class="button" onclick="location.href='viewplan.php?id=<?php echo($_GET['id']); ?>'" value="查看意見">
                 <input type="submit" class="button" name="submit" value="送出">
             </form>
         </div>
@@ -53,7 +54,7 @@
                     if(1<=$score&&$score<=5){
                         query($db,"INSERT INTO `score`(`userid`,`opinionid`,`score`)VALUES(?,?,?)",[$userdata,$opinionid,$score]);
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$userdata,"評分",$time,"opitionid=".$opinionid]);
-                        ?><script>alert("新增成功");location.href="opinion.php?id=<?php echo($id); ?>"</script><?php
+                        ?><script>alert("評分成功");location.href="opinion.php?id=<?php echo($id); ?>"</script><?php
                     }else{
                         ?><script>alert("分數不正確");location.href="newscore.php?key=opinion&id=<?php echo($id); ?>&opinionid=<?php echo($opinionid); ?>"</script><?php
                     }
@@ -65,7 +66,7 @@
                     if(1<=$score&&$score<=5){
                         query($db,"INSERT INTO `planscore`(`userid`,`planid`,`score`)VALUES(?,?,?)",[$userdata,$id,$score]);
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$userdata,"評分",$time,"planid=".$id]);
-                        ?><script>alert("新增成功");location.href="planmember.php?id=<?php echo($projectid); ?>"</script><?php
+                        ?><script>alert("評分成功");location.href="planmember.php?id=<?php echo($projectid); ?>"</script><?php
                     }else{
                         ?><script>alert("分數不正確");location.href="newscore.php?key=plan&id=<?php echo($id); ?>&projectid=<?php echo($projectid); ?>"</script><?php
                     }

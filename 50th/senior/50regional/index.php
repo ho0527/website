@@ -9,7 +9,7 @@
     <body>
         <?php
             include("link.php");
-            if(isset($_SESSION["data"])){ header("location:main.php"); }
+            if(isset($_SESSION["data"])){ header("location:logincheck.php"); }
         ?>
         <div class="navigationbar">
             <div class="navigationbartitle center">專案討論系統</div>

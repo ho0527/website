@@ -26,7 +26,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain macossectiondiv">
+        <div class="main mainmain macossectiondivy">
             <table>
                 <form>
                     <tr>
