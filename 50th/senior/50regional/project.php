@@ -57,7 +57,13 @@
                                     <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
                                     <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
                                     <input type="button" class="bluebutton" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
-                                    <input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>'" value="執行方案">
+                                    <?php
+                                        if($row[$i][8]=="end"){
+                                            ?><input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>&isend=true'" value="執行方案檢視結果"><?php
+                                        }else{
+                                            ?><input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>&isend=false'" value="執行方案"><?php
+                                        }
+                                    ?>
                                 </td>
                             </tr>
                             <?php

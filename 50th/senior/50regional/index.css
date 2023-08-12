@@ -514,3 +514,90 @@ table{
     font-size: 25px;
     font-weight: bold;
 }
+
+.lightboxtitle{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.lightboxtable{
+    max-height: 85%;
+}
+
+.lightboxbuttondiv{
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+}
+
+.statistictr{
+    position: relative;
+    bottom: 1px;
+}
+
+.statistictd{
+    width: 20%;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.statistictdshow{
+    padding: 0px;
+    margin: 0px;
+}
+
+.statisticselect{
+    background: whitesmoke;
+    color: black;
+    margin: 0px;
+}
+
+.statisticnoneselect{
+    background: rgb(179, 179, 179);
+}
+
+.statisticbartypea{
+    max-width: 95%;
+}
+
+.selectshowdiv{
+    display: flex;
+}
+
+.statisticbartypeb{
+    max-width: 40%;
+    height: 35vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 5px;
+}
+
+.statisticmain{
+    height: 65vh;
+    width: 80vw;
+}
+
+.statisticleft{
+    grid-column: 1/40;
+    grid-row: 1/18;
+    border: 1px white solid;
+    height: 50vh;
+}
+
+.statisticright{
+    grid-column: 40/100;
+    grid-row: 1/18;
+}
+
+.statisticbartext{
+    font-size: 40px;
+}
+
+.statisticbartypec{
+    width: 95%;
+    margin: 5px 2.5%;
+}

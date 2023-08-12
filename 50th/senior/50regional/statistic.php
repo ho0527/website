@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>網站前台登入介面</title>
         <link href="index.css" rel="stylesheet">
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
+        <script src="plugin/js/highchart.js"></script>
+        <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
@@ -25,12 +28,28 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main">
+        <div class="main statisticmain macossectiondivy ">
             <table class="table">
                 <tr>
+                    <td class="statistictd statisticnoneselect" id="useropinion">
+                        使用者意見發表統計
+                    </td>
+                    <td class="statistictd statisticnoneselect" id="projectopinion">
+                        各專案意見發表<br>
+                        總數量統計
+                    </td>
+                    <td class="statistictd statisticnoneselect" id="projectfacing">
+                        各專案意見發表<br>
+                        之各面相統計
+                    </td>
                     <td class="statistictd"></td>
+                    <td class="statistictd"></td>
+                </tr>
+                <tr class="statistictr">
+                    <td class="statistictdshow" id="show" colspan="5" rowspan="8"></td>
                 </tr>
             </table>
         </div>
+        <script src="statistic.js"></script>
     </body>
 </html>
