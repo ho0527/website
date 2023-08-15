@@ -35,6 +35,7 @@ setTimeout(function(){
 setTimeout(function(){
     newajax("GET","api.php?trainlist=").onload=function(){
         let data=JSON.parse(this.responseText)
+        // data.filter(function(event){ return regexp(event.name) })
         let trainlist=data[0]
         let stoplist=data[1]
         let stoplistfilterdata=[]
