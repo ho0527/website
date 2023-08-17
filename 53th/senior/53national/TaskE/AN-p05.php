@@ -1,7 +1,7 @@
 <?php
     $memorybefore=memory_get_usage();
 
-    echo("p06\n");
+    echo("p05\n");
     $n=(int)trim(fgets(STDIN));
     $one=0;
     $five=0;

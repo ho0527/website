@@ -20,8 +20,6 @@ let data=[]
 let datacount=0
 let nowlayer=1
 
-document.getElementById("width").value=width
-document.getElementById("height").value=height
 canva.width=width
 canva.height=height
 canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
@@ -456,16 +454,6 @@ document.addEventListener("pointerup",function(){
     }
 })
 
-document.getElementById("submit").onclick=function(){
-    let width=document.getElementById("width").value
-    let height=document.getElementById("height").value
-    if(/^[0-9]+$/.test(width)&& /^[0-9]+$/.test(height)){
-        location.href="edit.html"
-        localStorage.setItem("width",width)
-        localStorage.setItem("height",height)
-    }else{} alert("長寬要是整數")
-}
-
 setInterval(function(){
     let layer=document.querySelectorAll(".layergrid")
     for(let i=0;i<layer.length;i=i+1){
@@ -475,3 +463,11 @@ setInterval(function(){
 },100)
 
 document.getElementById("select").classList.add("selectbutton")
+
+document.getElementById("savecanedit").onclick=function(){
+
+}
+
+document.getElementById("open").onclick=function(){
+
+}
