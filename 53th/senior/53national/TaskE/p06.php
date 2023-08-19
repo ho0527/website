@@ -2,22 +2,46 @@
     $memorybefore=memory_get_usage();
 
     echo("p06\n");
-    $n=(int)trim(fgets(STDIN));
-    $one=0;
-    $five=0;
-    $ten=0;
-    $fit=0;
-    $left=$n;
-    $fit=(int)($left/50);
-    $left=$left%50;
-    $ten=(int)($left/10);
-    $left=$left%10;
-    $five=(int)($left/5);
-    $left=$left%5;
-    $one=(int)$left;
-    $total=$fit+$ten+$five+$one;
+    $data=trim(fgets(STDIN));
+    $rpn=[];
+    $operand=[];
+    $maindata=explode(" ",$data);
 
-    echo("1 ".$one."\n"."5 ".$five."\n"."10 ".$ten."\n"."50 ".$fit."\n".$total.PHP_EOL);
+    for($i=0;$i<count($maindata);$i=$i+1){
+        if(in_array($maindata[$i],["+","-","*","/"])){
+            $datacheck=-1;
+            $enddatacheck=-1;
+
+            if($maindata[$i]=="+"||$maindata[$i]=="-"){ $datacheck=0; }
+            elseif($maindata[$i]=="*"||$maindata[$i]=="/"){ $datacheck=1; }
+
+            if(!empty($operand)){
+                if($operand[count($operand)-1]=="+"||$operand[count($operand)-1]=="-"){ $enddatacheck=0; }
+                elseif($operand[count($operand)-1]=="*"||$operand[count($operand)-1]=="/"){ $enddatacheck=1; }
+            }
+
+            while(!empty($operand)&&in_array($operand[count($operand)-1],["+","-","*","/"])&&($datacheck<=$enddatacheck)){
+                $rpn[]=array_pop($operand);
+            }
+            $operand[]=$maindata[$i];
+        }elseif($maindata[$i]=="("){
+            $operand[]=$maindata[$i];
+        }elseif($maindata[$i]==")"){
+            while($operand[count($operand)-1]!="("){
+                $rpn[]=array_pop($operand);
+            }
+            array_pop($operand);
+        }else{
+            $rpn[]=$maindata[$i];
+        }
+    }
+
+    for($i=count($operand)-1;$i>=0;$i=$i-1){
+        $rpn[]=$operand[$i];
+    }
+
+    echo(implode(" ",$rpn)."\n");
+    echo(eval("return ".$data.";").PHP_EOL);
 
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;

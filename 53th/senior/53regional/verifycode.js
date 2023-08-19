@@ -6,16 +6,15 @@ document.querySelectorAll(".dragimg").forEach(function(event){
     })
 })
 
-document.querySelectorAll(".dropbox").forEach(function(event){
-    event.addEventListener("dragover",function(addeventlistenerevent){
-        addeventlistenerevent.preventDefault()
-    })
-    event.addEventListener("drop",function(addeventlistenerevent){
-        let id=addeventlistenerevent.dataTransfer.getData("text")
-        let data=document.getElementById(id)
-        a=a+data.getAttribute("data-id")
-        document.querySelectorAll(".dropbox")[0].appendChild(data)
-    })
+document.getElementById("dropbox").addEventListener("dragover",function(event){
+    event.preventDefault()
+})
+
+document.getElementById("dropbox").addEventListener("drop",function(event){
+    let id=event.dataTransfer.getData("text")
+    let data=document.getElementById(id)
+    a=a+data.getAttribute("data-id")
+    document.getElementById("dropbox").appendChild(data)
 })
 
 function loginclick(){

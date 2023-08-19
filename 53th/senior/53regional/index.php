@@ -18,8 +18,8 @@
         </div>
         <div class="main">
             <form method="POST">
-                帳號: <input type="text" class="input" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br><br>
-                密碼: <input type="text" class="input" name="password" id="password" value="<?= @$_SESSION["password"] ?>"><br><br>
+                帳號: <input type="text" class="input" id="username" name="username" value="<?= @$_SESSION["username"] ?>"><br><br>
+                密碼: <input type="text" class="input" id="password" name="password" value="<?= @$_SESSION["password"] ?>"><br><br>
                 <div class="dragdiv">圖形驗證碼</div>
                 <?php
                     $_SESSION["verifycode"]="";
