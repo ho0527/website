@@ -8,12 +8,13 @@
     $maindata=explode(" ",$data);
 
     for($i=0;$i<count($maindata);$i=$i+1){
-        if(in_array($maindata[$i],["+","-","*","/"])){
+        if(in_array($maindata[$i],["+","-","*","/","^"])){
             $datacheck=-1;
             $enddatacheck=-1;
 
-            if($maindata[$i]=="+"||$maindata[$i]=="-"){ $datacheck=0; }
+            if($maindata[$i]=="+"||$maindata[$i]=="-"){ $datacheck=2; }
             elseif($maindata[$i]=="*"||$maindata[$i]=="/"){ $datacheck=1; }
+            elseif($maindata[$i]=="^"){ $datacheck=0; }
 
             if(!empty($operand)){
                 if($operand[count($operand)-1]=="+"||$operand[count($operand)-1]=="-"){ $enddatacheck=0; }

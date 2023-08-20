@@ -192,7 +192,7 @@
         }
     });
 
-    Route::GET("/images/search",function(Request $request)use($datatypeerror,$image){
+    Route::GET("/image/search",function(Request $request)use($datatypeerror,$image){
         $ordertype=$request->input("order_by");
         $ordertype=$request->input("order_type");
         $keyword=$request->input("keyword");
@@ -225,30 +225,39 @@
         }
     });
 
-    Route::GET("/images/popular",function(Request $request)use($nopermission,$posterror,$logincheck){
+    Route::GET("/image/popular",function(Request $request)use($nopermission,$posterror,$logincheck){
     });
 
-    Route::GET("/users/{user_id}/images",function(Request $request)use($datatypeerror,$usererror,$post){
+    Route::GET("/users/{user_id}/image",function(Request $request)use($datatypeerror,$usererror,$post){
     });
 
-    Route::POST("/images/upload",function(Request $request)use($usererror,$user){
+    Route::POST("/image/upload",function(Request $request)use($usererror,$user){
     });
 
-    Route::PUT("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    Route::PUT("/image/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::GET("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    Route::GET("/image/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::DELETE("/images/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    Route::DELETE("/image/{image_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::GET("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    Route::GET("/image/{image_id}/comment",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::POST("/images/{image_id}/comments",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    Route::POST("/image/{image_id}/comment",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 
-    Route::DELETE("/comments/{comments_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    Route::POST("/image/{image_id}/comment",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    });
+
+    Route::POST("/image/{image_id}/comment/{comment_id}/reply",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    });
+
+    Route::DELETE("/image/{image_id}/comment/{comment_id}",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
+    });
+
+    Route::GET("/user/popular",function(Request $request)use($tokenerror,$datatypeerror,$imageerror){
     });
 ?>
