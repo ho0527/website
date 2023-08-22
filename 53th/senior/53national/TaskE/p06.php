@@ -45,15 +45,15 @@
     echo(implode(" ",$rpn)."\n");
 
     // Calculate the result
-    $evalStr=str_replace("^","**",$data);
-    $result=eval("return $evalStr;");
+    $data=str_replace("^","**",$data);
+    $result=eval("return $data;");
 
-    
     if(is_int($result)){
         echo($result.PHP_EOL);
     }else{
         echo(rtrim(sprintf("%.3f",$result),"0").PHP_EOL);
     }
+
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;
     echo("memory used ".($memorydifference/1048576)."MB");
