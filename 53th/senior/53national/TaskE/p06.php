@@ -7,7 +7,7 @@
     $operand=[];
     $maindata=explode(" ",$data);
 
-    for($i=count($maindata)-1;$i>=0;$i--){
+    for($i=count($maindata)-1;$i>=0;$i=$i-1){
         if(in_array($maindata[$i],["+","-","*","/","^"])){
             $datacheck=-1;
             $begindatacheck=-1;
@@ -45,15 +45,16 @@
     echo(implode(" ",$rpn)."\n");
 
     // Calculate the result
-    // echo(str_replace('^','**',$data));
-    // echo(eval("return str_replace('^','**',$data);"));
-    echo(number_format(floor(eval("return str_replace('^','**',$data);")*1000)/1000,3,".","").PHP_EOL);
+    $evalStr=str_replace("^","**",$data);
+    $result=eval("return $evalStr;");
 
+    
+    if(is_int($result)){
+        echo($result.PHP_EOL);
+    }else{
+        echo(rtrim(sprintf("%.3f",$result),"0").PHP_EOL);
+    }
     $memoryafter=memory_get_usage();
     $memorydifference=$memoryafter-$memorybefore;
     echo("memory used ".($memorydifference/1048576)."MB");
 ?>
-為什麼我打 1 - 2 ^ 3
-這樣的輸出是 -4.000?
-
-而且我要的是如果有小數超過3位數才會無條件捨去，不是自動補0。
