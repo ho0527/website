@@ -216,12 +216,12 @@ function removealllistener(){
 }
 
 document.getElementById("new").onclick=function(){ if(confirm("是否裡開編輯頁面?")){ location.href="index.html" }}
-document.getElementById("undo").onclick=function(){ undo()}
-document.getElementById("redo").onclick=function(){ redo()}
-document.getElementById("save").onclick=function(){ save()}
-document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=function(){ savesample()}})
-document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click()}
-document.getElementById("file").onchange=function(){ upload()}
+document.getElementById("undo").onclick=function(){ undo() }
+document.getElementById("redo").onclick=function(){ redo() }
+document.getElementById("save").onclick=function(){ save() }
+document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=function(){ savesample()} })
+document.getElementById("uploadpicture").onclick=function(){ document.getElementById("file").click() }
+document.getElementById("file").onchange=function(){ upload() }
 document.getElementById("black").style.borderColor="yellow"
 document.getElementById("layer1").style.background="yellow"
 document.getElementById("layer1").style.color="black"
