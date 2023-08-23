@@ -88,21 +88,25 @@
         }
     });
 
-    Route::GET("/books/{id}",function(Request $request)use($booksearchfromid,$booksearchfromiderror){
+    Route::GET("/books/{id}",function(Request $request)use($booksearchfromid,$booksearchfromiderror,$urlnotfound){
         $id=$request->route("id");
-        $row=DB::table("book")
-            ->where(function($query)use($id){
-                $query->where("id","=",$id);
-            })->select("*")->get();
-        if($row->isNotEmpty()){
-            $row=$row[0];
-            return response()->json([
-                "id"=>"$row->id",
-                "name"=>"$row->name",
-                "isbn"=>"$row->isbn",
-            ],200);
+        if(preg_match("[0-9]",$id)){
+            $row=DB::table("book")
+                ->where(function($query)use($id){
+                    $query->where("id","=",$id);
+                })->select("*")->get();
+            if($row->isNotEmpty()){
+                $row=$row[0];
+                return response()->json([
+                    "id"=>"$row->id",
+                    "name"=>"$row->name",
+                    "isbn"=>"$row->isbn",
+                ],200);
+            }else{
+                return $booksearchfromiderror;
+            }
         }else{
-            return $booksearchfromiderror;
+            return $urlnotfound;
         }
     });
     // Route::PUT("/books/{id}",[Controller::class,""]);
@@ -180,9 +184,5 @@
         }else{
             return $editbookfromiderror;
         }
-    });
-
-    Route::GET("/books",function(){
-        return DB::table("book")->get();
     });
 ?>
