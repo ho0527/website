@@ -19,11 +19,7 @@ let sampleselect=""
 let data=[]
 let datacount=0
 let nowlayer=1
-
-canva.width=width
-canva.height=height
-canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
-if(localStorage.getItem("count")==null){ localStorage.setItem("count",0);}
+let count
 
 function date(ymdlink,midlink,hmslink){
     let date=new Date()
@@ -226,10 +222,17 @@ document.getElementById("layer1").style.background="yellow"
 document.getElementById("layer1").style.color="black"
 document.getElementById("layer1").style.borderBottom="1px yellow solid"
 document.querySelectorAll(".savesample").forEach(function(event){ event.onclick=function(){ savesample()} })
+
+
+if(localStorage.getItem("count")==null){ localStorage.setItem("count",0);}
+count=parseInt(localStorage.getItem("count"))
+
+canva.width=width
+canva.height=height
+canva.style.backgroundColor=localStorage.getItem("backgroundcolor")
 canva.addEventListener("pointerdown",selectdown)
 canva.addEventListener("pointermove",selectmove)
 
-let count=parseInt(localStorage.getItem("count"))
 for(let i=1;i<=count;i=i+1){
     document.getElementById("choosesample").innerHTML=document.getElementById("choosesample").innerHTML+`
        <img src="${localStorage.getItem("image"+i)}" class="sampleimage" draggable="false">
@@ -465,9 +468,7 @@ setInterval(function(){
 document.getElementById("select").classList.add("selectbutton")
 
 document.getElementById("savecanedit").onclick=function(){
-
 }
 
 document.getElementById("open").onclick=function(){
-
 }

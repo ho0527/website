@@ -676,7 +676,7 @@
             if($id==$_SESSION["data"]){
                 $row=DB::table("users")
                     ->where("id","=",$id)
-                    ->select()->get();
+                    ->select("*")->get();
                 if($row->isNotEmpty()){
                     if($request->has("nickname")){
                         $nickname=$request->input("nickname");
