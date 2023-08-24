@@ -2,140 +2,10 @@
     namespace App\Http\Controllers;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
+    include("error.php");
+    include("fucntion.php");
 
-    date_default_timezone_set("Asia/Taipei");
-    $time=date("Y-m-d\TH:i:s");
-
-    $logincheck=function(){
-        $row=DB::table("users")
-            ->where(function($query){
-                $query->whereNotNull("access_token");
-            })->select("*")->get();
-        if($row->isNotEmpty()){
-            return $row[0]->id;
-        }else{
-            return NULL;
-        }
-    };
-
-    $user=function($row,$type){
-        $mainrow=[
-            "id"=>$row[0]->id,
-            "email"=>$row[0]->email,
-            "nickname"=>$row[0]->nickname,
-            "profile_image"=>$row[0]->profile_image,
-            "type"=>$row[0]->type,
-        ];
-        if($type=="login"){
-            $mainrow["access_token"]=$row[0]->access_token;
-        }
-        return $mainrow;
-    };
-
-    $image=function($row){
-        $data=[];
-        for($i=0;$i<count($row);$i=$i+1){
-            if($row[$i]->delete_at=="NULL"){
-                $mainrow=[
-                    "id"=>$row[$i]->id,
-                    "url"=>$row[$i]->url,
-                    "title"=>$row[$i]->title,
-                    "update_at"=>$row[$i]->update_at,
-                    "created_at"=>$row[$i]->created_at
-                ];
-                $data[]=$mainrow;
-            }
-        }
-        return $data;
-    };
-
-    $imagedetail=function($row)use($user){
-        $data=[];
-        for($i=0;$i<$row->count();$i=$i+1){
-            if($row[$i]->delete_at=="NULL"){
-                $userrow=DB::table("users")
-                    ->where(function($query)use($row,$i){
-                        $query->where("id","=",$row[$i]->user_id);
-                    })->select("*")->get();
-                $viewrow=DB::table("image_views")
-                    ->where("image_id","=",$row[$i]->id)
-                    ->select("*")->get();
-                $commentrow=DB::table("comments")
-                    ->where("image_id","=",$row[$i]->id)
-                    ->select("*")->get();
-                $mainrow=[
-                    "id"=>$row[$i]->id,
-                    "url"=>$row[$i]->url,
-                    "author"=>$user($userrow,"normal"),
-                    "title"=>$row[$i]->title,
-                    "description"=>$row[$i]->description,
-                    "width"=>$row[$i]->width,
-                    "height"=>$row[$i]->height,
-                    "mimetype"=>$row[$i]->mimetype,
-                    "view_count"=>$viewrow->count(),
-                    "comment_count"=>$commentrow->count(),
-                    "update_at"=>$row[$i]->update_at,
-                    "created_at"=>$row[$i]->created_at,
-                ];
-                $data[]=$mainrow;
-            }
-        }
-        return $data;
-    };
-
-    $comment=function($row){
-        $data=[];
-        for($i=0;$i<count($row);$i=$i+1){
-            $id=$row[$i]->id;
-            $imagerow=DB::table("images")
-                    ->where("id","=",$row[$i]->image_id)
-                    ->select("*")->get()[0];
-            $userrow=DB::table("users")
-                ->where("id","=",$row[$i]->user_id)
-                ->select("*")->get();
-            $replycommentrow=DB::table("users")
-                ->where("comment_id","=",$id)
-                ->select("*")->get();
-            if($imagerow->delete_at=="NULL"){
-                $mainrow=[
-                    "id"=>$row[$i]->id,
-                    "user"=>$user($userrow),
-                    "content"=>$row[$i]->content,
-                    "comments"=>$comment($replycommentrow),
-                    "created_at"=>$row[$i]->created_at
-                ];
-                $data[]=$mainrow;
-            }
-        }
-        return $data;
-    };
-
-    $delcomment=function($id){
-        $row=DB::table("comments")
-            ->where("comment_id","=",$id)
-            ->select("*")->get();
-    
-        DB::table("comments")
-            ->where("id","=",$id)
-            ->delete();
-        for($i=0;$i<count($row);$i=$i+1){
-            $delcomment($row[$i]->id);
-        }
-    };
-
-    $loginerror=response()->json(["success"=>false,"message"=>"MSG_INVALID_LOGIN"],403);
-    $userexist=response()->json(["success"=>false,"message"=>"MSG_USER_EXISTS"],409);
-    $passworderror=response()->json(["success"=>false,"message"=>"MSG_PASSWORD_NOT_SECURE"],409);
-    $tokenerror=response()->json(["success"=>false,"message"=>"MSG_INVALID_ACCESS_TOKEN"],401);
-    $nopermission=response()->json(["success"=>false,"message"=>"MSG_PERMISSION_DENY"],403);
-    $missingfield=response()->json(["success"=>false,"message"=>"MSG_MISSING_FIELD"],400);
-    $datatypeerror=response()->json(["success"=>false,"message"=>"MSG_WROND_DATA_TYPE"],400);
-    $imageerror=response()->json(["success"=>false,"message"=>"MSG_IMAGE_NOT_EXISTS"],404);
-    $commenterror=response()->json(["success"=>false,"message"=>"MSG_COMMENT_NOT_EXISTS"],404);
-    $usererror=response()->json(["success"=>false,"message"=>"MSG_USER_NOT_EXISTS"],404);
-    $fileerror=response()->json(["success"=>false,"message"=>"MSG_INVALID_FILE_FORMAT"],400);
-
-    class usercontroller extends Controller{
+    class image extends Controller{
         public function search(Request $request){
             $orderby="create_at";
             $ordertype="desc";
@@ -161,11 +31,11 @@
                     "success"=>true,
                     "data"=>[
                         "total_count"=>count($row),
-                        "posts"=>$image($row)
+                        "posts"=>image($row)
                     ]
                 ]);
             }else{
-                return $datatypeerror;
+                return datatypeerror();
             }
         }
 
@@ -203,7 +73,7 @@
                     $datarow=DB::table("images")
                         ->where("id","=",$data[$i][0])
                         ->select("*")->get();
-                    
+
                     $maindata[]=[
                         "id"=>$row[$i][0],
                         "url"=>$data[$i]->url,
@@ -218,7 +88,7 @@
                     "data"=>$maindata
                 ]);
             }else{
-                return $datatypeerror;
+                return datatypeerror();
             }
         }
 
@@ -232,10 +102,10 @@
                     ->select("*")->get();
                 return response()->json([
                     "success"=>true,
-                    "data"=>$image($row)
+                    "data"=>image($row)
                 ]);
             }else{
-                return $usererror;
+                return usererror();
             }
         }
 
@@ -257,23 +127,23 @@
                             "width"=>$imagedata[0],
                             "height"=>$imagedata[1],
                             "mimetype"=>$image[0]->extension(),
-                            "created_at"=>$time
+                            "created_at"=>time()
                         ]);
                         $row=DB::table("images")
                             ->latest()
                             ->select("*")->get();
                         return response()->json([
                             "success"=>true,
-                            "data"=>$imagedetail($row,"login")
+                            "data"=>imagedetail($row,"login")
                         ],200);
                     }else{
-                        return $fileerror;
+                        return fileerror();
                     }
                 }else{
-                    return $missingfield;
+                    return missingfield();
                 }
             }else{
-                return $tokenerror;
+                return tokenerror();
             }
         }
 
@@ -288,30 +158,30 @@
                     $description=$row->description;
                     if($request->has("title")){ $title=$request->input("title"); }
                     if($request->has("description")){ $description=$request->input("description"); }
-    
+
                     if(is_string($title)&&is_string($description)){
                         DB::table("images")
                             ->where("id","=",$imageid)
                             ->update([
                                 "title"=>$title,
                                 "description"=>$description,
-                                "update_at"=>$time,
+                                "update_at"=>time(),
                             ]);
                         $row=DB::table("images")
                             ->where("id","=",$imageid)
                             ->select("*")->get();
                         return response()->json([
                             "success"=>true,
-                            "data"=>$imagedetail($row)
+                            "data"=>imagedetail($row)
                         ],200);
                     }else{
-                        return $datatypeerror;
+                        return datatypeerror();
                     }
                 }else{
-                    return $nopermission;
+                    return nopermission();
                 }
             }else{
-                return $imageerror;
+                return imageerror();
             }
         }
 
@@ -326,15 +196,15 @@
                 DB::table("image_views")->insert([
                     "user_id"=>$userid,
                     "image_id"=>$imageid,
-                    "viewed_at"=>$time
+                    "viewed_at"=>time()
                 ]);
 
                 return response()->json([
                     "success"=>true,
-                    "data"=>$imagedetail($row)
+                    "data"=>imagedetail($row)
                 ],200);
             }else{
-                return $imageerror;
+                return imageerror();
             }
         }
 
@@ -348,21 +218,21 @@
                     DB::table("images")
                         ->where("id","=",$imageid)
                         ->update([
-                            "deleted_at"=>$time
+                            "deleted_at"=>time()
                         ]);
 
                     return response()->json([
                         "success"=>true,
                     ],200);
                 }else{
-                    return $nopermission;
+                    return nopermission();
                 }
             }else{
-                return $imageerror;
+                return imageerror();
             }
         }
 
-        public function getcomment(Request $request,$imageid){
+        public function getcomment($imageid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get()[0];
@@ -370,10 +240,10 @@
             if($row->isNotEmpty()||$row->deleted_at=="NULL"){
                 return response()->json([
                     "success"=>true,
-                    "data"=>$comment($row)
+                    "data"=>comment($row)
                 ],200);
             }else{
-                return $imageerror;
+                return imageerror();
             }
         }
 
@@ -391,27 +261,27 @@
                                 "image_id"=>$imageid,
                                 "user_id"=>$userid,
                                 "content"=>$content,
-                                "created_at"=>$time
+                                "created_at"=>time()
                             ]);
-        
+
                             $row=DB::table("comments")
                                 ->latest()
                                 ->select("*")->get();
                             return response()->json([
                                 "success"=>true,
-                                "data"=>$comment($row)
+                                "data"=>comment($row)
                             ],200);
                         }else{
-                            return $datatypeerror;
+                            return datatypeerror();
                         }
                     }else{
-                        return $missingfield;
+                        return missingfield();
                     }
                 }else{
-                    return $nopermission;
+                    return nopermission();
                 }
             }else{
-                return $imageerror;
+                return imageerror();
             }
         }
 
@@ -434,30 +304,30 @@
                                     "user_id"=>$userid,
                                     "comment_id"=>$commentid,
                                     "content"=>$content,
-                                    "created_at"=>$time
+                                    "created_at"=>time()
                                 ]);
-            
+
                                 $row=DB::table("comments")
                                     ->latest()
                                     ->select("*")->get();
                                 return response()->json([
                                     "success"=>true,
-                                    "data"=>$comment($row)
+                                    "data"=>comment($row)
                                 ],200);
                             }else{
-                                return $datatypeerror;
+                                return datatypeerror();
                             }
                         }else{
-                            return $missingfield;
+                            return missingfield();
                         }
                     }else{
-                        return $nopermission;
+                        return nopermission();
                     }
                 }else{
-                    return $commenterror;
+                    return commenterror();
                 }
             }else{
-                return $imageerror;
+                return imageerror();
             }
         }
 
@@ -472,18 +342,18 @@
             if($row->isNotEmpty()||$row->deleted_at=="NULL"){
                 if($commentrow->isNotEmpty()||$commentrow->image_id==$imageid){
                     if(true||$userid==1){
-                        $delcomment($commentid);
+                        delcomment($commentid);
                         return response()->json([
                             "success"=>true
                         ],200);
                     }else{
-                        return $nopermission;
+                        return nopermission();
                     }
                 }else{
-                    return $commenterror;
+                    return commenterror();
                 }
             }else{
-                return $imageerror;
+                return imageerror();
             }
         }
 
@@ -509,7 +379,7 @@
                     $row=DB::table("comments")
                         ->select("*")->get();
                 }else{
-                    return $datatypeerror;
+                    return datatypeerror();
                 }
 
                 for($i=0;$i<count($row);$i=$i+1){
@@ -538,7 +408,7 @@
                         ->where("id","=",$data[$i][0])
                         ->select("*")->get();
                     $maindata[]=[
-                        "user"=>$user($row),
+                        "user"=>user($row,"normal"),
                         "\"".$orderby."\""=>$data[$i][1]
                     ];
                 }
@@ -548,7 +418,7 @@
                     "data"=>$maindata
                 ]);
             }else{
-                return $datatypeerror;
+                return datatypeerror();
             }
         }
     }
