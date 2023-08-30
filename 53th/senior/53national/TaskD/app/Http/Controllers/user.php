@@ -48,29 +48,27 @@
                 $nickname=$request->input("nickname");
                 $password=$request->input("password");
                 $image=$request->file("profile_image");
-                $imagetype=array("image/png","image/jpg");
                 $row=DB::table("users")
                     ->where(function($query)use($email){
                         $query->where("email","=",$email);
                     })->select("*")->get();
                 if($row->isEmpty()){
-                    if(filter_var($email,FILTER_VALIDATE_EMAIL)&&is_string($email)&&is_string($nickname)&&is_string($password)&&!in_array($image->getMimeType(),$imagetype)){
-                        if(8<=strlen($password)&&strlen($password)<=24){
-                            $path=$image[0]->store("upload/image");
+                    if(filter_var($email,FILTER_VALIDATE_EMAIL)&&is_string($email)&&is_string($nickname)&&is_string($password)&&in_array($image->extension(),["png","jpg"])){
+                        if(4<=strlen($password)){
+                            $path=$image->store("image");
                             $imagedata=getimagesize(storage_path("app/".$path));
                             // $imagepath=$image->storePublicly("profile_image","public"); // todo 圖片上傳
                             DB::table("users")->insert([
                                 "email"=>$email,
                                 "password"=> Hash::make($password),
-                                "nick_name"=>$nickname,
+                                "nickname"=>$nickname,
                                 "profile_image"=>$path,
                                 "type"=>"USER",
                                 "created_at"=>time()
                             ]);
                             $row=DB::table("users")
-                                ->where(function($query)use($email){
-                                    $query->where("email","=",$email);
-                                })->select("*")->get();
+                                ->latest()
+                                ->select("*")->get();
                             return response()->json([
                                 "success"=>true,
                                 "data"=>user($row,"normal")
@@ -90,8 +88,8 @@
         }
 
         public function logout(Request $request){
-            $userid="";
-            if(true){ // 如何比對?
+            $userid=logincheck();
+            if(logincheck()){ // 如何比對?
                 DB::table("users")
                     ->where("id","=",$userid)
                     ->update([

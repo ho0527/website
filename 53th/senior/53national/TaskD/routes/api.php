@@ -20,7 +20,7 @@
     Route::POST("/auth/logout",[user::class,"logout"]);
     Route::GET("/image/search",[image::class,"search"]);
     Route::GET("/image/popular",[image::class,"popular"]);
-    Route::GET("/users/{user_id}/image",[image::class,"searchuserimage"])->where("user_id","[0-9]+");
+    Route::GET("/user/{user_id}/image",[image::class,"searchuserimage"])->where("user_id","[0-9]+");
     Route::POST("/image/upload",[image::class,"upload"]);
     Route::PUT("/image/{image_id}",[image::class,"updateimage"])->where("image_id","[0-9]+");
     Route::GET("/image/{image_id}",[image::class,"getimage"])->where("image_id","[0-9]+");

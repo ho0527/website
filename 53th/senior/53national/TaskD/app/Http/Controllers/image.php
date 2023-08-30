@@ -9,7 +9,7 @@
 
     class image extends Controller{
         public function search(Request $request){
-            $orderby="create_at";
+            $orderby="created_at";
             $ordertype="desc";
             $keyword="";
             $page=1;
@@ -19,12 +19,11 @@
             if($request->has("keyword")){ $keyword=$request->input("keyword"); }
             if($request->has("page")){ $page=$request->input("page"); }
             if($request->has("pagesize")){ $pagesize=$request->input("page_size"); }
-            if(($orderby=="created_at"||$orderby=="like_count"||$orderby=="width"||$orderby=="height")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
-                $row=DB::table("posts")
-                    ->where("type","=","public")
-                    ->where(function($query)use($keyword){
-                        $query->where("keyword","LIKE","%".$keyword."%");
-                    })
+            if(($orderby=="created_at"||$orderby=="updated_at"||$orderby=="width"||$orderby=="height")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
+                $row=DB::table("images")
+                    ->where("title","LIKE","%".$keyword."%")
+                    ->where("description","LIKE","%".$keyword."%")
+                    ->where("deleted_at","=",NULL)
                     ->orderBy($orderby,$ordertype)
                     ->skip(($page-1)*$pagesize)
                     ->take($pagesize)
@@ -33,7 +32,7 @@
                     "success"=>true,
                     "data"=>[
                         "total_count"=>count($row),
-                        "posts"=>image($row)
+                        "images"=>image($row)
                     ]
                 ]);
             }else{
@@ -47,24 +46,27 @@
             if(1<=$limit&&$limit<=100){
                 $data=[];
                 $maindata=[];
+                $row=DB::table("images")
+                    ->where("deleted_at","=",NULL)
+                    ->select("*")->get();
+
+                for($i=0;$i<count($row);$i=$i+1){
+                    $data[]=[$row[$i]->id,0];
+                }
+
                 $row=DB::table("image_views")
                     ->select("*")->get();
 
                 for($i=0;$i<count($row);$i=$i+1){
-                    $check=false;
                     for($j=0;$j<count($data);$j=$j+1){
                         if($data[$j][0]==$row[$i]->image_id){
                             $data[$j][1]=$data[$j][1]+1;
-                            $check=true;
                         }
-                    }
-                    if(!$check){
-                        $data=[$row[$j]->image_id,0];
                     }
                 }
 
                 usort($data,function($a,$b){
-                    if($a[1]<$b[1]){ // !!!不確定是否相反!!!
+                    if($a[1]<$b[1]){
                         return 1;
                     }else{
                         return 0;
@@ -72,16 +74,16 @@
                 });
 
                 for($i=0;$i<min(count($data),$limit);$i=$i+1){
-                    $datarow=DB::table("images")
+                    $row=DB::table("images")
                         ->where("id","=",$data[$i][0])
-                        ->select("*")->get();
+                        ->select("*")->get()[0];
 
                     $maindata[]=[
-                        "id"=>$row[$i][0],
-                        "url"=>$data[$i]->url,
-                        "title"=>$data[$i]->title,
-                        "updated_at"=>$data[$i]->updated_at,
-                        "created_at"=>$data[$i]->created_at
+                        "id"=>$row->id,
+                        "url"=>$row->url,
+                        "title"=>$row->title,
+                        "updated_at"=>$row->updated_at,
+                        "created_at"=>$row->created_at
                     ];
                 }
 
@@ -100,7 +102,8 @@
                 ->select("*")->get();
             if($row->isNotEmpty()){
                 $row=DB::table("images")
-                    ->where("user_id","=",$userid,"AND","deleted_at","=","NULL")
+                    ->where("user_id","=",$userid)
+                    ->where("deleted_at","=",NULL)
                     ->select("*")->get();
                 return response()->json([
                     "success"=>true,
@@ -112,14 +115,18 @@
         }
 
         public function upload(Request $request){
-            if(true){ // token check
+            $userid=logincheck();
+            if($userid){ // token check
                 if($request->has("title")&&$request->has("description")&&$request->hasFile("image")){
-                    $userid="";
                     $title=$request->input("title");
                     $description=$request->input("description");
                     $image=$request->file("image");
-                    if(in_array($image[0]->extension(),["png","jpg"])){
-                        $path=$image[0]->store("upload/image");
+                    if(in_array($image->extension(),["png","jpg"])){
+                        $mimetype="image/jpeg";
+                        if($image->extension()=="png"){
+                            $mimetype="image/png";
+                        }
+                        $path=$image->store("image");
                         $imagedata=getimagesize(storage_path("app/".$path));
                         DB::table("images")->insert([
                             "url"=>$path,
@@ -128,7 +135,7 @@
                             "description"=>$description,
                             "width"=>$imagedata[0],
                             "height"=>$imagedata[1],
-                            "mimetype"=>$image[0]->extension(),
+                            "mimetype"=>$mimetype,
                             "created_at"=>time()
                         ]);
                         $row=DB::table("images")
@@ -136,7 +143,7 @@
                             ->select("*")->get();
                         return response()->json([
                             "success"=>true,
-                            "data"=>imagedetail($row,"login")
+                            "data"=>imagedetail([$row[0]])
                         ],200);
                     }else{
                         return fileerror();
@@ -152,12 +159,12 @@
         public function updateimage(Request $request,$imageid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
-                ->select("*")->get()[0];
-            $userid="";
-            if($row->isNotEmpty()||$row->deleted_at=="NULL"){
-                if(true){
-                    $title=$row->title;
-                    $description=$row->description;
+                ->select("*")->get();
+            $userid=logincheck();
+            if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
+                if($userid){
+                    $title=$row[0]->title;
+                    $description=$row[0]->description;
                     if($request->has("title")){ $title=$request->input("title"); }
                     if($request->has("description")){ $description=$request->input("description"); }
 
@@ -167,14 +174,14 @@
                             ->update([
                                 "title"=>$title,
                                 "description"=>$description,
-                                "update_at"=>time(),
+                                "updated_at"=>time(),
                             ]);
                         $row=DB::table("images")
                             ->where("id","=",$imageid)
                             ->select("*")->get();
                         return response()->json([
                             "success"=>true,
-                            "data"=>imagedetail($row)
+                            "data"=>imagedetail([$row[0]])
                         ],200);
                     }else{
                         return datatypeerror();
@@ -190,10 +197,10 @@
         public function getimage(Request $request,$imageid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
-                ->select("*")->get()[0];
-            $userid="";
-            if($row->isNotEmpty()||$row->deleted_at=="NULL"){
-                if($userid==""){ $userid="-1"; } // 如果沒有登入id=-1
+                ->select("*")->get();
+            $userid=logincheck();
+            if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
+                if($userid=="0"){ $userid="-1"; } // 如果沒有登入id=-1
 
                 DB::table("image_views")->insert([
                     "user_id"=>$userid,
@@ -203,7 +210,7 @@
 
                 return response()->json([
                     "success"=>true,
-                    "data"=>imagedetail($row)
+                    "data"=>imagedetail([$row[0]])
                 ],200);
             }else{
                 return imageerror();
@@ -213,15 +220,19 @@
         public function delimage(Request $request,$imageid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
-                ->select("*")->get()[0];
-            $userid="";
-            if($row->isNotEmpty()||$row->deleted_at=="NULL"){
-                if(true){
+                ->select("*")->get();
+            $userid=logincheck();
+            if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
+                if($userid==$row[0]->user_id){
                     DB::table("images")
                         ->where("id","=",$imageid)
                         ->update([
                             "deleted_at"=>time()
                         ]);
+
+                    DB::table("image_views")
+                        ->where("image_id","=",$imageid)
+                        ->delete();
 
                     return response()->json([
                         "success"=>true,
@@ -237,9 +248,12 @@
         public function getcomment($imageid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
-                ->select("*")->get()[0];
-            $userid="";
-            if($row->isNotEmpty()||$row->deleted_at=="NULL"){
+                ->select("*")->get();
+            if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
+                $row=DB::table("comments")
+                    ->where("image_id","=",$imageid)
+                    ->select("*")->get();
+
                 return response()->json([
                     "success"=>true,
                     "data"=>comment($row)
@@ -252,10 +266,10 @@
         public function comment(Request $request,$imageid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
-                ->select("*")->get()[0];
-            $userid=1;
-            if($row->isNotEmpty()||$row->deleted_at=="NULL"){
-                if(true){
+                ->select("*")->get();
+            $userid=logincheck();
+            if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
+                if($userid){
                     if($request->has("content")){
                         $content=$request->input("content");
                         if(is_string($content)){
@@ -271,7 +285,7 @@
                                 ->select("*")->get();
                             return response()->json([
                                 "success"=>true,
-                                "data"=>comment($row)
+                                "data"=>comment([$row[0]])
                             ],200);
                         }else{
                             return datatypeerror();
@@ -290,14 +304,14 @@
         public function replycomment(Request $request,$imageid,$commentid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
-                ->select("*")->get()[0];
+                ->select("*")->get();
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
-                ->select("*")->get()[0];
-            $userid=1;
-            if($row->isNotEmpty()||$row->deleted_at=="NULL"){
-                if($commentrow->isNotEmpty()||$commentrow->image_id==$imageid){
-                    if(true){
+                ->select("*")->get();
+            $userid=logincheck();
+            if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
+                if($commentrow->isNotEmpty()&&$commentrow[0]->image_id==$imageid){
+                    if($userid){
                         if($request->has("content")){
                             $content=$request->input("content");
                             if(is_string($content)){
@@ -314,7 +328,7 @@
                                     ->select("*")->get();
                                 return response()->json([
                                     "success"=>true,
-                                    "data"=>comment($row)
+                                    "data"=>comment([$row[0]])
                                 ],200);
                             }else{
                                 return datatypeerror();
@@ -336,14 +350,14 @@
         public function delcomment(Request $request,$imageid,$commentid){
             $row=DB::table("images")
                 ->where("id","=",$imageid)
-                ->select("*")->get()[0];
+                ->select("*")->get();
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
-                ->select("*")->get()[0];
-            $userid=1;
-            if($row->isNotEmpty()||$row->deleted_at=="NULL"){
-                if($commentrow->isNotEmpty()||$commentrow->image_id==$imageid){
-                    if(true||$userid==1){
+                ->select("*")->get();
+            $userid=logincheck();
+            if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
+                if($commentrow->isNotEmpty()&&$commentrow[0]->image_id==$imageid){
+                    if($userid==$commentrow[0]->user_id||$userid==1){
                         delcomment($commentid);
                         return response()->json([
                             "success"=>true
@@ -368,9 +382,17 @@
             if($request->has("limit")){
                 $limit=$request->input("limit");
             }
-            $data=[];
-            $maindata=[];
             if(1<=$limit&&$limit<=100){
+                $data=[];
+                $maindata=[];
+
+                $row=DB::table("users")
+                    ->select("*")->get();
+
+                for($i=0;$i<count($row);$i=$i+1){
+                    $data[]=[$row[$i]->id,0];
+                }
+
                 if($orderby=="upload_count"){
                     $row=DB::table("images")
                         ->select("*")->get();
@@ -385,20 +407,15 @@
                 }
 
                 for($i=0;$i<count($row);$i=$i+1){
-                    $check=false;
                     for($j=0;$j<count($data);$j=$j+1){
                         if($data[$j][0]==$row[$i]->user_id){
                             $data[$j][1]=$data[$j][1]+1;
-                            $check=true;
                         }
-                    }
-                    if(!$check){
-                        $data=[$row[$j]->user_id,0];
                     }
                 }
 
                 usort($data,function($a,$b){
-                    if($a[1]<$b[1]){ // !!!不確定是否相反!!!
+                    if($a[1]<$b[1]){
                         return 1;
                     }else{
                         return 0;
@@ -411,7 +428,7 @@
                         ->select("*")->get();
                     $maindata[]=[
                         "user"=>user($row,"normal"),
-                        "\"".$orderby."\""=>$data[$i][1]
+                        $orderby=>$data[$i][1]
                     ];
                 }
 
