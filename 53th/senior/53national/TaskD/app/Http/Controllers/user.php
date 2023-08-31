@@ -88,8 +88,9 @@
         }
 
         public function logout(Request $request){
+            // 可以使用TOKEM的方式拿到TOKEN之後再比對
             $userid=logincheck();
-            if(logincheck()){ // 如何比對?
+            if(logincheck()){
                 DB::table("users")
                     ->where("id","=",$userid)
                     ->update([

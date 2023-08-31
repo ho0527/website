@@ -3,6 +3,8 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
 
+    session_start();
+
     function time(){
         date_default_timezone_set("Asia/Taipei");
         return date("Y-m-d H:i:s");
@@ -79,25 +81,31 @@
     function comment($row){
         $data=[];
         for($i=0;$i<count($row);$i=$i+1){
+            $iddata=$_SESSION["idlist"];
             $id=$row[$i]->id;
-            $imagerow=DB::table("images")
-                    ->where("id","=",$row[$i]->image_id)
-                    ->select("*")->get()[0];
-            $userrow=DB::table("users")
-                ->where("id","=",$row[$i]->user_id)
-                ->select("*")->get();
-            $replycommentrow=DB::table("comments")
-                ->where("comment_id","=",$id)
-                ->select("*")->get();
-            if($imagerow->deleted_at==NULL){
-                $mainrow=[
-                    "id"=>$row[$i]->id,
-                    "user"=>user($userrow,"normal"),
-                    "content"=>$row[$i]->content,
-                    "comments"=>comment($replycommentrow),
-                    "created_at"=>implode("T",explode(" ",$row[$i]->created_at))
-                ];
-                $data[]=$mainrow;
+            if(in_array($id,$iddata)){
+                $key=array_search($id,$iddata);
+                unset($iddata[$key]);
+                $_SESSION["idlist"]=$iddata;
+                $imagerow=DB::table("images")
+                        ->where("id","=",$row[$i]->image_id)
+                        ->select("*")->get()[0];
+                $userrow=DB::table("users")
+                    ->where("id","=",$row[$i]->user_id)
+                    ->select("*")->get();
+                $replycommentrow=DB::table("comments")
+                    ->where("comment_id","=",$id)
+                    ->select("*")->get();
+                if($imagerow->deleted_at==NULL){
+                    $mainrow=[
+                        "id"=>$row[$i]->id,
+                        "user"=>user($userrow,"normal"),
+                        "content"=>$row[$i]->content,
+                        "comments"=>comment($replycommentrow),
+                        "created_at"=>implode("T",explode(" ",$row[$i]->created_at))
+                    ];
+                    $data[]=$mainrow;
+                }
             }
         }
         return $data;

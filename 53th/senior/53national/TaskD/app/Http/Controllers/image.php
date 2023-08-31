@@ -254,6 +254,17 @@
                     ->where("image_id","=",$imageid)
                     ->select("*")->get();
 
+                $commentidrow=DB::table("comments")
+                    ->select("*")->get();
+
+                $commentid=[];
+
+                for($i=0;$i<count($commentidrow);$i=$i+1){
+                    $commentid[]=$commentidrow[$i]->id;
+                }
+
+                $_SESSION["idlist"]=$commentid;
+
                 return response()->json([
                     "success"=>true,
                     "data"=>comment($row)
@@ -283,6 +294,18 @@
                             $row=DB::table("comments")
                                 ->latest()
                                 ->select("*")->get();
+
+                            $commentidrow=DB::table("comments")
+                                ->select("*")->get();
+
+                            $commentid=[];
+
+                            for($i=0;$i<count($commentidrow);$i=$i+1){
+                                $commentid[]=$commentidrow[$i]->id;
+                            }
+
+                            $_SESSION["idlist"]=$commentid;
+
                             return response()->json([
                                 "success"=>true,
                                 "data"=>comment([$row[0]])
@@ -326,6 +349,18 @@
                                 $row=DB::table("comments")
                                     ->latest()
                                     ->select("*")->get();
+
+                                $commentidrow=DB::table("comments")
+                                    ->select("*")->get();
+
+                                $commentid=[];
+
+                                for($i=0;$i<count($commentidrow);$i=$i+1){
+                                    $commentid[]=$commentidrow[$i]->id;
+                                }
+
+                                $_SESSION["idlist"]=$commentid;
+
                                 return response()->json([
                                     "success"=>true,
                                     "data"=>comment([$row[0]])
