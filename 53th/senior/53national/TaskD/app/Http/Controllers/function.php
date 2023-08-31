@@ -24,7 +24,7 @@
             "id"=>$row[0]->id,
             "email"=>$row[0]->email,
             "nickname"=>$row[0]->nickname,
-            "profile_image"=>"http://localhost/website/53th/senior/53national/TaskD/storage/app/".$row[0]->profile_image,
+            "profile_image"=>url($row[0]->profile_image),
             "type"=>$row[0]->type,
             "created_at"=>implode("T",explode(" ",$row[0]->created_at))
         ];
@@ -39,7 +39,7 @@
         for($i=0;$i<$row->count();$i=$i+1){
             $mainrow=[
                 "id"=>$row[$i]->id,
-                "url"=>"http://localhost/website/53th/senior/53national/TaskD/storage/app/".$row[$i]->url,
+                "url"=>url($row[$i]->url),
                 "title"=>$row[$i]->title,
                 "updated_at"=>$row[$i]->updated_at,
                 "created_at"=>$row[$i]->created_at,
@@ -59,7 +59,7 @@
                 ->select("*")->get();
             $mainrow=[
                 "id"=>$row[$i]->id,
-                "url"=>"http://localhost/website/53th/senior/53national/TaskD/storage/app/".$row[$i]->url,
+                "url"=>url($row[$i]->url),
                 "author"=>user($userrow,"normal"),
                 "title"=>$row[$i]->title,
                 "description"=>$row[$i]->description,
