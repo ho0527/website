@@ -17,7 +17,7 @@
                         ->where(function($query)use($email){
                             $query->where("email","=",$email);
                         })->select("*")->get();
-                    if($row->isNotEmpty()&&Hash::check($password,$row[0]->password)){ // TODO 如何驗證密碼
+                    if($row->isNotEmpty()&&Hash::check($password,$row[0]->password)){
                         DB::table("users")
                             ->where("id","=",$row[0]->id)
                             ->update([
@@ -56,8 +56,6 @@
                     if(filter_var($email,FILTER_VALIDATE_EMAIL)&&is_string($email)&&is_string($nickname)&&is_string($password)&&in_array($image->extension(),["png","jpg"])){
                         if(4<=strlen($password)){
                             $path=$image->store("image");
-                            $imagedata=getimagesize(storage_path("app/".$path));
-                            // $imagepath=$image->storePublicly("profile_image","public"); // todo 圖片上傳
                             DB::table("users")->insert([
                                 "email"=>$email,
                                 "password"=> Hash::make($password),
