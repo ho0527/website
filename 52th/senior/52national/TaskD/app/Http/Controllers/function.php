@@ -26,7 +26,7 @@
             "id"=>$row->id,
             "email"=>$row->email,
             "nickname"=>$row->nickname,
-            "profile_image"=>$row->profile_image,
+            "profile_image"=>url($row->profile_image),
             "type"=>$row->type,
         ];
         if($type=="login"){
@@ -45,7 +45,7 @@
         for($i=0;$i<$imagerow->count();$i=$i+1){
             $data[]=[
                 "id"=>$imagerow[$i]->id,
-                "url"=>$imagerow[$i]->filename,
+                "url"=>url($imagerow[$i]->filename),
                 "width"=>$imagerow[$i]->width,
                 "height"=>$imagerow[$i]->height,
                 "created_at"=>$imagerow[$i]->created_at
@@ -55,6 +55,7 @@
     };
 
     function post($row){
+        $userid=logincheck();
         $data=[];
         for($i=0;$i<count($row);$i=$i+1){
             $id=$row[$i]->id;
@@ -78,12 +79,11 @@
                 "tag"=>explode(" ",$row[$i]->tag),
                 "location_name"=>$location,
             ];
-            if($_SESSION["data"]!=""){
+            if($userid){
                 $likerow2=DB::table("user_likes")
-                    ->where(function($query)use($id){
-                        $query->where("post_id","=",$id)
-                            ->where("user_id","=",$_SESSION["data"]);
-                    })->select("*")->get();
+                    ->where("post_id","=",$id)
+                    ->where("user_id","=",$userid)
+                    ->select("*")->get();
                 if($likerow2->isNotEmpty()){
                     $mainrow["liked"]=true;
                 }else{

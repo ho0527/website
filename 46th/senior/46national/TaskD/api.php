@@ -22,6 +22,15 @@
         echo(json_encode($row));
     }
 
+    if(isset($_GET["traincodelist"])){
+        $row=query($db,"SELECT*FROM `train`");
+        $data=[];
+        for($i=0;$i<count($row);$i=$i+1){
+            $data[]=$row[$i][2];
+        }
+        echo(json_encode($data));
+    }
+
     if(isset($_GET["stationlist"])){
         $row=query($db,"SELECT*FROM `station`");
         echo(json_encode($row));
@@ -30,7 +39,13 @@
     if(isset($_GET["trainlist"])){
         $row=query($db,"SELECT*FROM `train`");
         $stoprow=query($db,"SELECT*FROM `stop`");
-        echo(json_encode([$row,$stoprow]));
+        $stationrow=query($db,"SELECT*FROM `station`");
+        echo(json_encode([$row,$stoprow,$stationrow]));
+    }
+
+    if(isset($_GET["ticket"])){
+        $row=query($db,"SELECT*FROM `ticket`");
+        echo(json_encode($row));
     }
 
     if(isset($_GET["key"])){

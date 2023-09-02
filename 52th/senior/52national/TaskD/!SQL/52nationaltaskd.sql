@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-05-13 07:42:12
+-- 產生時間： 2023-09-02 05:02:20
 -- 伺服器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -40,7 +40,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `user_id`, `post_id`, `content`, `created_at`) VALUES
-(1, 2, 1, 'Test Comments', '2022-05-28 12:28:54');
+(1, 1, 7, 'comment content text', '2023-09-02 01:45:50'),
+(3, 2, 7, 'comment content text', '2023-09-02 01:50:06');
 
 -- --------------------------------------------------------
 
@@ -66,8 +67,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `author_id`, `content`, `type`, `tag`, `location`, `place_lat`, `place_lng`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hello World', 'public', NULL, NULL, NULL, NULL, '2022-05-28 11:27:59', NULL),
-(2, 1, 'Taipei 101', 'public', NULL, NULL, 25.03366, 121.56224, '2022-05-28 11:28:50', NULL);
+(2, 1, 'post conent2', 'only_self', 'tag1 tag6', '', NULL, NULL, '2023-09-02 01:26:30', '2023-09-02 01:57:08'),
+(3, 1, 'post conent', 'public', 'tag1 tag2', '', NULL, NULL, '2023-09-02 01:27:22', NULL),
+(4, 1, 'post conent', 'public', 'teg123456 teg 456789', '', NULL, NULL, '2023-09-02 01:27:53', NULL),
+(5, 1, 'post conent', 'public', 'teg123456 teg 456789', '', NULL, NULL, '2023-09-02 01:28:26', NULL),
+(7, 1, 'post conent', 'public', 'teg123456 teg 456789', '', NULL, NULL, '2023-09-02 01:32:10', NULL),
+(8, 1, 'this is an context', 'only_follow', 'greate hillow', 'there', NULL, NULL, '2023-09-02 01:34:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,9 +94,18 @@ CREATE TABLE `post_images` (
 --
 
 INSERT INTO `post_images` (`id`, `post_id`, `width`, `height`, `filename`, `created_at`) VALUES
-(1, 1, 800, 800, '/img/aonwkdasf.png', '2022-05-28 11:29:43'),
-(2, 1, 810, 810, '/img/inwast2l_A.png', '2022-05-28 11:30:10'),
-(3, 2, 1920, 1280, '/img/101.png', '2022-05-28 11:30:26');
+(1, 2, 640, 360, 'image/EGrlwnap8nmldsRWb4f8dATjFkuLDCNV2qeXbhJO.jpg', '2023-09-02 01:26:30'),
+(2, 3, 640, 360, 'image/4TOmCkcmQDo1coMo361ngt7qNwZMpJpHLfa7s9y4.jpg', '2023-09-02 01:27:22'),
+(3, 4, 640, 507, 'image/tnxJLhkmpVcYuIduhCUv7Cx2rv8q5OQ6sydClCYD.jpg', '2023-09-02 01:27:53'),
+(4, 5, 640, 507, 'image/5UrAPE0V81HijaWsbmlJMgQ0jdzGQKud9BQ5wLoa.jpg', '2023-09-02 01:28:26'),
+(5, 7, 640, 427, 'image/AUy41PG1RUuVttVVu5vZ0A0EpxQ9PxokYviuU9dQ.jpg', '2023-09-02 01:32:10'),
+(6, 7, 640, 427, 'image/yrxI0SF4Mx2MXyyYaMundzsqq0wRypehMLqLQBHB.jpg', '2023-09-02 01:32:10'),
+(7, 7, 640, 427, 'image/JAZ0CfhZOfSB72WiT66dz5lW63mU9vNmKRhQz9c2.jpg', '2023-09-02 01:32:10'),
+(8, 7, 640, 427, 'image/EzvAoq0831SJtpAW9zhkIpY169KMYKcttPg28H7E.jpg', '2023-09-02 01:32:10'),
+(9, 7, 640, 427, 'image/fapSZpPe7x5hErBEgX6d9Ar0EuQARp6EcExROFHB.jpg', '2023-09-02 01:32:10'),
+(10, 7, 640, 427, 'image/5xsDFtdEeTolWZh7tQmjdLY22Xgw02TnlbUheE8P.jpg', '2023-09-02 01:32:10'),
+(11, 7, 640, 956, 'image/3EsE38aiAK3FXlM1GXpOVWx81LxWZ5kAimN4sQBQ.jpg', '2023-09-02 01:32:10'),
+(12, 8, 640, 360, 'image/4iPusI1bz43whWbZfuexZ5cJvc6WHXVa3F0zJ86t.jpg', '2023-09-02 01:34:28');
 
 -- --------------------------------------------------------
 
@@ -105,15 +119,6 @@ CREATE TABLE `post_tags` (
   `tag_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- 傾印資料表的資料 `post_tags`
---
-
-INSERT INTO `post_tags` (`id`, `post_id`, `tag_id`) VALUES
-(1, 2, 3),
-(2, 1, 1),
-(3, 2, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -125,15 +130,6 @@ CREATE TABLE `tags` (
   `name` varchar(255) NOT NULL COMMENT '標籤名稱',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- 傾印資料表的資料 `tags`
---
-
-INSERT INTO `tags` (`id`, `name`, `created_at`) VALUES
-(1, 'Taipei', '2022-05-28 11:31:04'),
-(2, 'Taiwan', '2022-05-28 11:31:04'),
-(3, '2022', '2022-05-28 12:27:08');
 
 -- --------------------------------------------------------
 
@@ -158,8 +154,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `nickname`, `profile_image`, `access_token`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'admin@localhost', '$2y$12$qgQuxp1wGMvFAm93Kk0KpuXxK3KT4fVRW87GPcayWmqfCp4F84jJq Copy', 'admin', '/image/admin.png', '7ba684f146c9445720e4b9a8d6ed775de4804bc2dbe01fb6490b8cce05db9f43', 'ADMIN', '2022-05-28 08:46:32', NULL),
-(2, 'provider@localhost', '$2y$11$X7axSOlW5WX7tHHWfoMPveayXu4A9ZIt3YW4WBxwIwPeFU6m7Hepu Copy', 'provider', '/image/test.jpg', NULL, 'USER', '2022-05-28 08:47:09', NULL);
+(1, 'admin@web.tw', '$2y$10$TNYNFBpg4eBxMsg1tm4mK.ZPX.Fr74T2QCgvd57ZEk1EPJhOR/cM2', 'new_nickname', 'image/0twYvnANDim9FFljpz0aLLVNnayu0USiTp56wtfH.jpg', NULL, 'ADMIN', '2023-09-02 01:14:47', '2023-09-02 02:32:35'),
+(2, 'user@web.tw', '$2y$10$.KdrRHWNZCwxHImB0Vcy2un0Q5KzhP/ZktJCOVn3f8pZdBcRYwEae', 'user', 'image/rItbyBk70eJxZOGNYhmlck2c5I1PyQbpBvGPH8hI.jpg', NULL, 'USER', '2023-09-02 01:15:48', NULL),
+(3, 'test@web.tw', '$2y$10$4CbgzfJB1QqSih5E01GmwuoMFrX6uijV2AFLFB2FLNckyComAoWUi', 'test', 'image/A9zlmL39EFBJDSZ370Glen3hB8QaOKvEFQFvSGg8.jpg', NULL, 'USER', '2023-09-02 02:43:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -179,7 +176,8 @@ CREATE TABLE `user_follows` (
 --
 
 INSERT INTO `user_follows` (`id`, `user_id`, `follow_user_id`, `created_at`) VALUES
-(1, 1, 2, '2022-05-28 12:28:23');
+(2, 2, 1, '2023-09-02 02:36:01'),
+(3, 3, 1, '2023-09-02 02:43:39');
 
 -- --------------------------------------------------------
 
@@ -199,7 +197,8 @@ CREATE TABLE `user_likes` (
 --
 
 INSERT INTO `user_likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
-(1, 2, 1, '2022-05-28 12:28:15');
+(2, 1, 7, '2023-09-02 02:03:22'),
+(3, 1, 8, '2023-09-02 02:09:01');
 
 --
 -- 已傾印資料表的索引
@@ -273,49 +272,49 @@ ALTER TABLE `user_likes`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `post_images`
 --
 ALTER TABLE `post_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `post_tags`
 --
 ALTER TABLE `post_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_follows`
 --
 ALTER TABLE `user_follows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_likes`
 --
 ALTER TABLE `user_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 已傾印資料表的限制式

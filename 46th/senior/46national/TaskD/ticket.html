@@ -21,10 +21,25 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='login.html'" value="登入後台">
             </div>
         </div>
-        <div class="indexmain">
-            <div class="indexmainbody macossectiondiv" id="maindiv">
-            </div>
+        <div class="main trainmain">
+            手機號碼: <input type="text" class="input" id="phone"><br><br>
+            乘車日期: <input type="date" class="input" id="date"><br><br>
+            <select class="ticketselect" id="code">
+                <option value="na">車次代碼</option>
+            </select>
+            <select class="ticketselect" id="start">
+                <option value="na">起程站</option>
+            </select>
+            <select class="ticketselect" id="end">
+                <option value="na">終點站</option>
+            </select><br><br>
+            車票張數: <input type="number" class="input" id="count"><br>
+            <input type="button" class="button" id="check" value="回答驗證碼"><br>
+            <div class="ticketwarning warning" id="error"></div>
+            <input type="reset" class="button" value="清除">
+            <input type="button" class="button" id="submit" value="送出">
         </div>
-        <script src="index.js"></script>
+        <div id="lightbox"></div>
+        <script src="ticket.js"></script>
     </body>
 </html>

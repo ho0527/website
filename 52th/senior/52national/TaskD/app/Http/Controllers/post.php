@@ -26,11 +26,9 @@
             if(($orderby=="created_at"||$orderby=="like_count")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
                 $row=DB::table("posts")
                     ->where("type","=","public")
-                    ->where(function($query)use($content,$tag,$location){
-                        $query->where("content","LIKE","%".$content."%")
-                            ->where("tag","LIKE","%".$tag."%")
-                            ->where("location","LIKE","%".$location."%");
-                    })
+                    ->where("content","LIKE","%".$content."%")
+                    ->where("tag","LIKE","%".$tag."%")
+                    ->where("location","LIKE","%".$location."%")
                     ->orderBy($orderby,$ordertype)
                     ->skip(($page-1)*$pagesize)
                     ->take($pagesize)
@@ -49,22 +47,19 @@
         }
 
         public function getidpost(Request $request,$postid){
-            $id=$request->route("post_id");
-            $row=DB::table("posts")
-                ->where(function($query)use($id){
-                    $query->where("id","=",$id);
-                })->select("*")->get();
             $userid=logincheck();
+            $row=DB::table("posts")
+                ->where("id","=",$postid)
+                ->select("*")->get();
             if($row->isNotEmpty()){
                 $follow=DB::table("user_follows")
-                    ->where("user_id", "=", $row[0]->author_id)
-                    ->where("follow_user_id", "=", $_SESSION["data"])
+                    ->where("user_id","=",$row[0]->author_id)
+                    ->where("follow_user_id","=",$userid)
                     ->select("*")->get();
                 if(($row[0]->type=="public")||(($follow->isNotEmpty()||$userid==$row[0]->author_id)&&$row[0]->type=="only_follow")||($userid==$row[0]->author_id&&$row[0]->type=="only_self")){
                     $commentrow=DB::table("comments")
-                        ->where(function($query)use($id){
-                            $query->where("post_id","=",$id);
-                        })->select("*")->get();
+                        ->where("post_id","=",$postid)
+                        ->select("*")->get();
                     return response()->json([
                         "success"=>true,
                         "message"=>"",
@@ -82,22 +77,22 @@
         }
 
         public function post(Request $request){
-            if($_SESSION["data"]!=""){
+            $userid=logincheck();
+            if($userid){
                 if($request->has("type")&&$request->has("content")&&$request->hasFile("images")){
                     $type=$request->input("type");
-                    $tag=$request->input("tags");
                     $content=$request->input("content");
-                    $location=$request->input("location_name");
                     $image=$request->file("images");
-                    if(!($request->has("tags"))){ $tag=""; }
-                    if(!($request->has("location_name"))){ $location=""; }
+                    $tag="";
+                    $location="";
+                    if($request->has("tags")){ $tag=$request->input("tags"); }
+                    if($request->has("location_name")){ $location=$request->input("location_name"); }
                     if(is_string($type)&&is_string($tag)&&is_string($content)&&is_string($location)&&($type=="public"||$type=="only_follow"||$type=="only_self")){
-                        $tagtemp=explode(" ",$tag);
                         DB::table("posts")->insert([
-                            "author_id"=>$_SESSION["data"],
+                            "author_id"=>$userid,
                             "content"=>$content,
                             "type"=>$type,
-                            "tag"=>implode(" ",$tagtemp),
+                            "tag"=>$tag, // 直接存就好嗎?
                             "location"=>$location,
                             // "place_lat"=>$_SESSION["data"],
                             // "place_lng"=>$_SESSION["data"],
@@ -105,16 +100,14 @@
                         ]);
                         $row=DB::table("posts")
                             ->latest()
-                            ->select("*")->get();
-                        $id=$row[0]->id;
+                            ->select("*")->get()[0];
+                        $id=$row->id;
                         $row=DB::table("posts")
-                            ->where(function($query)use($id){
-                                $query->where("id","=",$id);
-                            })
+                            ->where("id","=",$id)
                             ->select("*")->get();
                         for($i=0;$i<count($image);$i=$i+1){
                             if(in_array($image[$i]->extension(),["png","jpg"])){
-                                $path="http://localhost/website/52th/senior/52national/TaskD/storage/app/".$image[$i]->store("upload/image");
+                                $path=$image[$i]->store("image");
                                 $imagedata=getimagesize(storage_path("app/".$path));
                                 DB::table("post_images")->insert([
                                     "post_id"=>$id,
@@ -152,33 +145,29 @@
         }
 
         public function editpost(Request $request,$postid){
-            if($_SESSION["data"]!=""){
-                $id=$request->route("post_id");
+            $userid=logincheck();
+            if($userid){
                 $row=DB::table("posts")
-                    ->where(function($query)use($id){
-                        $query->where("id","=",$id);
-                    })->select("*")->get();
+                    ->where("id","=",$postid)
+                    ->select("*")->get();
                 if($row->isNotEmpty()){
-                    if($row[0]->author_id==$_SESSION["data"]){
+                    if($row[0]->author_id==$userid){
                         if($request->has("type")&&$request->has("content")){
                             $type=$request->input("type");
-                            $tag=$request->input("tags");
+                            $tag="";
                             $content=$request->input("content");
-                            if(!($request->has("tags"))){ $tag=""; }
+                            if($request->has("tags")){ $tag=$request->input("tags"); }
                             if(is_string($type)&&is_string($tag)&&is_string($content)&&($type=="public"||$type=="only_follow"||$type=="only_self")){
-                                $tagtemp=explode(" ",$tag);
                                 DB::table("posts")
-                                    ->where("id","=",$id)
+                                    ->where("id","=",$postid)
                                     ->update([
                                         "content"=>$content,
                                         "type"=>$type,
-                                        "tag"=>implode(" ",$tagtemp),
+                                        "tag"=>$tag,
                                         "updated_at"=>time(),
                                     ]);
                                 $row=DB::table("posts")
-                                    ->where(function($query)use($id){
-                                        $query->where("id","=",$id);
-                                    })
+                                    ->where("id","=",$postid)
                                     ->select("*")->get();
                                 return response()->json([
                                     "success"=>true,
@@ -205,15 +194,13 @@
         public function delpost(Request $request,$postid){
             $userid=logincheck();
             if($userid){
-                $id=$request->route("post_id");
                 $row=DB::table("posts")
-                    ->where(function($query)use($id){
-                        $query->where("id","=",$id);
-                    })->select("*")->get();
+                    ->where("id","=",$postid)
+                    ->select("*")->get();
                 if($row->isNotEmpty()){
                     if($row[0]->author_id==$userid){
                         $row=DB::table("posts")
-                            ->where("id","=",$id)
+                            ->where("id","=",$postid)
                             ->delete();
                         return response()->json([
                             "success"=>true,
@@ -234,28 +221,30 @@
         public function favorite(Request $request,$postid){
             $userid=logincheck();
             if($userid){
-                $id=$request->route("post_id");
                 $row=DB::table("posts")
-                    ->where(function($query)use($id){
-                        $query->where("id","=",$id);
-                    })->select("*")->get();
+                    ->where("id","=",$postid)
+                    ->select("*")->get();
                 if($row->isNotEmpty()){
-                    if($row[0]->author_id!=$userid){
+                    $follow=DB::table("user_follows")
+                        ->where("user_id","=",$row[0]->author_id)
+                        ->where("follow_user_id","=",$userid)
+                        ->select("*")->get();
+                    if(($row[0]->type=="public")||(($follow->isNotEmpty()||$userid==$row[0]->author_id)&&$row[0]->type=="only_follow")||($userid==$row[0]->author_id&&$row[0]->type=="only_self")){
                         if($request->has("favorite")){
-                            $type=$request->input("favorite");
-                            if($type==true){
+                            $type=$request->input("favorite"); // 是true==新增 false 取消 還是只有true
+                            if(is_bool($type)){
                                 $row=DB::table("user_likes")
-                                    ->where("post_id","=",$id)
+                                    ->where("post_id","=",$postid)
                                     ->where("user_id","=",$userid)
                                     ->select("*")->get();
                                 if($row->isEmpty()){
                                     $row=DB::table("user_likes")->insert([
                                         "user_id"=>$userid,
-                                        "post_id"=>$id,
+                                        "post_id"=>$postid,
                                     ]);
                                 }else{
                                     $row=DB::table("user_likes")
-                                        ->where("post_id","=",$id)
+                                        ->where("post_id","=",$postid)
                                         ->where("user_id","=",$userid)
                                         ->delete();
                                 }
@@ -283,7 +272,7 @@
 
         public function getfavorite(Request $request){
             $userid=logincheck();
-            if($userid!=""){
+            if($userid){
                 $orderby=$request->input("order_by");
                 $ordertype=$request->input("order_type");
                 $page=$request->input("page");
@@ -294,16 +283,23 @@
                 if(!($request->has("pagesize"))){ $pagesize=10; }
                 if(($orderby=="created_at"||$orderby=="like_count")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
                     $row=DB::table("user_likes")
-                        ->where("id","=",$userid)
+                        ->where("user_id","=",$userid)
                         ->orderBy($orderby,$ordertype)
                         ->skip(($page-1)*$pagesize)
                         ->take($pagesize)
                         ->select("*")->get();
+                    $data=[];
+                    for($i=0;$i<count($row);$i=$i+1){
+                        $imagerow=DB::table("posts")
+                            ->where("id","=",$row[$i]->post_id)
+                            ->select("*")->get();
+                        $data[]=$imagerow[0];
+                    }
                     return response()->json([
                         "success"=>true,
                         "message"=>"",
                         "data"=>[
-                            "posts"=>post($row)
+                            "posts"=>post($data)
                         ]
                     ]);
                 }else{
@@ -313,38 +309,37 @@
                 return tokenerror();
             }
         }
-        public function editfavorite(Request $request,$postid){
-            if($_SESSION["data"]!=""){
-                $id=$request->route("post_id");
-                $userid=$_SESSION["data"];
-                $row=DB::table("posts")
-                    ->where(function($query)use($id){
-                        $query->where("id","=",$id);
-                    })->select("*")->get();
+
+        public function comment(Request $request,$postid){
+            $row=DB::table("posts")
+                ->where("id","=",$postid)
+                ->select("*")->get();
+            $userid=logincheck();
+            if($userid){
                 if($row->isNotEmpty()){
-                    if($row[0]->author_id!=$_SESSION["data"]){
+                    $follow=DB::table("user_follows")
+                        ->where("user_id","=",$row[0]->author_id)
+                        ->where("follow_user_id","=",$userid)
+                        ->select("*")->get();
+                    if(($row[0]->type=="public")||(($follow->isNotEmpty()||$userid==$row[0]->author_id)&&$row[0]->type=="only_follow")||($userid==$row[0]->author_id&&$row[0]->type=="only_self")){
                         if($request->has("content")){
-                            $type=$request->input("content");
-                            if($type==true){
-                                $row=DB::table("user_likes")
-                                    ->where("post_id","=",$id)
-                                    ->where("user_id","=",$userid)
+                            $content=$request->input("content");
+                            if(is_string($content)){
+                                DB::table("comments")->insert([
+                                    "user_id"=>$userid,
+                                    "post_id"=>$postid,
+                                    "content"=>$content,
+                                    "created_at"=>time()
+                                ]);
+
+                                $commentrow=DB::table("comments")
+                                    ->latest()
                                     ->select("*")->get();
-                                if($row->isEmpty()){
-                                    $row=DB::table("user_likes")->insert([
-                                        "user_id"=>$userid,
-                                        "post_id"=>$id,
-                                    ]);
-                                }else{
-                                    $row=DB::table("user_likes")
-                                        ->where("post_id","=",$id,"AND","user_id","=",$userid)
-                                        ->delete();
-                                }
+
                                 return response()->json([
                                     "success"=>true,
-                                    "message"=>"",
-                                    "data"=>comment($row)
-                                ]);
+                                    "data"=>comment([$commentrow[0]])
+                                ],200);
                             }else{
                                 return datatypeerror();
                             }
@@ -362,13 +357,90 @@
             }
         }
 
-        public function comment(Request $request,$postid,$commentid){
-        }
-
         public function editcomment(Request $request,$postid,$commentid){
+            $row=DB::table("posts")
+                ->where("id","=",$postid)
+                ->select("*")->get();
+            $commentrow=DB::table("comments")
+                ->where("id","=",$commentid)
+                ->select("*")->get();
+            $userid=logincheck();
+            if($userid){
+                if($row->isNotEmpty()){
+                    if($commentrow->isNotEmpty()&&$commentrow[0]->post_id==$postid){
+                        if($userid==$commentrow[0]->user_id){
+                            if($request->has("content")){
+                                $content=$request->input("content");
+                                if(is_string($content)){
+                                    DB::table("comments")
+                                        ->where("id","=",$commentid)
+                                        ->update([
+                                            "content"=>$content
+                                        ]);
+
+                                    $commentrow=DB::table("comments")
+                                        ->where("id","=",$commentid)
+                                        ->select("*")->get();
+
+                                    return response()->json([
+                                        "success"=>true,
+                                        "data"=>comment([$commentrow[0]])
+                                    ],200);
+                                }else{
+                                    return datatypeerror();
+                                }
+                            }else{
+                                return missingfield();
+                            }
+                        }else{
+                            return nopermission();
+                        }
+                    }else{
+                        return commenterror();
+                    }
+                }else{
+                    return posterror();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function delcomment(Request $request,$postid,$commentid){
+            $row=DB::table("posts")
+                ->where("id","=",$postid)
+                ->select("*")->get();
+            $commentrow=DB::table("comments")
+                ->where("id","=",$commentid)
+                ->select("*")->get();
+            $userid=logincheck();
+            if($userid){
+                if($row->isNotEmpty()){
+                    if($commentrow->isNotEmpty()&&$commentrow[0]->post_id==$postid){
+                        if($userid==$commentrow[0]->user_id){
+                            $row=DB::table("comments")
+                                ->where("id","=",$commentid)
+                                ->select("*")->get();
+                    
+                            DB::table("comments")
+                                ->where("id","=",$commentid)
+                                ->delete();
+    
+                            return response()->json([
+                                "success"=>true
+                            ],200);
+                        }else{
+                            return nopermission();
+                        }
+                    }else{
+                        return commenterror();
+                    }
+                }else{
+                    return posterror();
+                }
+            }else{
+                return tokenerror();
+            }
         }
     }
 ?>

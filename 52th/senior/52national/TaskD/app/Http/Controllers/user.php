@@ -107,34 +107,29 @@
         }
 
         public function getuserpost(Request $request,$userid){
-            // $userid=$request->route("user_id");
-            $ordertype=$request->input("order_by");
-            $ordertype=$request->input("order_type");
-            $content=$request->input("content");
-            $tag=$request->input("tag");
-            $location=$request->input("location_name");
-            $page=$request->input("page");
-            $pagesize=$request->input("page_size");
-            if(!($request->has("order_by"))){ $orderby="created_at"; }
-            if(!($request->has("order_type"))){ $ordertype="desc"; }
-            if(!($request->has("content"))){ $content=""; }
-            if(!($request->has("tag"))){ $tag=""; }
-            if(!($request->has("location_name"))){ $location=""; }
-            if(!($request->has("page"))){ $page=1; }
-            if(!($request->has("pagesize"))){ $pagesize=10; }
+            $orderby="created_at";
+            $ordertype="desc";
+            $content="";
+            $tag="";
+            $location="";
+            $page=1;
+            $pagesize=10;
+            if($request->has("order_by")){ $orderby=$request->input("order_by"); }
+            if($request->has("order_type")){ $ordertype=$request->input("order_type"); }
+            if($request->has("content")){ $content=$request->input("content"); }
+            if($request->has("tag")){ $tag=$request->input("tag"); }
+            if($request->has("location_name")){ $location=$request->input("location_name"); }
+            if($request->has("page")){ $page=$request->input("page"); }
+            if($request->has("pagesize")){ $pagesize=$request->input("page_size"); }
             $row=DB::table("users")
-                ->where(function($query)use($userid){
-                    $query->where("id","=",$userid);
-                })->select("*")->get();
+                ->where("id","=",$userid)
+                ->select("*")->get();
             if($row->isNotEmpty()){
                 if(($orderby=="created_at"||$orderby=="like_count")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
                     $row=DB::table("posts")
-                        ->where("author_id","=",$userid)
-                        ->where(function($query)use($content,$tag,$location){
-                            $query->where("content","LIKE","%".$content."%")
-                                ->where("tag","LIKE","%".$tag."%")
-                                ->where("location","LIKE","%".$location."%");
-                        })
+                        ->where("content","LIKE","%".$content."%")
+                        ->where("tag","LIKE","%".$tag."%")
+                        ->where("location","LIKE","%".$location."%")
                         ->orderBy($orderby,$ordertype)
                         ->skip(($page-1)*$pagesize)
                         ->take($pagesize)
@@ -155,12 +150,10 @@
             }
         }
 
-        public function getuserprofile(Request $request,$userid){
-            // $id=$request->route("user_id");
+        public function getprofile(Request $request,$userid){
             $row=DB::table("users")
-                ->where(function($query)use($userid){
-                    $query->where("id","=",$userid);
-                })->select("*")->get();
+                ->where("id","=",$userid)
+                ->select("*")->get();
             if($row->isNotEmpty()){
                 return response()->json([
                     "success"=>true,
@@ -173,19 +166,21 @@
         }
 
         public function editprofile(Request $request,$userid){
-            if($_SESSION["data"]!=""){
-                // $id=$request->route("user_id");
-                if($userid==$_SESSION["data"]){
-                    $row=DB::table("users")
-                        ->where("id","=",$userid)
-                        ->select()->get();
-                    if($row->isNotEmpty()){
+            $loginuserid=logincheck();
+            if($userid){
+                $row=DB::table("users")
+                    ->where("id","=",$userid)
+                    ->select()->get();
+                if($row->isNotEmpty()){
+                    if($userid==$loginuserid){
                         if($request->has("nickname")){
                             $nickname=$request->input("nickname");
                             if(preg_match("/^[a-z0-9_]{4,16}$/",$nickname)){
-                                DB::table("users")->update([
-                                    "nickname"=>$nickname
-                                ]);
+                                DB::table("users")
+                                    ->where("id","=",$userid)
+                                    ->update([
+                                        "nickname"=>$nickname
+                                    ]);
                             }else{
                                 return datatypeerror();
                             }
@@ -193,17 +188,21 @@
                         if($request->hasFile("profile_image")){
                             $image=$request->file("profile_image");
                             if(in_array($image->extension(),["png","jpg"])){
-                                $path="http://localhost/website/52th/senior/52national/TaskD/storage/app/".$image->store("upload/profile");
-                                DB::table("users")->update([
-                                    "profile_image"=>$path
-                                ]);
+                                $path=$image->store("image");
+                                DB::table("users")
+                                    ->where("id","=",$userid)
+                                    ->update([
+                                        "profile_image"=>$path
+                                    ]);
                             }else{
                                 return imageerror();
                             }
                         }
-                        DB::table("users")->update([
-                            "updated_at"=>time()
-                        ]);
+                        DB::table("users")
+                            ->where("id","=",$userid)
+                            ->update([
+                                "updated_at"=>time()
+                            ]);
                         $row=DB::table("users")
                             ->where("id","=",$userid)
                             ->select()->get();
@@ -213,40 +212,52 @@
                             "data"=>user($row[0],"normal")
                         ]);
                     }else{
-                        return usererror();
+                        return nopermission();
                     }
                 }else{
-                    return nopermission();
+                    return usererror();
                 }
             }else{
                 return tokenerror();
             }
         }
 
-        public function getfollow(Request $request){
-            if($_SESSION["data"]!=""){
-                $id=$_SESSION["data"];
-                $id=$request->route("user_id");
-                $orderby=$request->input("order_by");
-                $ordertype=$request->input("order_type");
-                $page=$request->input("page");
-                $pagesize=$request->input("page_size");
-                if(!($request->has("order_by"))){ $orderby="created_at"; }
-                if(!($request->has("order_type"))){ $ordertype="desc"; }
-                if(!($request->has("page"))){ $page=1; }
-                if(!($request->has("pagesize"))){ $pagesize=10; }
+        public function getfollow(Request $request,$userid){
+            $loginuserid=logincheck();
+            if(logincheck()){
+                $orderby="created_at";
+                $ordertype="desc";
+                $page=1;
+                $pagesize=10;
+                if($request->has("order_by")){ $orderby=$request->input("order_by"); }
+                if($request->has("order_type")){ $ordertype=$request->input("order_type"); }
+                if($request->has("page")){ $page=$request->input("page"); }
+                if($request->has("pagesize")){ $pagesize=$request->input("page_size"); }
                 if(($orderby=="created_at"||$orderby=="like_count")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
                     $row=DB::table("user_follows")
-                        ->where("user_id","=",$id)
+                        ->where("follow_user_id","=",$userid)
                         ->orderBy($orderby,$ordertype)
                         ->skip(($page-1)*$pagesize)
                         ->take($pagesize)
                         ->select("*")->get();
+                    $data=[];
+                    for($i=0;$i<count($row);$i=$i+1){
+                        $userrow=DB::table("users")
+                            ->where("id","=",$row[$i]->user_id)
+                            ->select("*")->get()[0];
+                        $data[]=[
+                            "id"=>$userrow->id,
+                            "email"=>$userrow->email,
+                            "nickname"=>$userrow->nickname,
+                            "profile_image"=>url($userrow->profile_image),
+                            "type"=>$userrow->type,
+                        ];
+                    }
                     return response()->json([
                         "success"=>true,
                         "message"=>"",
                         "data"=>[
-                            "posts"=>user($row,"normal")
+                            "posts"=>$data
                         ]
                     ]);
                 }else{
@@ -257,16 +268,16 @@
             }
         }
 
-        public function follow(Request $request){
-            if($_SESSION["data"]!=""){
-                $id=$request->route("user_id");
+        public function follow(Request $request,$userid){
+            $loginuserid=logincheck();
+            if($loginuserid){
                 $row=DB::table("users")
-                    ->where("id","=",$id)
+                    ->where("id","=",$userid)
                     ->select("*")->get();
                 if($row->isNotEmpty()){
                     $row=DB::table("user_follows")->insert([
-                        "user_id"=>$id,
-                        "follow_user_id"=>$_SESSION["data"]
+                        "user_id"=>$userid,
+                        "follow_user_id"=>$loginuserid
                     ]);
                     return response()->json([
                         "success"=>true,
@@ -281,15 +292,16 @@
             }
         }
 
-        public function delfollow(Request $request){
-            if($_SESSION["data"]!=""){
-                $id=$request->route("user_id");
+        public function delfollow(Request $request,$userid){
+            $loginuserid=logincheck();
+            if($loginuserid){
                 $row=DB::table("users")
-                    ->where("id","=",$id)
+                    ->where("id","=",$userid)
                     ->select("*")->get();
                 if($row->isNotEmpty()){
                     $row=DB::table("user_follows")
-                        ->where("user_id","=",$id,"AND","follow_user_id","=",$_SESSION["data"])
+                        ->where("user_id","=",$userid)
+                        ->where("follow_user_id","=",$loginuserid)
                         ->delete();
                     return response()->json([
                         "success"=>true,

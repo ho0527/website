@@ -26,7 +26,6 @@
     Route::DELETE("/post/{post_id}",[post::class,"delpost"])->where("post_id","[0-9]+");
     Route::POST("/post/{post_id}/favorite",[post::class,"favorite"])->where("post_id","[0-9]+");
     Route::GET("/post/favorite",[post::class,"getfavorite"]);
-    Route::POST("/post/{post_id}/favorite",[post::class,"editfavorite"])->where("post_id","[0-9]+");
     Route::POST("/post/{post_id}/comment",[post::class,"comment"])->where("post_id","[0-9]+");
     Route::POST("/post/{post_id}/comment/{comment_id}",[post::class,"editcomment"])->where("post_id","[0-9]+")->where("comment_id","[0-9]+");
     Route::DELETE("/post/{post_id}/comment/{comment_id}",[post::class,"delcomment"])->where("post_id","[0-9]+")->where("comment_id","[0-9]+");

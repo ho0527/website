@@ -809,3 +809,24 @@ table{
     width: 1000px;
     padding: 10px;
 }
+
+.ticketselect{
+    width: 30%;
+    font-size: 30px;
+    margin: 0px 5px;
+    text-align: center;
+}
+
+.ticketwarning{
+    margin: 20px;
+}
+
+.trainmain{
+    min-width: 50%;
+}
+
+.ticketlist{
+    text-align: left;
+    font-size: 20px;
+    width: 30vw;
+}

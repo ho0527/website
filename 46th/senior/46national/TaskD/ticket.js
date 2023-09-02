@@ -1,0 +1,172 @@
+let traincodelist
+let trainlist
+let traindata
+let trainid
+let ticket
+
+newajax("GET","api.php?traincodelist=").onload=function(){ traincodelist=JSON.parse(this.responseText) }
+newajax("GET","api.php?trainlist=").onload=function(){ trainlist=JSON.parse(this.responseText) }
+newajax("GET","api.php?ticket=").onload=function(){ ticket=JSON.parse(this.responseText) }
+
+setTimeout(function(){
+    let traincode="<option value=\"na\">車次代碼</option>"
+    for(let i=0;i<traincodelist.length;i=i+1){
+        traincode=traincode+`<option value="${traincodelist[i]}">${traincodelist[i]}</option>`
+    }
+
+    docgetid("code").innerHTML=traincode
+
+    docgetid("code").onchange=function(){
+        if(this.value!="na"){
+            let code=this.value
+            let stopdata=""
+            let count=1
+
+            for(let i=0;i<trainlist[0].length;i=i+1){
+                if(trainlist[0][i][2]==code){
+                    trainid=trainlist[0][i][0]
+                    break
+                }
+            }
+
+            for(let i=0;i<trainlist[1].length;i=i+1){
+                if(trainlist[1][i][1]==trainid){
+                    for(let j=0;j<trainlist[2].length;j=j+1){
+                        if(trainlist[2][j][0]==trainlist[1][i][2]){
+                            stopdata=stopdata+"<option value=\""+j+"\">"+count+". "+trainlist[2][j][2]+"</option>"
+                            count=count+1
+                            console.log("count="+count)
+                        }
+                    }
+                }
+            }
+
+            docgetid("start").innerHTML="<option value=\"na\">起程站</option>"+stopdata
+            docgetid("end").innerHTML="<option value=\"na\">終點站</option>"+stopdata
+        }
+    }
+},100)
+
+docgetid("submit").onclick=function(){
+    let phone=docgetid("phone").value
+    let date=docgetid("date").value
+    let code=docgetid("code").value
+    let start=docgetid("start").value
+    let end=docgetid("end").value
+    let count=docgetid("count").value
+    let price=0
+    let day=new Date(date).getDay()
+    let success=true
+    let error=[]
+    let notwrite=""
+
+    if(phone==""){
+        notwrite=notwrite+"手機號碼 "
+    }
+
+    if(date==""){
+        notwrite=notwrite+"乘車日期 "
+    }
+
+    if(code=="na"){
+        notwrite=notwrite+"車次代碼 "
+    }
+
+    if(start=="na"){
+        notwrite=notwrite+"起程站 "
+    }
+
+    if(end=="na"){
+        notwrite=notwrite+"終點站 "
+    }
+
+    if(count==""){
+        notwrite=notwrite+"車票張數 "
+    }
+
+    if(notwrite!=""){
+        error.push(notwrite+"項目未填寫")
+        success=false
+    }
+
+    if(isset(trainid)){
+        if(day!=trainlist[0][trainid][3]){
+            error.push("列車日期錯誤 無此班列車")
+            success=false
+        }
+    }
+
+    if(!regexpmatch(count,"^[1-9]([0-9]{0,3})$")){
+        error.push("訂票數量錯誤(1~1000)")
+        success=false
+    }
+
+    if(date<=new Date()){
+        error.push("發車時間已過")
+        success=false
+    }
+
+    if(start>=end){
+        error.push("站點選擇錯誤")
+        success=false    
+    }
+
+    if(docgetid("check").style.backgroundColor!="green"){
+        error.push("尚未通過驗證碼")
+        success=false    
+    }
+
+    if(success){
+        let littleeng="abcdefghijklmnopqrstuvwxyz"
+        let bigeng=littleeng.toUpperCase()
+        let number="1234567890"
+        let ticketcode=""
+
+        for(let i=0;i<12;i=i+1){
+            let key=parseInt(Math.random()*3)
+            if(key==0){
+                ticketcode=ticketcode+littleeng[parseInt(Math.random()*26)]
+            }else if(key==1){
+                ticketcode=ticketcode+bigeng[parseInt(Math.random()*26)]
+            }else{
+                ticketcode=ticketcode+number[parseInt(Math.random()*10)]
+            }
+        }
+
+        docgetid("error").innerHTML=`
+        `
+
+        lightbox(null,"lightbox",function(){
+            return `
+                <h1>訂票成功</h1>
+                <hr>
+                <div class="ticketlist">
+                    詳細資料如下:<br>
+                    訂票編號: ${ticketcode}<br>
+                    手機號碼: ${phone}<br>
+                    發車時間: ${date+" "+trainlist[1][start][4]}<br>
+                    車次代碼: ${trainlist[0][trainid][2]}<br>
+                    起程站: ${start}<br>
+                    終點站: ${end}<br>
+                    張數: ${count}<br>
+                    票價: ${price}<br>
+                    總價: ${count*price}<br>
+                </div>
+                <input type="button" class="button" onclick="location.reload()" value="返回">
+            `
+        })
+    }else{
+        docgetid("error").innerHTML=`
+            錯誤內容如下: <br>
+            ${error.join(", ")}
+        `
+    }
+}
+
+docgetid("check").onclick=function(){
+    docgetid("check").disabled="true"
+    docgetid("check").style.backgroundColor="green"
+    docgetid("check").style.color="black"
+}
+
+startmacossection()

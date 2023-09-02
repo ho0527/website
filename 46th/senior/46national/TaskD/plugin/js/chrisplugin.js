@@ -18,7 +18,8 @@
     2023/07/23  18:18:28 Bata 1.0.12 // 新增pagechanger函式
     2023/07/25  22:12:42 Bata 1.0.13 // 修改lightbox函式
     2023/07/25  10:50:11 Bata 1.0.14 // 修改lightbox函式
-    2023/07/25  19:31:17 Bata 1.0.15 // 修正startmacossection函式
+    2023/08/01  23:22:33 Bata 1.0.15 // 修改formdata函式
+    2023/08/09  18:27:14 Bata 1.0.16 // 修改lightbox函式新增clickcolse變數
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -182,17 +183,19 @@ function newajax(method,url,send=null){
     return ajax
 }
 
-function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxclosewithkeyesc=true){
-    docgetid(element).innerHTML=``
-    docgetall(clickelement).forEach(function(event){
-        event.onclick=function(){
+function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxclosewithkeyesc=true,clickcolse="mask"){
+    docgetid(element).classList.add("lightboxmask")
+
+    setTimeout(function(){
+        if(clickelement==null){
+            docgetid(element).innerHTML=``
             docgetid(element).style.display="block"
             setTimeout(function(){
                 docgetid(element).style.transform="translateY(0)"
             },10)
             html=`
                 <div class="lightboxmain macossectiondiv">
-            `+lightboxhtml(event)+`
+                    ${lightboxhtml()}
                 </div>
             `
             docgetid(element).innerHTML=html
@@ -206,24 +209,70 @@ function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxc
                     },300)
                 }
             }
+        }else{
+            docgetid(element).innerHTML=``
+            docgetall(clickelement).forEach(function(event){
+                event.onclick=function(){
+                    docgetid(element).style.display="block"
+                    setTimeout(function(){
+                        docgetid(element).style.transform="translateY(0)"
+                    },10)
+                    html=`
+                        <div class="lightboxmain macossectiondiv">
+                            `+lightboxhtml(event)+`
+                        </div>
+                    `
+                    docgetid(element).innerHTML=html
+                    if(closelement!=null){
+                        docgetid(closelement).onclick=function(){
+                            docgetid(element).style.transform="translateY(-100%)"
+                            setTimeout(function(){
+                                docgetid(element).style.display="none"
+                                docgetid(element).innerHTML=``
+                            },300)
+                        }
+                    }
+                }
+            })
         }
-    })
 
-    if(islightboxclosewithkeyesc){
-        document.addEventListener("keydown",function(event){
-            if(event.key=="Escape"){
-                event.preventDefault()
+        if(islightboxclosewithkeyesc){
+            document.addEventListener("keydown",function(event){
+                if(event.key=="Escape"){
+                    event.preventDefault()
+                    docgetid(element).style.transform="translateY(-100%)"
+                    setTimeout(function() {
+                        docgetid(element).style.display="none"
+                        docgetid(element).innerHTML=``
+                    },300)
+                }
+            })
+        }
+
+        if(clickcolse=="body"){
+            document.onclick=function(){
                 docgetid(element).style.transform="translateY(-100%)"
-
-                setTimeout(function() {
+                setTimeout(function(){
                     docgetid(element).style.display="none"
                     docgetid(element).innerHTML=``
                 },300)
             }
-        })
-    }
+        }else if(clickcolse=="mask"){
+            docgetid(element).onclick=function(event){
+                if(event.target==docgetid(element)){
+                    docgetid(element).style.transform="translateY(-100%)"
+                    setTimeout(function(){
+                        docgetid(element).style.display="none"
+                        docgetid(element).innerHTML=``
+                    },300)
+                }
+            }
+        }else if(clickcolse=="none"){
+        }else{
+            console.log("lightbox clickcolse變數 錯誤")
+        }
+    },70)
 }
-
 
 function docappendchild(element,chlidelement){
     return docgetid(element).appendChild(chlidelement)
@@ -241,7 +290,7 @@ function regexpreplace(data,replacetext,regexptext,regexpstring=""){
     return data.replace(regexp(regexptext,regexpstring),replacetext)
 }
 
-function ajaxdata(data=[]){
+function formdata(data=[]){
     let formdata=new FormData()
     for(let i=0;i<data.length;i=i+1){
         formdata.append(data[i][0],data[i][1])
