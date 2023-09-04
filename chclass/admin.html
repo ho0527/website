@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>國文成績查詢系統</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
+        <script src="plugin/js/chrisplugin.js"></script>
+    </head>
+    <body class="adminbg">
+        <div class="navigationbar">
+            <div class="navigationbarleft">
+                <img src="material/icon/mainicon.png" class="logo">
+                <div class="maintitle">國文成績查詢系統</div>
+            </div>
+            <div class="navigationbarright">
+                <input type="button" class="navigationbarbutton" onclick="alert('沒有用用用')" value="下載csv檔">
+                <input type="button" class="navigationbarbutton" onclick="location.href='score.html'" value="登記成績">
+                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.reload()" value="ADMIN首頁">
+                <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
+            </div>
+        </div>
+        <div class="main showmain macossectiondiv">
+            <table id="maintable">
+                <tr id="tablehead">
+                    <td class="td">學號</td>
+                </tr>
+            </table>
+        </div>
+        <script src="admin.js"></script>
+        <script src="scoreapi.js"></script>
+    </body>
+</html>
