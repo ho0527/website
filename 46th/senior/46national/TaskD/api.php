@@ -48,6 +48,15 @@
         echo(json_encode($row));
     }
 
+    if(isset($_GET["seatlist"])){
+        $row=query($db,"SELECT*FROM `ticket`");
+        $data=[];
+        for($i=0;$i<count($row);$i=$i+1){
+            $data[]="";
+        }
+        echo(json_encode($data));
+    }
+
     if(isset($_GET["key"])){
         if($_GET["key"]=="deltraintype"){
             $id=$_GET["id"];

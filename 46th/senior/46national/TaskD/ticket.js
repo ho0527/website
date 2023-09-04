@@ -133,9 +133,22 @@ docgetid("submit").onclick=function(){
             }
         }
 
-        docgetid("error").innerHTML=`
-        `
+        docgetid("error").innerHTML=`` // 清空error區塊
 
+        // 傳送資料
+        newajax("POST","api/newticket.php",formdata([
+            ["trainid",trainid],
+            ["typeid",trainlist[0][trainid][1]],
+            ["startstationid",start],
+            ["endstationid",end],
+            ["code",ticketcode],
+            ["phone",phone],
+            ["count",count],
+            ["statu","1"],
+            ["getgodate",date],
+        ]))
+
+        // 顯示燈箱
         lightbox(null,"lightbox",function(){
             return `
                 <h1>訂票成功</h1>
@@ -154,7 +167,7 @@ docgetid("submit").onclick=function(){
                 </div>
                 <input type="button" class="button" onclick="location.reload()" value="返回">
             `
-        })
+        },clickcolse="none")
     }else{
         docgetid("error").innerHTML=`
             錯誤內容如下: <br>
