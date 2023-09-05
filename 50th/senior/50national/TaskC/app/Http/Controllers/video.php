@@ -9,7 +9,59 @@
 
     class video extends Controller{
         public function uploadvideo(Request $request){
+            $userid=logincheck();
+            if($userid){
+                $row=DB::table("users")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if(!$row[0]->disabled){
+                    if($request->has("title")&&$request->has("description")&&$request->has("visibility")&&$request->has("category_id")&&$request->has("duration")&&$request->hasFile("video")){
+                        $title=$request->input("title");
+                        $description=$request->input("description");
+                        $visibility=$request->input("visibility");
+                        $categoryid=$request->input("category_id");
+                        $duration=$request->input("duration");
+                        $video=$request->file("video");
+                        if(is_string($title)&&is_string($description)&&$visibility=="PUBLIC"||$visibility=="PREV"&&is_int($categoryid)&&is_int($duration)){
+                            if(in_array($video->extension(),["mp4"])){
+                                $path=$video->store("upload");
+                                DB::table("video")->insert([
+                                    "userid"=>$userid,
+                                    "categoryid"=>$categoryid,
+                                    "url"=>$path,
+                                    "title"=>$title,
+                                    "description"=>$description,
+                                    "visibility"=>$visibility,
+                                    "duration"=>$duration,
+                                    "created_at"=>time()
+                                ]);
+                                $row=DB::table("video")
+                                    ->latest()
+                                    ->select("*")->get()[0];
+                                return response()->json([
+                                    "success"=>true,
+                                    "message"=>"",
+                                    "data"=>json([
+                                        "id"=>$row->id,
+                                        "url"=>url($path)
+                                    ])
+                                ],200);
 
+                            }else{
+                                return videoprocesserror();
+                            }
+                        }else{
+                            return fileerror();
+                        }
+                    }else{
+                        return missingfield();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function getvideo(Request $request){

@@ -116,7 +116,7 @@
 
         public function upload(Request $request){
             $userid=logincheck();
-            if($userid){ // token check
+            if($userid){
                 if($request->has("title")&&$request->has("description")&&$request->hasFile("image")){
                     $title=$request->input("title");
                     $description=$request->input("description");

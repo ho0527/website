@@ -94,7 +94,6 @@
                     ->update([
                         "access_token"=>NULL,
                     ]);
-                unset($_SESSION["login"]);
                 return response()->json([
                     "success"=>true
                 ]);
