@@ -11,10 +11,10 @@
         public function uploadvideo(Request $request){
             $userid=logincheck();
             if($userid){
-                $row=DB::table("users")
+                $row=DB::table("user")
                     ->where("id","=",$userid)
                     ->select("*")->get();
-                if(!$row[0]->disabled){
+                if($row[0]->disabled=="false"){
                     if($request->has("title")&&$request->has("description")&&$request->has("visibility")&&$request->has("category_id")&&$request->has("duration")&&$request->hasFile("video")){
                         $title=$request->input("title");
                         $description=$request->input("description");
@@ -22,36 +22,43 @@
                         $categoryid=$request->input("category_id");
                         $duration=$request->input("duration");
                         $video=$request->file("video");
-                        if(is_string($title)&&is_string($description)&&$visibility=="PUBLIC"||$visibility=="PREV"&&is_int($categoryid)&&is_int($duration)){
+                        if(is_string($title)&&is_string($description)&&($visibility=="PUBLIC"||$visibility=="PRIVATE")&&is_numeric($categoryid)&&is_numeric($duration)){
                             if(in_array($video->extension(),["mp4"])){
-                                $path=$video->store("upload");
-                                DB::table("video")->insert([
-                                    "userid"=>$userid,
-                                    "categoryid"=>$categoryid,
-                                    "url"=>$path,
-                                    "title"=>$title,
-                                    "description"=>$description,
-                                    "visibility"=>$visibility,
-                                    "duration"=>$duration,
-                                    "created_at"=>time()
-                                ]);
-                                $row=DB::table("video")
-                                    ->latest()
-                                    ->select("*")->get()[0];
-                                return response()->json([
-                                    "success"=>true,
-                                    "message"=>"",
-                                    "data"=>json([
-                                        "id"=>$row->id,
-                                        "url"=>url($path)
-                                    ])
-                                ],200);
-
+                                $row=DB::table("category")
+                                    ->where("id","=",$categoryid)
+                                    ->select("*")->get();
+                                if($row->isNotEmpty()){
+                                    $path=$video->store("upload");
+                                    DB::table("video")->insert([
+                                        "userid"=>$userid,
+                                        "categoryid"=>$categoryid,
+                                        "url"=>$path,
+                                        "title"=>$title,
+                                        "description"=>$description,
+                                        "visibility"=>$visibility,
+                                        "duration"=>$duration,
+                                        "count"=>0,
+                                        "created_at"=>time()
+                                    ]);
+                                    $row=DB::table("video")
+                                        ->latest()
+                                        ->select("*")->get()[0];
+                                    return response()->json([
+                                        "success"=>true,
+                                        "message"=>"",
+                                        "data"=>[
+                                            "id"=>$row->id,
+                                            "url"=>url($path)
+                                        ]
+                                    ],200);
+                                }else{
+                                    return categorynotfound();
+                                }
                             }else{
                                 return videoprocesserror();
                             }
                         }else{
-                            return fileerror();
+                            return datatypeerror();
                         }
                     }else{
                         return missingfield();
@@ -65,7 +72,31 @@
         }
 
         public function getvideo(Request $request){
+            $row=DB::table("video")
+                ->select("*")->get();
 
+            $categoryrow=DB::table("category")
+                ->select("*")->get();
+
+            $data=[];
+
+            for($i=0;$i<count($row);$i=$i+1){
+                $data[]=[
+                    "id"=>$row[$i]->id,
+                    "title"=>$row[$i]->title,
+                    "description"=>$row[$i]->description,
+                    "duration"=>$row[$i]->duration,
+                    "visibility"=>$row[$i]->visibility,
+                    "created_at"=>$row[$i]->created_at,
+                    "categoryid"=>$categoryrow[$row[$i]->categoryid]->title,
+                ];
+            }
+
+            return response()->json([
+                "success"=>true,
+                "message"=>"",
+                "data"=>$data
+            ],200);
         }
 
         public function gethotvideo(Request $request){
@@ -73,15 +104,135 @@
         }
 
         public function getpublicvideo(Request $request){
+            $keyword="";
+            $page="1";
+            if($request->has("q")){ $keyword=$request->input("q"); }
+            if($request->has("page")){ $page=$request->input("page"); }
 
+            $row=DB::table("video")
+                ->where("visibility","=","PUBLIC")
+                ->where("title","LIKE","%$keyword%")
+                ->where("description","LIKE","%$keyword%")
+                ->skip(($page-1)*10)
+                ->take(10)
+                ->select("*")->get();
+
+            $categoryrow=DB::table("category")
+                ->select("*")->get();
+
+            $data=[];
+
+            for($i=0;$i<count($row);$i=$i+1){
+                $data[]=[
+                    "id"=>$row[$i]->id,
+                    "title"=>$row[$i]->title,
+                    "description"=>$row[$i]->description,
+                    "duration"=>$row[$i]->duration,
+                    "visibility"=>$row[$i]->visibility,
+                    "created_at"=>$row[$i]->created_at,
+                    "category"=>$categoryrow[$row[$i]->categoryid]->title,
+                ];
+            }
+
+            return response()->json([
+                "success"=>true,
+                "message"=>"",
+                "data"=>$data
+            ],200);
         }
 
-        public function getidvideo(Request $request){
+        public function getidvideo(Request $request,$videoid){
+            $userid=logincheck();
+            if($userid){
+                $row=DB::table("video")
+                    ->where("id","=",$videoid)
+                    ->select("*")->get();
 
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get()[0];
+                if($userrow->disabled=="false"){
+                    if($row->isNotEmpty()){
+                        if($row[0]->userid==$userid){
+                            $categoryrow=DB::table("category")
+                                ->where("id","=",$row[0]->categoryid)
+                                ->select("*")->get();
+                            $row=DB::table("video")
+                                ->latest()
+                                ->select("*")->get()[0];
+                            return response()->json([
+                                "success"=>true,
+                                "message"=>"",
+                                "data"=>[
+                                    "id"=>$row->id,
+                                    "title"=>$row[0]->title,
+                                    "description"=>$row[0]->description,
+                                    "visibility"=>$row[0]->visibility,
+                                    "duration"=>$row[0]->duration,
+                                    "created_at"=>$row[0]->created_at,
+                                    "category"=>$categoryrow[$row[0]->categoryid]->title,
+                                    "user"=>$userrow->nickname,
+                                    "url"=>url($row[0]->url),
+
+                                    // 未製作
+                                    "like"=>0,
+                                    "liked"=>false,
+                                    "playlist_ids"=>[],
+                                    "program_ids"=>[],
+                                ]
+                            ],200);
+                        }else{
+                            return nopermission();
+                        }
+                    }else{
+                        return videonotfound();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
-        public function delvideo(Request $request){
+        public function delvideo(Request $request,$videoid){
+            $userid=logincheck();
+            if($userid){
+                $row=DB::table("video")
+                    ->where("id","=",$videoid)
+                    ->select("*")->get();
 
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get()[0];
+                if($userrow->disabled=="false"){
+                    if($row->isNotEmpty()){
+                        if($row[0]->userid==$userid){
+                            $isinplaylist=false; // 未製作
+                            if(!$isinplaylist){
+                                $row=DB::table("video")
+                                    ->where("id","=",$videoid)
+                                    ->delete();
+                                return response()->json([
+                                    "success"=>true,
+                                    "message"=>"",
+                                    "data"=>""
+                                ],200);
+                            }else{
+                                return videoinplaylist();
+                            }
+                        }else{
+                            return nopermission();
+                        }
+                    }else{
+                        return videonotfound();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function like(Request $request){

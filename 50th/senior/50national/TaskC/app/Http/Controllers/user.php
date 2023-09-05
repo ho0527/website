@@ -12,16 +12,16 @@
             if($request->has("email")&&$request->has("password")){
                 $email=$request->input("email");
                 $password=$request->input("password");
-                $row=DB::table("users")
+                $row=DB::table("user")
                     ->where("email","=",$email)
                     ->select("*")->get();
                 if($row->isNotEmpty()&&$password==$row[0]->password){
-                    DB::table("users")
+                    DB::table("user")
                         ->where("id","=",$row[0]->id)
                         ->update([
                             "accesstoken"=>hash("sha256",$email),
                         ]);
-                    $row=DB::table("users")
+                    $row=DB::table("user")
                         ->where("email","=",$email)
                         ->select("*")->get();
                     return response()->json([
@@ -40,12 +40,11 @@
         public function logout(Request $request){
             $userid=logincheck();
             if(logincheck()){
-                DB::table("users")
+                DB::table("user")
                     ->where("id","=",$userid)
                     ->update([
-                        "access_token"=>NULL,
+                        "accesstoken"=>NULL,
                     ]);
-                unset($_SESSION["login"]);
                 return response()->json([
                     "success"=>true,
                     "message"=>"",

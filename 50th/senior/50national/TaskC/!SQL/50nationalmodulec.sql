@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-09-03 09:00:59
+-- 產生時間： 2023-09-05 12:22:50
 -- 伺服器版本： 10.4.27-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -148,10 +148,20 @@ CREATE TABLE `user` (
   `password` text NOT NULL,
   `nickname` text NOT NULL,
   `permission` text NOT NULL,
-  `accesstoken` text NOT NULL,
+  `accesstoken` text DEFAULT NULL,
   `disabled` text NOT NULL,
   `createdat` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `nickname`, `permission`, `accesstoken`, `disabled`, `createdat`) VALUES
+(1, 'admin@localhost', 'adminpass', 'admin', 'admin', NULL, 'false', '2023-09-05 10:21:15'),
+(2, 'user1@localhost', 'user1pass', 'user1', 'USER', NULL, 'false', '2023-09-05 10:21:15'),
+(3, 'user2@localhost', 'user2pass', 'user2', 'USER', NULL, 'false', '2023-09-05 10:21:15'),
+(4, 'user3@localhost', 'user3pass', 'user3', 'USER', NULL, 'false', '2023-09-05 10:21:15');
 
 -- --------------------------------------------------------
 
@@ -162,11 +172,11 @@ CREATE TABLE `user` (
 CREATE TABLE `video` (
   `id` int(11) NOT NULL,
   `userid` text NOT NULL,
+  `categoryid` text NOT NULL,
   `url` text NOT NULL,
   `title` text NOT NULL,
   `description` text NOT NULL,
   `visibility` text NOT NULL,
-  `categoryid` text NOT NULL,
   `duration` text NOT NULL,
   `createdat` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -291,7 +301,7 @@ ALTER TABLE `programvideolist`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `video`
