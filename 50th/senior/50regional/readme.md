@@ -13,7 +13,7 @@
 ###### DC: chris0527(小賀chris)
 ##### 參考: 無
 ##### 特別感謝: 無
-##### 使用技術: php html js css mysql
+##### 使用技術: html css js php mysql
 ##### 目前版本: v1.0.0
 
 ---

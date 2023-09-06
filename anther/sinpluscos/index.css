@@ -279,67 +279,30 @@ table{
 
 /* program START */
 
-.flag{
-    background: white;
-    width: 950px;
-    height: 650px;
-    padding: 10px;
-    position: relative;
+canvas{
+    border: 1px solid black;
 }
 
-.lefttop{
-    position: absolute;
-    top: 75px;
-    left: 75px;
-    transform: rotate(315deg);
+.maininput{
+    width: 70px;
 }
 
-.lefbottom{
-    position: absolute;
-    bottom: 75px;
-    left: 75px;
-    transform: rotate(45deg);
-}
-
-.righttop{
-    position: absolute;
-    top: 75px;
-    right: 75px;
-    transform: rotate(45deg);
-}
-
-.rightbottom{
-    position: absolute;
-    bottom: 75px;
-    right: 75px;
-    transform: rotate(315deg);
-}
-
-.middle{
-    border: 1px black solid;
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-
-.line{
-    width: 250px;
-    height: 40px;
-    margin: 10px 0px;
-    background: black;
-}
-
-.halflinediv{
-    margin: 10px 0px;
-}
-
-.halfline{
-    width: 120px;
-    height: 40px;
-    background: black;
+.key1{
+    color: red;
     display: inline-block;
+}
+
+.key2{
+    color: blue;
+    display: inline-block;
+}
+
+.key3{
+    color: purple;
+    display: inline-block;
+}
+
+.footer{
+    color: white;
+    text-align: right;
 }
