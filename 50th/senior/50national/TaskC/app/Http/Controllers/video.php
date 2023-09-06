@@ -235,12 +235,106 @@
             }
         }
 
-        public function like(Request $request){
-
+        public function like(Request $request,$videoid){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    if($request->has("like")){
+                        if($request->input("like")){
+                            $row=DB::table("video")
+                                ->where("id","=",$videoid)
+                                ->select("*")->get();
+                            if($row->isNotEmpty()){
+                                if($row[0]->visibility=="PUBLIC"||($row[0]->visibility=="PRIVATE"&&$row[0]->userid==$userid)){
+                                    $likerow=DB::table("like")
+                                        ->where("userid","=",$userid)
+                                        ->where("videoid","=",$videoid)
+                                        ->select("*")->get();
+                                    if($likerow->isEmpty()){
+                                        DB::table("like")->insert([
+                                            "userid"=>$userid,
+                                            "videoid"=>$videoid,
+                                            "created_at"=>time()
+                                        ]);
+                                    }else{
+                                        DB::table("like")
+                                            ->where("userid","=",$userid)
+                                            ->where("videoid","=",$videoid)
+                                            ->delete();
+                                    }
+                                    return response()->json([
+                                        "success"=>true,
+                                        "message"=>"",
+                                        "data"=>""
+                                    ],200);
+                                }else{
+                                    return nopermission();
+                                }
+                            }else{
+                                return videonotfound();
+                            }
+                        }else{
+                            return datatypeerror();
+                        }
+                    }else{
+                        return missingfield();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
-        public function comment(Request $request){
-
+        public function comment(Request $request,$videoid){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    if($request->has("text")){
+                        $text=$request->input("text");
+                        if(is_string($text)){
+                            $row=DB::table("video")
+                                ->where("id","=",$videoid)
+                                ->select("*")->get();
+                            if($row->isNotEmpty()){
+                                if($row[0]->visibility=="PUBLIC"||($row[0]->visibility=="PRIVATE"&&$row[0]->userid==$userid)){
+                                    DB::table("comment")->insert([
+                                        "userid"=>$userid,
+                                        "replyid"=>NULL,
+                                        "text"=>$text,
+                                        "created_at"=>time()
+                                    ]);
+                                    
+                                    return response()->json([
+                                        "success"=>true,
+                                        "message"=>"",
+                                        "data"=>1 // WTF
+                                    ],200);
+                                }else{
+                                    return nopermission();
+                                }
+                            }else{
+                                return videonotfound();
+                            }
+                        }else{
+                            return datatypeerror();
+                        }
+                    }else{
+                        return missingfield();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function getcomment(Request $request){

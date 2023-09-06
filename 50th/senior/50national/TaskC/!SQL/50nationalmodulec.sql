@@ -178,7 +178,7 @@ CREATE TABLE `video` (
   `description` text NOT NULL,
   `visibility` text NOT NULL,
   `duration` text NOT NULL,
-  `createdat` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
