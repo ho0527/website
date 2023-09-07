@@ -311,7 +311,7 @@
                                         "text"=>$text,
                                         "created_at"=>time()
                                     ]);
-                                    
+
                                     return response()->json([
                                         "success"=>true,
                                         "message"=>"",
@@ -338,7 +338,6 @@
         }
 
         public function getcomment(Request $request){
-
         }
 
         public function replycomment(Request $request){
@@ -350,31 +349,225 @@
         }
 
         public function getplaylist(Request $request){
+            $userid=logincheck();
+            if($userid){
+                $data=[];
 
+                $row=DB::table("playlist")
+                    ->where("userid","=",$userid)
+                    ->select("*")->get();
+
+                for($i=0;$i<count($row);$i=$i+1){
+                    $data[]=[
+                        "id"=>$row[$i]->id,
+                        "title"=>$row[$i]->title
+                    ];
+                }
+
+                return response()->json([
+                    "success"=>true,
+                    "message"=>"",
+                    "data"=>$data
+                ],200);
+            }else{
+                return tokenerror();
+            }
         }
 
         public function playlist(Request $request){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    if($request->has("title")){
+                        $title=$request->input("title");
+                        if(is_string($title)){
+                            $row=DB::table("playlist")
+                                ->where("title","=",$title)
+                                ->select("*")->get();
+                            if($row->isEmpty()){
+                                DB::table("playlist")->insert([
+                                    "userid"=>$userid,
+                                    "title"=>$title,
+                                    "videolist"=>"",
+                                    "createdat"=>time()
+                                ]);
 
+                                return response()->json([
+                                    "success"=>true,
+                                    "message"=>"",
+                                    "data"=>1 // WTF
+                                ],200);
+                            }else{
+                                return playlisterror();
+                            }
+                        }else{
+                            return datatypeerror();
+                        }
+                    }else{
+                        return missingfield();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function getidplaylist(Request $request){
 
         }
 
-        public function addvideotoplaylist(Request $request){
-
+        public function addvideotoplaylist(Request $request,$playlistid){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    if($request->has("video_id")){
+                        $videoid=$request->input("video_id");
+                        if(is_int($videoid)){
+                            $videorow=DB::table("video")
+                                ->where("id","=",$videoid)
+                                ->select("*")->get();
+                            if($videorow->isNotEmpty()){
+                                $row=DB::table("playlist")
+                                    ->where("id","=",$playlistid)
+                                    ->select("*")->get();
+                                if($row->isNotEmpty()){
+                                    if(($videorow[0]->visibility=="PUBLIC"||($videorow[0]->visibility=="PRIVATE"&&$videorow[0]->userid==$userid))&&$row[0]->userid==$userid){
+                                        $videolist=explode(" ",$row[0]->videolist);
+                                        if(!in_array($videoid,$videolist)){
+                                            $videolist[]=$videoid;
+                                            DB::table("playlist")
+                                                ->where("id","=",$playlistid)
+                                                ->update([
+                                                    "videolist"=>implode(" ",$videolist)
+                                                ]);
+        
+                                            return response()->json([
+                                                "success"=>true,
+                                                "message"=>"",
+                                                "data"=>""
+                                            ],200);
+                                        }else{
+                                            return videoinplaylist();
+                                        }
+                                    }else{
+                                        return nopermission();
+                                    }
+                                }else{
+                                    return playlistnotfound();
+                                }
+                            }else{
+                                return videonotfound();
+                            }
+                        }else{
+                            return datatypeerror();
+                        }
+                    }else{
+                        return missingfield();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function sortplaylist(Request $request){
 
         }
 
-        public function delvideoformplaylist(Request $request){
+        public function delvideoformplaylist(Request $request,$playlistid,$videoid){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    $videorow=DB::table("video")
+                        ->where("id","=",$videoid)
+                        ->select("*")->get();
+                    if($videorow->isNotEmpty()){
+                        $row=DB::table("playlist")
+                            ->where("id","=",$playlistid)
+                            ->select("*")->get();
+                        if($row->isNotEmpty()){
+                            if(($videorow[0]->visibility=="PUBLIC"||($videorow[0]->visibility=="PRIVATE"&&$videorow[0]->userid==$userid))&&$row[0]->userid==$userid){
+                                $videolist=explode(" ",$row[0]->videolist);
+                                if(in_array($videoid,$videolist)){
+                                    $key=array_search($videoid,$videolist);
+                                    unset($videolist[$key]);
+                                    DB::table("playlist")
+                                        ->where("id","=",$playlistid)
+                                        ->update([
+                                            "videolist"=>implode(" ",$videolist)
+                                        ]);
 
+                                    return response()->json([
+                                        "success"=>true,
+                                        "message"=>"",
+                                        "data"=>""
+                                    ],200);
+                                }else{
+                                    return videonotinplaylist();
+                                }
+                            }else{
+                                return nopermission();
+                            }
+                        }else{
+                            return playlistnotfound();
+                        }
+                    }else{
+                        return videonotfound();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
-        public function delplaylist(Request $request){
+        public function delplaylist(Request $request,$playlistid){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    $row=DB::table("playlist")
+                        ->where("id","=",$playlistid)
+                        ->select("*")->get();
+                    if($row->isNotEmpty()){
+                        if($row[0]->userid==$userid){
+                            DB::table("playlist")
+                                ->where("id","=",$playlistid)
+                                ->delete();
 
+                            return response()->json([
+                                "success"=>true,
+                                "message"=>"",
+                                "data"=>""
+                            ],200);
+                        }else{
+                            return nopermission();
+                        }
+                    }else{
+                        return playlistnotfound();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function getprogram(Request $request){

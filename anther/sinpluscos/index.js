@@ -1,7 +1,11 @@
-let canva=docgetid("canva")
-let ctx=canva.getContext("2d")
+function main(){
+    let sin=parseFloat(docgetid("sin").value)
+    let cos=parseFloat(docgetid("cos").value)
+    let canva=docgetid("canva")
+    let ctx=canva.getContext("2d")
+    
+    ctx.clearRect(0,0,canva.width,canva.height) // 清除畫布
 
-function createxy(){
     // 繪製x軸和y軸
     ctx.strokeStyle="black"
     ctx.lineWidth=1
@@ -29,15 +33,6 @@ function createxy(){
     // 設定畫筆顏色和粗度
     ctx.strokeStyle="red"
     ctx.lineWidth=5
-}
-
-docgetid("submit").onclick=function(){
-    let sin=parseFloat(docgetid("sin").value)
-    let cos=parseFloat(docgetid("cos").value)
-
-    ctx.clearRect(0,0,canva.width,canva.height) // 清除畫布
-
-    createxy()
 
     // 繪製sin波
     ctx.beginPath()
@@ -75,4 +70,12 @@ docgetid("submit").onclick=function(){
     ctx.stroke()
 }
 
-createxy()
+
+
+docgetall(".maininput").forEach(function(event){
+    event.onchange=function(){
+        main()
+    }
+})
+
+main()
