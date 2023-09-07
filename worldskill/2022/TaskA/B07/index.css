@@ -203,7 +203,7 @@ table{
 .bluebutton{
 	box-shadow: inset 1px -3px 7px 0px #29bbff;
 	background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	background-color: #2dabf9;
+	background: #2dabf9;
 	border-radius: 5px;
 	border: 1px solid #0b0e07;
 	display: inline-block;
@@ -219,7 +219,7 @@ table{
 
 .bluebutton:hover{
 	background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-	background-color: #0688fa;
+	background: #0688fa;
 }
 
 .bluebutton:active{
@@ -230,7 +230,7 @@ table{
 .reflashbutton{
     margin-top: 20px;
     padding: 5px;
-    background-color: rgb(215, 164, 61);
+    background: rgb(215, 164, 61);
     color: white;
     border: none;
     border-radius: 5px;
@@ -243,12 +243,12 @@ table{
 }
 
 .reflashbutton:hover{
-    background-color: rgb(255, 213, 128);
+    background: rgb(255, 213, 128);
     color: black;
 }
 
 .selectbutton{
-    background-color: rgba(35, 35, 35, 0.75);
+    background: rgba(35, 35, 35, 0.75);
     color: white;
 }
 
@@ -315,15 +315,20 @@ table{
     transform: rotate(315deg);
 }
 
+.middlediv{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 .middle{
     border: 1px black solid;
     border-radius: 50%;
     width: 300px;
     height: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    position: relative;
+    rotate: 30deg;
 }
 
 .line{
@@ -342,4 +347,40 @@ table{
     height: 40px;
     background: black;
     display: inline-block;
+}
+
+.halfcircle{
+    width: 300px;
+    height: 150px;
+    border-radius: 150px 150px 0 0;
+}
+
+.a{
+    background: red;
+}
+
+.b{
+    background: blue;
+    rotate: 180deg;
+}
+
+.smallhalfcircle{
+    width: 150px;
+    height: 75px;
+    border-radius: 75px 75px 0 0;
+}
+
+.c{
+    background: red;
+    rotate: 180deg;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+}
+
+.d{
+    background: blue;
+    position: absolute;
+    bottom: 50%;
+    right: 0px;
 }
