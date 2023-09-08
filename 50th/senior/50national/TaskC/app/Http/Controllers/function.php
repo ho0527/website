@@ -20,4 +20,17 @@
             return 0;
         }
     }
+
+    function delcomment($id){
+        $row=DB::table("comment")
+            ->where("comment_id","=",$id)
+            ->select("*")->get();
+
+        DB::table("comments")
+            ->where("id","=",$id)
+            ->delete();
+        for($i=0;$i<count($row);$i=$i+1){
+            delcomment($row[$i]->id);
+        }
+    }
 ?>

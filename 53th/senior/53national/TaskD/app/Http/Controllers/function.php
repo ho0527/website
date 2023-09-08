@@ -34,7 +34,7 @@
             $mainrow["access_token"]=$row[0]->access_token;
         }
         return $mainrow;
-    };
+    }
 
     function image($row){
         $data=[];
@@ -49,7 +49,7 @@
             $data[]=$mainrow;
         }
         return $data;
-    };
+    }
 
     function imagedetail($row){
         $data=[];
@@ -75,8 +75,7 @@
             $data[]=$mainrow;
         }
         return $data;
-    };
-
+    }
 
     function comment($row){
         $data=[];
@@ -109,7 +108,7 @@
             }
         }
         return $data;
-    };
+    }
 
     function delcomment($id){
         $row=DB::table("comments")
@@ -122,5 +121,5 @@
         for($i=0;$i<count($row);$i=$i+1){
             delcomment($row[$i]->id);
         }
-    };
+    }
 ?>

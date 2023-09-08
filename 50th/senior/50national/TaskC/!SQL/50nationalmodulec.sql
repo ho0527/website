@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-09-05 12:22:50
--- 伺服器版本： 10.4.27-MariaDB
+-- 產生時間： 2023-09-08 10:41:52
+-- 伺服器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -49,6 +49,11 @@ CREATE TABLE `category` (
   `updatedat` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
+--
+-- 傾印資料表的資料 `category`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -58,10 +63,16 @@ CREATE TABLE `category` (
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `userid` text NOT NULL,
-  `replyid` text NOT NULL,
+  `videoid` text NOT NULL,
+  `replyid` text DEFAULT NULL,
   `text` text NOT NULL,
-  `createdat` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `comment`
+--
+
 
 -- --------------------------------------------------------
 
@@ -75,6 +86,11 @@ CREATE TABLE `like` (
   `videoid` text NOT NULL,
   `createdat` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `like`
+--
+
 
 -- --------------------------------------------------------
 
@@ -103,6 +119,11 @@ CREATE TABLE `playlist` (
   `createdat` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedat` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `playlist`
+--
+
 
 -- --------------------------------------------------------
 
@@ -177,9 +198,14 @@ CREATE TABLE `video` (
   `title` text NOT NULL,
   `description` text NOT NULL,
   `visibility` text NOT NULL,
+  `count` int(11) NOT NULL,
   `duration` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `video`
+--
 
 --
 -- 已傾印資料表的索引
@@ -259,19 +285,19 @@ ALTER TABLE `blocklist`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `like`
 --
 ALTER TABLE `like`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `play`
@@ -283,7 +309,7 @@ ALTER TABLE `play`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `program`
@@ -307,7 +333,7 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `video`
 --
 ALTER TABLE `video`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

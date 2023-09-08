@@ -307,6 +307,7 @@
                                 if($row[0]->visibility=="PUBLIC"||($row[0]->visibility=="PRIVATE"&&$row[0]->userid==$userid)){
                                     DB::table("comment")->insert([
                                         "userid"=>$userid,
+                                        "videoid"=>$videoid,
                                         "replyid"=>NULL,
                                         "text"=>$text,
                                         "created_at"=>time()
@@ -340,12 +341,120 @@
         public function getcomment(Request $request){
         }
 
-        public function replycomment(Request $request){
+        public function replycomment(Request $request,$commentid){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    $commentrow=DB::table("comment")
+                        ->where("id","=",$commentid)
+                        ->select("*")->get();
+                    if($commentrow->isNotEmpty()){
+                        $videorow=DB::table("video")
+                            ->where("id","=",$commentrow[0]->videoid)
+                            ->select("*")->get()[0];
+                        if($videorow->visibility=="PUBLIC"||($videorow[0]->visibility=="PRIVATE"&&$videorow[0]->userid==$userid)){
+                            if($request->has("text")){
+                                $text=$request->input("text");
+                                if(is_string($text)){
+                                    DB::table("comment")->insert([
+                                        "userid"=>$userid,
+                                        "videoid"=>$commentrow[0]->videoid,
+                                        "replyid"=>$commentid,
+                                        "text"=>$text,
+                                        "created_at"=>time()
+                                    ]);
 
+                                    return response()->json([
+                                        "success"=>true,
+                                        "message"=>"",
+                                        "data"=>1 // WTF
+                                    ],200);
+                                }else{
+                                    return datatypeerror();
+                                }
+                            }else{
+                                return missingfield();
+                            }
+                        }else{
+                            return nopermission();
+                        }
+                    }else{
+                        return commentnotfound();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
-        public function delcomment(Request $request){
-
+        public function delcomment(Request $request,$commentid){
+            $userid=logincheck();
+            if($userid){
+                $userrow=DB::table("user")
+                    ->where("id","=",$userid)
+                    ->select("*")->get();
+                if($userrow[0]->disabled=="false"){
+                    $commentrow=DB::table("comment")
+                        ->where("id","=",$commentid)
+                        ->select("*")->get();
+                    if($commentrow->isNotEmpty()){
+                        $videorow=DB::table("video")
+                            ->where("id","=",$commentrow[0]->videoid)
+                            ->select("*")->get()[0];
+                        if($commentrow[0]->userid==$userid||$userid=="1"){
+                            if($request->has("ban")){
+                                if($userid=="1"){
+                                    if($request->has("day")&&$request->has("reason")){
+                                        $day=$request->input("day");
+                                        $reason=$request->input("reason");
+                                        if(is_int($day)&&is_string($reason)){
+                                            delcomment($commentid);
+                                            DB::table("blocklist")->insert([
+                                                "userid"=>$commentrow[0]->userid,
+                                                "from"=>time(),
+                                                "to"=>time(),
+                                                "reason"=>$reason,
+                                                "createdat"=>time()
+                                            ]);
+                                            return response()->json([
+                                                "success"=>true,
+                                                "message"=>"",
+                                                "data"=>""
+                                            ],200);
+                                        }else{
+                                            return datatypeerror();
+                                        }
+                                    }else{
+                                        return missingfield();
+                                    }
+                                }else{
+                                    return nopermission();
+                                }
+                            }else{
+                                delcomment($commentid);
+                                return response()->json([
+                                    "success"=>true,
+                                    "message"=>"",
+                                    "data"=>""
+                                ],200);
+                            }
+                        }else{
+                            return nopermission();
+                        }
+                    }else{
+                        return commentnotfound();
+                    }
+                }else{
+                    return userdisabled();
+                }
+            }else{
+                return tokenerror();
+            }
         }
 
         public function getplaylist(Request $request){
