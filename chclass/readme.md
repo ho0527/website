@@ -14,7 +14,7 @@
 ##### 特別感謝:
     - 美觀總監: 黃郁珉
     - 以下空白
-##### 使用技術: php html js css mysql
+##### 使用技術: html css js php mysql
 ##### 目前版本: v1.0.0
 
 ---

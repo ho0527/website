@@ -409,15 +409,15 @@
                         if($commentrow[0]->userid==$userid||$userid=="1"){
                             if($request->has("ban")){
                                 if($userid=="1"){
-                                    if($request->has("day")&&$request->has("reason")){
-                                        $day=$request->input("day");
+                                    if($request->has("days")&&$request->has("reason")){
+                                        $day=$request->input("days");
                                         $reason=$request->input("reason");
                                         if(is_int($day)&&is_string($reason)){
                                             delcomment($commentid);
                                             DB::table("blocklist")->insert([
                                                 "userid"=>$commentrow[0]->userid,
                                                 "from"=>time(),
-                                                "to"=>time(),
+                                                "to"=>time(), // +days
                                                 "reason"=>$reason,
                                                 "createdat"=>time()
                                             ]);

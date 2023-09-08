@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>RGB to HEX</title>
+	</head>
+	<body>
+		<h4>RGB to HEX</h4>
+		<form>
+			<label for="red">Red:
+				<input type="number" id="red" name="red" min="0" max="255" step="1" required>
+			</label>
 
-<head>
-	<meta charset="UTF-8">
-	<title>RGB to HEX</title>
-</head>
+			<label for="green">Green:
+				<input type="number" id="green" name="green" min="0" max="255" step="1" required>
+			</label>
 
-<body>
-	<h4>RGB to HEX</h4>
+			<label for="blue">Blue:
+				<input type="number" id="blue" name="blue" min="0" max="255" step="1" required>
+			</label>
 
-	<form action="#">
-		<label for="red">Red:
-			<input type="text" id="red">
-		</label>
+			<input type="submit" name="submit" value="submit">
+		</form>
 
-		<label for="green">Green:
-			<input type="text" id="green">
-		</label>
+		<p>
+			Hexadecimal: #
+			<?php
+				if(isset($_GET["submit"])){
+					$red=$_GET["red"];
+					$green=$_GET["green"];
+					$blue=$_GET["blue"];
 
-		<label for="blue">Blue:
-			<input type="text" id="blue">
-		</label>
+					$red=dechex($red); // 16進制
+					if(strlen($red)<2){ $red="0".$red; } // 不足兩位補0
 
-		<input type="submit" />
-	</form>
+					$green=dechex($green);
+					if(strlen($green)<2){ $green="0".$green; }
 
-	<p>Hexadecimal: #</p>
-</body>
+					$blue=dechex($blue);
+					if(strlen($blue)<2){ $blue="0".$blue; }
 
+					echo($red.$green.$blue);
+				}
+			?>
+		</p>
+	</body>
 </html>
