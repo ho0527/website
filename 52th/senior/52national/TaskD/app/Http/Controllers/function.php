@@ -45,7 +45,7 @@
         for($i=0;$i<$imagerow->count();$i=$i+1){
             $data[]=[
                 "id"=>$imagerow[$i]->id,
-                "url"=>url($imagerow[$i]->filename),
+                "url"=>storage_path("public/".$imagerow[$i]->filename),
                 "width"=>$imagerow[$i]->width,
                 "height"=>$imagerow[$i]->height,
                 "created_at"=>$imagerow[$i]->created_at

@@ -4,9 +4,9 @@
     use Illuminate\Support\Facades\DB;
 
     session_start();
+    date_default_timezone_set("Asia/Taipei");
 
     function time(){
-        date_default_timezone_set("Asia/Taipei");
         return date("Y-m-d H:i:s");
     }
 

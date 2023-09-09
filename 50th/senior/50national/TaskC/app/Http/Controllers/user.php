@@ -136,7 +136,36 @@
         }
 
         public function getblocklist(Request $request){
+            $loginuserid=logincheck();
+            if($loginuserid){
+                if($loginuserid=="1"){
+                    $row=DB::table("blocklist")
+                        ->select("*")->get();
 
+                    $data=[];
+
+                    for($i=0;$i<count($row);$i=$i+1){
+                        $data[]=[
+                            "id"=>$row[$i]->id,
+                            "punished_user_id"=>$row[$i]->userid,
+                            "from"=>$row[$i]->from,
+                            "to"=>$row[$i]->to,
+                            "reason"=>$row[$i]->reason,
+                            "created_at"=>$row[$i]->createat
+                        ];
+                    }
+
+                    return response()->json([
+                        "success"=>true,
+                        "message"=>"",
+                        "data"=>$data
+                    ]);
+                }else{
+                    return nopermission();
+                }
+            }else{
+                return tokenerror();
+            }
         }
     }
 ?>

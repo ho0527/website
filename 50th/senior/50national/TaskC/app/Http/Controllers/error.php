@@ -83,7 +83,7 @@
         return response()->json(["success"=>false,"message"=>"MSG_DUPLICATED_PROGRAM","data"=>""],409);
     }
 
-    function videonopermission(){
+    function videonotpublic(){
         return response()->json(["success"=>false,"message"=>"MSG_VIDEO_NOT_PUBLIC","data"=>""],409);
     }
 ?>
