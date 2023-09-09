@@ -7,4 +7,14 @@ ajax.onload=function(){
     }
 }
 
+// docgetid("download").onclick=function(){
+//     newajax("GET","api.php?download=true").onload=function(){
+//         let data=JSON.parse(ajax.responseText)
+//         if(data["success"]=="true"){
+//             let a=doccreate("a")
+//             a.href="api.php?download=true"
+//         }
+//     }
+// }
+
 startmacossection()

@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-09-02 05:02:20
--- 伺服器版本： 10.4.28-MariaDB
+-- 產生時間： 2023-09-09 15:25:54
+-- 伺服器版本： 10.4.27-MariaDB
 -- PHP 版本： 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -35,14 +35,6 @@ CREATE TABLE `comments` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- 傾印資料表的資料 `comments`
---
-
-INSERT INTO `comments` (`id`, `user_id`, `post_id`, `content`, `created_at`) VALUES
-(1, 1, 7, 'comment content text', '2023-09-02 01:45:50'),
-(3, 2, 7, 'comment content text', '2023-09-02 01:50:06');
-
 -- --------------------------------------------------------
 
 --
@@ -54,25 +46,11 @@ CREATE TABLE `posts` (
   `author_id` int(11) NOT NULL COMMENT '發布者',
   `content` varchar(300) NOT NULL COMMENT '內文',
   `type` enum('public','only_follow','only_self') NOT NULL COMMENT '貼文的類型',
-  `tag` text DEFAULT NULL,
-  `location` text DEFAULT NULL,
-  `place_lat` decimal(10,5) DEFAULT NULL COMMENT '地點的經度',
-  `place_lng` decimal(10,5) DEFAULT NULL COMMENT '地點的緯度',
+  `tag` text NOT NULL,
+  `location` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- 傾印資料表的資料 `posts`
---
-
-INSERT INTO `posts` (`id`, `author_id`, `content`, `type`, `tag`, `location`, `place_lat`, `place_lng`, `created_at`, `updated_at`) VALUES
-(2, 1, 'post conent2', 'only_self', 'tag1 tag6', '', NULL, NULL, '2023-09-02 01:26:30', '2023-09-02 01:57:08'),
-(3, 1, 'post conent', 'public', 'tag1 tag2', '', NULL, NULL, '2023-09-02 01:27:22', NULL),
-(4, 1, 'post conent', 'public', 'teg123456 teg 456789', '', NULL, NULL, '2023-09-02 01:27:53', NULL),
-(5, 1, 'post conent', 'public', 'teg123456 teg 456789', '', NULL, NULL, '2023-09-02 01:28:26', NULL),
-(7, 1, 'post conent', 'public', 'teg123456 teg 456789', '', NULL, NULL, '2023-09-02 01:32:10', NULL),
-(8, 1, 'this is an context', 'only_follow', 'greate hillow', 'there', NULL, NULL, '2023-09-02 01:34:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,24 +66,6 @@ CREATE TABLE `post_images` (
   `filename` varchar(1024) NOT NULL COMMENT '檔案名稱',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- 傾印資料表的資料 `post_images`
---
-
-INSERT INTO `post_images` (`id`, `post_id`, `width`, `height`, `filename`, `created_at`) VALUES
-(1, 2, 640, 360, 'image/EGrlwnap8nmldsRWb4f8dATjFkuLDCNV2qeXbhJO.jpg', '2023-09-02 01:26:30'),
-(2, 3, 640, 360, 'image/4TOmCkcmQDo1coMo361ngt7qNwZMpJpHLfa7s9y4.jpg', '2023-09-02 01:27:22'),
-(3, 4, 640, 507, 'image/tnxJLhkmpVcYuIduhCUv7Cx2rv8q5OQ6sydClCYD.jpg', '2023-09-02 01:27:53'),
-(4, 5, 640, 507, 'image/5UrAPE0V81HijaWsbmlJMgQ0jdzGQKud9BQ5wLoa.jpg', '2023-09-02 01:28:26'),
-(5, 7, 640, 427, 'image/AUy41PG1RUuVttVVu5vZ0A0EpxQ9PxokYviuU9dQ.jpg', '2023-09-02 01:32:10'),
-(6, 7, 640, 427, 'image/yrxI0SF4Mx2MXyyYaMundzsqq0wRypehMLqLQBHB.jpg', '2023-09-02 01:32:10'),
-(7, 7, 640, 427, 'image/JAZ0CfhZOfSB72WiT66dz5lW63mU9vNmKRhQz9c2.jpg', '2023-09-02 01:32:10'),
-(8, 7, 640, 427, 'image/EzvAoq0831SJtpAW9zhkIpY169KMYKcttPg28H7E.jpg', '2023-09-02 01:32:10'),
-(9, 7, 640, 427, 'image/fapSZpPe7x5hErBEgX6d9Ar0EuQARp6EcExROFHB.jpg', '2023-09-02 01:32:10'),
-(10, 7, 640, 427, 'image/5xsDFtdEeTolWZh7tQmjdLY22Xgw02TnlbUheE8P.jpg', '2023-09-02 01:32:10'),
-(11, 7, 640, 956, 'image/3EsE38aiAK3FXlM1GXpOVWx81LxWZ5kAimN4sQBQ.jpg', '2023-09-02 01:32:10'),
-(12, 8, 640, 360, 'image/4iPusI1bz43whWbZfuexZ5cJvc6WHXVa3F0zJ86t.jpg', '2023-09-02 01:34:28');
 
 -- --------------------------------------------------------
 
@@ -154,9 +114,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `nickname`, `profile_image`, `access_token`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'admin@web.tw', '$2y$10$TNYNFBpg4eBxMsg1tm4mK.ZPX.Fr74T2QCgvd57ZEk1EPJhOR/cM2', 'new_nickname', 'image/0twYvnANDim9FFljpz0aLLVNnayu0USiTp56wtfH.jpg', NULL, 'ADMIN', '2023-09-02 01:14:47', '2023-09-02 02:32:35'),
-(2, 'user@web.tw', '$2y$10$.KdrRHWNZCwxHImB0Vcy2un0Q5KzhP/ZktJCOVn3f8pZdBcRYwEae', 'user', 'image/rItbyBk70eJxZOGNYhmlck2c5I1PyQbpBvGPH8hI.jpg', NULL, 'USER', '2023-09-02 01:15:48', NULL),
-(3, 'test@web.tw', '$2y$10$4CbgzfJB1QqSih5E01GmwuoMFrX6uijV2AFLFB2FLNckyComAoWUi', 'test', 'image/A9zlmL39EFBJDSZ370Glen3hB8QaOKvEFQFvSGg8.jpg', NULL, 'USER', '2023-09-02 02:43:28', NULL);
+(1, 'admin@web.tw', '$2y$10$btOR.i/pG0bmBv1meoyHk.f/kUA2TDjBvfegy5TftjFFeypU9fyzK', 'admin', 'image/k0hm8SG3oYChzEEFcMbFCAeGdGaD93iqd3bA6IYT.jpg', NULL, 'ADMIN', '2023-09-01 15:00:52', NULL),
+(2, 'user@web.tw', '$2y$10$D45MBatqN/Y4NWj58WOYye3zeIjkWeVXQqJdHTAVmYORFJdNiTYMi', 'user', 'image/c2fAQP6njR3ZvieyeUUGASJnwdEm5DeL8yI4gITl.jpg', NULL, 'USER', '2023-09-01 15:01:37', NULL),
+(3, 'test@web.tw', '$2y$10$/lIL3YxDtS7ehpH.0QOlpe1eywLnqX6XbpkXrpz8cSnN6LIYnbikO', 'test', 'image/saF5VrhM0xgaQNYmWjzwS6uLzbStbx1Jzjy0dym6.jpg', NULL, 'USER', '2023-09-01 15:03:04', NULL),
+(4, 'test2@web.tw', '$2y$10$oFAe6kN4n0RtU0447VDyu.K2qT1XiiUHABpm7l44j0YxijGHE7UmW', 'test2', 'image/kYIwAVPldyloKSZIKOiodIN0wbgJvGivd0Y8APSM.jpg', NULL, 'USER', '2023-09-01 15:04:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,14 +131,6 @@ CREATE TABLE `user_follows` (
   `follow_user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- 傾印資料表的資料 `user_follows`
---
-
-INSERT INTO `user_follows` (`id`, `user_id`, `follow_user_id`, `created_at`) VALUES
-(2, 2, 1, '2023-09-02 02:36:01'),
-(3, 3, 1, '2023-09-02 02:43:39');
 
 -- --------------------------------------------------------
 
@@ -193,14 +146,6 @@ CREATE TABLE `user_likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- 傾印資料表的資料 `user_likes`
---
-
-INSERT INTO `user_likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
-(2, 1, 7, '2023-09-02 02:03:22'),
-(3, 1, 8, '2023-09-02 02:09:01');
-
---
 -- 已傾印資料表的索引
 --
 
@@ -208,31 +153,25 @@ INSERT INTO `user_likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
 -- 資料表索引 `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `post_id` (`post_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `author_id` (`author_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `post_images`
 --
 ALTER TABLE `post_images`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `post_id` (`post_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `post_tags`
 --
 ALTER TABLE `post_tags`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `post_id` (`post_id`),
-  ADD KEY `tag_id` (`tag_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `tags`
@@ -244,25 +183,19 @@ ALTER TABLE `tags`
 -- 資料表索引 `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `token` (`access_token`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `user_follows`
 --
 ALTER TABLE `user_follows`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `follow_user_id` (`follow_user_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 資料表索引 `user_likes`
 --
 ALTER TABLE `user_likes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `post_id` (`post_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
@@ -272,19 +205,19 @@ ALTER TABLE `user_likes`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `post_images`
 --
 ALTER TABLE `post_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `post_tags`
@@ -302,64 +235,20 @@ ALTER TABLE `tags`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_follows`
 --
 ALTER TABLE `user_follows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_likes`
 --
 ALTER TABLE `user_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- 已傾印資料表的限制式
---
-
---
--- 資料表的限制式 `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- 資料表的限制式 `posts`
---
-ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
-
---
--- 資料表的限制式 `post_images`
---
-ALTER TABLE `post_images`
-  ADD CONSTRAINT `post_images_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`);
-
---
--- 資料表的限制式 `post_tags`
---
-ALTER TABLE `post_tags`
-  ADD CONSTRAINT `post_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `post_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`);
-
---
--- 資料表的限制式 `user_follows`
---
-ALTER TABLE `user_follows`
-  ADD CONSTRAINT `user_follows_ibfk_1` FOREIGN KEY (`follow_user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `user_follows_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- 資料表的限制式 `user_likes`
---
-ALTER TABLE `user_likes`
-  ADD CONSTRAINT `user_likes_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `user_likes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
