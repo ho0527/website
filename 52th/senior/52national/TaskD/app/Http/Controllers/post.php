@@ -92,10 +92,8 @@
                             "author_id"=>$userid,
                             "content"=>$content,
                             "type"=>$type,
-                            "tag"=>$tag, // 直接存就好嗎?
+                            "tag"=>$tag,
                             "location"=>$location,
-                            // "place_lat"=>$_SESSION["data"],
-                            // "place_lng"=>$_SESSION["data"],
                             "created_at"=>time(),
                         ]);
                         $row=DB::table("posts")
