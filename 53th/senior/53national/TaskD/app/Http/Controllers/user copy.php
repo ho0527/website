@@ -9,29 +9,14 @@
 
     class user extends Controller{
         public function login(Request $request){
-            $requestdata=$request->validate([
-                "email"=>"required|email|string",
-                "password"=>"required|string",
-            ]);
-
-            /*
-            ,[
-                "email.required"=>missingfield(),
-                "email.email"=>datatypeerror(),
-                "email.string"=>datatypeerror(),
-                "password.required"=>missingfield(),
-                "password.string"=>datatypeerror(),
-            ]
-            return $requestdata;
-            */
-
             if($request->has("email")&&$request->has("password")){
                 $email=$request->input("email");
                 $password=$request->input("password");
                 if(is_string($email)&&is_string($password)){
                     $row=DB::table("users")
-                        ->where("email","=",$email)
-                        ->select("*")->get();
+                        ->where(function($query)use($email){
+                            $query->where("email","=",$email);
+                        })->select("*")->get();
                     if($row->isNotEmpty()&&Hash::check($password,$row[0]->password)){
                         DB::table("users")
                             ->where("id","=",$row[0]->id)
@@ -39,8 +24,9 @@
                                 "access_token"=>hash("sha256",$email),
                             ]);
                         $row=DB::table("users")
-                            ->where("email","=",$email)
-                            ->select("*")->get();
+                            ->where(function($query)use($email){
+                                $query->where("email","=",$email);
+                            })->select("*")->get();
                         return response()->json([
                             "success"=>true,
                             "data"=>user($row,"login")
@@ -63,8 +49,9 @@
                 $password=$request->input("password");
                 $image=$request->file("profile_image");
                 $row=DB::table("users")
-                    ->where("email","=",$email)
-                    ->select("*")->get();
+                    ->where(function($query)use($email){
+                        $query->where("email","=",$email);
+                    })->select("*")->get();
                 if($row->isEmpty()){
                     if(filter_var($email,FILTER_VALIDATE_EMAIL)&&is_string($email)&&is_string($nickname)&&is_string($password)&&in_array($image->extension(),["png","jpg"])){
                         if(4<=strlen($password)){

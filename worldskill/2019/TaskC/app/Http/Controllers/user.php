@@ -46,12 +46,12 @@
         }
 
         public function logout(Request $request){
-            $userid=logincheck();
-            if(logincheck()){
+            $userid=logincheck($request->input("token"));
+            if($userid!=0){
                 DB::table("user")
                     ->where("id","=",$userid)
                     ->update([
-                        "accesstoken"=>NULL,
+                        "login_token"=>NULL,
                     ]);
                 return response()->json([
                     "success"=>true,

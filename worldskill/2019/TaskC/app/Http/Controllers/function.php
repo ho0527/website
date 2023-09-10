@@ -10,12 +10,17 @@
         return date("Y-m-d H:i:s");
     }
 
-    function logincheck(){
+    function logincheck($token){
         $row=DB::table("user")
             ->where("accesstoken","!=","NULL")
             ->select("*")->get();
         if($row->isNotEmpty()){
-            return $row[0]->id;
+            for($i=0;$i<count($row);$i=$i+1){
+                if($row[$i]->login_token==$token){
+                    return $row[0]->id;
+                }
+            }
+            return 0;
         }else{
             return 0;
         }
