@@ -1,7 +1,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(35, 35, 35);
-    color: rgb(255, 255, 255);
+    color: gray;
     user-select: none;
     word-break: break-all;
 }
@@ -196,4 +196,75 @@ table{
     border: none;
     background: rgb(35, 35, 35);
     cursor: pointer;
+}
+
+.subjectdiv{
+    
+}
+
+.subject{
+    display: flex;
+}
+
+.cdate{
+    color: white;
+    margin: 0px 10px;
+}
+
+.udate{
+    color: white;
+    margin: 0px 10px;
+}
+
+.edate{
+    color: white;
+    margin: 0px 10px;
+}
+
+.title{
+    color: white;
+}
+
+.list{
+    position: relative;
+    left: 20px;
+    width: 95%;
+}
+
+.list2{
+    position: relative;
+    left: 40px;
+    width: 90%;
+}
+
+.list3{
+    position: relative;
+    left: 60px;
+    width: 85%;
+}
+
+.list4{
+    position: relative;
+    left: 80px;
+    width: 80%;
+}
+
+.state{
+    font-weight: bold;
+}
+
+.listdiv{
+    display: flex;
+}
+
+.questiondiv{
+    display: flex;
+}
+
+.m5{
+    margin-left: 5px;
+}
+
+.no{
+    color: lightgrey;
 }
