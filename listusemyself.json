@@ -674,7 +674,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "50national",
@@ -723,7 +724,8 @@
                     "updatedate": "N/A",
                     "enddate": "N/A",
                     "data": []
-                },
+                }
+                ,
                 {
                     "title": "ModuleE-SPEEDTEST",
                     "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/TaskE/01",
@@ -733,7 +735,8 @@
                     "updatedate": "N/A",
                     "enddate": "N/A",
                     "data": []
-                },
+                }
+                ,
                 {
                     "title": "ModuleF-ALGORITHM",
                     "state": "FAILED",
@@ -753,7 +756,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "j52regional",
@@ -763,7 +767,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "j52national",
@@ -773,7 +778,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "52regional",
@@ -783,7 +789,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "52national",
@@ -1035,7 +1042,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "j53national",
@@ -1045,7 +1053,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "53regional",
@@ -1055,7 +1064,8 @@
             "createdate": "N/A",
             "updatedate": "N/A",
             "enddate": "N/A",
-            "data": []
+            "data": [
+            ]
         },
         {
             "title": "53national",
@@ -1585,8 +1595,7 @@
                             ]
                         }
                     ]
-                },
-                {
+                },{
                     "title": "ModuleC-FONTEND_DESIGN",
                     "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskC/",
                     "state": "SUCCESS",
@@ -1609,6 +1618,76 @@
                 {
                     "title": "ModuleE-ALGORITHM",
                     "state": "SUCCESS",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "enddate": "N/A",
+                    "data": []
+                }
+            ]
+        },
+        {
+            "title": "project",
+            "state": "SUCCESS",
+            "ps": "list",
+            "createdate": "N/A",
+            "updatedate": "N/A",
+            "enddate": "N/A",
+            "data": [
+                {
+                    "title": "ModuleA-FONTEND",
+                    "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/TaskA/",
+                    "state": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "enddate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleB-PS/AI_DESIGN",
+                    "state": "N/A",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "enddate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleC-API",
+                    "link": "https://hiiamchris.ddns.net:81/website/50th/senior/50national/TaskC/",
+                    "state": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "enddate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleD-GAME",
+                    "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/TaskD/",
+                    "state": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "enddate": "N/A",
+                    "data": []
+                }
+                ,
+                {
+                    "title": "ModuleE-SPEEDTEST",
+                    "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/TaskE/01",
+                    "state": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "enddate": "N/A",
+                    "data": []
+                }
+                ,
+                {
+                    "title": "ModuleF-ALGORITHM",
+                    "state": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
                     "updatedate": "N/A",

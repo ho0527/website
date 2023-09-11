@@ -175,10 +175,13 @@ table{
 }
 
 .footer{
+    background: rgb(35, 35, 35);
+    color: white;
     position: fixed;
     bottom: 0px;
     width: 100%;
     text-align: center;
+    z-index: 999;
 }
 
 .a{
@@ -199,7 +202,7 @@ table{
 }
 
 .subjectdiv{
-    
+    margin-bottom: 50px;
 }
 
 .subject{
@@ -221,11 +224,11 @@ table{
     margin: 0px 10px;
 }
 
-.title{
+/* .title{
     color: white;
-}
+} */
 
-.list{
+.list1{
     position: relative;
     left: 20px;
     width: 95%;
@@ -234,19 +237,19 @@ table{
 .list2{
     position: relative;
     left: 40px;
-    width: 90%;
+    width: 95%;
 }
 
 .list3{
     position: relative;
     left: 60px;
-    width: 85%;
+    width: 95%;
 }
 
 .list4{
     position: relative;
     left: 80px;
-    width: 80%;
+    width: 95%;
 }
 
 .state{
@@ -255,10 +258,14 @@ table{
 
 .listdiv{
     display: flex;
+    margin-top: 5px;
+    color: white;
 }
 
 .questiondiv{
     display: flex;
+    margin-top: 5px;
+    color: white;
 }
 
 .m5{
@@ -267,4 +274,29 @@ table{
 
 .no{
     color: lightgrey;
+}
+
+.descriptiondiv{
+    display: flex;
+    margin-top: 5px;
+    color: white;
+}
+
+.dot{
+    color: gray;
+}
+
+.listdiv:hover{
+    background: white;
+    color: rgb(35, 35, 35);
+}
+
+.questiondiv:hover{
+    background: white;
+    color: rgb(35, 35, 35);
+}
+
+.descriptiondiv:hover{
+    background: white;
+    color: rgb(35, 35, 35);
 }
