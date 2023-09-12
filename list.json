@@ -9,7 +9,7 @@
             "updatedate": "2023/09/04",
             "data": [
                 {
-                    "title": "ModuleA-PS/AI_DESIGN",
+                    "title": "ModuleA-DESIGN",
                     "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskA/",
                     "state": "N/A",
                     "ps": "list",
@@ -18,7 +18,7 @@
                     "data": []
                 },
                 {
-                    "title": "ModuleB-FONTEND_DESIGN",
+                    "title": "ModuleB-FONTEND_LAYOUT",
                     "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskB/",
                     "state": "N/A",
                     "ps": "list",
@@ -686,7 +686,7 @@
                     "data": []
                 },
                 {
-                    "title": "ModuleB-PS/AI_DESIGN",
+                    "title": "ModuleB-DESIGN",
                     "state": "N/A",
                     "ps": "list",
                     "createdate": "N/A",
@@ -958,7 +958,7 @@
                     ]
                 },
                 {
-                    "title": "ModuleB-PS/AI_DESIGN",
+                    "title": "ModuleB-DESIGN",
                     "state": "N/A",
                     "ps": "list",
                     "createdate": "2023/02/05",
@@ -1555,7 +1555,7 @@
                     ]
                 },
                 {
-                    "title": "ModuleC-FONTEND_DESIGN",
+                    "title": "ModuleC-FONTEND_LAYOUT",
                     "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskC/",
                     "state": "SUCCESS",
                     "ps": "list",
