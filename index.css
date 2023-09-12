@@ -206,50 +206,40 @@ table{
 }
 
 .subject{
+    color: white;
     display: flex;
 }
 
 .cdate{
-    color: white;
     margin: 0px 10px;
 }
 
 .udate{
-    color: white;
     margin: 0px 10px;
 }
-
-.edate{
-    color: white;
-    margin: 0px 10px;
-}
-
-/* .title{
-    color: white;
-} */
 
 .list1{
     position: relative;
     left: 20px;
-    width: 95%;
+    width: calc(100% - 20px);
 }
 
 .list2{
     position: relative;
     left: 40px;
-    width: 95%;
+    width: calc(100% - 40px);
 }
 
 .list3{
     position: relative;
     left: 60px;
-    width: 95%;
+    width: calc(100% - 60px);
 }
 
 .list4{
     position: relative;
     left: 80px;
-    width: 95%;
+    width: calc(100% - 80px);
 }
 
 .state{
@@ -297,6 +287,16 @@ table{
 }
 
 .descriptiondiv:hover{
+    background: white;
+    color: rgb(35, 35, 35);
+}
+
+.listdiv:hover{
+    background: white;
+    color: rgb(35, 35, 35);
+}
+
+.subject:hover{
     background: white;
     color: rgb(35, 35, 35);
 }

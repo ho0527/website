@@ -35,7 +35,6 @@ ajax.onload=function(){
 
                     for(let l=0;l<question.length;l=l+1){
                         let descriptiondata=""
-                        console.log(question[l])
                         for(let m=0;m<question[l]["data"].length;m=m+1){
                             descriptiondata=descriptiondata+`
                                 <div class="descriptiondiv">
@@ -74,7 +73,6 @@ ajax.onload=function(){
                         <div class="state" style="color: ${statetest(list[j]["state"])}">${list[j]["state"]}</div>
                         <div class="cdate">createdate: ${list[j]["createdate"]}</div>
                         <div class="udate">updatedate: ${list[j]["updatedate"]}</div>
-                        <div class="edate">enddate: ${list[j]["enddate"]}</div>
                     </div>
                     <div class="list2">${listdata2}</div>
                 `
@@ -128,7 +126,6 @@ ajax.onload=function(){
                     <div class="state" style="color: ${statetest(data[i]["state"])}">${data[i]["state"]}</div>
                     <div class="cdate">createdate: ${data[i]["createdate"]}</div>
                     <div class="udate">updatedate: ${data[i]["updatedate"]}</div>
-                    <div class="edate">enddate: ${data[i]["enddate"]}</div>
                 </div>
                 <div class="list1">${listdata}</div>
             <div>
