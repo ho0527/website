@@ -35,6 +35,13 @@ ajax2.onload=function(){
 
         for(let j=1;j<=35;j=j+1){
             let id=j
+            let color=""
+
+            if(data[0][title][j][0]=="-1"){
+                color="gray"
+            }else if(data[0][title][j][0]<60){
+                color="red"
+            }
 
             if(id<10){ id="0"+id }
 
@@ -43,7 +50,7 @@ ajax2.onload=function(){
             td.classList.add("td")
             td.classList.add("score"+j)
             td.innerHTML=`
-                ${data[0][title][j][0]}
+                <div style="color: ${color}">${data[0][title][j][0]}</div>
             `
 
             docappendchild("tr"+j,td)
@@ -67,7 +74,9 @@ ajax2.onload=function(){
     for(let i=1;i<=35;i=i+1){
         let total=0
         let testcount=0
-        docgetall(".score"+i).forEach(function(event){
+        let color=""
+
+        docgetall(".score"+i+">div").forEach(function(event){
             if(parseInt(event.innerHTML)!=-1){
                 total=total+parseInt(event.innerHTML)
                 testcount=testcount+1
@@ -77,13 +86,21 @@ ajax2.onload=function(){
         if(testcount==0){
             total="N/A"
         }else{
-            total=total/testcount
+            total=total/testcount.toFixed(2)
+        }
+
+        if(total=="N/A"){
+            color="gray"
+        }else if(total<60){
+            color="red"
         }
 
         let td=doccreate("td")
 
         td.classList.add("td")
-        td.innerHTML=`${total.toFixed(2)}`
+        td.innerHTML=`
+            <div style="color: ${color}">${total}</div>
+        `
 
         docappendchild("tr"+i,td)
         let td2=doccreate("td")
