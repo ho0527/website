@@ -4,8 +4,8 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Hash;
+    use Illuminate\Support\Facades\Validator;
     include("error.php");
-    include("function.php");
 
     class image extends Controller{
         public function search(Request $request){
@@ -32,7 +32,7 @@
                     "success"=>true,
                     "data"=>[
                         "total_count"=>count($row),
-                        "images"=>image($row)
+                        "images"=>Controller::image($row)
                     ]
                 ]);
             }else{
@@ -107,7 +107,7 @@
                     ->select("*")->get();
                 return response()->json([
                     "success"=>true,
-                    "data"=>image($row)
+                    "data"=>Controller::image($row)
                 ]);
             }else{
                 return usererror();
@@ -115,7 +115,7 @@
         }
 
         public function upload(Request $request){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 if($request->has("title")&&$request->has("description")&&$request->hasFile("image")){
                     $title=$request->input("title");
@@ -143,7 +143,7 @@
                             ->select("*")->get();
                         return response()->json([
                             "success"=>true,
-                            "data"=>imagedetail([$row[0]])
+                            "data"=>Controller::imagedetail([$row[0]])
                         ],200);
                     }else{
                         return fileerror();
@@ -160,7 +160,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid){
                     $title=$row[0]->title;
@@ -181,7 +181,7 @@
                             ->select("*")->get();
                         return response()->json([
                             "success"=>true,
-                            "data"=>imagedetail([$row[0]])
+                            "data"=>Controller::imagedetail([$row[0]])
                         ],200);
                     }else{
                         return datatypeerror();
@@ -198,7 +198,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid=="0"){ $userid="-1"; } // 如果沒有登入id=-1
 
@@ -210,7 +210,7 @@
 
                 return response()->json([
                     "success"=>true,
-                    "data"=>imagedetail([$row[0]])
+                    "data"=>Controller::imagedetail([$row[0]])
                 ],200);
             }else{
                 return imageerror();
@@ -221,7 +221,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid==$row[0]->user_id){
                     DB::table("images")
@@ -267,7 +267,7 @@
 
                 return response()->json([
                     "success"=>true,
-                    "data"=>comment($row)
+                    "data"=>Controller::controllercomment($row)
                 ],200);
             }else{
                 return imageerror();
@@ -278,7 +278,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid){
                     if($request->has("content")){
@@ -308,7 +308,7 @@
 
                             return response()->json([
                                 "success"=>true,
-                                "data"=>comment([$row[0]])
+                                "data"=>Controller::controllercomment([$row[0]])
                             ],200);
                         }else{
                             return datatypeerror();
@@ -331,7 +331,7 @@
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($commentrow->isNotEmpty()&&$commentrow[0]->image_id==$imageid){
                     if($userid){
@@ -363,7 +363,7 @@
 
                                 return response()->json([
                                     "success"=>true,
-                                    "data"=>comment([$row[0]])
+                                    "data"=>Controller::controllercomment([$row[0]])
                                 ],200);
                             }else{
                                 return datatypeerror();
@@ -389,11 +389,11 @@
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($commentrow->isNotEmpty()&&$commentrow[0]->image_id==$imageid){
                     if($userid==$commentrow[0]->user_id||$userid==1){
-                        delcomment($commentid);
+                        Controller::controllerdelcomment($commentid);
                         return response()->json([
                             "success"=>true
                         ],200);
@@ -462,7 +462,7 @@
                         ->where("id","=",$data[$i][0])
                         ->select("*")->get();
                     $maindata[]=[
-                        "user"=>user($row,"normal"),
+                        "user"=>Controller::user($row,"normal"),
                         $orderby=>$data[$i][1]
                     ];
                 }

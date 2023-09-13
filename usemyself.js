@@ -1,9 +1,9 @@
-function statetest(state){
-    if(state=="SUCCESS"){
+function statutest(statu){
+    if(statu=="SUCCESS"){
         return "green"
-    }else if(state=="FAILED"){
+    }else if(statu=="FAILED"){
         return "red"
-    }else if(state=="N/A"||state=="subjective"){
+    }else if(statu=="N/A"||statu=="subjective"){
         return "gray"
     }else{
         return "white"
@@ -11,7 +11,7 @@ function statetest(state){
 }
 
 function linktest(link,title){
-    if(link["link"]!=""&&link["link"]!=undefined&&link["state"]!="N/A"&&link["state"]!="subjective"){
+    if(link["link"]!=""&&link["link"]!=undefined&&link["statu"]!="N/A"&&link["statu"]!="subjective"){
         return "<a href='"+link["link"]+"' class='a'>"+title+"</a>"
     }else{
         return title
@@ -41,7 +41,7 @@ ajax.onload=function(){
                                     <div class="no">-</div>
                                     <div class="title m5">${question[l]["data"][m]["description"]}</div>
                                     <div class="dot">............</div>
-                                    <div class="state" style="color: ${statetest(question[l]["data"][m]["state"])}">${question[l]["data"][m]["state"]}</div>
+                                    <div class="statu" style="color: ${statutest(question[l]["data"][m]["statu"])}">${question[l]["data"][m]["statu"]}</div>
                                 </div>
                             `
                         }
@@ -50,7 +50,7 @@ ajax.onload=function(){
                                 <div class="no">no.${question[l]["no"]}</div>
                                 <div class="title m5">${linktest(question[l],question[l]["description"])}</div>
                                 <div class="dot">............</div>
-                                <div class="state" style="color: ${statetest(question[l]["state"])}">${question[l]["state"]}</div>
+                                <div class="statu" style="color: ${statutest(question[l]["statu"])}">${question[l]["statu"]}</div>
                             </div>
                             <div class="list3">${descriptiondata}</div>
                         `
@@ -60,7 +60,7 @@ ajax.onload=function(){
                         <div class="listdiv">
                             <div class="title">項目: ${list[j]["data"][k]["list"]}-${list[j]["data"][k]["description"]}</div>
                             <div class="dot">............</div>
-                            <div class="state" style="color: ${statetest(list[j]["data"][k]["state"])}">${list[j]["data"][k]["state"]}</div>
+                            <div class="statu" style="color: ${statutest(list[j]["data"][k]["statu"])}">${list[j]["data"][k]["statu"]}</div>
                         </div>
                         <div class="list2">${questiondata}</div>
                     `
@@ -70,7 +70,7 @@ ajax.onload=function(){
                     <div class="listdiv">
                         <div class="title">${linktest(list[j],list[j]["title"])}</div>
                         <div class="dot">............</div>
-                        <div class="state" style="color: ${statetest(list[j]["state"])}">${list[j]["state"]}</div>
+                        <div class="statu" style="color: ${statutest(list[j]["statu"])}">${list[j]["statu"]}</div>
                         <div class="cdate">createdate: ${list[j]["createdate"]}</div>
                         <div class="udate">updatedate: ${list[j]["updatedate"]}</div>
                     </div>
@@ -91,7 +91,7 @@ ajax.onload=function(){
                                 <div class="no">-</div>
                                 <div class="title m5">${question[k]["description"]}</div>
                                 <div class="dot">............</div>
-                                <div class="state" style="color: ${statetest(question[k]["state"])}">${question[k]["state"]}</div>
+                                <div class="statu" style="color: ${statutest(question[k]["statu"])}">${question[k]["statu"]}</div>
                             </div>
                         `
                     }
@@ -101,7 +101,7 @@ ajax.onload=function(){
                             <div class="no">no.${question[k]["no"]}</div>
                             <div class="title m5">${question[k]["description"]}</div>
                             <div class="dot">............</div>
-                            <div class="state" style="color: ${statetest(question[k]["state"])}">${question[k]["state"]}</div>
+                            <div class="statu" style="color: ${statutest(question[k]["statu"])}">${question[k]["statu"]}</div>
                         </div>
                         <div class="list3">${descriptiondata}</div>
                     `
@@ -111,7 +111,7 @@ ajax.onload=function(){
                     <div class="listdiv">
                         <div class="title">項目: ${list[j]["list"]}-${list[j]["description"]}</div>
                         <div class="dot">............</div>
-                        <div class="state" style="color: ${statetest(list[j]["state"])}">${list[j]["state"]}</div>
+                        <div class="statu" style="color: ${statutest(list[j]["statu"])}">${list[j]["statu"]}</div>
                     </div>
                     <div class="list2">${questiondata}</div>
                 `
@@ -123,7 +123,7 @@ ajax.onload=function(){
                 <div class="subject">
                     <div class="title">${linktest(data[i],title)}</div>
                     .......
-                    <div class="state" style="color: ${statetest(data[i]["state"])}">${data[i]["state"]}</div>
+                    <div class="statu" style="color: ${statutest(data[i]["statu"])}">${data[i]["statu"]}</div>
                     <div class="cdate">createdate: ${data[i]["createdate"]}</div>
                     <div class="udate">updatedate: ${data[i]["updatedate"]}</div>
                 </div>
@@ -159,7 +159,7 @@ ajax2.onload=function(){
                                     <div class="no">-</div>
                                     <div class="title m5">${question[l]["data"][m]["description"]}</div>
                                     <div class="dot">............</div>
-                                    <div class="state" style="color: ${statetest(question[l]["data"][m]["state"])}">${question[l]["data"][m]["state"]}</div>
+                                    <div class="statu" style="color: ${statutest(question[l]["data"][m]["statu"])}">${question[l]["data"][m]["statu"]}</div>
                                 </div>
                             `
                         }
@@ -168,7 +168,7 @@ ajax2.onload=function(){
                                 <div class="no">no.${question[l]["no"]}</div>
                                 <div class="title m5">${linktest(question[l],question[l]["description"])}</div>
                                 <div class="dot">............</div>
-                                <div class="state" style="color: ${statetest(question[l]["state"])}">${question[l]["state"]}</div>
+                                <div class="statu" style="color: ${statutest(question[l]["statu"])}">${question[l]["statu"]}</div>
                             </div>
                             <div class="list3">${descriptiondata}</div>
                         `
@@ -178,7 +178,7 @@ ajax2.onload=function(){
                         <div class="listdiv">
                             <div class="title">項目: ${list[j]["data"][k]["list"]}-${list[j]["data"][k]["description"]}</div>
                             <div class="dot">............</div>
-                            <div class="state" style="color: ${statetest(list[j]["data"][k]["state"])}">${list[j]["data"][k]["state"]}</div>
+                            <div class="statu" style="color: ${statutest(list[j]["data"][k]["statu"])}">${list[j]["data"][k]["statu"]}</div>
                         </div>
                         <div class="list2">${questiondata}</div>
                     `
@@ -188,7 +188,7 @@ ajax2.onload=function(){
                     <div class="listdiv">
                         <div class="title">${linktest(list[j],list[j]["title"])}</div>
                         <div class="dot">............</div>
-                        <div class="state" style="color: ${statetest(list[j]["state"])}">${list[j]["state"]}</div>
+                        <div class="statu" style="color: ${statutest(list[j]["statu"])}">${list[j]["statu"]}</div>
                         <div class="cdate">createdate: ${list[j]["createdate"]}</div>
                         <div class="udate">updatedate: ${list[j]["updatedate"]}</div>
                     </div>
@@ -209,7 +209,7 @@ ajax2.onload=function(){
                                 <div class="no">-</div>
                                 <div class="title m5">${question[k]["description"]}</div>
                                 <div class="dot">............</div>
-                                <div class="state" style="color: ${statetest(question[k]["state"])}">${question[k]["state"]}</div>
+                                <div class="statu" style="color: ${statutest(question[k]["statu"])}">${question[k]["statu"]}</div>
                             </div>
                         `
                     }
@@ -219,7 +219,7 @@ ajax2.onload=function(){
                             <div class="no">no.${question[k]["no"]}</div>
                             <div class="title m5">${question[k]["description"]}</div>
                             <div class="dot">............</div>
-                            <div class="state" style="color: ${statetest(question[k]["state"])}">${question[k]["state"]}</div>
+                            <div class="statu" style="color: ${statutest(question[k]["statu"])}">${question[k]["statu"]}</div>
                         </div>
                         <div class="list3">${descriptiondata}</div>
                     `
@@ -229,7 +229,7 @@ ajax2.onload=function(){
                     <div class="listdiv">
                         <div class="title">項目: ${list[j]["list"]}-${list[j]["description"]}</div>
                         <div class="dot">............</div>
-                        <div class="state" style="color: ${statetest(list[j]["state"])}">${list[j]["state"]}</div>
+                        <div class="statu" style="color: ${statutest(list[j]["statu"])}">${list[j]["statu"]}</div>
                     </div>
                     <div class="list2">${questiondata}</div>
                 `
@@ -241,7 +241,7 @@ ajax2.onload=function(){
                 <div class="subject">
                     <div class="title">${linktest(data[i],title)}</div>
                     .......
-                    <div class="state" style="color: ${statetest(data[i]["state"])}">${data[i]["state"]}</div>
+                    <div class="statu" style="color: ${statutest(data[i]["statu"])}">${data[i]["statu"]}</div>
                     <div class="cdate">createdate: ${data[i]["createdate"]}</div>
                     <div class="udate">updatedate: ${data[i]["updatedate"]}</div>
                 </div>
@@ -251,7 +251,7 @@ ajax2.onload=function(){
     }
 }
 
-ajax2.open("GET","listmyself.json")
+ajax2.open("GET","listusemyself.json")
 ajax2.send()
 
 startmacossection()

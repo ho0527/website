@@ -1,0 +1,558 @@
+{
+    "data": [
+        {
+            "title": "53national",
+            "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/",
+            "statu": "FAILED",
+            "ps": "list",
+            "createdate": "2023/07/01",
+            "updatedate": "2023/09/13",
+            "data": [
+                {
+                    "title": "ModuleA-SPEEDTEST",
+                    "statu": "SUCCESS",
+                    "ps": "list",
+                    "createdate": "2023/05/21",
+                    "updatedate": "2023/07/16",
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "Task",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "A01-Resize and Grayscale Multiple Images",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/01",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "競賽中提供的“images”文件夾中有許多圖片。這些圖片是大小為 640 x N 的彩色圖片。請對所有這些圖片進行編輯",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "A02-Add a filter",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/02",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "在圖片 plane.jpg 上添加一個噪點濾鏡，並將其提交為 result.jpg。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "A03-TODO List",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/03",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "使用 HTML 和 CSS 進行網頁上TODO List開發。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "A04-製作網頁的日出日落動畫",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/04",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "請製作出一個日出和日落效果",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "A05-Responsive grid layout",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/05",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "創建響應式佈局",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "A06-Keyword Highlighter",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/06",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "在素材文件中，提供了一段文字給您。您需要將這段文字複製到您的 HTML 頁面中，並實現搜尋關鍵字功能",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "A07-Color Transform",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/07",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "開發一個顏色轉換應用程式，當您輸HEX或RGB格式的顏色值時，結果區域將顯示顏色格式和轉換後的值。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "A08-Native JavaScript Routing",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/08",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "您需要完成 myScript.js，以便在點擊連結時，頁面不會刷新，",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "A09-Markdown 預覽",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/09",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "在左側區域輸入 Markdown 腳本應導致在右側區域中即時預覽結果。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 10,
+                                    "description": "A10-圖像顏色偵測器",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/10",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "當滑鼠指向圖片時，在圖片下方的區域顯示滑鼠指向位置的顏色代碼和顏色。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 11,
+                                    "description": "A11-夜間模式",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/11",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "當使用者滑鼠點擊網頁上的任何圖片時，應該會彈出一個燈箱，顯示圖片的預覽，覆蓋原本的網頁。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 12,
+                                    "description": "A12-建立圖片預覽視窗套件",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/12",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "當使用者滑鼠點擊網頁上的任何圖片時，應該會彈出一個燈箱，顯示圖片的預覽，覆蓋原本的網頁。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 13,
+                                    "description": "A13-Kanban Board Sortable",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/13",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "在提供的看板布局中實作可排序功能。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 14,
+                                    "description": "A14-像素編輯器",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/14",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "創建一個像下面這樣的像素編輯器。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 15,
+                                    "description": "A15-答案檢查器",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/15",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "你需要開發一個網頁，顯示一個表格，顯示問題編號、實際答案和提交的答案。在表格底部，顯示此次提交的分數。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 16,
+                                    "description": "A16-操作 Array",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/16",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "禁止使用 PHP 迴圈（例如 while、do while、for、foreach）。在您的 index.php 程序中，建立一個包含數字 1 到 40 的陣列。並指示哪些數字是 n 的倍數。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 17,
+                                    "description": "A17-Tic-Tac-Toe",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/17",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "製作OOXX",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 18,
+                                    "description": "A18-Live chat",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/18",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "您需要開發一個即時聊天室。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 19,
+                                    "description": "A19-Generate image with Base64",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/19",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "使用文字區域必須插入一張 Base64 格式的圖片，當傳送該代碼時，您必須創建一個文件夾，然後將圖片插入其中以 PNG 格式儲存。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 20,
+                                    "description": "A20-Write a Secure Login",
+                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/20",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "您的任務是修復現有系統中突出的問題，使其更安全。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ModuleB-FONTEND",
+                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskB/",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "20230525",
+                    "updatedate": "20230824",
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "首頁",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "no": 1,
+                                    "description": "有設定新專案的畫布的視窗。該視窗內所需包含的內容有：",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "輸入畫布寬度的文字輸入框、輸入畫布高度的文字輸入框、'確認'按鈕。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 2,
+                                    "description": "起始頁面可以讓使用者設定所需的畫布尺寸及背景顏色，設",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "定完成後，按下'確定'按鈕，使用者將會進入到編輯頁面開始編輯。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 3,
+                                    "description": "預設值",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "畫布大小的預設值為 1280x720，單位為像素。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "畫布底色的預設值為白色(#FFFFFF)。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "網站背景(body)的底色為灰色(#565656)。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "編輯頁面",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": 4,
+                                    "description": "有'新增專案'按鈕，且當使用者按下按鈕後，會提示使用者是否離開編輯頁面。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": 5,
+                                    "description": "當使用者確認離開編輯頁面後，將回到「新增專案頁面」。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": 6,
+                                    "description": "選取物件功能正常運作",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "可於當前的圖層，選取圖層上的物件。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "7~10",
+                                    "description": "筆刷功能正常運作",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "可以畫線在當前選擇的圖層上。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "能選用不同的顏色來畫線。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "能選用不同的線條粗細來畫線。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "且當按下滑鼠左鍵後按著 Shift 按鍵，可以依照移動方向畫出垂直及水平的線。",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "11~13",
+                                    "description": "油漆桶能正常運作",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "可以設定油漆的顏色。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "可以於所選擇的圖層進行填色。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "可以當前點下去的座標為中心，將目前圖層與中心相同顏色的區域圖上油漆的顏色。",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "14~15",
+                                    "description": "調色盤能正常運作",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "透過調色盤來自定義筆刷及油漆桶的顏色。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "使用者在挑選筆刷及油漆桶顏色時，需要提供檢色器，讓使用者選擇顏色。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "16~18",
+                                    "description": "樣章能正常運作：",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "可以在當前選擇的圖層上蓋上樣章。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "可以在樣章列表標示出當前選定的樣章。",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "能選用不同的圖案當做樣章。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 19,
+                                    "description": "可以透過復原按鈕來復原上一步的動作。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": 20,
+                                    "description": "可以透過重做按鈕來重做下一步的動作。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": 21,
+                                    "description": "使用者可以透過'上傳圖片'按鈕來上傳圖片，上傳後的圖片會直接視為新圖層。",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "22~28",
+                                    "description": "圖層物件列表功能正常：",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "提供建立和刪除圖層(物件將一併刪除)的功能，新的圖層為透明色，在上面的圖層非透明區域會蓋掉下面圖層的內容。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "每個所繪製的線條及上傳的圖片，於單一圖層中，將視為各別不同的物件。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "於當前選定的圖層中，物件將可透過滑鼠操作進行移動可以改變物件的旋轉及縮放。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "選定物件的編輯控制頂點(移動、旋轉、縮放)，每個頂點的大小至少 10px*10px。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "拖曳編輯控制頂點大小(非等比)；拖曳物件頂點時，同時按著 Shift 可以等比改變物件的大小。拖曳改變物件大小時，可以即時預覽物件的內容變化。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "在圖層物件列表區，可以更換圖層的順序。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "圖層內的物件，可以變換順序。",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "儲存功能及畫面美觀",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": 29,
+                                    "description": "按下'儲存圖片'按鈕後，能將在所有圖層合併後的結果存成圖片檔(jpg)",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "檔名須符合「YYYYmmdd_HHiiss.jpg」的格式。",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 30,
+                                    "description": "能儲存成可編輯檔，並且可以透過'開啟專案'按鈕匯入以下功能：",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "圖層、筆刷。",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "油漆桶、樣章、圖片。",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": 32,
+                                    "description": "頁面設計適當留白，使設計更為簡潔。",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": 33,
+                                    "description": "頁面設計具有良好的使用者體驗且互動效果良好。",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ModuleC-FONTEND_LAYOUT",
+                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskC/",
+                    "statu": "SUCCESS",
+                    "ps": "list",
+                    "createdate": "2023/05/25",
+                    "updatedate": "2023/07/08",
+                    "data": []
+                },
+                {
+                    "title": "ModuleD-API",
+                    "link": "https://hiiamchris.ddns.net:81/website/53th/senior/53national/TaskD/",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "2023/05/21",
+                    "updatedate": "2023/09/13",
+                    "data": []
+                },
+                {
+                    "title": "ModuleE-ALGORITHM",
+                    "statu": "SUCCESS",
+                    "ps": "list",
+                    "createdate": "2023/05/18",
+                    "updatedate": "2023/08/22",
+                    "data": []
+                }
+            ]
+        }
+    ]
+}

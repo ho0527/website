@@ -4,26 +4,63 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Hash;
-    include("error.php");
-    include("function.php");
+    use Illuminate\Support\Facades\Validator;
+    // use Illuminate\Contracts\Validation\Validator;
 
     class user extends Controller{
-        public function login(Request $request){
-            $requestdata=$request->validate([
-                "email"=>"required|email|string",
-                "password"=>"required|string",
-            ]);
 
-            /*
-            ,[
-                "email.required"=>missingfield(),
-                "email.email"=>datatypeerror(),
-                "email.string"=>datatypeerror(),
-                "password.required"=>missingfield(),
-                "password.string"=>datatypeerror(),
-            ]
+        // public function login(Request $req){
+        //     $v = Validator::make($req->all(), [
+        //         'email' => 'required|string|email',
+        //         'password' => 'required|string'
+        //     ], [
+        //         "required" => "MSG_MISSING_FIELD",
+        //         "email" => "MSG_WRONG_DATA_TYPE",
+        //         "string" => "MSG_WRONG_DATA_TYPE"
+        //     ]);
+
+        //     if ($v->fails()) {
+        //         return $this->error($v->messages()->first());
+        //     }
+
+        //     $data = $v->validate();
+        //     $user = User::where("email", $data["email"])->first();
+        //     if ($user === null) {
+        //         return $this->error("MSG_INVALID_LOGIN");
+        //     }
+
+        //     if (password_verify($data["password"], $user->password_hash) === false) {
+        //         return $this->error("MSG_INVALID_LOGIN");
+        //     }
+
+        //     $accessToken = hash("sha256", $user->email);
+        //     $user->access_token = $accessToken;
+        //     $user->save();
+
+        //     return $this->success([
+        //         ...$user->toArray(),
+        //         "access_token" => $accessToken
+        //     ]);
+        // }
+
+
+        public function login(Request $request){
+            echo("123456");
+            $requestdata=Validator::make($request->all(),[
+                    "email"=>"required|email|string",
+                    "password"=>"required|string",
+                ],[
+                "required"=>"0",
+                "email"=>"1",
+                "string"=>"1",
+            ]);
+            echo("789012");
+
+            if($requestdata->fails()){
+                return "您輸入的資料有誤";
+                // return Controller::error($requestdata->messages()->first());
+            }
             return $requestdata;
-            */
 
             if($request->has("email")&&$request->has("password")){
                 $email=$request->input("email");
@@ -43,7 +80,7 @@
                             ->select("*")->get();
                         return response()->json([
                             "success"=>true,
-                            "data"=>user($row,"login")
+                            "data"=>Controller::user($row,"login")
                         ]);
                     }else{
                         return loginerror();
@@ -82,7 +119,7 @@
                                 ->select("*")->get();
                             return response()->json([
                                 "success"=>true,
-                                "data"=>user($row,"normal")
+                                "data"=>Controller::user($row,"normal")
                             ]);
                         }else{
                             return passworderror();
@@ -100,8 +137,8 @@
 
         public function logout(Request $request){
             // 可以使用TOKEM的方式拿到TOKEN之後再比對
-            $userid=logincheck();
-            if(logincheck()){
+            $userid=Controller::logincheck();
+            if($userid){
                 DB::table("users")
                     ->where("id","=",$userid)
                     ->update([
