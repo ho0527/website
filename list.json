@@ -2,7 +2,7 @@
     "data": [
         {
             "title": "46national",
-            "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/",
+            "link": "46th/senior/46national/",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/04/23",
@@ -10,7 +10,7 @@
             "data": [
                 {
                     "title": "ModuleA-DESIGN",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskA/",
+                    "link": "46th/senior/46national/TaskA/",
                     "statu": "N/A",
                     "ps": "list",
                     "createdate": "N/A",
@@ -19,7 +19,7 @@
                 },
                 {
                     "title": "ModuleB-FONTEND_LAYOUT",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskB/",
+                    "link": "46th/senior/46national/TaskB/",
                     "statu": "N/A",
                     "ps": "list",
                     "createdate": "N/A",
@@ -28,7 +28,7 @@
                 },
                 {
                     "title": "ModuleC-GAME",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskC/",
+                    "link": "46th/senior/46national/TaskC/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
@@ -37,7 +37,7 @@
                 },
                 {
                     "title": "ModuleD-PHP",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskD/",
+                    "link": "46th/senior/46national/TaskD/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
@@ -57,7 +57,7 @@
         },
         {
             "title": "49regional",
-            "link": "https://hiiamchris.ddns.net/website/49th/senior/49regional/",
+            "link": "49th/senior/49regional/",
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/03/13",
@@ -66,7 +66,7 @@
         },
         {
             "title": "50regional",
-            "link": "https://hiiamchris.ddns.net/website/50th/senior/50regional/",
+            "link": "50th/senior/50regional/",
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/06/22",
@@ -75,7 +75,7 @@
         },
         {
             "title": "50national",
-            "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/",
+            "link": "50th/senior/50national/",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/07/01",
@@ -83,7 +83,7 @@
             "data": [
                 {
                     "title": "ModuleA-FONTEND",
-                    "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/TaskA/",
+                    "link": "50th/senior/50national/TaskA/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/06/22",
@@ -109,7 +109,7 @@
                 },
                 {
                     "title": "ModuleD-GAME",
-                    "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/TaskD/",
+                    "link": "50th/senior/50national/TaskD/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/06/22",
@@ -118,7 +118,7 @@
                 },
                 {
                     "title": "ModuleE-SPEEDTEST",
-                    "link": "https://hiiamchris.ddns.net/website/50th/senior/50national/TaskE/01",
+                    "link": "50th/senior/50national/TaskE/01",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/06/22",
@@ -137,7 +137,7 @@
         },
         {
             "title": "51regional",
-            "link": "https://hiiamchris.ddns.net/website/51th/senior/51regional/",
+            "link": "51th/senior/51regional/",
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/07/08",
@@ -146,7 +146,7 @@
         },
         {
             "title": "j52regional",
-            "link": "https://hiiamchris.ddns.net/website/52th/junior/52regional/",
+            "link": "52th/junior/52regional/",
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/03/21",
@@ -155,7 +155,7 @@
         },
         {
             "title": "j52national",
-            "link": "https://hiiamchris.ddns.net/website/52th/junior/52national/",
+            "link": "52th/junior/52national/",
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/03/21",
@@ -164,7 +164,7 @@
         },
         {
             "title": "52regional",
-            "link": "https://hiiamchris.ddns.net/website/52th/senior/52regional/52pdo",
+            "link": "52th/senior/52regional/52pdo",
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/02/05",
@@ -173,7 +173,7 @@
         },
         {
             "title": "52national",
-            "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/",
+            "link": "52th/senior/52national/",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/05/05",
@@ -194,161 +194,161 @@
                                 {
                                     "no": "01",
                                     "description": "A01",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/01",
+                                    "link": "52th/senior/52national/TaskA/01",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "02",
                                     "description": "A02",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/02",
+                                    "link": "52th/senior/52national/TaskA/02",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "03",
                                     "description": "A03",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/03",
+                                    "link": "52th/senior/52national/TaskA/03",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "04",
                                     "description": "A04",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/04",
+                                    "link": "52th/senior/52national/TaskA/04",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "05",
                                     "description": "A05",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/05",
+                                    "link": "52th/senior/52national/TaskA/05",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "06",
                                     "description": "A06",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/06",
+                                    "link": "52th/senior/52national/TaskA/06",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "07",
                                     "description": "A07",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/07",
+                                    "link": "52th/senior/52national/TaskA/07",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "08",
                                     "description": "A08",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/08",
+                                    "link": "52th/senior/52national/TaskA/08",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "09",
                                     "description": "A09",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/09",
+                                    "link": "52th/senior/52national/TaskA/09",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 10,
                                     "description": "A10",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/10",
+                                    "link": "52th/senior/52national/TaskA/10",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 11,
                                     "description": "A11",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/11",
+                                    "link": "52th/senior/52national/TaskA/11",
                                     "statu": "FAILED",
                                     "data": []
                                 },
                                 {
                                     "no": 12,
                                     "description": "A12",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/12",
+                                    "link": "52th/senior/52national/TaskA/12",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 13,
                                     "description": "A13",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/13",
+                                    "link": "52th/senior/52national/TaskA/13",
                                     "statu": "FAILED",
                                     "data": []
                                 },
                                 {
                                     "no": 14,
                                     "description": "A14",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/14",
+                                    "link": "52th/senior/52national/TaskA/14",
                                     "statu": "N/A",
                                     "data": []
                                 },
                                 {
                                     "no": 15,
                                     "description": "A15",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/15",
+                                    "link": "52th/senior/52national/TaskA/15",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 16,
                                     "description": "A16",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/16",
+                                    "link": "52th/senior/52national/TaskA/16",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 17,
                                     "description": "A17",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/17",
+                                    "link": "52th/senior/52national/TaskA/17",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 18,
                                     "description": "A18",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/18",
+                                    "link": "52th/senior/52national/TaskA/18",
                                     "statu": "N/A",
                                     "data": []
                                 },
                                 {
                                     "no": 19,
                                     "description": "A19",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/19",
+                                    "link": "52th/senior/52national/TaskA/19",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 20,
                                     "description": "A20",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/20",
+                                    "link": "52th/senior/52national/TaskA/20",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "F1",
                                     "description": "AFM11",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/FM-11",
+                                    "link": "52th/senior/52national/TaskA/FM-11",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "F2",
                                     "description": "AFM12",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/FM-12",
+                                    "link": "52th/senior/52national/TaskA/FM-12",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "F3",
                                     "description": "AFM13",
-                                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskA/FM-13",
+                                    "link": "52th/senior/52national/TaskA/FM-13",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
@@ -389,7 +389,7 @@
                 },
                 {
                     "title": "ModuleE-SPA",
-                    "link": "https://hiiamchris.ddns.net/website/52th/senior/52national/TaskE/",
+                    "link": "52th/senior/52national/TaskE/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/02/05",
@@ -408,7 +408,7 @@
         },
         {
             "title": "j53regional",
-            "link": "https://hiiamchris.ddns.net/website/53th/junior/53regional/",
+            "link": "53th/junior/53regional/",
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/06/18",
@@ -417,7 +417,7 @@
         },
         {
             "title": "j53national",
-            "link": "https://hiiamchris.ddns.net/website/53th/junior/53national/",
+            "link": "53th/junior/53national/",
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/05/16",
@@ -426,7 +426,7 @@
         },
         {
             "title": "53regional",
-            "link": "https://hiiamchris.ddns.net/website/53th/senior/53regional/",
+            "link": "53th/senior/53regional/",
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/02/05",
@@ -435,7 +435,7 @@
         },
         {
             "title": "53national",
-            "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/",
+            "link": "53th/senior/53national/",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/07/01",

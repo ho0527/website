@@ -20,6 +20,7 @@
     2023/07/25  10:50:11 Bata 1.0.14 // 修改lightbox函式
     2023/08/01  23:22:33 Bata 1.0.15 // 修改formdata函式
     2023/08/09  18:27:14 Bata 1.0.16 // 修改lightbox函式新增clickcolse變數
+    2023/09/14  16:57:12 Bata 1.0.17 // 更新startmacossection函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -28,9 +29,16 @@
     |-------    -----    -     -    -          -     -----         -----  -------|
 */
 
-function startmacossection(){ // start macos section
+function startmacossection(){
     let macostimer
     setInterval(function(){
+        docget("qtor","body").onscroll=function(){
+            clearTimeout(macostimer)
+            docget("qtor","body").setAttribute("scroll","true")
+            macostimer=setTimeout(function(){
+                docget("qtor","body").removeAttribute("scroll")
+            },500)
+        }
         document.querySelectorAll(".macossectiondiv").forEach(function(event){
             event.addEventListener("scroll",function(){
                 clearTimeout(macostimer)
@@ -61,7 +69,7 @@ function startmacossection(){ // start macos section
     },200)
 }
 
-function divsort(card,sortdiv){ // card 放要被拖的物件 cardclass(不加選擇器) sortdiv 放要放的物件(加選擇器)
+function divsort(card,sortdiv){
     let data=[]
 
     document.querySelectorAll("."+card).forEach(function(event){
@@ -112,7 +120,7 @@ function divsort(card,sortdiv){ // card 放要被拖的物件 cardclass(不加�
     return data
 }
 
-function docget(key,selector){ // 傳入 id animation class name tag tagns qtor all 分別對應為 getElementById getAnimations getElementsByClassName getElementsByName getElementsByTagName getElementsByTagNameNS querySelector querySelectorAll 之後傳入要執行的selector
+function docget(key,selector){
     if(key=="id"){
         return document.getElementById(selector)
     }
@@ -140,37 +148,37 @@ function docget(key,selector){ // 傳入 id animation class name tag tagns qtor 
     conlog("[ERROR]dget key not found"+key)
 }
 
-function docgetid(selector){ // document.getElementById
+function docgetid(selector){
     return document.getElementById(selector)
 }
 
-function docgetall(selector){ // document.querySelectorAll
+function docgetall(selector){
     return document.querySelectorAll(selector)
 }
 
-function conlog(data,color="white",size="12",weight="normal"){ // consloe.log 值出來
+function conlog(data,color="white",size="12",weight="normal"){
     console.log(`%c${data}`,`color:${color};font-size:${size}px;font-weight:${weight}`)
 }
 
-function isset(data){ // 看值是否存在
+function isset(data){
     if(data!=null||data!=undefined){ return true }
     else{ return false }
 }
 
-function blank(data){ // 看值是否不為空
+function blank(data){
     if(data!=null||data!=undefined||data!=""){ return true }
     else{ return false }
 }
 
-function weblsset(data,value){ // localStorage.setItem
+function weblsset(data,value){
     return localStorage.setItem(data,value)
 }
 
-function weblsget(data){ // localStorage.getItem
+function weblsget(data){
     return localStorage.getItem(data)
 }
 
-function doccreate(element){ // document.createElement
+function doccreate(element){
     return document.createElement(element)
 }
 

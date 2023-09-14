@@ -1074,3 +1074,7 @@ object {
     grid-column: span 3 / span 3;
   }
 }
+
+.audio{
+  display: none;
+}
