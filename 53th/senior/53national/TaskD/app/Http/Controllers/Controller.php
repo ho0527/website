@@ -132,17 +132,17 @@
 
         public function error($key){
             $data=[
-                ["MSG_INVALID_LOGIN",403],
-                ["MSG_USER_EXISTS",409],
-                ["MSG_PASSWORD_NOT_SECURE",409],
-                ["MSG_INVALID_ACCESS_TOKEN",401],
-                ["MSG_PERMISSION_DENY",403],
-                ["MSG_MISSING_FIELD",400],
-                ["MSG_WRONG_DATA_TYPE",400],
-                ["MSG_IMAGE_NOT_EXISTS",404],
-                ["MSG_COMMENT_NOT_EXISTS",404],
-                ["MSG_USER_NOT_EXISTS",404],
-                ["MSG_INVALID_FILE_FORMAT",400],
+                ["MSG_INVALID_LOGIN",403], // 0
+                ["MSG_USER_EXISTS",409], // 1
+                ["MSG_PASSWORD_NOT_SECURE",409], // 2
+                ["MSG_INVALID_ACCESS_TOKEN",401], // 3
+                ["MSG_PERMISSION_DENY",403], // 4
+                ["MSG_MISSING_FIELD",400], // 5
+                ["MSG_WRONG_DATA_TYPE",400], // 6
+                ["MSG_IMAGE_NOT_EXISTS",404], // 7
+                ["MSG_COMMENT_NOT_EXISTS",404], // 8
+                ["MSG_USER_NOT_EXISTS",404], // 9
+                ["MSG_INVALID_FILE_FORMAT",400], // 10
             ];
 
             return response()->json([

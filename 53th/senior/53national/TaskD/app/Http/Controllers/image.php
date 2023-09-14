@@ -9,6 +9,37 @@
 
     class image extends Controller{
         public function search(Request $request){
+            // $requestdata=Validator::make($request->all(),[
+            //         "order_by"=>"nullable|default:created_at|in:created_at,updated_at",
+            //         "order_type"=>"nullable|default:desc|in:asc,desc",
+            //         "keyword"=>"nullable|default:",
+            //         "page"=>"nullable|default:1",
+            //         "pagesize"=>"nullable|default:10|min:1|max:100",
+            //     ],[
+            //     "in"=>6
+            // ]);
+
+            // if(!$requestdata->fails()){
+            //     $requestdata=$requestdata->validate();
+            //     echo "\$requestdata ="; print_r($requestdata); echo "<br>";
+            //     $row=DB::table("images")
+            //         ->where("title","LIKE","%".$requestdata["keyword"]."%")
+            //         ->where("description","LIKE","%".$requestdata["keyword"]."%")
+            //         ->where("deleted_at","=",NULL)
+            //         ->orderBy($requestdata["order_by"],$requestdata["order_type"])
+            //         ->skip(($requestdata["page"]-1)*$requestdata["pagesize"])
+            //         ->take($requestdata["pagesize"])
+            //         ->select("*")->get();
+            //     return response()->json([
+            //         "success"=>true,
+            //         "data"=>[
+            //             "total_count"=>count($row),
+            //             "images"=>Controller::image($row)
+            //         ]
+            //     ]);
+            // }else{
+            //     return Controller::error($requestdata->messages()->first());
+            // }
             $orderby="created_at";
             $ordertype="desc";
             $keyword="";
@@ -115,44 +146,46 @@
         }
 
         public function upload(Request $request){
-            $userid=Controller::logincheck();
-            if($userid){
-                if($request->has("title")&&$request->has("description")&&$request->hasFile("image")){
-                    $title=$request->input("title");
-                    $description=$request->input("description");
-                    $image=$request->file("image");
-                    if(in_array($image->extension(),["png","jpg"])){
-                        $mimetype="image/jpeg";
-                        if($image->extension()=="png"){
-                            $mimetype="image/png";
-                        }
-                        $path=$image->store("image");
-                        $imagedata=getimagesize(storage_path("app/".$path));
-                        DB::table("images")->insert([
-                            "url"=>$path,
-                            "user_id"=>$userid,
-                            "title"=>$title,
-                            "description"=>$description,
-                            "width"=>$imagedata[0],
-                            "height"=>$imagedata[1],
-                            "mimetype"=>$mimetype,
-                            "created_at"=>time()
-                        ]);
-                        $row=DB::table("images")
-                            ->latest()
-                            ->select("*")->get();
-                        return response()->json([
-                            "success"=>true,
-                            "data"=>Controller::imagedetail([$row[0]])
-                        ],200);
-                    }else{
-                        return fileerror();
+            $requestdata=Validator::make($request->all(),[
+                "title"=>"required",
+                "description"=>"required",
+                "image"=>"required|mimes:png,jpg"
+            ],[
+                "required"=>5,
+                "mimes"=>10
+            ]);
+            if(!$requestdata->fails()){
+                $userid=Controller::logincheck();
+                if($userid){
+                    $requestdata=$requestdata->validate();
+                    $mimetype="image/jpeg";
+                    if($requestdata["image"]->getClientMimeType()=="png"){
+                        $mimetype="image/png";
                     }
+                    $path=$requestdata["image"]->store("image");
+                    $imagedata=getimagesize(storage_path("app/".$path));
+                    DB::table("images")->insert([
+                        "url"=>$path,
+                        "user_id"=>$userid,
+                        "title"=>$requestdata["title"],
+                        "description"=>$requestdata["description"],
+                        "width"=>$imagedata[0],
+                        "height"=>$imagedata[1],
+                        "mimetype"=>$mimetype,
+                        "created_at"=>time()
+                    ]);
+                    $row=DB::table("images")
+                        ->latest()
+                        ->select("*")->get();
+                    return response()->json([
+                        "success"=>true,
+                        "data"=>Controller::imagedetail([$row[0]])
+                    ],200);
                 }else{
-                    return missingfield();
+                    return tokenerror();
                 }
             }else{
-                return tokenerror();
+                return Controller::error($requestdata->messages()->first());
             }
         }
 
