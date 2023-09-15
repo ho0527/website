@@ -1,0 +1,645 @@
+{
+    "data": [
+        {
+            "title": "ws2022",
+            "statu": "FAILED",
+            "ps": "list",
+            "createdate": "2023/06/10",
+            "updatedate": "2023/09/15",
+            "data": [
+                {
+                    "title": "ModuleA-SPEEDTEST",
+                    "link": "worldskill/2022",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "2023/09/15",
+                    "data": [
+                        {
+                            "list": "A",
+                            "description": "Design",
+                            "link": "TaskA/",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "A01",
+                                    "description": "A01-Masking Image",
+                                    "link": "TaskA/A01/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A02",
+                                    "description": "A02-Vectored artwork",
+                                    "link": "TaskA/A02/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A03",
+                                    "description": "A03-Double Exposure Effect",
+                                    "link": "TaskA/A03/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A04",
+                                    "description": "A04-Instagram Grid",
+                                    "link": "TaskA/A04/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A05",
+                                    "description": "A05-Resize and Grayscale Multiple Images",
+                                    "link": "TaskA/A05/index.txt",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A06",
+                                    "description": "A06-Spinning Globe Animation",
+                                    "link": "TaskA/A06/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A07",
+                                    "description": "A07-Apply Background",
+                                    "link": "TaskA/A07/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A08",
+                                    "description": "A08-Add a filter",
+                                    "link": "TaskA/A08/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A09",
+                                    "description": "A09-Color Blending",
+                                    "link": "TaskA/A09/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A10",
+                                    "description": "A10-Mosaic",
+                                    "link": "TaskA/A10/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "A11",
+                                    "description": "A11-Banner creation",
+                                    "link": "TaskA/A11/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": "B",
+                            "description": "LAYOUT",
+                            "link": "worldskill/2022",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "B01",
+                                    "description": "B01-CSS Counter",
+                                    "link": "TaskA/B01/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B02",
+                                    "description": "B02-TODO List",
+                                    "link": "TaskA/B02/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B03",
+                                    "description": "B03-9-Images",
+                                    "link": "TaskA/B03/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B04",
+                                    "description": "B04-Particle Button",
+                                    "link": "TaskA/B04/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B05",
+                                    "description": "B05-Flip Gradient Elements",
+                                    "link": "TaskA/B05/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B06",
+                                    "description": "B06-Sticky Footer",
+                                    "link": "TaskA/B06/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B07",
+                                    "description": "B07-Korean flag",
+                                    "link": "TaskA/B07/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B08",
+                                    "description": "B08-Rotating Star",
+                                    "link": "TaskA/B08/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B09",
+                                    "description": "B09-Dice Roller",
+                                    "link": "TaskA/B09/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B10",
+                                    "description": "B10-5 Stars Rating Animation",
+                                    "link": "TaskA/B10/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B11",
+                                    "description": "B11-Sunrise and sunset",
+                                    "link": "TaskA/B11/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B12",
+                                    "description": "B12-Rectangle rotation",
+                                    "link": "TaskA/B12/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B13",
+                                    "description": "B13-Accessibility",
+                                    "link": "TaskA/B13/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B14",
+                                    "description": "B14-CSS Animated Traffic Light",
+                                    "link": "TaskA/B14/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B15",
+                                    "description": "B15-Responsive grid layout",
+                                    "link": "TaskA/B15/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B16",
+                                    "description": "B16-CSS marquee effect",
+                                    "link": "TaskA/B16/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "B17",
+                                    "description": "B17-Pie charts",
+                                    "link": "TaskA/B17/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": "C",
+                            "description": "FONTEND",
+                            "link": "worldskill/2022",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "C01",
+                                    "description": "C01-Keyword Highlighter",
+                                    "link": "TaskA/C01/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C02",
+                                    "description": "C02-Spotlight",
+                                    "link": "TaskA/C02/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C03",
+                                    "description": "C03-Get the data type",
+                                    "link": "TaskA/C03/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C04",
+                                    "description": "C04-Notebook",
+                                    "link": "TaskA/C04/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C05",
+                                    "description": "C05-Color Transform",
+                                    "link": "TaskA/C05/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C06",
+                                    "description": "C06-Deep Clone",
+                                    "link": "TaskA/C06/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C07",
+                                    "description": "C07-Rainbow Trail",
+                                    "link": "TaskA/C07/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C08",
+                                    "description": "C08-Firework",
+                                    "link": "TaskA/C08/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C09",
+                                    "description": "C09-Particle Clock",
+                                    "link": "TaskA/C09/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C10",
+                                    "description": "C10-Text Ellipsis",
+                                    "link": "TaskA/C10/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C11",
+                                    "description": "C11-Like button",
+                                    "link": "TaskA/C11/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C12",
+                                    "description": "C12-Native JavaScript Routing",
+                                    "link": "TaskA/C12/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C13",
+                                    "description": "C13-Markdown Preview",
+                                    "link": "TaskA/C13/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C14",
+                                    "description": "C14-Image Colour Inspector",
+                                    "link": "TaskA/C14/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C15",
+                                    "description": "C15-Night mode",
+                                    "link": "TaskA/C15/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C16",
+                                    "description": "C16-Drawing tool",
+                                    "link": "TaskA/C16/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C17",
+                                    "description": "C17-Ripple Effect",
+                                    "link": "TaskA/C17/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C18",
+                                    "description": "C18-Image Preview Window",
+                                    "link": "TaskA/C18/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C19",
+                                    "description": "C19-Roman Converter",
+                                    "link": "TaskA/C19/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C20",
+                                    "description": "C20-Word Rank",
+                                    "link": "TaskA/C20/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C21",
+                                    "description": "C21-Random Bubbles",
+                                    "link": "TaskA/C21/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C22",
+                                    "description": "C22-Kanban Board Sortable",
+                                    "link": "TaskA/C22/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C23",
+                                    "description": "C23-Range Slider",
+                                    "link": "TaskA/C23/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C24",
+                                    "description": "C24-Piano",
+                                    "link": "TaskA/C24/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C25",
+                                    "description": "C25-Mouse style",
+                                    "link": "TaskA/C25/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C26",
+                                    "description": "C26-Electronic Lock",
+                                    "link": "TaskA/C26/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C27",
+                                    "description": "C27-Customer Reviews",
+                                    "link": "TaskA/C27/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C28",
+                                    "description": "C28-Pixel editor",
+                                    "link": "TaskA/C28/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "C29",
+                                    "description": "C29-Create modal window.",
+                                    "link": "TaskA/C29/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": "D",
+                            "description": "BACKEND",
+                            "link": "worldskill/2022",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "D01",
+                                    "description": "D01-Answer Checker",
+                                    "link": "TaskA/D01/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D01",
+                                    "description": "D01-Array manipulation",
+                                    "link": "TaskA/D01/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D03",
+                                    "description": "D03-Tic-Tac-Toe",
+                                    "link": "TaskA/D03/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D04",
+                                    "description": "D04-Infinite scroll",
+                                    "link": "TaskA/D04/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D05",
+                                    "description": "D05-Image Watermark",
+                                    "link": "TaskA/D05/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D06",
+                                    "description": "D06-Live chat",
+                                    "link": "TaskA/D06/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D07",
+                                    "description": "D07-Number of Days",
+                                    "link": "TaskA/D07/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D08",
+                                    "description": "D08-RGB to HEX",
+                                    "link": "TaskA/D08/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D09",
+                                    "description": "D09-PHP list of even numbers",
+                                    "link": "TaskA/D09/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D10",
+                                    "description": "D10-PHP Remove numbers",
+                                    "link": "TaskA/D10/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D11",
+                                    "description": "D11-Bar Chart",
+                                    "link": "TaskA/D11/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D12",
+                                    "description": "D12-Video List Page",
+                                    "link": "TaskA/D12/page-html/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D13",
+                                    "description": "D13-Generate image with Base64",
+                                    "link": "TaskA/D13/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D14",
+                                    "description": "D14-Generate file DOC",
+                                    "link": "TaskA/D14/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D15",
+                                    "description": "D15-Write a Secure Login",
+                                    "link": "TaskA/D15/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D16",
+                                    "description": "D16-API Request Logger",
+                                    "link": "TaskA/D16/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "D17",
+                                    "description": "D17-Create simple noticeboard",
+                                    "link": "TaskA/D17/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": "A",
+                            "description": "Design",
+                            "link": "TaskA/",
+                            "statu": "FAILED",
+                            "data": []
+                        },
+                        {
+                            "list": "A",
+                            "description": "Design",
+                            "link": "TaskA/",
+                            "statu": "FAILED",
+                            "data": []
+                        },
+                        {
+                            "list": "A",
+                            "description": "Design",
+                            "link": "TaskA/",
+                            "statu": "FAILED",
+                            "data": []
+                        }
+                    ]
+                },
+                {
+                    "title": "ModuleB-CMS",
+                    "statu": "N/A",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleC-API_FONTEND",
+                    "link": "https://hiiamchris.ddns.net:81/website/TaskC",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleD-API_FONTEND",
+                    "link": "TaskD",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleE-GAME",
+                    "statu": "N/A",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleF-MARKING PAGE",
+                    "link": "TaskF",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleG-TEAMWORK",
+                    "statu": "N/A",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                }
+            ]
+        }
+    ]
+}

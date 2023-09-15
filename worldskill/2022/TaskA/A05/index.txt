@@ -15,3 +15,6 @@
 10.按ok執行
 11.等待
 12.完成:)
+
+
+# see also: https://github.com/ho0527/website/tree/master/worldskill/2022/TaskA/A05

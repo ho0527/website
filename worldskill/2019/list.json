@@ -1,0 +1,494 @@
+{
+    "data": [
+        {
+            "title": "ws2019",
+            "statu": "FAILED",
+            "ps": "list",
+            "createdate": "2023/06/10",
+            "updatedate": "2023/09/15",
+            "data": [
+                {
+                    "title": "ModuleA-SPEEDTEST",
+                    "link": "TaskA/",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "2023/09/15",
+                    "data": [
+                        {
+                            "list": "A",
+                            "description": "Design",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "A01-Blur Picture Image",
+                                    "link": "TaskA/A01/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "A02-Transparent Background",
+                                    "link": "TaskA/A02/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "A03-Pattern",
+                                    "link": "TaskA/A03/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "A04-Loading GIF",
+                                    "link": "TaskA/A04/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "A05-Walking Gif",
+                                    "link": "TaskA/A05/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "A06-UI-kit",
+                                    "link": "TaskA/A06/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "A07-Messenger",
+                                    "link": "TaskA/A07/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": "B",
+                            "description": "LAYOUT",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "B01-HTML tags",
+                                    "link": "TaskA/B01/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "B02-CSS Grid",
+                                    "link": "TaskA/B02/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "B03-Loading Screen",
+                                    "link": "TaskA/B03/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "B04-Toggle",
+                                    "link": "TaskA/B04/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "B05-Yellow Square",
+                                    "link": "TaskA/B05/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "B06-Triangle",
+                                    "link": "TaskA/B06/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "B07-Grayscale image",
+                                    "link": "TaskA/B07/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "B08-Jumper Ball",
+                                    "link": "TaskA/B08/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "B09-HTML/CSS – Contact Form",
+                                    "link": "TaskA/B09/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "B10-Border Radius & Box Shadow",
+                                    "link": "TaskA/B10/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "B11-Race track9",
+                                    "link": "TaskA/B11/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "B12-Video player interface",
+                                    "link": "TaskA/B12/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "B13-Gradient animation",
+                                    "link": "TaskA/B13/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "B14-Modern layout",
+                                    "link": "TaskA/B14/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "B15-Seven segment digital Timer",
+                                    "link": "TaskA/B15/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": "C",
+                            "description": "FONTEND",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "C01-Cube Rotation",
+                                    "link": "TaskA/C01/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "C02-Loading Animation",
+                                    "link": "TaskA/C02/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "C03-Drawing Canvas",
+                                    "link": "TaskA/C03/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "C04-RGB Slider",
+                                    "link": "TaskA/C04/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "C05-JS – Calculation",
+                                    "link": "TaskA/C05/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "C06-JS - ASCII-Art",
+                                    "link": "TaskA/C06/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "C07-HTML/CSS, JS – Clock",
+                                    "link": "TaskA/C07/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "C08-HTML/CSS, JS - Tag-Control",
+                                    "link": "TaskA/C08/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "C09-List of expenses:",
+                                    "link": "TaskA/C09/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "C10-Simple Image Filter",
+                                    "link": "TaskA/C10/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "C11-Canvas Animation",
+                                    "link": "TaskA/C11/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "C12-JS Arithmetic",
+                                    "link": "TaskA/C12/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "C13-JS Draggable",
+                                    "link": "TaskA/C13/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "C14-Keyboard",
+                                    "link": "TaskA/C14/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "C15-Parallax",
+                                    "link": "TaskA/C15/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "C16-Smiley",
+                                    "link": "TaskA/C16/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "C17-Transition",
+                                    "link": "TaskA/C17/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "C18-Animation",
+                                    "link": "TaskA/C17/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "19",
+                                    "description": "C19-Chart from data",
+                                    "link": "TaskA/C19/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "24",
+                                    "description": "C24-Array Integers",
+                                    "link": "TaskA/C24/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "25",
+                                    "description": "C25-Following cursor",
+                                    "link": "TaskA/C25/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "26",
+                                    "description": "C26-Circles",
+                                    "link": "TaskA/C26/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "27",
+                                    "description": "C27-Linear gradient",
+                                    "link": "TaskA/C27/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": "D",
+                            "description": "BACKEND",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "D01-PHP Calendar",
+                                    "link": "TaskA/D01/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "D02-Plugin works",
+                                    "link": "TaskA/D02/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "D03-PHP Array",
+                                    "link": "TaskA/D03/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "D04-PHP Verification captcha",
+                                    "link": "TaskA/D04/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "D05-Watermark",
+                                    "link": "TaskA/D05/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "D06-Predominant colors",
+                                    "link": "TaskA/D06/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "D08-File manager",
+                                    "link": "TaskA/D08/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "D10-Image Cropper",
+                                    "link": "TaskA/D10/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "D11-A Pagination Code",
+                                    "link": "TaskA/D11/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "D12-XML2JSON Converter",
+                                    "link": "TaskA/D12/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "D13-Remove duplicates",
+                                    "link": "TaskA/D13/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ModuleB-CMS",
+                    "statu": "N/A",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleC-API_FONTEND",
+                    "link": "https://hiiamchris.ddns.net:81/website/TaskC/",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleD-API_FONTEND",
+                    "link": "TaskD/",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleE-ISP",
+                    "link": "TaskE/",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleF-MARKING PAGE",
+                    "statu": "N/A",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                },
+                {
+                    "title": "ModuleG-TEAMWORK",
+                    "statu": "N/A",
+                    "ps": "list",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": []
+                }
+            ]
+        }
+    ]
+}
