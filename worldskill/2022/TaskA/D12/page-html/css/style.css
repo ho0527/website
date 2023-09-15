@@ -20,3 +20,11 @@ body {
     background-image:  url("../svg/clock.svg");
     width: 16px;
 }
+
+.card-img{
+    animation-play-state: paused;
+}
+
+.card-img:hover{
+    animation-play-state: running;
+}

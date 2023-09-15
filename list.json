@@ -7,53 +7,7 @@
             "ps": "list",
             "createdate": "2023/04/23",
             "updatedate": "2023/09/04",
-            "data": [
-                {
-                    "title": "ModuleA-DESIGN",
-                    "link": "46th/senior/46national/TaskA/",
-                    "statu": "N/A",
-                    "ps": "list",
-                    "createdate": "N/A",
-                    "updatedate": "N/A",
-                    "data": []
-                },
-                {
-                    "title": "ModuleB-FONTEND_LAYOUT",
-                    "link": "46th/senior/46national/TaskB/",
-                    "statu": "N/A",
-                    "ps": "list",
-                    "createdate": "N/A",
-                    "updatedate": "N/A",
-                    "data": []
-                },
-                {
-                    "title": "ModuleC-GAME",
-                    "link": "46th/senior/46national/TaskC/",
-                    "statu": "FAILED",
-                    "ps": "list",
-                    "createdate": "2023/04/23",
-                    "updatedate": "N/A",
-                    "data": []
-                },
-                {
-                    "title": "ModuleD-PHP",
-                    "link": "46th/senior/46national/TaskD/",
-                    "statu": "FAILED",
-                    "ps": "list",
-                    "createdate": "2023/04/23",
-                    "updatedate": "N/A",
-                    "data": []
-                },
-                {
-                    "title": "ModuleE-API",
-                    "link": "https://hiiamchris.ddns.net:81/website/46th/senior/46national/TaskE/",
-                    "statu": "SUCCESS",
-                    "ps": "list",
-                    "createdate": "2023/04/23",
-                    "updatedate": "2023/08/23",
-                    "data": []
-                }
-            ]
+            "data": []
         },
         {
             "title": "49regional",

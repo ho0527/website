@@ -172,7 +172,7 @@
                         "width"=>$imagedata[0],
                         "height"=>$imagedata[1],
                         "mimetype"=>$mimetype,
-                        "created_at"=>time()
+                        "created_at"=>Controller::time()
                     ]);
                     $row=DB::table("images")
                         ->latest()
@@ -207,7 +207,7 @@
                             ->update([
                                 "title"=>$title,
                                 "description"=>$description,
-                                "updated_at"=>time(),
+                                "updated_at"=>Controller::time(),
                             ]);
                         $row=DB::table("images")
                             ->where("id","=",$imageid)
@@ -238,7 +238,7 @@
                 DB::table("image_views")->insert([
                     "user_id"=>$userid,
                     "image_id"=>$imageid,
-                    "viewed_at"=>time()
+                    "viewed_at"=>Controller::time()
                 ]);
 
                 return response()->json([
@@ -260,7 +260,7 @@
                     DB::table("images")
                         ->where("id","=",$imageid)
                         ->update([
-                            "deleted_at"=>time()
+                            "deleted_at"=>Controller::time()
                         ]);
 
                     DB::table("image_views")
@@ -321,7 +321,7 @@
                                 "image_id"=>$imageid,
                                 "user_id"=>$userid,
                                 "content"=>$content,
-                                "created_at"=>time()
+                                "created_at"=>Controller::time()
                             ]);
 
                             $row=DB::table("comments")
@@ -376,7 +376,7 @@
                                     "user_id"=>$userid,
                                     "comment_id"=>$commentid,
                                     "content"=>$content,
-                                    "created_at"=>time()
+                                    "created_at"=>Controller::time()
                                 ]);
 
                                 $row=DB::table("comments")

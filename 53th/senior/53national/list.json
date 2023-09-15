@@ -2,7 +2,6 @@
     "data": [
         {
             "title": "53national",
-            "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/07/01",
@@ -23,7 +22,7 @@
                                 {
                                     "no": "01",
                                     "description": "A01-Resize and Grayscale Multiple Images",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/01",
+                                    "link": "TaskA/01",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -35,7 +34,7 @@
                                 {
                                     "no": "02",
                                     "description": "A02-Add a filter",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/02",
+                                    "link": "TaskA/02",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -47,7 +46,7 @@
                                 {
                                     "no": "03",
                                     "description": "A03-TODO List",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/03",
+                                    "link": "TaskA/03",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -59,7 +58,7 @@
                                 {
                                     "no": "04",
                                     "description": "A04-製作網頁的日出日落動畫",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/04",
+                                    "link": "TaskA/04",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -71,7 +70,7 @@
                                 {
                                     "no": "05",
                                     "description": "A05-Responsive grid layout",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/05",
+                                    "link": "TaskA/05",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -83,7 +82,7 @@
                                 {
                                     "no": "06",
                                     "description": "A06-Keyword Highlighter",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/06",
+                                    "link": "TaskA/06",
                                     "statu": "FAILED",
                                     "data": [
                                         {
@@ -95,7 +94,7 @@
                                 {
                                     "no": "07",
                                     "description": "A07-Color Transform",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/07",
+                                    "link": "TaskA/07",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -107,7 +106,7 @@
                                 {
                                     "no": "08",
                                     "description": "A08-Native JavaScript Routing",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/08",
+                                    "link": "TaskA/08",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -119,7 +118,7 @@
                                 {
                                     "no": "09",
                                     "description": "A09-Markdown 預覽",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/09",
+                                    "link": "TaskA/09",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -131,7 +130,7 @@
                                 {
                                     "no": 10,
                                     "description": "A10-圖像顏色偵測器",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/10",
+                                    "link": "TaskA/10",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -143,7 +142,7 @@
                                 {
                                     "no": 11,
                                     "description": "A11-夜間模式",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/11",
+                                    "link": "TaskA/11",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -155,7 +154,7 @@
                                 {
                                     "no": 12,
                                     "description": "A12-建立圖片預覽視窗套件",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/12",
+                                    "link": "TaskA/12",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -167,7 +166,7 @@
                                 {
                                     "no": 13,
                                     "description": "A13-Kanban Board Sortable",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/13",
+                                    "link": "TaskA/13",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -179,7 +178,7 @@
                                 {
                                     "no": 14,
                                     "description": "A14-像素編輯器",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/14",
+                                    "link": "TaskA/14",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -191,7 +190,7 @@
                                 {
                                     "no": 15,
                                     "description": "A15-答案檢查器",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/15",
+                                    "link": "TaskA/15",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -203,7 +202,7 @@
                                 {
                                     "no": 16,
                                     "description": "A16-操作 Array",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/16",
+                                    "link": "TaskA/16",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -215,7 +214,7 @@
                                 {
                                     "no": 17,
                                     "description": "A17-Tic-Tac-Toe",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/17",
+                                    "link": "TaskA/17",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -227,7 +226,7 @@
                                 {
                                     "no": 18,
                                     "description": "A18-Live chat",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/18",
+                                    "link": "TaskA/18",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -239,7 +238,7 @@
                                 {
                                     "no": 19,
                                     "description": "A19-Generate image with Base64",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/19",
+                                    "link": "TaskA/19",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -251,7 +250,7 @@
                                 {
                                     "no": 20,
                                     "description": "A20-Write a Secure Login",
-                                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskA/20",
+                                    "link": "TaskA/20",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -266,7 +265,7 @@
                 },
                 {
                     "title": "ModuleB-FONTEND",
-                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskB/",
+                    "link": "TaskB/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "20230525",
@@ -290,11 +289,11 @@
                                 },
                                 {
                                     "no": 2,
-                                    "description": "起始頁面可以讓使用者設定所需的畫布尺寸及背景顏色，設",
+                                    "description": "起始頁面可以讓使用者設定所需的畫布尺寸及背景顏色",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
-                                            "description": "定完成後，按下'確定'按鈕，使用者將會進入到編輯頁面開始編輯。",
+                                            "description": "設定完成後，按下' 確<b><i>認</i></b> '按鈕，使用者將會進入到編輯頁面開始編輯。",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -469,7 +468,7 @@
                                         },
                                         {
                                             "description": "在圖層物件列表區，可以更換圖層的順序。",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         },
                                         {
                                             "description": "圖層內的物件，可以變換順序。",
@@ -528,7 +527,7 @@
                 },
                 {
                     "title": "ModuleC-FONTEND_LAYOUT",
-                    "link": "https://hiiamchris.ddns.net/website/53th/senior/53national/TaskC/",
+                    "link": "TaskC/",
                     "statu": "SUCCESS",
                     "ps": "list",
                     "createdate": "2023/05/25",

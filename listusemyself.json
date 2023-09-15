@@ -408,7 +408,7 @@
                                 },
                                 {
                                     "no": "11",
-                                    "description": "D11-A Pagination Code (Nromal)",
+                                    "description": "D11-A Pagination Code",
                                     "link": "worldskill/2019/TaskA/D11/",
                                     "statu": "SUCCESS",
                                     "data": []
@@ -1009,7 +1009,7 @@
                                 {
                                     "no": "D12",
                                     "description": "D12-Video List Page",
-                                    "link": "worldskill/2022/TaskA/D12/",
+                                    "link": "worldskill/2022/TaskA/D12/page-html/",
                                     "statu": "FAILED",
                                     "data": []
                                 },
