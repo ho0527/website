@@ -31,6 +31,10 @@ body {
     outline: 3px solid #000000;
 }
 
+.form__input:active{
+    background: rgb(20,20,20);
+}
+
 .form__fieldset{
     border: 1px black dotted;
 }
@@ -41,4 +45,19 @@ body {
     height: 50px;
     background: rgba(188, 188, 188, 0.509);
     cursor: pointer;
+}
+
+.form__fieldwrap--radio{
+    border-radius: 10px;
+    background: rgb(190, 190, 190);
+    font-size: 20px;
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 5px 30% 5px 5%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.radio{
+    display: none;
 }

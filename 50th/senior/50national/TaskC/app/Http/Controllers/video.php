@@ -4,70 +4,69 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Hash;
-    include("error.php");
-    include("function.php");
+    use Illuminate\Support\Facades\Validator;
 
     class video extends Controller{
         public function uploadvideo(Request $request){
-            $userid=logincheck();
+            $requestdata=Validator::make($request->all(),[
+                "title"=>"required|string",
+                "description"=>"required|string",
+                "visibility"=>"required|string",
+                "category_id"=>"required|integer",
+                "duration"=>"required|integer",
+                "video"=>"required|mimes:mp4"
+            ],[
+                "required"=>4,
+                "string"=>5,
+                "integer"=>5,
+                "mimes"=>6,
+            ]);
+            $userid=Controller::logincheck();
             if($userid){
                 $row=DB::table("user")
                     ->where("id","=",$userid)
                     ->select("*")->get();
                 if($row[0]->disabled=="false"){
-                    if($request->has("title")&&$request->has("description")&&$request->has("visibility")&&$request->has("category_id")&&$request->has("duration")&&$request->hasFile("video")){
-                        $title=$request->input("title");
-                        $description=$request->input("description");
-                        $visibility=$request->input("visibility");
-                        $categoryid=$request->input("category_id");
-                        $duration=$request->input("duration");
-                        $video=$request->file("video");
-                        if(is_string($title)&&is_string($description)&&($visibility=="PUBLIC"||$visibility=="PRIVATE")&&is_numeric($categoryid)&&is_numeric($duration)){
-                            if(in_array($video->extension(),["mp4"])){
-                                $row=DB::table("category")
-                                    ->where("id","=",$categoryid)
-                                    ->select("*")->get();
-                                if($row->isNotEmpty()){
-                                    $path=$video->store("upload");
-                                    DB::table("video")->insert([
-                                        "userid"=>$userid,
-                                        "categoryid"=>$categoryid,
-                                        "url"=>$path,
-                                        "title"=>$title,
-                                        "description"=>$description,
-                                        "visibility"=>$visibility,
-                                        "duration"=>$duration,
-                                        "count"=>0,
-                                        "created_at"=>time()
-                                    ]);
-                                    $row=DB::table("video")
-                                        ->latest()
-                                        ->select("*")->get()[0];
-                                    return response()->json([
-                                        "success"=>true,
-                                        "message"=>"",
-                                        "data"=>[
-                                            "id"=>$row->id,
-                                            "url"=>url($path)
-                                        ]
-                                    ],200);
-                                }else{
-                                    return categorynotfound();
-                                }
-                            }else{
-                                return videoprocesserror();
-                            }
+                    if(!$requestdata->fails()){
+                        $requestdata=$requestdata->validate();
+                        $row=DB::table("category")
+                            ->where("id","=",$requestdata["category_id"])
+                            ->select("*")->get();
+                        if($row->isNotEmpty()){
+                            $path=$requestdata["video"]->store("upload");
+                            DB::table("video")->insert([
+                                "userid"=>$userid,
+                                "categoryid"=>$requestdata["category_id"],
+                                "url"=>$path,
+                                "title"=>$requestdata["title"],
+                                "description"=>$requestdata["description"],
+                                "visibility"=>$requestdata["visibility"],
+                                "duration"=>$requestdata["duration"],
+                                "count"=>0,
+                                "created_at"=>Controller::time()
+                            ]);
+                            $row=DB::table("video")
+                                ->latest()
+                                ->select("*")->get()[0];
+                            return response()->json([
+                                "success"=>true,
+                                "message"=>"",
+                                "data"=>[
+                                    "id"=>$row->id,
+                                    "url"=>url($path)
+                                ]
+                            ],200);
                         }else{
-                            return datatypeerror();
+                            return Controller::error(9);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error($requestdata->messages()->first());
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
@@ -278,9 +277,13 @@
             }else{
                 $row=DB::table("video")
                     ->where("visibility","=","PUBLIC")
-                    ->where(function($query)use($keywordlist){
-                        for($i=0;$i<count($keywordlist);$i=$i+1){
-                            $query->orWhereRaw("MATCH(`title`,`description`)AGAINST(? IN BOOLEAN MODE)",[$keywordlist[$i]]); // full text部分有問題
+                    ->where("title","like","%".$keywordlist[0]."%")
+                    ->orWhere("description","like","%".$keywordlist[0]."%")
+                    ->orWhere(function($query)use($keywordlist){
+                        for($i=1;$i<count($keywordlist);$i=$i+1){
+                            $query->orWhere("title","like","%".$keywordlist[$i]."%");
+                            $query->orWhere("description","like","%".$keywordlist[$i]."%");
+                            // $query->orWhereRaw("MATCH(`title`,`description`)AGAINST(? IN BOOLEAN MODE)",[$keywordlist[$i]]); // full text部分有問題
                         }
                     })
                     ->skip(($page-1)*10)
@@ -308,7 +311,10 @@
             return response()->json([
                 "success"=>true,
                 "message"=>"",
-                "data"=>$data
+                "data"=>[
+                    "total_count"=>count($data),
+                    "videos"=>$data
+                ]
             ],200);
         }
 
@@ -388,21 +394,21 @@
                                 ]
                             ],200);
                         }else{
-                            return nopermission();
+                            return Controller::error(3);
                         }
                     }else{
-                        return videonotfound();
+                        return Controller::error(10);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function delvideo(Request $request,$videoid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $row=DB::table("video")
                     ->where("id","=",$videoid)
@@ -419,7 +425,7 @@
                                 ->select("*")->get();
                             for($i=0;$i<count($playlistrow);$i=$i+1){
                                 $data=explode(" ",$playlistrow);
-                                for($j=0;$j<count($data);$j=$j+1) {
+                                for($j=0;$j<count($data);$j=$j+1){
                                     if($data[$j]==$videoid){
                                         $isinplaylist=true;
                                     }
@@ -459,7 +465,7 @@
         }
 
         public function like(Request $request,$videoid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -480,7 +486,7 @@
                                         DB::table("like")->insert([
                                             "userid"=>$userid,
                                             "videoid"=>$videoid,
-                                            "created_at"=>time()
+                                            "created_at"=>Controller::time()
                                         ]);
                                     }else{
                                         DB::table("like")
@@ -494,27 +500,27 @@
                                         "data"=>""
                                     ],200);
                                 }else{
-                                    return nopermission();
+                                    return Controller::error(3);
                                 }
                             }else{
-                                return videonotfound();
+                                return Controller::error(10);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(4);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function comment(Request $request,$videoid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -537,7 +543,7 @@
                                             "videoid"=>$videoid,
                                             "replyid"=>NULL,
                                             "text"=>$text,
-                                            "created_at"=>time()
+                                            "created_at"=>Controller::time()
                                         ]);
     
                                         return response()->json([
@@ -546,30 +552,30 @@
                                             "data"=>1 // WTF
                                         ],200);
                                     }else{
-                                        return nopermission();
+                                        return Controller::error(3);
                                     }
                                 }else{
-                                    return videonotfound();
+                                    return Controller::error(10);
                                 }
                             }else{
-                                return datatypeerror();
+                                return Controller::error(5);
                             }
                         }else{
-                            return missingfield();
+                            return Controller::error(4);
                         }
                     }else{
-                        return nopermission();
+                        return Controller::error(3);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function getcomment(Request $request,$videoid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -632,21 +638,21 @@
                                 ]
                             ],200);
                         }else{
-                            return nopermission();
+                            return Controller::error(3);
                         }
                     }else{
-                        return videonotfound();
+                        return Controller::error(10);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function replycomment(Request $request,$commentid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -671,7 +677,7 @@
                                         "videoid"=>$commentrow[0]->videoid,
                                         "replyid"=>$commentid,
                                         "text"=>$text,
-                                        "created_at"=>time()
+                                        "created_at"=>Controller::time()
                                     ]);
 
                                     return response()->json([
@@ -680,27 +686,27 @@
                                         "data"=>1 // WTF
                                     ],200);
                                 }else{
-                                    return datatypeerror();
+                                    return Controller::error(5);
                                 }
                             }else{
-                                return missingfield();
+                                return Controller::error(4);
                             }
                         }else{
-                            return nopermission();
+                            return Controller::error(3);
                         }
                     }else{
-                        return commentnotfound();
+                        return Controller::error(11);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function delcomment(Request $request,$commentid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -720,7 +726,7 @@
                                         $day=$request->input("days");
                                         $reason=$request->input("reason");
                                         if(is_int($day)&&is_string($reason)){
-                                            delcomment($commentid);
+                                            Controller::controllerdelcomment($commentid);
                                             $date=date("Y-m-d H:i:s");
                                             
                                             // 加一天
@@ -736,7 +742,7 @@
                                                 "from"=>time(),
                                                 "to"=>$date,
                                                 "reason"=>$reason,
-                                                "createat"=>time()
+                                                "createat"=>Controller::time()
                                             ]);
                                             return response()->json([
                                                 "success"=>true,
@@ -744,16 +750,16 @@
                                                 "data"=>""
                                             ],200);
                                         }else{
-                                            return datatypeerror();
+                                            return Controller::error(5);
                                         }
                                     }else{
-                                        return missingfield();
+                                        return Controller::error(4);
                                     }
                                 }else{
-                                    return nopermission();
+                                    return Controller::error(3);
                                 }
                             }else{
-                                delcomment($commentid);
+                                Controller::delcomment($commentid);
                                 return response()->json([
                                     "success"=>true,
                                     "message"=>"",
@@ -761,21 +767,21 @@
                                 ],200);
                             }
                         }else{
-                            return nopermission();
+                            return Controller::error(3);
                         }
                     }else{
-                        return commentnotfound();
+                        return Controller::error(11);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function getplaylist(Request $request){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $data=[];
 
@@ -796,12 +802,12 @@
                     "data"=>$data
                 ],200);
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function playlist(Request $request){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -818,7 +824,7 @@
                                     "userid"=>$userid,
                                     "title"=>$title,
                                     "videolist"=>"",
-                                    "createdat"=>time()
+                                    "createdat"=>Controller::time()
                                 ]);
 
                                 return response()->json([
@@ -827,24 +833,24 @@
                                     "data"=>1 // WTF
                                 ],200);
                             }else{
-                                return playlisterror();
+                                return Controller::error(19);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(4);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function getidplaylist(Request $request,$playlistid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -888,21 +894,21 @@
                                 ]
                             ],200);
                         }else{
-                            return nopermission();
+                            return Controller::error(3);
                         }
                     }else{
-                        return playlistnotfound();
+                        return Controller::error(12);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function addvideotoplaylist(Request $request,$playlistid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -935,33 +941,33 @@
                                                 "data"=>""
                                             ],200);
                                         }else{
-                                            return videoinplaylist();
+                                            return Controller::error(17);
                                         }
                                     }else{
-                                        return nopermission();
+                                        return Controller::error(3);
                                     }
                                 }else{
-                                    return playlistnotfound();
+                                    return Controller::error(12);
                                 }
                             }else{
-                                return videonotfound();
+                                return Controller::error(11);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(4);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function sortplaylist(Request $request,$playlistid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -1006,37 +1012,37 @@
                                                     "data"=>""
                                                 ],200);
                                             }else{
-                                                return videonotinplaylist();
+                                                return Controller::error(13);
                                             }
                                         }else{
-                                            return videolengtherror();
+                                            return Controller::error(7);
                                         }
                                     }else{
-                                        return nopermission();
+                                        return Controller::error(3);
                                     }
                                 }else{
-                                    return playlistnotfound();
+                                    return Controller::error(12);
                                 }
                             }else{
-                                return videonotfound();
+                                return Controller::error(10);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(4);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         
         }
 
         public function delvideoformplaylist(Request $request,$playlistid,$videoid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -1067,27 +1073,27 @@
                                         "data"=>""
                                     ],200);
                                 }else{
-                                    return videonotinplaylist();
+                                    return Controller::error(13);
                                 }
                             }else{
-                                return nopermission();
+                                return Controller::error(3);
                             }
                         }else{
-                            return playlistnotfound();
+                            return Controller::error(12);
                         }
                     }else{
-                        return videonotfound();
+                        return Controller::error(10);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function delplaylist(Request $request,$playlistid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -1108,49 +1114,75 @@
                                 "data"=>""
                             ],200);
                         }else{
-                            return nopermission();
+                            return Controller::error(3);
                         }
                     }else{
-                        return playlistnotfound();
+                        return Controller::error(12);
                     }
                 }else{
-                    return userdisabled();
+                    return Controller::error(2);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function getprogram(Request $request){
-            $row=DB::table("video")
-                ->select("*")->get();
+            $keyword="";
+            $page="1";
+            if($request->has("q")){ $keyword=$request->input("q"); }
+            if($request->has("page")){ $page=$request->input("page"); }
 
-            $categoryrow=DB::table("category")
-                ->select("*")->get();
+            $keywordlist=explode(" ",$keyword);
+
+            $row=DB::table("program")
+            ->where(function($query)use($keywordlist){
+                $query->where("authorizedend",">=",Controller::time())
+                    ->orWhereNull("authorizedend")
+                    ->where(function($query)use($keywordlist){
+                        $query->orWhere("title","like","%".$keywordlist[0]."%")
+                            ->orWhere("description","like","%".$keywordlist[0]."%");
+                    });
+                    for($i=1;$i<count($keywordlist);$i=$i+1){
+                        $query->orWhere(function($query)use($keywordlist,$i){
+                            $query->orWhere("title","like","%".$keywordlist[$i]."%")
+                                ->orWhere("description","like","%".$keywordlist[$i]."%");
+                    });
+                }
+            })
+            ->skip(($page-1)* 10)
+            ->take(10)
+            ->select("*")->get();
 
             $data=[];
 
             for($i=0;$i<count($row);$i=$i+1){
+                $programvideolistrow=DB::table("programvideolist")
+                ->where("programid","=",$row[$i]->id)
+                    ->select("*")->get();
                 $data[]=[
                     "id"=>$row[$i]->id,
                     "title"=>$row[$i]->title,
-                    "description"=>$row[$i]->description,
-                    "duration"=>$row[$i]->duration,
-                    "visibility"=>$row[$i]->visibility,
-                    "created_at"=>$row[$i]->created_at,
-                    "categoryid"=>$categoryrow[$row[$i]->categoryid]->title,
+                    "description"=>$row[$i]->description,   
+                    "authorized_start_datetime"=>$row[$i]->authorizedstart,
+                    "authorized_end_datetime"=>$row[$i]->authorizedend,
+                    "updated_at"=>$row[$i]->updatedat,
+                    "episodes_count"=>count($programvideolistrow),
                 ];
             }
 
             return response()->json([
                 "success"=>true,
                 "message"=>"",
-                "data"=>$data
+                "data"=>[
+                    "total_count"=>count($row),
+                    "videos"=>$data
+                ]
             ],200);
         }
 
         public function getidprogram(Request $request,$programid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $row=DB::table("program")
                     ->where("id","=",$programid)
@@ -1196,15 +1228,15 @@
                         ]
                     ],200);
                 }else{
-                    return programnotfound();
+                    return Controller::error(14);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function program(Request $request){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 $row=DB::table("user")
                     ->where("id","=",$userid)
@@ -1233,7 +1265,7 @@
                                         "description"=>$description,
                                         "authorizedstart"=>$authorizedstart,
                                         "authorizedend"=>$authorizedend,
-                                        "createdat"=>time()
+                                        "createdat"=>Controller::time()
                                     ]);
                                     $row=DB::table("program")
                                         ->select("*")->get();
@@ -1246,27 +1278,27 @@
                                         ]
                                     ],200);
                                 }else{
-                                    return programerror();
+                                    return Controller::error(20);
                                 }
                             }else{
-                                return covererror();
+                                return Controller::error(8);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(4);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function editprogram(Request $request,$programid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 if($userid=="1"){
                     $row=DB::table("program")
@@ -1294,7 +1326,7 @@
                                         "description"=>$description,
                                         "authorizedstart"=>$authorizedstart,
                                         "authorizedend"=>$authorizedend,
-                                        "updatedat"=>time()
+                                        "updatedat"=>Controller::time()
                                     ]);
                                 return response()->json([
                                     "success"=>true,
@@ -1302,24 +1334,24 @@
                                     "data"=>""
                                 ],200);
                             }else{
-                                return programerror();
+                                return Controller::error(20);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return programnotfound();
+                        return Controller::error(14);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function addvideotoprogram(Request $request,$programid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 if($userid=="1"){
                     if($request->has("video_id")&&$request->has("title")){
@@ -1343,7 +1375,7 @@
                                                 "programid"=>$programid,
                                                 "videoid"=>$videoid,
                                                 "title"=>$title,
-                                                "createdat"=>time()
+                                                "createdat"=>Controller::time()
                                             ]);
                                             return response()->json([
                                                 "success"=>true,
@@ -1351,33 +1383,33 @@
                                                 "data"=>""
                                             ],200);
                                         }else{
-                                            return videonotpublic();
+                                            return Controller::error(21);
                                         }
                                     }else{
-                                        return videoinprogram();
+                                        return Controller::error(18);
                                     }
                                 }else{
-                                    return programnotfound();
+                                    return Controller::error(14);
                                 }
                             }else{
-                                return videonotfound();
+                                return Controller::error(10);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(4);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function delvideoformprogram(Request $request,$programid,$videoid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 if($userid=="1"){
                     $videorow=DB::table("video")
@@ -1404,24 +1436,24 @@
                                     "data"=>""
                                 ],200);
                             }else{
-                                return videonotinprogram();
+                                return Controller::error(16);
                             }
                         }else{
-                            return programnotfound();
+                            return Controller::error(14);
                         }
                     }else{
-                        return videonotfound();
+                        return Controller::error(10);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function delprogram(Request $request,$programid){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 if($userid=="1"){
                     $row=DB::table("program")
@@ -1440,13 +1472,13 @@
                             "data"=>""
                         ]);
                     }else{
-                        return programnotfound();
+                        return Controller::error(14);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
     }

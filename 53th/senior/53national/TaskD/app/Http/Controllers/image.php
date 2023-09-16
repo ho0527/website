@@ -9,6 +9,9 @@
 
     class image extends Controller{
         public function search(Request $request){
+            
+            // 所以要怎麼用非預設?
+
             // $requestdata=Validator::make($request->all(),[
             //         "order_by"=>"nullable|default:created_at|in:created_at,updated_at",
             //         "order_type"=>"nullable|default:desc|in:asc,desc",
@@ -99,8 +102,6 @@
                 usort($data,function($a,$b){
                     if($a[1]<$b[1]){
                         return 1;
-                    }else{
-                        return 0;
                     }
                 });
 

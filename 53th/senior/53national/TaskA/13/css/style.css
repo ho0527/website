@@ -35,3 +35,7 @@ body {
     height: 100%;
     border-radius: 50%;
 }
+
+.dragging {
+    opacity: 0.5;
+}

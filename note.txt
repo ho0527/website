@@ -1,3 +1,5 @@
+53n/
+
 MA
 a6 fix
 
@@ -8,12 +10,5 @@ how to make the bucket
 how to move the canva
 how to make the change canva
 
-MC
-// NA
-
 MD
 how to use access token
-how to hash password(what is it hash code)
-
-ME
-// NA

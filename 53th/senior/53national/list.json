@@ -5,11 +5,11 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/07/01",
-            "updatedate": "2023/09/14",
+            "updatedate": "2023/09/16",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
-                    "statu": "SUCCESS",
+                    "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/05/21",
                     "updatedate": "2023/07/16",
@@ -17,12 +17,12 @@
                         {
                             "list": 1,
                             "description": "Task",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": [
                                 {
                                     "no": "01",
                                     "description": "A01-Resize and Grayscale Multiple Images",
-                                    "link": "TaskA/01",
+                                    "link": "../../../worldskill/2022/TaskA/A05/index.txt",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -34,7 +34,7 @@
                                 {
                                     "no": "02",
                                     "description": "A02-Add a filter",
-                                    "link": "TaskA/02",
+                                    "link": "../../../worldskill/2022/TaskA/A08/index.txt",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -46,7 +46,7 @@
                                 {
                                     "no": "03",
                                     "description": "A03-TODO List",
-                                    "link": "TaskA/03",
+                                    "link": "../../../worldskill/2022/TaskA/B02",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -58,7 +58,7 @@
                                 {
                                     "no": "04",
                                     "description": "A04-製作網頁的日出日落動畫",
-                                    "link": "TaskA/04",
+                                    "link": "../../../worldskill/2022/TaskA/B11",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -70,7 +70,7 @@
                                 {
                                     "no": "05",
                                     "description": "A05-Responsive grid layout",
-                                    "link": "TaskA/05",
+                                    "link": "../../../worldskill/2022/TaskA/B15",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -82,7 +82,7 @@
                                 {
                                     "no": "06",
                                     "description": "A06-Keyword Highlighter",
-                                    "link": "TaskA/06",
+                                    "link": "../../../worldskill/2022/TaskA/C01",
                                     "statu": "FAILED",
                                     "data": [
                                         {
@@ -94,7 +94,7 @@
                                 {
                                     "no": "07",
                                     "description": "A07-Color Transform",
-                                    "link": "TaskA/07",
+                                    "link": "../../../worldskill/2022/TaskA/C05",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -106,7 +106,7 @@
                                 {
                                     "no": "08",
                                     "description": "A08-Native JavaScript Routing",
-                                    "link": "TaskA/08",
+                                    "link": "../../../worldskill/2022/TaskA/C12",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -118,7 +118,7 @@
                                 {
                                     "no": "09",
                                     "description": "A09-Markdown 預覽",
-                                    "link": "TaskA/09",
+                                    "link": "../../../worldskill/2022/TaskA/C13",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -130,7 +130,7 @@
                                 {
                                     "no": 10,
                                     "description": "A10-圖像顏色偵測器",
-                                    "link": "TaskA/10",
+                                    "link": "../../../worldskill/2022/TaskA/C14",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -142,7 +142,7 @@
                                 {
                                     "no": 11,
                                     "description": "A11-夜間模式",
-                                    "link": "TaskA/11",
+                                    "link": "../../../worldskill/2022/TaskA/C15",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -154,7 +154,7 @@
                                 {
                                     "no": 12,
                                     "description": "A12-建立圖片預覽視窗套件",
-                                    "link": "TaskA/12",
+                                    "link": "../../../worldskill/2022/TaskA/C18",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -166,7 +166,7 @@
                                 {
                                     "no": 13,
                                     "description": "A13-Kanban Board Sortable",
-                                    "link": "TaskA/13",
+                                    "link": "../../../worldskill/2022/TaskA/C22",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -178,7 +178,7 @@
                                 {
                                     "no": 14,
                                     "description": "A14-像素編輯器",
-                                    "link": "TaskA/14",
+                                    "link": "../../../worldskill/2022/TaskA/C28",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -190,7 +190,7 @@
                                 {
                                     "no": 15,
                                     "description": "A15-答案檢查器",
-                                    "link": "TaskA/15",
+                                    "link": "../../../worldskill/2022/TaskA/D01",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -202,7 +202,7 @@
                                 {
                                     "no": 16,
                                     "description": "A16-操作 Array",
-                                    "link": "TaskA/16",
+                                    "link": "../../../worldskill/2022/TaskA/D02",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -214,7 +214,7 @@
                                 {
                                     "no": 17,
                                     "description": "A17-Tic-Tac-Toe",
-                                    "link": "TaskA/17",
+                                    "link": "../../../worldskill/2022/TaskA/D03",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -226,7 +226,7 @@
                                 {
                                     "no": 18,
                                     "description": "A18-Live chat",
-                                    "link": "TaskA/18",
+                                    "link": "../../../worldskill/2022/TaskA/D06",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -238,7 +238,7 @@
                                 {
                                     "no": 19,
                                     "description": "A19-Generate image with Base64",
-                                    "link": "TaskA/19",
+                                    "link": "../../../worldskill/2022/TaskA/D13",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -250,7 +250,7 @@
                                 {
                                     "no": 20,
                                     "description": "A20-Write a Secure Login",
-                                    "link": "TaskA/20",
+                                    "link": "../../../worldskill/2022/TaskA/D15",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
@@ -258,6 +258,41 @@
                                             "statu": "SUCCESS"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "自己做好玩的",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "A06copy",
+                                    "link": "TaskA/06",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "A09copy",
+                                    "link": "TaskA/09",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "A13copy",
+                                    "link": "TaskA/11",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "A17smart",
+                                    "link": "TaskA/A17smart",
+                                    "statu": "FAILED",
+                                    "data": []
                                 }
                             ]
                         }
@@ -268,8 +303,8 @@
                     "link": "TaskB/",
                     "statu": "FAILED",
                     "ps": "list",
-                    "createdate": "20230525",
-                    "updatedate": "20230824",
+                    "createdate": "2023/05/25",
+                    "updatedate": "2023/08/24",
                     "data": [
                         {
                             "list": 1,
@@ -526,7 +561,7 @@
                     ]
                 },
                 {
-                    "title": "ModuleC-FONTEND_LAYOUT",
+                    "title": "ModuleC-LAYOUT",
                     "link": "TaskC/",
                     "statu": "SUCCESS",
                     "ps": "list",
@@ -540,7 +575,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/05/21",
-                    "updatedate": "2023/09/14",
+                    "updatedate": "2023/09/16",
                     "data": []
                 },
                 {

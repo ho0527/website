@@ -39,7 +39,7 @@
                     return Controller::error(0);
                 }
             }else{
-                return Controller::error($requestdata->messages()->first()); // 所以我說messages為什麼undefined但可以正確執行?????
+                return Controller::error($requestdata->messages()->first());
             }
         }
 
@@ -79,7 +79,7 @@
                         "data"=>Controller::user([$row[count($row)-1]],"normal")
                     ]);
                 }else{
-                    return userexist();
+                    return Controller::error(1);
                 }
             }else{
                 return Controller::error($requestdata->messages()->first());
@@ -98,7 +98,7 @@
                     "success"=>true
                 ]);
             }else{
-                return tokenerror();
+                return Controller::error(3);
             }
         }
     }

@@ -4,25 +4,29 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Hash;
-    include("error.php");
-    include("function.php");
+    use Illuminate\Support\Facades\Validator;
 
     class user extends Controller{
         public function login(Request $request){
-            if($request->has("email")&&$request->has("password")){
-                $email=$request->input("email");
-                $password=$request->input("password");
+            $requestdata=Validator::make($request->all(),[
+                "email"=>"required",
+                "password"=>"required",
+            ],[
+                "required"=>4
+            ]);
+            if(!$requestdata->fails()){
+                $requestdata=$requestdata->validate();
                 $row=DB::table("user")
-                    ->where("email","=",$email)
+                    ->where("email","=",$requestdata["email"])
                     ->select("*")->get();
-                if($row->isNotEmpty()&&$password==$row[0]->password){
+                if($row->isNotEmpty()&&$requestdata["password"]==$row[0]->password){
                     DB::table("user")
                         ->where("id","=",$row[0]->id)
                         ->update([
-                            "accesstoken"=>hash("sha256",$email),
+                            "accesstoken"=>hash("sha256",$requestdata["email"]),
                         ]);
                     $row=DB::table("user")
-                        ->where("email","=",$email)
+                        ->where("email","=",$requestdata["email"])
                         ->select("*")->get();
                     return response()->json([
                         "success"=>true,
@@ -30,16 +34,16 @@
                         "data"=>$row[0]->accesstoken
                     ]);
                 }else{
-                    return loginerror();
+                    return Controller::error(0);
                 }
             }else{
-                return missingfield();
+                return Controller::error($requestdata->messages()->first());
             }
         }
 
         public function logout(Request $request){
-            $userid=logincheck();
-            if(logincheck()){
+            $userid=Controller::logincheck();
+            if($userid){
                 DB::table("user")
                     ->where("id","=",$userid)
                     ->update([
@@ -51,12 +55,12 @@
                     "data"=>""
                 ]);
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function getuser(Request $request){
-            $userid=logincheck();
+            $userid=Controller::logincheck();
             if($userid){
                 if($userid=="1"){
                     $data=[];
@@ -83,15 +87,15 @@
                         "data"=>$data
                     ]);
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function banuser(Request $request,$userid){
-            $loginuserid=logincheck();
+            $loginuserid=Controller::logincheck();
             if($loginuserid){
                 if($loginuserid=="1"){
                     if($request->has("ban")){
@@ -119,27 +123,28 @@
                                     "data"=>""
                                 ]);
                             }else{
-                                return usernotfound();
+                                return Controller::error(15);
                             }
                         }else{
-                            return datatypeerror();
+                            return Controller::error(5);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(4);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
 
         public function getblocklist(Request $request){
-            $loginuserid=logincheck();
+            $loginuserid=Controller::logincheck();
             if($loginuserid){
                 if($loginuserid=="1"){
                     $row=DB::table("blocklist")
+                        ->latest()
                         ->select("*")->get();
 
                     $data=[];
@@ -161,10 +166,10 @@
                         "data"=>$data
                     ]);
                 }else{
-                    return nopermission();
+                    return Controller::error(3);
                 }
             }else{
-                return tokenerror();
+                return Controller::error(1);
             }
         }
     }
