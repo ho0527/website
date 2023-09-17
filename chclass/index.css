@@ -256,6 +256,8 @@ table{
     position: fixed;
     bottom: 0px;
     width: 100%;
+    color: white;
+    font-size: 20px;
     text-align: center;
 }
 

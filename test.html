@@ -2,62 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <style>
-            body{
-                background: black;
-                color: white;
-            }
-        </style>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
+        <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <script>
-        let data=[["a1","a2","a3","a4"],["a5","a6","a7","a8"],["a9","a10","a11","a12"],["a9","a10","a11","a12"],["a9","a10","a11","a12"]]
-        function pagechanger(data,ipp,key,callback){
-            // Simulate the $row and $_SESSION["pagecount"] values
-            if(localStorage.getItem("pagecount")==null){ localStorage.setItem("pagecount",1) }
-            let row=data // Add your data to this array
-            let pagecount=parseInt(localStorage.getItem("pagecount"))
-            let itemperpage=ipp
-            let maxpagecount=Math.ceil(row.length/itemperpage)
-            if(key=="first"){
-                pagecount=1
-            }else if(key=="prev"){
-                pagecount=Math.max(1,pagecount-1)
-            }else if(key=="next"){
-                pagecount=Math.min(pagecount+1,maxpagecount)
-            }else if(key=="end"){
-                pagecount=maxpagecount
-            }
-            // Save the updated pagecount to sessionStorage
-            localStorage.setItem("pagecount",pagecount)
-            let page=parseInt(localStorage.getItem("pagecount"))
-            let start=(page-1)*itemperpage;
-            let rowcount=Math.min(row.length-start,itemperpage);
-            let end=start+rowcount;
-
-            for(let i=start;i<end;i=i+1){
-                callback(row[i])
-            }
-        }
-        pagechanger(data,4, "first", function(event){
-            console.log(event[0])
-            console.log(event[1])
-            console.log(event[2])
-            console.log(event[3])
-        });
-        // Call this function with the appropriate key when a button is clicked
-        // document.getElementById("firstButton").addEventListener("click", function() {
-        //     handlePagination("first")
-        // })
-        // document.getElementById("prevButton").addEventListener("click", function() {
-        //     handlePagination("prev")
-        // })
-        // document.getElementById("nextButton").addEventListener("click", function() {
-        //     handlePagination("next")
-        // })
-        // document.getElementById("endButton").addEventListener("click", function() {
-        //     handlePagination("end")
-        // })
-        </script>
     </body>
 </html>

@@ -103,13 +103,23 @@ ajax2.onload=function(){
         `
 
         docappendchild("tr"+i,td)
-        let td2=doccreate("td")
 
-        td2.classList.add("td")
-        td2.innerHTML=`
-            <input type="button" class="bluebutton" onclick="location.href='editscore.html?scoreid=${i}'" value="修改">
-        `
+        if(admin){
+            let td2=doccreate("td")
 
-        docappendchild("tr"+i,td2)
+            td2.classList.add("td")
+            td2.innerHTML=`
+                <input type="button" class="bluebutton" onclick="location.href='editscore.html?scoreid=${i}'" value="修改">
+            `
+
+            docappendchild("tr"+i,td2)
+        }else{
+            let td2=doccreate("td")
+
+            td2.classList.add("td")
+            td2.innerHTML=``
+
+            docappendchild("tr"+i,td2)
+        }
     }
 }
