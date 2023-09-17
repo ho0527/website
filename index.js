@@ -89,9 +89,9 @@ ajax.onload=function(){
                         descriptiondata=descriptiondata+`
                             <div class="descriptiondiv">
                                 <div class="no">-</div>
-                                <div class="title m5">${question[k]["description"]}</div>
+                                <div class="title m5">${question[k]["data"][l]["description"]}</div>
                                 <div class="dot">............</div>
-                                <div class="statu" style="color: ${statutest(question[k]["statu"])}">${question[k]["statu"]}</div>
+                                <div class="statu" style="color: ${statutest(question[k]["data"][l]["statu"])}">${question[k]["data"][l]["statu"]}</div>
                             </div>
                         `
                     }

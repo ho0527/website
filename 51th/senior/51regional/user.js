@@ -156,3 +156,5 @@ document.addEventListener("keydown",function(event){
         check()
     }
 })
+
+startmacossection()

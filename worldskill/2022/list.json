@@ -419,7 +419,7 @@
                                     "no": "C27",
                                     "description": "C27-Customer Reviews",
                                     "link": "TaskA/C27/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
