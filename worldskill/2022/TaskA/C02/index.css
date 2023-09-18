@@ -2,7 +2,7 @@ body{
     font-family: "Consolas";
     background: rgb(35, 35, 35);
     color: gray;
-    text-align: center;
+    text-align: left;
     word-break: break-all;
     -webkit-user-select: none;
     user-select: none;
@@ -202,8 +202,7 @@ table{
 
 .bluebutton{
 	box-shadow: inset 1px -3px 7px 0px #29bbff;
-	background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	background-color: #2dabf9;
+	background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
 	border-radius: 5px;
 	border: 1px solid #0b0e07;
 	display: inline-block;
@@ -218,8 +217,7 @@ table{
 }
 
 .bluebutton:hover{
-	background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-	background-color: #0688fa;
+	background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
 }
 
 .bluebutton:active{
@@ -230,7 +228,7 @@ table{
 .reflashbutton{
     margin-top: 20px;
     padding: 5px;
-    background-color: rgb(215, 164, 61);
+    background: rgb(215, 164, 61);
     color: white;
     border: none;
     border-radius: 5px;
@@ -243,12 +241,12 @@ table{
 }
 
 .reflashbutton:hover{
-    background-color: rgb(255, 213, 128);
+    background: rgb(255, 213, 128);
     color: black;
 }
 
 .selectbutton{
-    background-color: rgba(35, 35, 35, 0.75);
+    background: rgba(35, 35, 35, 0.75);
     color: white;
 }
 
@@ -256,8 +254,6 @@ table{
     position: fixed;
     bottom: 0px;
     width: 100%;
-    color: white;
-    font-size: 20px;
     text-align: center;
 }
 
@@ -281,41 +277,13 @@ table{
 
 /* program START */
 
-.indexmain{
-    text-align: left;
+.circle{
+    position: absolute;
+    background: rgba(119, 119, 119, 0.4);
+    border-radius: 50%;
+    display: none;
 }
 
-.indexh1{
-    text-align: center;
-}
-
-.indexfooter{
-    text-align: right;
-}
-
-.showmain{
-    width: 80vw;
-    height: 70vh;
-}
-
-.td{
-    min-width: 10%;
-    border-bottom: 1px white solid;
-}
-
-.scoremain{
-    height: 75vh;
-}
-
-.scoreinput{
-    text-align: center;
-}
-
-.tr:hover{
-    background: whitesmoke;
-    color: black;
-}
-
-.adminnavbar{
-    background: rgb(21, 148, 228);
+.image{
+    width: 20vw;
 }

@@ -4,8 +4,8 @@ function user(key){
         document.getElementById("body").innerHTML=`
             <form method="POST">
                 <div class="navigationbar">
-                    <div class="navigationbartitle">網路問卷管理系統-填寫問卷</div><br>
-                    <div class="navigationbarbuttondiv">
+                    <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統</div></div>
+                    <div class="navigationbarright">
                         id: <input type="text" class="formtext" id="id" style="width:50px" readonly>
                         標題: <input type="text" class="formtext" id="title" style="width:120px">
                         總數: <input type="text" class="formtext" id="count" style="width:35px" readonly>
@@ -20,8 +20,8 @@ function user(key){
     }else{
         document.getElementById("body").innerHTML=`
             <div class="navigationbar">
-                <div class="navigationbartitle">網路問卷管理系統-填寫問卷</div><br>
-                <div class="navigationbarbuttondiv">
+                <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統</div></div>
+                <div class="navigationbarright">
                     id: <input type="text" class="formtext" id="id" style="width:50px" readonly>
                     標題: <input type="text" class="formtext" id="title" style="width:120px">
                     <input type="button" class="button" onclick="location.href='index.php'" value="返回">

@@ -11,7 +11,7 @@
             if(!isset($_SESSION["data"])){
                 ?>
                 <div class="navigationbar">
-                    <div class="navigationbartitle center">網路問卷調查系統</div>
+                    <div class="navigationbartitle">網路問卷調查系統</div>
                 </div>
                 <div class="main">
                     <form method="POST">
@@ -31,8 +31,8 @@
             }else{
                 ?>
                 <div class="navigationbar">
-                    <div class="navigationbartitle">網路問卷調查系統-已登入</div>
-                    <div class="navigationbarbuttondiv">
+                    <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統</div></div>
+                    <div class="navigationbarright">
                         <input type="button" class="navigationbarbutton" onclick="location.href='verify.php'" value="返回">
                         <input type="submit" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
@@ -53,17 +53,17 @@
                 $password=$_POST["password"];
                 if($row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0]){
                     if($row[2]==$password){
-                        ?><script>alert("登入成功");location.href="verify.php"</script><?php
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入系統','$time')");
                         session_unset();
                         $_SESSION["data"]=$row[1];
+                        ?><script>alert("登入成功");location.href="verify.php"</script><?php
                     }else{
-                        ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入失敗(password)','$time')");
+                        ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                     }
                 }else{
-                    ?><script>alert("帳號有誤");location.href="index.php"</script><?php
                     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入失敗(account)','$time')");
+                    ?><script>alert("帳號有誤");location.href="index.php"</script><?php
                 }
             }
 
@@ -74,8 +74,8 @@
                 if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'")[0]){
                     if($data==$row[2]||$row[2]==""){
                         $_SESSION["id"]=$row[1];
-                        ?><script>location.href="user.php"</script><?php
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$data','填寫問卷','$time')");
+                        ?><script>location.href="user.php"</script><?php
                     }else{
                         ?><script>alert("[WARNING]使用者錯誤");location.href="index.php"</script><?php
                     }

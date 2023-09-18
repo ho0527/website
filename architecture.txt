@@ -7,7 +7,7 @@
 46th 49th 50th等等
 在53之前的分類是
 XXth/
-    junior/
+    junior/ # (if exsited)
         XXnational/
         XXregional/
     senior/
@@ -19,8 +19,8 @@ XXth/
 在54th後將進行架構調整
 成這樣
 XXth/
-    jXXnational/
-    jXXregional/
+    jXXnational/ # (if exsited)
+    jXXregional/ # (if exsited)
     XXnational/
     XXregional/
 如果有國手選拔賽就會加XXgrandmaster2stage

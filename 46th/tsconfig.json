@@ -1,6 +1,0 @@
-{
-    "compilerOptions": {
-        "removeComments": true,
-        "target": "ES5",
-    }
-}

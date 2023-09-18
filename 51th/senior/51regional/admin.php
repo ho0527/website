@@ -14,8 +14,8 @@
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
         <div class="navigationbar">
-            <div class="navigationbartitle">網路問卷管理系統</div>
-            <div class="navigationbarbuttondiv">
+            <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統</div></div>
+            <div class="navigationbarright">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">
                 <input type="button" class="navigationbarbutton" id="newform" value="新增問卷">
                 <input type="submit" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
@@ -60,19 +60,21 @@
                                 $value="解鎖";
                                 $disabled="disabled";
                             }
-                            ?>
-                            <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
-                            <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php  echo($disabled) ?>><br>
-                            <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php  echo($disabled) ?>><br>
-                            <input type="button" class="workbutton" onclick="location.href='?mod=results&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
-                            <input type="button" class="workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>
-                            <input type="button" class="workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>
-                            <input type="button" class="workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
-                            <?php
-                                $checkrow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'AND(`user`='$data'OR`user`='')");
-                                if($checkrow||count($coderow)==0){
-                                    ?><input type="button" class="workbutton" onclick="location.href='?mod=respone&id=<?php echo($row[$i][0]) ?>'" value="填寫問卷"><?php
-                                }
+                            if($_SESSION["data"]=="admin"){
+                                ?>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php  echo($disabled) ?>><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php  echo($disabled) ?>><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=results&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
+                                <?php
+                            }
+                            $checkrow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'AND(`user`='$data'OR`user`='')");
+                            if($checkrow||count($coderow)==0){
+                                ?><input type="button" class="workbutton" onclick="location.href='?mod=respone&id=<?php echo($row[$i][0]) ?>'" value="填寫問卷"><?php
+                            }
                             ?>
                         </td>
                     </tr>

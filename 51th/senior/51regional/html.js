@@ -1,8 +1,8 @@
 function editformnavigationbar(output){
     output.innerHTML=`
     <div class="navigationbar">
-        <div class="navigationbartitle">網路問卷管理系統-編輯問卷</div><br>
-        <div class="navigationbarbuttondiv">
+        <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統</div></div>
+        <div class="navigationbarright">
             id: <input type="text" class="formtext" id="id" style="width:50px" readonly>
             標題: <input type="text" class="formtext" id="title" style="width:120px">
             總數: <input type="text" class="formtext" id="count" style="width:35px" readonly>

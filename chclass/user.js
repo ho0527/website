@@ -1,3 +1,5 @@
+let admin=false
+
 let ajax=newajax("GET","api.php?logincheck=")
 
 ajax.onload=function(){
