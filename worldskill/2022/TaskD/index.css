@@ -325,6 +325,6 @@ table{
     position: relative;
     left: 50%;
     transform: translate(-50%,-0%);
-    margin: 10px 0px;
+    margin: 20px 0px;
     cursor: pointer;
 }
