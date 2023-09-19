@@ -27,7 +27,6 @@ table{
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 30px;
-    font-weight: bold;
     padding: 20px;
     border-radius: 5px;
 }
@@ -46,7 +45,6 @@ table{
     left: 20px;
     transform: translate(0%,-50%);
     font-size: 50px;
-    font-weight: bold;
 }
 
 .maintitle{
