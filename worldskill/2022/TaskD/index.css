@@ -328,3 +328,29 @@ table{
     margin: 20px 0px;
     cursor: pointer;
 }
+
+.logoutmessage{
+    width: 70vw;
+    word-wrap: break-word;
+    word-break: normal;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.longbutton{
+    border: 1px black solid;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.longbutton:hover{
+    background: gray;
+    color: white;
+}

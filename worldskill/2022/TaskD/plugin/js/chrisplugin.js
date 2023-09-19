@@ -182,10 +182,12 @@ function doccreate(element){
     return document.createElement(element)
 }
 
-function newajax(method,url,send=null){
+function newajax(method,url,send=null,header=["Content-type","multipart/form-data"]){
     let ajax=new XMLHttpRequest()
-
     ajax.open(method,url)
+    for(let i=0;i<header.length;i=i+1){
+        ajax.setRequestHeader(header[i][0],header[i][1])
+    }
     ajax.send(send)
 
     return ajax

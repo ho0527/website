@@ -21,6 +21,7 @@
     2023/08/01  23:22:33 Bata 1.0.15 // 修改formdata函式
     2023/08/09  18:27:14 Bata 1.0.16 // 修改lightbox函式新增clickcolse變數
     2023/09/14  16:57:12 Bata 1.0.17 // 更新startmacossection函式
+    2023/09/19  21:45:27 Bata 1.0.18 // 更新newajax函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -182,15 +183,16 @@ function doccreate(element){
     return document.createElement(element)
 }
 
-function newajax(method,url,send=null){
+function newajax(method,url,send=null,header=["Content-type","multipart/form-data"]){
     let ajax=new XMLHttpRequest()
-
     ajax.open(method,url)
+    for(let i=0;i<header.length;i=i+1){
+        ajax.setRequestHeader(header[i][0],header[i][1])
+    }
     ajax.send(send)
 
     return ajax
 }
-
 function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxclosewithkeyesc=true,clickcolse="mask"){
     docgetid(element).classList.add("lightboxmask")
 
