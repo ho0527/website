@@ -1,0 +1,531 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    word-break: break-all;
+    user-select: none;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+}
+
+hr{
+    border: 1px white solid;
+    width: 100%;
+    margin: 15px 0px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.main{
+    position: relative;
+    top: calc(10vh + 10px);
+    height: 85vh;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.grid{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.logo{
+    height: 75px;
+}
+
+.maintitle{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navigationbar{
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 10%;
+    background: rgba(250, 250, 250, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 10px;
+    z-index: 900;
+}
+
+.navigationbarleft{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(0%,-50%);
+}
+
+.navigationbarright{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(0%,-50%);
+}
+
+.navigationbarbutton{
+    border: 1px black solid;
+    width: 125px;
+    height: 50px;
+    padding: 10px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.navigationbarbutton:hover{
+    background: gray;
+    color: white;
+}
+
+.navigationbarselect{
+    background: gray;
+    color: white;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.xcenter{
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+.ycenter{
+    position: relative;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%,-50%);
+}
+
+.input{
+    border: none;
+    border-bottom: 1px black solid;
+    background: none;
+    width: 75%;
+    height: 40px;
+    outline: none;
+    font-size: 30px;
+}
+
+.inputhint{
+    width: 23%;
+    display: inline-block;
+    word-break: normal;
+    word-wrap: break-word;
+}
+
+.inputdiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+.button{
+    border: 1px black solid;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    background: gray;
+    color: white;
+}
+
+.reflashbutton{
+    margin-top: 20px;
+    padding: 5px;
+    background-color: rgb(215, 164, 61);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.reflashbutton:hover{
+    background-color: rgb(255, 213, 128);
+    color: black;
+}
+
+.selectbutton{
+    background-color: rgba(35, 35, 35, 0.75);
+    color: white;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 20px;
+}
+
+.a:hover{
+    text-decoration: underline;
+}
+
+.mainleft{
+    grid-column: 2/75;
+    grid-row: 1/18;
+}
+
+.mainright{
+    grid-column: 75/100;
+    grid-row: 1/18;
+    border: 1px white solid;
+}
+
+.mainleftgrid{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    border: 1px white solid;
+    width: 99%;
+    height: 30%;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.mainleftleft{
+    grid-column: 2/30;
+    grid-row: 1/18;
+    border-right: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainleftright{
+    grid-column: 30/100;
+    grid-row: 1/18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainimage{
+    width: 90%;
+}
+
+.context{
+    border: 1px white solid;
+    width: 90%;
+    height: 300px;
+    position: relative;
+    left: calc(50% - 10px);
+    transform: translate(-50%,-0%);
+    font-size: 20px;
+    text-align: justify;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.indexbuttondiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------------------------------list START---------------------------------------- */
+
+.listtopgrid{
+    grid-column: 2/100;
+    grid-row: 1/3;
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    border: 1px white solid;
+}
+
+.listleft{
+    grid-column: 2/20;
+    grid-row: 3/18;
+    border: 1px white solid;
+    text-align: justify;
+}
+
+.listright{
+    grid-column: 20/100;
+    grid-row: 3/18;
+    border: 1px white solid;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listname{
+    grid-column: 2/20;
+    grid-row: 1/18;
+    border-right: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listcontext{
+    grid-column: 20/75;
+    grid-row: 1/18;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.listupload{
+    grid-column: 85/100;
+    grid-row: 3/16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item{
+    border: 1px white solid;
+    width: 20%;
+    height: 50%;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.itemimage{
+    width: 90%;
+    height: 60%;
+}
+
+/* ----------------------------------list END---------------------------------------- */
+
+
+
+/* ----------------------------------login START---------------------------------------- */
+
+.loginmain{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* ----------------------------------login END---------------------------------------- */
+
+
+
+/* ----------------------------------item START---------------------------------------- */
+
+.carousel{
+    grid-column: 2/60;
+    grid-row: 2/15;
+    border: 1px white solid;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subject{
+    grid-column: 65/100;
+    grid-row: 2/4;
+    border: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemcontext{
+    grid-column: 65/100;
+    grid-row: 4/15;
+    text-align: justify;
+    border: 1px white solid;
+    padding: 20px;
+}
+
+.price{
+    grid-column: 65/100;
+    grid-row: 15/17;
+    border: 1px white solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkline{
+    grid-column: 2/20;
+    grid-row: 15/17;
+}
+
+.linkmessenger{
+    grid-column: 22/40;
+    grid-row: 15/17;
+}
+
+.link8591{
+    grid-column: 42/60;
+    grid-row: 15/17;
+}
+
+.carouselitem{
+    position: absolute;
+    width: 100%;
+    max-height: 90%;
+    overflow: hidden;
+}
+
+.carouselimage{
+    width: 90%;
+}
+
+.carouselbuttondiv{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.carouselbutton{
+    border: 1px black solid;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+.carouselbutton:hover{
+    background: gray;
+    color: white;
+}
+
+/* ----------------------------------item END---------------------------------------- */
+
+
+
+/* ----------------------------------login START---------------------------------------- */
+
+.uploadmain{
+    border: 1px white solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 60%;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.uploadright{
+    grid-column: 2/50;
+    grid-row: 1/18;
+    position: relative;
+    padding: 20px;
+}
+
+.uploadleft{
+    grid-column: 50/100;
+    grid-row: 1/18;
+    position: relative;
+    padding: 20px;
+}
+
+.select{
+    width: 70%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.textarea{
+    width: 90%;
+    height: 40%;
+    font-size: 20px;
+}
+
+/* ----------------------------------login END---------------------------------------- */
+
+.warning{
+    color: red;
+    font-size: 50px;
+    width: 100%;
+}
+
+.file{
+    display: none;
+}
+
+.indexcarousel{
+    border: none;
+    width: 100%;
+    height: 300px;
+}
+
+.indexcarouselbuttondiv{
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+}
