@@ -12,6 +12,10 @@ XXth/
         XXregional/
     senior/
         XXnational/
+            TaskX/
+            TaskX/
+            TaskX/
+            TaskX/
         XXregional/
 
 如果有國手選拔賽就會加XXgrandmaster2stage在senior中
@@ -22,6 +26,10 @@ XXth/
     jXXnational/ # (if exsited)
     jXXregional/ # (if exsited)
     XXnational/
+        moduleX/
+        moduleX/
+        moduleX/
+        moduleX/
     XXregional/
 如果有國手選拔賽就會加XXgrandmaster2stage
 
