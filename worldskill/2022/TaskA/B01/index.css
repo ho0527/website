@@ -61,3 +61,112 @@ table{
     transform: translate(0%,-50%);
     width: 100%;
 }
+
+.divcheckbox{
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkbox{
+    display: none;
+}
+
+.divcheckbox{
+    display: inline-block;
+    margin: 0px 10px;
+}
+
+.divcheckbox1:has(.checkbox1:checked){
+    background-color: gold;
+    border: 5px;
+}
+
+#total{
+    margin-top: 20px;
+}
+
+#checkbox1:checked ~ #total1 {
+    display: block;
+}
+
+#checkbox2:checked ~ #total2 {
+    display: block;
+}
+
+#checkbox3:checked ~ #total3 {
+    display: block;
+}
+
+#checkbox4:checked ~ #total4 {
+    display: block;
+}
+
+#checkbox5:checked ~ #total5 {
+    display: block;
+}
+
+.total{
+    display: none;
+}
+
+.total10{
+
+}
+
+.total32{
+
+}
+
+.total64{
+
+}
+
+.total-15{
+
+}
+
+.total42{
+
+}
+
+.total74{
+
+}
+
+.total-5{
+
+}
+
+.total96{
+
+}
+
+.total-17{
+
+}
+
+.total-49{
+
+}
+
+.total106{
+
+}
+
+.total-27{
+
+}
+
+.total81{
+
+}
+
+.total91{
+
+}

@@ -61,3 +61,29 @@ body {
 .radio{
     display: none;
 }
+
+.formfieldsetgeneral{
+    display: none;
+}
+
+.formfieldsetsupportrequest{
+    display: none;
+}
+
+.general:has(.generalradio:checked){
+    background: black;
+    color: white;
+}
+
+.supportrequest:has(.supportrequestradio:checked){
+    background: black;
+    color: white;
+}
+
+.form__section:has(.generalradio:checked)>.formfieldsetgeneral{
+    display: block;
+}
+
+.form__section:has(.supportrequestradio:checked)>.formfieldsetsupportrequest{
+    display: block;
+}

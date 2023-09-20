@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/09/15",
+            "updatedate": "2023/09/20",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -13,7 +13,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2023/09/15",
+                    "updatedate": "2023/09/20",
                     "data": [
                         {
                             "list": "A",
@@ -74,7 +74,7 @@
                         {
                             "list": "B",
                             "description": "LAYOUT",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "no": "01",
@@ -136,7 +136,7 @@
                                     "no": "09",
                                     "description": "B09-HTML/CSS – Contact Form",
                                     "link": "TaskA/B09/contact-form.html",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {

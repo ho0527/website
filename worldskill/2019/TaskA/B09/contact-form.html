@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
         <meta charset="utf-8">
         <title>Contact Form</title>
@@ -10,15 +9,11 @@
         <link href="vendor-css/normalize.min.css" rel="stylesheet">
         <link href="contact-form.css" rel="stylesheet">
     </head>
-
     <body>
-
         <h1>Task 2 - Contact Form with conditional form elements</h1>
-
         <form enctype="multipart/form-data" name="field" class="form" method="post">
             <section class="form__section">
                 <h2 class="form__heading">E mail form</h2>
-
                 <fieldset class="form__fieldset">
                     <legend class="form__legend">User data</legend>
                     <div class="form__fieldwrap form__fieldwrap--input">
@@ -41,25 +36,25 @@
 
                 <fieldset class="form__fieldset">
                     <legend class="form__legend">Subject</legend>
-                    <div class="form__fieldwrap form__fieldwrap--radio">
+                    <div class="form__fieldwrap form__fieldwrap--radio general">
                         <label for="field_general" class="form__label">General</label>
-                        <input class="form__input radio " id="field_general" type="radio" name="subject" value="General">
+                        <input class="form__input radio generalradio" id="field_general" type="radio" name="subject" value="General" checked>
                     </div>
-                    <div class="form__fieldwrap form__fieldwrap--radio">
+                    <div class="form__fieldwrap form__fieldwrap--radio supportrequest">
                         <label for="field_support_request" class="form__label">Support request</label>
-                        <input required class="form__input radio" id="field_support_request" type="radio" name="subject" value="Support request">
+                        <input class="form__input radio supportrequestradio" id="field_support_request" type="radio" name="subject" value="Support request" required>
                     </div>
                 </fieldset>
 
-                <fieldset class="form__fieldset">
+                <fieldset class="form__fieldset formfieldsetgeneral">
                     <legend class="form__legend">Additional informations according to subject <strong>general</strong></legend>
-                    <div class="form__fieldwrap form__fieldwrap--input">
+                    <div class="form__fieldwrap">
                         <label for="field_website" class="form__label">Website URL</label>
-                        <input required class="form__input" id="field_website" type="url" name="lastname">
+                        <input class="form__input" id="field_website" type="url" name="lastname" required>
                     </div>
                 </fieldset>
 
-                <fieldset class="form__fieldset">
+                <fieldset class="form__fieldset formfieldsetsupportrequest">
                     <legend class="form__legend">Additional informations according to subject <strong>support request</strong></legend>
                     <div class="form__fieldwrap form__fieldwrap--multiselect">
                         <label for="field_support_subject" class="form__label">Support subjects</label>
