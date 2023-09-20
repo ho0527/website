@@ -23,13 +23,29 @@ docgetid("submit").onclick=function(){
             if(data["status"]!="invalid"){
                 alert("Sign in successfully!")
                 weblsset("token",data["token"])
-                location.href="main.html"
+                location.href="index.html"
             }else{
                 alert(data["message"])
             }
         }
     }else{
-
+        let ajax=newajax("POST","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/auth/signup",JSON.stringify({
+            "username": docgetid("username").value,
+            "password": docgetid("password").value
+        }),[
+            ["Content-Type", "application/json"]
+        ])
+        ajax.onload=function(){
+            let data=JSON.parse(ajax.responseText)
+            console.log(data)
+            if(data["status"]!="invalid"){
+                alert("Sign up successfully!")
+                weblsset("token",data["token"])
+                location.href="index.html"
+            }else{
+                alert(data["message"])
+            }
+        }
     }
 }
 
@@ -37,4 +53,8 @@ document.onkeydown=function(event){
     if(event.key=="Enter"){
         docgetid("submit").click()
     }
+}
+
+if(isset(weblsget("token"))){
+    location.href="index.html"
 }

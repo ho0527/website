@@ -21,7 +21,6 @@
     2023/08/01  23:22:33 Bata 1.0.15 // 修改formdata函式
     2023/08/09  18:27:14 Bata 1.0.16 // 修改lightbox函式新增clickcolse變數
     2023/09/14  16:57:12 Bata 1.0.17 // 更新startmacossection函式
-    2023/09/19  21:45:27 Bata 1.0.18 // 更新newajax函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -172,7 +171,11 @@ function blank(data){
 }
 
 function weblsset(data,value){
-    return localStorage.setItem(data,value)
+    if(value==null){
+        return localStorage.removeItem(data)
+    }else{
+        return localStorage.setItem(data,value)
+    }
 }
 
 function weblsget(data){
@@ -193,6 +196,7 @@ function newajax(method,url,send=null,header=["Content-type","multipart/form-dat
 
     return ajax
 }
+
 function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxclosewithkeyesc=true,clickcolse="mask"){
     docgetid(element).classList.add("lightboxmask")
 

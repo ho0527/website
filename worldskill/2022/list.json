@@ -588,10 +588,349 @@
                     "title": "ModuleD-API_FONTEND",
                     "link": "TaskD",
                     "statu": "FAILED",
-                    "ps": "list",
+                    "ps": "question",
                     "createdate": "2023/09/18",
-                    "updatedate": "2023/09/19",
-                    "data": []
+                    "updatedate": "2023/09/20",
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "Developer",
+                            "link": "TaskA/",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "Header Visual Bar with title and page title",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "App Title: WorldSkills - Games. Page title reflects the main content title",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "Document title must reflect the shown page title Page",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "title content is included as whole or part of the document title.",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "Register, Sign In, Sign Out button.",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "If the user is not signed in, show 'Sign In' and 'Sign Up'.",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "If the user is signed in, show Sign Out",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "Developer can see “my games” list",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "Developer can upload a game via zip Able to unzip uploaded file. New version is created every time when uploaded.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "Developer can edit game meta Title, description",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "Developer can un-publish existing game Un-published games is not viewable in public, but viewable to developer",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "Developer can view game matrix of the uploaded games Play time, unique players, high scores",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "Developer can view the game status of blocked",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "Create easy-to-maintain JavaScript code",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "Use of framework/library of choice",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "Discovering games",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "URL is reachable /XX_module_d/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "For each game, all fields as described shownuses",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "Title, score count, description, thumbnail.",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "Thumbnail uploaded thumbnail.png file if provided, or general image file.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "List sort options",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "Popularity, recently updated, title.",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "Ascending and descending.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "Visitor (User) can sign up",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "And should go to /XX_module_d/ after signed-up",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "Only one password field in sign-up form",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "Response message is shown after server response",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "Visitor (User) can sign-in.",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "Visitor (User) can sign out.",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "The current page is reflected in the URL. A page refresh shows the list on the same sort settings.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "In infinite scroll, there are no pages, but scrolling triggers loading of more games.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "An initial number of games are loaded so they overflow the user's screen.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "If the user scrolls towards the end of the loaded games, more games are loaded.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "It never loads all games to save bandwidth. Loaded games are also rendered.",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "It only loads as many games that are needed to render enough items so the user does not see the end of the list.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "Can visit the user profile",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "Shows username, authored game section, game high scores section.",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "If the user has not uploaded any games, the authored games section is omitted.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "Required information is shown per authored game",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "game title, description, thumbnail, number of submitted scores, and not the authored user.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "If the active user is looking at their own profile page, they also see games that have no version yet. They are also offered a button to \"Manage Game\".",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "Games without version is hidden to other users visit",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "high scores list in user profile The list shows highest the scores per game, and the game list is sorted by game title alphabetically",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "19",
+                                    "description": "If a user tries to reach game management page without being the author, they are redirected to the game itself",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "Visitors and Games",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "This page renders the game in an iframe and shows the current highscores",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "The high score list is updated with 5 second polling interval",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "Player's score is interleaved into the highscores.",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "If the user is within the top ten, the current user score is part of the top 10 score",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "If the user highest score is not within the top ten, the score is appended to the end of the top 10 list, but shown without rank.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "Player's score is highlighted when within the top 10 list Any form of highlighting(such as bold, or colored).",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "When the game ends, the user is asked if they want to publish their score",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "Game posting API is done via parent page instead of embeded iframe game page inside iframe",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "Game score is sent to parent page from within the iframe game page via postMessage",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "When the game score posts, the leaderboard should be updated immediately instead of waiting for the polling interval Only for score that breaks the highest score of the current player",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "Accessibilty, checked by Chrome Lighthouse (Warning allowed) (Choose only accessibility)",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "Link Purpose (Link Only) meet WCAG 2.4.9 requirement for game listing page",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "Choice of colors, typography, spacing between the elements enhances the overall look and feel",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleE-GAME",
@@ -607,7 +946,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "N/A",
+                    "updatedate": "2023/09/20",
                     "data": []
                 },
                 {
