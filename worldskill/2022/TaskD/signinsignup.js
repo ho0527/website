@@ -23,6 +23,7 @@ docgetid("submit").onclick=function(){
             if(data["status"]!="invalid"){
                 alert("Sign in successfully!")
                 weblsset("token",data["token"])
+                weblsset("username",docgetid("username").value)
                 location.href="index.html"
             }else{
                 alert(data["message"])
@@ -41,6 +42,7 @@ docgetid("submit").onclick=function(){
             if(data["status"]!="invalid"){
                 alert("Sign up successfully!")
                 weblsset("token",data["token"])
+                weblsset("username",docgetid("username").value)
                 location.href="index.html"
             }else{
                 alert(data["message"])

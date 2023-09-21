@@ -10,17 +10,25 @@ ajax.onload=function(){
     if(data["status"]!="invalid"){
         let total=data["totalElements"]
         for(let i=0;i<data["content"].length;i=i+1){
+            let pictureurl="material/picture/default.jpg"
+
+            // 不會接image
+            // if(isset(data["content"][i]["thumbnail"])){
+            //     pictureurl="https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/storage/app"+data["content"][i]["thumbnail"]+""
+            // }
+
             // game div
             let div=doccreate("div")
             div.classList.add("game")
+            div.classList.add("grid")
             div.id=(page*10)+i
             div.innerHTML=`
                 <div class="title">${data["content"][i]["title"]}</div>
-                <div class="author">${data["content"][i]["author"]}</div>
+                <div class="author">by ${data["content"][i]["author"]}</div>
                 <div class="description">${data["content"][i]["description"]}</div>
-                <div class="scoreCount">${data["content"][i]["scoreCount"]}</div>
-                <div class="imagediv"><img src="https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/storage/app${data["content"][i]["thumbnail"]}" class="image"></div>
-            ` // 他媽的我不會接image lol
+                <div class="scorecount">score submit: ${data["content"][i]["scoreCount"]}</div>
+                <div class="imagediv"><img src="${pictureurl}" class="image"></div>
+            `
             docappendchild("main",div)
         }
         docgetid("gamecount").innerHTML=`${total}`
@@ -34,6 +42,7 @@ ajax.onload=function(){
 // show signin/signup || signout button
 if(isset(weblsget("token"))){
     docgetid("navigationbarright").innerHTML=`
+        <a href="profile.html" class="a navigationbara">${weblsget("username")} profile</a>
         <input type="button" class="navigationbarbutton" id="signout" value="Sign Out">
     `
 
@@ -47,6 +56,7 @@ if(isset(weblsget("token"))){
             console.log(data)
             if(data["status"]=="success"){
                 weblsset("token",null)
+                weblsset("username",null)
                 location.href="signout.html"
             }else{
                 alert(data["message"])

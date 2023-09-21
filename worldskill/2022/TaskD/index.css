@@ -321,7 +321,7 @@ table{
 .game{
     border: 1px white solid;
     width: 80%;
-    height: 20vh;
+    height: 25vh;
     position: relative;
     left: 50%;
     transform: translate(-50%,-0%);
@@ -353,4 +353,57 @@ table{
 .longbutton:hover{
     background: gray;
     color: white;
+}
+
+.title{
+    grid-column: 1/30;
+    grid-row: 1/5;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.author{
+    grid-column: 30/50;
+    grid-row: 1/5;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+}
+
+.description{
+    grid-column: 40/100;
+    grid-row: 6/17;
+    font-size: 20px;
+    color: white;
+    text-align: justify;
+}
+
+.scorecount{
+    grid-column: 80/100;
+    grid-row: 1/5;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    color: rgb(6, 136, 250);
+}
+
+.imagediv{
+    grid-column: 2/35;
+    grid-row: 6/17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.navigationbara{
+    font-size: 20px;
 }
