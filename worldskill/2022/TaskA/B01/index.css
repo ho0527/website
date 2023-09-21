@@ -23,6 +23,13 @@ table{
     width: 100%;
 }
 
+.main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 .grid{
     display: grid;
     grid-gap: 1%;
@@ -62,7 +69,7 @@ table{
     width: 100%;
 }
 
-.divcheckbox{
+.checkboxdiv{
     width: 80px;
     height: 80px;
     border: 2px solid black;
@@ -73,100 +80,125 @@ table{
     transition: all 0.3s ease;
 }
 
+.box{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 .checkbox{
     display: none;
 }
 
-.divcheckbox{
-    display: inline-block;
-    margin: 0px 10px;
+.checkboxdivdiv{
+    display: flex;
 }
 
-.divcheckbox1:has(.checkbox1:checked){
+.checkboxdiv{
+    margin: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkboxdiv1:has(.checkbox1:checked){
     background-color: gold;
     border: 5px;
+    transition: all 0.3s ease;
 }
 
-#total{
+.checkboxdiv2:has(.checkbox2:checked){
+    background-color: gold;
+    border: 5px;
+    transition: all 0.3s ease;
+}
+
+.checkboxdiv3:has(.checkbox3:checked){
+    background-color: gold;
+    border: 5px;
+    transition: all 0.3s ease;
+}
+
+.checkboxdiv4:has(.checkbox4:checked){
+    background-color: gold;
+    border: 5px;
+    transition: all 0.3s ease;
+}
+
+.totaldiv{
+    display: flex;
     margin-top: 20px;
-}
-
-#checkbox1:checked ~ #total1 {
-    display: block;
-}
-
-#checkbox2:checked ~ #total2 {
-    display: block;
-}
-
-#checkbox3:checked ~ #total3 {
-    display: block;
-}
-
-#checkbox4:checked ~ #total4 {
-    display: block;
-}
-
-#checkbox5:checked ~ #total5 {
-    display: block;
+    margin-right: 5px;
 }
 
 .total{
     display: none;
+    margin-left: 5px;
 }
 
-.total10{
-
-}
-
-.total32{
+.total0{
 
 }
 
-.total64{
-
+.main:has(.checkbox1:checked)>.totaldiv>.total10{
+    display: block;
 }
 
-.total-15{
-
+.main:has(.checkbox2:checked)>.totaldiv>.total32{
+    display: block;
 }
 
-.total42{
-
+.main:has(.checkbox3:checked)>.totaldiv>.total64{
+    display: block;
 }
 
-.total74{
-
+.main:has(.checkbox4:checked)>.totaldiv>.total-15{
+    display: block;
 }
 
-.total-5{
-
+.main:has(.checkbox5:checked)>.totaldiv>.total42{
+    display: block;
 }
 
-.total96{
-
+.main:has(.checkbox5:checked)>.totaldiv>.total74{
+    display: block;
 }
 
-.total-17{
-
+.main:has(.checkbox5:checked)>.totaldiv>.total-5{
+    display: block;
 }
 
-.total-49{
-
+.main:has(.checkbox5:checked)>.totaldiv>.total96{
+    display: block;
 }
 
-.total106{
-
+.main:has(.checkbox5:checked)>.totaldiv>.total-17{
+    display: block;
 }
 
-.total-27{
-
+.main:has(.checkbox5:checked)>.totaldiv>.total-49{
+    display: block;
 }
 
-.total81{
-
+.main:has(.checkbox5:checked)>.totaldiv>.total106{
+    display: block;
 }
 
-.total91{
+.main:has(.checkbox5:checked)>.totaldiv>.total-27{
+    display: block;
+}
 
+.main:has(.checkbox5:checked)>.totaldiv>.total81{
+    display: block;
+}
+
+.main:has(.checkbox5:checked)>.totaldiv>.total91{
+    display: block;
+}
+.text{
+    color: white;
+    text-align:center;
 }
