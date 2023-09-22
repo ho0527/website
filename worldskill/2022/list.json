@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/09/21",
+            "updatedate": "2023/09/22",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -13,7 +13,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2023/09/21",
+                    "updatedate": "2023/09/22",
                     "data": [
                         {
                             "list": "A",
@@ -110,7 +110,7 @@
                                     "no": "B01",
                                     "description": "B01-CSS Counter",
                                     "link": "TaskA/B01/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {

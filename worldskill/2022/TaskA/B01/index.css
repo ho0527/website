@@ -139,66 +139,67 @@ table{
     margin-left: 5px;
 }
 
-.total0{
-
+.main:not(:has(.checkbox1:checked)):not(:has(.checkbox2:checked)):not(:has(.checkbox3:checked)):not(:has(.checkbox4:checked))>.totaldiv>.total0 {
+    display: block; 
 }
 
-.main:has(.checkbox1:checked)>.totaldiv>.total10{
+.main:has(.checkbox1:checked):not(:has(.checkbox2:checked)):not(:has(.checkbox3:checked)):not(:has(.checkbox4:checked))>.totaldiv>.total10 {
+    display: block; 
+}
+
+.main:not(:has(.checkbox1:checked)):has(.checkbox2:checked):not(:has(.checkbox3:checked)):not(:has(.checkbox4:checked))>.totaldiv>.total32{
     display: block;
 }
 
-.main:has(.checkbox2:checked)>.totaldiv>.total32{
+.main:not(:has(.checkbox1:checked)):not(:has(.checkbox2:checked)):has(.checkbox3:checked):not(:has(.checkbox4:checked))>.totaldiv>.total64{
     display: block;
 }
 
-.main:has(.checkbox3:checked)>.totaldiv>.total64{
+.main:not(:has(.checkbox1:checked)):not(:has(.checkbox2:checked)):not(:has(.checkbox3:checked)):has(.checkbox4:checked)>.totaldiv>.total-15{
     display: block;
 }
 
-.main:has(.checkbox4:checked)>.totaldiv>.total-15{
+.main:has(.checkbox1:checked):has(.checkbox2:checked):not(:has(.checkbox3:checked)):not(:has(.checkbox4:checked))>.totaldiv>.total42{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total42{
+.main:has(.checkbox1:checked):not(:has(.checkbox2:checked)):has(.checkbox3:checked):not(:has(.checkbox4:checked))>.totaldiv>.total74{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total74{
+.main:has(.checkbox1:checked):not(:has(.checkbox2:checked)):not(:has(.checkbox3:checked)):has(.checkbox4:checked)>.totaldiv>.total-5{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total-5{
+.main:not(:has(.checkbox1:checked)):has(.checkbox2:checked):has(.checkbox3:checked):not(:has(.checkbox4:checked))>.totaldiv>.total96{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total96{
+.main:not(:has(.checkbox1:checked)):has(.checkbox2:checked):not(:has(.checkbox3:checked)):has(.checkbox4:checked)>.totaldiv>.total17{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total-17{
+.main:not(:has(.checkbox1:checked)):not(:has(.checkbox2:checked)):has(.checkbox3:checked):has(.checkbox4:checked)>.totaldiv>.total49{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total-49{
+.main:has(.checkbox1:checked):has(.checkbox2:checked):has(.checkbox3:checked):not(:has(.checkbox4:checked))>.totaldiv>.total106{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total106{
+.main:has(.checkbox1:checked):has(.checkbox2:checked):not(:has(.checkbox3:checked)):has(.checkbox4:checked)>.totaldiv>.total27{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total-27{
+.main:not(:has(.checkbox1:checked)):has(.checkbox2:checked):has(.checkbox3:checked):has(.checkbox4:checked)>.totaldiv>.total81{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total81{
+.main:has(.checkbox1:checked):has(.checkbox2:checked):has(.checkbox3:checked):has(.checkbox4:checked)>.totaldiv>.total91{
     display: block;
 }
 
-.main:has(.checkbox5:checked)>.totaldiv>.total91{
-    display: block;
-}
 .text{
     color: white;
-    text-align:center;
+    text-align: center;
 }
