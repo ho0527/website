@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "title": "ws2022",      
+            "title": "ws2022",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
@@ -946,7 +946,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2023/09/20",
+                    "updatedate": "2023/09/23",
                     "data": []
                 },
                 {

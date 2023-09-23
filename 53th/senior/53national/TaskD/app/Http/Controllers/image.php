@@ -5,62 +5,36 @@
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Facades\Validator;
-    include("error.php");
 
     class image extends Controller{
         public function search(Request $request){
-            
-            // 所以要怎麼用非預設?
+            $requestdata=Validator::make($request->all(),[
+                    "order_by"=>"nullable|in:created_at,updated_at",
+                    "order_type"=>"nullable|in:asc,desc",
+                    "keyword"=>"nullable",
+                    "page"=>"nullable|min:1",
+                    "pagesize"=>"nullable|min:1|max:100",
+                ],[
+                "in"=>6,
+                "min"=>6,
+                "max"=>6
+            ]);
 
-            // $requestdata=Validator::make($request->all(),[
-            //         "order_by"=>"nullable|default:created_at|in:created_at,updated_at",
-            //         "order_type"=>"nullable|default:desc|in:asc,desc",
-            //         "keyword"=>"nullable|default:",
-            //         "page"=>"nullable|default:1",
-            //         "pagesize"=>"nullable|default:10|min:1|max:100",
-            //     ],[
-            //     "in"=>6
-            // ]);
+            if(!$requestdata->fails()){
+                $requestdata=$requestdata->validate();
+                if(!isset($requestdata["order_by"])){ $requestdata["order_by"]="created_at"; }
+                if(!isset($requestdata["order_type"])){ $requestdata["order_type"]="desc"; }
+                if(!isset($requestdata["keyword"])){ $requestdata["keyword"]=""; }
+                if(!isset($requestdata["page"])){ $requestdata["page"]=1; }
+                if(!isset($requestdata["pagesize"])){ $requestdata["pagesize"]=10; }
 
-            // if(!$requestdata->fails()){
-            //     $requestdata=$requestdata->validate();
-            //     echo "\$requestdata ="; print_r($requestdata); echo "<br>";
-            //     $row=DB::table("images")
-            //         ->where("title","LIKE","%".$requestdata["keyword"]."%")
-            //         ->where("description","LIKE","%".$requestdata["keyword"]."%")
-            //         ->where("deleted_at","=",NULL)
-            //         ->orderBy($requestdata["order_by"],$requestdata["order_type"])
-            //         ->skip(($requestdata["page"]-1)*$requestdata["pagesize"])
-            //         ->take($requestdata["pagesize"])
-            //         ->select("*")->get();
-            //     return response()->json([
-            //         "success"=>true,
-            //         "data"=>[
-            //             "total_count"=>count($row),
-            //             "images"=>Controller::image($row)
-            //         ]
-            //     ]);
-            // }else{
-            //     return Controller::error($requestdata->messages()->first());
-            // }
-            $orderby="created_at";
-            $ordertype="desc";
-            $keyword="";
-            $page=1;
-            $pagesize=10;
-            if($request->has("order_by")){ $orderby=$request->input("order_by"); }
-            if($request->has("order_type")){ $ordertype=$request->input("order_type"); }
-            if($request->has("keyword")){ $keyword=$request->input("keyword"); }
-            if($request->has("page")){ $page=$request->input("page"); }
-            if($request->has("pagesize")){ $pagesize=$request->input("page_size"); }
-            if(($orderby=="created_at"||$orderby=="updated_at"||$orderby=="width"||$orderby=="height")&&($ordertype=="asc"||$ordertype=="desc")&&(1<=$pagesize&&$pagesize<=100)){
                 $row=DB::table("images")
-                    ->where("title","LIKE","%".$keyword."%")
-                    ->where("description","LIKE","%".$keyword."%")
+                    ->where("title","LIKE","%".$requestdata["keyword"]."%")
+                    ->where("description","LIKE","%".$requestdata["keyword"]."%")
                     ->where("deleted_at","=",NULL)
-                    ->orderBy($orderby,$ordertype)
-                    ->skip(($page-1)*$pagesize)
-                    ->take($pagesize)
+                    ->orderBy($requestdata["order_by"],$requestdata["order_type"])
+                    ->skip(($requestdata["page"]-1)*$requestdata["pagesize"])
+                    ->take($requestdata["pagesize"])
                     ->select("*")->get();
                 return response()->json([
                     "success"=>true,
@@ -70,7 +44,7 @@
                     ]
                 ]);
             }else{
-                return datatypeerror();
+                return Controller::error($requestdata->messages()->first());
             }
         }
 
@@ -124,7 +98,7 @@
                     "data"=>$maindata
                 ]);
             }else{
-                return datatypeerror();
+                return Controller::error(6);
             }
         }
 
@@ -142,7 +116,7 @@
                     "data"=>Controller::image($row)
                 ]);
             }else{
-                return usererror();
+                return Controller::error(9);
             }
         }
 
@@ -183,7 +157,7 @@
                         "data"=>Controller::imagedetail([$row[0]])
                     ],200);
                 }else{
-                    return tokenerror();
+                    return Controller::error(3);
                 }
             }else{
                 return Controller::error($requestdata->messages()->first());
@@ -218,13 +192,13 @@
                             "data"=>Controller::imagedetail([$row[0]])
                         ],200);
                     }else{
-                        return datatypeerror();
+                        return Controller::error(6);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(4);
                 }
             }else{
-                return imageerror();
+                return Controller::error(7);
             }
         }
 
@@ -247,7 +221,7 @@
                     "data"=>Controller::imagedetail([$row[0]])
                 ],200);
             }else{
-                return imageerror();
+                return Controller::error(7);
             }
         }
 
@@ -272,10 +246,10 @@
                         "success"=>true,
                     ],200);
                 }else{
-                    return nopermission();
+                    return Controller::error(4);
                 }
             }else{
-                return imageerror();
+                return Controller::error(7);
             }
         }
 
@@ -304,7 +278,7 @@
                     "data"=>Controller::controllercomment($row)
                 ],200);
             }else{
-                return imageerror();
+                return Controller::error(7);
             }
         }
 
@@ -345,16 +319,16 @@
                                 "data"=>Controller::controllercomment([$row[0]])
                             ],200);
                         }else{
-                            return datatypeerror();
+                            return Controller::error(6);
                         }
                     }else{
-                        return missingfield();
+                        return Controller::error(5);
                     }
                 }else{
-                    return nopermission();
+                    return Controller::error(4);
                 }
             }else{
-                return imageerror();
+                return Controller::error(7);
             }
         }
 
@@ -400,19 +374,19 @@
                                     "data"=>Controller::controllercomment([$row[0]])
                                 ],200);
                             }else{
-                                return datatypeerror();
+                                return Controller::error(6);
                             }
                         }else{
-                            return missingfield();
+                            return Controller::error(5);
                         }
                     }else{
-                        return nopermission();
+                        return Controller::error(4);
                     }
                 }else{
-                    return commenterror();
+                    return Controller::error(8);
                 }
             }else{
-                return imageerror();
+                return Controller::error(7);
             }
         }
 
@@ -432,13 +406,13 @@
                             "success"=>true
                         ],200);
                     }else{
-                        return nopermission();
+                        return Controller::error(4);
                     }
                 }else{
-                    return commenterror();
+                    return Controller::error(8);
                 }
             }else{
-                return imageerror();
+                return Controller::error(7);
             }
         }
 
@@ -472,7 +446,7 @@
                     $row=DB::table("comments")
                         ->select("*")->get();
                 }else{
-                    return datatypeerror();
+                    return Controller::error(6);
                 }
 
                 for($i=0;$i<count($row);$i=$i+1){
@@ -506,7 +480,7 @@
                     "data"=>$maindata
                 ]);
             }else{
-                return datatypeerror();
+                return Controller::error(6);
             }
         }
     }

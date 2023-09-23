@@ -30,14 +30,11 @@ how to make the change canva
 shift-key直線繪製
 
 MD
-how to use access token
 url問題
 
 
 self/
 查詢製作方式
-純css按鈕切換
-
 
 footer/
 lq=>底層的問題(非程式方面技術問題) q=>題目的問題
