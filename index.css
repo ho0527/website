@@ -3,7 +3,7 @@ body{
     background: rgb(35, 35, 35);
     color: gray;
     user-select: none;
-    word-break: break-all;
+    word-wrap: break-word;
 }
 
 h2{

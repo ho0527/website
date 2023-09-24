@@ -1,0 +1,69 @@
+{
+    "data": [
+        {
+            "title": "51regional",
+            "link": "../",
+            "statu": "SUCCESS",
+            "ps": "question",
+            "createdate": "2023/07/08",
+            "updatedate": "2023/09/16",
+            "data": [
+                {
+                    "list": 1,
+                    "description": "LOGO 設計",
+                    "statu": "FAILED",
+                    "data": [
+                        {
+                            "no": "01",
+                            "description": "是否繳交正確的文件格式，且有提交文件和原始檔案。",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "description": "文件版面是否為 A4 直式",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "description": "上方內容為 LOGO",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "description": "下方為設計理念說明",
+                                    "statu": "FAILED"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "02",
+                            "description": "建立 1 個目錄，命名為 01，將作答成果檔存在 01 目錄下，存檔為「ans1_工作崗位號碼.docx」(Word 格式)，並將 LOGO 之原始設計可編輯檔存在 01/source 目錄下。",
+                            "statu": "SUCCESS",
+                            "data": []
+                        },
+                        {
+                            "no": "03",
+                            "description": "LOGO 圖形設計 LOGO 標誌設計圖是由參考圖的內容所延伸發展出來。",
+                            "statu": "subjective",
+                            "data": [
+                                {
+                                    "description": "LOGO 中需有隱喻 2021 年的意念(是字、圖，或意函等等皆可，需在設計理念說明中表達出來)",
+                                    "statu": "subjective"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "04",
+                            "description": "造型設計及配色觀念 LOGO 需以圓形/橢圖形為主。造型表現及色彩運用上使否符合上海及旅遊展的氣氛",
+                            "statu": "subjective",
+                            "data": []
+                        },
+                        {
+                            "no": "05",
+                            "description": "整體理念傳達 LOGO 下方版面請寫至少 30 字之設計理念說明文字設計理念說明切合主題。 LOGO 整體表現",
+                            "statu": "subjective",
+                            "data": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
