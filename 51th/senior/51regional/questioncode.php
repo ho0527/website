@@ -20,8 +20,8 @@
         ?>
         <form method="POST">
             <div class="navigationbar">
-                <div class="navigationbartitle">網路問卷管理系統-問卷邀請碼</div><br>
-                <div class="navigationbarbuttondiv">
+                <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統-問卷邀請碼</div><br></div>
+                <div class="navigationbarright">
                     <input type="submit" class="button" name="goback" value="返回">
                     <input type="submit" class="button" name="save" value="儲存">
                     <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">

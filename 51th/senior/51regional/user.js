@@ -1,4 +1,3 @@
-console.log(row)
 let count=0
 let id=row[0]
 let maincount
@@ -12,17 +11,17 @@ function pregmatch(context,data){ return context.test(data) }
 
 function save(){
     let insertdata=[]
-    let maxcount=docgetid("maxcount").value
-    let pagelen=docgetid("pagelen").value
-    if(!pregmatch(/[0-9]+/,maxcount)&&maxcount!=""){
-        alert("最大長度只能是數字或空白")
-        maxcount=oldmaxcount
-    }
-    if(!pregmatch(/[0-9]+/,pagelen)){
-        alert("頁面長度只能是數字")
-        pagelen=oldpagelen
-    }
-    insertdata.push([id,docgetid("title").value,count,pagelen,maxcount])
+    // let maxcount=docgetid("count").value
+    // let pagelen=docgetid("pagelen").value
+    // if(!pregmatch(/[0-9]+/,maxcount)&&maxcount!=""){
+    //     alert("最大長度只能是數字或空白")
+    //     maxcount=oldmaxcount
+    // }
+    // if(!pregmatch(/[0-9]+/,pagelen)){
+    //     alert("頁面長度只能是數字")
+    //     pagelen=oldpagelen
+    // }e
+    // insertdata.push([id,docgetid("title").value,count,pagelen,maxcount])
     for(let i=0;i<count;i=i+1){
         let mod
         docgetall(".select"+i).forEach(function(event){
@@ -56,25 +55,24 @@ function save(){
         }
         insertdata.push([count,desciption,required,mod,option,showmultimorerespond,""])
     }
-    fetch("newform.php",{
-        method:"POST",
-        body:JSON.stringify(insertdata),
-        headers:{ "Content-Type":"application/json" },
-    }).then(function(response){ return response.text() })
-    .catch(function(event){ console.error("Error:",event) })
-    .then(function(){ alert("儲存成功");location.href="form.php" })
+
+    console.log(insertdata)
+    // newajax("POST","newans.php",[
+    //     "data",insertdata
+    // ]).onload=function(){
+    //     let data=JSON.parse(this.responseText)
+    // }
 }
 
 function main(){
     count=0
     docgetid("maindiv").innerHTML=``
     for(let i=0;i<maincount;i=i+1){
-        console.log(questionrow[i])
         if(questionrow[i][3]!="none"){
             count=count+1
             let required=""
             if(questionrow[i][2]==true){
-                required="<div class='required'>*必填</div>"
+                required="<div class='required'>必填*</div>"
             }
             let mod={
                 "none":"未設定",
@@ -95,32 +93,51 @@ function main(){
             if(check!=1){ sql001();location.href="admin.php" }
             let output=""
             let option=questionrow[i][4].split("|&|")
-            output=output+"題目說明:"+questionrow[i][1]+"<br>"
+            output=output+"題目說明: "+questionrow[i][1]+"<br>"
             if(questionrow[i][3]=="yesno"){
-                output=output+"是<input type='radio' class='yesno radio' name='yesno' value='yes'>否<input type='radio' class='radio' name='yesno' value='no'>"
+                output=`
+                    ${output}
+                    <label class="label" for="${i}yes">是</label>
+                    <input type="radio" class="yesno radio" id="${i}yes" name="yesno" value="yes">
+                    <label class="label" for="${i}no">否</label>
+                    <input type="radio" class="radio" id="${i}no" name="yesno" value="no">
+                `
             }else if(questionrow[i][3]=="single"){
                 for(let j=0;j<6;j=j+1){
                     if(!checknull(option[j])){
-                        output=output+("  "+"<input type='radio' class='radio option"+i+"' id='"+(i+"option"+j)+"' name='single"+i+"' value='"+option[j]+"'>"+option[j])
+                        output=`
+                            ${output}
+                            <label class="label" for="${i+"option"+j}">${option[j]}</label>
+                            <input type="radio" class="radio option${i}" id="${i+"option"+j}" name="single${i}" value="${option[j]}">
+                        `
                     }
                 }
             }else if(questionrow[i][3]=="multi"){
                 for(let j=0;j<6;j=j+1){
                     if(!checknull(option[j])){
-                        output=output+("  "+"<input type='checkbox' class='checkbox option"+i+"' value='"+option[j]+"'>"+option[j])
+                        output=`
+                            ${output}
+                            <label class="label" for="${i+"option"+j}">${option[j]}</label>
+                            <input type="checkbox" class="checkbox option${i}" id="${i+"option"+j}" value="${option[j]}">
+                        `
                     }
                 }
                 if(questionrow[i][5]==true){
-                    output=output+"<br><input type='text' class='forminputtext' id='multimorerespond"+i+"' name='multiauther"+i+"'>"
+                    output=`
+                    ${output}<br>
+                    其他: <input type='text' class="forminputtext" id="multimorerespond"+i+"" name="multiauther"+i+"">
+                `
                 }
             }else if(questionrow[i][3]=="qa"){
-                output=output+"<textarea cols='30' rows='5' class='question' placeholder='問答題'></textarea>"
+                output=`
+                    output
+                    <textarea cols="30" rows="5" class="question" placeholder="問答題"></textarea>
+                `
             }else{ sql001();location.href="admin.php" }
             docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
                 <div class="grid" id="${i}">
                     <div class="order">
                         ${required}
-                        <div class="questiondel" data-id="${i}">X</div>
                         <div id="count${i}">${questionrow[i][0]}</div>
                     </div>
                     <div class="newform">

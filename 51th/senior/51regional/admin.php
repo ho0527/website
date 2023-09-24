@@ -5,8 +5,8 @@
         <title>Document</title>
         <link rel="stylesheet" href="index.css">
         <script src="error.js"></script>
-        <link rel="stylesheet" href="plugin/css/macossection.css">
-        <script src="plugin/js/macossection.js"></script>
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
+        <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
@@ -60,7 +60,7 @@
                                 $value="解鎖";
                                 $disabled="disabled";
                             }
-                            if($_SESSION["data"]=="admin"){
+                            if($_SESSION["data"]==1 ){
                                 ?>
                                 <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
                                 <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php  echo($disabled) ?>><br>
@@ -98,7 +98,7 @@
                     query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`responcount`,`lock`)VALUES(?,?,'$pagelen','0','false')",[$title,$count]);
                     $_SESSION["title"]=$title;
                     $_SESSION["count"]=$count;
-                    $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title]);
+                    $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title])[0];
                     $_SESSION["id"]=$row[0];
                     $id=$_SESSION["id"];
                     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','新增問卷','$time','qid=$id')");

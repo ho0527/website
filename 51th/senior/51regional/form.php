@@ -6,16 +6,14 @@
         <link rel="stylesheet" href="index.css">
         <script src="error.js"></script>
         <script src="html.js"></script>
-        <link rel="stylesheet" href="plugin/css/macossection.css">
-        <link rel="stylesheet" href="plugin/css/sort.css">
-        <script src="plugin/js/macossection.js"></script>
-        <script src="sort.js"></script>
-        <!-- <script src="plugin/js/sort.js"></script> -->
+        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
+        <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
             include("link.php");
             if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            if(!isset($_SESSION["id"])){ header("location:form.php"); }
             $id=$_SESSION["id"];
             $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
         ?>

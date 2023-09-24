@@ -55,7 +55,7 @@
                     if($row[2]==$password){
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入系統','$time')");
                         session_unset();
-                        $_SESSION["data"]=$row[1];
+                        $_SESSION["data"]=$row[0];
                         ?><script>alert("登入成功");location.href="verify.php"</script><?php
                     }else{
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$username','登入失敗(password)','$time')");

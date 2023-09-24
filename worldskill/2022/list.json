@@ -5,15 +5,14 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/09/23",
+            "updatedate": "2023/09/24",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
-                    "link": "worldskill/2022",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2023/09/23",
+                    "updatedate": "2023/09/24",
                     "data": [
                         {
                             "list": "A",
@@ -469,7 +468,7 @@
                                     "no": "D04",
                                     "description": "D04-Infinite scroll",
                                     "link": "TaskA/D04/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {

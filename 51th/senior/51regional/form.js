@@ -1,5 +1,3 @@
-console.log(row)
-
 function checknull(data){
     if(data==null||data==undefined||data==""){ return true }
     else{ return false }
@@ -12,7 +10,7 @@ function newquestion(){
     console.log(questionrow[count])
     maincount=maincount+1
     count=count+1
-    document.getElementById("maindiv").innerHTML=document.getElementById("maindiv").innerHTML+`
+    docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
     <div class="grid" id="${count}">
         <div class="order">
             <div class="questiondel" data-id="${count}">X</div>
@@ -30,7 +28,7 @@ function newquestion(){
         </div>
     </div>
     `
-    document.getElementById("count").value=count
+    docgetid("count").value=count
     sort(".grid","grid","#maindiv")
 }
 
@@ -38,7 +36,7 @@ function tempsave(){
     questionrow=[]
     for(let i=0;i<count;i=i+1){
         let mod
-        document.querySelectorAll(".select"+i).forEach(function(event){
+        docgetall(".select"+i).forEach(function(event){
             if(event.checked==true){ mod=event.value }
         })
         let desciption=""
@@ -46,11 +44,11 @@ function tempsave(){
         let option=""
         let showmultimorerespond=false
         if(mod!="none"){
-            desciption=document.querySelectorAll(".desciption")[i].value
-            required=document.querySelectorAll(".required")[i].checked
+            desciption=docgetall(".desciption")[i].value
+            required=docgetall(".required")[i].checked
             option=""
             if(mod=="single"||mod=="multi"){
-                document.querySelectorAll(".option"+i).forEach(function(event){
+                docgetall(".option"+i).forEach(function(event){
                     if(!checknull(event.value)){
                         if(event.value!="|&|"){ option=option+event.value+"|&|" }
                         else{ alert("選項禁止輸入|&| 位於第"+i+"欄，故選項不儲存") }
@@ -58,7 +56,7 @@ function tempsave(){
                 })
             }
             showmultimorerespond=false
-            if(document.querySelectorAll(".showmultimorerespond")[0].checked==true){ showmultimorerespond=true }
+            if(docgetall(".showmultimorerespond")[0].checked==true){ showmultimorerespond=true }
         }
         questionrow.push([i+1,desciption,required,mod,option,showmultimorerespond,""])
     }
@@ -67,8 +65,8 @@ function tempsave(){
 
 function save(){
     let insertdata=[]
-    let maxcount=document.getElementById("maxcount").value
-    let pagelen=document.getElementById("pagelen").value
+    let maxcount=docgetid("maxcount").value
+    let pagelen=docgetid("pagelen").value
     if(!pregmatch(/[0-9]+/,maxcount)&&maxcount!=""){
         alert("最大長度只能是數字或空白")
         maxcount=oldmaxcount
@@ -77,7 +75,7 @@ function save(){
         alert("頁面長度只能是數字")
         pagelen=oldpagelen
     }
-    insertdata.push([id,document.getElementById("title").value,count,pagelen,maxcount])
+    insertdata.push([id,docgetid("title").value,count,pagelen,maxcount])
     tempsave()
     insertdata.push(questionrow)
     fetch("newform.php",{
@@ -91,7 +89,7 @@ function save(){
 
 function main(){
     count=0
-    document.getElementById("maindiv").innerHTML=``
+    docgetid("maindiv").innerHTML=``
     for(let i=0;i<maincount;i=i+1){
         console.log(questionrow[i])
         count=count+1
@@ -173,7 +171,7 @@ function main(){
                 output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimorerespond option"+i+"'>"
             }else{ sql001();location.href="admin.php" }
         }
-        document.getElementById("maindiv").innerHTML=document.getElementById("maindiv").innerHTML+`
+        docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
             <div class="grid" id="${i}">
                 <div class="order">
                     <div class="questiondel" data-id="${i}">X</div>
@@ -192,7 +190,7 @@ function main(){
     }
 }
 
-editformnavigationbar(document.getElementById("htmlform"))
+editformnavigationbar(docgetid("htmlform"))
 let count=0
 let id=row[0]
 let maincount
@@ -203,23 +201,23 @@ if(!checknull(questionrow)){
 }else{
     maincount=parseInt(row[2])
 }
-let oldmaxcount=document.getElementById("maxcount").value
-let oldpagelen=document.getElementById("pagelen").value
+let oldmaxcount=docgetid("maxcount").value
+let oldpagelen=docgetid("pagelen").value
 
 main()
-sort(".grid","grid","#maindiv")
+divsort("grid","#maindiv")
 
-document.getElementById("id").value=row[0]
-document.getElementById("title").value=row[1]
-document.getElementById("count").value=count
-document.getElementById("pagelen").value=row[3]
-document.getElementById("maxcount").value=row[6]
+docgetid("id").value=row[0]
+docgetid("title").value=row[1]
+docgetid("count").value=count
+docgetid("pagelen").value=row[3]
+docgetid("maxcount").value=row[6]
 
-let none=document.querySelectorAll(".none")
-let yesno=document.querySelectorAll(".yesno")
-let single=document.querySelectorAll(".single")
-let multi=document.querySelectorAll(".multi")
-let qa=document.querySelectorAll(".qa")
+let none=docgetall(".none")
+let yesno=docgetall(".yesno")
+let single=docgetall(".single")
+let multi=docgetall(".multi")
+let qa=docgetall(".qa")
 let all=[none,yesno,single,multi,qa]
 
 all.forEach(function(event){
@@ -264,27 +262,27 @@ all.forEach(function(event){
             }else if(data[0]=="qa"){
                 output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimorerespond option"+data[1]+"'>"
             }else{ sql001();location.href="admin.php" }
-            document.getElementById("output"+data[1]).innerHTML=`
+            docgetid("output"+data[1]).innerHTML=`
                 ${output}
             `
         }
     })
 })
 
-document.querySelectorAll(".questiondel").forEach(function(event){
+docgetall(".questiondel").forEach(function(event){
     event.onclick=function(){
         let id=parseInt(event.dataset.id("data-id"))
-        document.getElementById(id).remove()
+        docgetid(id).remove()
         for(let i=id;i<count-1;i=i+1){
-            document.getElementById(i+1).id=i
-            document.getElementById("count"+(i+1)).innerHTML=`${i+1}`
-            document.getElementById("count"+(i+1)).id="count"+i
-            document.getElementById("output"+(i+1)).id="output"+i
-            document.querySelectorAll(".select"+i).forEach(function(event){
+            docgetid(i+1).id=i
+            docgetid("count"+(i+1)).innerHTML=`${i+1}`
+            docgetid("count"+(i+1)).id="count"+i
+            docgetid("output"+(i+1)).id="output"+i
+            docgetall(".select"+i).forEach(function(event){
                 event.classList.remove("select"+i)
                 event.classList.add("select"+(i-1))
             })
-            document.querySelectorAll(".option"+i).forEach(function(event){
+            docgetall(".option"+i).forEach(function(event){
                 event.classList.remove("option"+i)
                 event.classList.add("option"+(i-1))
             })
@@ -303,3 +301,5 @@ document.addEventListener("keydown",function(event){
         save()
     }
 })
+
+startmacossection()
