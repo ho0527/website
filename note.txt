@@ -1,44 +1,43 @@
 46n/
-
-MD
-不加外掛怎麼做圖形驗證嗎
-網址重寫
+    MD
+    不加外掛怎麼做圖形驗證嗎
+    網址重寫
 
 
 49r/
-問題偵測
+    問題偵測
 
 
 50n/
-MA
-youtube嵌入audio
-媒體播放器製作
+    MA
+    youtube嵌入audio
+    媒體播放器製作
 
-MD
-回應值即回傳值(q)
-FULLTEXT(lq)
+    MD
+    回應值即回傳值(q)
+    FULLTEXT(lq)
 
 
 53n/
-MA
-a6 fix
+    MA
+    a6 fix
 
-MB
-how to let canva make in to an jpg
-how to add background let we download
-how to make the bucket
-how to move the canva
-how to make the change canva
-可編輯檔
-讓canva底色變成要求顏色
-shift-key直線繪製
+    MB
+    how to let canva make in to an jpg
+    how to add background let we download
+    how to make the bucket
+    how to move the canva
+    how to make the change canva
+    可編輯檔
+    讓canva底色變成要求顏色
+    shift-key直線繪製
 
-MD
-url問題
+    MD
+    url問題
 
 
 self/
-查詢製作方式
+    查詢製作方式
 
 footer/
-lq=>底層的問題(非程式方面技術問題) q=>題目的問題
+    lq=>底層的問題(非程式方面技術問題) q=>題目的問題
