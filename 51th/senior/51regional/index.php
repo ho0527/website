@@ -13,7 +13,7 @@
                 <div class="navigationbar">
                     <div class="navigationbartitle">網路問卷調查系統</div>
                 </div>
-                <div class="main">
+                <div class="main indexmain">
                     <form method="POST">
                         帳號: <input type="text" class="input" name="username"><br><br>
                         密碼: <input type="text" class="input" name="password"><br><br>
@@ -37,7 +37,7 @@
                         <input type="submit" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main indexmain">
                     <form method="POST">
                         填寫問卷網址:<br><br>
                         <input type="text" class="input" name="text" placeholder="請輸入網址">
