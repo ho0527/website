@@ -21,7 +21,7 @@ ajax.onload=function(){
             let div=doccreate("div")
             div.classList.add("game")
             div.classList.add("grid")
-            div.id=(page*10)+i
+            div.id=data["content"][i]["slug"]
             div.innerHTML=`
                 <div class="title">${data["content"][i]["title"]}</div>
                 <div class="author">by ${data["content"][i]["author"]}</div>

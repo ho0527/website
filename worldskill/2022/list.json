@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/09/24",
+            "updatedate": "2023/09/26",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -575,7 +575,7 @@
                     "data": []
                 },
                 {
-                    "title": "ModuleC-API_FONTEND",
+                    "title": "ModuleC-API_BACKEND",
                     "link": "https://hiiamchris.ddns.net:81/website/TaskC",
                     "statu": "FAILED",
                     "ps": "list",
@@ -589,7 +589,7 @@
                     "statu": "FAILED",
                     "ps": "question",
                     "createdate": "2023/09/18",
-                    "updatedate": "2023/09/21",
+                    "updatedate": "2023/09/26",
                     "data": [
                         {
                             "list": 1,
@@ -637,7 +637,7 @@
                                 {
                                     "no": "04",
                                     "description": "Developer can see “my games” list",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESSs",
                                     "data": []
                                 },
                                 {
@@ -732,7 +732,7 @@
                                     "data": [
                                         {
                                             "description": "And should go to /XX_module_d/ after signed-up",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },
@@ -745,7 +745,7 @@
                                 {
                                     "no": "06",
                                     "description": "Response message is shown after server response",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -798,15 +798,15 @@
                                 {
                                     "no": "14",
                                     "description": "Can visit the user profile",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "Shows username, authored game section, game high scores section.",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         },
                                         {
                                             "description": "If the user has not uploaded any games, the authored games section is omitted.",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },

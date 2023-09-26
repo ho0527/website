@@ -19,14 +19,37 @@ docgetid("submit").onclick=function(){
         ])
         ajax.onload=function(){
             let data=JSON.parse(ajax.responseText)
-            console.log(data)
-            if(data["status"]!="invalid"){
+
+            docgetid("error").innerHTML=``
+            if(data["status"]=="success"){
                 alert("Sign in successfully!")
                 weblsset("token",data["token"])
                 weblsset("username",docgetid("username").value)
                 location.href="index.html"
             }else{
-                alert(data["message"])
+                if(data["message"]=="Wrong username or password"){
+                    docgetid("error").innerHTML=`
+                        wrong username or password
+                    `
+                }else{
+                    if(isset(data["violations"]["username"])){
+                        docgetid("error").innerHTML=`
+                            username is required
+                        `
+                    }
+                    if(isset(data["violations"]["password"])){
+                        if(docgetid("error").innerHTML==""){
+                            docgetid("error").innerHTML=`
+                                password is required
+                            `
+                        }else{
+                            docgetid("error").innerHTML=`
+                                username and password<br>
+                                is required
+                            `
+                        }
+                    }
+                }
             }
         }
     }else{
@@ -38,14 +61,51 @@ docgetid("submit").onclick=function(){
         ])
         ajax.onload=function(){
             let data=JSON.parse(ajax.responseText)
-            console.log(data)
+
+            docgetid("error").innerHTML=``
             if(data["status"]!="invalid"){
                 alert("Sign up successfully!")
                 weblsset("token",data["token"])
                 weblsset("username",docgetid("username").value)
                 location.href="index.html"
             }else{
-                alert(data["message"])
+                if(data["message"]=="Request body is not valid."){
+                    if(isset(data["violations"]["username"])){
+                        if(data["violations"]["password"]["message"]=="required"){
+                            docgetid("error").innerHTML=`
+                                username is required
+                            `
+                        }else{
+                            docgetid("error").innerHTML=`
+                                ${docgetid("error").innerHTML}
+                                username ${data["violations"]["username"]["message"]}
+                            `
+                        }
+                    }
+                    if(isset(data["violations"]["password"])){
+                        if(data["violations"]["password"]["message"]=="required"){
+                            if(docgetid("error").innerHTML==""){
+                                docgetid("error").innerHTML=`
+                                    password is required
+                                `
+                            }else{
+                                docgetid("error").innerHTML=`
+                                    username and password<br>
+                                    is required
+                                `
+                            }
+                        }else{
+                            docgetid("error").innerHTML=`
+                                ${docgetid("error").innerHTML}<br>
+                                password ${data["violations"]["password"]["message"]}
+                            `
+                        }
+                    }
+                }else{
+                    docgetid("error").innerHTML=`
+                        wrong username or password
+                    `
+                }
             }
         }
     }

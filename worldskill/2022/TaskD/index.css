@@ -407,3 +407,39 @@ table{
 .navigationbara{
     font-size: 20px;
 }
+
+.profiletitle{
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    margin: 20px 0px;
+}
+
+.profilegamediv{
+    grid-column: 1/70;
+    grid-row: 1/18;
+}
+
+.profilehightscore{
+    grid-column: 70/100;
+    grid-row: 1/18;
+}
+
+.profilegame{
+    width: 95%;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+    font-size: 45px;
+    margin: 30px 0px;
+    word-break: normal;
+    word-wrap: break-word;
+}
