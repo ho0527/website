@@ -19,7 +19,7 @@
         <?php
             if(isset($_SESSION["edit"])){
                 $number=$_SESSION["edit"];
-                $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$number'"));
+                $row=query($db,"SELECT*FROM `user` WHERE `number`='$number'");
                 if($row){
                     ?>
                     <div class="main">
@@ -67,32 +67,28 @@
                 $name=$_GET["name"];
                 $username=$_GET["username"];
                 $password=$_GET["password"];
-                if(!(block($name))&&!(block($username))&&!(block($password))){
-                    $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                    if($username==""||$password==""){
-                        ?><script>alert("請填寫帳密!");location.href="signupedit.php"</script><?php
-                    }elseif($row){
-                        ?><script>alert("帳號已存在");location.href="signupedit.php"</script><?php
-                    }else{
-                        if(isset($_GET["admin"])){
-                            query($db,"INSERT INTO `user`(`username`,`password`,`name`,`permission`)VALUES('$username','$password','$name','管理者')");
-                        }else{
-                            query($db,"INSERT INTO `user`(`username`,`password`,`name`,`permission`)VALUES('$username','$password','$name','一般使用者')");
-                        }
-                        $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                        if(isset($_GET["admin"])){
-                            $number="a".str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
-                        }else{
-                            $number="u".str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
-                        }
-                        query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
-                        ?><script>alert("新增成功!");location.href="admin.php"</script><?php
-                    }
+                $row=query($db,"SELECT*FROM `user` WHERE `username`='$username'");
+                if($username==""||$password==""){
+                    ?><script>alert("請填寫帳密!");location.href="signupedit.php"</script><?php
+                }elseif($row){
+                    ?><script>alert("帳號已存在");location.href="signupedit.php"</script><?php
                 }else{
-                    ?><script>alert("禁止輸入特殊字元!");location.href="signupedit.php"</script><?php
+                    if(isset($_GET["admin"])){
+                        query($db,"INSERT INTO `user`(`username`,`password`,`name`,`permission`)VALUES('$username','$password','$name','管理者')");
+                    }else{
+                        query($db,"INSERT INTO `user`(`username`,`password`,`name`,`permission`)VALUES('$username','$password','$name','一般使用者')");
+                    }
+                    $row=query($db,"SELECT*FROM `user` WHERE `username`='$username'")[0];
+                    if(isset($_GET["admin"])){
+                        $number="a".str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
+                    }else{
+                        $number="u".str_pad($row[0]-1,4,"0",STR_PAD_LEFT);
+                    }
+                    query($db,"UPDATE `user` SET `number`='$number' WHERE `username`='$username'");
+                    ?><script>alert("新增成功!");location.href="admin.php"</script><?php
                 }
             }
-            
+
             if(isset($_GET["edit"])){
                 if($_GET["edit"]=="a0000"){
                     ?><script>alert("有人說你可以改網址嗎?????");location.href="admin.php"</script><?php
@@ -117,24 +113,20 @@
                 $username=$_GET["username"];
                 $password=$_GET["password"];
                 $name=$_GET["name"];
-                if(!(block($name))&&!(block($username))&&!(block($password))){
-                    $row=fetch(query($db,"SELECT*FROM `user` WHERE `username`='$username'"));
-                    if($number=="a0000"){
-                        ?><script>alert("有人說你可以改編號嗎?????");location.href="admin.php"</script><?php
-                    }elseif($username==""||$password==""){
-                        ?><script>alert("請填寫帳密!");location.href="signupedit.php"</script><?php
-                    }elseif($row&&$row[1]!=$number){
-                        ?><script>alert("帳號已存在");location.href="signupedit.php"</script><?php
-                    }else{
-                        if(isset($_GET["admin"])){
-                            query($db,"UPDATE `user` SET `username`='$username',`password`='$password',`name`='$name',`permission`='管理者' WHERE `number`='$number'");
-                        }else{
-                            query($db,"UPDATE `user` SET `username`='$username',`password`='$password',`name`='$name',`permission`='一般使用者' WHERE `number`='$number'");
-                        }
-                        ?><script>alert("更改成功!");location.href="admin.php"</script><?php
-                    }
+                $row=query($db,"SELECT*FROM `user` WHERE `username`='$username'");
+                if($number=="a0000"){
+                    ?><script>alert("有人說你可以改編號嗎?????");location.href="admin.php"</script><?php
+                }elseif($username==""||$password==""){
+                    ?><script>alert("請填寫帳密!");location.href="signupedit.php"</script><?php
+                }elseif($row&&$row[1]!=$number){
+                    ?><script>alert("帳號已存在");location.href="signupedit.php"</script><?php
                 }else{
-                    ?><script>alert("禁止輸入特殊字元!");location.href="signupedit.php"</script><?php
+                    if(isset($_GET["admin"])){
+                        query($db,"UPDATE `user` SET `username`='$username',`password`='$password',`name`='$name',`permission`='管理者' WHERE `number`='$number'");
+                    }else{
+                        query($db,"UPDATE `user` SET `username`='$username',`password`='$password',`name`='$name',`permission`='一般使用者' WHERE `number`='$number'");
+                    }
+                    ?><script>alert("更改成功!");location.href="admin.php"</script><?php
                 }
             }
         ?>

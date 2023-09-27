@@ -80,13 +80,13 @@ table{
 }
 
 .mainbody{
-    border: 1px black solid;
+    /* border: 1px black solid; */
     position: absolute;
-    top: 190px;
+    top: 140px;
     left: 50%;
     transform: translate(-50%,-0%);
     width: 80%;
-    height: 70%;
+    /* height: 0%; */
     padding: 20px;
     overflow-y: auto;
 }
@@ -308,8 +308,11 @@ timer與燈箱
 */
 
 .timer{
-    color: #333333;/* 文字顏色 */
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
     text-align: center;/* 將文字置中 */
+    color: white;
 }
 
 .timertable{
@@ -340,6 +343,7 @@ timer與燈箱
     font-size: 30px;
     width: 200px;
     text-align: center;
+    color: white;
 }
 
 .lightbox{
@@ -587,4 +591,8 @@ usersearch
     font-size: 50px;
     margin: -20px;
     width: 50%;
+}
+
+.indexmain{
+    width: 65vw;
 }

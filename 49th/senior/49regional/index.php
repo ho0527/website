@@ -6,7 +6,7 @@
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
-        <div class="main">
+        <div class="main indexmain">
             <form>
                 <?php
                     include("link.php");
@@ -22,7 +22,7 @@
                         $str=rand(0,9);
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?val=<?= $str ?>" draggable="false">
+                            <img src="api/verifycode.php?val=<?= $str ?>" draggable="false">
                         </div>
                         <?php
                         $_SESSION["verifycode1"]=$_SESSION["verifycode1"].$str;
@@ -33,13 +33,13 @@
                     if($mid==0){
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?val=<?= $plus ?>" draggable="false">
+                            <img src="api/verifycode.php?val=<?= $plus ?>" draggable="false">
                         </div>
                         <?php
                     }else{
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?val=-" draggable="false">
+                            <img src="api/verifycode.php?val=-" draggable="false">
                         </div>
                         <?php
                     }
@@ -47,7 +47,7 @@
                         $str=rand(0,9);
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?val=<?= $str ?>" draggable="false">
+                            <img src="api/verifycode.php?val=<?= $str ?>" draggable="false">
                         </div>
                         <?php
                         $_SESSION["verifycode2"]=$_SESSION["verifycode2"].$str;
@@ -63,22 +63,16 @@
                     for($i=0;$i<=9;$i=$i+1){
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?val=<?= $i ?>" id="<?= $i ?>" class="dragimg" draggable="true">
+                            <img src="api/verifycode.php?val=<?= $i ?>" id="<?= $i ?>" class="dragimg" draggable="true">
                         </div>
                         <?php
                     }
                 ?><br><br>
                 圖片驗證碼:<br>
-                <div class="dropbox"></div>
-                <div class="block"></div><br><br>
-                <input type="submit" class="button" name="reflashpng" value="驗證碼重新產生">
-                <input type="submit" class="button" name="clear" value="重設">
-                <input type="button" class="button" onclick="login()" value="送出"><br><br>
-                <input type="button" onclick="location.href='index.php'" value="模組1" disabled>
-                <input type="button" onclick="location.href='index.php'" value="模組2">
-                <input type="button" onclick="location.href='verify.php'" value="模組3">
-                <input type="button" onclick="location.href='admin.php'" value="模組4">
-                <input type="button" onclick="location.href='main.php'" value="模組5">
+                <div class="dropbox" id="dropbox"></div><br><br>
+                <input type="button" class="button" id="reflashpng" value="驗證碼重新產生">
+                <input type="button" class="button" id="clear" value="重設">
+                <input type="button" class="button" id="login" value="送出">
                 <?php
                     if(isset($_GET["reflashpng"])){
                         $_SESSION["username"]=$_GET["username"];
@@ -93,6 +87,6 @@
                 ?>
             </form>
         </div>
-        <script src="verifycode.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

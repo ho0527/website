@@ -23,23 +23,23 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
             </div>
         </div>
+        <div class="timer">
+            <form>
+                <table class="timertable">
+                    <tr>
+                        <td class="timertd" rowspan="2"><input type="text" class="maintimer" id="timer" value="<?= @$_SESSION["timer"] ?>" readonly></td>
+                        <td class="timertd">
+                            <input type="number" name="timer" value="<?= @$_SESSION["timer"] ?>">
+                            <input type="submit" name="ref" value="送出">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timertd"><input type="button" onclick="location.reload()" value="重新計時"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
         <div class="mainbody">
-            <div class="timer">
-                <form>
-                    <table class="timertable">
-                        <tr>
-                            <td class="timertd" rowspan="2"><input type="text" class="maintimer" id="timer" value="<?= @$_SESSION["timer"] ?>" readonly></td>
-                            <td class="timertd">
-                                <input type="number" name="timer" value="<?= @$_SESSION["timer"] ?>">
-                                <input type="submit" name="ref" value="送出">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="timertd"><input type="button" onclick="location.reload()" value="重新計時"></td>
-                        </tr>
-                    </table>
-                </form>
-            </div><br>
             <div class="adminmain mag">
                 <h2>會員管理</h2>
                 <input type="button" onclick="location.href='signupedit.php'" value="新增使用者">
@@ -59,9 +59,9 @@
                         <?php
                             if(isset($_SESSION["search"])){
                                 $type=$_SESSION["search"];
-                                updown(fetchall(query($db,"SELECT*FROM `user` WHERE `number`LIKE'%$type%'or`username`LIKE'%$type%'or`password`LIKE'%$type%'or`name`LIKE'%$type%'or`permission`LIKE'%$type%'")));
+                                updown(query($db,"SELECT*FROM `user` WHERE `number`LIKE'%$type%'or`username`LIKE'%$type%'or`password`LIKE'%$type%'or`name`LIKE'%$type%'or`permission`LIKE'%$type%'"));
                             }else{
-                                updown(fetchall(query($db,"SELECT*FROM `user`")));
+                                updown(query($db,"SELECT*FROM `user`"));
                             }
                         ?>
                     </table>
@@ -77,7 +77,7 @@
                         <td class="admintd">時間</td>
                     </tr>
                     <?php
-                    $row=fetchall(query($db,"SELECT*FROM `data`"));
+                    $row=query($db,"SELECT*FROM `data`");
                     for($i=0;$i<count($row);$i++){
                         ?>
                         <tr>

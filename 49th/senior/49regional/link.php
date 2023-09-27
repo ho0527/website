@@ -5,25 +5,16 @@
     session_start();
 
     function query($db,$query){
-        return $db->query($query);
-    }
-
-    function fetch($result){
-        return $result->fetch();
-    }
-
-    function fetchall($result){
-        return $result->fetchAll();
-    }
-
-    function block($name){
-        return preg_match("/([ ,\!,\@,\#,\$,\%,\^,\&,\*,\(,\),\_,\-,\+,\=,\{,\},\[,\],\|,\\\,\:,\;,\',\",\<,\>,\,,\.,\?,\/ ])/",$name,$e);
+        $prepare=$db->prepare($query);
+        $prepare->execute();
+        return $prepare->fetchAll();
     }
 
     if(isset($_GET["logout"])){
         @$data=$_SESSION["data"];
-        $row=fetch(query($db,"SELECT*FROM `user` WHERE `number`='$data'"));
+        $row=query($db,"SELECT*FROM `user` WHERE `number`='$data'");
         if($row){
+            $row=$row[0];
             query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('$row[1]','登出','成功','$time')");
         }else{
             query($db,"INSERT INTO `data`(`number`,`move1`,`move2`,`movetime`)VALUES('未知','登出','成功','$time')");
