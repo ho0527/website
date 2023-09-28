@@ -5,8 +5,60 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div id="wrap">
+            <div id="inner">
+                <!--start-->
+                <div id="start">
+                    <!--start svg-->
+                    <div id="start-svg" data-svg-name="material/picture/start.svg">
+                        <div id="start-form">
+                            <form>
+                                <div><input type="text" id="nickname" placeholder="Nickname"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--game-->
+                <div id="game">
+                    <!--game data svg-->
+                    <div id="game-data-svg" data-svg-name="material/picture/game-info.svg">
+                        <h2 id="text-stage">STAGE 1</h2>
+                        <h2 id="text-nickname">JOHN DOE</h2>
+                        <h2 id="text-score">1,500</h2>
+                    </div>
+                    <!--timer svg-->
+                    <div id="game-timer-svg" data-svg-name="timer.svg">
+                    </div>
+                    <!--game boards-->
+                    <div id="game-boards-svg" data-svg-name="game-boards.svg">
+                        <div id="game-board-items">
+                            <div class="item1"><img src="material/picture/fruit-apple.png" alt="apple"></div>
+                            <div class="item2"><img src="material/picture/fruit-banana.png" alt="banana"></div>
+                            <div class="item3"><img src="material/picture/fruit-grape.png" alt="grape"></div>
+                            <div class="item4"><img src="material/picture/fruit-peach.png" alt="peach"></div>
+                            <div class="item5"><img src="material/picture/fruit-watermelon.png" alt="watermelon"></div>
+                            <div class="item6"><img src="material/picture/fruit-apple.png" alt="apple"></div>
+                            <div class="item7"><img src="material/picture/fruit-banana.png" alt="banana"></div>
+                            <div class="item8"><img src="material/picture/fruit-grape.png" alt="grape"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end-->
+                <div id="end">
+                    <!--end results-->
+                    <div id="end-result-svg" data-svg-name="material/picture/game-result.svg">
+                        <h4 id="text-nickname-2">JOHN DOE</h4>
+                        <h4 id="text-score-2">1,500</h4>
+                        <h4 id="text-time">00:00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="index.js"></script>
     </body>
 </html>

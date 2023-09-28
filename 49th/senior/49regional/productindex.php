@@ -159,6 +159,7 @@
             </table>
         </div>
         <script src="product.js"></script>
+        <script src="productindex.js"></script>
         <script src="logincheck.js"></script>
         <script>
             document.getElementById(<?= $_SESSION["val"] ?>).style.backgroundColor="rgb(203, 203, 38)"

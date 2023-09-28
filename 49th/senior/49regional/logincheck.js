@@ -1,19 +1,19 @@
-let location=location.href.split("49regional/")[1]
+let file=location.href.split("49regional/")[1]
 let id=localStorage.getItem("49regionalid")
 let permission=localStorage.getItem("49regionalpermission")
 
-if(location==""||location=="index.html"||location=="usererror.html"){
+if(file==""||file=="index.php"||file=="usererror.html"){
     if(id!=null){
         location.href="verify.php"
     }
-}else if(location=="verify.php"){
+}else if(file=="verify.php"){
     if(id==null){
         location.href="index.php"
     }
-    if(id!=1){
+    if(id!="a0000"){
         location.href="main.php"
     }
-}else if(location=="main.php"||location=="search.php"){
+}else if(file=="main.php"||file=="search.php"){
     if(id==null){
         location.href="index.php"
     }

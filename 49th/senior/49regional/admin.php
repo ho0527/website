@@ -9,7 +9,6 @@
         <?php
             include("link.php");
             include("admindef.php");
-            // if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
             unset($_SESSION["edit"]);
             unset($_SESSION["del"]);
         ?>
@@ -24,20 +23,18 @@
             </div>
         </div>
         <div class="timer">
-            <form>
-                <table class="timertable">
-                    <tr>
-                        <td class="timertd" rowspan="2"><input type="text" class="maintimer" id="timer" value="<?= @$_SESSION["timer"] ?>" readonly></td>
-                        <td class="timertd">
-                            <input type="number" name="timer" value="<?= @$_SESSION["timer"] ?>">
-                            <input type="submit" name="ref" value="送出">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="timertd"><input type="button" onclick="location.reload()" value="重新計時"></td>
-                    </tr>
-                </table>
-            </form>
+            <table class="timertable">
+                <tr>
+                    <td class="timertd" id="timer" rowspan="2"></td>
+                    <td class="timertd">
+                        <input type="number" id="inputtimer">
+                        <input type="button" id="timerbutton" value="送出">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="timertd"><input type="button" onclick="location.reload()" value="重新計時"></td>
+                </tr>
+            </table>
         </div>
         <div class="mainbody">
             <div class="adminmain mag">
@@ -91,29 +88,29 @@
                     ?>
                 </table>
             </div>
-            <div class="lightbox">
-                <div class="lightboxbody">
-                    是否繼續操作?<br>
-                    <input type="button" onclick="location.reload()" value="Yes">
-                    <input type="button" onclick="location.href='link.php?logout='" value="否">
-                </div>
-            </div>
-            <?php
-                if(isset($_GET["searchs"])){
-                    $_SESSION["search"]=$_GET["search"];
-                    ?><script>location.href="admin.php"</script><?php
-                }
-                if(isset($_GET["ref"])){
-                    $timer=$_GET["timer"];
-                    if($timer<=0){
-                        ?><script>alert("禁止輸入小於等於0的時間")</script><?php
-                    }else{
-                        $_SESSION["timer"]=$timer;
-                    }
-                    ?><script>location.href="admin.php"</script><?php
-                }
-            ?>
         </div>
+        <div class="lightbox" id="lightbox">
+            <div class="lightboxbody">
+                是否繼續操作?<br>
+                <input type="button" onclick="location.reload()" value="Yes">
+                <input type="button" onclick="location.href='link.php?logout='" value="否">
+            </div>
+        </div>
+        <?php
+            if(isset($_GET["searchs"])){
+                $_SESSION["search"]=$_GET["search"];
+                ?><script>location.href="admin.php"</script><?php
+            }
+            if(isset($_GET["ref"])){
+                $timer=$_GET["timer"];
+                if($timer<=0){
+                    ?><script>alert("禁止輸入小於等於0的時間")</script><?php
+                }else{
+                    $_SESSION["timer"]=$timer;
+                }
+                ?><script>location.href="admin.php"</script><?php
+            }
+        ?>
         <script src="timer.js"></script>
         <script src="logincheck.js"></script>
     </body>

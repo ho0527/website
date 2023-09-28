@@ -34,19 +34,20 @@ document.getElementById("login").onclick=function(){
             localStorage.removeItem("error")
             localStorage.setItem("49regionalid",data["data"]["id"])
             localStorage.setItem("49regionalpermission",data["data"]["permission"])
+            localStorage.setItem("49regionaltimer",60)
             location.href="usererror.php"
             let ajax2=new XMLHttpRequest()
             ajax2.onload=function(){
-                if(data["data"]==1){
+                if(data["data"]["id"]=="1"){
                     location.href="verify.php"
                 }else{
                     location.href="main.php"
                 }
             }
-            ajax2.open("GET","api.php?login=true")
+            ajax2.open("GET","api.php?login=true&userid="+data["data"]["id"])
             ajax2.send()
         }else{
-            alert(data["data"])
+            alert(data["data"]["message"])
             if(localStorage.getItem("error")){
                 localStorage.setItem("error",parseInt(localStorage.getItem("error"))+1)
                 if(localStorage.getItem("error")>=3){
@@ -55,7 +56,7 @@ document.getElementById("login").onclick=function(){
                         localStorage.removeItem("error")
                         location.href="usererror.html"
                     }
-                    ajax2.open("GET","api.php?login=false")
+                    ajax2.open("GET","api.php?login=false&userid="+data["data"]["id"])
                     ajax2.send()
                 }else{
                     document.getElementById("password").value=""
