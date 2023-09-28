@@ -8,7 +8,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])&&$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
+            // if(!isset($_SESSION["data"])&&$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         ?>
         <div class="navigationbar">
             <div class="maintitle">電子競技網站管理-選擇版型</div>
@@ -120,5 +120,6 @@
             }
         ?>
         <script src="porduct.js"></script>
+        <script src="logincheck.js"></script>
     </body>
 </html>

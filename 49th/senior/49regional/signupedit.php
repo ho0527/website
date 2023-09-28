@@ -8,7 +8,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
+            // if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
         ?>
         <h1>電子競技網站管理</h1>
         <input type="button" class="button" onclick="location.href='main.php'" value="首頁">
@@ -130,5 +130,6 @@
                 }
             }
         ?>
+        <script src="logincheck.js"></script>
     </body>
 </html>

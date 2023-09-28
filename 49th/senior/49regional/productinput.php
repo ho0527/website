@@ -8,7 +8,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            // if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
         <div class="navigationbar">
             <div class="maintitle">電子競技網站管理-填寫資料</div>
@@ -39,5 +39,6 @@
                 <input type="submit" class="button" value="送出">
             </form>
         </div>
+        <script src="logincheck.js"></script>
     </body>
 </html>

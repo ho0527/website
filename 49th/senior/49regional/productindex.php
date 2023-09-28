@@ -8,7 +8,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            // if(!isset($_SESSION["data"])){ header("location:index.php"); }
             unset($_SESSION["edit"]);
             unset($_SESSION["pedit"]);
             unset($_SESSION["del"]);
@@ -159,6 +159,7 @@
             </table>
         </div>
         <script src="product.js"></script>
+        <script src="logincheck.js"></script>
         <script>
             document.getElementById(<?= $_SESSION["val"] ?>).style.backgroundColor="rgb(203, 203, 38)"
         </script>

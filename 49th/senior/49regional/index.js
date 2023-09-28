@@ -32,7 +32,8 @@ document.getElementById("login").onclick=function(){
         if(data["success"]){
             alert("登入成功")
             localStorage.removeItem("error")
-            localStorage.setItem("id",data["data"])
+            localStorage.setItem("49regionalid",data["data"]["id"])
+            localStorage.setItem("49regionalpermission",data["data"]["permission"])
             location.href="usererror.php"
             let ajax2=new XMLHttpRequest()
             ajax2.onload=function(){

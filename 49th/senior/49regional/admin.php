@@ -9,7 +9,7 @@
         <?php
             include("link.php");
             include("admindef.php");
-            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
+            // if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
             unset($_SESSION["edit"]);
             unset($_SESSION["del"]);
         ?>
@@ -115,5 +115,6 @@
             ?>
         </div>
         <script src="timer.js"></script>
+        <script src="logincheck.js"></script>
     </body>
 </html>

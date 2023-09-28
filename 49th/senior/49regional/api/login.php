@@ -12,7 +12,10 @@
                 if($_SESSION["verifycode"]==$_POST["verifycode"]){
                     echo(json_encode([
                         "success"=>true,
-                        "data"=>$row[0],
+                        "data"=>[
+                            "id"=>$row[0],
+                            "permission"=>$row[5]
+                        ],
                     ]));
                 }else{
                     echo(json_encode([

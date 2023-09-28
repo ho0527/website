@@ -60,5 +60,6 @@
             <input type="button" class="button" id="open" onclick="showall()" value="全部翻牌">
         </div>
         <script src="verify.js"></script>
+        <script src="logincheck.js"></script>
     </body>
 </html>

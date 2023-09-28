@@ -10,7 +10,7 @@
             <form>
                 <?php
                     include("link.php");
-                    if(isset($_SESSION["data"])){ header("location:verify.php"); }
+                    // if(isset($_SESSION["data"])){ header("location:verify.php"); }
                 ?>
                 <h1>電子競技網站管理</h1><hr>
                 帳號: <input type="text" class="input" id="username" name="username" value="<?= @$_SESSION["username"] ?>" maxlength="1250"><br><br>
@@ -88,5 +88,6 @@
             </form>
         </div>
         <script src="index.js"></script>
+        <script src="logincheck.js"></script>
     </body>
 </html>
