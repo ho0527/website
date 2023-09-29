@@ -877,24 +877,35 @@ usersearch
     width: 50vw;
 }
 
-.name{
-    background: rgb(161, 78, 6);
+.id{
+    margin-bottom: 10px;
+    grid-column: 1/100;
+    grid-row: 1;
 }
 
-.signup{
+.name{
     background: rgb(161, 78, 6);
+    overflow: hidden auto;
+}
+
+.signupbutton{
+    background: rgb(161, 78, 6);
+    overflow: hidden auto;
 }
 
 .date{
     background: rgb(253, 159, 76);
+    overflow: hidden auto;
 }
 
 .link{
     background: rgb(161, 78, 6);
+    overflow: hidden auto;
 }
 
-.introduction{
+.description{
     background: rgb(253, 159, 76);
+    overflow: hidden auto;
     text-align: left;
 }
 
@@ -903,8 +914,97 @@ usersearch
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden auto;
 }
 
 .newproductgrid{
     margin-bottom: 15%;
+}
+
+.thisdiv{
+    position: relative;
+    top: 150px;
+    left: 50px;
+    font-size: 50px;
+    margin: -20px;
+    width: 50%;
+    z-index: 100;
+}
+
+.productmain{
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    width: 90%;
+    height: 75%;
+    color: white;
+}
+
+.productdiv{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    height: 35vh;
+    margin: 20px 0px;
+}
+
+.productmid{
+    grid-column: 25/75;
+    grid-row: 1/18;
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    border: 1px white solid;
+    padding: 20px;
+}
+
+.productleft{
+    grid-column: 1/50;
+    grid-row: 1/18;
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    border: 1px white solid;
+    padding: 20px;
+}
+
+.productright{
+    grid-column: 50/100;
+    grid-row: 1/18;
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
+    border: 1px white solid;
+    padding: 20px;
+}
+
+.product{
+    overflow: hidden auto;
+}
+
+.hidden{
+    display: none;
+}
+
+.productinputmain{
+    width: 40vw;
+}
+
+.productpreviewmain{
+    height: 35vh;
+    color: white;
+}
+
+.image{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.productsubmitmain{
+    color: white;
 }

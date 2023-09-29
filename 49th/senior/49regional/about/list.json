@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/03/13",
-            "updatedate": "2023/06/09",
+            "updatedate": "2023/09/29",
             "data": [
                 {
                     "list": 1,
@@ -386,28 +386,28 @@
                         {
                             "no": "39",
                             "description": "「選擇版型」子功能頁面，需至少提供 3 種基本版型來套用。每一版型，至少包含: 「圖片」、「電競名稱」、「電競活動簡介」、「競賽日期」、「報名」、及「活動新聞連結」等元素。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [{
                                 "description": "3 種基本版型需不一樣",
-                                "statu": "FAILED"
+                                "statu": "SUCCESS"
                             }]
                         },
                         {
                             "no": "40",
                             "description": "「填寫資料」子功能頁面，可填寫及上傳所需要的資料，至少包含: 「圖片」、「電競名稱」、「電競活動簡介」、「競賽日期」、「報名」、及「活動新聞連結」等元素的資料。其中競賽日期，格式不拘。圖片是選擇客戶端的圖片，然後上傳到伺服器端。未發佈前，在子功能頁面間切換時，資料仍可修改，包含更改套用不同的版型。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         },
                         {
                             "no": "41",
                             "description": "「預覽」子功能頁面，可預覽商品電競活動內容。當更改套用不同的版型時，仍可正確顯示。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         },
                         {
                             "no": "42",
                             "description": "「確定送出」子功能頁面，請編輯者再確認是否送出。確認送出後，可在首頁正確瀏覽。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         },
                         {
@@ -433,7 +433,7 @@
                         {
                             "no": "46",
                             "description": "提供增加新版型的功能",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         }
                     ]

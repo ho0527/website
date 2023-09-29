@@ -11,4 +11,15 @@
             session_unset();
         }
     }
+
+    if(isset($_GET["product"])){
+        $data=query($db,"SELECT*FROM `product`");
+        if(isset($_GET["id"])){
+            $data=query($db,"SELECT*FROM `product` WHERE `id`=?",[$_GET["id"]]);
+        }
+        echo(json_encode([
+            "success"=>true,
+            "data"=>$data
+        ]));
+    }
 ?>

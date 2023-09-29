@@ -1,0 +1,29 @@
+docgetid("cancel").onclick=function(){
+    location.href="main.php"
+}
+
+docgetid("submit").onclick=function(){
+    newajax("POST","api/product.php",formdata([
+        ["submit",true],
+        ["date",weblsget("49regionalproductdate")],
+        ["description",weblsget("49regionalproductdescription")],
+        ["link",weblsget("49regionalproductlink")],
+        ["signupbutton",weblsget("49regionalproductsignupbutton")],
+        ["name",weblsget("49regionalproductname")],
+        ["file",weblsget("49regionalproductfile")],
+        ["version",weblsget("49regionalproductid")]
+    ])).onload=function(){
+        let data=JSON.parse(this.responseText)
+        if(data["success"]){
+            alert("新增成功")
+            weblsset("49regionalproductdate",null)
+            weblsset("49regionalproductdescription",null)
+            weblsset("49regionalproductlink",null)
+            weblsset("49regionalproductsignupbutton",null)
+            weblsset("49regionalproductname",null)
+            weblsset("49regionalproductfile",null)
+            weblsset("49regionalproductid",null)
+            location.href="main.php"
+        }
+    }
+}
