@@ -906,7 +906,9 @@ usersearch
 .description{
     background: rgb(253, 159, 76);
     overflow: hidden auto;
-    text-align: left;
+    text-align: justify;
+    word-wrap: break-word;
+    word-break: normal;
 }
 
 .picture{
@@ -948,6 +950,8 @@ usersearch
     grid-auto-rows: 5%;
     height: 35vh;
     margin: 20px 0px;
+    color: white;
+    user-select: text;
 }
 
 .productmid{
@@ -984,6 +988,7 @@ usersearch
 }
 
 .product{
+    position: relative;
     overflow: hidden auto;
 }
 
@@ -1007,4 +1012,35 @@ usersearch
 
 .productsubmitmain{
     color: white;
+}
+
+.mainsignupbutton{
+    cursor: pointer;
+}
+
+.edit{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+.search{
+    position: relative;
+    top: 125px;
+}
+
+.datediv{
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.keyworddiv{
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.pin{
+    position: absolute;
+    left: 5px;
+    top: 10px;
 }

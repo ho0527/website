@@ -17,7 +17,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='productindex.html'" value="電競活動管理精靈">
                 <input type="button" class="navigationbarbutton selectbutton" onclick="location.href='search.php'" value="查尋">
                 <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
-                <input type="button" class="navigationbarbutton" onclick="location.href='link.php?logout='" value="登出">
+                <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
         <div class="mainbody">

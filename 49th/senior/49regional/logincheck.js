@@ -13,7 +13,7 @@ if(file==""||file=="index.php"||file=="usererror.html"){
     if(id!="a0000"){
         location.href="main.php"
     }
-}else if(file=="main.php"||file=="search.php"){
+}else if(file=="main.php"){
     if(id==null){
         location.href="index.php"
     }

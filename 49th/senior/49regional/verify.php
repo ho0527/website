@@ -55,7 +55,7 @@
                     <td class="verifytd" id="7"><?php echo($strarray[$randarray[7]]) ?></td>
                 </tr>
             </table>
-            <input type="button" class="button" onclick="location.href='link.php?logout='" value="登出">
+            <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
             <input type="button" class="button" onclick="location.reload()" value="重整">
             <input type="button" class="button" id="open" onclick="showall()" value="全部翻牌">
         </div>

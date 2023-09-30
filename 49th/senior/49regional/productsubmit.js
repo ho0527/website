@@ -23,7 +23,7 @@ docgetid("submit").onclick=function(){
             weblsset("49regionalproductname",null)
             weblsset("49regionalproductfile",null)
             weblsset("49regionalproductid",null)
-            location.href="main.php"
+            location.href="main.html"
         }
     }
 }

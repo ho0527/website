@@ -1,6 +1,10 @@
 <?php
     function up($row,$comp){
-        usort($row,function($a,$b)use($comp){ return $a[$comp]>$b[$comp]||($a[$comp]==$b[$comp]&&$a[0]>$b[0]); });
+        usort($row,function($a,$b)use($comp){
+            if($a[$comp]>$b[$comp]||($a[$comp]==$b[$comp]&&$a[0]>$b[0])){
+                return 1;
+            }
+        });
         for($i=0;$i<count($row);$i=$i+1){
             if($row[$i][4]=="0000"){
                 ?>
@@ -35,7 +39,11 @@
     }
 
     function down($row,$comp){
-        usort($row,function($a,$b)use($comp){ return $a[$comp]<$b[$comp]||($a[$comp]==$b[$comp]&&$a[0]>$b[0]); });
+        usort($row,function($a,$b)use($comp){
+            if($a[$comp]<$b[$comp]||($a[$comp]==$b[$comp]&&$a[0]>$b[0])){
+                return 1;
+            }
+        });
         for($i=0;$i<count($row);$i=$i+1){
             if($row[$i][4]=="0000"){
                 ?>

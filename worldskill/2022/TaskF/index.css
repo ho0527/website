@@ -4,8 +4,8 @@ body{
     color: gray;
     text-align: center;
     word-break: break-all;
-    -webkit-user-select: none;
-    user-select: none;
+    /* -webkit-user-select: none; */
+    /* user-select: none; */
     padding: 0px;
     margin: 0px;
 }
@@ -276,6 +276,11 @@ table{
 
 /* program START */
 
+.titlediv{
+    position: relative;
+    z-index: 999;
+}
+
 .title{
     font-size: 45px;
     font-weight: bold;
@@ -284,4 +289,71 @@ table{
 .subtitle{
     font-size: 25px;
     font-style: normal;
+}
+
+.indexdiv{
+    display: none;
+}
+
+.featurediv{
+    display: none;
+}
+
+.informationdiv{
+    display: none;
+}
+
+.roadmapdiv{
+    display: none;
+}
+
+.radio{
+    display: none;
+    cursor: pointer;
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0.75;
+}
+
+.feature{
+    display: none;
+}
+
+.maindiv:has(.indexradio:checked)>.indexdiv{
+    display: block;
+}
+
+.maindiv:has(.featureradio:checked)>.featurediv{
+    display: block;
+}
+
+.maindiv:has(.informationradio:checked)>.informationdiv{
+    display: block;
+}
+
+.maindiv:has(.roadmapradio:checked)>.roadmapdiv{
+    display: block;
+}
+
+.radiodiv:has(.indexradio:checked){
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.labeldiv{
+    display: inline-block;
+}
+
+.label{
+    cursor: pointer;
+    margin: 10px 15px;
+    font-size: 20px;
 }
