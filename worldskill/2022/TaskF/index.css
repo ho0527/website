@@ -341,12 +341,35 @@ table{
     display: block;
 }
 
+/* indexradio change START */
 .radiodiv:has(.indexradio:checked){
     position: absolute;
     left: 0px;
     bottom: 0px;
     width: 100%;
 }
+
+.radiodiv:has(.featureradio:checked){
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.radiodiv:has(.informationradio:checked){
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.radiodiv:has(.roadmapradio:checked){
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+/* indexradio change END */
 
 .labeldiv{
     display: inline-block;
@@ -356,4 +379,35 @@ table{
     cursor: pointer;
     margin: 10px 15px;
     font-size: 20px;
+}
+
+.featureimage{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+/* feature change START */
+.featurediv:has(.feature1:checked)>.featureimage{
+    background: url("material/picture/gr-stocks-q8P8YoR6erg-unsplash-2.jpg");
+}
+
+.featurediv:has(.feature2:checked)>.featureimage{
+    background: url("material/picture/jonas-von-werne-8VcWVVsrPBk-unsplash.jpg");
+}
+
+.featurediv:has(.feature3:checked)>.featureimage{
+    background: url("material/picture/mark-cruz-VW2oU66mwbc-unsplash.jpg");
+}
+
+.featurediv:has(.feature4:checked)>.featureimage{
+    background: url("material/picture/markus-spiske-Ivfu9j4OLck-unsplash.jpg");
+}
+/* feature change END */
+
+.featureradiodiv{
+    position: relative;
+    z-index: 999;
 }

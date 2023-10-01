@@ -22,3 +22,5 @@ if(file==""||file=="index.php"||file=="usererror.html"){
         location.href="index.php"
     }
 }
+
+startmacossection()

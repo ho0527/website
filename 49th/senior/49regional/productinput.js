@@ -30,6 +30,10 @@ docgetid("submit").onclick=function(){
     weblsset("49regionalproductdescription",docgetid("description").value)
     weblsset("49regionalproductsignupbutton",docgetid("signupbutton").value)
 
+    if(!docgetid("visibility").checked){
+        weblsset("49regionalproductvisibility","false")
+    }
+
     location.href="productpreview.html"
 }
 
@@ -43,3 +47,8 @@ input("date")
 input("link")
 input("signupbutton")
 input("description")
+
+
+if(weblsget("49regionalproductvisibility")=="false"){
+    docgetid("visibility").checked=false
+}

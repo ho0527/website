@@ -4,9 +4,11 @@
         <meta charset="UTF-8">
         <title>網站前台登入頁面</title>
         <link href="index.css" rel="Stylesheet">
+        <link rel="stylesheet" href="../../../plugin/css/chrisplugin.css">
+        <script src="../../../plugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <div class="main indexmain">
+        <div class="main indexdiv">
             <form>
                 <?php
                     include("link.php");

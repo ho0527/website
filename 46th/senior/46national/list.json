@@ -557,29 +557,6 @@
                                             "statu": "SUCCESS"
                                         }
                                     ]
-                                },
-                                {
-                                    "no": 17,
-                                    "description": " 作答速度 本項目需上述項目得分超過 9 分(含)以上，才有本項作答分數：",
-                                    "statu": "N/A",
-                                    "data": [
-                                        {
-                                            "description": "完成作答時間在 40(含)分鐘內，得 4 分",
-                                            "statu": "N/A"
-                                        },
-                                        {
-                                            "description": "完成作答時間在 50(含)分鐘內，得 3 分",
-                                            "statu": "N/A"
-                                        },
-                                        {
-                                            "description": "完成作答時間在 60(含)分鐘內，得 2 分",
-                                            "statu": "N/A"
-                                        },
-                                        {
-                                            "description": "完成作答時間在 80(含)分鐘內，得 1 分",
-                                            "statu": "N/A"
-                                        }
-                                    ]
                                 }
                             ]
                         }

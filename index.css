@@ -298,3 +298,16 @@ table{
     background: white;
     color: rgb(35, 35, 35);
 }
+
+.no{
+    color: red;
+}
+
+.na{
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+.ye{
+    color: lightgreen;
+}

@@ -10,12 +10,30 @@
             "data": []
         },
         {
+            "title": "ws2013",
+            "link": "worldskill/2013/",
+            "statu": "FAILED",
+            "ps": "list",
+            "createdate": "2023/09/23",
+            "updatedate": "2023/09/23",
+            "data": []
+        },
+        {
+            "title": "ws2015",
+            "link": "worldskill/2015/",
+            "statu": "FAILED",
+            "ps": "list",
+            "createdate": "N/A",
+            "updatedate": "N/A",
+            "data": []
+        },
+        {
             "title": "ws2019",
             "link": "worldskill/2019/",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/09/30",
+            "updatedate": "2023/10/01",
             "data": []
         },
         {
@@ -287,6 +305,15 @@
                     "data": []
                 }
             ]
+        },
+        {
+            "title": "可以提供的紙本題目~",
+            "link": "leftpaperquestion.html",
+            "statu": "SUCCESS",
+            "ps": "list",
+            "createdate": "2023/10/01",
+            "updatedate": "2023/10/01",
+            "data": []
         }
     ]
 }

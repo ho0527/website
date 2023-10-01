@@ -28,16 +28,18 @@
             $start=$_GET["start"];
             $end=$_GET["end"];
             $keyword=$_GET["keyword"];
-            $row=query($db,"SELECT*FROM `game` WHERE (`name` LIKE ? OR `description` LIKE ? OR `link` LIKE ?) AND (?<=`date` AND `date`<=?) ORDER BY `date` ASC",["%$keyword%","%$keyword%","%$keyword%",$start,$end]);
+            $row=query($db,"SELECT*FROM `game` WHERE `visibility`='true' AND (`name` LIKE ? OR `description` LIKE ? OR `link` LIKE ?) AND (?<=`date` AND `date`<=?) ORDER BY `date` ASC",["%$keyword%","%$keyword%","%$keyword%",$start,$end]);
             echo(json_encode([
                 "success"=>true,
                 "data"=>$row
             ]));
         }else{
-            $row=query($db,"SELECT*FROM `game` ORDER BY `date` ASC");
+            $row=query($db,"SELECT*FROM `game` WHERE `visibility`='true' AND `pin`='' ORDER BY `date` ASC");
+            $pin=query($db,"SELECT*FROM `game` WHERE `pin`='true'");
             echo(json_encode([
                 "success"=>true,
-                "data"=>$row
+                "data"=>$row,
+                "pin"=>$pin
             ]));
         }
     }
@@ -57,6 +59,16 @@
         localStorage.removeItem("49regionalpermission")
         localStorage.removeItem("49regionaltimer")
         location.href="index.php"</script><?php
+    }
+
+    if(isset($_GET["pin"])){
+        $id=$_GET["id"];
+        query($db,"UPDATE `game` SET `pin`=''");
+        query($db,"UPDATE `game` SET `pin`='true' WHERE `id`='$id'");
+        echo(json_encode([
+            "success"=>true,
+            "data"=>""
+        ]));
     }
 
     // if($_GET["game"]){

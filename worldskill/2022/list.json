@@ -943,10 +943,206 @@
                     "title": "ModuleF-MARKING PAGE",
                     "link": "TaskF",
                     "statu": "FAILED",
-                    "ps": "list",
+                    "ps": "question",
                     "createdate": "N/A",
-                    "updatedate": "2023/09/30",
-                    "data": []
+                    "updatedate": "2023/10/01",
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "Presentation and Accessibility",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "The marketing page is accessible via required URL XX_module_F/",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "High fidelity website presentation graphics for SNS is provided A file named “social-network” with extension JPEG, or PNG, or PDF is provided",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "Presentation file contains required information Containing one page design showing a long capture of the whole page; Main color palette; Website title",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "The main color palette is present in the delivery All text content is readable by screen reader",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "Testing with NVAccess, with screen reader viewer, and should see all text content, including text content inside images.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "Text size can be scaled up and down From 50% to 200% at least",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "Heading levels are correct Each session has its own heading, following the heading hierarchy",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "Heading color contrast follows WCAG guide Large text contrast ratio Body color contrast follows WCAG guide Use Firefox developer accessibility panel to check. Body  text contrast ratio",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "The page contains all the content required Title, sub title, big promote banner for platform debut, Big four features, parent company information, game platform roadmap for 2023.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "The submitted design source has well organized layers.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "Design",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "11",
+                                    "description": "Align of elements, in the marketing page",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "Use of White space",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "Excellent use of white space to enhance legibility and readability, permiting an easy identification of elements and content. The content is clearly identified because the correct use of white space and the white space is proportional between the elements or blocks of content.Create an aesthetically pleasing and creative design",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "Balance between text and image",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "Use of typography to improve readability",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "Visual identity is consistent in all components in the web page",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "Hierarchy of information (for desktop version)",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "Execent hierarchy with information organizing in a way that's usable, accessible, and logical to the everyday site visitors.Grouping of information",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "19",
+                                    "description": "Design match with the target audience",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "Features and Roadmap",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "20",
+                                    "description": "Layout for desktop has no full page horizontal scroll bar Intentional components horizontal scrollbar is fine. Full page broken with scrollbar is not fine",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "21",
+                                    "description": "Layout for mobile has no full page horizontal scroll bar Intentional components horizontal scrollbar is fine. Full page broken with scrollbar is not fine",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "22",
+                                    "description": "In the features section, can toggle features by clicking on the feature title",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "23",
+                                    "description": "As described in Test Project, there are 4 features, click on each should show one and only one image, which is the image of the selected feature. The tabs should work even when JavaScript is disabled.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "24",
+                                    "description": "Create easy to maintain HTML code",
+                                    "statu": "subjectuve",
+                                    "data": []
+                                },
+                                {
+                                    "no": "25",
+                                    "description": "Create easy to maintain CSS code",
+                                    "statu": "subjectuve",
+                                    "data": []
+                                },
+                                {
+                                    "no": "26",
+                                    "description": "The images chosen for features presenting can enhance the understanding of the game platform and features",
+                                    "statu": "subjectuve",
+                                    "data": []
+                                },
+                                {
+                                    "no": "27",
+                                    "description": "Use adapted elements for different screen resolutions or different devices",
+                                    "statu": "subjectuve",
+                                    "data": []
+                                },
+                                {
+                                    "no": "28",
+                                    "description": "Ecosystem roadmap image is created based on the draft image, and integrate well into the page",
+                                    "statu": "subjectuve",
+                                    "data": []
+                                },
+                                {
+                                    "no": "29",
+                                    "description": "The roadmap present the bright future of vision from the company in a confident way",
+                                    "statu": "subjectuve",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleG-TEAMWORK",
