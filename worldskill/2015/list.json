@@ -4,100 +4,81 @@
             "title": "ws2013",
             "statu": "FAILED",
             "ps": "list",
-            "createdate": "N/A",
-            "updatedate": "N/A",
+            "createdate": "2023/10/02",
+            "updatedate": "2023/10/02",
             "data": [
                 {
                     "title": "ModuleA-DESING",
                     "statu": "N/A",
-                    "ps": "list",
+                    "ps": "question",
                     "createdate": "N/A",
                     "updatedate": "N/A",
                     "data": [
-                        {
-                            "list": "A",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        },
-                        {
-                            "list": "B",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        }
                     ]
                 },
                 {
-                    "title": "ModuleB-FONTEND",
+                    "title": "ModuleB-DESING",
                     "statu": "N/A",
-                    "ps": "list",
+                    "ps": "question",
                     "createdate": "N/A",
                     "updatedate": "N/A",
                     "data": [
-                        {
-                            "list": "A",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        },
-                        {
-                            "list": "B",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        }
                     ]
                 },
                 {
-                    "title": "ModuleC-BACKEND",
+                    "title": "ModuleC-LAYOUT",
                     "statu": "FAILED",
-                    "ps": "list",
-                    "createdate": "2023/09/23",
-                    "updatedate": "2023/09/23",
+                    "link": "modulec",
+                    "ps": "question",
+                    "createdate": "2023/10/02",
+                    "updatedate": "2023/10/02",
                     "data": [
-                        {
-                            "list": "A",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        },
-                        {
-                            "list": "B",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        }
                     ]
                 },
                 {
                     "title": "ModuleD-LAYOUT",
                     "statu": "N/A",
                     "link": "moduleD",
-                    "ps": "list",
+                    "ps": "question",
                     "createdate": "N/A",
                     "updatedate": "N/A",
                     "data": [
-                        {
-                            "list": "A",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        },
-                        {
-                            "list": "B",
-                            "description": "",
-                            "link": "",
-                            "statu": "FAILED",
-                            "data": []
-                        }
+                    ]
+                },
+                {
+                    "title": "ModuleE-FONTEND",
+                    "statu": "N/A",
+                    "ps": "question",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": [
+                    ]
+                },
+                {
+                    "title": "ModuleF-FONTEND",
+                    "statu": "N/A",
+                    "ps": "question",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": [
+                    ]
+                },
+                {
+                    "title": "ModuleG-BACKEND",
+                    "statu": "N/A",
+                    "ps": "question",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": [
+                    ]
+                },
+                {
+                    "title": "ModuleH-BACKEND",
+                    "statu": "N/A",
+                    "ps": "question",
+                    "createdate": "N/A",
+                    "updatedate": "N/A",
+                    "data": [
                     ]
                 }
             ]
