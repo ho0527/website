@@ -3,6 +3,7 @@ let trainlist
 let traindata
 let trainid
 let ticket
+let code
 
 newajax("GET","api.php?traincodelist=").onload=function(){ traincodelist=JSON.parse(this.responseText) }
 newajax("GET","api.php?trainlist=").onload=function(){ trainlist=JSON.parse(this.responseText) }
@@ -11,31 +12,25 @@ newajax("GET","api.php?ticket=").onload=function(){ ticket=JSON.parse(this.respo
 setTimeout(function(){
     let traincode="<option value=\"na\">車次代碼</option>"
     for(let i=0;i<traincodelist.length;i=i+1){
-        traincode=traincode+`<option value="${traincodelist[i]}">${traincodelist[i]}</option>`
+        traincode=traincode+`<option value="${i}">${traincodelist[i]}</option>`
     }
 
     docgetid("code").innerHTML=traincode
 
     docgetid("code").onchange=function(){
         if(this.value!="na"){
-            let code=this.value
             let stopdata=""
             let count=1
+            code=this.value
 
-            for(let i=0;i<trainlist[0].length;i=i+1){
-                if(trainlist[0][i][2]==code){
-                    trainid=trainlist[0][i][0]
-                    break
-                }
-            }
+            trainid=trainlist[0][code][0]
 
             for(let i=0;i<trainlist[1].length;i=i+1){
                 if(trainlist[1][i][1]==trainid){
                     for(let j=0;j<trainlist[2].length;j=j+1){
                         if(trainlist[2][j][0]==trainlist[1][i][2]){
-                            stopdata=stopdata+"<option value=\""+j+"\">"+count+". "+trainlist[2][j][2]+"</option>"
+                            stopdata=stopdata+"<option value=\""+trainlist[2][j][0]+"\" data-id='"+j+"'>"+count+". "+trainlist[2][j][2]+"</option>"
                             count=count+1
-                            console.log("count="+count)
                         }
                     }
                 }
@@ -54,7 +49,6 @@ docgetid("submit").onclick=function(){
     let start=docgetid("start").value
     let end=docgetid("end").value
     let count=docgetid("count").value
-    let price=0
     let day=new Date(date).getDay()
     let success=true
     let error=[]
@@ -89,8 +83,9 @@ docgetid("submit").onclick=function(){
         success=false
     }
 
-    if(isset(trainid)){
-        if(day!=trainlist[0][trainid][3]){
+    if(isset(code)){
+        if(day!=trainlist[0][code][3]){
+            console.log(trainlist[0][code])
             error.push("列車日期錯誤 無此班列車")
             success=false
         }
@@ -101,13 +96,18 @@ docgetid("submit").onclick=function(){
         success=false
     }
 
+    if(false){
+        error.push("該區間以無空位")
+        success=false
+    }
+
     if(date<=new Date()){
         error.push("發車時間已過")
         success=false
     }
 
-    if(start>=end){
-        error.push("站點選擇錯誤")
+    if(docgetid("start").dataset.id>=docgetid("end").dataset.id){
+        error.push("起訖站相同或不正確")
         success=false    
     }
 
@@ -138,7 +138,7 @@ docgetid("submit").onclick=function(){
         // 傳送資料
         newajax("POST","api/newticket.php",formdata([
             ["trainid",trainid],
-            ["typeid",trainlist[0][trainid][1]],
+            ["typeid",trainlist[0][code][1]],
             ["startstationid",start],
             ["endstationid",end],
             ["code",ticketcode],
@@ -146,28 +146,16 @@ docgetid("submit").onclick=function(){
             ["count",count],
             ["statu","1"],
             ["getgodate",date],
-        ]))
+        ])).onload=function(){
+            let data=JSON.parse(this.responseText)
 
-        // 顯示燈箱
-        lightbox(null,"lightbox",function(){
-            return `
-                <h1>訂票成功</h1>
-                <hr>
-                <div class="ticketlist">
-                    詳細資料如下:<br>
-                    訂票編號: ${ticketcode}<br>
-                    手機號碼: ${phone}<br>
-                    發車時間: ${date+" "+trainlist[1][start][4]}<br>
-                    車次代碼: ${trainlist[0][trainid][2]}<br>
-                    起程站: ${start}<br>
-                    終點站: ${end}<br>
-                    張數: ${count}<br>
-                    票價: ${price}<br>
-                    總價: ${count*price}<br>
-                </div>
-                <input type="button" class="button" onclick="location.reload()" value="返回">
-            `
-        },clickcolse="none")
+            if(data["success"]){
+                // 顯示燈箱
+                lightbox(null,"lightbox",function(){
+                    return `${data["data"]}`
+                },clickcolse="none")
+            }
+        }
     }else{
         docgetid("error").innerHTML=`
             錯誤內容如下: <br>

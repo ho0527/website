@@ -2,15 +2,15 @@
     "data": [
         {
             "title": "46national",
-            "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/",
+            "link": "",
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/04/23",
-            "updatedate": "2023/09/04",
+            "updatedate": "2023/10/02",
             "data": [
                 {
                     "title": "ModuleA-DESIGN",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskA/",
+                    "link": "TaskA/",
                     "statu": "N/A",
                     "ps": "list",
                     "createdate": "N/A",
@@ -19,7 +19,7 @@
                 },
                 {
                     "title": "ModuleB-FONTEND_LAYOUT",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskB/",
+                    "link": "TaskB/",
                     "statu": "N/A",
                     "ps": "list",
                     "createdate": "N/A",
@@ -28,7 +28,7 @@
                 },
                 {
                     "title": "ModuleC-GAME",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskC/",
+                    "link": "TaskC/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
@@ -37,11 +37,11 @@
                 },
                 {
                     "title": "ModuleD-PHP",
-                    "link": "https://hiiamchris.ddns.net/website/46th/senior/46national/TaskD/",
+                    "link": "TaskD/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
-                    "updatedate": "N/A",
+                    "updatedate": "2023/10/02",
                     "data": [
                         {
                             "list": 1,
@@ -87,7 +87,7 @@
                                 {
                                     "no": 7,
                                     "description": "訂票頁面可以輸入指定的資料 手機、起程站、到達站、搭乘日期、車次代碼、車票張數",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -140,21 +140,21 @@
                                 {
                                     "no": 15,
                                     "description": "訂票成功後，會顯示相關的資訊 訂票編號(包含英文數字的 12 字元，大小寫不同，不與其他訂票紀錄重複)、手機號碼、發車時間、車次、起訖站、張數、車票單價、總票價",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 16,
                                     "description": "訂票後可以將簡訊可以入寫到本模組網站的根目錄下",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "呈現的內容與試題相符",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         },
                                         {
                                             "description": "簡訊位於網站根目錄/SMS/手機號碼.txt",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },
