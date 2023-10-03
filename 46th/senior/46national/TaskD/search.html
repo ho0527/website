@@ -21,8 +21,21 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='login.html'" value="登入後台">
             </div>
         </div>
-        <div class="indexmain">
-            <div class="indexmainbody macossectiondiv" id="maindiv">
+        <div class="indexmain searchmain">
+            <div class="indexmainbody macossectiondivy searchmain" id="maindiv">
+                <div class="inputdiv">
+                    <input type="text" id="code" placeholder="訂票編號">或
+                    <input type="text" id="phone" placeholder="手機號碼">
+                    <input type="button" id="submit" value="查詢">
+                </div>
+                <div class="tablediv searchtablediv macossectiondivy" id="tablediv">
+                    <table class="table" id="table"></table>
+                </div>
+                <div class="pagediv">
+                    <input type="button" class="searchinput" id="prev" value="<">
+                    <input type="text" class="searchinput pageinput" id="page" value="頁數: 1" disabled>
+                    <input type="button" class="searchinput" id="next" value=">">
+                </div>
             </div>
         </div>
         <script src="search.js"></script>

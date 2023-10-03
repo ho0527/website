@@ -830,3 +830,39 @@ table{
     font-size: 20px;
     width: 30vw;
 }
+
+.pageinput{
+    border: none;
+    background: none;
+    width: 100px;
+    color: white;
+    text-align: center;
+}
+
+.searchtablediv{
+    width: 100%;
+    max-height: 65vh;
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+.pagediv{
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+}
+
+.searchinput{
+    font-size: 20px;
+    margin: 0px 15px;
+}
+
+.searchmain{
+    border: none;
+    height: 40vh;
+}
+
+.cancel{
+    text-align: left;
+    font-style: italic;
+}

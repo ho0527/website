@@ -36,16 +36,23 @@
         echo(json_encode($row));
     }
 
+    if(isset($_GET["stationlistid1"])){
+        $row=query($db,"SELECT*FROM `station`");
+        $data=[];
+        for($i=0;$i<count($row);$i=$i+1){
+            $data[$row[$i][0]]=[
+                "englishname"=>$row[$i][1],
+                "name"=>$row[$i][2]
+            ];
+        }
+        echo(json_encode($data));
+    }
+
     if(isset($_GET["trainlist"])){
         $row=query($db,"SELECT*FROM `train`");
         $stoprow=query($db,"SELECT*FROM `stop`");
         $stationrow=query($db,"SELECT*FROM `station`");
         echo(json_encode([$row,$stoprow,$stationrow]));
-    }
-
-    if(isset($_GET["ticket"])){
-        $row=query($db,"SELECT*FROM `ticket`");
-        echo(json_encode($row));
     }
 
     if(isset($_GET["seatlist"])){
@@ -74,14 +81,13 @@
         }
         /*
         status:
-        prepare: 未發車
-        start: 已發車
-        end: 已結束
-        delete: 被刪除
+        ok(1): 已訂票
+        end(0): 已結束
+        delete(-1): 被刪除
         */
         if($_GET["key"]=="deltrain"){
             $id=$_GET["id"];
-            if(query($db,"SELECT*FROM `ticket` WHERE `trainid`=?AND`status`='prepare'",[$id])){
+            if(query($db,"SELECT*FROM `ticket` WHERE `trainid`=?AND`status`='1'",[$id])){
                 ?><script>if(confirm("列車有被訂票是否繼續刪除?")){ location.href="api.php?deltrain=&id=<?php echo($id) ?>" }else{ location.href="admintrain.html" }</script><?php
             }else{
                 ?><script>location.href="api.php?deltrain=&id=<?php echo($id) ?>"</script><?php
@@ -94,5 +100,34 @@
         query($db,"DELETE FROM `train` WHERE `id`=?",[$id]);
         query($db,"DELETE FROM `stop` WHERE `trainid`=?",[$id]);
         ?><script>alert("刪除成功!");location.href="admintrain.html"</script><?php
+    }
+
+    if(isset($_GET["ticket"])){
+        $field="all";
+        
+        if(isset($_GET["phone"])){
+            $field="phone";
+            $data=$_GET["phone"];
+        }elseif(isset($_GET["code"])){
+            $field="code";
+            $data=$_GET["code"];
+        }
+
+        if($field=="all"){
+            $row=query($db,"SELECT*FROM `ticket`");
+        }else{
+            $row=query($db,"SELECT*FROM `ticket` WHERE `$field`=?",[$data]);
+        }
+
+        echo(json_encode([
+            "success"=>true,
+            "data"=>$row
+        ]));
+    }
+
+    if(isset($_GET["cancelticket"])){
+        $id=$_GET["id"];
+        $row=query($db,"UPDATE `ticket` SET `statu`='-1',`deletetime`=? WHERE `id`='$id'",[$time]);
+        ?><script>alert("取消成功");location.href="search.html"</script><?php
     }
 ?>

@@ -2,12 +2,10 @@ let traincodelist
 let trainlist
 let traindata
 let trainid
-let ticket
 let code
 
 newajax("GET","api.php?traincodelist=").onload=function(){ traincodelist=JSON.parse(this.responseText) }
 newajax("GET","api.php?trainlist=").onload=function(){ trainlist=JSON.parse(this.responseText) }
-newajax("GET","api.php?ticket=").onload=function(){ ticket=JSON.parse(this.responseText) }
 
 setTimeout(function(){
     let traincode="<option value=\"na\">車次代碼</option>"

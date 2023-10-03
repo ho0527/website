@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/04/23",
-            "updatedate": "2023/10/02",
+            "updatedate": "2023/10/03",
             "data": [
                 {
                     "title": "ModuleA-DESIGN",
@@ -41,7 +41,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
-                    "updatedate": "2023/10/02",
+                    "updatedate": "2023/10/03",
                     "data": [
                         {
                             "list": 1,
@@ -161,32 +161,41 @@
                                 {
                                     "no": 17,
                                     "description": "可以依照訂票編號或是手機號碼查詢相對應訂票紀錄",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 18,
                                     "description": "可以查詢訂票查詢結果 訂票編號、訂票時間、發車時間、車次、起訖站、張數未取消的訂票，顯示取消訂票按鈕，若已被取消，顯示取消的時間",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 19,
                                     "description": "訂票查詢結果的分頁功能符合題目要求 頁碼及總頁數顯示正確，每頁 3 筆資料",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 20,
                                     "description": "乘客可以透過查詢頁面取消訂票",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 21,
-                                    "description": "可以使用車次查詢列車資訊，並對其網址進行 SEO 呈現資訊包含行駛星期、本週日期、各車站的抵達時間及發車時間、訂票按鈕，網址使用網址重寫的方式",
+                                    "description": "可以使用車次查詢列車資訊，並對其網址進行SEO",
                                     "statu": "FAILED",
-                                    "data": []
+                                    "data": [
+                                        {
+                                            "description": "呈現資訊包含行駛星期、本週日期、各車站的抵達/發車時間、訂票按鈕",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "網址使用網址重寫的方式",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
                                 },
                                 {
                                     "no": 22,
