@@ -38,10 +38,10 @@ document.getElementById("login").onclick=function(){
             location.href="usererror.php"
             let ajax2=new XMLHttpRequest()
             ajax2.onload=function(){
-                if(data["data"]["id"]=="1"){
+                if(data["data"]["id"]=="a0000"){
                     location.href="verify.php"
                 }else{
-                    location.href="main.php"
+                    location.href="main.html"
                 }
             }
             ajax2.open("GET","api.php?login=true&userid="+data["data"]["id"])
