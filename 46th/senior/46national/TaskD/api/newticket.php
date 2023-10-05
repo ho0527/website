@@ -23,7 +23,7 @@
         $price=$price+(int)$stop[$i][3];
     }
     $total=$count*($price);
-    // 簡訊部分(未完成)
+    // 簡訊部分
     $file=fopen("../SMS/".$phone.".txt","a");
     fwrite($file,"========================================\n列車訂位成功。訂票編號: ".$code."，".$getgodate."，".$startstation."站 到 ".$endstation."站 ".$traincode."車次\n".$count."張票，".$startstop[4]."開，共".$total."元\n");
     fclose($file);

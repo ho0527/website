@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/04/23",
-            "updatedate": "2023/10/03",
+            "updatedate": "2023/10/04",
             "data": [
                 {
                     "title": "ModuleA-DESIGN",
@@ -41,7 +41,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
-                    "updatedate": "2023/10/03",
+                    "updatedate": "2023/10/04",
                     "data": [
                         {
                             "list": 1,
@@ -280,20 +280,20 @@
                                 },
                                 {
                                     "no": 31,
-                                    "description": "嘗試刪除有訂票紀錄且尚未的列車時，會顯示提示訊息",
-                                    "statu": "FAILED",
+                                    "description": "嘗試刪除有訂票紀錄且尚未發車的列車時，會顯示提示訊息",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 32,
                                     "description": "會自動取消已被刪除列車的訂票",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": 33,
                                     "description": "因列車被刪除而取消的訂票，簡訊資料入寫正確",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -305,25 +305,22 @@
                                             "description": "搭乘日期、車次、手機號碼、訂票編號、搭車站、到達站",
                                             "statu": "FAILED"
                                         }
+                                        ,
+                                        {
+                                            "description": "分頁功能符合題目要求 頁碼及當前頁面顯示正確，每頁5筆資料",
+                                            "statu": "FAILED"
+                                        }
+                                        ,
+                                        {
+                                            "description": "可以取消尚未發車的訂票紀錄",
+                                            "statu": "FAILED"
+                                        }
+                                        ,
+                                        {
+                                            "description": "被取消的訂票紀錄，乘客可以收到相關資訊的簡訊",
+                                            "statu": "FAILED"
+                                        }
                                     ]
-                                },
-                                {
-                                    "no": 35,
-                                    "description": "管理員查詢訂票紀錄的分頁功能符合題目要求 頁碼及當前頁面顯示正確，每頁 5 筆資料",
-                                    "statu": "FAILED",
-                                    "data": []
-                                },
-                                {
-                                    "no": 36,
-                                    "description": "管理員可以取消尚未發車的訂票紀錄 從查詢到的訂票紀錄",
-                                    "statu": "FAILED",
-                                    "data": []
-                                },
-                                {
-                                    "no": 37,
-                                    "description": "被管理員取消的訂票紀錄，乘客可以收到相關資訊的簡訊",
-                                    "statu": "FAILED",
-                                    "data": []
                                 }
                             ]
                         },

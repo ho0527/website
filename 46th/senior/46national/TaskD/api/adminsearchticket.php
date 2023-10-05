@@ -3,14 +3,14 @@
     if(isset($_GET["get"])){
         // 拿值
         $page=$_GET["page"];
-        $offset=(int)($page-1)*3;
-        $row=query($db,"SELECT*FROM `ticket` LIMIT 3 OFFSET $offset");
+        $offset=(int)($page-1)*5;
+        $row=query($db,"SELECT*FROM `ticket` LIMIT 5 OFFSET $offset");
         if(isset($_GET["phone"])){
-            $row=query($db,"SELECT*FROM `ticket` WHERE `phone`=? LIMIT 3 OFFSET $offset",[$_GET["phone"]]);
+            $row=query($db,"SELECT*FROM `ticket` WHERE `phone`=? LIMIT 5 OFFSET $offset",[$_GET["phone"]]);
         }elseif(isset($_GET["code"])){
-            $row=query($db,"SELECT*FROM `ticket` WHERE `code`=? LIMIT 3 OFFSET $offset",[$_GET["code"]]);
+            $row=query($db,"SELECT*FROM `ticket` WHERE `code`=? LIMIT 5 OFFSET $offset",[$_GET["code"]]);
         }
-
+    
         // 主程式
         $maindata=[];
         $maxtotal=count(query($db,"SELECT*FROM `ticket`"));
