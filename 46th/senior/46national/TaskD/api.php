@@ -80,14 +80,14 @@
             ?><script>alert("刪除成功!");location.href="adminstation.html"</script><?php
         }
         /*
-        status:
+        statu:
         ok(1): 已訂票
         end(0): 已結束
         delete(-1): 被刪除
         */
         if($_GET["key"]=="deltrain"){
             $id=$_GET["id"];
-            if(query($db,"SELECT*FROM `ticket` WHERE `trainid`=?AND`status`='1'",[$id])){
+            if(query($db,"SELECT*FROM `ticket` WHERE `trainid`=?AND`statu`='1'",[$id])){
                 ?><script>if(confirm("列車有被訂票是否繼續刪除?")){ location.href="api.php?deltrain=&id=<?php echo($id) ?>" }else{ location.href="admintrain.html" }</script><?php
             }else{
                 ?><script>location.href="api.php?deltrain=&id=<?php echo($id) ?>"</script><?php
@@ -97,8 +97,21 @@
 
     if(isset($_GET["deltrain"])){
         $id=$_GET["id"];
-        query($db,"DELETE FROM `train` WHERE `id`=?",[$id]);
-        query($db,"DELETE FROM `stop` WHERE `trainid`=?",[$id]);
+        $row=query($db,"SELECT*FROM `ticket` WHERE `trainid`=?AND`statu`='1'",[$id]);
+        for($i=0;$i<count($row);$i=$i+1){
+            $startstation=query($db,"SELECT*FROM `station` WHERE `id`=?",[$row[$i][3]])[0][2];
+            $endstation=query($db,"SELECT*FROM `station` WHERE `id`=?",[$row[$i][4]])[0][2];
+            $traincode=query($db,"SELECT*FROM `train` WHERE `id`='$id'")[0][2];
+
+            // 簡訊部分
+            $file=fopen("SMS/".$row[$i][6].".txt","a");
+            fwrite($file,"========================================\n您所訂的列車已經取消發車。訂票編號: ".$row[$i][5]."，".$row[$i][10]."\n".$startstation."站 到 ".$endstation."站 ".$traincode."車次，請改搭其他列車\n");
+            fclose($file); 
+
+            query($db,"UPDATE `ticket` SET `statu`='-1',`deletetime`='$time' WHERE `id`=?",[$row[$i][0]]);
+        }
+        query($db,"UPDATE `train` SET `ps`='delete' WHERE `id`=?",[$id]);
+        query($db,"UPDATE `stop` SET `ps`='delete' WHERE `trainid`=?",[$id]);
         ?><script>alert("刪除成功!");location.href="admintrain.html"</script><?php
     }
 
@@ -129,5 +142,23 @@
         $id=$_GET["id"];
         $row=query($db,"UPDATE `ticket` SET `statu`='-1',`deletetime`=? WHERE `id`='$id'",[$time]);
         ?><script>alert("取消成功");location.href="search.html"</script><?php
+    }
+
+    if(isset($_GET["admincancelticket"])){
+        $id=$_GET["id"];
+        $row=query($db,"SELECT*FROM `ticket` WHERE `id`='$id'")[0];
+        $deltime=$time;
+        
+        $startstation=query($db,"SELECT*FROM `station` WHERE `id`=?",[$row[3]])[0][2];
+        $endstation=query($db,"SELECT*FROM `station` WHERE `id`=?",[$row[4]])[0][2];
+        $traincode=query($db,"SELECT*FROM `train` WHERE `id`='$id'")[0][2];
+
+        // 簡訊部分
+        $file=fopen("SMS/".$row[6].".txt","a");
+        fwrite($file,"========================================\n您的訂票紀錄已被管理員取消。訂票編號: ".$row[5]."，".$row[10]."\n".$startstation."站 到 ".$endstation."站 ".$traincode."車次，取消時間: $deltime\n");
+        fclose($file); 
+
+        query($db,"UPDATE `ticket` SET `statu`='-1',`deletetime`='$deltime' WHERE `id`='$id'");
+        ?><script>alert("取消成功");location.href="adminticket.html"</script><?php
     }
 ?>
