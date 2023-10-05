@@ -208,7 +208,7 @@
                         {
                             "list": 2,
                             "description": "管理員後台",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "no": 23,
@@ -299,26 +299,26 @@
                                 {
                                     "no": 34,
                                     "description": "管理員可以查詢目前的訂票紀錄，並可以依選定條件過濾紀錄",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "搭乘日期、車次、手機號碼、訂票編號、搭車站、到達站",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                         ,
                                         {
                                             "description": "分頁功能符合題目要求 頁碼及當前頁面顯示正確，每頁5筆資料",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                         ,
                                         {
                                             "description": "可以取消尚未發車的訂票紀錄",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                         ,
                                         {
                                             "description": "被取消的訂票紀錄，乘客可以收到相關資訊的簡訊",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 }
