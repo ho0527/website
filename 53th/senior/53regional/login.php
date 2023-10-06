@@ -20,7 +20,7 @@
                 if($verifyans==$verify){
                     query($db,"INSERT INTO `data`(`number`,`username`,`password`,`name`,`permission`,`move1`,`move2`,`movetime`)VALUES(?,?,?,?,?,'登入','成功','$time')",[$row[4],$row[1],$row[2],$row[3],$row[5]]);
                     session_unset();
-                    $_SESSION["data"]=$row[4];
+                    $_SESSION["data"]=$row[0];
                     $_SESSION["permission"]=$row[5];
                     $_SESSION["timer"]=30;
                     ?><script>alert("登入成功");location.href="verify.php"</script><?php
@@ -29,7 +29,7 @@
                     if($_SESSION["error"]<3){
                         ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
                     }else{
-                        query($db,"INSERT INTO `data`(`number`,`username`,`password`,`name`,`permission`,`move1`,`move2`,`movetime`)VALUES(?,?,?,?,?,'登入','失敗','$time')",[$row[4],$row[1],$row[2],$row[3],$row[5]]);
+                        query($db,"INSERT INTO `dat a`(`number`,`username`,`password`,`name`,`permission`,`move1`,`move2`,`movetime`)VALUES(?,?,?,?,?,'登入','失敗','$time')",[$row[4],$row[1],$row[2],$row[3],$row[5]]);
                         session_unset();
                         ?><script>alert("圖形驗證碼有誤");location.href="usererror.php"</script><?php
                     }

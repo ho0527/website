@@ -7,8 +7,8 @@
     </head>
     <body>
         <?php
-            include("link.php");
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            // include("link.php");
+            // if(!isset($_SESSION["data"])){ header("location:index.php"); }
         ?>
         <div class="navigationbar">
             <div class="navigationbartitle center">咖啡商品展示系統-二重驗證</div>

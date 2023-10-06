@@ -23,7 +23,7 @@
     }
 
     if(isset($_GET["traincodelist"])){
-        $row=query($db,"SELECT*FROM `train`");
+        $row=query($db,"SELECT*FROM `train` WHERE `ps`!='delete'");
         $data=[];
         for($i=0;$i<count($row);$i=$i+1){
             $data[]=$row[$i][2];
@@ -49,7 +49,7 @@
     }
 
     if(isset($_GET["trainlist"])){
-        $row=query($db,"SELECT*FROM `train`");
+        $row=query($db,"SELECT*FROM `train` WHERE `ps`!='delete'");
         $stoprow=query($db,"SELECT*FROM `stop`");
         $stationrow=query($db,"SELECT*FROM `station`");
         echo(json_encode([$row,$stoprow,$stationrow]));
