@@ -32,7 +32,7 @@ function main(){
 
         verifycodeans.push(word)
     }
-    
+
     if(bigorsmall){
         verifycodeans.sort()
     }else{
@@ -95,7 +95,7 @@ docgetid("login").onclick=function(){
             newajax("GET","api/logindb.php?key=success&number="+data["usernumber"]).onload=function(){
                 let data=JSON.parse(this.responseText)
                 if(data["success"]){
-                    location.href="verify.php"
+                    location.href="verify.html"
                 }
             }
         }else{

@@ -10,7 +10,7 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])){ header("location:index.php"); }
+            // if(!isset($_SESSION["data"])){ header("location:index.php"); }
             if(!isset($_SESSION["pagecount"])){ $_SESSION["pagecount"]=1; }
             if($_SESSION["permission"]=="管理者"){
                 ?>
