@@ -66,7 +66,7 @@
                     </tr>
                     <?php
                         $row=query($db,"SELECT*FROM `data`");
-                        for($i=0;$i<count($row);$i++){
+                        for($i=0;$i<count($row);$i=$i+1){
                             ?>
                             <tr>
                                 <td class="admintd"><?= $row[$i][1] ?></td>

@@ -1,3 +1,111 @@
-.main{
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.maindiv{
     background: lightyellow;
+    padding: 5%;
+}
+
+.main{
+    box-shadow: rgba(72, 72, 72, 0.35) 1px 1px 10px 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+
+.bookroomdiv{
+    position: absolute;
+    right: 5%;
+    top: 0px;
+    width: 10%;
+}
+
+.bookroom{
+    background: rgb(105, 105, 105);
+    color: white;
+    padding: 5px;
+}
+
+.bookroommain{
+    display: none;
+}
+
+.bookroomdiv:has(.bookroom:hover)>.bookroommain{
+    background: rgb(105, 105, 105);
+    transition: 0.5s ease-out;
+    display: block;
+}
+
+.hotelv{
+    background: rgb(235, 190, 105);
+    width: 10%;
+    height: 90vh;
+    padding: 10px;
+}
+
+.hotelvtitle{
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 10px 0px 25px 0px;
+}
+
+.hotelvlist{
+    font-size: 20px;
+    color: gray;
+    margin: 15px 0px;
+    cursor: pointer;
+}
+
+.hoteldetail{
+    background: white;
+    width: 15%;
+    height: 90vh;
+    padding: 10px;
+}
+
+.hoteldetailtitle{
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.hoteldetaillist{
+    font-size: 20px;
+    color: gray;
+    margin: 15px 0px 15px 10px;
+    cursor: pointer;
+}
+
+.checkindiv{
+    margin-top: 50px;
+}
+
+.checkintitle{
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 15px 0px;
+}
+
+.checkindescription{
+    margin: 10px 0px;
+}
+
+.map{
+    margin-top: 50px;
+}
+
+.maptitle{
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 15px 0px;
+}
+
+.image{
+    max-width: 100%;
 }

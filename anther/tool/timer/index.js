@@ -27,7 +27,7 @@ document.onkeydown=function(event){
         if(!start){
             timer1=setInterval(function(){
                 timer1ms=timer1ms+1
-                if(timer1ms==99){
+                if(timer1ms==100){
                     timer1ms=0
                     timer1s=timer1s+1
                 }
@@ -54,7 +54,7 @@ document.onkeydown=function(event){
                     clearInterval(timer2)
                 }else{
                     timer2ms=timer2ms+1
-                    if(timer2ms==99){
+                    if(timer2ms==100){
                         timer2ms=0
                         timer2s=timer2s+1
                     }
@@ -92,7 +92,7 @@ document.onkeydown=function(event){
                     `
                 }else{
                     timer3ms=timer3ms+1
-                    if(timer3ms==99){
+                    if(timer3ms==100){
                         timer3ms=0
                         timer3s=timer3s+1
                     }
