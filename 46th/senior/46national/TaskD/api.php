@@ -9,14 +9,6 @@
         }
     }
 
-    if(isset($_GET["logincheck"])){
-        if(isset($_SESSION["data"])){
-            echo("true");
-        }else{
-            echo("false");
-        }
-    }
-
     if(isset($_GET["traintypelist"])){
         $row=query($db,"SELECT*FROM `type`");
         echo(json_encode($row));
@@ -65,15 +57,6 @@
     }
 
     if(isset($_GET["key"])){
-        if($_GET["key"]=="deltraintype"){
-            $id=$_GET["id"];
-            if(!query($db,"SELECT*FROM `train` WHERE `traintypeid`=?",[$id])){
-                $row=query($db,"DELETE FROM `type` WHERE `id`=?",[$id]);
-                ?><script>alert("刪除成功!");location.href="admintype.html"</script><?php
-            }else{
-                ?><script>alert("列車被使用!");location.href="admintype.html"</script><?php
-            }
-        }
         if($_GET["key"]=="delstation"){
             $id=$_GET["id"];
             $row=query($db,"DELETE FROM `station` WHERE `id`=?",[$id]);

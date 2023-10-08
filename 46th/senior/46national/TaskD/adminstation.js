@@ -1,10 +1,6 @@
-let ajax=newajax("GET","api.php?logincheck=")
-
-ajax.onload=function(){
-    let data=ajax.response
-    if(data=="false"){
-        location.href="login.html"
-    }
+if(!weblsget("46nationalmoduleduserid")){
+    alert("請先登入")
+    location.href="login.html"
 }
 
 lightbox("#new","lightbox",function(){
@@ -19,18 +15,17 @@ lightbox("#new","lightbox",function(){
     `
 },"close")
 
-let ajax2=newajax("GET","api.php?stationlist=")
-
-ajax2.onload=function(){
-    let data=JSON.parse(ajax2.response)
-    for(let i=0;i<data.length;i=i+1){
+newajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){
+    let data=JSON.parse(this.response)
+    let row=data["data"]
+    for(let i=0;i<row.length;i=i+1){
         let tr=doccreate("tr")
         tr.innerHTML=`
-            <td class="admintd">${data[i][0]}</td>
-            <td class="admintd">${data[i][2]}</td>
+            <td class="admintd">${row[i][0]}</td>
+            <td class="admintd">${row[i][2]}</td>
             <td class="admintd">
                 <input type="button" class="bluebutton editbutton" data-id=${i} value="編輯">
-                <input type="button" class="bluebutton" onclick="location.href='api.php?key=delstation&id=${data[i][0]}'" value="刪除">
+                <input type="button" class="bluebutton" onclick="location.href='api.php?key=delstation&id=${row[i][0]}'" value="刪除">
             </td>
         `
         docappendchild("table",tr)
@@ -40,10 +35,10 @@ ajax2.onload=function(){
         let id=event.dataset.id
         return `
             <form method="POST" action="api/editstation.php">
-                路線id: <input type="text" class="lightboxinput" value="${data[id][0]}" readonly><br><br>
-                路線英文名: <input type="text" class="lightboxinput" name="englishname" value="${data[id][1]}"><br><br>
-                路線名稱: <input type="text" class="lightboxinput" name="name" value="${data[id][2]}"><br><br>
-                <input type="hidden" class="lightboxinput" name="id" value="${data[id][0]}">
+                路線id: <input type="text" class="lightboxinput" value="${row[id][0]}" readonly><br><br>
+                路線英文名: <input type="text" class="lightboxinput" name="englishname" value="${row[id][1]}"><br><br>
+                路線名稱: <input type="text" class="lightboxinput" name="name" value="${row[id][2]}"><br><br>
+                <input type="hidden" class="lightboxinput" name="id" value="${row[id][0]}">
                 <input type="button" class="button" id="close" value="返回">
                 <input type="reset" class="button" value="清除">
                 <input type="submit" class="button" name="submit" value="送出">

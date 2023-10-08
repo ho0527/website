@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <title>列車訂票系統</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/chrisplugin.js"></script>
+        <link rel="stylesheet" href="../../../../plugin/css/chrisplugin.css">
+        <script src="../../../../plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <div class="navigationbar">
@@ -22,14 +22,12 @@
             </div>
         </div>
         <div class="main">
-            <form method="POST" action="api/login.php">
-                <div class="indextitle">網站管理-登入</div>
-                <hr>
-                帳號: <input type="text" class="input" name="username"><br><br>
-                密碼: <input type="password" class="input" name="password"><br><br>
-                <input type="reset" class="button" value="清除">
-                <input type="submit" class="button" name="submit" value="登入">
-            </form>
+            <div class="indextitle">網站管理-登入</div>
+            <hr>
+            帳號: <input type="text" class="input" id="username"><br><br>
+            密碼: <input type="password" class="input" id="password"><br><br>
+            <input type="button" class="button" id="reset" value="清除">
+            <input type="button" class="button" id="submit" value="登入">
         </div>
         <script src="login.js"></script>
     </body>

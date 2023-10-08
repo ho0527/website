@@ -19,7 +19,7 @@ function main(row){
 
     if(row.length==0){
         docgetid("table").innerHTML=`
-            <div class="warning">查無相關車輛，請重新搜尋</div>
+            <div class="warning">查無相關訂票，請重新搜尋</div>
         `
     }else{
         for(let i=0;i<row.length;i=i+1){
@@ -43,6 +43,11 @@ function main(row){
             location.href="api.php?admincancelticket=&id="+event.id
         }
     })
+}
+
+if(!weblsget("46nationalmoduleduserid")){
+    alert("請先登入")
+    location.href="login.html"
 }
 
 if(!isset(weblsget("46nationalmoduledadminpage"))){ weblsset("46nationalmoduledadminpage",1) }
