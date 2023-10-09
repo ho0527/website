@@ -73,18 +73,19 @@ docgetid("clear").onclick=function(){
     main()
 }
 
-docgetid("login").onclick=function(){
+docgetid("submit").onclick=function(){
     let verifycodeuserans=""
     docgetall("#dropbox>.dragimage").forEach(function(event){
         verifycodeuserans=verifycodeuserans+event.dataset.id
     })
-    newajax("POST","api/login.php",formdata([
-        ["submit",true],
-        ["username",docgetid("username").value],
-        ["password",docgetid("password").value],
-        ["verifycodeans",verifycodeans],
-        ["verifycodeuserans",verifycodeuserans],
-    ])).onload=function(){
+    newajax("POST","/backend/53regional/login",JSON.stringify({
+        "username": docgetid("username").value,
+        "password": docgetid("password").value,
+        "verifycodeans": verifycodeans,
+        "verifycodeuserans": verifycodeuserans
+    }),[
+        ["Content-Type","application/json"]
+    ]).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             alert("登入成功")
@@ -92,27 +93,32 @@ docgetid("login").onclick=function(){
             weblsset("53regionaluserid",data["data"]["id"])
             weblsset("53regionalpermission",data["data"]["permission"])
             weblsset("53regionaltime",30)
-            newajax("GET","api/logindb.php?key=success&number="+data["usernumber"]).onload=function(){
+            newajax("GET","/backend/53regional/logindatatodb?key=success&id="+data["data"]["id"]).onload=function(){
                 let data=JSON.parse(this.responseText)
                 if(data["success"]){
                     location.href="verify.html"
                 }
             }
         }else{
-            alert(data["data"])
-            if(data["data"]!="未知錯誤請重新登入"){
-                weblsset("53regionalerrortime",parseInt(weblsget("53regionalerrortime"))+1)
-                if(weblsget("53regionalerrortime")>=3){
-                    newajax("GET","api/logindb.php?key=error&number="+data["usernumber"]).onload=function(){
-                        let data=JSON.parse(this.responseText)
-                        if(data["success"]){
-                            weblsset("53regionalerrortime",null)
-                            location.href="usererror.html"
-                        }
+            alert(data["data"]["message"])
+            weblsset("53regionalerrortime",parseInt(weblsget("53regionalerrortime"))+1)
+            if(weblsget("53regionalerrortime")>=3){
+                newajax("GET","/backend/53regional/logindatatodb?key=error&id="+data["data"]["id"]).onload=function(){
+                    let data=JSON.parse(this.responseText)
+                    if(data["success"]){
+                        weblsset("53regionalerrortime",null)
+                        location.href="usererror.html"
                     }
                 }
             }
             main()
         }
+    }
+}
+
+document.onkeydown=function(event){
+    if(event.key=="Enter"){
+        event.preventDefault()
+        docgetid("submit").click()
     }
 }

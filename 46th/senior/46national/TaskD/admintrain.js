@@ -141,7 +141,7 @@ if(!weblsget("46nationalmoduleduserid")){
 }
 
 newajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){ traintypedata=JSON.parse(this.responseText) }
-newajax("GET","api.php?stationlist=").onload=function(){ stationdata=JSON.parse(this.responseText) }
+newajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){ stationdata=JSON.parse(this.responseText) }
 newajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){ traindata=JSON.parse(this.responseText) }
 
 lightbox("#new","lightbox",function(){
@@ -210,9 +210,9 @@ setTimeout(function(){
                     }
                 }
 
-                for(let j=0;j<stationdata.length;j=j+1){
-                    if(stationdata[j][0]==stoplistfilter[0][2]){
-                        stationname=stationdata[j][2]
+                for(let j=0;j<stationdata["data"].length;j=j+1){
+                    if(stationdata["data"][j][0]==stoplistfilter[0][2]){
+                        stationname=stationdata["data"][j][2]
                     }
                 }
 
@@ -256,9 +256,9 @@ setTimeout(function(){
                     let stationname=""
                     let tdclass="admintraintd"
 
-                    for(let k=0;k<stationdata.length;k=k+1){
-                        if(stationdata[k][0]==stoplistfilter[j][2]){
-                            stationname=stationdata[k][2]
+                    for(let k=0;k<stationdata["data"].length;k=k+1){
+                        if(stationdata["data"][k][0]==stoplistfilter[j][2]){
+                            stationname=stationdata["data"][k][2]
                         }
                     }
                     if(j+1==stoplistfilter.length){
@@ -317,11 +317,11 @@ setTimeout(function(){
                         let station=""
                         let stationid=stoplistfilterdata[id][j][2]
 
-                        for(let k=0;k<stationdata.length;k=k+1){
-                            if(stationdata[k][0]==stationid){
-                                station=station+`<option value="${stationdata[k][0]}" selected>${stationdata[k][2]}</option>`
+                        for(let k=0;k<stationdata["data"].length;k=k+1){
+                            if(stationdata["data"][k][0]==stationid){
+                                station=station+`<option value="${stationdata["data"][k][0]}" selected>${stationdata["data"][k][2]}</option>`
                             }else{
-                                station=station+`<option value="${stationdata[k][0]}">${stationdata[k][2]}</option>`
+                                station=station+`<option value="${stationdata["data"][k][0]}">${stationdata["data"][k][2]}</option>`
                             }
                         }
 

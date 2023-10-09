@@ -10,7 +10,7 @@
         }elseif(isset($_GET["code"])){
             $row=query($db,"SELECT*FROM `ticket` WHERE `code`=? LIMIT 5 OFFSET $offset",[$_GET["code"]]);
         }
-    
+
         // 主程式
         $maindata=[];
         $maxtotal=count(query($db,"SELECT*FROM `ticket`"));

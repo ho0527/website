@@ -4,15 +4,10 @@
         <meta charset="UTF-8">
         <title>管理者專區</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="plugin/css/macossection.css">
-        <script src="plugin/js/macossection.js"></script>
+        <link rel="stylesheet" href="../../../plugin/css/chrisplugin.css">
+        <script src="../../../plugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <?php
-            include("link.php");
-            include("admindef.php");
-            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
-        ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
                 <div class="navigationbartitle">咖啡商品展示系統-會員管理</div>
@@ -26,7 +21,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
             </div>
         </div>
-        <div class="adminmain">
+        <div class="adminmain main">
             <h2>會員管理</h2>
             <form>
                 <input type="text" name="search">
@@ -36,18 +31,98 @@
                 <div class="admintable macossectiondiv">
                     <table>
                         <tr>
-                            <td class="admintd">編號<input type="submit" name="number" id="number" value="升冪"></td>
-                            <td class="admintd">帳號<input type="submit" name="username" id="username" value="升冪"></td>
-                            <td class="admintd">密碼</td>
-                            <td class="admintd">姓名<input type="submit" name="name" id="name" value="升冪"></td>
-                            <td class="admintd">權限</td>
+                            <?php
+                                if(isset($_GET["orderby"])){
+                                    $ordertype=$_GET["ordertype"];
+                                    $word="降冪";
+                                    if($ordertype=="ASC"){
+                                        $word="升冪";
+                                    }
+                                    if($_GET["orderby"]=="number"){
+                                        ?>
+                                        <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=<?= $ordertype ?>'" value="<?= $word ?>"></td>
+                                        <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=username&ordertype=DESC'" value="升冪"></td>
+                                        <td class="admintd">密碼</td>
+                                        <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=DESC'" value="升冪"></td>
+                                        <td class="admintd">權限</td>
+                                        <td class="admintd">功能</td>
+                                        <?php
+                                    }elseif($_GET["orderby"]=="username"){
+                                        ?>
+                                        <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=DESC'" value="升冪"></td>
+                                        <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=number&ordertype=<?= $ordertype ?>'" value="<?= $word ?>"></td>
+                                        <td class="admintd">密碼</td>
+                                        <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=DESC'" value="升冪"></td>
+                                        <td class="admintd">權限</td>
+                                        <td class="admintd">功能</td>
+                                        <?php
+                                    }elseif($_GET["orderby"]=="name"){
+                                        ?>
+                                        <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=DESC'" value="升冪"></td>
+                                        <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=username&ordertype=DESC'" value="升冪"></td>
+                                        <td class="admintd">密碼</td>
+                                        <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=<?= $ordertype ?>'" value="<?= $word ?>"></td>
+                                        <td class="admintd">權限</td>
+                                        <td class="admintd">功能</td>
+                                        <?php
+                                    }
+                                }else{
+                                    ?>
+                                    <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=DESC'" value="升冪"></td>
+                                    <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=username&ordertype=DESC'" value="升冪"></td>
+                                    <td class="admintd">密碼</td>
+                                    <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=DESC'" value="升冪"></td>
+                                    <td class="admintd">權限</td>
+                                    <td class="admintd">功能</td>
+                                    <?php
+                                }
+                            ?>
                         </tr>
                         <?php
-                            if(isset($_SESSION["search"])){
-                                $type=$_SESSION["search"];
-                                updown(query($db,"SELECT*FROM `user` WHERE `username`LIKE'%$type%'or`name`LIKE'%$type%'or`number`LIKE'%$type%'or`password`LIKE'%$type%'or`permission`LIKE'%$type%'"));
-                            }else{
-                                updown(query($db,"SELECT*FROM `user`"));
+                            include("link.php");
+                            if(!isset($_SESSION["keyword"])){ $_SESSION["keyword"]=""; }
+                            if(isset($_GET["keyword"])){
+                                $_SESSION["keyword"]=$_GET["keyword"];
+                                ?><script>location.href="admin.php"</script><?php
+                            }
+                            $keyword=$_SESSION["keyword"];
+                            $orderby="number";
+                            $ordertype="ASC";
+                            if(isset($_GET["orderby"])){
+                                $orderby=$_GET["orderby"];
+                                $ordertype=$_GET["ordertype"];
+                            }
+                            $row=query($db,"SELECT*FROM `user` WHERE `username`LIKE?OR`password`LIKE?OR`name`LIKE?OR`number`LIKE?OR`permission`LIKE? ORDER BY `$orderby` $ordertype",["%$keyword%","%$keyword%","%$keyword%","%$keyword%","%$keyword%"]);
+                            for($i=0;$i<count($row);$i=$i+1){
+                                if($row[$i][0]=="1"){
+                                    ?>
+                                    <tr>
+                                        <td class="admintd"><?= $row[$i][4] ?></td>
+                                        <td class="admintd"><?= $row[$i][1] ?></td>
+                                        <td class="admintd"><?= $row[$i][2] ?></td>
+                                        <td class="admintd"><?= $row[$i][3] ?></td>
+                                        <td class="admintd"><?= $row[$i][5] ?></td>
+                                        <td class="admintd">
+                                            <input type="button" class="bluebutton" value="修改" disabled>
+                                            <input type="button" class="bluebutton" value="刪除" disabled>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <tr>
+                                        <td class="admintd"><?= $row[$i][4] ?></td>
+                                        <td class="admintd"><?= $row[$i][1] ?></td>
+                                        <td class="admintd"><?= $row[$i][2] ?></td>
+                                        <td class="admintd"><?= $row[$i][3] ?></td>
+                                        <td class="admintd"><?= $row[$i][5] ?></td>
+                                        <td class="admintd">
+                                            <input type="button" class="bluebutton" onclick="location.href='newedituser.php?edit=<?= $row[$i][0] ?>'" value="修改">
+                                            <input type="button" class="bluebutton" onclick="location.href='newedituser.php?del=<?= $row[$i][0] ?>'" value="刪除">
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
                             }
                         ?>
                     </table>
@@ -65,7 +140,7 @@
                         <td class="admintd">時間</td>
                     </tr>
                     <?php
-                        $row=query($db,"SELECT*FROM `data`");
+                        $row=query($db,"SELECT*FROM `data` ORDER BY `id` DESC");
                         for($i=0;$i<count($row);$i=$i+1){
                             ?>
                             <tr>
@@ -89,8 +164,8 @@
                 </td>
                 <td class="timertd">
                 <form>
-                    <input type="text" id="changetimer" class="timersec" name="changetimer" value="<?= @$_SESSION["timer"] ?>" placeholder="秒">
-                    <input type="submit" name="changetimersubmit" value="送出">
+                    <input type="text" id="changetimer" class="timersec" id="changetimer">
+                    <input type="submit" id="changetimersubmit" value="送出">
                 </form>
                 </td>
             </tr>
@@ -100,14 +175,7 @@
                 </td>
             </tr>
         </table>
-        <div class="lightboxdiv" id="ask">
-            <div class="mask"></div>
-            <div class="body">
-                是否繼續操作?<br>
-                <input type="button" class="button" id="yes" value="Yes">
-                <input type="button" class="button" id="no" value="否">
-            </div>
-        </div>
+        <div id="lightbox"></div>
         <?php
             if(isset($_GET["searchsubmit"])){
                 $_SESSION["search"]=$_GET["search"];
@@ -120,5 +188,6 @@
             }
         ?>
         <script src="admin.js"></script>
+        <script src="logincheck.js"></script>
     </body>
 </html>

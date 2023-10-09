@@ -16,7 +16,7 @@ if(file==""||file=="index.php"||file=="usererror.html"){
     }
 }else{
     if(id==null||permission!="管理者"){
-        location.href="index.php"
+        location.href="index.html"
     }
 }
 

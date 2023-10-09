@@ -5,7 +5,7 @@ let trainid
 let code
 
 newajax("GET","api.php?traincodelist=").onload=function(){ traincodelist=JSON.parse(this.responseText) }
-newajax("GET","api.php?trainlist=").onload=function(){ trainlist=JSON.parse(this.responseText) }
+newajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){ trainlist=JSON.parse(this.responseText) }
 
 setTimeout(function(){
     let traincode="<option value=\"na\">車次代碼</option>"
@@ -21,13 +21,13 @@ setTimeout(function(){
             let count=1
             code=this.value
 
-            trainid=trainlist[0][code][0]
+            trainid=trainlist["data"][0][code][0]
 
-            for(let i=0;i<trainlist[1].length;i=i+1){
-                if(trainlist[1][i][1]==trainid){
-                    for(let j=0;j<trainlist[2].length;j=j+1){
-                        if(trainlist[2][j][0]==trainlist[1][i][2]){
-                            stopdata=stopdata+"<option value=\""+trainlist[2][j][0]+"\" data-id='"+j+"'>"+count+". "+trainlist[2][j][2]+"</option>"
+            for(let i=0;i<trainlist["data"][1].length;i=i+1){
+                if(trainlist["data"][1][i][1]==trainid){
+                    for(let j=0;j<trainlist["data"][2].length;j=j+1){
+                        if(trainlist["data"][2][j][0]==trainlist["data"][1][i][2]){
+                            stopdata=stopdata+"<option value=\""+trainlist["data"][2][j][0]+"\" data-id='"+j+"'>"+count+". "+trainlist["data"][2][j][2]+"</option>"
                             count=count+1
                         }
                     }
@@ -82,8 +82,8 @@ docgetid("submit").onclick=function(){
     }
 
     if(isset(code)){
-        if(day!=trainlist[0][code][3]){
-            console.log(trainlist[0][code])
+        if(day!=trainlist["data"][0][code][3]){
+            console.log(trainlist["data"][0][code])
             error.push("列車日期錯誤 無此班列車")
             success=false
         }
@@ -106,12 +106,12 @@ docgetid("submit").onclick=function(){
 
     if(docgetid("start").dataset.id>=docgetid("end").dataset.id){
         error.push("起訖站相同或不正確")
-        success=false    
+        success=false
     }
 
     if(docgetid("check").style.backgroundColor!="green"){
         error.push("尚未通過驗證碼")
-        success=false    
+        success=false
     }
 
     if(success){
@@ -134,24 +134,58 @@ docgetid("submit").onclick=function(){
         docgetid("error").innerHTML=`` // 清空error區塊
 
         // 傳送資料
-        newajax("POST","api/newticket.php",formdata([
-            ["trainid",trainid],
-            ["typeid",trainlist[0][code][1]],
-            ["startstationid",start],
-            ["endstationid",end],
-            ["code",ticketcode],
-            ["phone",phone],
-            ["count",count],
-            ["statu","1"],
-            ["getgodate",date],
-        ])).onload=function(){
+        newajax("POST","/backend/46nationalmoduled/newticket/",JSON.stringify({
+            "trainid": trainid,
+            "typeid": trainlist["data"][0][code][1],
+            "startstationid": start,
+            "endstationid": end,
+            "code": ticketcode,
+            "phone": phone,
+            "count": count,
+            "statu": "1",
+            "getgodate": date
+        }),[
+            ["Content-Type","application/json"]
+        ]).onload=function(){
             let data=JSON.parse(this.responseText)
 
             if(data["success"]){
-                // 顯示燈箱
-                lightbox(null,"lightbox",function(){
-                    return `${data["data"]}`
-                },clickcolse="none")
+                newajax("POST","api/ticketsms.php",formdata([
+                    ["phone",phone],
+                    ["code",ticketcode],
+                    ["getgodate",date],
+                    ["count",count],
+                    ["startstation",data["data"]["startstation"]],
+                    ["endstation",data["data"]["endstation"]],
+                    ["traincode",data["data"]["traincode"]],
+                    ["startstop",data["data"]["startstop"]],
+                    ["total",data["data"]["total"]]
+                ])).onload=function(){
+                    let data2=JSON.parse(this.responseText)
+                    if(data2["success"]){
+                        lightbox(null,"lightbox",function(){
+                            return `
+                                <h1>訂票成功</h1>
+                                <hr>
+                                <div class='ticketlist'>
+                                    詳細資料如下:<br>
+                                    訂票編號: ${ticketcode}<br>
+                                    手機號碼: ${phone}<br>
+                                    發車時間: ${data["data"]["startstop"]}<br>
+                                    車次代碼: ${data["data"]["traincode"]}<br>
+                                    起程站: ${data["data"]["startstation"]}<br>
+                                    終點站: ${data["data"]["endstation"]}<br>
+                                    張數: ${count}<br>
+                                    票價: ${data["data"]["price"]}<br>
+                                    總價: ${data["data"]["total"]}<br>
+                                </div>
+                                <input type='button' class='button' onclick='location.reload()' value='返回'>
+                            `
+                        },clickcolse="none")
+                    }
+                }
+            }else{
+                alert(data["data"])
             }
         }
     }else{

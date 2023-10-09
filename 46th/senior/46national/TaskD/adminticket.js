@@ -53,28 +53,28 @@ if(!weblsget("46nationalmoduleduserid")){
 if(!isset(weblsget("46nationalmoduledadminpage"))){ weblsset("46nationalmoduledadminpage",1) }
 
 setTimeout(function(){
-    newajax("GET","api/adminsearchticket.php?get=&page="+weblsget("46nationalmoduledadminpage")).onload=function(){
+    newajax("GET","/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledadminpage")).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["maxtotal"]/5)+1
-            main(data["data"])
+            maxpage=parseInt(data["data"]["maxtotal"]/5)+1
+            main(data["data"]["data"])
         }
     }
 },100);
 
 docgetid("submit").onclick=function(){
-    let field="code"
-    let value=docgetid("code").value
+    let url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")
     if(docgetid("phone").value!=""){
-        field="phone"
-        value=docgetid("phone").value
+        url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=phone&value="+docgetid("phone").value
+    }else if(docgetid("code").value!=""){
+        url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
     }
 
-    newajax("GET","api.php?ticket=&"+field+"="+value+"&page="+weblsget("46nationalmoduledadminpage")).onload=function(){
+    newajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["maxtotal"]/5)+1
-            main(data["data"])
+            maxpage=parseInt(data["data"]["maxtotal"]/5)+1
+            main(data["data"]["data"])
         }
     }
 }
@@ -85,17 +85,17 @@ docgetid("prev").onclick=function(){
     if(weblsget("46nationalmoduledadminpage")>1){
         weblsset("46nationalmoduledadminpage",parseInt(weblsget("46nationalmoduledadminpage"))-1)
 
-        let url="api/adminsearchticket.php?get=&page="+weblsget("46nationalmoduledadminpage")
+        let url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")
         if(docgetid("phone").value!=""){
-            url="api.php?ticket=&phone="+docgetid("phone").value+"&page="+weblsget("46nationalmoduledadminpage")
+            url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=phone&value="+docgetid("phone").value
         }else if(docgetid("code").value!=""){
-            url="api.php?ticket=&code="+docgetid("code").value+"&page="+weblsget("46nationalmoduledadminpage")
+            url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
         newajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
-                let row=data["data"]
+                let row=data["data"]["data"]
                 main(row)
             }
         }
@@ -108,17 +108,17 @@ docgetid("next").onclick=function(){
     if(weblsget("46nationalmoduledadminpage")<maxpage){
         weblsset("46nationalmoduledadminpage",parseInt(weblsget("46nationalmoduledadminpage"))+1)
 
-        let url="api/adminsearchticket.php?get=&page="+weblsget("46nationalmoduledadminpage")
+        let url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")
         if(docgetid("phone").value!=""){
-            url="api.php?ticket=&phone="+docgetid("phone").value+"&page="+weblsget("46nationalmoduledadminpage")
+            url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=phone&value="+docgetid("phone").value
         }else if(docgetid("code").value!=""){
-            url="api.php?ticket=&code="+docgetid("code").value+"&page="+weblsget("46nationalmoduledadminpage")
+            url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
         newajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
-                let row=data["data"]
+                let row=data["data"]["data"]
                 main(row)
             }
         }

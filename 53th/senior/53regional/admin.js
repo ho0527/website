@@ -1,35 +1,35 @@
-let seconds=document.getElementById("changetimer").value
+let seconds
 let asktimer=5
 
-document.getElementById("ask").style.display="none"
-
-let timerInterval=setInterval(updateTimer,1000)
-document.getElementById("resetbutton").onclick=function(){
-    seconds=document.getElementById("changetimer").value
-    document.getElementById("timer").value=seconds
-}
-
-function updateTimer(){
+docgetid("changetimer").value=weblsget("53regionaltime")
+seconds=docgetid("changetimer").value
+docgetid("timer").value=seconds
+let timer=setInterval(function(){
     seconds=seconds-1
-    if(seconds==0){//當時間=9:59.99時..
-        console.log("stop")
-        clearInterval(timerInterval)//暫停執行
+    if(seconds==0){
+        clearInterval(timer)
         setTimeout(function(){
-            ask.style.display="block"
-            document.getElementById("timer").value=0
+            docgetid("timer").value=0
+            lightbox(null,"lightbox",function(){
+                return `
+                    是否繼續操作?<br>
+                    <input type="button" class="button" onclick="location.reload()" value="Yes">
+                    <input type="button" class="button" onclick="location.href='api.php?logout='" value="否">
+                `
+            })
             setTimeout(function(){
                 location.href="api.php?logout="
             },5000)
         },100)
     }
-    document.getElementById("timer").value=seconds
+    docgetid("timer").value=seconds
+},1000)
+
+docgetid("resetbutton").onclick=function(){
+    docgetid("timer").value=docgetid("changetimer").value
 }
 
-document.getElementById("yes").onclick=function(){
-    ask.style.display="none"
+docgetid("changetimersubmit").onclick=function(){
+    weblsset("53regionaltime",docgetid("changetimer").value)
     location.reload()
-}
-
-document.getElementById("no").onclick=function(){
-    location.href="api.php?logout="
 }

@@ -1,17 +1,18 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Consolas";
     background: rgb(35, 35, 35);
     color: gray;
     text-align: center;
     word-break: break-all;
+    -webkit-user-select: none;
     user-select: none;
     padding: 0px;
     margin: 0px;
-    font-size: 20px;
 }
 
-h2,h3{
-    margin: 5px;
+h1,h2,h3,h4,h5,h6{
+    margin: 0px;
+    color: white;
 }
 
 hr{
@@ -23,37 +24,29 @@ hr{
 table{
     border-collapse: collapse;
     width: 100%;
+    color: white;
 }
 
 .main{
     border: 1px white solid;
     position: absolute;
-    top: 50%;
+    top: calc(50% + 50px);
     left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
+    transform: translate(-50%,-50%);
     font-size: 30px;
-    font-weight: bold;
     padding: 20px;
     border-radius: 5px;
 }
 
-.adminmain{
-    border: 1px white solid;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-weight: bold;
-    width: 90vw;
-    height: 70vh;
-    padding: 20px;
-    border-radius: 5px;
+.grid{
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: repeat(100, 1fr);
+    grid-auto-rows: 5%;
 }
 
 .logo{
-    width: 75px;
+    height: 75px;
 }
 
 .maintitle{
@@ -73,7 +66,7 @@ table{
     color: white;
     background: rgba(250, 250, 250, 0.5);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    border-radius: 10px;
+    border-radius: 5px;
     z-index: 900;
 }
 
@@ -83,11 +76,8 @@ table{
     left: 20px;
     transform: translate(0%,-50%);
     margin-bottom: 10px;
-}
-
-.navigationbartitle{
-    font-size: 50px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
 .navigationbarright{
@@ -98,17 +88,24 @@ table{
     margin-bottom: 10px;
 }
 
+.navigationbartitle{
+    font-size: 50px;
+    font-weight: bold;
+}
+
 .navigationbarbutton{
     border: 1px black solid;
-    width: 125px;
+    background: none;
+    width: 150px;
     height: 50px;
-    padding: 10px;
-    margin: 0px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    color: black;
+    padding: 10px;
+    margin: 0px 10px;
     transition-duration: 0.5s;
 }
 
@@ -118,7 +115,7 @@ table{
 }
 
 .navigationbarselect{
-    background: gray;
+    background: black;
     color: white;
 }
 
@@ -150,8 +147,20 @@ table{
     width: 75%;
     height: 40px;
     outline: none;
-    color: white;
     font-size: 30px;
+    color: white;
+}
+
+.middleinput{
+    border: none;
+    border-bottom: 1px black solid;
+    background: none;
+    width: 35%;
+    height: 40px;
+    outline: none;
+    margin: 0px 5%;
+    font-size: 30px;
+    color: white;
 }
 
 .inputhint{
@@ -190,10 +199,35 @@ table{
     color: white;
 }
 
+.bluebutton{
+	box-shadow: inset 1px -3px 7px 0px #29bbff;
+	background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	border-radius: 5px;
+	border: 1px solid #0b0e07;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+    margin: 5px 0px;
+	padding: 10px 20px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #263666;
+}
+
+.bluebutton:hover{
+	background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+}
+
+.bluebutton:active{
+	position: relative;
+	top: 1px;
+}
+
 .reflashbutton{
     margin-top: 20px;
     padding: 5px;
-    background-color: rgb(215, 164, 61);
+    background: rgb(215, 164, 61);
     color: white;
     border: none;
     border-radius: 5px;
@@ -206,12 +240,12 @@ table{
 }
 
 .reflashbutton:hover{
-    background-color: rgb(255, 213, 128);
+    background: rgb(255, 213, 128);
     color: black;
 }
 
 .selectbutton{
-    background-color: rgba(35, 35, 35, 0.75);
+    background: rgba(35, 35, 35, 0.75);
     color: white;
 }
 
@@ -232,6 +266,15 @@ table{
 .a:hover{
     text-decoration: underline;
 }
+
+.disabled:hover{
+    background: revert;
+    color: revert;
+}
+/* END */
+
+
+/* program START */
 
 .productbar{
     background-color: rgba(245, 245, 245, 0.6);
@@ -783,4 +826,8 @@ usersearch
 .large{
     height: 75%;
     margin: 5px;
+}
+
+.adminmain{
+    width: 80vw;
 }

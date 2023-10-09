@@ -6,6 +6,10 @@ if(key=="signin"){
     docgetid("navigationbartitle2").innerHTML=`(Sign Up)`
 }else{ alert("key error");location.href="index.html" }
 
+if(isset(weblsget("token"))){
+    location.href="index.html"
+}
+
 docgetid(key).classList.add("navigationbarselect")
 docgetid("submit").value=`${key}`
 
@@ -117,6 +121,6 @@ document.onkeydown=function(event){
     }
 }
 
-if(isset(weblsget("token"))){
+docgetid("cancel").onclick=function(){
     location.href="index.html"
 }

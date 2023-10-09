@@ -10,10 +10,6 @@
         <script src="plugin/js/sort.js"></script>
     </head>
     <body>
-        <?php
-            include("link.php");
-            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
-        ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
                 <div class="navigationbartitle">咖啡商品展示系統-選擇版型</div>
@@ -52,6 +48,7 @@
             <input type="button" class="button" id="submit" value="送出">
         </div>
         <?php
+            include("link.php");
             if(isset($_GET["key"])){
                 $cost=$_GET["cost"];
                 $introduction=$_GET["introduction"];

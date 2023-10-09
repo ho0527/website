@@ -10,7 +10,6 @@
     <body>
         <?php
             include("link.php");
-            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
             if(isset($_GET["id"])){
                 $_SESSION["id"]=$_GET["id"];
             }

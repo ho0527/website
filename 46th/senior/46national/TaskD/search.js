@@ -48,28 +48,28 @@ function main(row){
 if(!isset(weblsget("46nationalmoduledpage"))){ weblsset("46nationalmoduledpage",1) }
 
 setTimeout(function(){
-    newajax("GET","api/searchticket.php?get=&page="+weblsget("46nationalmoduledpage")).onload=function(){
+    newajax("GET","/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["maxtotal"]/3)+1
-            main(data["data"])
+            maxpage=parseInt(data["data"]["maxtotal"]/3)+1
+            main(data["data"]["data"])
         }
     }
 },100);
 
 docgetid("submit").onclick=function(){
-    let field="code"
-    let value=docgetid("code").value
+    let url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")
     if(docgetid("phone").value!=""){
-        field="phone"
-        value=docgetid("phone").value
+        url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=phone&value="+docgetid("phone").value
+    }else if(docgetid("code").value!=""){
+        url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
     }
 
-    newajax("GET","api.php?ticket=&"+field+"="+value+"&page="+weblsget("46nationalmoduledpage")).onload=function(){
+    newajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["maxtotal"]/3)+1
-            main(data["data"])
+            maxpage=parseInt(data["data"]["maxtotal"]/3)+1
+            main(data["data"]["data"])
         }
     }
 }
@@ -80,18 +80,17 @@ docgetid("prev").onclick=function(){
     if(weblsget("46nationalmoduledpage")>1){
         weblsset("46nationalmoduledpage",parseInt(weblsget("46nationalmoduledpage"))-1)
 
-        let url="api/searchticket.php?get=&page="+weblsget("46nationalmoduledpage")
+        let url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")
         if(docgetid("phone").value!=""){
-            url="api.php?ticket=&phone="+docgetid("phone").value+"&page="+weblsget("46nationalmoduledpage")
+            url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=phone&value="+docgetid("phone").value
         }else if(docgetid("code").value!=""){
-            url="api.php?ticket=&code="+docgetid("code").value+"&page="+weblsget("46nationalmoduledpage")
+            url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
         newajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
-                let row=data["data"]
-                main(row)
+                main(data["data"]["data"])
             }
         }
 
@@ -105,16 +104,15 @@ docgetid("next").onclick=function(){
 
         let url="api/searchticket.php?get=&page="+weblsget("46nationalmoduledpage")
         if(docgetid("phone").value!=""){
-            url="api.php?ticket=&phone="+docgetid("phone").value+"&page="+weblsget("46nationalmoduledpage")
+            url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=phone&value="+docgetid("phone").value
         }else if(docgetid("code").value!=""){
-            url="api.php?ticket=&code="+docgetid("code").value+"&page="+weblsget("46nationalmoduledpage")
+            url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
         newajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
-                let row=data["data"]
-                main(row)
+                main(data["data"]["data"])
             }
         }
 
