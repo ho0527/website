@@ -16,7 +16,6 @@
             <div class="navigationbarright">
                 <input type="button" class="navigationbarbutton" onclick="location.href='main.php'" value="首頁">
                 <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='productindex.php'" value="上架商品">
-                <input type="button" class="navigationbarbutton" onclick="location.href='search.php'" value="查詢">
                 <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
             </div>
@@ -32,7 +31,7 @@
         <div class="main">
             <form id="form" method="POST" enctype="multipart/form-data">
                 商品名稱: <input type="text" class="input shortinput" name="name" value="<?= @$_SESSION["name"] ?>"><br><br>
-                費&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用: <input type="number" class="input shortinput" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br><br>
+                費&nbsp;&nbsp;&nbsp;&nbsp;用: <input type="number" class="input shortinput" name="cost" placeholder="只能是數字" value="<?= @$_SESSION["cost"] ?>"><br><br>
                 相關連結: <input type="text" class="input shortinput" name="link" value="<?= @$_SESSION["link"] ?>"><br><br>
                 <textarea name="introduction" cols="30" rows="4" placeholder="商品簡介"><?= @$_SESSION["introduction"] ?></textarea><br><br>
                 <input type="button" onclick="document.getElementById('file').click()" class="button" value="上傳圖片">

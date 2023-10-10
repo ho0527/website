@@ -56,7 +56,7 @@ setTimeout(function(){
     newajax("GET","/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledadminpage")).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["data"]["maxtotal"]/5)+1
+            maxpage=MAth.ceil(data["data"]["maxtotal"]/5)
             main(data["data"]["data"])
         }
     }
@@ -73,7 +73,7 @@ docgetid("submit").onclick=function(){
     newajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["data"]["maxtotal"]/5)+1
+            maxpage=Math.ceil(data["data"]["maxtotal"]/5)
             main(data["data"]["data"])
         }
     }

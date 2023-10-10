@@ -19,7 +19,6 @@
             <div class="navigationbarright">
                 <input type="button" class="navigationbarbutton" onclick="location.href='main.php'" value="首頁">
                 <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='productindex.php'" value="上架商品">
-                <input type="button" class="navigationbarbutton" onclick="location.href='search.php'" value="查詢">
                 <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
             </div>
@@ -33,7 +32,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='productsubmit.php'" value="確定送出">
             </div>
         </div>
-        <div class="productmain macossectiondiv">
+        <div class="productindexmain macossectiondiv">
             <?php
                 $row=query($db,"SELECT*FROM `product`");
                 $count=0;

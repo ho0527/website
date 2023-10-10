@@ -8,16 +8,20 @@ if(file==""||file=="index.php"||file=="usererror.html"){
     }
 }else if(file=="verify.php"){
     if(id==null){
-        location.href="index.php"
+        location.href="index.html"
     }
-}else if(file=="main.php"){
+}else if(file=="main.html"){
     if(id==null){
-        location.href="index.php"
+        location.href="index.html"
     }
 }else{
     if(id==null||permission!="管理者"){
         location.href="index.html"
     }
+}
+
+document.getElementById("logout").onclick=function(){
+
 }
 
 startmacossection()

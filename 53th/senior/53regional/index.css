@@ -679,11 +679,21 @@ usersearch
 
 .productmain{
     position: absolute;
-    top: 200px;
+    top: 150px;
     left: 50%;
     transform: translate(-50%,-0%);
     width: 90%;
-    height: 75%;
+    height: 80%;
+    color: white;
+}
+
+.productindexmain{
+    position: absolute;
+    top: 225px;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    width: 90%;
+    height: 70%;
     color: white;
 }
 
