@@ -2,7 +2,7 @@ let file=location.href.split("53regional/")[1]
 let id=localStorage.getItem("53regionaluserid")
 let permission=localStorage.getItem("53regionalpermission")
 
-if(file==""||file=="index.php"||file=="usererror.html"){
+if(file==""||file=="index.html"||file=="usererror.html"){
     if(id!=null){
         location.href="verify.php"
     }
