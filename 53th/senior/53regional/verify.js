@@ -24,7 +24,7 @@ docgetid("change").onclick=function(){
 
 function pass(){
     alert("登入成功")
-    location.href="main.php"
+    location.href="main.html"
 }
 
 function check(){
