@@ -32,3 +32,5 @@ function nono2(){
 function sub(){
     document.getElementById("form").submit.click()
 }
+
+if(weblsget(""))
