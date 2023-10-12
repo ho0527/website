@@ -187,10 +187,10 @@ table{
     border: 1px black solid;
     padding: 10px 20px;
     margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 10px;
     font-size: 25px;
     font-weight: bold;
+    cursor: pointer;
     transition-duration: 0.5s;
 }
 

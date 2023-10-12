@@ -4,9 +4,9 @@ let permission=localStorage.getItem("53regionalpermission")
 
 if(file==""||file=="index.html"||file=="usererror.html"){
     if(id!=null){
-        location.href="verify.php"
+        location.href="verify.html"
     }
-}else if(file=="verify.php"){
+}else if(file=="verify.html"){
     if(id==null){
         location.href="index.html"
     }
