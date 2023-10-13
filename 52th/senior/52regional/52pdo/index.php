@@ -6,6 +6,7 @@
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
+        <div class="navigationbar"></div>
         <div class="main">
             <form>
                 <?php session_start(); ?>
