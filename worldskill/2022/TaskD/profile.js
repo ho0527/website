@@ -18,9 +18,12 @@ newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_
     ["Authorization","Bearer "+weblsget("token")]
 ]).onload=function(){
     let data=JSON.parse(this.responseText)
+    // navbar
     docgetid("navigationbartitle2").innerHTML=`
         (User Profile: ${weblsget("username")})
     `
+
+    // 製作的遊戲
     newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/games").onload=function(){
         let data=JSON.parse(this.responseText)
         newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/games?size="+data["totalElements"]).onload=function(){
@@ -62,6 +65,8 @@ newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_
             })
         }
     }
+
+    console.log(data["highscores"])
 }
 
 docgetid("usernamelink").innerHTML=`
