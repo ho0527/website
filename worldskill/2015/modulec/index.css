@@ -42,7 +42,7 @@ body{
 .hotelv{
     background: rgb(235, 190, 105);
     width: 10%;
-    height: 90vh;
+    height: 175vh;
     padding: 10px;
 }
 
@@ -63,7 +63,7 @@ body{
 .hoteldetail{
     background: white;
     width: 15%;
-    height: 90vh;
+    height: 175vh;
     padding: 10px;
 }
 
@@ -108,4 +108,64 @@ body{
 
 .image{
     max-width: 100%;
+}
+
+.event{
+    background: white;
+    width: 55%;
+    height: 175vh;
+    padding: 10px;
+}
+
+.eventtitle{
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.eventpicturediv{
+    margin: 10px 0px;
+    display: flex;
+}
+
+.eventpicture{
+    width: 30%;
+    height: 50%;
+    position: relative;
+    margin: 0px 10px;
+    overflow: hidden;
+}
+
+.eventpictureimage{
+    height: 350px;
+    position: relative;
+    left: 5px;
+    filter: grayscale(90%) brightness(100%);
+    overflow: hidden;
+}
+
+.eventpicturetitle{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+.eventdescription{
+    margin: 20px 0px;
+}
+
+.phototitle{
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin: 20px 0px;
+}
+
+.photocanva{
+    width: 100%;
+    height: 40vh;
 }

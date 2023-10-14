@@ -14,11 +14,11 @@ let timer=setInterval(function(){
                 return `
                     是否繼續操作?<br>
                     <input type="button" class="button" onclick="location.reload()" value="Yes">
-                    <input type="button" class="button" onclick="location.href='api.php?logout='" value="否">
+                    <input type="button" class="button" onclick="logout()" value="否">
                 `
             })
             setTimeout(function(){
-                location.href="api.php?logout="
+                logout()
             },5000)
         },100)
     }
@@ -26,7 +26,7 @@ let timer=setInterval(function(){
 },1000)
 
 docgetid("resetbutton").onclick=function(){
-    docgetid("timer").value=docgetid("changetimer").value
+    location.reload()
 }
 
 docgetid("changetimersubmit").onclick=function(){

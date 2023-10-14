@@ -2,6 +2,19 @@ let file=location.href.split("53regional/")[1]
 let id=localStorage.getItem("53regionaluserid")
 let permission=localStorage.getItem("53regionalpermission")
 
+function logout(){
+    newajax("GET","api.php?logout="+weblsget("53regionaluserid")).onload=function(){
+        let data=JSON.parse(this.responseText)
+        if(data["success"]){
+            alert("登出成功")
+            weblsset("53regionaluserid",null)
+            weblsset("53regionalpermission",null)
+            weblsset("53regionaltime",null)
+            location.href="index.html"
+        }
+    }
+}
+
 if(file==""||file=="index.html"||file=="usererror.html"){
     if(id!=null){
         location.href="verify.html"
@@ -21,7 +34,7 @@ if(file==""||file=="index.html"||file=="usererror.html"){
 }
 
 document.getElementById("logout").onclick=function(){
-
+    logout()
 }
 
 startmacossection()

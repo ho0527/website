@@ -31,8 +31,8 @@ table{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60vw;
-    height: 95vh;
+    width: 70vw;
+    height: 850px;
     font-weight: bold;
     padding: 10px;
     border-radius: 5px;
@@ -238,6 +238,40 @@ table{
 
 /* program START */
 
+.top{
+    /* border: 1px white solid; */
+    position: relative;
+    height: 50px;
+    width: 100%;
+}
+
+.scorediv{
+    grid-column: 1/40;
+    grid-row: 1/17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pausecontinue{
+    grid-column: 40/70;
+    grid-row: 1/17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer{
+    grid-column: 70/100;
+    grid-row: 1/17;
+    padding: 10px;
+}
+
+.score{
+    margin-left: 5px;
+    display: inline-block;
+}
+
 .bottom{
     position: absolute;
     left: 0px;
@@ -280,17 +314,10 @@ table{
     background: lightblue;
 }
 
-.top{
-    border: 1px white solid;
-    position: relative;
-    height: 50px;
-    width: 100%;
-}
-
 .app{
     /* border: 1px white solid; */
     position: relative;
-    top: 20px;
+    top: 0px;
     width: 100%;
     height: 750px;
 }
@@ -354,4 +381,80 @@ table{
 
 .star{
     font-size: 20px;
+    color: orange;
+}
+
+.ghost{
+    animation: 2s ghostanimation infinite;
+}
+
+.ghost1{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+.ghost2{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background: rgb(4, 191, 4);
+    border-radius: 50%;
+}
+
+.ghost3{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.player{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background: yellow;
+    border-radius: 50%;
+    animation: 2s playeranimation infinite;
+}
+
+@keyframes ghostanimation{
+    0%{
+        width: 20px;
+        height: 20px;
+    }
+    50%{
+        width: 23px;
+        height: 23px;
+    }
+    100%{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@keyframes playeranimation{
+    0%{
+        width: 20px;
+        height: 20px;
+    }
+    50%{
+        width: 23px;
+        height: 23px;
+    }
+    100%{
+        width: 20px;
+        height: 20px;
+    }
 }
