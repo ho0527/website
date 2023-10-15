@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/04/23",
-            "updatedate": "2023/10/049",
+            "updatedate": "2023/10/14",
             "data": [
                 {
                     "title": "ModuleA-DESIGN",
@@ -41,7 +41,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
-                    "updatedate": "2023/10/09",
+                    "updatedate": "2023/10/14",
                     "data": [
                         {
                             "list": 1,

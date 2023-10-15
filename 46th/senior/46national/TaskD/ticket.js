@@ -115,22 +115,6 @@ docgetid("submit").onclick=function(){
     }
 
     if(success){
-        let littleeng="abcdefghijklmnopqrstuvwxyz"
-        let bigeng=littleeng.toUpperCase()
-        let number="1234567890"
-        let ticketcode=""
-
-        for(let i=0;i<12;i=i+1){
-            let key=parseInt(Math.random()*3)
-            if(key==0){
-                ticketcode=ticketcode+littleeng[parseInt(Math.random()*26)]
-            }else if(key==1){
-                ticketcode=ticketcode+bigeng[parseInt(Math.random()*26)]
-            }else{
-                ticketcode=ticketcode+number[parseInt(Math.random()*10)]
-            }
-        }
-
         docgetid("error").innerHTML=`` // 清空error區塊
 
         // 傳送資料
@@ -139,10 +123,8 @@ docgetid("submit").onclick=function(){
             "typeid": trainlist["data"][0][code][1],
             "startstationid": start,
             "endstationid": end,
-            "code": ticketcode,
             "phone": phone,
             "count": count,
-            "statu": "1",
             "getgodate": date
         }),[
             ["Content-Type","application/json"]
@@ -152,7 +134,7 @@ docgetid("submit").onclick=function(){
             if(data["success"]){
                 newajax("POST","api/ticketsms.php",formdata([
                     ["phone",phone],
-                    ["code",ticketcode],
+                    ["code",data["data"]["code"]],
                     ["getgodate",date],
                     ["count",count],
                     ["startstation",data["data"]["startstation"]],
@@ -169,7 +151,7 @@ docgetid("submit").onclick=function(){
                                 <hr>
                                 <div class='ticketlist'>
                                     詳細資料如下:<br>
-                                    訂票編號: ${ticketcode}<br>
+                                    訂票編號: ${data["data"]["code"]}<br>
                                     手機號碼: ${phone}<br>
                                     發車時間: ${data["data"]["startstop"]}<br>
                                     車次代碼: ${data["data"]["traincode"]}<br>
