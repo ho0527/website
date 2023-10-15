@@ -53,7 +53,7 @@ newajax("GET","api.php?product=").onload=function(){
         docgetall(".product").forEach(function(event){
             event.onclick=function(){
                 docgetall(".product").forEach(function(event){
-                        event.style.backgroundColor=""
+                    event.style.backgroundColor=""
                 })
                 weblsset("49regionalproductid",event.id)
                 event.style.backgroundColor="rgb(203, 203, 38)"

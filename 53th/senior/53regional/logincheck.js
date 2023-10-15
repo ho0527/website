@@ -20,7 +20,7 @@ if(file==""||file=="index.html"||file=="usererror.html"){
         location.href="verify.html"
     }
 }else if(file=="verify.html"){
-    if(id==null){
+    if(id==null){''
         location.href="index.html"
     }
 }else if(file=="main.html"){

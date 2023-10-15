@@ -1,36 +1,67 @@
-let version=document.querySelectorAll(".product")
-let val
+if(weblsget("53regionalproductid")==null){
+    weblsset("53regionalproductid",1)
+}
 
+newajax("GET","/backend/53regional/gettemplate").onload=function(){
+    let data=JSON.parse(this.responseText)
 
-version.forEach(function(event){
-    event.style.backgroundColor="rgb(35, 35, 35)"
-    event.addEventListener("click",function(){
-        version.forEach(function(event){
-            event.style.backgroundColor="rgb(35, 35, 35)"
+    if(data["success"]){
+        let row=data["data"]
+        let maindata=""
+
+        for(let i=0;i<row.length;i=i+1){
+            if(i%2==0){
+                maindata=`
+                    ${maindata}
+                    <div class="productdiv">
+                        <div class="productleft product macossectiondiv" id="${row[i][0]}">
+                            <div class="id">版型: ${row[i][0]}</div>
+                            <div class="name" style="${row[i][1]}">商品名稱</div>
+                            <div class="cost" style="${row[i][2]}">費用</div>
+                            <div class="date" style="${row[i][3]}">發布日期</div>
+                            <div class="link" style="${row[i][4]}">相關連結</div>
+                            <div class="description" style="${row[i][5]}">商品簡介</div>
+                            <div class="picture" style="${row[i][6]}">圖片</div>
+                        </div>
+                `
+            }else{
+                maindata=`
+                    ${maindata}
+                        <div class="productright product macossectiondiv" id="${row[i][0]}">
+                            <div class="id">版型: ${row[i][0]}</div>
+                            <div class="name" style="${row[i][1]}">商品名稱</div>
+                            <div class="cost" style="${row[i][2]}">費用</div>
+                            <div class="date" style="${row[i][3]}">發布日期</div>
+                            <div class="link" style="${row[i][4]}">相關連結</div>
+                            <div class="description" style="${row[i][5]}">商品簡介</div>
+                            <div class="picture" style="${row[i][6]}">圖片</div>
+                        </div>
+                    </div>
+                `
+            }
+            if(i%2==0&&row.length-1==i){
+                maindata=`
+                    ${maindata}
+                    </div>
+                `
+            }
+        }
+
+        docgetid("main").innerHTML=maindata
+        docgetid(weblsget("53regionalproductid")).style.backgroundColor="rgb(203, 203, 38)"
+
+        docgetall(".product").forEach(function(event){
+            event.onclick=function(){
+                docgetall(".product").forEach(function(event){
+                    event.style.backgroundColor=""
+                })
+                weblsset("53regionalproductid",event.id)
+                event.style.backgroundColor="rgb(203, 203, 38)"
+            }
         })
-        this.style.backgroundColor="yellow"
-        val=this.id
-    })
-})
-
-function data(){
-    if(val!=undefined){
-        location.href="productinput.php?val="+val
-    }else{
-        location.href="productindex.php?val=no"
     }
 }
 
-function nono(){
-    alert("請先填寫資料")
-}
+docgetid("index").classList.add("selectbut")
 
-function nono2(){
-    alert("請先預覽")
-}
-
-function sub(){
-    document.getElementById("form").submit.click()
-}
-
-// if(weblsget(""))
+startmacossection()

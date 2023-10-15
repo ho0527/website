@@ -1,7 +1,7 @@
 body{
     font-family: "Consolas";
-    background: rgb(35, 35, 35);
-    color: gray;
+    background: rgb(25, 25, 25);
+    color: lightgray;
     text-align: center;
     word-break: break-all;
     -webkit-user-select: none;
@@ -57,16 +57,28 @@ table{
 }
 
 .navigationbar{
-    border: 1px solid rgba(255, 255, 255, 0.18);
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100px;
     color: white;
-    background: rgba(250, 250, 250, 0.5);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    border-radius: 5px;
+    background: rgba(40, 40, 40, 0.95);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 8px 32px 0 rgba(70, 70, 70, 0.1);
+    z-index: 900;
+}
+
+.navigationbar2{
+    position: fixed;
+    top: 100px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    color: white;
+    background: rgba(50, 50, 50, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px 0 rgba(185, 185, 185, 0.1);
     z-index: 900;
 }
 
@@ -94,7 +106,7 @@ table{
 }
 
 .navigationbarbutton{
-    border: 1px black solid;
+    border: 1px white solid;
     background: none;
     width: 150px;
     height: 50px;
@@ -103,7 +115,7 @@ table{
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    color: black;
+    color: white;
     padding: 10px;
     margin: 0px 10px;
     transition-duration: 0.5s;
@@ -111,7 +123,7 @@ table{
 
 .navigationbarbutton:hover{
     background: gray;
-    color: white;
+    color: black;
 }
 
 .navigationbarselect{
@@ -144,7 +156,7 @@ table{
     border: none;
     border-bottom: 1px black solid;
     background: none;
-    width: 65%;
+    width: 75%;
     height: 40px;
     outline: none;
     font-size: 30px;
@@ -187,10 +199,10 @@ table{
     border: 1px black solid;
     padding: 10px 20px;
     margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 10px;
     font-size: 25px;
     font-weight: bold;
+    cursor: pointer;
     transition-duration: 0.5s;
 }
 
@@ -271,6 +283,28 @@ table{
     background: revert;
     color: revert;
 }
+
+.primarytext{
+    font-size: 40px;
+    color: transparent;
+    font-weight: bold;
+}
+
+.secondarytext{
+    font-size: 30px;
+    color: white;
+}
+
+.text{
+    font-size: 20px;
+}
+
+.highlight{
+    font-weight: bold;
+    color: yellow;
+    display: inline-block;
+}
+
 /* END */
 
 
@@ -283,17 +317,6 @@ table{
 }
 
 .navigationbar2{
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    position: fixed;
-    top: 100px;
-    left: 0px;
-    width: 100%;
-    height: 75px;
-    color: white;
-    background: rgba(250, 250, 250, 0.5);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    border-radius: 5px;
-    z-index: 900;
     display: flex;
     align-items: center;
     justify-content: center;

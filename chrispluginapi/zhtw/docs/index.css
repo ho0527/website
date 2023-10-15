@@ -1,7 +1,7 @@
 body{
     font-family: "Consolas";
-    background: rgb(35, 35, 35);
-    color: gray;
+    background: rgb(25, 25, 25);
+    color: lightgray;
     text-align: center;
     word-break: break-all;
     -webkit-user-select: none;
@@ -34,7 +34,6 @@ table{
     left: 50%;
     transform: translate(-50%,-50%);
     font-size: 30px;
-    font-weight: bold;
     padding: 20px;
     border-radius: 5px;
 }
@@ -58,16 +57,28 @@ table{
 }
 
 .navigationbar{
-    border: 1px solid rgba(255, 255, 255, 0.18);
     position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100px;
     color: white;
-    background: rgba(250, 250, 250, 0.5);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    border-radius: 5px;
+    background: rgba(40, 40, 40, 0.95);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 8px 32px 0 rgba(70, 70, 70, 0.1);
+    z-index: 900;
+}
+
+.navigationbar2{
+    position: fixed;
+    top: 100px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    color: white;
+    background: rgba(50, 50, 50, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px 0 rgba(185, 185, 185, 0.1);
     z-index: 900;
 }
 
@@ -95,7 +106,7 @@ table{
 }
 
 .navigationbarbutton{
-    border: 1px black solid;
+    border: 1px white solid;
     background: none;
     width: 150px;
     height: 50px;
@@ -104,7 +115,7 @@ table{
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    color: black;
+    color: white;
     padding: 10px;
     margin: 0px 10px;
     transition-duration: 0.5s;
@@ -112,7 +123,7 @@ table{
 
 .navigationbarbutton:hover{
     background: gray;
-    color: white;
+    color: black;
 }
 
 .navigationbarselect{
@@ -188,10 +199,10 @@ table{
     border: 1px black solid;
     padding: 10px 20px;
     margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 10px;
     font-size: 25px;
     font-weight: bold;
+    cursor: pointer;
     transition-duration: 0.5s;
 }
 
@@ -202,8 +213,7 @@ table{
 
 .bluebutton{
 	box-shadow: inset 1px -3px 7px 0px #29bbff;
-	background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	background-color: #2dabf9;
+	background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
 	border-radius: 5px;
 	border: 1px solid #0b0e07;
 	display: inline-block;
@@ -218,8 +228,7 @@ table{
 }
 
 .bluebutton:hover{
-	background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-	background-color: #0688fa;
+	background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
 }
 
 .bluebutton:active{
@@ -230,7 +239,7 @@ table{
 .reflashbutton{
     margin-top: 20px;
     padding: 5px;
-    background-color: rgb(215, 164, 61);
+    background: rgb(215, 164, 61);
     color: white;
     border: none;
     border-radius: 5px;
@@ -243,12 +252,12 @@ table{
 }
 
 .reflashbutton:hover{
-    background-color: rgb(255, 213, 128);
+    background: rgb(255, 213, 128);
     color: black;
 }
 
 .selectbutton{
-    background-color: rgba(35, 35, 35, 0.75);
+    background: rgba(35, 35, 35, 0.75);
     color: white;
 }
 
@@ -274,6 +283,28 @@ table{
     background: revert;
     color: revert;
 }
+
+.primarytext{
+    font-size: 40px;
+    color: transparent;
+    font-weight: bold;
+}
+
+.secondarytext{
+    font-size: 30px;
+    color: white;
+}
+
+.text{
+    font-size: 20px;
+}
+
+.highlight{
+    font-weight: bold;
+    color: yellow;
+    display: inline-block;
+}
+
 /* END */
 
 

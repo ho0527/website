@@ -42,10 +42,10 @@ function main(url){
                                 <div class="cost macossectiondivy" style="${product[j][2]}">費用: ${row[i][4]}</div>
                                 <div class="date macossectiondivy" style="${product[j][3]}">發布日期: ${row[i][5]}</div>
                                 <div class="link macossectiondivy" style="${product[j][4]}">相關連結: ${row[i][6]}</div>
-                                <div class="introduction macossectiondivy" style="${product[j][5]}">
+                                <div class="description macossectiondivy" style="${product[j][5]}">
                                     商品簡介<br>${row[i][3]}
                                 </div>
-                                <div class="picture macossectiondivy" style="${product[j][6]}"><img src="${row[i][1]}" class="img" width="175px"></div>
+                                <div class="picture macossectiondivy" style="${product[j][6]}"><img src="${row[i][1]}" class="image"></div>
                             </div>
                         `
                         if(i%2==1||row.length-1==i){
@@ -116,14 +116,14 @@ function main(url){
 
 if(weblsget("53regionalpermission")=="管理者"){
     docgetid("navigationbarbuttondiv").innerHTML=`
-        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.php'" value="首頁">
-        <input type="button" class="navigationbarbutton" onclick="location.href='productindex.php'" value="上架商品">
+        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.html'" value="首頁">
+        <input type="button" class="navigationbarbutton" onclick="location.href='productindex.html'" value="上架商品">
         <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
         <input type="button" class="navigationbarbutton" id="logout" value="登出">
     `
 }else{
     docgetid("navigationbarbuttondiv").innerHTML=`
-        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.php'" value="首頁">
+        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.html'" value="首頁">
         <input type="button" class="navigationbarbutton" id="logout" value="登出">
     `
 }

@@ -1,14 +1,11 @@
 body{
     font-family: "Consolas";
-    /* background: linear-gradient(to right,rgb(22, 24, 42),rgb(51, 43, 120)); */
-    /* background: linear-gradient(to right,rgb(33, 42, 54),rgb(51, 43, 120)); */
-    /* background: linear-gradient(to right,rgb(22, 24, 42),rgb(33, 42, 54)); */
-    /* background: linear-gradient(to right,rgb(25, 25, 35),rgb(25, 25, 70)); */
-    background: rgb(10, 10, 10);
-    /* background: hsl(0, 0%, 20%); */
-    color: gray;
+    background: rgb(25, 25, 25);
+    color: lightgray;
+    text-align: center;
+    word-break: break-all;
+    -webkit-user-select: none;
     user-select: none;
-    word-wrap: break-word;
 }
 
 h2{
@@ -178,7 +175,7 @@ table{
 }
 
 .footer{
-    background: rgb(35, 35, 35);
+    background: rgb(25, 25, 25);
     color: white;
     position: fixed;
     bottom: 0px;

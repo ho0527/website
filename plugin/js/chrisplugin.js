@@ -297,8 +297,8 @@ function regexp(regexptext,regexpstring){
     return new RegExp.test(regexptext,regexpstring)
 }
 
-function regexpmatch(data,regexptext,regexpstring=""){
-    return data.match(new RegExp.match(regexptext,regexpstring))
+function regexpmatch(regexptext,data){
+    return regexptext.exec(data)
 }
 
 function regexpreplace(data,replacetext,regexptext,regexpstring=""){

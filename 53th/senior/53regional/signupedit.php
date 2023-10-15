@@ -4,12 +4,10 @@
         <meta charset="UTF-8">
         <title>signup</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="../../../plugin/css/chrisplugin.css">
+        <script src="../../../plugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <?php
-            include("link.php");
-            if(!isset($_SESSION["data"])||$_SESSION["permission"]!="管理者"){ header("location:index.php"); }
-        ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
                 <?php
@@ -26,11 +24,10 @@
                 }
                 ?>
             <div class="navigationbarright">
-                <input type="button" class="navigationbarbutton" onclick="location.href='main.php'" value="首頁">
-                <input type="button" class="navigationbarbutton" onclick="location.href='productindex.php'" value="上架商品">
-                <input type="button" class="navigationbarbutton" onclick="location.href='search.php'" value="查詢">
+                <input type="button" class="navigationbarbutton" onclick="location.href='main.html'" value="首頁">
+                <input type="button" class="navigationbarbutton" onclick="location.href='productindex.html'" value="上架商品">
                 <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='admin.php'" value="會員管理">
-                <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='"value="登出">
+                <input type="button" class="navigationbarbutton" id="logout" value="登出">
             </div>
         </div>
         <div class="main">
@@ -126,5 +123,6 @@
                 }else{ ?><script>alert("禁止刪除管理者帳號");location.href="admin.php"</script><?php }
             }
         ?>
+        <script src="logincheck.js"></script>
     </body>
 </html>
