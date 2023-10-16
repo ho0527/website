@@ -10,6 +10,7 @@ let timer // 計時器
 let ghostinterval
 let playerinterval
 let starcount
+let player // [[x,y],目前方塊狀態]
 
 /*
 mainarray 內容:
@@ -17,7 +18,7 @@ mainarray 內容:
 1=道路
 2=豆子
 3=星星
-4=門
+4=鬼能走的地方
 5=player
 6=鬼1
 7?=鬼2
@@ -26,19 +27,23 @@ mainarray 內容:
 
 // player move START
 function up(){
-
+    if(mainarray[player[0][0]-1][player[0][1]]!=0&&mainarray[player[0][0]-1][player[0][1]]!=4){
+    }
 }
 
 function down(){
-
+    if(mainarray[player[0][0]+1][player[0][1]]!=0&&mainarray[player[0][0]+1][player[0][1]]!=4){
+    }
 }
 
 function left(){
-
+    if(mainarray[player[0][0]][player[0][1]-1]!=0&&mainarray[player[0][0]][player[0][1]-1]!=4){
+    }
 }
 
 function right(){
-
+    if(mainarray[player[0][0]][player[0][1]+1]!=0&&mainarray[player[0][0]][player[0][1]+1]!=4){
+    }
 }
 // player move END
 
@@ -147,7 +152,7 @@ ajax.onload=function(){
                     ${maininnerhtml}
                     <div class="ghostrespawn"></div>
                 `
-                mainarray[i].push(1)
+                mainarray[i].push(4)
             }else if(row[j]==3){
                 maininnerhtml=`
                     ${maininnerhtml}
@@ -181,28 +186,27 @@ ajax.onload=function(){
     }
 
     // 玩家定位
-    let x=parseInt(Math.random()*25)+1
-    let y=parseInt(Math.random()*30)+1
+    let f=parseInt(Math.random()*25)+1
+    let s=parseInt(Math.random()*28)+1
     function xy(){
-        if(mainarray[x][y]==0||mainarray[x][y]==1||mainarray[x][y]==4||!mainarray[x][y]){
-            x=parseInt(Math.random()*25)+1
-            y=parseInt(Math.random()*30)+1
+        if(mainarray[f][s]==0||mainarray[f][s]==1||mainarray[f][s]==4||mainarray[f][s]==6||mainarray[f][s]==7||!mainarray[f][s]){
+            f=parseInt(Math.random()*25)+1
+            s=parseInt(Math.random()*28)+1
             xy()
         }
     }
 
     xy()
 
-    docgetid("player").style.top=(x*25+5)+"px"
-    docgetid("player").style.left=(y*25+5)+"px"
-
-    mainarray[x][y]=5
+    docgetid("player").style.top=(f*25+5)+"px"
+    docgetid("player").style.left=(s*25+5)+"px"
+    player=[[f,s],mainarray[f][s]]
     
     docgetall(".ghost").forEach(function(event){
     })
 
     document.onkeydown=function(event){
-        if(event.key=="ArrowUP"){
+        if(event.key=="ArrowUp"){
             up()
         }else if(event.key=="ArrowDown"){
             down()

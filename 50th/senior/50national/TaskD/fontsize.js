@@ -1,7 +1,9 @@
 // 調整字體大小
 
-if(!isset(weblsget("fontsize"))){ weblsset("fontsize",30) } // 預設值
+if(!isset(weblsget("fontsize"))){ weblsset("fontsize",25) } // 預設值
 let fontsize=parseInt(weblsget("fontsize"))
+
+docgetall("body")[0].style.fontSize=fontsize+"px" // 調整字體
 
 // 縮小
 document.getElementById("sizelow").onclick=function(){
