@@ -22,7 +22,7 @@ function main(url){
                 for(let j=0;j<product.length;j=j+1){
                     if(row[i][7]==product[j][0]){
                         if(weblsget("53regionalpermission")=="管理者"){
-                            edit=`<div class="id"><input type="button" class="edit" value="修改"></div>`
+                            edit=`<div class="id"><input type="button" class="edit" data-id="${row[i][0]}" value="修改"></div>`
                         }
                         if(i%2==0){
                             maininnerhtml=`
@@ -109,8 +109,26 @@ function main(url){
                 main("/backend/53regional/getproduct?page="+page+"&keyword="+docgetid("keyword").value+"&start="+docgetid("start").value+"&end="+docgetid("end").value)
             }
 
-            docgetall("edit").forEach(function(event){
-                onclick="location.href='productedit.php?id=${row[i][0]}'" 
+            docgetall(".edit").forEach(function(event){
+                event.onclick=function(){
+                    newajax("GET","/backend/53regional/getproduct?id="+event.dataset.id).onload=function(){
+                        let data=JSON.parse(this.responseText)
+                        if(data["success"]){
+                            row=data["data"][0]
+                            weblsset("53regionalproductfile",row[1])
+                            weblsset("53regionalproductname",row[2])
+                            weblsset("53regionalproductdescription",row[3])
+                            weblsset("53regionalproductcost",row[4])
+                            weblsset("53regionalproductlink",row[6])
+                            weblsset("53regionalproductid",row[7])
+                            weblsset("53regionalproductedit","true")
+                            weblsset("53regionalcoffeeid",row[0])
+                            location.href="productindex.html"
+                        }else{
+                            alert(data["data"])
+                        }
+                    }
+                }
             })
         }else{
             alert(data["data"])

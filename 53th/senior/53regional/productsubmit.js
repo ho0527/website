@@ -12,10 +12,11 @@ docgetid("productsubmit").onclick=function(){
         "file":weblsget("53regionalproductfile"),
         "version":weblsget("53regionalproductid"),
         "edit":weblsget("53regionalproductedit"),
+        "id":weblsget("53regionalcoffeeid"),
     })).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            alert("新增成功")
+            alert(data["data"])
             weblsset("53regionalproductdescription",null)
             weblsset("53regionalproductlink",null)
             weblsset("53regionalproductname",null)
@@ -23,6 +24,7 @@ docgetid("productsubmit").onclick=function(){
             weblsset("53regionalproductfile",null)
             weblsset("53regionalproductid",null)
             weblsset("53regionalproductedit",null)
+            weblsset("53regionalcoffeeid",null)
             location.href="main.html"
         }
     }

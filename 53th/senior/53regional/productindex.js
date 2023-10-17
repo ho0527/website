@@ -1,7 +1,3 @@
-if(weblsget("53regionalproductid")==null){
-    weblsset("53regionalproductid",1)
-}
-
 newajax("GET","/backend/53regional/gettemplate").onload=function(){
     let data=JSON.parse(this.responseText)
 
