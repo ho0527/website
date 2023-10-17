@@ -6,6 +6,7 @@ let topstarcount=0
 let maininnerhtml2=``
 let min=0
 let sec=0
+let click=false
 let timer // 計時器
 let ghostinterval
 let playerinterval
@@ -76,22 +77,22 @@ function timestart(){
 if(difficulty=="easy"){
     starcount=10
     maininnerhtml2=`
-        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 330px;left: 330px;"></div>
+        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 355px;left: 330px;"></div>
         <div class="player" id="player" style="width: 20px;height: 20px;"></div>
     `
 }else if(difficulty=="normal"){
     starcount=8
     maininnerhtml2=`
-        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 330px;left: 285px;"></div>
-        <div class="ghost ghost2" id="ghost2" style="width: 20px;height: 20px;top: 330px;left: 380px;"></div>
+        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 355px;left: 285px;"></div>
+        <div class="ghost ghost2" id="ghost2" style="width: 20px;height: 20px;top: 355px;left: 380px;"></div>
         <div class="player" id="player" style="width: 20px;height: 20px;"></div>
     `
 }else{
     starcount=6
     maininnerhtml2=`
-        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 330px;left: 330px;"></div>
-        <div class="ghost ghost2" id="ghost2" style="width: 20px;height: 20px;top: 330px;left: 380px;"></div>
-        <div class="ghost ghost3" id="ghost3" style="width: 20px;height: 20px;top: 330px;left: 285px;"></div>
+        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 355px;left: 330px;"></div>
+        <div class="ghost ghost2" id="ghost2" style="width: 20px;height: 20px;top: 355px;left: 380px;"></div>
+        <div class="ghost ghost3" id="ghost3" style="width: 20px;height: 20px;top: 355px;left: 285px;"></div>
         <div class="player" id="player" style="width: 20px;height: 20px;"></div>
     `
 }
@@ -99,10 +100,8 @@ if(difficulty=="easy"){
 docgetid("difficulty").innerHTML=difficulty // 拿到難易度並顯示
 docgetid("name").innerHTML=username // 拿到名稱並顯示
 
-let ajax=newajax("GET","map.txt") // start ajsx
-
-ajax.onload=function(){
-    let data=ajax.responseText.split("\r\n") // 分隔及讀取檔案
+newajax("GET","map.txt").onload=function(){
+    let data=this.responseText.split("\r\n") // 分隔及讀取檔案
     let tempstartcount=starcount
     let maininnerhtml=`
         <div class="center">
@@ -175,23 +174,23 @@ ajax.onload=function(){
     `
 
     if(difficulty=="easy"){
-        mainarray[13][13]=6
+        mainarray[14][13]=6
     }else if(difficulty=="normal"){
-        mainarray[13][11]=6
-        mainarray[13][15]=7
+        mainarray[14][11]=6
+        mainarray[14][15]=7
     }else{
-        mainarray[13][13]=6
-        mainarray[13][15]=7
-        mainarray[13][11]=8
+        mainarray[14][13]=6
+        mainarray[14][15]=7
+        mainarray[14][11]=8
     }
 
     // 玩家定位
     let f=parseInt(Math.random()*25)+1
-    let s=parseInt(Math.random()*28)+1
+    let s=parseInt(Math.random()*30)+1
     function xy(){
         if(mainarray[f][s]==0||mainarray[f][s]==1||mainarray[f][s]==4||mainarray[f][s]==6||mainarray[f][s]==7||!mainarray[f][s]){
             f=parseInt(Math.random()*25)+1
-            s=parseInt(Math.random()*28)+1
+            s=parseInt(Math.random()*30)+1
             xy()
         }
     }
@@ -208,18 +207,69 @@ ajax.onload=function(){
     document.onkeydown=function(event){
         if(event.key=="ArrowUp"){
             up()
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
         }else if(event.key=="ArrowDown"){
             down()
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
         }else if(event.key=="ArrowLeft"){
             left()
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
         }else if(event.key=="ArrowRight"){
             right()
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
         }else if(event.key=="p"){
             stopstart()
         }
     }
 
+    document.onkeyup=function(event){
+        if(event.key=="ArrowUp"){
+            click=false
+        }else if(event.key=="ArrowDown"){
+            click=false
+        }else if(event.key=="ArrowLeft"){
+            click=false
+        }else if(event.key=="ArrowRight"){
+            click=false
+        }else if(event.key=="p"){
+            click=false
+        }
+    }
+
+    docgetid("pausecontinue").onclick=function(){ stopstart() }
+
     timestart()
+}
+
+docgetid("statisticaldata").onclick=function(){
+    newajax("GET","register.php?submit=").onload=function(){
+        let data=JSON.parse(this.responseText)
+        if(data["success"]){
+            lightbox(null,"lightbox",function(){
+                return `
+                    <div>test</div>
+                `
+            })
+        }else{
+            alert("在獲取高分榜時出現問題，請告知管理員。或重新整理後再試一次。")
+        }
+    }
 }
 
 startmacossection()

@@ -5,16 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PAC MAN</title>
         <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/chrisplugin.js"></script>
+        <link rel="stylesheet" href="../../../../plugin/css/chrisplugin.css">
+        <script src="../../../../plugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <div class="main">
+        <div class="main" id="main">
             <!-- 上方區塊 -->
             <div class="top grid">
                 <div class="scorediv">SCORE: <div class="score" id="score">0</div></div> <!-- 分數 -->
-                <div class="pausecontinue" id="pausecontinue">暫停</div> <!-- 顯示名稱 -->
+                <div class="highscorediv">
+                    最高分: <div class="score" id="highscore">0</div>
+                    <div class="statisticaldata" id="statisticaldata">統計數據</div> <!-- 統計數據 -->
+                </div> <!-- 最高分 -->
                 <div class="timer" id="timer">00:00</div> <!-- 計時器 -->
+                <div class="pausecontinue" id="pausecontinue">暫停</div> <!-- 暫停 -->
             </div>
 
             <!-- 主程式 -->
@@ -24,6 +28,7 @@
             <div class="bottom grid">
                 <div class="name" id="name"></div> <!-- 顯示名稱 -->
                 <div class="difficulty" id="difficulty"></div> <!-- 顯示難易度 -->
+                <div class="livediv">生命值: <div class="live" id="live">3</div></div> <!-- 生命值 -->
                 <!-- 字體大小 START -->
                 <div class="fontsize">
                     <input type="button" class="fontsizebutton" id="sizelow" value="-">
@@ -35,10 +40,7 @@
         </div>
 
         <!-- 記分板 -->
-        <div class="lightbox">
-            <div class="mask"></div>
-            <div class="lightboxbody"></div>
-        </div>
+        <div id="lightbox"></div>
 
         <!-- js -->
         <script src="main.js"></script>

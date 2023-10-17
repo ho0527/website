@@ -33,7 +33,7 @@ table{
     top: calc(50% + 50px);
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size: 30px;
+    font-size: 25px;
     padding: 20px;
     border-radius: 5px;
 }
@@ -438,8 +438,9 @@ table{
 
 .main{
     width: 70vw;
-    height: 850px;
+    height: 870px;
     top: 50%;
+    padding: 5px;
 }
 
 .top{
@@ -450,25 +451,50 @@ table{
 }
 
 .scorediv{
-    grid-column: 1/40;
-    grid-row: 1/17;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    grid-column: 5/30;
+    grid-row: 1/9;
+    text-align: left;
 }
 
-.pausecontinue{
-    grid-column: 40/70;
-    grid-row: 1/17;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.highscorediv{
+    grid-column: 5/30;
+    grid-row: 9/18;
+    font-size: 20px;
+    text-align: left;
+}
+
+.highscorediv{
+    grid-column: 5/50;
+    grid-row: 9/18;
+    font-size: 20px;
+    text-align: left;
+}
+
+.statisticaldata{
+    font-size: 20px;
+    text-align: left;
+    color: rgb(40, 181, 228);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.statisticaldata:hover{
+    border-bottom: 2px rgb(40, 181, 228) solid;
 }
 
 .timer{
-    grid-column: 70/100;
+    grid-column: 40/70;
     grid-row: 1/17;
     padding: 10px;
+}
+
+.pausecontinue{
+    grid-column: 70/100;
+    grid-row: 1/17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .score{
@@ -484,7 +510,7 @@ table{
 }
 
 .name{
-    grid-column: 1/40;
+    grid-column: 1/30;
     grid-row: 1/17;
     display: flex;
     align-items: center;
@@ -492,7 +518,15 @@ table{
 }
 
 .difficulty{
-    grid-column: 40/70;
+    grid-column: 30/50;
+    grid-row: 1/17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.livediv{
+    grid-column: 50/70;
     grid-row: 1/17;
     display: flex;
     align-items: center;
@@ -502,14 +536,13 @@ table{
 .fontsize{
     grid-column: 70/100;
     grid-row: 1/17;
-    border: 1px white solid;
     padding: 10px;
 }
 
 .fontsizebutton{
     border: none;
     background: none;
-    font-size: 35px;
+    font-size: 25px;
     color: white;
     cursor: pointer;
 }
@@ -521,9 +554,9 @@ table{
 .app{
     /* border: 1px white solid; */
     position: relative;
-    top: 0px;
+    top: 5px;
     width: 100%;
-    height: 750px;
+    height: 800px;
 }
 
 .row{
@@ -554,7 +587,7 @@ table{
 
 .ghostrespawn{
     border: none;
-    background: black;
+    background: rgb(18, 18, 18);
     width: 25px;
     height: 25px;
     margin: 0px;
