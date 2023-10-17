@@ -266,6 +266,7 @@ table{
     position: fixed;
     bottom: 0px;
     width: 100%;
+    background: rgb(25, 25, 25);
     text-align: center;
 }
 

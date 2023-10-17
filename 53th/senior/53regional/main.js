@@ -22,7 +22,7 @@ function main(url){
                 for(let j=0;j<product.length;j=j+1){
                     if(row[i][7]==product[j][0]){
                         if(weblsget("53regionalpermission")=="管理者"){
-                            edit=`<div class="id"><input type="button" onclick="location.href='productedit.php?id=${row[i][0]}'" value="修改"></div>`
+                            edit=`<div class="id"><input type="button" class="edit" value="修改"></div>`
                         }
                         if(i%2==0){
                             maininnerhtml=`
@@ -108,6 +108,10 @@ function main(url){
             docgetid("submit").onclick=function(){
                 main("/backend/53regional/getproduct?page="+page+"&keyword="+docgetid("keyword").value+"&start="+docgetid("start").value+"&end="+docgetid("end").value)
             }
+
+            docgetall("edit").forEach(function(event){
+                onclick="location.href='productedit.php?id=${row[i][0]}'" 
+            })
         }else{
             alert(data["data"])
         }
