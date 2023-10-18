@@ -127,6 +127,10 @@ table{
     color: black;
 }
 
+.navigationbarbutton:active{
+    box-shadow: 0px 10px 30px 0 rgba(77, 77, 77, 0.68);
+}
+
 .navigationbarselect{
     background: black;
     color: white;
@@ -212,6 +216,11 @@ table{
     color: white;
 }
 
+.button:active{
+	position: relative;
+	top: 1px;
+}
+
 .bluebutton{
 	box-shadow: inset 1px -3px 7px 0px #29bbff;
 	background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
@@ -266,6 +275,7 @@ table{
     position: fixed;
     bottom: 0px;
     width: 100%;
+    background: rgb(25, 25, 25);
     text-align: center;
 }
 
@@ -305,7 +315,6 @@ table{
     color: yellow;
     display: inline-block;
 }
-
 /* END */
 
 

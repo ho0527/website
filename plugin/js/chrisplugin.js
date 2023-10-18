@@ -201,7 +201,7 @@ function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxc
     docgetid(element).classList.add("lightboxmask")
 
     setTimeout(function(){
-        if(clickelement==null){
+        if(!isset(clickelement)){
             docgetid(element).innerHTML=``
             docgetid(element).style.display="block"
             setTimeout(function(){
@@ -213,7 +213,7 @@ function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxc
                 </div>
             `
             docgetid(element).innerHTML=html
-            if(closelement!=null){
+            if(closelement){
                 docgetid(closelement).onclick=function(){
                     docgetid(element).style.transform="translateY(-100%)"
 
