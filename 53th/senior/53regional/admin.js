@@ -4,24 +4,28 @@ let ordertype="ASC"
 let keyword=""
 
 function userlistmain(){
-    docgetid("usertable").innerHTML=`
-        <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=DESC'" value="升冪"></td>
-        <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=username&ordertype=DESC'" value="升冪"></td>
-        <td class="admintd">密碼</td>
-        <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=DESC'" value="升冪"></td>
-        <td class="admintd">權限</td>
-        <td class="admintd">功能</td>
-    `
+    let sortnumbervalue="升冪"
+    let sortusernamevalue="升冪"
+    let sortnamevalue="升冪"
 
     if(isset(weblsget("53regionalsortnumber"))){
         orderby="number"
         ordertype=weblsget("53regionalsortnumber")
+        if(weblsget("53regionalsortnumber")=="DESC"){
+            sortnumbervalue="降冪"
+        }
     }else if(isset(weblsget("53regionalsortusername"))){
         orderby="username"
         ordertype=weblsget("53regionalsortusername")
+        if(weblsget("53regionalsortusername")=="DESC"){
+            sortusernamevalue="降冪"
+        }
     }else if(isset(weblsget("53regionalsortname"))){
         orderby="name"
         ordertype=weblsget("53regionalsortname")
+        if(weblsget("53regionalsortname")=="DESC"){
+            sortnamevalue="降冪"
+        }
     }else{
         weblsset("53regionalsortnumber","ASC")
     }
@@ -29,6 +33,17 @@ function userlistmain(){
     if(weblsget("53regionalkeyword")){
         keyword=weblsget("53regionalkeyword")
     }
+
+    docgetid("usertable").innerHTML=`
+        <tr>
+            <td class="admintd">編號 <input type="button" id="sortnumber" value="${sortnumbervalue}"></td>
+            <td class="admintd">帳號 <input type="button" id="sortusername" value="${sortusernamevalue}"></td>
+            <td class="admintd">密碼</td>
+            <td class="admintd">姓名 <input type="button" id="sortname" value="${sortnamevalue}"></td>
+            <td class="admintd">權限</td>
+            <td class="admintd">功能</td>
+        </tr>
+    `
 
     newajax("GET","/backend/53regional/getuserlist?keyword="+keyword+"&orderby="+orderby+"&ordertype="+ordertype).onload=function(){
         let data=JSON.parse(this.responseText)
@@ -49,6 +64,45 @@ function userlistmain(){
                         </td>
                     </tr>
                 `
+            }
+
+            docgetid("sortnumber").onclick=function(){
+                weblsset("53regionalsortusername",null)
+                weblsset("53regionalsortname",null)
+
+                if(sortnumbervalue=="升冪"){
+                    weblsset("53regionalsortnumber","DESC")
+                }else{
+                    weblsset("53regionalsortnumber","ASC")
+                }
+
+                userlistmain()
+            }
+
+            docgetid("sortusername").onclick=function(){
+                weblsset("53regionalsortnumber",null)
+                weblsset("53regionalsortname",null)
+
+                if(sortusernamevalue=="升冪"){
+                    weblsset("53regionalsortusername","DESC")
+                }else{
+                    weblsset("53regionalsortusername","ASC")
+                }
+
+                userlistmain()
+            }
+
+            docgetid("sortname").onclick=function(){
+                weblsset("53regionalsortnumber",null)
+                weblsset("53regionalsortusername",null)
+
+                if(sortnamevalue=="升冪"){
+                    weblsset("53regionalsortname","DESC")
+                }else{
+                    weblsset("53regionalsortname","ASC")
+                }
+
+                userlistmain()
             }
         }else{
             alert(data["data"])

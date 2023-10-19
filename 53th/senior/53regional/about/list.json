@@ -6,7 +6,7 @@
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/02/05",
-            "updatedate": "2023/10/18",
+            "updatedate": "2023/10/19",
             "data": [
                 {
                     "list": 1,
@@ -397,6 +397,276 @@
                             "data": [
                                 {
                                     "description": "新增的「新版型」可以被套用成功，並可以切換套用成功，並在「商品展示區」正確呈現。",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "list": 6,
+                    "description": "API list",
+                    "statu": "SUCCESS",
+                    "data": [
+                        {
+                            "no": "01",
+                            "description": "使用者登入 | method: POST, url: /backend/53regional/login",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;username: <i>username</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>password</i><br>}",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsppermission: <i>userpermission</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(fail username): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 帳號有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(fail password): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 密碼有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(fail verifycode): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 驗證碼有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "02",
+                            "description": "使用者登入成功/失敗寫入資料庫 | method: GET, url: /backend/53regional/logindatatodb?key=success|error&id=<i>userid</i>",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "03",
+                            "description": "使用者登出 | method: POST, url: /backend/53regional/logout/<i>userid</i>",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "04",
+                            "description": "取得使用者列表 | method: GET, url: /backend/53regional/getuserlist?keyword=<b>string</b>&sortby=number|username|name&sorttype=ASC|DESC",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>userlist</i><br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sorttype is not ASC or DESC): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"Invalid ordertype value. It should be either 'ASC' or 'DESC'.\"<br>}, 400_BAD_REQUEST",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "05",
+                            "description": "取得登出登入紀錄 | method: GET, url: /backend/53regional/getlog",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>loglist</i><br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "06",
+                            "description": "取得特定使用者 | method: GET, url: /backend/53regional/getuser/<i>userid</i>",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;data: \"使用者不存在.\"<br>}, 400_BAD_REQUEST",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "07",
+                            "description": "使用者新增 | method: POST, url: /backend/53regional/newuser",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;username: <i>username</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>password</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>name</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;permission: <b>boolean</b><br>}",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"新增成功\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(no username): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"請輸入帳號\"<br>}, 400_BAD_REQUEST",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(no duplicate): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"使用者以存在\"<br>}, 400_BAD_REQUEST",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "08",
+                            "description": "使用者修改 | method: PUT, url: /backend/53regional/editdeluser/<i>userid</i>",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>password</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>name</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;permission: <b>boolean</b><br>}",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"修改成功\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(id==1): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"禁止修改管理者帳號!\"<br>}, 400_BAD_REQUEST",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "09",
+                            "description": "使用者刪除 | method: DELETE, url: /backend/53regional/editdeluser/<i>userid</i>",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"修除成功\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(id==1): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"禁止刪除管理者帳號!\"<br>}, 400_BAD_REQUEST",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "10",
+                            "description": "獲取商品 | method: GET, url: /backend/53regional/getproduct?[id=<i>coffeeid</i>]|[page=<i>pagenumber</i>&keyword=<b>string</b>&start=<b>number</b>&end=<b>number</b>]",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success(get id)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>coffeelist</i><br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(success(get all)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxcount: <i>coffeelistlen(all)</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: <i>coffeelist</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product: <i>templatelist</i><br>}}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "11",
+                            "description": "獲取版型 | method: GET, url: /backend/53regional/gettemplate?*id=<i>coffeeid</i>",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>templatelist</i><br>}}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "14",
+                            "description": "增改商品 | method: POST, url: /backend/53regional/newproduct",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "resquest body(new): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>coffeeimage</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>coffeename</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>coffeedescription</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>coffeecost</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>coffeelink</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>coffeeversion</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;*edit: \"false\"<br>}",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "resquest body(edit): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>coffeeimage</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>coffeename</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>coffeedescription</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>coffeecost</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>coffeelink</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>coffeeversion</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;edit: \"true\",<br>&nbsp;&nbsp;&nbsp;&nbsp;id: <i>coffeeid</i><br>}",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(success(new)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"新增成功\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(success(edit)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"修改成功\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "13",
+                            "description": "新增版型 | method: POST, url: /backend/53regional/newtemplate",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "resquest body(new): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>image_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>name_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>description_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>cost_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>link_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>version_gridcode</i><br>}",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"新增成功\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]

@@ -423,6 +423,7 @@ table{
     display: flex;
     margin-top: 5px;
     color: white;
+    text-align: left;
 }
 
 .dot{

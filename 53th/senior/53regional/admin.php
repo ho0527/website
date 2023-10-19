@@ -30,56 +30,7 @@
             </div>
             <form>
                 <div class="admintable macossectiondiv">
-                    <table id="usertable">
-                        <tr>
-                            <?php
-                                if(isset($_GET["orderby"])){
-                                    $ordertype=$_GET["ordertype"];
-                                    $word="降冪";
-                                    if($ordertype=="ASC"){
-                                        $word="升冪";
-                                    }
-                                    if($_GET["orderby"]=="number"){
-                                        ?>
-                                        <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=<?= $ordertype ?>'" value="<?= $word ?>"></td>
-                                        <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=username&ordertype=DESC'" value="升冪"></td>
-                                        <td class="admintd">密碼</td>
-                                        <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=DESC'" value="升冪"></td>
-                                        <td class="admintd">權限</td>
-                                        <td class="admintd">功能</td>
-                                        <?php
-                                    }elseif($_GET["orderby"]=="username"){
-                                        ?>
-                                        <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=DESC'" value="升冪"></td>
-                                        <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=number&ordertype=<?= $ordertype ?>'" value="<?= $word ?>"></td>
-                                        <td class="admintd">密碼</td>
-                                        <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=DESC'" value="升冪"></td>
-                                        <td class="admintd">權限</td>
-                                        <td class="admintd">功能</td>
-                                        <?php
-                                    }elseif($_GET["orderby"]=="name"){
-                                        ?>
-                                        <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=DESC'" value="升冪"></td>
-                                        <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=username&ordertype=DESC'" value="升冪"></td>
-                                        <td class="admintd">密碼</td>
-                                        <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=<?= $ordertype ?>'" value="<?= $word ?>"></td>
-                                        <td class="admintd">權限</td>
-                                        <td class="admintd">功能</td>
-                                        <?php
-                                    }
-                                }else{
-                                    ?>
-                                    <td class="admintd">編號 <input type="button" onclick="location.href='?orderby=number&ordertype=DESC'" value="升冪"></td>
-                                    <td class="admintd">帳號 <input type="button" onclick="location.href='?orderby=username&ordertype=DESC'" value="升冪"></td>
-                                    <td class="admintd">密碼</td>
-                                    <td class="admintd">姓名 <input type="button" onclick="location.href='?orderby=name&ordertype=DESC'" value="升冪"></td>
-                                    <td class="admintd">權限</td>
-                                    <td class="admintd">功能</td>
-                                    <?php
-                                }
-                            ?>
-                        </tr>
-                    </table>
+                    <table id="usertable"></table>
                 </div>
             </form><br><br>
             <h2>登入登出紀錄</h2>
@@ -99,13 +50,11 @@
         <table class="timer">
             <tr>
                 <td class="timertd" rowspan="2">
-                <input type="text" class="timerbox" id="timer" value="<?= @$_SESSION["timer"] ?>" readonly>
+                    <input type="text" class="timerbox" id="timer" readonly>
                 </td>
                 <td class="timertd">
-                <form>
-                    <input type="text" id="changetimer" class="timersec" id="changetimer">
-                    <input type="submit" id="changetimersubmit" value="送出">
-                </form>
+                    <input type="text" class="timersec" id="changetimer">
+                    <input type="button" id="changetimersubmit" value="送出">
                 </td>
             </tr>
             <tr>
@@ -115,17 +64,6 @@
             </tr>
         </table>
         <div id="lightbox"></div>
-        <?php
-            if(isset($_GET["searchsubmit"])){
-                $_SESSION["search"]=$_GET["search"];
-                ?><script>location.href="admin.php"</script><?php
-            }
-
-            if(isset($_GET["changetimersubmit"])){
-                $_SESSION["timer"]=$_GET["changetimer"];
-                ?><script>location.href="admin.php"</script><?php
-            }
-        ?>
         <script src="admin.js"></script>
         <script src="logincheck.js"></script>
     </body>

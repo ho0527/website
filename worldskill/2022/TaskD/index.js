@@ -10,12 +10,12 @@ function main(){
             let total=data["totalElements"]
             for(let i=0;i<data["content"].length;i=i+1){
                 let pictureurl="material/picture/default.jpg"
-    
+
                 // 不會接image
                 // if(isset(data["content"][i]["thumbnail"])){
                 //     pictureurl="https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/storage/app"+data["content"][i]["thumbnail"]+""
                 // }
-    
+
                 // game div
                 let div=doccreate("div")
                 div.classList.add("game")
