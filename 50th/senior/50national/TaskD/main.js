@@ -7,11 +7,16 @@ let maininnerhtml2=``
 let min=0
 let sec=0
 let click=false
+let blockwh=25 // 一格的長寬
+let mid=5
 let timer // 計時器
 let ghostinterval
 let playerinterval
 let starcount
 let player // [[x,y],目前方塊狀態]
+let ghost1=[]
+let ghost2=[]
+let ghost3=[]
 
 /*
 mainarray 內容:
@@ -19,44 +24,289 @@ mainarray 內容:
 1=道路
 2=豆子
 3=星星
-4=鬼能走的地方
+4=只有鬼能走的地方
 5=player
 6=鬼1
 7?=鬼2
 8?=鬼3
 */
 
-// player move START
-function up(){
-    if(mainarray[player[0][0]-1][player[0][1]]!=0&&mainarray[player[0][0]-1][player[0][1]]!=4){
+function check(type){
+    if(type=="player"){
+        if(player[1]==2){
+            score=score+10
+            mainarray[player[0][0]][player[0][1]]=1
+            docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
+            player[1]=1
+        }else if(player[1]==3){
+            score=score+50
+            mainarray[player[0][0]][player[0][1]]=1
+            docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
+            player[1]=1
+        }
+        docgetid("score").innerHTML=`
+            ${score}
+        `
+    }else{
+        console.log("還沒做啦啦啦啦啦")
     }
 }
 
-function down(){
-    if(mainarray[player[0][0]+1][player[0][1]]!=0&&mainarray[player[0][0]+1][player[0][1]]!=4){
+function moveto(movetype,startx,starty){
+    for(let i=0;i<blockwh;i=i+1){
+        setTimeout(function(){
+            if(movetype=="up"){
+                docgetid("player").style.top=((startx*25+mid)-i)+"px"
+            }else if(movetype=="down"){
+                docgetid("player").style.top=((startx*25+mid)+i)+"px"
+            }else if(movetype=="left"){
+                docgetid("player").style.left=((starty*25+mid)-i)+"px"
+            }else if(movetype=="right"){
+                docgetid("player").style.left=((starty*25+mid)+i)+"px"
+            }else{
+                conlog("[ERROR] function moveto movetype error","red")
+            }
+        },500/blockwh)
     }
 }
 
-function left(){
-    if(mainarray[player[0][0]][player[0][1]-1]!=0&&mainarray[player[0][0]][player[0][1]-1]!=4){
+function pacmankeydonwn(){
+    document.onkeydown=function(event){
+        if(event.key=="ArrowUp"){
+            playermove("up")
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
+        }else if(event.key=="ArrowDown"){
+            playermove("down")
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
+        }else if(event.key=="ArrowLeft"){
+            playermove("left")
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
+        }else if(event.key=="ArrowRight"){
+            playermove("right")
+            if(!click){
+                setTimeout(function(){
+                    click=true
+                },250)
+            }
+        }else if(event.key=="p"){
+            stopstart()
+        }
+    }
+    document.onkeyup=function(event){
+        if(event.key=="ArrowUp"){
+            click=false
+        }else if(event.key=="ArrowDown"){
+            click=false
+        }else if(event.key=="ArrowLeft"){
+            click=false
+        }else if(event.key=="ArrowRight"){
+            click=false
+        }else if(event.key=="p"){
+            click=false
+        }
     }
 }
 
-function right(){
-    if(mainarray[player[0][0]][player[0][1]+1]!=0&&mainarray[player[0][0]][player[0][1]+1]!=4){
+function checknotblockghost(testarray){
+    if(testarray!=ghost1&&testarray!=ghost2&&testarray!=ghost3){
+        return true
+    }else{
+        return false
     }
 }
-// player move END
 
+function updateghost(type,name,array){
+    if(type=="up"){
+        if(name=="ghost1"){
+            ghost1=[array[0]-1,array[1]]
+        }else if(name=="ghost2"){
+            ghost2=[array[0]-1,array[1]]
+        }else{
+            ghost3=[array[0]-1,array[1]]
+        }
+    }else if(type=="down"){
+        if(name=="ghost1"){
+            ghost1=[array[0]+1,array[1]]
+        }else if(name=="ghost2"){
+            ghost2=[array[0]+1,array[1]]
+        }else{
+            ghost3=[array[0]+1,array[1]]
+        }
+    }else if(type=="left"){
+        if(name=="ghost1"){
+            ghost1=[array[0],array[1]-1]
+        }else if(name=="ghost2"){
+            ghost2=[array[0],array[1]-1]
+        }else{
+            ghost3=[array[0],array[1]-1]
+        }
+    }else if(type=="right"){
+        if(name=="ghost1"){
+            ghost1=[array[0],array[1]+1]
+        }else if(name=="ghost2"){
+            ghost2=[array[0],array[1]+1]
+        }else{
+            ghost3=[array[0],array[1]+1]
+        }
+    }else{ conlog("[ERROR] function updateghost key error.","red") }
+    ghostrun()
+}
+
+function ghostrun(){
+    if(difficulty=="easy"){
+        ghostmove("ghost1",ghost1)
+    }else if(difficulty=="normal"){
+        ghostmove("ghost1",ghost1)
+        ghostmove("ghost2",ghost2)
+    }else{
+        ghostmove("ghost1",ghost1)
+        ghostmove("ghost2",ghost2)
+        ghostmove("ghost3",ghost3)
+    }
+}
+
+function ghostmove(name,array){
+    let type=parseInt(Math.random()*4) // 會有上(0)下(1)左(2)右(3)4種方式
+    console.log(name)
+    console.log(array)
+    if(type==0){
+        if(mainarray[array[0]-1][array[1]]!=0&&checknotblockghost([array[0]-1,array[1]])){
+            for(let i=0;i<blockwh;i=i+1){
+                setTimeout(function(){
+                    docgetid(name).style.top=((array[0]*25+mid)-i)+"px"
+                },500/blockwh)
+            }
+            setTimeout(function(){
+                updateghost("up",name,array)
+            },200)
+        }else{ ghostmove(name,array) } // 再用一次
+    }else if(type==1){
+        if(mainarray[array[0]+1][array[1]]!=0&&checknotblockghost([array[0]+1,array[1]])){
+            for(let i=0;i<blockwh;i=i+1){
+                setTimeout(function(){
+                    docgetid(name).style.top=((array[0]*25+mid)+i)+"px"
+                },500/blockwh)
+            }
+            setTimeout(function(){
+                updateghost("down",name,array)
+            },200)
+        }else{ ghostmove(name,array) }
+    }else if(type==2){
+        if(mainarray[array[0]][array[1]-1]!=0&&checknotblockghost([array[0],array[1]-1])){
+            for(let i=0;i<blockwh;i=i+1){
+                setTimeout(function(){
+                    docgetid(name).style.left=((array[1]*25+mid)-i)+"px"
+                },500/blockwh)
+            }
+            setTimeout(function(){
+                updateghost("left",name,array)
+            },200)
+        }else{ ghostmove(name,array) }
+    }else if(type==3){
+        if(mainarray[array[0]][array[1]+1]!=0&&checknotblockghost([array[0],array[1]+1])){
+            for(let i=0;i<blockwh;i=i+1){
+                setTimeout(function(){
+                    docgetid(name).style.left=((array[1]*25+mid)+i)+"px"
+                },500/blockwh)
+            }
+            setTimeout(function(){
+                updateghost("right",name,array)
+            },200)
+        }else{ ghostmove(name,array) }
+    }else{ console.log("type error") }
+}
+
+// 玩家移動
+function playermove(type){
+    if(type=="up"){
+        if(mainarray[player[0][0]-1][player[0][1]]!=0&&mainarray[player[0][0]-1][player[0][1]]!=4){
+            moveto("up",player[0][0],player[0][1])
+            player=[
+                [player[0][0]-1,player[0][1]],
+                mainarray[player[0][0]-1][player[0][1]]
+            ]
+            check("player")
+        }
+    }else if(type=="down"){
+        if(mainarray[player[0][0]+1][player[0][1]]!=0&&mainarray[player[0][0]+1][player[0][1]]!=4){
+            moveto("down",player[0][0],player[0][1])
+            player=[
+                [player[0][0]+1,player[0][1]],
+                mainarray[player[0][0]+1][player[0][1]]
+            ]
+            check("player")
+        }
+    }else if(type=="left"){
+        if(mainarray[player[0][0]][player[0][1]-1]!=0&&mainarray[player[0][0]][player[0][1]-1]!=4){
+            if(isset(mainarray[player[0][0]][player[0][1]-1])){
+                moveto("left",player[0][0],player[0][1])
+                player=[
+                    [player[0][0],player[0][1]-1],
+                    mainarray[player[0][0]][player[0][1]-1]
+                ]
+                check("player")
+            }else{
+                if(isset(mainarray[player[0][0]][26])){
+                    docgetid("player").style.left=((27*25+5)-25)+"px"
+                    player=[
+                        [player[0][0],26],
+                        mainarray[player[0][0]][26]
+                    ]
+                    check("player")
+                }
+            }
+        }
+    }else if(type=="right"){
+        if(mainarray[player[0][0]][player[0][1]+1]!=0&&mainarray[player[0][0]][player[0][1]+1]!=4){
+            if(isset(mainarray[player[0][0]][player[0][1]+1])){
+                moveto("right",player[0][0],player[0][1])
+                player=[
+                    [player[0][0],player[0][1]+1],
+                    mainarray[player[0][0]][player[0][1]+1]
+                ]
+                check("player")
+            }else{
+                if(isset(mainarray[player[0][0]][0])){
+                    docgetid("player").style.left=((-1*25+5)+25)+"px"
+                    player=[
+                        [player[0][0],0],
+                        mainarray[player[0][0]][0]
+                    ]
+                    check("player")
+                }
+            }
+        }
+    }else{ console.log("[ERROR] playermove key type error.","red") }
+}
 
 // stop/start
 function stopstart(){
     if(docgetid("pausecontinue").innerHTML=="暫停"){
         clearInterval(timer)
         docgetid("pausecontinue").innerHTML="繼續"
+        document.onkeydown=function(event){
+            if(event.key=="p"){
+                stopstart()
+            }else if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
+                event.preventDefault()
+            }
+        }
     }else{
         timestart()
         docgetid("pausecontinue").innerHTML="暫停"
+        pacmankeydonwn()
     }
 }
 
@@ -80,6 +330,7 @@ if(difficulty=="easy"){
         <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 355px;left: 330px;"></div>
         <div class="player" id="player" style="width: 20px;height: 20px;"></div>
     `
+    ghost1=[14,13]
 }else if(difficulty=="normal"){
     starcount=8
     maininnerhtml2=`
@@ -87,14 +338,19 @@ if(difficulty=="easy"){
         <div class="ghost ghost2" id="ghost2" style="width: 20px;height: 20px;top: 355px;left: 380px;"></div>
         <div class="player" id="player" style="width: 20px;height: 20px;"></div>
     `
+    ghost1=[14,11]
+    ghost2=[14,15]
 }else{
     starcount=6
     maininnerhtml2=`
-        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 355px;left: 330px;"></div>
-        <div class="ghost ghost2" id="ghost2" style="width: 20px;height: 20px;top: 355px;left: 380px;"></div>
-        <div class="ghost ghost3" id="ghost3" style="width: 20px;height: 20px;top: 355px;left: 285px;"></div>
+        <div class="ghost ghost1" id="ghost1" style="width: 20px;height: 20px;top: 355px;left: 285px;"></div>
+        <div class="ghost ghost2" id="ghost2" style="width: 20px;height: 20px;top: 355px;left: 330px;"></div>
+        <div class="ghost ghost3" id="ghost3" style="width: 20px;height: 20px;top: 355px;left: 380px;"></div>
         <div class="player" id="player" style="width: 20px;height: 20px;"></div>
     `
+    ghost1=[14,11]
+    ghost2=[14,13]
+    ghost3=[14,15]
 }
 
 docgetid("difficulty").innerHTML=difficulty // 拿到難易度並顯示
@@ -157,7 +413,7 @@ newajax("GET","map.txt").onload=function(){
                     ${maininnerhtml}
                     <div class="door"></div>
                 `
-                mainarray[i].push(4)
+                mainarray[i].push(0)
             }else{ console.log("error") }
         }
         maininnerhtml=`
@@ -172,17 +428,6 @@ newajax("GET","map.txt").onload=function(){
             </div>
         </div>
     `
-
-    if(difficulty=="easy"){
-        mainarray[14][13]=6
-    }else if(difficulty=="normal"){
-        mainarray[14][11]=6
-        mainarray[14][15]=7
-    }else{
-        mainarray[14][13]=6
-        mainarray[14][15]=7
-        mainarray[14][11]=8
-    }
 
     // 玩家定位
     let f=parseInt(Math.random()*25)+1
@@ -201,60 +446,13 @@ newajax("GET","map.txt").onload=function(){
     docgetid("player").style.left=(s*25+5)+"px"
     player=[[f,s],mainarray[f][s]]
     
-    docgetall(".ghost").forEach(function(event){
-    })
-
-    document.onkeydown=function(event){
-        if(event.key=="ArrowUp"){
-            up()
-            if(!click){
-                setTimeout(function(){
-                    click=true
-                },250)
-            }
-        }else if(event.key=="ArrowDown"){
-            down()
-            if(!click){
-                setTimeout(function(){
-                    click=true
-                },250)
-            }
-        }else if(event.key=="ArrowLeft"){
-            left()
-            if(!click){
-                setTimeout(function(){
-                    click=true
-                },250)
-            }
-        }else if(event.key=="ArrowRight"){
-            right()
-            if(!click){
-                setTimeout(function(){
-                    click=true
-                },250)
-            }
-        }else if(event.key=="p"){
-            stopstart()
-        }
-    }
-
-    document.onkeyup=function(event){
-        if(event.key=="ArrowUp"){
-            click=false
-        }else if(event.key=="ArrowDown"){
-            click=false
-        }else if(event.key=="ArrowLeft"){
-            click=false
-        }else if(event.key=="ArrowRight"){
-            click=false
-        }else if(event.key=="p"){
-            click=false
-        }
-    }
-
     docgetid("pausecontinue").onclick=function(){ stopstart() }
 
+    pacmankeydonwn()
     timestart()
+    setTimeout(function(){
+        // ghostrun()
+    },3000)
 }
 
 docgetid("statisticaldata").onclick=function(){

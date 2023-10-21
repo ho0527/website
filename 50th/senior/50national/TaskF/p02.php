@@ -3,20 +3,20 @@
 
     echo ("p02\n");
 
-    // 读取输入
-    $m = trim(fgets(STDIN));
-    $materials = []; // 面向列表
-    $rawMaterials = []; // 原料列表
-    for ($i = 0; $i < $m; $i = $i + 1) {
-        $materials[] = trim(fgets(STDIN));
+    $materialcount=trim(fgets(STDIN));
+    $materiallist=[];
+    $datalist=[];
+    $anslist=[];
+    for($i=0;$i<$materialcount;$i=$i+1){
+        $materiallist[]=trim(fgets(STDIN));
     }
 
-    $n = trim(fgets(STDIN)); // 原料的数量
-    for ($i = 0; $i < $n; $i = $i + 1) {
-        $rawMaterials[] = trim(fgets(STDIN));
+    $datacount=trim(fgets(STDIN));
+    for($i=0;$i<$datacount;$i=$i+1){
+        $data=explode(" ",trim(fgets(STDIN)));
+        $datalist[$data[0]]=[$data[1],$data[2]];
     }
 
-    // 构建原料数组
     $materialsArr = [];
     $materialIndex = 0;
     for ($i = 0; $i < $n; $i++) {

@@ -217,32 +217,35 @@
     }
 
     .testimonialsubtitle{
-        grid-column: 1/45;
+        grid-column: 1/50;
         grid-row: 1/5;
-        font-size: 40px;
+        font-size: 30px;
         font-weight: bold;
         border-left: 5px rgb(255, 196, 0) solid;
         padding: 10px;
+        display: flex;
+        align-items: center;
     }
 
     .testimonialdescription{
-        grid-column: 1/45;
+        grid-column: 1/50;
         grid-row: 6/17;
         font-size: 20px;
         text-align: justify;
     }
 
     .testimonialimagediv1{
-        grid-column: 45/100;
+        grid-column: 50/100;
         grid-row: 1/9;
     }
 
     .testimonialimagediv2{
-        grid-column: 45/100;
+        grid-column: 50/100;
         grid-row: 9/18;
     }
 
     .testimonialpictureimage{
+        max-width: 100%;
         max-height: 350px;
     }
 
@@ -292,7 +295,7 @@
     }
 
     .contactaddress{
-        font-size: 15px;
+        font-size: 10px;
         text-align: justify;
     }
 

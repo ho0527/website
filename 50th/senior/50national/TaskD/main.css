@@ -438,7 +438,7 @@ table{
 
 .main{
     width: 70vw;
-    height: 870px;
+    height: max(870px, 85vh);
     top: 50%;
     padding: 5px;
 }
@@ -552,11 +552,11 @@ table{
 }
 
 .app{
-    /* border: 1px white solid; */
     position: relative;
-    top: 5px;
+    top: 2%;
     width: 100%;
     height: 800px;
+    overflow: hidden;
 }
 
 .row{
