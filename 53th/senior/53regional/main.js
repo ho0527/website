@@ -140,7 +140,7 @@ if(weblsget("53regionalpermission")=="管理者"){
     docgetid("navigationbarbuttondiv").innerHTML=`
         <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='main.html'" value="首頁">
         <input type="button" class="navigationbarbutton" onclick="location.href='productindex.html'" value="上架商品">
-        <input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="會員管理">
+        <input type="button" class="navigationbarbutton" onclick="location.href='admin.html'" value="會員管理">
         <input type="button" class="navigationbarbutton" id="logout" value="登出">
     `
 }else{
