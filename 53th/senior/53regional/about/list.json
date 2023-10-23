@@ -540,7 +540,7 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(no duplicate): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"使用者以存在\"<br>}, 400_BAD_REQUEST",
+                                    "description": "response body(username duplicate): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"使用者以存在\"<br>}, 400_BAD_REQUEST",
                                     "statu": "SUCCESS"
                                 },
                                 {
