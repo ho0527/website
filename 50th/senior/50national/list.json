@@ -60,41 +60,41 @@
                     "updatedate": "2023/07/18",
                     "data": [
                         {
-                                "list": "task",
-                                "description": "ALGORITHM",
-                                "statu": "FAILED",
-                                "data": [
-                                    {
-                                        "no" : "01",
-                                        "description": "<a href='TaskF/p01.php' download='p01.php' class='a'>Luhn演算法</a>",
-                                        "statu": "SUCCESS",
-                                        "data": []
-                                    },
-                                    {
-                                        "no" : "02",
-                                        "description": "<a href='TaskF/p02.php' download='p02.php' class='a'>資料陣列迴圈輸出</a>",
-                                        "statu": "FAILED",
-                                        "data": []
-                                    },
-                                    {
-                                        "no" : "03",
-                                        "description": "<a href='TaskF/p03.php' download='p03.php' class='a'>路徑製作</a>",
-                                        "statu": "FAILED",
-                                        "data": []
-                                    },
-                                    {
-                                        "no" : "04",
-                                        "description": "<a href='TaskF/p04.php' download='p04.php' class='a'>括號判別</a>",
-                                        "statu": "SUCCESS",
-                                        "data": []
-                                    },
-                                    {
-                                        "no" : "05",
-                                        "description": "<a href='TaskF/p05.php' download='p05.php' class='a'>矩陣相乘</a>",
-                                        "statu": "SUCCESS",
-                                        "data": []
-                                    }
-                                ]
+                            "list": "task",
+                            "description": "ALGORITHM",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "<a href='TaskF/p01.php' download='p01.php' class='a'>Luhn演算法</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "<a href='TaskF/p02.php' download='p02.php' class='a'>資料陣列輸出</a>",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "<a href='TaskF/p03.php' download='p03.php' class='a'>路徑製作</a>",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "<a href='TaskF/p04.php' download='p04.php' class='a'>括號判別</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "<a href='TaskF/p05.php' download='p05.php' class='a'>矩陣相乘</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                }
+                            ]
                         }
                     ]
                 }

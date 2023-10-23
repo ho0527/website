@@ -100,7 +100,7 @@ function pacmankeydonwn(){
                     click=true
                 },250)
             }
-        }else if(event.key=="p"){
+        }else if(event.key=="p"||event.key=="P"){
             stopstart()
         }
     }
@@ -297,7 +297,7 @@ function stopstart(){
         clearInterval(timer)
         docgetid("pausecontinue").innerHTML="繼續"
         document.onkeydown=function(event){
-            if(event.key=="p"){
+            if(event.key=="p"||event.key=="P"){
                 stopstart()
             }else if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
                 event.preventDefault()

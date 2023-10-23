@@ -637,7 +637,7 @@
                                 {
                                     "no": "04",
                                     "description": "Developer can see “my games” list",
-                                    "statu": "SUCCESSs",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -769,7 +769,7 @@
                                 {
                                     "no": "10",
                                     "description": "In infinite scroll, there are no pages, but scrolling triggers loading of more games.",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -781,17 +781,17 @@
                                 {
                                     "no": "12",
                                     "description": "If the user scrolls towards the end of the loaded games, more games are loaded.",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "13",
                                     "description": "It never loads all games to save bandwidth. Loaded games are also rendered.",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "It only loads as many games that are needed to render enough items so the user does not see the end of the list.",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },
@@ -1083,7 +1083,7 @@
                                 {
                                     "no": "20",
                                     "description": "Layout for desktop has no full page horizontal scroll bar Intentional components horizontal scrollbar is fine. Full page broken with scrollbar is not fine",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -1095,49 +1095,48 @@
                                 {
                                     "no": "22",
                                     "description": "In the features section, can toggle features by clicking on the feature title",
-                                    "statu": "FAILED",
-                                    "data": []
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "As described in Test Project, there are 4 features, click on each should show one and only one image, which is the image of the selected feature. The tabs should work even when JavaScript is disabled.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
                                 },
                                 {
                                     "no": "23",
-                                    "description": "As described in Test Project, there are 4 features, click on each should show one and only one image, which is the image of the selected feature. The tabs should work even when JavaScript is disabled.",
-                                    "statu": "FAILED",
+                                    "description": "Create easy to maintain HTML code",
+                                    "statu": "subjective",
                                     "data": []
                                 },
                                 {
                                     "no": "24",
-                                    "description": "Create easy to maintain HTML code",
-                                    "statu": "subjectuve",
+                                    "description": "Create easy to maintain CSS code",
+                                    "statu": "subjective",
                                     "data": []
                                 },
                                 {
                                     "no": "25",
-                                    "description": "Create easy to maintain CSS code",
-                                    "statu": "subjectuve",
+                                    "description": "The images chosen for features presenting can enhance the understanding of the game platform and features",
+                                    "statu": "subjective",
                                     "data": []
                                 },
                                 {
                                     "no": "26",
-                                    "description": "The images chosen for features presenting can enhance the understanding of the game platform and features",
-                                    "statu": "subjectuve",
+                                    "description": "Use adapted elements for different screen resolutions or different devices",
+                                    "statu": "subjective",
                                     "data": []
                                 },
                                 {
                                     "no": "27",
-                                    "description": "Use adapted elements for different screen resolutions or different devices",
-                                    "statu": "subjectuve",
+                                    "description": "Ecosystem roadmap image is created based on the draft image, and integrate well into the page",
+                                    "statu": "subjective",
                                     "data": []
                                 },
                                 {
                                     "no": "28",
-                                    "description": "Ecosystem roadmap image is created based on the draft image, and integrate well into the page",
-                                    "statu": "subjectuve",
-                                    "data": []
-                                },
-                                {
-                                    "no": "29",
                                     "description": "The roadmap present the bright future of vision from the company in a confident way",
-                                    "statu": "subjectuve",
+                                    "statu": "subjective",
                                     "data": []
                                 }
                             ]

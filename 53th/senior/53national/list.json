@@ -312,7 +312,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "no": 1,
+                                    "no": "01",
                                     "description": "有設定新專案的畫布的視窗。該視窗內所需包含的內容有：",
                                     "statu": "SUCCESS",
                                     "data": [
@@ -323,7 +323,7 @@
                                     ]
                                 },
                                 {
-                                    "no": 2,
+                                    "no": "02",
                                     "description": "起始頁面可以讓使用者設定所需的畫布尺寸及背景顏色",
                                     "statu": "SUCCESS",
                                     "data": [
@@ -334,7 +334,7 @@
                                     ]
                                 },
                                 {
-                                    "no": 3,
+                                    "no": "03",
                                     "description": "預設值",
                                     "statu": "SUCCESS",
                                     "data": [
@@ -360,19 +360,19 @@
                             "statu": "FAILED",
                             "data": [
                                 {
-                                    "no": 4,
+                                    "no": "04",
                                     "description": "有'新增專案'按鈕，且當使用者按下按鈕後，會提示使用者是否離開編輯頁面。",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
-                                    "no": 5,
+                                    "no": "05",
                                     "description": "當使用者確認離開編輯頁面後，將回到「新增專案頁面」。",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
-                                    "no": 6,
+                                    "no": "06",
                                     "description": "選取物件功能正常運作",
                                     "statu": "SUCCESS",
                                     "data": [
@@ -383,7 +383,7 @@
                                     ]
                                 },
                                 {
-                                    "no": "7~10",
+                                    "no": "07",
                                     "description": "筆刷功能正常運作",
                                     "statu": "SUCCESS",
                                     "data": [
@@ -406,7 +406,7 @@
                                     ]
                                 },
                                 {
-                                    "no": "11~13",
+                                    "no": "08",
                                     "description": "油漆桶能正常運作",
                                     "statu": "FAILED",
                                     "data": [
@@ -425,7 +425,7 @@
                                     ]
                                 },
                                 {
-                                    "no": "14~15",
+                                    "no": "09",
                                     "description": "調色盤能正常運作",
                                     "statu": "SUCCESS",
                                     "data": [
@@ -440,7 +440,7 @@
                                     ]
                                 },
                                 {
-                                    "no": "16~18",
+                                    "no": "10",
                                     "description": "樣章能正常運作：",
                                     "statu": "SUCCESS",
                                     "data": [
@@ -459,25 +459,25 @@
                                     ]
                                 },
                                 {
-                                    "no": 19,
+                                    "no": "11",
                                     "description": "可以透過復原按鈕來復原上一步的動作。",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
-                                    "no": 20,
+                                    "no": "12",
                                     "description": "可以透過重做按鈕來重做下一步的動作。",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
-                                    "no": 21,
+                                    "no": "13",
                                     "description": "使用者可以透過'上傳圖片'按鈕來上傳圖片，上傳後的圖片會直接視為新圖層。",
                                     "statu": "FAILED",
                                     "data": []
                                 },
                                 {
-                                    "no": "22~28",
+                                    "no": "14",
                                     "description": "圖層物件列表功能正常：",
                                     "statu": "FAILED",
                                     "data": [
@@ -519,7 +519,7 @@
                             "statu": "FAILED",
                             "data": [
                                 {
-                                    "no": 29,
+                                    "no": "15",
                                     "description": "按下'儲存圖片'按鈕後，能將在所有圖層合併後的結果存成圖片檔(jpg)",
                                     "statu": "FAILED",
                                     "data": [
@@ -530,7 +530,7 @@
                                     ]
                                 },
                                 {
-                                    "no": 30,
+                                    "no": "16",
                                     "description": "能儲存成可編輯檔，並且可以透過'開啟專案'按鈕匯入以下功能：",
                                     "statu": "FAILED",
                                     "data": [
@@ -545,13 +545,13 @@
                                     ]
                                 },
                                 {
-                                    "no": 32,
+                                    "no": "17",
                                     "description": "頁面設計適當留白，使設計更為簡潔。",
                                     "statu": "subjective",
                                     "data": []
                                 },
                                 {
-                                    "no": 33,
+                                    "no": "18",
                                     "description": "頁面設計具有良好的使用者體驗且互動效果良好。",
                                     "statu": "subjective",
                                     "data": []
@@ -584,7 +584,87 @@
                     "ps": "list",
                     "createdate": "2023/05/18",
                     "updatedate": "2023/08/22",
-                    "data": []
+                    "data": [
+                        {
+                            "list": "task",
+                            "description": "ALGORITHM",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "<a href='TaskE/p01.php' download='p01.php' class='a'>Luhn演算法</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "<a href='TaskE/p02.php' download='p02.php' class='a'>資料陣列輸出</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "<a href='TaskE/p03.php' download='p03.php' class='a'>路徑製作</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "<a href='TaskE/p04.php' download='p04.php' class='a'>括號判別</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "<a href='TaskE/p05.php' download='p05.php' class='a'>矩陣相乘</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "<a href='TaskE/p06.php' download='p06.php' class='a'>資料陣列輸出</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "<a href='TaskE/p07.php' download='p07.php' class='a'>路徑製作</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "AN01",
+                                    "description": "<a href='TaskE/AN-p01.php' download='AN-p01.php' class='a'>括號判別</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "AN02",
+                                    "description": "<a href='TaskE/AN-p02.php' download='AN-p02.php' class='a'>括號判別</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "AN04",
+                                    "description": "<a href='TaskE/AN-p04.php' download='AN-p04.php' class='a'>括號判別</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "AN05",
+                                    "description": "<a href='TaskE/AN-p05.php' download='AN-p05.php' class='a'>括號判別</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "AN06",
+                                    "description": "<a href='TaskE/AN-p10.php' download='AN-p10.php' class='a'>括號判別</a>",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
