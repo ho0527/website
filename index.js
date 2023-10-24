@@ -136,4 +136,28 @@ ajax.onload=function(){
 ajax.open("GET","list.json")
 ajax.send()
 
+
+
+// 萬聖節特別的東東
+document.onpointermove=function(event){
+    document.getElementById("ghost").style.left=(event.pageX+2+10)+"px"
+    document.getElementById("ghost").style.top=(event.pageY+2+10)+"px"
+    document.getElementById("dot").style.left=(event.pageX+2)+"px"
+    document.getElementById("dot").style.top=(event.pageY+2)+"px"
+}
+
+docgetall("body")[0].innerHTML=`
+    ${docgetall("body")[0].innerHTML}
+    <div class="dot" id="dot"></div>
+    <div class="ghost" id="ghost">
+        <div class="body"></div>
+        <div class="eye1"></div>
+        <div class="eye2"></div>
+        <div class="mouth"></div>
+        <div class="foot1"></div>
+        <div class="foot2"></div>
+        <div class="foot3"></div>
+    </div>
+`
+
 startmacossection()

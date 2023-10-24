@@ -713,15 +713,15 @@
                                 {
                                     "no": "03",
                                     "description": "List sort options",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "Popularity, recently updated, title.",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         },
                                         {
                                             "description": "Ascending and descending.",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },
@@ -763,7 +763,7 @@
                                 {
                                     "no": "09",
                                     "description": "The current page is reflected in the URL. A page refresh shows the list on the same sort settings.",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -775,7 +775,7 @@
                                 {
                                     "no": "11",
                                     "description": "An initial number of games are loaded so they overflow the user's screen.",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -813,11 +813,11 @@
                                 {
                                     "no": "15",
                                     "description": "Required information is shown per authored game",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "game title, description, thumbnail, number of submitted scores, and not the authored user.",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },

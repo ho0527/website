@@ -301,8 +301,8 @@ function regexpmatch(regexptext,data){
     return regexptext.exec(data)
 }
 
-function regexpreplace(data,replacetext,regexptext,regexpstring=""){
-    return data.replace(new RegExp.replace(regexptext,regexpstring),replacetext)
+function regexpreplace(data,regexpstring,replacetext){
+    return data.replace(regexpstring,replacetext)
 }
 
 function formdata(data=[]){
