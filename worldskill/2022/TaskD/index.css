@@ -338,7 +338,7 @@ table{
 
 .maindiv{
     position: relative;
-    top: 180px;
+    top: 220px;
 }
 
 .game{
@@ -464,4 +464,63 @@ table{
     margin: 30px 0px;
     word-break: normal;
     word-wrap: break-word;
+}
+
+.gamediv{
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translate(-50%,-0%);
+}
+
+.gamemaindiv{
+    width: 70vw;
+    height: 50vh;
+    background: yellow;
+}
+
+.gameleaderboard{
+    width: 30vw;
+    height: 35vh;
+    position: relative;
+    top: 20px;
+    display: inline-block;
+}
+
+.gamedescription{
+    width: 35vw;
+    height: 35vh;
+    position: relative;
+    top: 20px;
+    margin: 0px 0px 0px calc(5vw - 10px);
+    display: inline-block;
+}
+
+.title2{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.indexfunctionbuttondiv{
+    margin: 0px 10px;
+    display: inline-block;
+}
+
+.bluebuttonselect{
+	box-shadow: none;
+    background: rgb(143, 140, 248);
+    color: black;
+	border-radius: 5px;
+	border: 1px solid #0b0e07;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
+    margin: 5px 0px;
+	padding: 10px 20px;
+	text-decoration: none;
+	text-shadow: none;
 }
