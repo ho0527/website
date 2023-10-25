@@ -4,6 +4,7 @@ let stationlist
 let maxpage
 
 function main(row){
+    console.log(row)
     docgetid("table").innerHTML=`
         <tr>
             <td class="td">訂票編號</td>
@@ -28,7 +29,7 @@ function main(row){
                 <td class="td">${row[i]["code"]}</td>
                 <td class="td">${row[i]["createdate"]}</td>
                 <td class="td">${row[i]["arrivetime"]}</td>
-                <td class="td">${row[i]["code"]}</td>
+                <td class="td">${row[i]["traincode"]}</td>
                 <td class="td">${row[i]["startstation"]}</td>
                 <td class="td">${row[i]["endstation"]}</td>
                 <td class="td">${row[i]["count"]}</td>
@@ -51,7 +52,7 @@ setTimeout(function(){
     newajax("GET","/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["data"]["maxtotal"]/3)+1
+            maxpage=Math.ceil(data["data"]["maxtotal"]/3)
             main(data["data"]["data"])
         }
     }
@@ -68,7 +69,7 @@ docgetid("submit").onclick=function(){
     newajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
-            maxpage=parseInt(data["data"]["maxtotal"]/3)+1
+            maxpage=Math.ceil(data["data"]["maxtotal"]/3)
             main(data["data"]["data"])
         }
     }
@@ -102,7 +103,7 @@ docgetid("next").onclick=function(){
     if(weblsget("46nationalmoduledpage")<maxpage){
         weblsset("46nationalmoduledpage",parseInt(weblsget("46nationalmoduledpage"))+1)
 
-        let url="api/searchticket.php?get=&page="+weblsget("46nationalmoduledpage")
+        let url="/backend/46nationalmoduled/searchticket?get=&page="+weblsget("46nationalmoduledpage")
         if(docgetid("phone").value!=""){
             url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=phone&value="+docgetid("phone").value
         }else if(docgetid("code").value!=""){
