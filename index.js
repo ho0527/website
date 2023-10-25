@@ -148,7 +148,7 @@ document.onpointermove=function(event){
 
 docgetall("body")[0].innerHTML=`
     ${docgetall("body")[0].innerHTML}
-    <div class="dot" id="dot"></div>
+    <div class="ghostdot" id="dot"></div>
     <div class="ghost" id="ghost">
         <div class="body"></div>
         <div class="eye1"></div>
