@@ -9,6 +9,9 @@ let sec=0
 let click=false
 let blockwh=25 // 一格的長寬
 let mid=5
+let life=3
+let canhit=true
+let timestop=false
 let timer // 計時器
 let ghostinterval
 let playerinterval
@@ -17,6 +20,7 @@ let player // [[x,y],目前方塊狀態]
 let ghost1=[]
 let ghost2=[]
 let ghost3=[]
+let doorlist=[]
 
 /*
 mainarray 內容:
@@ -28,7 +32,7 @@ mainarray 內容:
 5=player
 6=鬼1
 7?=鬼2
-8?=鬼3
+8?=鬼
 */
 
 function check(type){
@@ -47,6 +51,44 @@ function check(type){
         docgetid("score").innerHTML=`
             ${score}
         `
+        if((player[0].toString()==ghost1.toString()||player[0].toString()==ghost2.toString()||player[0].toString()==ghost3.toString())&&canhit){
+            let playercooldown
+
+            life=life-1
+            docgetid("life").innerHTML=`
+                ${life}
+            `
+
+            canhit=false
+            docgetid("player").style.opacity=0
+            setTimeout(function(){
+                docgetid("player").style.opacity=1
+            },500)
+            playercooldown=setInterval(function(){
+                docgetid("player").style.opacity=0
+                setTimeout(function(){
+                    docgetid("player").style.opacity=1
+                },500)
+            },1000)
+            clearInterval(timer)
+            document.onkeydown=function(event){
+                if(event.key=="p"||event.key=="P"){
+                    stopstart()
+                }else if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
+                    event.preventDefault()
+                }
+            }
+            timestop=true
+            setTimeout(function(){
+                timestart()
+                pacmankeydonwn()
+                clearInterval(playercooldown)
+                timestop=false
+                setTimeout(function(){
+                    canhit=true
+                },1000)
+            },3000)
+        }
     }else{
         console.log("還沒做啦啦啦啦啦")
     }
@@ -119,49 +161,12 @@ function pacmankeydonwn(){
     }
 }
 
-function checknotblockghost(testarray){
-    if(testarray!=ghost1&&testarray!=ghost2&&testarray!=ghost3){
+function checkghostnotblock(testarray){    
+    if(testarray.toString()!=ghost1.toString()&&testarray.toString()!=ghost2.toString()&&testarray.toString()!=ghost3.toString()){
         return true
     }else{
         return false
     }
-}
-
-function updateghost(type,name,array){
-    if(type=="up"){
-        if(name=="ghost1"){
-            ghost1=[array[0]-1,array[1]]
-        }else if(name=="ghost2"){
-            ghost2=[array[0]-1,array[1]]
-        }else{
-            ghost3=[array[0]-1,array[1]]
-        }
-    }else if(type=="down"){
-        if(name=="ghost1"){
-            ghost1=[array[0]+1,array[1]]
-        }else if(name=="ghost2"){
-            ghost2=[array[0]+1,array[1]]
-        }else{
-            ghost3=[array[0]+1,array[1]]
-        }
-    }else if(type=="left"){
-        if(name=="ghost1"){
-            ghost1=[array[0],array[1]-1]
-        }else if(name=="ghost2"){
-            ghost2=[array[0],array[1]-1]
-        }else{
-            ghost3=[array[0],array[1]-1]
-        }
-    }else if(type=="right"){
-        if(name=="ghost1"){
-            ghost1=[array[0],array[1]+1]
-        }else if(name=="ghost2"){
-            ghost2=[array[0],array[1]+1]
-        }else{
-            ghost3=[array[0],array[1]+1]
-        }
-    }else{ conlog("[ERROR] function updateghost key error.","red") }
-    ghostrun()
 }
 
 function ghostrun(){
@@ -178,54 +183,96 @@ function ghostrun(){
 }
 
 function ghostmove(name,array){
-    let type=parseInt(Math.random()*4) // 會有上(0)下(1)左(2)右(3)4種方式
-    console.log(name)
-    console.log(array)
-    if(type==0){
-        if(mainarray[array[0]-1][array[1]]!=0&&checknotblockghost([array[0]-1,array[1]])){
-            for(let i=0;i<blockwh;i=i+1){
-                setTimeout(function(){
-                    docgetid(name).style.top=((array[0]*25+mid)-i)+"px"
-                },500/blockwh)
+    if(!timestop){
+        let type=parseInt(Math.random()*4) // 會有上(0)下(1)左(2)右(3)4種方式
+        if(type==0){
+            if(mainarray[array[0]-1][array[1]]!=0&&checkghostnotblock([array[0]-1,array[1]])){
+                for(let i=0;i<blockwh;i=i+1){
+                    setTimeout(function(){
+                        docgetid(name).style.top=((array[0]*25+mid)-i)+"px"
+                    },500/blockwh)
+                }
+                if(name=="ghost1"){
+                    ghost1=[array[0]-1,array[1]]
+                }else if(name=="ghost2"){
+                    ghost2=[array[0]-1,array[1]]
+                }else{
+                    ghost3=[array[0]-1,array[1]]
+                }
+            }else{ ghostmove(name,array) } // 再用一次
+        }else if(type==1){
+            if(mainarray[array[0]+1][array[1]]!=0&&checkghostnotblock([array[0]+1,array[1]])){
+                for(let i=0;i<blockwh;i=i+1){
+                    setTimeout(function(){
+                        docgetid(name).style.top=((array[0]*25+mid)+i)+"px"
+                    },500/blockwh)
+                }
+                if(name=="ghost1"){
+                    ghost1=[array[0]+1,array[1]]
+                }else if(name=="ghost2"){
+                    ghost2=[array[0]+1,array[1]]
+                }else{
+                    ghost3=[array[0]+1,array[1]]
+                }
+            }else{ ghostmove(name,array) }
+        }else if(type==2){
+            if(mainarray[array[0]][array[1]-1]!=0&&checkghostnotblock([array[0],array[1]-1])){
+                for(let i=0;i<blockwh;i=i+1){
+                    setTimeout(function(){
+                        docgetid(name).style.left=((array[1]*25+mid)-i)+"px"
+                    },500/blockwh)
+                }
+                if(name=="ghost1"){
+                    ghost1=[array[0],array[1]-1]
+                }else if(name=="ghost2"){
+                    ghost2=[array[0],array[1]-1]
+                }else{
+                    ghost3=[array[0],array[1]-1]
+                }
+            }else{
+                // if(isset(mainarray[array[0]][26])){
+                //     docgetid(name).style.left=((27*25+5)-25)+"px"
+                //     if(name=="ghost1"){
+                //         ghost1=[array[0],26]
+                //     }else if(name=="ghost2"){
+                //         ghost2=[array[0],26]
+                //     }else{
+                //         ghost3=[array[0],26]
+                //     }
+                // }else{
+                    ghostmove(name,array)
+                // }
             }
-            setTimeout(function(){
-                updateghost("up",name,array)
-            },200)
-        }else{ ghostmove(name,array) } // 再用一次
-    }else if(type==1){
-        if(mainarray[array[0]+1][array[1]]!=0&&checknotblockghost([array[0]+1,array[1]])){
-            for(let i=0;i<blockwh;i=i+1){
-                setTimeout(function(){
-                    docgetid(name).style.top=((array[0]*25+mid)+i)+"px"
-                },500/blockwh)
+        }else if(type==3){
+            if(mainarray[array[0]][array[1]+1]!=0&&checkghostnotblock([array[0],array[1]+1])){
+                for(let i=0;i<blockwh;i=i+1){
+                    setTimeout(function(){
+                        docgetid(name).style.left=((array[1]*25+mid)+i)+"px"
+                    },500/blockwh)
+                }
+                if(name=="ghost1"){
+                    ghost1=[array[0],array[1]+1]
+                }else if(name=="ghost2"){
+                    ghost2=[array[0],array[1]+1]
+                }else{
+                    ghost3=[array[0],array[1]+1]
+                }
+            }else{
+                // if(isset(mainarray[array[0]][0])){
+                //     docgetid(name).style.left=((-1*25+5)+25)+"px"
+                //     if(name=="ghost1"){
+                //         ghost1=[array[0],0]
+                //     }else if(name=="ghost2"){
+                //         ghost2=[array[0],0]
+                //     }else{
+                //         ghost3=[array[0],0]
+                //     }
+                // }else{
+                    ghostmove(name,array)
+                // }
             }
-            setTimeout(function(){
-                updateghost("down",name,array)
-            },200)
-        }else{ ghostmove(name,array) }
-    }else if(type==2){
-        if(mainarray[array[0]][array[1]-1]!=0&&checknotblockghost([array[0],array[1]-1])){
-            for(let i=0;i<blockwh;i=i+1){
-                setTimeout(function(){
-                    docgetid(name).style.left=((array[1]*25+mid)-i)+"px"
-                },500/blockwh)
-            }
-            setTimeout(function(){
-                updateghost("left",name,array)
-            },200)
-        }else{ ghostmove(name,array) }
-    }else if(type==3){
-        if(mainarray[array[0]][array[1]+1]!=0&&checknotblockghost([array[0],array[1]+1])){
-            for(let i=0;i<blockwh;i=i+1){
-                setTimeout(function(){
-                    docgetid(name).style.left=((array[1]*25+mid)+i)+"px"
-                },500/blockwh)
-            }
-            setTimeout(function(){
-                updateghost("right",name,array)
-            },200)
-        }else{ ghostmove(name,array) }
-    }else{ console.log("type error") }
+        }else{ console.log("type error") }
+    }
 }
 
 // 玩家移動
@@ -303,10 +350,12 @@ function stopstart(){
                 event.preventDefault()
             }
         }
+        timestop=true
     }else{
         timestart()
         docgetid("pausecontinue").innerHTML="暫停"
         pacmankeydonwn()
+        timestop=false
     }
 }
 
@@ -317,6 +366,14 @@ function timestart(){
         if(sec>=60){
             sec=0
             min=min+1
+        }
+        if(sec==3&&min==0){
+            docgetall(".door").forEach(function(event){
+                event.style.backgroundColor="black"
+            })
+            for(let i=0;i<doorlist.length;i=i+1){
+                mainarray[doorlist[i][0]][doorlist[i][1]]=4
+            }
         }
         docgetid("timer").innerHTML=`
             ${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}
@@ -413,6 +470,7 @@ newajax("GET","map.txt").onload=function(){
                     ${maininnerhtml}
                     <div class="door"></div>
                 `
+                doorlist.push([i,j])
                 mainarray[i].push(0)
             }else{ console.log("error") }
         }
@@ -450,9 +508,8 @@ newajax("GET","map.txt").onload=function(){
 
     pacmankeydonwn()
     timestart()
-    setTimeout(function(){
-        // ghostrun()
-    },3000)
+    ghostrun()
+    setInterval(ghostrun,500)
 }
 
 docgetid("statisticaldata").onclick=function(){
