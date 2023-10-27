@@ -55,9 +55,22 @@ function check(type){
             let playercooldown
 
             life=life-1
+
             docgetid("life").innerHTML=`
                 ${life}
             `
+
+            if(life<=0){
+                clearInterval(timer)
+                timestop=true
+                newajax("POST","register.php",JSON.stringify({
+                    "adddata": true,
+                    "time": min*60+sec,
+                    "name": username,
+                    "score": score
+                }))
+                return
+            }
 
             canhit=false
             docgetid("player").style.opacity=0

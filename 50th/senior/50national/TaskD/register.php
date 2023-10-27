@@ -1,18 +1,17 @@
 <?php
-
+    include("link.php");
     if(isset($_GET["submit"])){
         echo(json_encode([
             "success"=> true,
         ]));
     }else{
-        include("link.php");
         $data=json_decode(file_get_contents("php://input"),true); // 拿到分數等等的資料
         /*
             架構為:
             ["時間","分數","名稱"]
         */
     
-        query($db,"INSERT INTO `log`(`name`,`score`,`playtime`,`starttime`)VALUES(?,?,?,?)",[$data[0],$data[1],$data[2],$time]); // 先將資料放入log
+        query($db,"INSERT INTO `log`(`name`,`score`,`playtime`,`starttime`)VALUES(?,?,?,?)",[$data["name"],$data["score"],$data["time"],$time]); // 先將資料放入log
         $row=query($db,"SELECT*FROM `rank`"); // 比對排行榜
         $check=-1;
         $id="";
