@@ -193,7 +193,6 @@ function newajax(method,url,send=null,header=["Content-type","multipart/form-dat
         ajax.setRequestHeader(header[i][0],header[i][1])
     }
     ajax.send(send)
-
     return ajax
 }
 
