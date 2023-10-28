@@ -25,8 +25,8 @@ document.getElementById("hard").onclick=function(){
 
 // 開始遊戲
 document.getElementById("startgame").onclick=function(){
-    localStorage.setItem("difficulty",difficulty) // 上傳資料
-    localStorage.setItem("name",document.getElementById("username").value) // 上傳資料
+    localStorage.setItem("50nationalmoduleddifficulty",difficulty) // 上傳資料
+    localStorage.setItem("50nationalmoduledname",document.getElementById("username").value) // 上傳資料
     location.href="main.html" // 導向
 }
 

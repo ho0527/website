@@ -479,21 +479,33 @@ table{
     background: yellow;
 }
 
-.gameleaderboard{
+.gameleaderboarddiv{
     width: 30vw;
     height: 35vh;
     position: relative;
-    top: 20px;
+    top: -10px;
     display: inline-block;
 }
 
-.gamedescription{
+.gamedescriptiondiv{
     width: 35vw;
     height: 35vh;
     position: relative;
     top: 20px;
     margin: 0px 0px 0px calc(5vw - 10px);
     display: inline-block;
+}
+
+.gameleaderboard{
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.gamedescription{
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: left;
 }
 
 .title2{
@@ -523,4 +535,25 @@ table{
 	padding: 10px 20px;
 	text-decoration: none;
 	text-shadow: none;
+}
+
+.gamenotd{
+    text-align: center;
+}
+
+.gameusernametd{
+    text-align: left;
+}
+
+.gamescoretd{
+    text-align: right;
+}
+
+.gametr{
+    font-size: 15px;
+}
+
+.highlightuser{
+    font-weight: bold;
+    font-size: 17px;
 }

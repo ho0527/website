@@ -1,7 +1,7 @@
 // 調整字體大小
 
-if(!isset(weblsget("fontsize"))){ weblsset("fontsize",25) } // 預設值
-let fontsize=parseInt(weblsget("fontsize"))
+if(!isset(weblsget("50nationalmoduledfontsize"))){ weblsset("50nationalmoduledfontsize",25) } // 預設值
+let fontsize=parseInt(weblsget("50nationalmoduledfontsize"))
 
 docgetid("main").style.fontSize=fontsize+"px" // 調整字體
 

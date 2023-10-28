@@ -52,23 +52,23 @@ function clearselectbutton(){
 }
 
 // show signin/signup || signout button
-if(isset(weblsget("token"))){
+if(isset(weblsget("worldskill2022MDtoken"))){
     docgetid("navigationbarright").innerHTML=`
-        <a href="profile.html" class="a navigationbara">${weblsget("username")} profile</a>
+        <a href="profile.html" class="a navigationbara">${weblsget("worldskill2022MDusername")} profile</a>
         <input type="button" class="navigationbarbutton" id="signout" value="Sign Out">
     `
 
     // logout
     docgetid("signout").onclick=function(){
         let ajax=newajax("POST","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/auth/signout",null,[
-            ["Authorization","Bearer "+weblsget("token")]
+            ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
         ])
         ajax.onload=function(){
             let data=JSON.parse(ajax.responseText)
             console.log(data)
             if(data["status"]=="success"){
-                weblsset("token",null)
-                weblsset("username",null)
+                weblsset("worldskill2022MDtoken",null)
+                weblsset("worldskill2022MDusername",null)
                 location.href="signout.html"
             }else{
                 alert(data["message"])

@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/10/24",
+            "updatedate": "2023/10/28",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -589,7 +589,7 @@
                     "statu": "FAILED",
                     "ps": "question",
                     "createdate": "2023/09/18",
-                    "updatedate": "2023/10/24",
+                    "updatedate": "2023/10/28",
                     "data": [
                         {
                             "list": 1,
@@ -861,28 +861,28 @@
                                 {
                                     "no": "02",
                                     "description": "The high score list is updated with 5 second polling interval",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "03",
                                     "description": "Player's score is interleaved into the highscores.",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "If the user is within the top ten, the current user score is part of the top 10 score",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         },
                                         {
                                             "description": "If the user highest score is not within the top ten, the score is appended to the end of the top 10 list, but shown without rank.",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },
                                 {
                                     "no": "04",
                                     "description": "Player's score is highlighted when within the top 10 list Any form of highlighting(such as bold, or colored).",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {

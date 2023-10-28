@@ -1,12 +1,12 @@
 docgetid("signout").onclick=function(){
     newajax("POST","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/auth/signout",null,[
-        ["Authorization","Bearer "+weblsget("token")]
+        ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
     ]).onload=function(){
         let data=JSON.parse(this.responseText)
         console.log(data)
         if(data["status"]=="success"){
-            weblsset("token",null)
-            weblsset("username",null)
+            weblsset("worldskill2022MDtoken",null)
+            weblsset("worldskill2022MDusername",null)
             location.href="signout.html"
         }else{
             alert(data["message"])
@@ -14,13 +14,13 @@ docgetid("signout").onclick=function(){
     }
 }
 
-newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/users/"+weblsget("username"),null,[
-    ["Authorization","Bearer "+weblsget("token")]
+newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/users/"+weblsget("worldskill2022MDusername"),null,[
+    ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
 ]).onload=function(){
     let data=JSON.parse(this.responseText)
     // navbar
     docgetid("navigationbartitle2").innerHTML=`
-        (User Profile: ${weblsget("username")})
+        (User Profile: ${weblsget("worldskill2022MDusername")})
     `
 
     // 製作的遊戲
@@ -28,9 +28,8 @@ newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_
         let data=JSON.parse(this.responseText)
         newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/games?size="+data["totalElements"]).onload=function(){
             let data=JSON.parse(this.responseText)
-            let maindata=[]
             for(let i=0;i<data["content"].length;i=i+1){
-                if(data["content"][i]["author"]==weblsget("username")){
+                if(data["content"][i]["author"]==weblsget("worldskill2022MDusername")){
                     let pictureurl="material/picture/default.jpg"
 
                     // 不會接image
@@ -70,9 +69,9 @@ newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_
 }
 
 docgetid("usernamelink").innerHTML=`
-    ${weblsget("username")} profile
+    ${weblsget("worldskill2022MDusername")} profile
 `
 
-if(!isset(weblsget("token"))){
+if(!isset(weblsget("worldskill2022MDtoken"))){
     location.href="signinsignup.html?key=signin"
 }

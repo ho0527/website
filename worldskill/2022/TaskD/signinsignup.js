@@ -6,7 +6,7 @@ if(key=="signin"){
     docgetid("navigationbartitle2").innerHTML=`(Sign Up)`
 }else{ alert("key error");location.href="index.html" }
 
-if(isset(weblsget("token"))){
+if(isset(weblsget("worldskill2022MDtoken"))){
     location.href="index.html"
 }
 
@@ -27,8 +27,8 @@ docgetid("submit").onclick=function(){
             docgetid("error").innerHTML=``
             if(data["status"]=="success"){
                 alert("Sign in successfully!")
-                weblsset("token",data["token"])
-                weblsset("username",docgetid("username").value)
+                weblsset("worldskill2022MDtoken",data["token"])
+                weblsset("worldskill2022MDusername",docgetid("username").value)
                 location.href="index.html"
             }else{
                 if(data["message"]=="Wrong username or password"){
@@ -69,8 +69,8 @@ docgetid("submit").onclick=function(){
             docgetid("error").innerHTML=``
             if(data["status"]!="invalid"){
                 alert("Sign up successfully!")
-                weblsset("token",data["token"])
-                weblsset("username",docgetid("username").value)
+                weblsset("worldskill2022MDtoken",data["token"])
+                weblsset("worldskill2022MDusername",docgetid("username").value)
                 location.href="index.html"
             }else{
                 if(data["message"]=="Request body is not valid."){

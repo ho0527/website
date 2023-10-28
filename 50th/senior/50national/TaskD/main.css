@@ -666,6 +666,33 @@ table{
     animation: 2s playeranimation infinite;
 }
 
+.rankdiv{
+    width: 75vw;
+    height: 50vh;
+}
+
+.td{
+    border-bottom: 1px white solid;
+    padding: 5px;
+}
+
+.longbutton{
+    width: 90%;
+}
+
+.tr:nth-child(even){
+    background: rgb(111, 111, 111);
+}
+
+.tr:nth-child(odd){
+    background: rgb(175, 175, 175);
+}
+
+.highlighttr{
+    background: yellow;
+    color: black;
+}
+
 @keyframes ghostanimation{
     0%{
         width: 20px;
