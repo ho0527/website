@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/04/23",
-            "updatedate": "2023/10/14",
+            "updatedate": "2023/10/29",
             "data": [
                 {
                     "title": "ModuleA-DESIGN",
@@ -41,7 +41,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
-                    "updatedate": "2023/10/14",
+                    "updatedate": "2023/10/29",
                     "data": [
                         {
                             "list": 1,
@@ -63,7 +63,7 @@
                                 {
                                     "no": 3,
                                     "description": "查詢車次的結果包含指定的資料 車種、列車編號、發車站、終點站、預計開車時間、預計到達時間、行駛時間、票價、訂票按鈕",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -185,15 +185,15 @@
                                 {
                                     "no": 21,
                                     "description": "可以使用車次查詢列車資訊，並對其網址進行SEO",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": [
                                         {
                                             "description": "呈現資訊包含行駛星期、本週日期、各車站的抵達/發車時間、訂票按鈕",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         },
                                         {
                                             "description": "網址使用網址重寫的方式",
-                                            "statu": "FAILED"
+                                            "statu": "SUCCESS"
                                         }
                                     ]
                                 },

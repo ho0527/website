@@ -2,40 +2,73 @@ let traincodelist
 let trainlist
 let traindata
 let trainid
-let code
+let traincode
+
+if(weblsget("46nationalmoduledtraincode")){
+    traincode=weblsget("46nationalmoduledtraincode")
+}
 
 newajax("GET","api.php?traincodelist=").onload=function(){ traincodelist=JSON.parse(this.responseText) }
 newajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){ trainlist=JSON.parse(this.responseText) }
 
 setTimeout(function(){
-    let traincode="<option value=\"na\">車次代碼</option>"
+    let traincodeinnerhtml="<option value=\"na\">車次代碼</option>"
     for(let i=0;i<traincodelist.length;i=i+1){
-        traincode=traincode+`<option value="${i}">${traincodelist[i]}</option>`
+        if(traincode&&traincodelist[i]==traincode){
+            traincode=i
+            traincodeinnerhtml=traincodeinnerhtml+`<option value="${i}" selected>${traincodelist[i]}</option>`
+        }else{
+            traincodeinnerhtml=traincodeinnerhtml+`<option value="${i}">${traincodelist[i]}</option>`
+        }
     }
 
-    docgetid("code").innerHTML=traincode
+    docgetid("traincode").innerHTML=`
+        ${traincodeinnerhtml}
+    `
 
-    docgetid("code").onchange=function(){
+    if(isset(traincode)){
+        let stopinnerhtml=""
+        let count=1
+
+        console.log(trainlist["data"])
+        trainid=trainlist["data"][0][traincode][0]
+
+        for(let i=0;i<trainlist["data"][1].length;i=i+1){
+            if(trainlist["data"][1][i][1]==trainid){
+                for(let j=0;j<trainlist["data"][2].length;j=j+1){
+                    if(trainlist["data"][2][j][0]==trainlist["data"][1][i][2]){
+                        stopinnerhtml=stopinnerhtml+"<option value=\""+trainlist["data"][2][j][0]+"\" data-id='"+j+"'>"+count+". "+trainlist["data"][2][j][2]+"</option>"
+                        count=count+1
+                    }
+                }
+            }
+        }
+
+        docgetid("start").innerHTML="<option value=\"na\">起程站</option>"+stopinnerhtml
+        docgetid("end").innerHTML="<option value=\"na\">終點站</option>"+stopinnerhtml
+    }
+
+    docgetid("traincode").onchange=function(){
         if(this.value!="na"){
-            let stopdata=""
+            let stopinnerhtml=""
             let count=1
-            code=this.value
+            traincode=this.value
 
-            trainid=trainlist["data"][0][code][0]
+            trainid=trainlist["data"][0][traincode][0]
 
             for(let i=0;i<trainlist["data"][1].length;i=i+1){
                 if(trainlist["data"][1][i][1]==trainid){
                     for(let j=0;j<trainlist["data"][2].length;j=j+1){
                         if(trainlist["data"][2][j][0]==trainlist["data"][1][i][2]){
-                            stopdata=stopdata+"<option value=\""+trainlist["data"][2][j][0]+"\" data-id='"+j+"'>"+count+". "+trainlist["data"][2][j][2]+"</option>"
+                            stopinnerhtml=stopinnerhtml+"<option value=\""+trainlist["data"][2][j][0]+"\" data-id='"+j+"'>"+count+". "+trainlist["data"][2][j][2]+"</option>"
                             count=count+1
                         }
                     }
                 }
             }
 
-            docgetid("start").innerHTML="<option value=\"na\">起程站</option>"+stopdata
-            docgetid("end").innerHTML="<option value=\"na\">終點站</option>"+stopdata
+            docgetid("start").innerHTML="<option value=\"na\">起程站</option>"+stopinnerhtml
+            docgetid("end").innerHTML="<option value=\"na\">終點站</option>"+stopinnerhtml
         }
     }
 },100)
@@ -43,7 +76,7 @@ setTimeout(function(){
 docgetid("submit").onclick=function(){
     let phone=docgetid("phone").value
     let date=docgetid("date").value
-    let code=docgetid("code").value
+    let traincode=docgetid("traincode").value
     let start=docgetid("start").value
     let end=docgetid("end").value
     let count=docgetid("count").value
@@ -60,7 +93,7 @@ docgetid("submit").onclick=function(){
         notwrite=notwrite+"乘車日期 "
     }
 
-    if(code=="na"){
+    if(traincode=="na"){
         notwrite=notwrite+"車次代碼 "
     }
 
@@ -81,9 +114,9 @@ docgetid("submit").onclick=function(){
         success=false
     }
 
-    if(isset(code)){
-        if(day!=trainlist["data"][0][code][3]){
-            console.log(trainlist["data"][0][code])
+    if(isset(traincode)){
+        if(day!=trainlist["data"][0][traincode][3]){
+            console.log(trainlist["data"][0][traincode])
             error.push("列車日期錯誤 無此班列車")
             success=false
         }
@@ -120,7 +153,7 @@ docgetid("submit").onclick=function(){
         // 傳送資料
         newajax("POST","/backend/46nationalmoduled/newticket/",JSON.stringify({
             "trainid": trainid,
-            "typeid": trainlist["data"][0][code][1],
+            "typeid": trainlist["data"][0][traincode][1],
             "startstationid": start,
             "endstationid": end,
             "phone": phone,
@@ -134,7 +167,7 @@ docgetid("submit").onclick=function(){
             if(data["success"]){
                 newajax("POST","api/ticketsms.php",formdata([
                     ["phone",phone],
-                    ["code",data["data"]["code"]],
+                    ["traincode",data["data"]["traincode"]],
                     ["getgodate",date],
                     ["count",count],
                     ["startstation",data["data"]["startstation"]],
@@ -151,7 +184,7 @@ docgetid("submit").onclick=function(){
                                 <hr>
                                 <div class='ticketlist'>
                                     詳細資料如下:<br>
-                                    訂票編號: ${data["data"]["code"]}<br>
+                                    訂票編號: ${data["data"]["traincode"]}<br>
                                     手機號碼: ${phone}<br>
                                     發車時間: ${data["data"]["startstop"]}<br>
                                     車次代碼: ${data["data"]["traincode"]}<br>
