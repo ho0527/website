@@ -476,7 +476,6 @@ table{
 .gamemaindiv{
     width: 70vw;
     height: 50vh;
-    background: yellow;
 }
 
 .gameleaderboarddiv{
@@ -556,4 +555,9 @@ table{
 .highlightuser{
     font-weight: bold;
     font-size: 17px;
+}
+
+.iframe{
+    width: 100%;
+    height: 100%;
 }

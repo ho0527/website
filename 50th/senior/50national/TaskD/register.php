@@ -30,7 +30,7 @@
         $check=-1;
         $id="";
         usort($data,function($a,$b){
-            if($a[3]<$b[3]){
+            if($a[3]<$b[3]||($a[3]==$b[3]&&$a[2]>$b[2])){
                 return 1;
             }
         });

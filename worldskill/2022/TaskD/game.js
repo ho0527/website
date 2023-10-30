@@ -44,7 +44,6 @@ function leaderboard(){
                 }
             }
         }
-        console.log(data)
     }
 }
 
@@ -54,11 +53,16 @@ if(!isset(weblsget("worldskill2022MDgame"))){
 
 newajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/games/"+weblsget("worldskill2022MDgame")).onload=function(){
     let data=JSON.parse(this.responseText)
+    console.log(data)
     docgetid("navigationbartitle2").innerHTML=`
         (Game: ${data["title"]})
     `
     docgetid("gamedescription").innerHTML=`
         ${data["description"]}
+    `
+
+    docgetid("game").innerHTML=`
+        <iframe src="https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/storage/app/games/${data["gamePath"]}" class="iframe"></iframe>
     `
 }
 

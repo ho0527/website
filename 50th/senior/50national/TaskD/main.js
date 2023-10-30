@@ -29,10 +29,9 @@ mainarray 內容:
 2=豆子
 3=星星
 4=只有鬼能走的地方
-5=player
-6=鬼1
-7?=鬼2
-8?=鬼
+5=蘋果
+6=鳳梨
+7=草莓
 */
 
 function rank(data){
@@ -40,27 +39,78 @@ function rank(data){
         let row=data["data"]["data"]
         lightbox(null,"lightbox",function(){
             let rankinnerhtml=``
+            let rankno=1
             for(let i=0;i<row.length;i=i+1){
-                if(row[i][0]==data["data"]["userid"]){
-                    rankinnerhtml=`
-                        ${rankinnerhtml}
-                        <tr class="highlighttr">
-                            <td class="td">${i+1}</td>
-                            <td class="td">${row[i][1]}</td>
-                            <td class="td">${row[i][3]}</td>
-                            <td class="td">${row[i][2]}</td>
-                        </tr>
-                    `
+                if(row[i-1]){
+                    if(row[i][3]==row[i-1][3]&&row[i][2]==row[i-1][2]){
+                        if(row[i][0]==data["data"]["userid"]){
+                            rankinnerhtml=`
+                                ${rankinnerhtml}
+                                <tr class="highlighttr">
+                                    <td class="td">${rankno}</td>
+                                    <td class="td">${row[i][1]}</td>
+                                    <td class="td">${row[i][3]}</td>
+                                    <td class="td">${row[i][2]}</td&&>
+                                </tr>
+                            `
+                        }else{
+                            rankinnerhtml=`
+                                ${rankinnerhtml}
+                                <tr class="tr">
+                                    <td class="td">${rankno}</td>
+                                    <td class="td">${row[i][1]}</td>
+                                    <td class="td">${row[i][3]}</td>
+                                    <td class="td">${row[i][2]}</td>
+                                </tr>
+                            `
+                        }
+                    }else{
+                        if(row[i][0]==data["data"]["userid"]){
+                            rankinnerhtml=`
+                                ${rankinnerhtml}
+                                <tr class="highlighttr">
+                                    <td class="td">${rankno}</td>
+                                    <td class="td">${row[i][1]}</td>
+                                    <td class="td">${row[i][3]}</td>
+                                    <td class="td">${row[i][2]}</td>
+                                </tr>
+                            `
+                        }else{
+                            rankinnerhtml=`
+                                ${rankinnerhtml}
+                                <tr class="tr">
+                                    <td class="td">${rankno}</td>
+                                    <td class="td">${row[i][1]}</td>
+                                    <td class="td">${row[i][3]}</td>
+                                    <td class="td">${row[i][2]}</td>
+                                </tr>
+                            `
+                        }
+                        rankno=rankno+1
+                    }
                 }else{
-                    rankinnerhtml=`
-                        ${rankinnerhtml}
-                        <tr class="tr">
-                            <td class="td">${i+1}</td>
-                            <td class="td">${row[i][1]}</td>
-                            <td class="td">${row[i][3]}</td>
-                            <td class="td">${row[i][2]}</td>
-                        </tr>
-                    `
+                    if(row[i][0]==data["data"]["userid"]){
+                        rankinnerhtml=`
+                            ${rankinnerhtml}
+                            <tr class="highlighttr">
+                                <td class="td">${rankno}</td>
+                                <td class="td">${row[i][1]}</td>
+                                <td class="td">${row[i][3]}</td>
+                                <td class="td">${row[i][2]}</td>
+                            </tr>
+                        `
+                    }else{
+                        rankinnerhtml=`
+                            ${rankinnerhtml}
+                            <tr class="tr">
+                                <td class="td">${rankno}</td>
+                                <td class="td">${row[i][1]}</td>
+                                <td class="td">${row[i][3]}</td>
+                                <td class="td">${row[i][2]}</td>
+                            </tr>
+                        `
+                    }
+                    rankno=rankno+1
                 }
             }
             return `
@@ -492,6 +542,7 @@ function stopstart(){
 // timer
 function timestart(){
     timer=setInterval(function(){
+        let time
         sec=sec+1
         if(sec>=60){
             sec=0
@@ -505,10 +556,25 @@ function timestart(){
                 mainarray[doorlist[i][0]][doorlist[i][1]]=4
             }
         }
+        time=sec+(min*60)
+        if(time>=30&&(((time-30)%15))==0){
+            specialitem()
+        }
         docgetid("timer").innerHTML=`
             ${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}
         `
     },1000)
+}
+
+function specialitem(){
+    let item=parseInt(Math.random()*3)
+    if(item==0){ // 蘋果
+
+    }else if(item==1){ // 鳳梨
+
+    }else{ // 草莓
+
+    }
 }
 
 // 初始化鬼的位置及設定星星數START
