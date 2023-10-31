@@ -4,10 +4,10 @@
         <meta charset="UTF-8">
         <title>編輯問卷</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/plugin/css/chrisplugin.css">
         <script src="error.js"></script>
         <script src="userdef.js"></script>
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/chrisplugin.js"></script>
+        <script src="/plugin/js/chrisplugin.js"></script>
     </head>
     <body id="body">
         <?php

@@ -621,6 +621,36 @@ table{
     color: orange;
 }
 
+.apple{
+    background: rgb(0, 255, 81);
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+}
+
+.pineapple{
+    background: rgb(249, 255, 81);
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+}
+
+.strawberry{
+    background: rgb(255, 5, 5);
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+}
+
 .ghost{
     animation: 2s ghostanimation infinite;
 }
@@ -693,6 +723,11 @@ table{
     color: black;
 }
 
+.invincible{
+    box-shadow: 1px 1px 5px 5px rgba(255, 255, 0, 0.7);
+    animation: 1s playerinvincible infinite;
+}
+
 @keyframes ghostanimation{
     0%{
         width: 20px;
@@ -720,5 +755,14 @@ table{
     100%{
         width: 20px;
         height: 20px;
+    }
+}
+
+@keyframes playerinvincible{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
     }
 }

@@ -5,8 +5,8 @@
         <title>Document</title>
         <link rel="stylesheet" href="index.css">
         <script src="error.js"></script>
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/chrisplugin.js"></script>
+        <link rel="stylesheet" href="/plugin/css/chrisplugin.css">
+        <script src="/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
@@ -18,7 +18,7 @@
             <div class="navigationbarright">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">
                 <input type="button" class="navigationbarbutton" id="newform" value="新增問卷">
-                <input type="submit" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
+                <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
         <div class="macosmaindiv macossectiondiv">

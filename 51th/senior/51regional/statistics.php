@@ -5,8 +5,8 @@
         <title>編輯問卷</title>
         <link rel="stylesheet" href="index.css">
         <script src="error.js"></script>
-        <link rel="stylesheet" href="plugin/css/macossection.css">
-        <script src="plugin/js/macossection.js"></script>
+        <link rel="stylesheet" href="/plugin/css/chrisplugin.css">
+        <script src="/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php

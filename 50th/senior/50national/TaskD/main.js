@@ -12,6 +12,8 @@ let mid=5
 let life=3
 let canhit=true
 let timestop=false
+let invincible=false //無敵
+let playerspeed=500 // ms
 let timer // 計時器
 let ghostinterval
 let playerinterval
@@ -133,80 +135,124 @@ function rank(data){
 
 // 玩家檢查
 function check(){
-    if(player[1]==2){
+    if(player[1]==2){ // 豆子
         score=score+10
         mainarray[player[0][0]][player[0][1]]=1
         docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
         player[1]=1
-    }else if(player[1]==3){
+    }else if(player[1]==3){ // 星星
         score=score+50
         mainarray[player[0][0]][player[0][1]]=1
         docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
         player[1]=1
-    }
-    docgetid("score").innerHTML=`
-        ${score}
-    `
-    if((player[0].toString()==ghost1.toString()||player[0].toString()==ghost2.toString()||player[0].toString()==ghost3.toString())&&canhit){
-        let playercooldown
-
-        life=life-1
-
+    }else if(player[1]==5){ // 生命值加一
+        life=life+1
         docgetid("life").innerHTML=`
             ${life}
         `
+        mainarray[player[0][0]][player[0][1]]=1
+        docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
+        player[1]=1
+    }else if(player[1]==6){ // 速度x2
+        playerspeed=playerspeed*2
+        mainarray[player[0][0]][player[0][1]]=1
+        docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
+        player[1]=1
+    }else if(player[1]==7){ // 無敵
+        invincible=true
+        docgetid("player").classList.add("invincible")
+        setTimeout(function(){
+            invincible=false
+            docgetid("player").classList.remove("invincible")
+        },15000)
+        mainarray[player[0][0]][player[0][1]]=1
+        docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
+        player[1]=1
+    }
+    if(!invincible){
+        if((player[0].toString()==ghost1.toString()||player[0].toString()==ghost2.toString()||player[0].toString()==ghost3.toString())&&canhit){
+            let playercooldown
+    
+            life=life-1
+    
+            docgetid("life").innerHTML=`
+                ${life}
+            `
 
-        if(life<=0){
-            console.log("1")
-            clearInterval(timer)
-            timestop=true
-            document.onkeydown=function(event){
-                if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
-                    event.preventDefault()
+            if(life<=0){
+                console.log("1")
+                clearInterval(timer)
+                timestop=true
+                document.onkeydown=function(event){
+                    if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
+                        event.preventDefault()
+                    }
                 }
-            }
-            newajax("POST","register.php",JSON.stringify({
-                "adddata": true,
-                "time": min*60+sec,
-                "name": username,
-                "score": score,
-                "difficulty": difficulty
-            })).onload=function(){
-                let data=JSON.parse(this.responseText)
-                rank(data) // 顯示排行榜
-            }
-        }else{
-            canhit=false
-            docgetid("player").style.opacity=0
-            setTimeout(function(){
-                docgetid("player").style.opacity=1
-            },500)
-            playercooldown=setInterval(function(){
+                newajax("POST","register.php",JSON.stringify({
+                    "adddata": true,
+                    "time": min*60+sec,
+                    "name": username,
+                    "score": score,
+                    "difficulty": difficulty
+                })).onload=function(){
+                    let data=JSON.parse(this.responseText)
+                    rank(data) // 顯示排行榜
+                }
+            }else{
+                canhit=false
                 docgetid("player").style.opacity=0
                 setTimeout(function(){
                     docgetid("player").style.opacity=1
                 },500)
-            },1000)
-            clearInterval(timer)
-            document.onkeydown=function(event){
-                if(event.key=="p"||event.key=="P"){
-                    stopstart()
-                }else if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
-                    event.preventDefault()
-                }
-            }
-            timestop=true
-            setTimeout(function(){
-                timestart()
-                pacmankeydonwn()
-                clearInterval(playercooldown)
-                timestop=false
-                setTimeout(function(){
-                    canhit=true
+                playercooldown=setInterval(function(){
+                    docgetid("player").style.opacity=0
+                    setTimeout(function(){
+                        docgetid("player").style.opacity=1
+                    },500)
                 },1000)
-            },3000)
+                clearInterval(timer)
+                document.onkeydown=function(event){
+                    if(event.key=="p"||event.key=="P"){
+                        stopstart()
+                    }else if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
+                        event.preventDefault()
+                    }
+                }
+                timestop=true
+                setTimeout(function(){
+                    timestart()
+                    pacmankeydonwn()
+                    clearInterval(playercooldown)
+                    timestop=false
+                    setTimeout(function(){
+                        canhit=true
+                    },1000)
+                },3000)
+            }
+        }
+    }else{
+        if(String(player[0])==String(ghost1)){
+            score=score+100
+            ghost1=[14,11]
+            docgetid("ghost1").style.top="355px"
+            docgetid("ghost1").style.left="285px"
+        }
+        if(String(player[0])==String(ghost2)){
+            score=score+100
+            ghost2=[14,13]
+            docgetid("ghost2").style.top="355px"
+            docgetid("ghost2").style.left="330px"
+        }
+        if(String(player[0])==String(ghost3)){
+            score=score+100
+            ghost3=[14,15]
+            docgetid("ghost3").style.top="355px"
+            docgetid("ghost3").style.left="380px"
         }
     }
+    docgetid("score").innerHTML=`
+        ${score}
+    `
 }
 
 // 玩家移動偵測/更新
@@ -279,7 +325,7 @@ function pacmankeydonwn(){
 }
 
 // 鬼偵測不重疊
-function checkghostnotblock(testarray){    
+function checkghostnotblock(testarray){
     if(testarray.toString()!=ghost1.toString()&&testarray.toString()!=ghost2.toString()&&testarray.toString()!=ghost3.toString()){
         return true
     }else{
@@ -306,7 +352,7 @@ function ghostmove(name,array){
     if(!timestop){
         let type=parseInt(Math.random()*4) // 會有上(0)下(1)左(2)右(3)4種方式
         if(type==0){
-            if(mainarray[array[0]-1][array[1]]!=0&&checkghostnotblock([array[0]-1,array[1]])){
+            if(mainarray[array[0]-1][array[1]]!=0&&checkghostnotblock([array[0]-1,array[1]])&&mainarray[array[0]-1][array[1]]){
                 for(let i=0;i<blockwh;i=i+1){
                     setTimeout(function(){
                         docgetid(name).style.top=((array[0]*25+mid)-i)+"px"
@@ -321,7 +367,7 @@ function ghostmove(name,array){
                 }
             }else{ ghostmove(name,array) } // 再用一次
         }else if(type==1){
-            if(mainarray[array[0]+1][array[1]]!=0&&checkghostnotblock([array[0]+1,array[1]])){
+            if(mainarray[array[0]+1][array[1]]!=0&&checkghostnotblock([array[0]+1,array[1]])&&mainarray[array[0]+1][array[1]]){
                 for(let i=0;i<blockwh;i=i+1){
                     setTimeout(function(){
                         docgetid(name).style.top=((array[0]*25+mid)+i)+"px"
@@ -336,7 +382,7 @@ function ghostmove(name,array){
                 }
             }else{ ghostmove(name,array) }
         }else if(type==2){
-            if(mainarray[array[0]][array[1]-1]!=0&&checkghostnotblock([array[0],array[1]-1])){
+            if(mainarray[array[0]][array[1]-1]!=0&&checkghostnotblock([array[0],array[1]-1])&&mainarray[array[0]][array[1]-1]){
                 for(let i=0;i<blockwh;i=i+1){
                     setTimeout(function(){
                         docgetid(name).style.left=((array[1]*25+mid)-i)+"px"
@@ -349,22 +395,9 @@ function ghostmove(name,array){
                 }else{
                     ghost3=[array[0],array[1]-1]
                 }
-            }else{
-                // if(isset(mainarray[array[0]][26])){
-                //     docgetid(name).style.left=((27*25+5)-25)+"px"
-                //     if(name=="ghost1"){
-                //         ghost1=[array[0],26]
-                //     }else if(name=="ghost2"){
-                //         ghost2=[array[0],26]
-                //     }else{
-                //         ghost3=[array[0],26]
-                //     }
-                // }else{
-                    ghostmove(name,array)
-                // }
-            }
+            }else{ ghostmove(name,array) }
         }else if(type==3){
-            if(mainarray[array[0]][array[1]+1]!=0&&checkghostnotblock([array[0],array[1]+1])){
+            if(mainarray[array[0]][array[1]+1]!=0&&checkghostnotblock([array[0],array[1]+1])&&mainarray[array[0]][array[1]+1]){
                 for(let i=0;i<blockwh;i=i+1){
                     setTimeout(function(){
                         docgetid(name).style.left=((array[1]*25+mid)+i)+"px"
@@ -377,20 +410,7 @@ function ghostmove(name,array){
                 }else{
                     ghost3=[array[0],array[1]+1]
                 }
-            }else{
-                // if(isset(mainarray[array[0]][0])){
-                //     docgetid(name).style.left=((-1*25+5)+25)+"px"
-                //     if(name=="ghost1"){
-                //         ghost1=[array[0],0]
-                //     }else if(name=="ghost2"){
-                //         ghost2=[array[0],0]
-                //     }else{
-                //         ghost3=[array[0],0]
-                //     }
-                // }else{
-                    ghostmove(name,array)
-                // }
-            }
+            }else{ ghostmove(name,array) }
         }else{ console.log("type error") }
 
         if((player[0].toString()==ghost1.toString()||player[0].toString()==ghost2.toString()||player[0].toString()==ghost3.toString())&&canhit){
@@ -566,15 +586,37 @@ function timestart(){
     },1000)
 }
 
+// 特殊道具
 function specialitem(){
-    let item=parseInt(Math.random()*3)
-    if(item==0){ // 蘋果
+    let item=parseInt(Math.random()*3)+5 // 5~7的隨機數
+    let road=[] // 是道路的陣列
+    let random // 隨機數
+    let itemname // 道具名
 
-    }else if(item==1){ // 鳳梨
-
-    }else{ // 草莓
-
+    // 製作是道路的陣列
+    for(let i=0;i<mainarray.length;i=i+1){
+        for(let j=0;j<mainarray[i].length;j=j+1){
+            if(mainarray[i][j]=="1"){
+                road.push([i,j])
+            }
+        }
     }
+
+    random=parseInt(Math.random()*road.length)
+
+    // 給定名稱
+    if(item==5){
+        itemname="apple"
+    }else if(item==6){
+        itemname="pineapple"
+    }else{
+        itemname="strawberry"
+    }
+
+    mainarray[road[random][0]][road[random][1]]=item // 給mainarray物品代碼
+    docgetall(".row>div")[road[random][0]*27+road[random][1]].innerHTML=`
+        <div class="${itemname}"></div>
+    `
 }
 
 // 初始化鬼的位置及設定星星數START
