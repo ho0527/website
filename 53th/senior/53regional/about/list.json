@@ -414,34 +414,34 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;username: <i>username</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>password</i><br>}",
+                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;username: <i>[username]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>[password]</i><br>}",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsppermission: <i>userpermission</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 200_OK",
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>[userid]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsppermission: <i>[userpermission]</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 200_OK",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(fail username): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 帳號有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
+                                    "description": "response body(fail username): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 帳號有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>[userid]</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(fail password): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 密碼有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
+                                    "description": "response body(fail password): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 密碼有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>[userid]</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(fail verifycode): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 驗證碼有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>userid</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
+                                    "description": "response body(fail verifycode): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspmessage: 驗證碼有誤,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspid: <i>[userid]</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 403_FORBIDDEN",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "02",
-                            "description": "使用者登入成功/失敗寫入資料庫 | method: GET, url: /backend/53regional/logindatatodb?key=success|error&id=<i>userid</i>",
+                            "description": "使用者登入成功/失敗寫入資料庫 | method: GET, url: /backend/53regional/logindatatodb?key=success|error&id=<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
                                 {
@@ -449,14 +449,14 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "03",
-                            "description": "使用者登出 | method: POST, url: /backend/53regional/logout/<i>userid</i>",
+                            "description": "使用者登出 | method: POST, url: /backend/53regional/logout/<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
                                 {
@@ -464,18 +464,18 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "04",
-                            "description": "取得使用者列表 | method: GET, url: /backend/53regional/getuserlist?keyword=<b>string</b>&sortby=number|username|name&sorttype=ASC|DESC",
+                            "description": "取得使用者列表 | method: GET, url: /backend/53regional/getuserlist?keyword=<b>{string}</b>&sortby=number|username|name&sorttype=ASC|DESC",
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>userlist</i><br>}, 200_OK",
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>[userlist]</i><br>}, 200_OK",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -483,7 +483,7 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
@@ -494,18 +494,18 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>loglist</i><br>}, 200_OK",
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>[loglist]</i><br>}, 200_OK",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "06",
-                            "description": "取得特定使用者 | method: GET, url: /backend/53regional/getuser/<i>userid</i>",
+                            "description": "取得特定使用者 | method: GET, url: /backend/53regional/getuser/<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
                                 {
@@ -517,7 +517,7 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
@@ -528,7 +528,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;username: <i>username</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>password</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>name</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;permission: <b>boolean</b><br>}",
+                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;username: <i>[username]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>[password]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>[name]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;permission: <b>{boolean}</b><br>}",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -544,18 +544,18 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "08",
-                            "description": "使用者修改 | method: PUT, url: /backend/53regional/editdeluser/<i>userid</i>",
+                            "description": "使用者修改 | method: PUT, url: /backend/53regional/editdeluser/<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>password</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>name</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;permission: <b>boolean</b><br>}",
+                                    "description": "resquest body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;password: <i>[password]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>[name]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;permission: <b>{boolean}</b><br>}",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -567,14 +567,14 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "09",
-                            "description": "使用者刪除 | method: DELETE, url: /backend/53regional/editdeluser/<i>userid</i>",
+                            "description": "使用者刪除 | method: DELETE, url: /backend/53regional/editdeluser/<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
                                 {
@@ -586,41 +586,41 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "10",
-                            "description": "獲取商品 | method: GET, url: /backend/53regional/getproduct?[id=<i>coffeeid</i>]|[page=<i>pagenumber</i>&keyword=<b>string</b>&start=<b>number</b>&end=<b>number</b>]",
+                            "description": "獲取商品 | method: GET, url: /backend/53regional/getproduct?[id=<i>[coffeeid]</i>]|[page=<i>[pagenumber]</i>&keyword=<b>{string}</b>&start=<b>{number}</b>&end=<b>{number}</b>]",
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "response body(success(get id)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>coffeelist</i><br>}, 200_OK",
+                                    "description": "response body(success(get id)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>[coffeelist]</i><br>}, 200_OK",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(success(get all)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxcount: <i>coffeelistlen(all)</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: <i>coffeelist</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product: <i>templatelist</i><br>}}, 200_OK",
+                                    "description": "response body(success(get all)): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxcount: <i>[coffeelistlen](all)</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: <i>[coffeelist]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product: <i>[templatelist]</i><br>}}, 200_OK",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "11",
-                            "description": "獲取版型 | method: GET, url: /backend/53regional/gettemplate?*id=<i>coffeeid</i>",
+                            "description": "獲取版型 | method: GET, url: /backend/53regional/gettemplate?*id=<i>[coffeeid]</i>",
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>templatelist</i><br>}}, 200_OK",
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: <i>[templatelist]</i><br>}}, 200_OK",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
@@ -631,11 +631,11 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "resquest body(new): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>coffeeimage</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>coffeename</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>coffeedescription</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>coffeecost</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>coffeelink</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>coffeeversion</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;*edit: \"false\"<br>}",
+                                    "description": "resquest body(new): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>[coffeeimage]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>[coffeename]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>[coffeedescription]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>[coffeecost]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>[coffeelink]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>[coffeeversion]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;*edit: \"false\"<br>}",
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "resquest body(edit): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>coffeeimage</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>coffeename</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>coffeedescription</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>coffeecost</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>coffeelink</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>coffeeversion</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;edit: \"true\",<br>&nbsp;&nbsp;&nbsp;&nbsp;id: <i>coffeeid</i><br>}",
+                                    "description": "resquest body(edit): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>[coffeeimage]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>[coffeename]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>[coffeedescription]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>[coffeecost]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>[coffeelink]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>[coffeeversion]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;edit: \"true\",<br>&nbsp;&nbsp;&nbsp;&nbsp;id: <i>[coffeeid]</i><br>}",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -647,7 +647,7 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
@@ -658,7 +658,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "resquest body(new): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>image_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>name_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>description_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>cost_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>link_gridcode</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>version_gridcode</i><br>}",
+                                    "description": "resquest body(new): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;file: <i>[image_gridcode]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;name: <i>[name_gridcode]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;description: <i>[description_gridcode]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;cost: <i>[cost_gridcode]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;link: <i>[link_gridcode]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;version: <i>[version_gridcode]</i><br>}",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -666,7 +666,7 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>error</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
                                     "statu": "SUCCESS"
                                 }
                             ]
