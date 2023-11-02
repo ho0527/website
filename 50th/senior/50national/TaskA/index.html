@@ -4,20 +4,26 @@
         <meta charset="UTF-8">
         <title>音樂播放器</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/chrisplugin.js"></script>
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
-    <body>
+    <body id="body">
         <div class="header" id="header">
             <input type="text" class="search" id="search" placeholder="搜尋">
         </div><br>
         <div class="main" id="main"></div>
         <div class="aside grid" id="aside">
-            <div class="asidelist macossectiondiv" id="list"></div>
+            <div class="asidelist macossectiondivy" id="list"></div>
             <div class="audioplay" id="play"></div>
         </div>
         <div id="lightbox"></div>
         <input type="button" class="openasidebutton" id="openaside" value=">">
-        <script src="index.js"></script>
+
+        <!-- script -->
+        <!-- 原生翻譯版 -->
+        <script src="index_org_translate.js"></script>
+
+        <!-- 我用我的外掛寫的 -->
+        <!-- <script src="index.js"></script> -->
     </body>
 </html>
