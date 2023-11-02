@@ -95,7 +95,7 @@
         }
 
         public function banuser(Request $request,$userid){
-            $loginuserid=Controller::logincheck();
+            $loginuserid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($loginuserid){
                 if($loginuserid=="1"){
                     if($request->has("ban")){
@@ -140,7 +140,7 @@
         }
 
         public function getblocklist(Request $request){
-            $loginuserid=Controller::logincheck();
+            $loginuserid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($loginuserid){
                 if($loginuserid=="1"){
                     $row=DB::table("blocklist")

@@ -21,7 +21,7 @@
                 "integer"=>5,
                 "mimes"=>6,
             ]);
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("user")
                     ->where("id","=",$userid)
@@ -319,7 +319,7 @@
         }
 
         public function getidvideo(Request $request,$videoid){
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("video")
                     ->where("id","=",$videoid)
@@ -408,7 +408,7 @@
         }
 
         public function delvideo(Request $request,$videoid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("video")
                     ->where("id","=",$videoid)
@@ -465,7 +465,7 @@
         }
 
         public function like(Request $request,$videoid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -520,7 +520,7 @@
         }
 
         public function comment(Request $request,$videoid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -575,7 +575,7 @@
         }
 
         public function getcomment(Request $request,$videoid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -652,7 +652,7 @@
         }
 
         public function replycomment(Request $request,$commentid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -706,7 +706,7 @@
         }
 
         public function delcomment(Request $request,$commentid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -781,7 +781,7 @@
         }
 
         public function getplaylist(Request $request){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $data=[];
 
@@ -807,7 +807,7 @@
         }
 
         public function playlist(Request $request){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -850,7 +850,7 @@
         }
 
         public function getidplaylist(Request $request,$playlistid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -908,7 +908,7 @@
         }
 
         public function addvideotoplaylist(Request $request,$playlistid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -967,7 +967,7 @@
         }
 
         public function sortplaylist(Request $request,$playlistid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -1042,7 +1042,7 @@
         }
 
         public function delvideoformplaylist(Request $request,$playlistid,$videoid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -1093,7 +1093,7 @@
         }
 
         public function delplaylist(Request $request,$playlistid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $userrow=DB::table("user")
                     ->where("id","=",$userid)
@@ -1182,7 +1182,7 @@
         }
 
         public function getidprogram(Request $request,$programid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("program")
                     ->where("id","=",$programid)
@@ -1236,7 +1236,7 @@
         }
 
         public function program(Request $request){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("user")
                     ->where("id","=",$userid)
@@ -1298,7 +1298,7 @@
         }
 
         public function editprogram(Request $request,$programid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($userid=="1"){
                     $row=DB::table("program")
@@ -1351,7 +1351,7 @@
         }
 
         public function addvideotoprogram(Request $request,$programid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($userid=="1"){
                     if($request->has("video_id")&&$request->has("title")){
@@ -1409,7 +1409,7 @@
         }
 
         public function delvideoformprogram(Request $request,$programid,$videoid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($userid=="1"){
                     $videorow=DB::table("video")
@@ -1453,7 +1453,7 @@
         }
 
         public function delprogram(Request $request,$programid){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($userid=="1"){
                     $row=DB::table("program")

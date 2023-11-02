@@ -45,10 +45,10 @@
 
         public function register(Request $request){
             $requestdata=Validator::make($request->all(),[
-                    "email" => "required|email|string",
-                    "nickname" => "required|string",
-                    "password" => "required|string|min:5",
-                    "profile_image" => "required|mimes:png,jpg",
+                    "email"=>"required|email|string",
+                    "nickname"=>"required|string",
+                    "password"=>"required|string|min:5",
+                    "profile_image"=>"required|mimes:png,jpg",
                 ],[
                 "required"=>5,
                 "email"=>6,
@@ -87,7 +87,7 @@
         }
 
         public function logout(Request $request){
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 DB::table("users")
                     ->where("id","=",$userid)

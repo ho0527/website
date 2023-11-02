@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/07/01",
-            "updatedate": "2023/09/16",
+            "updatedate": "2023/11/02",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -575,7 +575,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/05/21",
-                    "updatedate": "2023/09/16",
+                    "updatedate": "2023/11/02",
                     "data": []
                 },
                 {

@@ -17,9 +17,9 @@
             return date("Y-m-d H:i:s");
         }
 
-        public function logincheck(){
+        public function logincheck($token){
             $row=DB::table("users")
-                ->where("access_token","!=","NULL")
+                ->where("access_token","=",$token)
                 ->select("*")->get();
             if($row->isNotEmpty()){
                 return $row[0]->id;

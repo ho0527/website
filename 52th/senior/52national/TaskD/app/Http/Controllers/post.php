@@ -47,7 +47,7 @@
         }
 
         public function getidpost(Request $request,$postid){
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             $row=DB::table("posts")
                 ->where("id","=",$postid)
                 ->select("*")->get();
@@ -77,7 +77,7 @@
         }
 
         public function post(Request $request){
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($request->has("type")&&$request->has("content")&&$request->hasFile("images")){
                     $type=$request->input("type");
@@ -143,7 +143,7 @@
         }
 
         public function editpost(Request $request,$postid){
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("posts")
                     ->where("id","=",$postid)
@@ -190,7 +190,7 @@
         }
 
         public function delpost(Request $request,$postid){
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("posts")
                     ->where("id","=",$postid)
@@ -217,7 +217,7 @@
         }
 
         public function favorite(Request $request,$postid){
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("posts")
                     ->where("id","=",$postid)
@@ -269,7 +269,7 @@
         }
 
         public function getfavorite(Request $request){
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $orderby=$request->input("order_by");
                 $ordertype=$request->input("order_type");
@@ -312,7 +312,7 @@
             $row=DB::table("posts")
                 ->where("id","=",$postid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($row->isNotEmpty()){
                     $follow=DB::table("user_follows")
@@ -362,7 +362,7 @@
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($row->isNotEmpty()){
                     if($commentrow->isNotEmpty()&&$commentrow[0]->post_id==$postid){
@@ -411,7 +411,7 @@
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
                 ->select("*")->get();
-            $userid=logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 if($row->isNotEmpty()){
                     if($commentrow->isNotEmpty()&&$commentrow[0]->post_id==$postid){

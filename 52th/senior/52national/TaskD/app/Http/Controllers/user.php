@@ -166,7 +166,7 @@
         }
 
         public function editprofile(Request $request,$userid){
-            $loginuserid=logincheck();
+            $loginuserid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($userid){
                 $row=DB::table("users")
                     ->where("id","=",$userid)
@@ -223,7 +223,7 @@
         }
 
         public function getfollow(Request $request,$userid){
-            $loginuserid=logincheck();
+            $loginuserid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if(logincheck()){
                 $orderby="created_at";
                 $ordertype="desc";
@@ -269,7 +269,7 @@
         }
 
         public function follow(Request $request,$userid){
-            $loginuserid=logincheck();
+            $loginuserid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($loginuserid){
                 $row=DB::table("users")
                     ->where("id","=",$userid)
@@ -293,7 +293,7 @@
         }
 
         public function delfollow(Request $request,$userid){
-            $loginuserid=logincheck();
+            $loginuserid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($loginuserid){
                 $row=DB::table("users")
                     ->where("id","=",$userid)

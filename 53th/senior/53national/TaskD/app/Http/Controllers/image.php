@@ -130,7 +130,7 @@
                 "mimes"=>10
             ]);
             if(!$requestdata->fails()){
-                $userid=Controller::logincheck();
+                $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
                 if($userid){
                     $requestdata=$requestdata->validate();
                     $mimetype="image/jpeg";
@@ -168,7 +168,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid){
                     $title=$row[0]->title;
@@ -206,7 +206,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid=="0"){ $userid="-1"; } // 如果沒有登入id=-1
 
@@ -229,7 +229,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid==$row[0]->user_id){
                     DB::table("images")
@@ -286,7 +286,7 @@
             $row=DB::table("images")
                 ->where("id","=",$imageid)
                 ->select("*")->get();
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($userid){
                     if($request->has("content")){
@@ -339,7 +339,7 @@
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
                 ->select("*")->get();
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($commentrow->isNotEmpty()&&$commentrow[0]->image_id==$imageid){
                     if($userid){
@@ -397,7 +397,7 @@
             $commentrow=DB::table("comments")
                 ->where("id","=",$commentid)
                 ->select("*")->get();
-            $userid=Controller::logincheck();
+            $userid=Controller::logincheck(explode("Bearer ",$request->header("Authorization"))[1]);
             if($row->isNotEmpty()&&$row[0]->deleted_at==NULL){
                 if($commentrow->isNotEmpty()&&$commentrow[0]->image_id==$imageid){
                     if($userid==$commentrow[0]->user_id||$userid==1){
