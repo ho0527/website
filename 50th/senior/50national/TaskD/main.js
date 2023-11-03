@@ -173,9 +173,9 @@ function check(){
     if(!invincible){
         if((player[0].toString()==ghost1.toString()||player[0].toString()==ghost2.toString()||player[0].toString()==ghost3.toString())&&canhit){
             let playercooldown
-    
+
             life=life-1
-    
+
             docgetid("life").innerHTML=`
                 ${life}
             `
@@ -747,7 +747,7 @@ newajax("GET","map.txt").onload=function(){
     docgetid("player").style.left=(s*25+5)+"px"
     player=[[f,s],mainarray[f][s]]
     // 玩家定位END
-    
+
     // 遊戲初始化START
     docgetid("pausecontinue").onclick=function(){ stopstart() } // 暫停偵測
     pacmankeydonwn() // 玩家偵測

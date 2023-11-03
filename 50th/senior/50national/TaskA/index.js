@@ -2,7 +2,7 @@ let aside="close" // 設定aside為關閉
 let playing=false
 let data
 
-if(!isset(weblsget("50nationalmodulealist"))){ weblsset("50nationalmodulealist","") }
+if(!isset(weblsget("50nationalmoduleaplaylist"))){ weblsset("50nationalmoduleaplaylist","") }
 if(!isset(weblsget("50nationalmoduleaplayingindex"))){ weblsset("50nationalmoduleaplayingindex",0) }
 
 function main(){ // 主程式(起始)
@@ -116,14 +116,14 @@ function main(){ // 主程式(起始)
 
             docgetid("albumpaly").onclick=function(){
                 if(confirm("確定是否取代播放清單成此專輯?")){
-                    weblsset("50nationalmodulealist","")
+                    weblsset("50nationalmoduleaplaylist","")
                     weblsset("50nationalmoduleaplayingindex",0)
                     let list=[]
                     for(let i=0;i<tracklength;i=i+1){
                         let trackid=data["albums"][id]["tracks"][i]["id"] // 歌曲標題
                         list.push(trackid)
                     }
-                    weblsset("50nationalmodulealist",list.join(","))
+                    weblsset("50nationalmoduleaplaylist",list.join(","))
                 }
             }
         }
@@ -131,11 +131,11 @@ function main(){ // 主程式(起始)
 }
 
 function createaside(){
-    let list=weblsget("50nationalmodulealist").split(",") // 播放列表
+    let playlist=weblsget("50nationalmoduleaplaylist").split(",") // 播放列表
 
     docgetid("aside").innerHTML=`
-            <div class="asidelist macossectiondiv" id="list"></div>
-            <div class="audioplay" id="play"></div>
+        <div class="asidelist macossectiondiv" id="list"></div>
+        <div class="audioplay" id="play"></div>
     `
 
     // 創建標題
@@ -151,11 +151,11 @@ function createaside(){
         </div>
     `
 
-    if(list[0]!=""){
+    if(playlist[0]!=""){
         let playingindex=weblsget("50nationalmoduleaplayingindex")
         let path=""
-        for(let i=0;i<list.length;i=i+1){
-            let id=list[i].split("_")
+        for(let i=0;i<playlist.length;i=i+1){
+            let id=playlist[i].split("_")
             let trackid=data["albums"][id[0]]["tracks"][id[1]]["id"]
             let tracktitle=data["albums"][id[0]]["tracks"][id[1]]["title"] // 歌曲標題
             let time=data["albums"][id[0]]["tracks"][id[1]]["duration"] // 歌曲時間
@@ -201,70 +201,80 @@ function createaside(){
             <div>
                 <div class="playerdiv">
                     <div class="icondiv" id="back"><img src="material/icon/play-skip-back.svg" class="icon"></div>
-                    <div class="icondiv" id="palypause"><img src="material/icon/play.svg" class="icon" id="palypauseicon"></div>
+                    <div class="icondiv" id="playpause"><img src="" class="icon" id="playpauseicon"></div>
                     <div class="icondiv" id="forward"><img src="material/icon/play-skip-forward.svg" class="icon"></div>
                     <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon"></div>
                 </div>
-                <audio class="player" id="player" controls>
-                    <source src="https://www.youtube.com/watch?v=by4SYYWlhEs?autoplay=1&controls=0" type="audio/mpeg">
-                </audio>
             </div>
         `
 
-        docgetid("back").onclick=function(){
+        docgetid("player").src=path
 
+        // 初始化圖片
+        if(playing){
+            docgetid("playpauseicon").src="material/icon/pause.svg"
+            docgetid("player").play()
+        }else{
+            docgetid("playpauseicon").src="material/icon/play.svg"
+            docgetid("player").pause()
         }
 
-        docgetid("palypause").onclick=function(){
+        // 倒退一首歌
+        docgetid("back").onclick=function(){
+            if(parseInt(weblsget("50nationalmoduleaplayingindex"))-1>=0){
+                weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))-1)
+            }
+            createaside()
+        }
+
+        docgetid("playpause").onclick=function(){
             if(playing){
-                docgetid("palypauseicon").src="material/icon/play.svg"
+                docgetid("playpauseicon").src="material/icon/play.svg"
+                docgetid("player").pause()
                 playing=false
             }else{
-                docgetid("palypauseicon").src="material/icon/pause.svg"
+                docgetid("playpauseicon").src="material/icon/pause.svg"
+                docgetid("player").play()
                 playing=true
             }
         }
 
+        // 前進一首歌
         docgetid("forward").onclick=function(){
-
+            if(parseInt(weblsget("50nationalmoduleaplayingindex"))+1<=playlist.length-1){
+                weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))+1)
+            }
+            createaside()
         }
 
         docgetid("volume").onclick=function(){
             // docgetid("volumerange")
         }
 
-        docgetid("player").addEventListener("keydown",function(event){
-            if(event.key=="ArrowRight"){ // 向后跳转5秒
-                event.preventDefault()
-                docgetid("player").currentTime=docgetid("player").currentTime+2
-            }
-            if(event.key=="ArrowLeft"){ // 向前跳转5秒
-                event.preventDefault()
-                docgetid("player").currentTime=docgetid("player").currentTime-2
-            }
-        })
-
         docgetid("player").onerror=function(){
             alert("因此音樂無法撥放或損毀，將重新加載並自動撥放下一首音樂")
-            let list=weblsget("50nationalmodulealist").split(",")
+            let playlist=weblsget("50nationalmoduleaplaylist").split(",")
             let mainlist=[]
-            for(let i=0;i<list.length;i=i+1){
+            for(let i=0;i<playlist.length;i=i+1){
                 if(i==playingindex){
-                    mainlist.push(list[i]+"_ER")
+                    mainlist.push(playlist[i]+"_ER")
                 }else{
-                    mainlist.push(list[i])
+                    mainlist.push(playlist[i])
                 }
             }
-            weblsset("50nationalmodulealist",mainlist.join(","))
-            weblsset("50nationalmoduleaplayingindex",weblsget("50nationalmoduleaplayingindex")+1)
+            weblsset("50nationalmoduleaplaylist",mainlist.join(","))
+            weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))+1)
             createaside()
         }
 
         docgetid("player").onended=function(){
-            weblsset("50nationalmoduleaplayingindex",weblsget("50nationalmoduleaplayingindex")+1)
+            if(parseInt(weblsget("50nationalmoduleaplayingindex"))+1<=playlist.length-1){
+                weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))+1)
+            }
+            createaside()
         }
 
-        docgetid("player").volume=0.5
+        docgetid("player").volume=0.3
     }else{
         docgetid("list").innerHTML=`
             ${docgetid("list").innerHTML}
@@ -293,6 +303,7 @@ function createaside(){
             docgetid("asidemask").remove()
             aside="close"
             docgetid("aside").innerHTML=``
+            main()
         }
     }
 }
@@ -415,18 +426,18 @@ function tracklistedit(key){
             if(event.value=="+"){ // 新增專輯
 
                 // 判斷專輯是否存在
-                let list=weblsget("50nationalmodulealist").split(",")
+                let list=weblsget("50nationalmoduleaplaylist").split(",")
                 if(list.includes(id)){ alert("該專輯以存在於撥放清單") }
                 else{
                     list.push(id)
-                    weblsset("50nationalmodulealist",list.join(","))
+                    weblsset("50nationalmoduleaplaylist",list.join(","))
                 }
                 conlog("success add in the track list! trackid="+id,"green","15","bold")
             }else if(event.value=="-"){ // 刪除專輯
                 if(weblsget("50nationalmoduleaplayingindex")!=event.dataset.no||!playing){
-                    let list=weblsget("50nationalmodulealist").split(",")
+                    let list=weblsget("50nationalmoduleaplaylist").split(",")
                     list.splice(list.indexOf(id),1) // 刪除資料
-                    weblsset("50nationalmodulealist",list.join(",")) // 回復資料
+                    weblsset("50nationalmoduleaplaylist",list.join(",")) // 回復資料
                     createaside()
                     conlog("success delect in the track list! trackid="+id,"green","15","bold")
                 }
@@ -435,41 +446,8 @@ function tracklistedit(key){
     })
 }
 
-function playerfunction(){
-    let palyer=docgetid("player")
-    // if(palyer.paused){ palyer.play() }
-}
-
 newajax("GET","albumlist.json").onload=function(){
     data=JSON.parse(this.responseText) // 拿到data
-
-    docgetid("search").oninput=function(){
-        let value=docgetid("search").value
-        let title=[]
-        let artist=[]
-        let album=[]
-    
-        if(value.match(new RegExp("title:","gi"))){
-            valuetemp=value.split("title:")
-            title.push(valuetemp[1])
-        }
-    
-        if(value.match(new RegExp("artist:","gi"))){
-            valuetemp=value.split("artist:")
-            artist.push(valuetemp[1])
-        }
-    
-        if(value.match(new RegExp("album:","gi"))){
-            valuetemp=value.split("album:")
-            album.push(valuetemp[1])
-        }
-    
-        if(value.length>=3){
-            search(title,artist,album)
-        }else{
-            main()
-        }
-    }
 
     main() // 開始主程式
 }
@@ -493,6 +471,56 @@ docgetid("openaside").onclick=function(){
         docgetid("asidemask").remove()
         aside="close"
         docgetid("aside").innerHTML=``
+        main()
+    }
+}
+
+docgetid("search").oninput=function(){
+    let value=docgetid("search").value
+    let title=[]
+    let artist=[]
+    let album=[]
+
+    if(value.match(new RegExp("title:","gi"))){
+        valuetemp=value.split("title:")
+        title.push(valuetemp[1])
+    }
+
+    if(value.match(new RegExp("artist:","gi"))){
+        valuetemp=value.split("artist:")
+        artist.push(valuetemp[1])
+    }
+
+    if(value.match(new RegExp("album:","gi"))){
+        valuetemp=value.split("album:")
+        album.push(valuetemp[1])
+    }
+
+    if(value.length>=3){
+        search(title,artist,album)
+    }else{
+        main()
+    }
+}
+
+document.onkeydown=function(event){
+    if(event.key=="ArrowRight"){ // 向后跳转5秒
+        event.preventDefault()
+        docgetid("player").currentTime=docgetid("player").currentTime+5
+    }
+    if(event.key=="ArrowLeft"){ // 向前跳转5秒
+        event.preventDefault()
+        docgetid("player").currentTime=docgetid("player").currentTime-5
+    }
+    if(event.key==" "){ // 暫停/開始
+        event.preventDefault()
+        if(playing){
+            docgetid("player").pause()
+            playing=false
+        }else{
+            docgetid("player").play()
+            playing=true
+        }
     }
 }
 
