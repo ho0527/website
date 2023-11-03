@@ -2,18 +2,19 @@
     include("link.php");
     if(isset($_GET["getrank"])){
         $row=query($db,"SELECT*FROM `rank`"); // 比對排行榜
-        $data=$row;
         $check=-1;
         $id="";
-        usort($data,function($a,$b){
-            if($a[3]<$b[3]){
+        usort($row,function($a,$b){
+            if((int)$a[3]<=(int)$b[3]){
                 return 1;
+            }elseif((int)$a[3]>(int)$b[3]){
+                return -1;
             }
         });
         echo(json_encode([
             "success"=>true,
             "data"=>[
-                "data"=>$data
+                "data"=>$row
             ]
         ])); // 回傳資料
     }else{
@@ -29,9 +30,11 @@
         $data=$row;
         $check=-1;
         $id="";
-        usort($data,function($a,$b){
-            if($a[3]<$b[3]||($a[3]==$b[3]&&$a[2]>$b[2])){
+        usort($row,function($a,$b){
+            if((int)$a[3]<=(int)$b[3]){
                 return 1;
+            }elseif((int)$a[3]>(int)$b[3]){
+                return -1;
             }
         });
         echo(json_encode([

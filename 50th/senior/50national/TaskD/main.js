@@ -39,6 +39,7 @@ mainarray 內容:
 function rank(data){
     if(data["success"]){
         let row=data["data"]["data"]
+        console.log(row)
         lightbox(null,"lightbox",function(){
             let rankinnerhtml=``
             let rankno=1
@@ -179,7 +180,7 @@ function check(){
                 ${life}
             `
 
-            if(life<=0){
+            if(life==0){
                 console.log("1")
                 clearInterval(timer)
                 timestop=true
@@ -422,7 +423,7 @@ function ghostmove(name,array){
                 ${life}
             `
 
-            if(life<=0){
+            if(life==0){
                 clearInterval(timer)
                 timestop=true
                 document.onkeydown=function(event){
@@ -435,7 +436,7 @@ function ghostmove(name,array){
                     "time": min*60+sec,
                     "name": username,
                     "score": score,
-                    "difficulty": min*60+sec
+                    "difficulty": difficulty
                 })).onload=function(){
                     let data=JSON.parse(this.responseText)
                     rank(data) // 顯示排行榜
