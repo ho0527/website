@@ -63,7 +63,7 @@
                     ->where("email","=",$requestdata["email"])
                     ->select("*")->get();
                 if($row->isEmpty()){
-                    $path=$requestdata["profile_image"]->store("image");
+                    $path=$requestdata["profile_image"]->store("images");
                     DB::table("users")->insert([
                         "email"=>$requestdata["email"],
                         "password"=>Hash::make($requestdata["password"]),

@@ -259,14 +259,15 @@ table{
 }
 
 .aside{
-    position: absolute;/* 絕對定位 */
-    top: 5px;/* 定位 */
+    position: absolute;
+    top: 0px;
     left: 0px;
     padding: 5px;
-    height: 98%;
+    height: calc(100% - 10px);
     border-right: 2px white solid;
     background: white;
     z-index: 1000;
+    transition: 0.3s linear;
 }
 
 .openasidebutton{
@@ -281,6 +282,7 @@ table{
     text-align: center;
     cursor: pointer;
     z-index: 1000;
+    transition: 0.3s linear;
 }
 
 .album{
@@ -714,7 +716,7 @@ table{
 .maindiv{
     position: absolute;
     top: 5px;
-    left: 5px;
-    width: 100%;
+    left: 15px;
+    width: calc(100% - 15px);
     height: 100%;
 }

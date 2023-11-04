@@ -1,13 +1,47 @@
 let aside="close" // 設定aside為關閉
-let playing=false
+// 網址列解碼 START
+let state=/state=([^&]+)/.exec(location.search) // main | search | album | aside
+let text=/text=([^&]+)/.exec(location.search) // search專用
+let albumid=/id=([^&]+)/.exec(location.search) // album專用
+let playing=/playing=([^&]+)/.exec(location.search) // 是否再播放
+let playlist=/playlist=([^&]+)/.exec(location.search) // 播放清單
+let playindex=/playindex=([^&]+)/.exec(location.search) // 第幾首歌
+let time=/time=([^&]+)/.exec(location.search) // 經過時間(s)
+let volume=/volume=([^&]+)/.exec(location.search) // 音量
+// 網址列解碼 END
 let data
+
+// 初始化網址列資料 START
+if(!state){ state="main" }else{ state=state[1] }
+if(!text){ text="" }else{ text=text[1] }
+if(!albumid){ albumid="0" }else{ albumid=albumid[1] }
+if(!playing){ playing="false" }else{ playing=playing[1] }
+if(!playlist){ playlist="" }else{ playlist=playlist[1] }
+if(!playindex){ playindex="0" }else{ playindex=playindex[1] }
+if(!time){ time="0" }else{ time=time[1] }
+if(!volume){ volume="0.3" }else{ volume=volume[1] }
+albumid=parseInt(albumid)
+playing=playing=="true"
+playindex=parseInt(playindex)
+time=parseInt(time)
+volume=parseInt(volume)
+// 初始化網址列資料 END
 
 if(!isset(weblsget("50nationalmoduleaplaylist"))){ weblsset("50nationalmoduleaplaylist","") }
 if(!isset(weblsget("50nationalmoduleaplayingindex"))){ weblsset("50nationalmoduleaplayingindex",0) }
 
+function url(){
+    location.href="?state="+state+"&text="+text+"&id="+albumid+"&playing="+playing+"&playlist="+playlist+"&playindex="+playindex+"&time="+time+"&volume="+volume
+}
+
 function main(){ // 主程式(起始)
     docgetid("main").innerHTML=`` // 清空主區域
     data["albums"].sort(function(a,b){ return a["title"].localeCompare(b["title"]) }) // 符合字典檔排序
+
+    if(state!="main"){
+        state="main"
+        setTimeout(url,300) // 等畫面跑完
+    }
 
     for(let i=0;i<data["albums"].length;i=i+1){
         let albumartistlist=data["albums"][i]["album_artists"] // 演奏者名字列表
@@ -31,116 +65,132 @@ function main(){ // 主程式(起始)
     // 專輯內文
     docgetall(".album").forEach(function(event){
         event.onclick=function(){ // 偵測專輯是否被點擊
-            let id=event.id // 專輯id
-            docgetid("main").innerHTML=`` // 清空主區域
-            let albumartistlist=data["albums"][id]["album_artists"]
-            let albumtitle=data["albums"][id]["title"]
-            let cover=data["albums"][id]["cover"]
-            if(!isset(cover)){ cover="cover/default.png" }
-            let albumartist=albumartistlist.join(",")
-
-            let date=data["albums"][id]["attr"]["pubdate"] // 拿到上傳的時間
-            let publicdate
-            if(!isset(date)){ publicdate="N/A" }
-            else{ publicdate=date.split("-").join("/") }// 改成要求形式
-            let totalbefore=0 // MM
-            let totalafter=0 // SS
-            let tracklength=data["albums"][id]["tracks"].length // 歌曲總數
-            for(let i=0;i<tracklength;i=i+1){
-                // 判斷個專輯的時間並加總
-                let time=data["albums"][id]["tracks"][i]["duration"].split(":")
-                totalafter=totalafter+parseInt(time[1])
-                if(totalafter>=60){
-                    totalafter=totalafter-60
-                    totalbefore=totalbefore+1
-                }
-                totalbefore=totalbefore+parseInt(time[0])
-            }
-            if(totalafter<10){ totalafter="0"+totalafter }
-            if(totalbefore<10){ totalbefore="0"+totalbefore }
-            totaltime=totalbefore+":"+totalafter // 合併
-            let albumdescription=data["albums"][id]["description"] // 專輯介紹
-
-            // 印出結果
-            docgetid("main").innerHTML=`
-                <div class="top">
-                    <div class="menu">
-                        <input type="button" class="menubutton" id="goback" value="index"> > ${albumtitle}專輯詳細位置
-                    </div>
-                    <img src="${cover}" class="albumcover">
-                    <div class="albumtext title">專輯名稱:${albumtitle}</div>
-                    <div class="albumtext artist">演唱者:${albumartist}</div>
-                    <div class="albumtext publicdate">發布日期:${publicdate}</div>
-                    <div class="albumtext trackslengthandtime">歌曲總數:${tracklength}專輯總時長:${totaltime}</div>
-                    <div class="albumtext albumdescription">專輯描述:${albumdescription}</div>
-                    <div class="albumplay icondiv" id="albumpaly"><img src="material/icon/play.svg" class="albumicon"></div>
-                </div>
-                <div class="albummain macossectiondiv" id="albummain">
-                    <div class="tracklist grid">
-                        <div class="tracklisttext no">序號</div>
-                        <div class="tracklisttext tracktitle">歌曲名稱</div>
-                        <div class="tracklisttext artists">演唱者</div>
-                        <div class="tracklisttext albumtitle">專輯名稱</div>
-                        <div class="tracklisttext time">歌曲時間</div>
-                        <div class="tracklisttext def">功能區</div>
-                    </div>
-                </div>
-            `
-
-            for(let i=0;i<tracklength;i=i+1){
-                let trackid=data["albums"][id]["tracks"][i]["id"] // 歌曲標題
-                let tracktitle=data["albums"][id]["tracks"][i]["title"] // 歌曲標題
-                let time=data["albums"][id]["tracks"][i]["duration"] // 歌曲時間
-                let artists=data["albums"][id]["tracks"][i]["artists"].join(",") // 歌曲演唱者
-                let path=data["albums"][id]["tracks"][i]["path"] // 歌曲路徑
-
-                // 創建一個div放每個歌曲
-                docgetid("albummain").innerHTML=`
-                    ${docgetid("albummain").innerHTML}
-                    <div class="tracklist grid" id="${trackid}">
-                        <div class="tracklisttext no">${i+1}</div>
-                        <div class="tracklisttext tracktitle">${tracktitle}</div>
-                        <div class="tracklisttext artists">${artists}</div>
-                        <div class="tracklisttext albumtitle">${data["albums"][id]["title"]}</div>
-                        <div class="tracklisttext time">${time}</div>
-                        <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${trackid}" value="+"></div>
-                    </div>
-                `
-            }
-
-            tracklistedit() // 新增歌曲到播放清單
-
-            docgetid("goback").onclick=function(){
-                main() // 重呼叫(開啟主程式)
-            }
-
-            docgetid("albumpaly").onclick=function(){
-                if(confirm("確定是否取代播放清單成此專輯?")){
-                    weblsset("50nationalmoduleaplaylist","")
-                    weblsset("50nationalmoduleaplayingindex",0)
-                    let list=[]
-                    for(let i=0;i<tracklength;i=i+1){
-                        let trackid=data["albums"][id]["tracks"][i]["id"] // 歌曲標題
-                        list.push(trackid)
-                    }
-                    weblsset("50nationalmoduleaplaylist",list.join(","))
-                }
-            }
+            albumid=event.id
+            album()
         }
     })
+}
+
+// 專輯內文
+function album(){
+    let albumartistlist=data["albums"][albumid]["album_artists"]
+    let albumtitle=data["albums"][albumid]["title"]
+    let cover=data["albums"][albumid]["cover"]
+    let albumartist=albumartistlist.join(",")
+    let date=data["albums"][albumid]["attr"]["pubdate"] // 拿到上傳的時間
+    let publicdate
+    let totalmm=0 // MM
+    let totalss=0 // SS
+    let tracklength=data["albums"][albumid]["tracks"].length // 歌曲總數
+    let albumdescription=data["albums"][albumid]["description"] // 專輯介紹
+
+    docgetid("main").innerHTML=`` // 清空主區域
+    if(!isset(cover)){ cover="cover/default.png" }
+    if(!isset(date)){ publicdate="N/A" }
+    else{ publicdate=date.split("-").join("/") }// 改成要求形式
+
+    if(state!="album"){
+        state="album"
+        url()
+    }
+
+    for(let i=0;i<tracklength;i=i+1){
+        // 判斷個專輯的時間並加總
+        let time=data["albums"][albumid]["tracks"][i]["duration"].split(":")
+        totalss=totalss+parseInt(time[1])
+        if(totalss>=60){
+            totalss=totalss-60
+            totalmm=totalmm+1
+        }
+        totalmm=totalmm+parseInt(time[0])
+    }
+
+    // 印出結果
+    docgetid("main").innerHTML=`
+        <div class="top">
+            <div class="menu">
+                <input type="button" class="menubutton" id="goback" value="index"> > ${albumtitle}專輯詳細位置
+            </div>
+            <img src="${cover}" class="albumcover">
+            <div class="albumtext title">專輯名稱:${albumtitle}</div>
+            <div class="albumtext artist">演唱者:${albumartist}</div>
+            <div class="albumtext publicdate">發布日期:${publicdate}</div>
+            <div class="albumtext trackslengthandtime">
+                歌曲總數:${tracklength}
+                專輯總時長:${String(totalmm).padStart(2,"0")+":"+String(totalss).padStart(2,"0")}
+            </div>
+            <div class="albumtext albumdescription">專輯描述:${albumdescription}</div>
+            <div class="albumplay icondiv" id="albumpaly"><img src="material/icon/play.svg" class="albumicon"></div>
+        </div>
+        <div class="albummain macossectiondiv" id="albummain">
+            <div class="tracklist grid">
+                <div class="tracklisttext no">序號</div>
+                <div class="tracklisttext tracktitle">歌曲名稱</div>
+                <div class="tracklisttext artists">演唱者</div>
+                <div class="tracklisttext albumtitle">專輯名稱</div>
+                <div class="tracklisttext time">歌曲時間</div>
+                <div class="tracklisttext def">功能區</div>
+            </div>
+        </div>
+    `
+
+    for(let i=0;i<tracklength;i=i+1){
+        let trackid=data["albums"][albumid]["tracks"][i]["id"] // 歌曲標題
+        let tracktitle=data["albums"][albumid]["tracks"][i]["title"] // 歌曲標題
+        let time=data["albums"][albumid]["tracks"][i]["duration"] // 歌曲時間
+        let artists=data["albums"][albumid]["tracks"][i]["artists"].join(",") // 歌曲演唱者
+        let path=data["albums"][albumid]["tracks"][i]["path"] // 歌曲路徑
+
+        // 創建一個div放每個歌曲
+        docgetid("albummain").innerHTML=`
+            ${docgetid("albummain").innerHTML}
+            <div class="tracklist grid" id="${trackid}">
+                <div class="tracklisttext no">${i+1}</div>
+                <div class="tracklisttext tracktitle">${tracktitle}</div>
+                <div class="tracklisttext artists">${artists}</div>
+                <div class="tracklisttext albumtitle">${data["albums"][albumid]["title"]}</div>
+                <div class="tracklisttext time">${time}</div>
+                <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${trackid}" value="+"></div>
+            </div>
+        `
+    }
+
+    tracklistedit() // 新增歌曲到播放清單
+
+    docgetid("goback").onclick=function(){
+        main() // 重呼叫(開啟主程式)
+    }
+
+    docgetid("albumpaly").onclick=function(){
+        if(confirm("確定是否取代播放清單成此專輯?")){
+            weblsset("50nationalmoduleaplaylist","")
+            weblsset("50nationalmoduleaplayingindex",0)
+            let list=[]
+            for(let i=0;i<tracklength;i=i+1){
+                let trackid=data["albums"][albumid]["tracks"][i]["id"] // 歌曲標題
+                list.push(trackid)
+            }
+            weblsset("50nationalmoduleaplaylist",list.join(","))
+        }
+    }
 }
 
 function createaside(){
     let playlist=weblsget("50nationalmoduleaplaylist").split(",") // 播放列表
 
+    if(state!="aside"){
+        state="aside"
+        setTimeout(url,300) // 等畫面跑完
+    }
+
     docgetid("aside").innerHTML=`
-        <div class="asidelist macossectiondiv" id="list"></div>
-        <div class="audioplay" id="play"></div>
+        <div class="asidelist macossectiondivy" id="playlist"></div>
+        <div class="audioplay" id="playerfunction"></div>
     `
 
     // 創建標題
-    docgetid("list").innerHTML=`
-        ${docgetid("list").innerHTML}
+    docgetid("playlist").innerHTML=`
+        ${docgetid("playlist").innerHTML}
         <div class="list grid">
             <div class="tracklisttext no">序號</div>
             <div class="tracklisttext tracktitle">歌曲名稱</div>
@@ -161,6 +211,7 @@ function createaside(){
             let time=data["albums"][id[0]]["tracks"][id[1]]["duration"] // 歌曲時間
             let artists=data["albums"][id[0]]["tracks"][id[1]]["artists"].join(",") // 歌曲演唱者
             let divinnerhtml=``
+            let error=false
             let listdivclasslist="list grid"
 
             if(i==playingindex){ // 如果是該歌曲
@@ -171,10 +222,12 @@ function createaside(){
             if(id[2]=="ER"){ // 偵測是否為不可撥放歌曲
                 weblsset("50nationalmoduleaplayingindex",weblsget("50nationalmoduleaplayingindex")+1)
                 playingindex=playingindex+1
+                error=true
                 divinnerhtml=`
                     <div class="playerror">此音樂已無法播放</div>
                 `
             }else{
+                listdivclasslist=listdivclasslist+" playlistsongdiv"
                 divinnerhtml=`
                     <div class="tracklisttext no">${i+1}.</div>
                     <div class="tracklisttext tracktitle">${tracktitle}</div>
@@ -186,9 +239,9 @@ function createaside(){
             }
 
             // 創建一個div放每個歌曲
-            docgetid("list").innerHTML=`
-                ${docgetid("list").innerHTML}
-                <div class="${listdivclasslist}" id="list_${i}">
+            docgetid("playlist").innerHTML=`
+                ${docgetid("playlist").innerHTML}
+                <div class="${listdivclasslist}" data-id="${i}" data-error="${error}">
                     ${divinnerhtml}
                 </div>
             `
@@ -196,15 +249,12 @@ function createaside(){
 
         tracklistedit() // 刪除歌曲
 
-        docgetid("play").innerHTML=`
-            ${docgetid("play").innerHTML}
+        docgetid("playerfunction").innerHTML=`
             <div>
-                <div class="playerdiv">
-                    <div class="icondiv" id="back"><img src="material/icon/play-skip-back.svg" class="icon"></div>
-                    <div class="icondiv" id="playpause"><img src="" class="icon" id="playpauseicon"></div>
-                    <div class="icondiv" id="forward"><img src="material/icon/play-skip-forward.svg" class="icon"></div>
-                    <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon"></div>
-                </div>
+                <div class="icondiv" id="back"><img src="material/icon/play-skip-back.svg" class="icon"></div>
+                <div class="icondiv" id="playpause"><img src="" class="icon" id="playpauseicon"></div>
+                <div class="icondiv" id="forward"><img src="material/icon/play-skip-forward.svg" class="icon"></div>
+                <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon"></div>
             </div>
         `
 
@@ -237,6 +287,7 @@ function createaside(){
                 docgetid("player").play()
                 playing=true
             }
+            url()
         }
 
         // 前進一首歌
@@ -274,7 +325,18 @@ function createaside(){
             createaside()
         }
 
-        docgetid("player").volume=0.3
+        // 點歌後可以自動撥放
+        docgetall(".playlistsongdiv").forEach(function(event){
+            event.onclick=function(){
+                if(event.dataset.error){
+                    weblsset("50nationalmoduleaplayingindex",event.dataset.id)
+                    createaside()
+                    docgetid("player").play()
+                }else{
+                    alert("此音樂無法撥放")
+                }
+            }
+        })
     }else{
         docgetid("list").innerHTML=`
             ${docgetid("list").innerHTML}
@@ -446,10 +508,33 @@ function tracklistedit(key){
     })
 }
 
+// 初始化aside START
+docgetid("aside").style.width="0%"
+docgetid("openaside").style.left="0%"
+// 初始化aside END
+
 newajax("GET","albumlist.json").onload=function(){
     data=JSON.parse(this.responseText) // 拿到data
-
-    main() // 開始主程式
+    if(state=="main"){
+        main() // 開始主程式
+    }else if(state=="search"){
+        docgetid("search").value=text
+    }else if(state=="album"){
+        album(albumid)
+    }else if(state=="aside"){
+        docgetid("aside").style.width="55%"
+        docgetid("openaside").style.left="55%"
+        docgetid("openaside").value="<"
+        docgetid("body").innerHTML=`
+            ${docgetid("body").innerHTML}
+            <div class="mask" id="asidemask"></div>
+        `
+        aside="open"
+        createaside()
+        console.log("inini")
+    }else{
+        conlog("[ERROR]","red","15")
+    }
 }
 
 // 設定aside的開啟及關閉
@@ -465,8 +550,8 @@ docgetid("openaside").onclick=function(){
         aside="open"
         createaside()
     }else{
-        docgetid("aside").style.width="0px"
-        docgetid("openaside").style.left="0px"
+        docgetid("aside").style.width="0%"
+        docgetid("openaside").style.left="0%"
         docgetid("openaside").value=">"
         docgetid("asidemask").remove()
         aside="close"
@@ -523,5 +608,7 @@ document.onkeydown=function(event){
         }
     }
 }
+
+docgetid("player").volume=volume
 
 startmacossection()
