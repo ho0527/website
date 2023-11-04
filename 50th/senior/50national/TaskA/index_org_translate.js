@@ -1,17 +1,86 @@
 let aside = "close" // 設定aside為關閉
-let playing = false
+// 網址列解碼 START
+let state = /state=([^&]+)/.exec(location.search) // main | search | album | aside
+let text = /text=([^&]+)/.exec(location.search) // search專用
+let albumid = /id=([^&]+)/.exec(location.search) // album專用
+let playing = /playing=([^&]+)/.exec(location.search) // 是否再播放
+let playlist = /playlist=([^&]+)/.exec(location.search) // 播放清單
+let playindex = /playindex=([^&]+)/.exec(location.search) // 第幾首歌
+let time = /time=([^&]+)/.exec(location.search) // 經過時間(s)
+let volume = /volume=([^&]+)/.exec(location.search) // 音量
+// 網址列解碼 END
 let data
 
-if (!localStorage.getItem("50nationalmodulealist")) {
-    localStorage.setItem("50nationalmodulealist", "")
+// 初始化網址列資料 START
+if (!state) {
+    state = "main"
+} else {
+    state = state[1]
 }
-if (!localStorage.getItem("50nationalmoduleaplayingindex")) {
+if (!text) {
+    text = ""
+} else {
+    text = text[1]
+}
+if (!albumid) {
+    albumid = "0"
+} else {
+    albumid = albumid[1]
+}
+if (!playing) {
+    playing = "false"
+} else {
+    playing = playing[1]
+}
+if (!playlist) {
+    playlist = ""
+} else {
+    playlist = playlist[1]
+}
+if (!playindex) {
+    playindex = "0"
+} else {
+    playindex = playindex[1]
+}
+if (!time) {
+    time = "0"
+} else {
+    time = time[1]
+}
+if (!volume) {
+    volume = "0.3"
+} else {
+    volume = volume[1]
+}
+albumid = parseInt(albumid)
+playing = playing == "true"
+playindex = parseInt(playindex)
+time = parseInt(time)
+volume = parseInt(volume)
+// 初始化網址列資料 END
+
+if (localStorage.getItem("50nationalmoduleaplaylist")) {
+    localStorage.setItem("50nationalmoduleaplaylist", "")
+}
+if (localStorage.getItem("50nationalmoduleaplayingindex")) {
     localStorage.setItem("50nationalmoduleaplayingindex", 0)
+}
+
+function url() {
+    history.pushState(null, null, "?state=" + state + "&text=" + text + "&id=" + albumid + "&playing=" + playing + "&playlist=" + playlist + "&playindex=" + playindex + "&time=" + time + "&volume=" + volume)
 }
 
 function main() { // 主程式(起始)
     document.getElementById("main").innerHTML = `` // 清空主區域
-    data["albums"].sort(function (a, b) { return a["title"].localeCompare(b["title"]) }) // 符合字典檔排序
+    data["albums"].sort(function (a, b) {
+        return a["title"].localeCompare(b["title"])
+    }) // 符合字典檔排序
+
+    if (state != "main") {
+        state = "main"
+        url()
+        // setTimeout(url,300) // 等畫面跑完
+    }
 
     for (let i = 0; i < data["albums"].length; i = i + 1) {
         let albumartistlist = data["albums"][i]["album_artists"] // 演奏者名字列表
@@ -22,144 +91,145 @@ function main() { // 主程式(起始)
 
         // 設定每張專輯的div
         document.getElementById("main").innerHTML = `
-                ${document.getElementById("main").innerHTML}
-                <div class="album" id="${i}">
-                    <img src="${cover}" class="cover"><br>
-                    <div class="albumttext">
-                        <div class="albumtitle">${albumtitle}</div>
-                        <div class="albumartist">${albumartist}</div>
-                    </div>
+            ${document.getElementById("main").innerHTML}
+            <div class="album" id="${i}">
+                <img src="${cover}" class="cover" draggable="false"><br>
+                <div class="albumttext">
+                    <div class="albumtitle">${albumtitle}</div>
+                    <div class="albumartist">${albumartist}</div>
                 </div>
-            `
+            </div>
+        `
     }
-    albummain() // 呼叫專輯內文
-}
-
-function albummain() { // 專輯內文
+    // 專輯內文
     docgetall(".album").forEach(function (event) {
         event.onclick = function () { // 偵測專輯是否被點擊
-            let id = event.id // 專輯id
-            let albumartistlist = data["albums"][id]["album_artists"]
-            let albumtitle = data["albums"][id]["title"]
-            let cover = data["albums"][id]["cover"]
-            let albumartist = albumartistlist.join(",")
-            let date = data["albums"][id]["attr"]["pubdate"] // 拿到上傳的時間
-            let publicdate
-            let totalbefore = 0 // MM
-            let totalafter = 0 // SS
-            let tracklength = data["albums"][id]["tracks"].length // 歌曲總數
-            let albumdescription = data["albums"][id]["description"] // 專輯介紹
-
-            document.getElementById("main").innerHTML = `` // 清空主區域
-
-            if (!cover) {
-                cover = "cover/default.png"
-            }
-            if (!date) {
-                publicdate = "N/A"
-            } else {
-                publicdate = date.split("-").join("/")
-            }// 改成要求形式
-
-            for (let i = 0; i < tracklength; i = i + 1) {
-                // 判斷個專輯的時間並加總
-                let time = data["albums"][id]["tracks"][i]["duration"].split(":")
-                totalafter = totalafter + parseInt(time[1])
-                if (totalafter >= 60) {
-                    totalafter = totalafter - 60
-                    totalbefore = totalbefore + 1
-                }
-                totalbefore = totalbefore + parseInt(time[0])
-            }
-
-            if (totalafter < 10) {
-                totalafter = "0" + totalafter
-            }
-            if (totalbefore < 10) {
-                totalbefore = "0" + totalbefore
-            }
-            totaltime = totalbefore + ":" + totalafter // 合併
-
-            // 印出結果
-            document.getElementById("main").innerHTML = `
-                    <div class="top">
-                        <div class="menu">
-                            <input type="button" class="menubutton" id="goback" value="index"> > ${albumtitle}專輯詳細位置
-                        </div>
-                        <img src="${cover}" class="albumcover">
-                        <div class="albumtext title">專輯名稱:${albumtitle}</div>
-                        <div class="albumtext artist">演唱者:${albumartist}</div>
-                        <div class="albumtext publicdate">發布日期:${publicdate}</div>
-                        <div class="albumtext trackslengthandtime">歌曲總數:${tracklength}專輯總時長:${totaltime}</div>
-                        <div class="albumtext albumdescription">專輯描述:${albumdescription}</div>
-                        <div class="albumplay icondiv" id="albumpaly"><img src="material/icon/play.svg" class="albumicon"></div>
-                    </div>
-                    <div class="albummain macossectiondiv" id="albummain">
-                        <div class="tracklist grid">
-                            <div class="tracklisttext no">序號</div>
-                            <div class="tracklisttext tracktitle">歌曲名稱</div>
-                            <div class="tracklisttext artists">演唱者</div>
-                            <div class="tracklisttext albumtitle">專輯名稱</div>
-                            <div class="tracklisttext time">歌曲時間</div>
-                            <div class="tracklisttext def">功能區</div>
-                        </div>
-                    </div>
-                `
-
-            for (let i = 0; i < tracklength; i = i + 1) {
-                let trackid = data["albums"][id]["tracks"][i]["id"] // 歌曲標題
-                let tracktitle = data["albums"][id]["tracks"][i]["title"] // 歌曲標題
-                let time = data["albums"][id]["tracks"][i]["duration"] // 歌曲時間
-                let artists = data["albums"][id]["tracks"][i]["artists"].join(",") // 歌曲演唱者
-                let path = data["albums"][id]["tracks"][i]["path"] // 歌曲路徑
-
-                // 創建一個div放每個歌曲
-                document.getElementById("albummain").innerHTML = `
-                        ${document.getElementById("albummain").innerHTML}
-                        <div class="tracklist grid" id="${trackid}">
-                            <div class="tracklisttext no">${i + 1}</div>
-                            <div class="tracklisttext tracktitle">${tracktitle}</div>
-                            <div class="tracklisttext artists">${artists}</div>
-                            <div class="tracklisttext albumtitle">${data["albums"][id]["title"]}</div>
-                            <div class="tracklisttext time">${time}</div>
-                            <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${trackid}" value="+"></div>
-                        </div>
-                    `
-            }
-
-            tracklistedit() // 新增歌曲到播放清單
-
-            document.getElementById("goback").onclick = function () {
-                main() // 重呼叫(開啟主程式)
-            }
-
-            document.getElementById("albumpaly").onclick = function () {
-                if (confirm("確定是否取代播放清單成此專輯?")) {
-                    localStorage.setItem("50nationalmodulealist", "")
-                    localStorage.setItem("50nationalmoduleaplayingindex", 0)
-                    let list = []
-                    for (let i = 0; i < tracklength; i = i + 1) {
-                        let trackid = data["albums"][id]["tracks"][i]["id"] // 歌曲標題
-                        list.push(trackid)
-                    }
-                    localStorage.setItem("50nationalmodulealist", list.join(","))
-                }
-            }
+            albumid = event.id
+            album()
         }
     })
 }
 
+// 專輯內文
+function album() {
+    let albumartistlist = data["albums"][albumid]["album_artists"]
+    let albumtitle = data["albums"][albumid]["title"]
+    let cover = data["albums"][albumid]["cover"]
+    let albumartist = albumartistlist.join(",")
+    let date = data["albums"][albumid]["attr"]["pubdate"] // 拿到上傳的時間
+    let publicdate
+    let totalmm = 0 // MM
+    let totalss = 0 // SS
+    let tracklength = data["albums"][albumid]["tracks"].length // 歌曲總數
+    let albumdescription = data["albums"][albumid]["description"] // 專輯介紹
+
+    document.getElementById("main").innerHTML = `` // 清空主區域
+    if (!isset(cover)) { cover = "cover/default.png" }
+    if (!isset(date)) { publicdate = "N/A" }
+    else { publicdate = date.split("-").join("/") }// 改成要求形式
+
+    if (state != "album") {
+        state = "album"
+        url()
+    }
+
+    for (let i = 0; i < tracklength; i = i + 1) {
+        // 判斷個專輯的時間並加總
+        let time = data["albums"][albumid]["tracks"][i]["duration"].split(":")
+        totalss = totalss + parseInt(time[1])
+        if (totalss >= 60) {
+            totalss = totalss - 60
+            totalmm = totalmm + 1
+        }
+        totalmm = totalmm + parseInt(time[0])
+    }
+
+    // 印出結果
+    document.getElementById("main").innerHTML = `
+        <div class="top">
+            <div class="menu">
+                <input type="button" class="menubutton" id="goback" value="index"> > ${albumtitle}專輯詳細位置
+            </div>
+            <img src="${cover}" class="albumcover">
+            <div class="albumtext title">專輯名稱:${albumtitle}</div>
+            <div class="albumtext artist">演唱者:${albumartist}</div>
+            <div class="albumtext publicdate">發布日期:${publicdate}</div>
+            <div class="albumtext trackslengthandtime">
+                歌曲總數:${tracklength}
+                專輯總時長:${String(totalmm).padStart(2, "0") + ":" + String(totalss).padStart(2, "0")}
+            </div>
+            <div class="albumtext albumdescription">專輯描述:${albumdescription}</div>
+            <div class="albumplay icondiv" id="albumpaly"><img src="material/icon/play.svg" class="albumicon"></div>
+        </div>
+        <div class="albummain macossectiondiv" id="albummain">
+            <div class="tracklist grid">
+                <div class="tracklisttext no">序號</div>
+                <div class="tracklisttext tracktitle">歌曲名稱</div>
+                <div class="tracklisttext artists">演唱者</div>
+                <div class="tracklisttext albumtitle">專輯名稱</div>
+                <div class="tracklisttext time">歌曲時間</div>
+                <div class="tracklisttext def">功能區</div>
+            </div>
+        </div>
+    `
+
+    for (let i = 0; i < tracklength; i = i + 1) {
+        let trackid = data["albums"][albumid]["tracks"][i]["id"] // 歌曲標題
+        let tracktitle = data["albums"][albumid]["tracks"][i]["title"] // 歌曲標題
+        let time = data["albums"][albumid]["tracks"][i]["duration"] // 歌曲時間
+        let artists = data["albums"][albumid]["tracks"][i]["artists"].join(",") // 歌曲演唱者
+        let path = data["albums"][albumid]["tracks"][i]["path"] // 歌曲路徑
+
+        // 創建一個div放每個歌曲
+        document.getElementById("albummain").innerHTML = `
+            ${document.getElementById("albummain").innerHTML}
+            <div class="tracklist grid" id="${trackid}">
+                <div class="tracklisttext no">${i + 1}</div>
+                <div class="tracklisttext tracktitle">${tracktitle}</div>
+                <div class="tracklisttext artists">${artists}</div>
+                <div class="tracklisttext albumtitle">${data["albums"][albumid]["title"]}</div>
+                <div class="tracklisttext time">${time}</div>
+                <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${trackid}" value="+"></div>
+            </div>
+        `
+    }
+
+    tracklistedit() // 新增歌曲到播放清單
+
+    document.getElementById("goback").onclick = function () {
+        main() // 重呼叫(開啟主程式)
+    }
+
+    document.getElementById("albumpaly").onclick = function () {
+        if (confirm("確定是否取代播放清單成此專輯?")) {
+            localStorage.setItem("50nationalmoduleaplaylist", "")
+            localStorage.setItem("50nationalmoduleaplayingindex", 0)
+            let list = []
+            for (let i = 0; i < tracklength; i = i + 1) {
+                let trackid = data["albums"][albumid]["tracks"][i]["id"] // 歌曲標題
+                list.push(trackid)
+            }
+            localStorage.setItem("50nationalmoduleaplaylist", list.join(","))
+        }
+    }
+}
+
 function createaside() {
-    let list = localStorage.getItem("50nationalmodulealist").split(",") // 播放列表
+    let playlist = localStorage.getItem("50nationalmoduleaplaylist").split(",") // 播放列表
+
+    if (state != "aside") {
+        state = "aside"
+        url()
+    }
 
     document.getElementById("aside").innerHTML = `
-            <div class="asidelist macossectiondiv" id="list"></div>
-            <div class="audioplay" id="play"></div>
+        <div class="asidelist macossectiondivy" id="playlist"></div>
+        <div class="audioplay" id="playerfunction"></div>
     `
 
     // 創建標題
-    document.getElementById("list").innerHTML = `
-        ${document.getElementById("list").innerHTML}
+    document.getElementById("playlist").innerHTML = `
+        ${document.getElementById("playlist").innerHTML}
         <div class="list grid">
             <div class="tracklisttext no">序號</div>
             <div class="tracklisttext tracktitle">歌曲名稱</div>
@@ -170,16 +240,17 @@ function createaside() {
         </div>
     `
 
-    if (list[0] != "") {
+    if (playlist[0] != "") {
         let playingindex = localStorage.getItem("50nationalmoduleaplayingindex")
         let path = ""
-        for (let i = 0; i < list.length; i = i + 1) {
-            let id = list[i].split("_")
+        for (let i = 0; i < playlist.length; i = i + 1) {
+            let id = playlist[i].split("_")
             let trackid = data["albums"][id[0]]["tracks"][id[1]]["id"]
             let tracktitle = data["albums"][id[0]]["tracks"][id[1]]["title"] // 歌曲標題
             let time = data["albums"][id[0]]["tracks"][id[1]]["duration"] // 歌曲時間
             let artists = data["albums"][id[0]]["tracks"][id[1]]["artists"].join(",") // 歌曲演唱者
             let divinnerhtml = ``
+            let error = false
             let listdivclasslist = "list grid"
 
             if (i == playingindex) { // 如果是該歌曲
@@ -190,10 +261,12 @@ function createaside() {
             if (id[2] == "ER") { // 偵測是否為不可撥放歌曲
                 localStorage.setItem("50nationalmoduleaplayingindex", localStorage.getItem("50nationalmoduleaplayingindex") + 1)
                 playingindex = playingindex + 1
+                error = true
                 divinnerhtml = `
                     <div class="playerror">此音樂已無法播放</div>
                 `
             } else {
+                listdivclasslist = listdivclasslist + " playlistsongdiv"
                 divinnerhtml = `
                     <div class="tracklisttext no">${i + 1}.</div>
                     <div class="tracklisttext tracktitle">${tracktitle}</div>
@@ -205,9 +278,9 @@ function createaside() {
             }
 
             // 創建一個div放每個歌曲
-            document.getElementById("list").innerHTML = `
-                ${document.getElementById("list").innerHTML}
-                <div class="${listdivclasslist}" id="list_${i}">
+            document.getElementById("playlist").innerHTML = `
+                ${document.getElementById("playlist").innerHTML}
+                <div class="${listdivclasslist}" data-id="${i}" data-error="${error}">
                     ${divinnerhtml}
                 </div>
             `
@@ -215,76 +288,94 @@ function createaside() {
 
         tracklistedit() // 刪除歌曲
 
-        // 播放器
-        document.getElementById("play").innerHTML = `
-            ${document.getElementById("play").innerHTML}
+        document.getElementById("playerfunction").innerHTML = `
             <div>
-                <div class="playerdiv">
-                    <div class="icondiv" id="back"><img src="material/icon/play-skip-back.svg" class="icon"></div>
-                    <div class="icondiv" id="palypause"><img src="material/icon/play.svg" class="icon" id="palypauseicon"></div>
-                    <div class="icondiv" id="forward"><img src="material/icon/play-skip-forward.svg" class="icon"></div>
-                    <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon"></div>
-                </div>
-                <audio class="player" id="player" controls>
-                    <source src="https://www.youtube.com/watch?v=by4SYYWlhEs?autoplay=1&controls=0" type="audio/mpeg">
-                </audio>
+                <div class="icondiv" id="back"><img src="material/icon/play-skip-back.svg" class="icon"></div>
+                <div class="icondiv" id="playpause"><img src="" class="icon" id="playpauseicon"></div>
+                <div class="icondiv" id="forward"><img src="material/icon/play-skip-forward.svg" class="icon"></div>
+                <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon"></div>
             </div>
         `
 
-        document.getElementById("back").onclick = function () {
+        document.getElementById("player").src = path
 
+        // 初始化圖片
+        if (playing) {
+            document.getElementById("playpauseicon").src = "material/icon/pause.svg"
+            document.getElementById("player").play()
+        } else {
+            document.getElementById("playpauseicon").src = "material/icon/play.svg"
+            document.getElementById("player").pause()
         }
 
-        document.getElementById("palypause").onclick = function () {
+        // 倒退一首歌
+        document.getElementById("back").onclick = function () {
+            if (parseInt(localStorage.getItem("50nationalmoduleaplayingindex")) - 1 >= 0) {
+                localStorage.setItem("50nationalmoduleaplayingindex", parseInt(localStorage.getItem("50nationalmoduleaplayingindex")) - 1)
+            }
+            createaside()
+        }
+
+        document.getElementById("playpause").onclick = function () {
             if (playing) {
-                document.getElementById("palypauseicon").src = "material/icon/play.svg"
+                document.getElementById("playpauseicon").src = "material/icon/play.svg"
+                document.getElementById("player").pause()
                 playing = false
             } else {
-                document.getElementById("palypauseicon").src = "material/icon/pause.svg"
+                document.getElementById("playpauseicon").src = "material/icon/pause.svg"
+                document.getElementById("player").play()
                 playing = true
             }
+            url()
         }
 
+        // 前進一首歌
         document.getElementById("forward").onclick = function () {
-
+            if (parseInt(localStorage.getItem("50nationalmoduleaplayingindex")) + 1 <= playlist.length - 1) {
+                localStorage.setItem("50nationalmoduleaplayingindex", parseInt(localStorage.getItem("50nationalmoduleaplayingindex")) + 1)
+            }
+            createaside()
         }
 
         document.getElementById("volume").onclick = function () {
             // document.getElementById("volumerange")
         }
 
-        document.getElementById("player").addEventListener("keydown", function (event) {
-            if (event.key == "ArrowRight") { // 向后跳转5秒
-                event.preventDefault()
-                document.getElementById("player").currentTime = document.getElementById("player").currentTime + 2
-            }
-            if (event.key == "ArrowLeft") { // 向前跳转5秒
-                event.preventDefault()
-                document.getElementById("player").currentTime = document.getElementById("player").currentTime - 2
-            }
-        })
-
         document.getElementById("player").onerror = function () {
             alert("因此音樂無法撥放或損毀，將重新加載並自動撥放下一首音樂")
-            let list = localStorage.getItem("50nationalmodulealist").split(",")
+            let playlist = localStorage.getItem("50nationalmoduleaplaylist").split(",")
             let mainlist = []
-            for (let i = 0; i < list.length; i = i + 1) {
+            for (let i = 0; i < playlist.length; i = i + 1) {
                 if (i == playingindex) {
-                    mainlist.push(list[i] + "_ER")
+                    mainlist.push(playlist[i] + "_ER")
                 } else {
-                    mainlist.push(list[i])
+                    mainlist.push(playlist[i])
                 }
             }
-            localStorage.setItem("50nationalmodulealist", mainlist.join(","))
-            localStorage.setItem("50nationalmoduleaplayingindex", localStorage.getItem("50nationalmoduleaplayingindex") + 1)
+            localStorage.setItem("50nationalmoduleaplaylist", mainlist.join(","))
+            localStorage.setItem("50nationalmoduleaplayingindex", parseInt(localStorage.getItem("50nationalmoduleaplayingindex")) + 1)
             createaside()
         }
 
         document.getElementById("player").onended = function () {
-            localStorage.setItem("50nationalmoduleaplayingindex", localStorage.getItem("50nationalmoduleaplayingindex") + 1)
+            if (parseInt(localStorage.getItem("50nationalmoduleaplayingindex")) + 1 <= playlist.length - 1) {
+                localStorage.setItem("50nationalmoduleaplayingindex", parseInt(localStorage.getItem("50nationalmoduleaplayingindex")) + 1)
+            }
+            createaside()
         }
 
-        document.getElementById("player").volume = 0.5
+        // 點歌後可以自動撥放
+        docgetall(".playlistsongdiv").forEach(function (event) {
+            event.onclick = function () {
+                if (event.dataset.error) {
+                    localStorage.setItem("50nationalmoduleaplayingindex", event.dataset.id)
+                    createaside()
+                    document.getElementById("player").play()
+                } else {
+                    alert("此音樂無法撥放")
+                }
+            }
+        })
     } else {
         document.getElementById("list").innerHTML = `
             ${document.getElementById("list").innerHTML}
@@ -294,7 +385,6 @@ function createaside() {
         `
     }
 
-    // 嘿我也不知道為什麼要再打一次能能收合但就先這樣吧
     // 設定aside的開啟及關閉
     document.getElementById("openaside").onclick = function () {
         if (aside == "close") {
@@ -312,8 +402,9 @@ function createaside() {
             document.getElementById("openaside").style.left = "0px"
             document.getElementById("openaside").value = ">"
             document.getElementById("asidemask").remove()
-            document.getElementById("aside").innerHTML = ``
             aside = "close"
+            document.getElementById("aside").innerHTML = ``
+            main()
         }
     }
 }
@@ -372,19 +463,25 @@ function search(title, artist, album) {
 
             // 檢查是否符合搜尋條件
             if (term.title.length > 0) {
-                titlematch = term.title.some(function (term) { return track[j]["title"].match(new RegExp(term, "gi")) })
+                titlematch = term.title.some(function (term) {
+                    return track[j]["title"].match(new RegExp(term, "gi"))
+                })
             } else {
                 titlematch = true // 沒有 title 條件時，預設為 true
             }
 
             if (term.artist.length > 0) {
-                artistmatch = term.artist.some(function (term) { return track[j]["artists"].join(",").match(new RegExp(term, "gi")) })
+                artistmatch = term.artist.some(function (term) {
+                    return track[j]["artists"].join(",").match(new RegExp(term, "gi"))
+                })
             } else {
                 artistmatch = true // 沒有 artist 條件時，預設為 true
             }
 
             if (term.album.length > 0) {
-                albummatch = term.album.some(function (term) { return searchdata["albums"][i]["title"].match(new RegExp(term, "gi")) })
+                albummatch = term.album.some(function (term) {
+                    return searchdata["albums"][i]["title"].match(new RegExp(term, "gi"))
+                })
             } else {
                 albummatch = true // 沒有 album 條件時，預設為 true
             }
@@ -429,69 +526,62 @@ function search(title, artist, album) {
     `
 }
 
-function tracklistedit() {
+function tracklistedit(key) {
     docgetall(".defbutton").forEach(function (event) {
         event.onclick = function () {
             let id = event.dataset.id // 歌曲id
             if (event.value == "+") { // 新增專輯
 
                 // 判斷專輯是否存在
-                let list = localStorage.getItem("50nationalmodulealist").split(",")
-                if (list.includes(id)) { alert("該專輯以存在於撥放清單") }
-                else {
+                let list = localStorage.getItem("50nationalmoduleaplaylist").split(",")
+                if (list.includes(id)) {
+                    alert("該專輯以存在於撥放清單")
+                } else {
                     list.push(id)
-                    localStorage.setItem("50nationalmodulealist", list.join(","))
+                    localStorage.setItem("50nationalmoduleaplaylist", list.join(","))
                 }
             } else if (event.value == "-") { // 刪除專輯
                 if (localStorage.getItem("50nationalmoduleaplayingindex") != event.dataset.no || !playing) {
-                    let list = localStorage.getItem("50nationalmodulealist").split(",")
+                    let list = localStorage.getItem("50nationalmoduleaplaylist").split(",")
                     list.splice(list.indexOf(id), 1) // 刪除資料
-                    localStorage.setItem("50nationalmodulealist", list.join(",")) // 回復資料
+                    localStorage.setItem("50nationalmoduleaplaylist", list.join(",")) // 回復資料
                     createaside()
                 }
+            } else {
+                conlog("[ERROR]tracklistedit function event value error", "red", "15", "bold")
             }
         }
     })
 }
 
-function playerfunction() {
-    let palyer = document.getElementById("player")
-    // if(palyer.paused){ palyer.play() }
-}
+// 初始化aside START
+document.getElementById("aside").style.width = "0%"
+document.getElementById("openaside").style.left = "0%"
+// 初始化aside END
 
-// 讓我偷懶用我自己的函式 ~>~ (開檔的XMLHttpRequest)
+// 讓我偷懶用我自己的函式~>~
 newajax("GET", "albumlist.json").onload = function () {
     data = JSON.parse(this.responseText) // 拿到data
-
-    document.getElementById("search").oninput = function () {
-        let value = document.getElementById("search").value
-        let title = []
-        let artist = []
-        let album = []
-
-        if (value.match(new RegExp("title:", "gi"))) {
-            valuetemp = value.split("title:")
-            title.push(valuetemp[1])
-        }
-
-        if (value.match(new RegExp("artist:", "gi"))) {
-            valuetemp = value.split("artist:")
-            artist.push(valuetemp[1])
-        }
-
-        if (value.match(new RegExp("album:", "gi"))) {
-            valuetemp = value.split("album:")
-            album.push(valuetemp[1])
-        }
-
-        if (value.length >= 3) {
-            search(title, artist, album)
-        } else {
-            main()
-        }
+    if (state == "main") {
+        main() // 開始主程式
+    } else if (state == "search") {
+        document.getElementById("search").value = text
+    } else if (state == "album") {
+        album(albumid)
+    } else if (state == "aside") {
+        document.getElementById("aside").style.width = "55%"
+        document.getElementById("openaside").style.left = "55%"
+        document.getElementById("openaside").value = "<"
+        document.getElementById("body").innerHTML = `
+            ${document.getElementById("body").innerHTML}
+            <div class="mask" id="asidemask"></div>
+        `
+        aside = "open"
+        createaside()
+        console.log("inini")
+    } else {
+        conlog("[ERROR]", "red", "15")
     }
-
-    main() // 開始主程式
 }
 
 // 設定aside的開啟及關閉
@@ -507,13 +597,65 @@ document.getElementById("openaside").onclick = function () {
         aside = "open"
         createaside()
     } else {
-        document.getElementById("aside").style.width = "0px"
-        document.getElementById("openaside").style.left = "0px"
+        document.getElementById("aside").style.width = "0%"
+        document.getElementById("openaside").style.left = "0%"
         document.getElementById("openaside").value = ">"
         document.getElementById("asidemask").remove()
-        document.getElementById("aside").innerHTML = ``
         aside = "close"
+        document.getElementById("aside").innerHTML = ``
+        main()
     }
 }
 
-startmacossection() // 讓滾動調變好看的函式
+document.getElementById("search").oninput = function () {
+    let value = document.getElementById("search").value
+    let title = []
+    let artist = []
+    let album = []
+
+    if (value.match(new RegExp("title:", "gi"))) {
+        valuetemp = value.split("title:")
+        title.push(valuetemp[1])
+    }
+
+    if (value.match(new RegExp("artist:", "gi"))) {
+        valuetemp = value.split("artist:")
+        artist.push(valuetemp[1])
+    }
+
+    if (value.match(new RegExp("album:", "gi"))) {
+        valuetemp = value.split("album:")
+        album.push(valuetemp[1])
+    }
+
+    if (value.length >= 3) {
+        search(title, artist, album)
+    } else {
+        main()
+    }
+}
+
+document.onkeydown = function (event) {
+    if (event.key == "ArrowRight") { // 向后跳转5秒
+        event.preventDefault()
+        document.getElementById("player").currentTime = document.getElementById("player").currentTime + 5
+    }
+    if (event.key == "ArrowLeft") { // 向前跳转5秒
+        event.preventDefault()
+        document.getElementById("player").currentTime = document.getElementById("player").currentTime - 5
+    }
+    if (event.key == " ") { // 暫停/開始
+        event.preventDefault()
+        if (playing) {
+            document.getElementById("player").pause()
+            playing = false
+        } else {
+            document.getElementById("player").play()
+            playing = true
+        }
+    }
+}
+
+document.getElementById("player").volume = volume
+
+startmacossection() // 讓滾動條變好看:)

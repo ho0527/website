@@ -24,14 +24,12 @@ albumid=parseInt(albumid)
 playing=playing=="true"
 playindex=parseInt(playindex)
 time=parseInt(time)
-volume=parseInt(volume)
+volume=parseFloat(volume)
 // 初始化網址列資料 END
 
-if(!isset(weblsget("50nationalmoduleaplaylist"))){ weblsset("50nationalmoduleaplaylist","") }
-if(!isset(weblsget("50nationalmoduleaplayingindex"))){ weblsset("50nationalmoduleaplayingindex",0) }
-
 function url(){
-    location.href="?state="+state+"&text="+text+"&id="+albumid+"&playing="+playing+"&playlist="+playlist+"&playindex="+playindex+"&time="+time+"&volume="+volume
+    docgetid("player").volume=volume
+    history.pushState(null,null,"?state="+state+"&text="+text+"&id="+albumid+"&playing="+playing+"&playlist="+playlist+"&playindex="+playindex+"&time="+time+"&volume="+volume)
 }
 
 function main(){ // 主程式(起始)
@@ -40,7 +38,8 @@ function main(){ // 主程式(起始)
 
     if(state!="main"){
         state="main"
-        setTimeout(url,300) // 等畫面跑完
+        url()
+        // setTimeout(url,300) // 等畫面跑完
     }
 
     for(let i=0;i<data["albums"].length;i=i+1){
@@ -163,25 +162,22 @@ function album(){
 
     docgetid("albumpaly").onclick=function(){
         if(confirm("確定是否取代播放清單成此專輯?")){
-            weblsset("50nationalmoduleaplaylist","")
-            weblsset("50nationalmoduleaplayingindex",0)
             let list=[]
             for(let i=0;i<tracklength;i=i+1){
                 let trackid=data["albums"][albumid]["tracks"][i]["id"] // 歌曲標題
                 list.push(trackid)
             }
-            weblsset("50nationalmoduleaplaylist",list.join(","))
+            playlist=list.join(",")
+            playindex=0
+            url()
         }
     }
 }
 
 function createaside(){
-    let playlist=weblsget("50nationalmoduleaplaylist").split(",") // 播放列表
+    let playlistsplit=playlist.split(",") // 播放列表
 
-    if(state!="aside"){
-        state="aside"
-        setTimeout(url,300) // 等畫面跑完
-    }
+    state="aside"
 
     docgetid("aside").innerHTML=`
         <div class="asidelist macossectiondivy" id="playlist"></div>
@@ -201,11 +197,10 @@ function createaside(){
         </div>
     `
 
-    if(playlist[0]!=""){
-        let playingindex=weblsget("50nationalmoduleaplayingindex")
+    if(playlistsplit[0]!=""){
         let path=""
-        for(let i=0;i<playlist.length;i=i+1){
-            let id=playlist[i].split("_")
+        for(let i=0;i<playlistsplit.length;i=i+1){
+            let id=playlistsplit[i].split("_")
             let trackid=data["albums"][id[0]]["tracks"][id[1]]["id"]
             let tracktitle=data["albums"][id[0]]["tracks"][id[1]]["title"] // 歌曲標題
             let time=data["albums"][id[0]]["tracks"][id[1]]["duration"] // 歌曲時間
@@ -214,14 +209,13 @@ function createaside(){
             let error=false
             let listdivclasslist="list grid"
 
-            if(i==playingindex){ // 如果是該歌曲
+            if(i==playindex){ // 如果是該歌曲
                 path=data["albums"][id[0]]["tracks"][id[1]]["path"] // 歌曲路徑
                 listdivclasslist=listdivclasslist+" playing"
             }
 
             if(id[2]=="ER"){ // 偵測是否為不可撥放歌曲
-                weblsset("50nationalmoduleaplayingindex",weblsget("50nationalmoduleaplayingindex")+1)
-                playingindex=playingindex+1
+                playindex=playindex+1
                 error=true
                 divinnerhtml=`
                     <div class="playerror">此音樂已無法播放</div>
@@ -271,8 +265,8 @@ function createaside(){
 
         // 倒退一首歌
         docgetid("back").onclick=function(){
-            if(parseInt(weblsget("50nationalmoduleaplayingindex"))-1>=0){
-                weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))-1)
+            if(parseInt(playindex)-1>=0){
+                playindex=parseInt(playindex)-1
             }
             createaside()
         }
@@ -292,8 +286,8 @@ function createaside(){
 
         // 前進一首歌
         docgetid("forward").onclick=function(){
-            if(parseInt(weblsget("50nationalmoduleaplayingindex"))+1<=playlist.length-1){
-                weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))+1)
+            if(parseInt(playindex)+1<=playlistsplit.length-1){
+                playindex=parseInt(playindex)+1
             }
             createaside()
         }
@@ -304,23 +298,22 @@ function createaside(){
 
         docgetid("player").onerror=function(){
             alert("因此音樂無法撥放或損毀，將重新加載並自動撥放下一首音樂")
-            let playlist=weblsget("50nationalmoduleaplaylist").split(",")
             let mainlist=[]
-            for(let i=0;i<playlist.length;i=i+1){
-                if(i==playingindex){
-                    mainlist.push(playlist[i]+"_ER")
+            for(let i=0;i<playlistsplit.length;i=i+1){
+                if(i==parseInt(playindex)){
+                    mainlist.push(playlistsplit[i]+"_ER")
                 }else{
-                    mainlist.push(playlist[i])
+                    mainlist.push(playlistsplit[i])
                 }
             }
-            weblsset("50nationalmoduleaplaylist",mainlist.join(","))
-            weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))+1)
+            playlist=playlistsplit.join(",")
+            playindex=parseInt(playindex)+1
             createaside()
         }
 
         docgetid("player").onended=function(){
-            if(parseInt(weblsget("50nationalmoduleaplayingindex"))+1<=playlist.length-1){
-                weblsset("50nationalmoduleaplayingindex",parseInt(weblsget("50nationalmoduleaplayingindex"))+1)
+            if(parseInt(playindex)+1<=playlistsplit.length-1){
+                playindex=parseInt(playindex)+1
             }
             createaside()
         }
@@ -329,9 +322,11 @@ function createaside(){
         docgetall(".playlistsongdiv").forEach(function(event){
             event.onclick=function(){
                 if(event.dataset.error){
-                    weblsset("50nationalmoduleaplayingindex",event.dataset.id)
-                    createaside()
+                    playindex=event.dataset.id
+                    playing=true
+                    docgetid("playpauseicon").src="material/icon/pause.svg"
                     docgetid("player").play()
+                    createaside()
                 }else{
                     alert("此音樂無法撥放")
                 }
@@ -368,6 +363,8 @@ function createaside(){
             main()
         }
     }
+
+    url()
 }
 
 function search(title,artist,album){
@@ -485,25 +482,29 @@ function tracklistedit(key){
     docgetall(".defbutton").forEach(function(event){
         event.onclick=function(){
             let id=event.dataset.id // 歌曲id
+
             if(event.value=="+"){ // 新增專輯
 
                 // 判斷專輯是否存在
-                let list=weblsget("50nationalmoduleaplaylist").split(",")
-                if(list.includes(id)){ alert("該專輯以存在於撥放清單") }
-                else{
+                let playlistsplit=playlist.split(",")
+                if(playlistsplit.includes(id)){
+                    alert("該專輯以存在於撥放清單")
+                }else{
                     list.push(id)
-                    weblsset("50nationalmoduleaplaylist",list.join(","))
+                    playlist=playlistsplit.join(",")
                 }
                 conlog("success add in the track list! trackid="+id,"green","15","bold")
             }else if(event.value=="-"){ // 刪除專輯
-                if(weblsget("50nationalmoduleaplayingindex")!=event.dataset.no||!playing){
-                    let list=weblsget("50nationalmoduleaplaylist").split(",")
-                    list.splice(list.indexOf(id),1) // 刪除資料
-                    weblsset("50nationalmoduleaplaylist",list.join(",")) // 回復資料
+                if(playindex!=event.dataset.no||!playing){
+                    let playlistsplit=playlist.split(",")
+                    playlistsplit.splice(playlistsplit.indexOf(id),1) // 刪除資料
+                    playlist=playlistsplit.join(",")
                     createaside()
                     conlog("success delect in the track list! trackid="+id,"green","15","bold")
                 }
             }else{ conlog("[ERROR]tracklistedit function event value error","red","15","bold") }
+
+            url()
         }
     })
 }
@@ -531,9 +532,56 @@ newajax("GET","albumlist.json").onload=function(){
         `
         aside="open"
         createaside()
-        console.log("inini")
-    }else{
-        conlog("[ERROR]","red","15")
+    }else{ conlog("[ERROR]","red","15") }
+
+    // 初始化歌曲/播放器
+    docgetid("player").volume=volume
+
+    let playlistsplit=playlist.split(",")
+
+    if(playlistsplit[0]!=""){
+        let path=""
+        for(let i=0;i<playlistsplit.length;i=i+1){
+            let id=playlistsplit[i].split("_")
+
+            if(i==playindex){ // 如果是該歌曲
+                path=data["albums"][id[0]]["tracks"][id[1]]["path"]
+            }
+        }
+
+        docgetid("player").src=path
+        docgetid("clearbutton").click()
+        console.log("check")
+
+        // 初始化圖片
+        if(playing){
+            docgetid("player").play()
+        }else{
+            docgetid("player").pause()
+        }
+
+        docgetid("player").onerror=function(){
+            alert("因此音樂無法撥放或損毀，將重新加載並自動撥放下一首音樂")
+            let mainlist=[]
+            for(let i=0;i<playlistsplit.length;i=i+1){
+                if(i==parseInt(playindex)){
+                    mainlist.push(playlistsplit[i]+"_ER")
+                }else{
+                    mainlist.push(playlistsplit[i])
+                }
+            }
+            playlist=playlistsplit.join(",")
+            playindex=parseInt(playindex)+1
+        }
+
+        docgetid("player").onended=function(){
+            if(parseInt(playindex)+1<=playlistsplit.length-1){
+                playindex=parseInt(playindex)+1
+            }
+            createaside()
+        }
+
+        url()
     }
 }
 
@@ -601,14 +649,15 @@ document.onkeydown=function(event){
         event.preventDefault()
         if(playing){
             docgetid("player").pause()
+            if(state=="aside"){ docgetid("playpauseicon").src="material/icon/pause.svg" }
             playing=false
         }else{
             docgetid("player").play()
+            if(state=="aside"){ docgetid("playpauseicon").src="material/icon/play.svg" }
             playing=true
         }
+        url()
     }
 }
-
-docgetid("player").volume=volume
 
 startmacossection()

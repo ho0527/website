@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/07/01",
-            "updatedate": "2023/11/02",
+            "updatedate": "2023/11/14",
             "data": [
                 {
                     "title": "ModuleA-FONTEND",
@@ -14,7 +14,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/06/22",
-                    "updatedate": "2023/07/17",
+                    "updatedate": "2023/11/14",
                     "data": []
                 },
                 {

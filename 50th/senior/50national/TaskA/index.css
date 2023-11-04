@@ -720,3 +720,7 @@ table{
     width: calc(100% - 15px);
     height: 100%;
 }
+
+.hidden{
+    display: none ;
+}
