@@ -161,12 +161,12 @@ function conlog(data,color="white",size="12",weight="normal"){
 }
 
 function isset(data){
-    if(data!=null||data!=undefined){ return true }
+    if(data!=null&&data!=undefined){ return true }
     else{ return false }
 }
 
 function blank(data){
-    if(data!=null||data!=undefined||data!=""){ return true }
+    if(data!=null&&data!=undefined&&data!=""){ return true }
     else{ return false }
 }
 

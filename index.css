@@ -314,10 +314,6 @@ body{
     font-family: "Consolas";
     background: rgb(25, 25, 25);
     color: lightgray;
-    text-align: center;
-    word-break: break-all;
-    -webkit-user-select: none;
-    user-select: none;
     padding: 5px;
 }
 
@@ -531,7 +527,7 @@ table{
 
 
 /* 萬聖節特別的東東 */
-body{
+/* body{
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -626,4 +622,4 @@ body{
 
 .footer{
     background: #e26b09;
-}
+} */

@@ -17,7 +17,7 @@
                 if($question=="none"){
                     ?><script>alert("請選擇問題");location.href="post.php"</script><?php
                 }else{
-                    query($db,"INSERT INTO `log`(`link`,`question`,`context`,`email`,`anthor`,`finish`,`posttime`)VALUES('$link','$question','$context','$email','$anthor','no','$time')");
+                    query($db,"INSERT INTO `log`(`link`,`question`,`context`,`email`,`anthor`,`finish`,`posttime`)VALUES(?,?,?,?,?,?,?)",[$link,$question,$context,$email,$anthor,"no",$time]);
                     ?><script>location.href="post.php"</script><?php
                 }
             }

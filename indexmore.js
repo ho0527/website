@@ -251,7 +251,7 @@ ajax2.onload=function(){
     }
 }
 
-ajax2.open("GET","listusemyself.json")
+ajax2.open("GET","listmore.json")
 ajax2.send()
 
 startmacossection()

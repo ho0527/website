@@ -3,6 +3,7 @@ let aside="close" // 設定aside為關閉
 let state=/state=([^&]+)/.exec(location.search) // main | search | album | aside
 let text=/text=([^&]+)/.exec(location.search) // search專用
 let albumid=/id=([^&]+)/.exec(location.search) // album專用
+let playtype=/playtype=([^&]+)/.exec(location.search) // 播放類型 normal | repeat | random
 let playing=/playing=([^&]+)/.exec(location.search) // 是否再播放
 let playlist=/playlist=([^&]+)/.exec(location.search) // 播放清單
 let playindex=/playindex=([^&]+)/.exec(location.search) // 第幾首歌
@@ -15,6 +16,7 @@ let data
 if(!state){ state="main" }else{ state=state[1] }
 if(!text){ text="" }else{ text=text[1] }
 if(!albumid){ albumid="0" }else{ albumid=albumid[1] }
+if(!playtype){ playtype="normal" }else{ playtype=playtype[1] }
 if(!playing){ playing="false" }else{ playing=playing[1] }
 if(!playlist){ playlist="" }else{ playlist=playlist[1] }
 if(!playindex){ playindex="0" }else{ playindex=playindex[1] }
@@ -29,7 +31,7 @@ volume=parseFloat(volume)
 
 function url(){
     docgetid("player").volume=volume
-    history.pushState(null,null,"?state="+state+"&text="+text+"&id="+albumid+"&playing="+playing+"&playlist="+playlist+"&playindex="+playindex+"&time="+time+"&volume="+volume)
+    history.pushState(null,null,"?state="+state+"&text="+text+"&id="+albumid+"&playtype="+playtype+"&playing="+playing+"&playlist="+playlist+"&playindex="+playindex+"&time="+time+"&volume="+volume)
 }
 
 function main(){ // 主程式(起始)
@@ -312,8 +314,28 @@ function createaside(){
         }
 
         docgetid("player").onended=function(){
-            if(parseInt(playindex)+1<=playlistsplit.length-1){
-                playindex=parseInt(playindex)+1
+            if(playtype=="normal"){
+                if(parseInt(playindex)+1<=playlistsplit.length-1){
+                    playindex=parseInt(playindex)+1
+                }else{
+                    playindex=0
+                }
+            }else if(playtype=="repeat"){
+                // not thing
+            }else if(playtype=="random"){
+                if(playlistsplit.length>1){
+                    let oldplayindex=playindex
+                    do{
+                        playindex=parseInt(Math.random()*playlistsplit.length)
+                    }while(playindex!=oldplayindex)
+                }else{
+                    playindex=0
+                }
+            }else{
+                alert("類型錯誤 將重載頁面")
+                playtype="normal"
+                url()
+                location.reload()
             }
             createaside()
         }

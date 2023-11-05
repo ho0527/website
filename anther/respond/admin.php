@@ -37,10 +37,10 @@
                                 unset($_SESSION["type"]);
                                 header("location:admin.php");
                             }else{
-                                $data=fetchall(query($db,"SELECT*FROM `log` WHERE `id`LIKE'%$type%' or `question`LIKE'%$type%' or `context`LIKE'%$type%' or `email`LIKE'%$type%' or `anthor`LIKE'%$type%' or `finish`LIKE'%$type%' or `posttime`LIKE'%$type%' or `finishtime`LIKE'%$type%'"));
+                                $dataquery($db,"SELECT*FROM `log` WHERE `id`LIKE'%$type%' or `question`LIKE'%$type%' or `context`LIKE'%$type%' or `email`LIKE'%$type%' or `anthor`LIKE'%$type%' or `finish`LIKE'%$type%' or `posttime`LIKE'%$type%' or `finishtime`LIKE'%$type%'");
                             }
                         }else{
-                            $data=fetchall(query($db,"SELECT*FROM `log`"));
+                            $dataquery($db,"SELECT*FROM `log`");
                         }
                         for($i=0;$i<count($data);$i=$i+1){
                             ?>
