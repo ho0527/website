@@ -1,4 +1,5 @@
 let aside="close" // 設定aside為關閉
+let asideback="main" // 設定aside前的資料
 // 網址列解碼 START
 let state=/state=([^&]+)/.exec(location.search) // main | search | album | aside
 let text=/text=([^&]+)/.exec(location.search) // search專用
@@ -41,8 +42,9 @@ function main(){ // 主程式(起始)
     if(state!="main"){
         state="main"
         url()
-        // setTimeout(url,300) // 等畫面跑完
     }
+
+    asideback="main"
 
     for(let i=0;i<data["albums"].length;i=i+1){
         let albumartistlist=data["albums"][i]["album_artists"] // 演奏者名字列表
@@ -94,6 +96,8 @@ function album(){
         state="album"
         url()
     }
+
+    asideback="album"
 
     for(let i=0;i<tracklength;i=i+1){
         // 判斷個專輯的時間並加總
@@ -355,8 +359,8 @@ function createaside(){
             }
         })
     }else{
-        docgetid("list").innerHTML=`
-            ${docgetid("list").innerHTML}
+        docgetid("playlist").innerHTML=`
+            ${docgetid("playlist").innerHTML}
             <div class="list warning">
                 目前無歌曲
             </div>
@@ -382,7 +386,11 @@ function createaside(){
             docgetid("asidemask").remove()
             aside="close"
             docgetid("aside").innerHTML=``
-            main()
+            if(asideback=="main"){
+                main()
+            }else{
+                album()
+            }
         }
     }
 
@@ -626,7 +634,11 @@ docgetid("openaside").onclick=function(){
         docgetid("asidemask").remove()
         aside="close"
         docgetid("aside").innerHTML=``
-        main()
+        if(asideback=="main"){
+            main()
+        }else{
+            album()
+        }
     }
 }
 
