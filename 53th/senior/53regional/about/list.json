@@ -578,7 +578,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"修除成功\"<br>}, 200_OK",
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"刪除成功\"<br>}, 200_OK",
                                     "statu": "SUCCESS"
                                 },
                                 {

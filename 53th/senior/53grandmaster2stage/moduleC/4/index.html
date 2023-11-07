@@ -6,6 +6,8 @@
         <title>Document</title>
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <div id="wrap">
@@ -14,15 +16,16 @@
                 <div id="start">
                     <img src="material/picture/start.svg" class="startsvg"><br>
                     <input type="text" class="input1" id="nickname" placeholder="Nickname">
+                    <input type="button" class="" id="startgame" value="開始遊戲">
                 </div>
 
                 <!--game-->
                 <div id="game">
                     <!--game data svg-->
                     <div id="game-data-svg" data-svg-name="material/picture/game-info.svg">
-                        <h2 id="text-stage">STAGE 1</h2>
-                        <h2 id="text-nickname">JOHN DOE</h2>
-                        <h2 id="text-score">1,500</h2>
+                        <h2 id="gamestage">STAGE 1</h2>
+                        <h2 id="gamenickname">JOHN DOE</h2>
+                        <h2 id="gamescore">1,500</h2>
                     </div>
                     <!--timer svg-->
                     <div id="game-timer-svg" data-svg-name="timer.svg">
@@ -52,6 +55,11 @@
                 </div>
             </div>
         </div>
+
+        <!-- script -->
         <script src="index.js"></script>
+        <script src="start.js"></script>
+        <script src="main.js"></script>
+        <script src="end.js"></script>
     </body>
 </html>
