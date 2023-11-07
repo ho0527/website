@@ -8,7 +8,7 @@ let playtype=/playtype=([^&]+)/.exec(location.search) // 播放類型 normal | r
 let playing=/playing=([^&]+)/.exec(location.search) // 是否再播放
 let playlist=/playlist=([^&]+)/.exec(location.search) // 播放清單
 let playindex=/playindex=([^&]+)/.exec(location.search) // 第幾首歌
-let time=/time=([^&]+)/.exec(location.search) // 經過時間(s)
+let playtime=/playtime=([^&]+)/.exec(location.search) // 經過時間(s)
 let volume=/volume=([^&]+)/.exec(location.search) // 音量
 // 網址列解碼 END
 let data
@@ -21,18 +21,21 @@ if(!playtype){ playtype="normal" }else{ playtype=playtype[1] }
 if(!playing){ playing="false" }else{ playing=playing[1] }
 if(!playlist){ playlist="" }else{ playlist=playlist[1] }
 if(!playindex){ playindex="0" }else{ playindex=playindex[1] }
-if(!time){ time="0" }else{ time=time[1] }
+if(!playtime){ playtime="0" }else{ playtime=playtime[1] }
 if(!volume){ volume="0.3" }else{ volume=volume[1] }
 albumid=parseInt(albumid)
 playing=playing=="true"
 playindex=parseInt(playindex)
-time=parseInt(time)
+playtime=parseFloat(playtime)
 volume=parseFloat(volume)
 // 初始化網址列資料 END
 
+function formattimemmss(second){
+    return String(Math.floor(second/60)).padStart(2,"0")+":"+String(Math.floor(second%60)).padStart(2,"0")
+}
+
 function url(){
-    docgetid("player").volume=volume
-    history.pushState(null,null,"?state="+state+"&text="+text+"&id="+albumid+"&playtype="+playtype+"&playing="+playing+"&playlist="+playlist+"&playindex="+playindex+"&time="+time+"&volume="+volume)
+    history.pushState(null,null,"?state="+state+"&text="+text+"&id="+albumid+"&playtype="+playtype+"&playing="+playing+"&playlist="+playlist+"&playindex="+playindex+"&playtime="+playtime+"&volume="+volume)
 }
 
 function main(){ // 主程式(起始)
@@ -205,6 +208,7 @@ function createaside(){
 
     if(playlistsplit[0]!=""){
         let path=""
+        let totaltime
         for(let i=0;i<playlistsplit.length;i=i+1){
             let id=playlistsplit[i].split("_")
             let trackid=data["albums"][id[0]]["tracks"][id[1]]["id"]
@@ -216,6 +220,7 @@ function createaside(){
             let listdivclasslist="list grid"
 
             if(i==playindex){ // 如果是該歌曲
+                totaltime=time
                 path=data["albums"][id[0]]["tracks"][id[1]]["path"] // 歌曲路徑
                 listdivclasslist=listdivclasslist+" playing"
             }
@@ -249,16 +254,69 @@ function createaside(){
 
         tracklistedit() // 刪除歌曲
 
+        let playtypeinnerhtml
+
+        if(playtype=="repeat"){
+            playtypeinnerhtml=`
+                <select class="playtype" id="playtype">
+                    <option class="option" value="normal">下一首</option>
+                    <option class="option" value="repeat" selected>單曲循環</option>
+                    <option class="option" value="random">隨機撥放</option>
+                </select>
+            `
+        }else if(playtype=="random"){
+            playtypeinnerhtml=`
+                <select class="playtype" id="playtype">
+                    <option class="option" value="normal">下一首</option>
+                    <option class="option" value="repeat">單曲循環</option>
+                    <option class="option" value="random" selected>隨機撥放</option>
+                </select>
+            `
+        }else{
+            playtype="normal"
+            playtypeinnerhtml=`
+                <select class="playtype" id="playtype">
+                    <option class="option" value="normal" checked>下一首</option>
+                    <option class="option" value="repeat">單曲循環</option>
+                    <option class="option" value="random">隨機撥放</option>
+                </select>
+            `
+        }
+
         docgetid("playerfunction").innerHTML=`
-            <div>
+            <div class="playerdiv">
                 <div class="icondiv" id="back"><img src="material/icon/play-skip-back.svg" class="icon"></div>
                 <div class="icondiv" id="playpause"><img src="" class="icon" id="playpauseicon"></div>
                 <div class="icondiv" id="forward"><img src="material/icon/play-skip-forward.svg" class="icon"></div>
-                <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon"></div>
+                <div class="volume">
+                    <div class="icondiv" id="volume"><img src="material/icon/volume-high.svg" class="icon" id="volumeicon"></div>
+                    <input type="range" class="volumebar" id="volumebar" style="display: none;" min="0" max="1" step="0.01">
+                </div>
+                <div class="timediv">
+                    <input type="range" class="rollbar" id="rollbar" min="0" value="0">
+                    <div class="timedisplaydiv">
+                        <div class="timedisplay" id="nowtime">0:00</div> / <div class="timedisplay" id="totaltime">0:00</div>
+                    </div>
+                </div>
+                <div class="playtypediv">
+                    ${playtypeinnerhtml}
+                </div>
             </div>
         `
 
         docgetid("player").src=path
+
+        docgetid("player").currentTime=playtime
+
+        if(volume>0.66){
+            docgetid("volumeicon").src="material/icon/volume-high.svg"
+        }else if(volume>0.33){
+            docgetid("volumeicon").src="material/icon/volume-medium.svg"
+        }else if(volume>0){
+            docgetid("volumeicon").src="material/icon/volume-low.svg"
+        }else{
+            docgetid("volumeicon").src="material/icon/volume-mute.svg"
+        }
 
         // 初始化圖片
         if(playing){
@@ -274,6 +332,7 @@ function createaside(){
             if(parseInt(playindex)-1>=0){
                 playindex=parseInt(playindex)-1
             }
+            playtime=0
             createaside()
         }
 
@@ -295,11 +354,31 @@ function createaside(){
             if(parseInt(playindex)+1<=playlistsplit.length-1){
                 playindex=parseInt(playindex)+1
             }
+            playtime=0
             createaside()
         }
 
         docgetid("volume").onclick=function(){
-            // docgetid("volumerange")
+            if(docgetid("volumebar").style.display=="none"){
+                docgetid("volumebar").style.display="inline-block"
+            }else{
+                docgetid("volumebar").style.display="none"
+            }
+        }
+
+        docgetid("volumebar").oninput=function(){
+            docgetid("player").volume=docgetid("volumebar").value
+            volume=parseFloat(docgetid("volumebar").value)
+            if(volume>0.66){
+                docgetid("volumeicon").src="material/icon/volume-high.svg"
+            }else if(volume>0.33){
+                docgetid("volumeicon").src="material/icon/volume-medium.svg"
+            }else if(volume>0){
+                docgetid("volumeicon").src="material/icon/volume-low.svg"
+            }else{
+                docgetid("volumeicon").src="material/icon/volume-mute.svg"
+            }
+            url()
         }
 
         docgetid("player").onerror=function(){
@@ -314,6 +393,7 @@ function createaside(){
             }
             playlist=playlistsplit.join(",")
             playindex=parseInt(playindex)+1
+            playtime=0
             createaside()
         }
 
@@ -331,7 +411,8 @@ function createaside(){
                     let oldplayindex=playindex
                     do{
                         playindex=parseInt(Math.random()*playlistsplit.length)
-                    }while(playindex!=oldplayindex)
+                        console.log(playindex)
+                    }while(playindex==oldplayindex)
                 }else{
                     playindex=0
                 }
@@ -341,6 +422,7 @@ function createaside(){
                 url()
                 location.reload()
             }
+            playtime=0
             createaside()
         }
 
@@ -358,6 +440,39 @@ function createaside(){
                 }
             }
         })
+
+        // 滾動條
+        docgetid("player").ontimeupdate=function(){
+            let totaltimeinsecond=parseInt(totaltime.split(":")[0])*60+parseInt(totaltime.split(":")[1])
+
+            playtime=docgetid("player").currentTime
+
+            // 更新滚动条的值
+            if(docgetid("rollbar")){
+                docgetid("rollbar").value=(playtime/totaltimeinsecond)*100
+
+                docgetid("nowtime").innerHTML=`
+                    ${formattimemmss(playtime)}
+                `
+    
+                docgetid("totaltime").innerHTML=`
+                    ${totaltime}
+                `
+            }
+    
+            // 更新当前时间和总时间的显示
+        }
+
+        docgetid("rollbar").oninput=function(){
+            docgetid("player").currentTime=(docgetid("rollbar").value/100)*docgetid("player").duration
+        }
+
+        docgetid("playtype").onchange=function(){
+            playtype=docgetid("playtype").value
+            url()
+        }
+
+        docgetid("volumebar").value=volume
     }else{
         docgetid("playlist").innerHTML=`
             ${docgetid("playlist").innerHTML}
@@ -581,7 +696,6 @@ newajax("GET","albumlist.json").onload=function(){
 
         docgetid("player").src=path
         docgetid("clearbutton").click()
-        console.log("check")
 
         // 初始化圖片
         if(playing){
@@ -613,6 +727,8 @@ newajax("GET","albumlist.json").onload=function(){
 
         url()
     }
+
+    docgetid("player").volume=volume
 }
 
 // 設定aside的開啟及關閉

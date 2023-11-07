@@ -504,6 +504,7 @@ table{
 .icondiv{
     width: 50px;
     cursor: pointer;
+    display: inline-block;
 }
 
 .playerdiv{
@@ -723,4 +724,25 @@ table{
 
 .hidden{
     display: none ;
+}
+
+.volumebar{
+    rotate: -90deg;
+}
+
+.rollbar{
+    width: 100%;
+}
+
+.timedisplaydiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.playtype{
+    font-size: 15px;
+}
+
+.option{
+    font-size: 15px;
 }
