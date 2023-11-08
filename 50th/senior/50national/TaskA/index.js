@@ -178,7 +178,11 @@ function album(){
             }
             playlist=list.join(",")
             playindex=0
-            url()
+
+            // 產生aside
+            if(aside=="close"){
+                docgetid("openaside").click()
+            }
         }
     }
 }
