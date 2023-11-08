@@ -459,8 +459,6 @@ function createaside(){
                     ${totaltime}
                 `
             }
-    
-            // 更新当前时间和总时间的显示
         }
 
         docgetid("rollbar").oninput=function(){

@@ -94,6 +94,7 @@ function main(){
             let output=""
             let option=questionrow[i][4].split("|&|")
             output=output+"題目說明: "+questionrow[i][1]+"<br>"
+
             if(questionrow[i][3]=="yesno"){
                 output=`
                     ${output}
