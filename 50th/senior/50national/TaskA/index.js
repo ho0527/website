@@ -209,6 +209,8 @@ function createaside(){
     if(playlistsplit[0]!=""){
         let path=""
         let totaltime
+        let playtypeinnerhtml
+
         for(let i=0;i<playlistsplit.length;i=i+1){
             let id=playlistsplit[i].split("_")
             let trackid=data["albums"][id[0]]["tracks"][id[1]]["id"]
@@ -216,45 +218,62 @@ function createaside(){
             let time=data["albums"][id[0]]["tracks"][id[1]]["duration"] // 歌曲時間
             let artists=data["albums"][id[0]]["tracks"][id[1]]["artists"].join(",") // 歌曲演唱者
             let divinnerhtml=``
+            let errorinnerhtml=``
             let error=false
-            let listdivclasslist="list grid"
+            let playing=false
+            let listdivclasslist="list grid playlistsongdiv"
 
             if(i==playindex){ // 如果是該歌曲
                 totaltime=time
                 path=data["albums"][id[0]]["tracks"][id[1]]["path"] // 歌曲路徑
                 listdivclasslist=listdivclasslist+" playing"
+                playing="true"
             }
 
             if(id[2]=="ER"){ // 偵測是否為不可撥放歌曲
                 playindex=playindex+1
                 error=true
-                divinnerhtml=`
+                errorinnerhtml=`
                     <div class="playerror">此音樂已無法播放</div>
                 `
-            }else{
-                listdivclasslist=listdivclasslist+" playlistsongdiv"
-                divinnerhtml=`
-                    <div class="tracklisttext no">${i+1}.</div>
-                    <div class="tracklisttext tracktitle">${tracktitle}</div>
-                    <div class="tracklisttext artists">${artists}</div>
-                    <div class="tracklisttext albumtitle">${data["albums"][id[0]]["title"]}</div>
-                    <div class="tracklisttext time">${time}</div>
-                    <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${trackid}" data-no="${i+1}" value="-"></div>
-                `
             }
+
+            divinnerhtml=`
+                <div class="tracklisttext no">${i+1}.</div>
+                <div class="tracklisttext tracktitle">${tracktitle}</div>
+                <div class="tracklisttext artists">${artists}</div>
+                <div class="tracklisttext albumtitle">${data["albums"][id[0]]["title"]}</div>
+                <div class="tracklisttext time">${time}</div>
+                <div class="tracklisttext def"><input type="button" class="defbutton" data-id="${trackid}" data-no="${i+1}" value="-"></div>
+                ${errorinnerhtml}
+            `
 
             // 創建一個div放每個歌曲
             docgetid("playlist").innerHTML=`
                 ${docgetid("playlist").innerHTML}
-                <div class="${listdivclasslist}" data-id="${i}" data-error="${error}">
+                <div class="${listdivclasslist}" data-id="${i}" data-error="${error}" data-playing="${playing}" data-trackid="${trackid}">
                     ${divinnerhtml}
                 </div>
             `
         }
 
-        tracklistedit() // 刪除歌曲
+        divsort("playlistsongdiv","#playlist",function(){
+            let playlistsongdiv=docgetall(".playlistsongdiv")
+            let tempplaylist=[] // 佔存
 
-        let playtypeinnerhtml
+            for(let i=0;i<playlistsongdiv.length;i=i+1){
+                tempplaylist.push(playlistsongdiv[i].dataset.trackid)
+                if(playlistsongdiv[i].dataset.playing=="true"){
+                    playindex=i
+                }
+            }
+
+            playlist=tempplaylist.join(",")
+
+            createaside() // 重新產生aside
+        })
+
+        tracklistedit() // 刪除歌曲
 
         if(playtype=="repeat"){
             playtypeinnerhtml=`
@@ -454,7 +473,7 @@ function createaside(){
                 docgetid("nowtime").innerHTML=`
                     ${formattimemmss(playtime)}
                 `
-    
+
                 docgetid("totaltime").innerHTML=`
                     ${totaltime}
                 `
@@ -625,15 +644,13 @@ function tracklistedit(key){
     docgetall(".defbutton").forEach(function(event){
         event.onclick=function(){
             let id=event.dataset.id // 歌曲id
-
             if(event.value=="+"){ // 新增專輯
-
                 // 判斷專輯是否存在
                 let playlistsplit=playlist.split(",")
                 if(playlistsplit.includes(id)){
                     alert("該專輯以存在於撥放清單")
                 }else{
-                    list.push(id)
+                    playlistsplit.push(id)
                     playlist=playlistsplit.join(",")
                 }
                 conlog("success add in the track list! trackid="+id,"green","15","bold")
