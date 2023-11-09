@@ -289,3 +289,38 @@ table{
 	padding: 10px 30px;
 	box-shadow: 0 0 16px -5px #333;
 }
+
+.gameinfodiv{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 20px;
+}
+
+.gameinfo{
+    position: relative;
+    width: 25vw;
+    height: 100vh;
+}
+
+.gameinfoimage{
+    width: 100%;
+}
+
+.gamestage{
+    position: absolute;
+    top: 270px;
+    left: 60%;
+}
+
+.gamenickname{
+    position: absolute;
+    top: 360px;
+    left: 60%;
+}
+
+.gamescore{
+    position: absolute;
+    top: 450px;
+    left: 60%;
+}

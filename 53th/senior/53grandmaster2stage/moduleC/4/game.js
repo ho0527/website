@@ -1,9 +1,10 @@
 let nickname=weblsget("53grandmaster2stagemodulecnickname")
-
+let stage=1
+let score=0
 
 // 初始化 START
 docgetid("gamestage").innerHTML=`
-    ${nickname}
+    stage-${stage}
 `
 
 docgetid("gamenickname").innerHTML=`
@@ -11,6 +12,6 @@ docgetid("gamenickname").innerHTML=`
 `
 
 docgetid("gamescore").innerHTML=`
-    ${nickname}
+    ${score}
 `
 // 初始化 END

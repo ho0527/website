@@ -5,6 +5,6 @@ docgetid("startgame").onclick=function(){
         docgetid("game").style.display="block"
         weblsset("53grandmaster2stagemodulecnickname",docgetid("nickname").value)
     }else{
-        alert("pls type nickname!")
+        alert("pls enter your nickname!")
     }
 }
