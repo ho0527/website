@@ -95,13 +95,6 @@ svg{
 	background-image: url("material/picture/bg2.jpg");
 }
 
-#game-data-svg{
-	width: 600px;
-	position: absolute;
-	left: 50px;
-	top: 30px;
-}
-
 #game-data-svg h2{
 	width: calc(100% - 220px);
 	-webkit-background-clip: text;
@@ -143,20 +136,6 @@ svg{
 	top: 440px;
 }
 
-#game-timer-svg{
-	width: 750px;
-	position: absolute;
-	right: 250px;
-	top: 0;
-}
-
-#game-boards-svg{
-	width: 800px;
-	position: absolute;
-	right: 220px;
-	top: 150px;
-}
-
 #game-board-items{
 	width: 736px;
 	height: 726px;
@@ -165,29 +144,6 @@ svg{
 	right: 46px;
 	top: 19px;
 	text-align: center;
-}
-
-#game-board-items>div{
-	width: 81px;
-	height: 81px;
-	margin-bottom: 7px;
-	float: left;
-}
-
-#game-board-items>div.item1{
-	margin-right: 6px;
-}
-
-#game-board-items>div.item2,
-#game-board-items>div.item3,
-#game-board-items>div.item5,
-#game-board-items>div.item6{
-	margin-right: 7px;
-}
-
-#game-board-items>div.item4,
-#game-board-items>div.item7{
-	margin-right: 8px;
 }
 
 /*end*/

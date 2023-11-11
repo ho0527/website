@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>signup</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <div class="main">

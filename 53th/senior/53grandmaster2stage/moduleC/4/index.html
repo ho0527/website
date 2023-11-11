@@ -14,7 +14,7 @@
             <div id="inner">
                 <!--start-->
                 <div id="start">
-                    <img src="material/picture/start.svg" class="startsvg"><br>
+                    <img src="material/picture/start.svg" class="startsvg" draggable="false"><br>
                     <input type="text" class="input1" id="nickname" placeholder="Nickname">
                     <input type="button" class="" id="startgame" value="開始遊戲">
                 </div>
@@ -24,28 +24,29 @@
                     <!--game data svg-->
                     <div class="gameinfodiv">
                         <div class="gameinfo" id="game-data-svg" data-svg-name="material/picture/game-info.svg">
-                            <img src="material/picture/game-info.svg" class="gameinfoimage">
+                            <img src="material/picture/game-info.svg" class="gameinfoimage" draggable="false">
                             <h2 class="gamestage" id="gamestage">STAGE 1</h2>
                             <h2 class="gamenickname" id="gamenickname">JOHN DOE</h2>
                             <h2 class="gamescore" id="gamescore">1,500</h2>
                         </div>
                     </div>
                     <!--timer svg-->
-                    <div id="game-timer-svg" data-svg-name="timer.svg">
+                    <div class="timerimagediv" id=" " data-svg-name="timer.svg">
+                        <img src="material/picture/timer.svg" class="timerimage" draggable="false">
+                        <img src="material/picture/bar-top.png" class="timerbarimage" id="timerimage" draggable="false">
+                        <div class="timer" id="timer"></div>
                     </div>
                     <!--game boards-->
-                    <div id="game-boards-svg" data-svg-name="game-boards.svg">
-                        <img src="material/picture/game-boards.svg" class="gameinfoimage">
-                        <div id="game-board-items">
-                            <div class="item1"><img src="material/picture/fruit-apple.png" alt="apple"></div>
-                            <div class="item2"><img src="material/picture/fruit-banana.png" alt="banana"></div>
-                            <div class="item3"><img src="material/picture/fruit-grape.png" alt="grape"></div>
-                            <div class="item4"><img src="material/picture/fruit-peach.png" alt="peach"></div>
-                            <div class="item5"><img src="material/picture/fruit-watermelon.png" alt="watermelon"></div>
-                            <div class="item6"><img src="material/picture/fruit-apple.png" alt="apple"></div>
-                            <div class="item7"><img src="material/picture/fruit-banana.png" alt="banana"></div>
-                            <div class="item8"><img src="material/picture/fruit-grape.png" alt="grape"></div>
-                        </div>
+                    <div class="gameboarddiv" id="game-boards-svg" data-svg-name="game-boards.svg">
+                        <img src="material/picture/game-boards.svg" class="gameinfoimage" draggable="false">
+                        <div class="gameboard0 gameboarditem" id="gameboard0"></div>
+                        <div class="gameboard1 gameboarditem" id="gameboard1"></div>
+                        <div class="gameboard2 gameboarditem" id="gameboard2"></div>
+                        <div class="gameboard3 gameboarditem" id="gameboard3"></div>
+                        <div class="gameboard4 gameboarditem" id="gameboard4"></div>
+                        <div class="gameboard5 gameboarditem" id="gameboard5"></div>
+                        <div class="gameboard6 gameboarditem" id="gameboard6"></div>
+                        <div class="gameboard7 gameboarditem" id="gameboard7"></div>
                     </div>
                 </div>
 

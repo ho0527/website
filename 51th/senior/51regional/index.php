@@ -4,19 +4,22 @@
         <meta charset="UTF-8">
         <title>網路問卷調查系統</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
+        <div id="main"></div>
         <?php
             include("link.php");
             if(!isset($_SESSION["data"])){
                 ?>
                 <div class="navigationbar">
-                    <div class="navigationbartitle">網路問卷調查系統</div>
+                    <div class="navigationbartitle center">網路問卷調查系統</div>
                 </div>
                 <div class="main indexmain">
                     <form method="POST">
                         帳號: <input type="text" class="input" name="username"><br><br>
-                        密碼: <input type="text" class="input" name="password"><br><br>
+                        密碼: <input type="password" class="input" name="password"><br><br>
                         <input type="button" class="button" onclick="location.href='signup.php'" value="註冊">
                         <input type="reset" class="button" value="清除">
                         <input type="submit" class="button" name="login" value="登入">
@@ -77,12 +80,13 @@
                         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`)VALUES('$data','填寫問卷','$time')");
                         ?><script>location.href="user.php"</script><?php
                     }else{
-                        ?><script>alert("[WARNING]使用者錯誤");location.href="index.php"</script><?php
+                        ?><script>alert("使用者錯誤，請先登入後使用");location.href="index.php"</script><?php
                     }
                 }else{
                     ?><script>alert("查無此邀請碼");location.href="index.php"</script><?php
                 }
             }
         ?>
+        <!-- <script src="index.js"></script> -->
     </body>
 </html>

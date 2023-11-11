@@ -9,6 +9,10 @@ function checknull(data){
 
 function pregmatch(context,data){ return context.test(data) }
 
+function tempsave(){
+    save()
+}
+
 function save(){
     let insertdata=[]
     // let maxcount=docgetid("count").value
@@ -53,6 +57,7 @@ function save(){
             showmultimorerespond=true
             if(docgetid("showmultimorerespond"+i)==null||docgetid("showmultimorerespond"+i).checked==false){ showmultimorerespond=false }
         }
+        console.log(count)
         insertdata.push([count,desciption,required,mod,option,showmultimorerespond,""])
     }
 
@@ -165,7 +170,7 @@ if(userkey=="true"){
     docgetid("count").value=count
 }
 
-document.addEventListener("keydown",function(event){
+document.onkeydown=function(event){
     if(event.key=="Escape"){
         location.href="api.php?cancel="
     }
@@ -173,6 +178,6 @@ document.addEventListener("keydown",function(event){
         event.preventDefault()
         check()
     }
-})
+}
 
 startmacossection()

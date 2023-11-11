@@ -5,8 +5,7 @@ let verify1=""
 let verify2=""
 let verify3=""
 
-function random(div, result){
-    result=""
+function random(div,result){
     let characters="XYZ"
     let charactersLength=characters.length
     result=result+characters.charAt(Math.floor(Math.random()*charactersLength))
@@ -15,7 +14,7 @@ function random(div, result){
     return result
 }
 
-function change(div, result){
+function change(div,result){
     if(result=="X"){
         result="Y"
     }else if(result=="Y"){

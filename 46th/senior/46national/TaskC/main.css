@@ -325,7 +325,6 @@ table{
 }
 
 .typea5, .typea6, .typea7, .typea8{
-    border: 1px black solid;
     background: lightblue;
 }
 
@@ -334,7 +333,6 @@ table{
 }
 
 .typeb2, .typeb6, .typeb7, .typeb8{
-    border: 1px black solid;
     background: blue;
 }
 
@@ -343,7 +341,6 @@ table{
 }
 
 .typec4, .typec6, .typec7, .typec8{
-    border: 1px black solid;
     background: orange;
 }
 
@@ -352,7 +349,6 @@ table{
 }
 
 .typed2, .typed3, .typed6, .typed7{
-    border: 1px black solid;
     background: yellow;
 }
 
@@ -361,7 +357,6 @@ table{
 }
 
 .typee3, .typee4, .typee6, .typee7{
-    border: 1px black solid;
     background: green;
 }
 
@@ -370,7 +365,6 @@ table{
 }
 
 .typef3, .typef6, .typef7, .typef8{
-    border: 1px black solid;
     background: purple;
 }
 
@@ -379,7 +373,6 @@ table{
 }
 
 .typeg2, .typeg3, .typeg7, .typeg8{
-    border: 1px black solid;
     background: red;
 }
 

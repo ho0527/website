@@ -13,9 +13,10 @@ let blocklength=40 // 方怪長度
 let rotatedeg=0 // 旋轉度數(0,90,180,270)
 let speed=1 // 移動速度
 let line=0
+let start=true
 let apptable=""
 let nowblockpositionx=blocklength*5 // 定位到中間
-let nowblockpositiony=-50
+let nowblockpositiony=20
 let nowblocktimeinterval
 let timer
 
@@ -235,31 +236,41 @@ function down(){
 function downtobottom(){
 }
 
+// 分享
 function share(){
 }
 
-function keyevent(event){
-    if(event.key=="Escape"){ event.preventDefault();cancel() }
-    if(event.key=="ArrowLeft"){ event.preventDefault();left() }
-    if(event.key=="ArrowRight"){ event.preventDefault();right() }
-    if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
-    if(event.key=="ArrowDown"){ event.preventDefault();down() }
-    if(event.key==" "){ event.preventDefault();downtobottom() }
-    if(event.key=="s"){ event.preventDefault();share() }
-    if(event.key=="p"){ event.preventDefault();stopstart() }
-}
-
+// 暫停/繼續
 function stopstart(){
-    if(docgetid("stop").value=="暫停遊戲(p)"){
-        document.removeEventListener("keydown",keyevent)
+    if(start){
+        document.onkeydown=function(event){
+            if(event.key=="Escape"){ event.preventDefault(); }
+            if(event.key=="ArrowLeft"){ event.preventDefault(); }
+            if(event.key=="ArrowRight"){ event.preventDefault(); }
+            if(event.key=="ArrowUp"){ event.preventDefault(); }
+            if(event.key=="ArrowDown"){ event.preventDefault(); }
+            if(event.key==" "){ event.preventDefault(); }
+            if(event.key=="s"||event.key=="S"){ event.preventDefault(); }
+            if(event.key=="p"||event.key=="P"){ event.preventDefault();stopstart() }
+        }
         docgetid("app").innerHTML=docgetid("app").innerHTML+`
             <div class="mask" id="mask">暫停</div>
         `
         clearInterval(nowblocktimeinterval)
         clearInterval(timer)
         docgetid("stop").value="繼續遊戲(p)"
+        start=false
     }else{
-        document.addEventListener("keydown",keyevent)
+        document.onkeydown=function(event){
+            if(event.key=="Escape"){ event.preventDefault();cancel() }
+            if(event.key=="ArrowLeft"){ event.preventDefault();left() }
+            if(event.key=="ArrowRight"){ event.preventDefault();right() }
+            if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
+            if(event.key=="ArrowDown"){ event.preventDefault();down() }
+            if(event.key==" "){ event.preventDefault();downtobottom() }
+            if(event.key=="s"||event.key=="S"){ event.preventDefault();share() }
+            if(event.key=="p"||event.key=="P"){ event.preventDefault();stopstart() }
+        }
         docgetid("mask").remove()
         nowblocktimeinterval=setInterval(function(){
             nowblock.style.top=(nowblockpositiony+blocklength)+"px"
@@ -285,15 +296,19 @@ function stopstart(){
             `
         },1000)
         docgetid("stop").value="暫停遊戲(p)"
+        start=true
     }
 }
 
+// 放棄遊戲
 function cancel(){
-    stop()
+    start=true
+    stopstart()
     if(confirm("是否要放棄遊戲?")){
         location.href="index.html"
     }else{
-        start()
+        start=false
+        stopstart()
     }
 }
 
@@ -326,7 +341,16 @@ docgetid("main").style.height=height+"px"
 docgetid("difficulty").innerHTML=difficulty
 docgetid("line").innerHTML=`行數: ${line}`
 
-document.addEventListener("keydown",keyevent)
+document.onkeydown=function(event){
+    if(event.key=="Escape"){ event.preventDefault();cancel() }
+    if(event.key=="ArrowLeft"){ event.preventDefault();left() }
+    if(event.key=="ArrowRight"){ event.preventDefault();right() }
+    if(event.key=="ArrowUp"){ event.preventDefault();rotate() }
+    if(event.key=="ArrowDown"){ event.preventDefault();down() }
+    if(event.key==" "){ event.preventDefault();downtobottom() }
+    if(event.key=="s"||event.key=="S"){ event.preventDefault();share() }
+    if(event.key=="p"||event.key=="P"){ event.preventDefault();stopstart() }
+}
 
 // 修改speed
 if(difficulty=="normal"){
@@ -335,14 +359,11 @@ if(difficulty=="normal"){
     speed=250
 }
 
-// 分享
-docgetid("share").onclick=function(){ share() }
+docgetid("share").onclick=function(){ share() } // 分享
 
-// 暫停/開始遊戲
-docgetid("stop").onclick=function(){ stopstart() }
+docgetid("stop").onclick=function(){ stopstart() } // 暫停/開始遊戲
 
-// 放棄遊戲
-docgetid("cancel").onclick=function(){ cancel() }
+docgetid("cancel").onclick=function(){ cancel() } // 放棄遊戲
 
 test(0)
 setInterval(function(){
@@ -359,42 +380,33 @@ timer=setInterval(function(){
         timemin=timemin+1
         timesec=0
     }
-    let min=timemin.toString()
-    let sec=timesec.toString()
-    if(timesec<10){
-        sec="0"+sec
-    }
-    if(timemin<10){
-        min="0"+min
-    }
     docgetid("time").innerHTML=`
-        時間: ${min}:${sec}
+        時間: ${String(timemin).padStart(2,"0")}:${String(timesec).padStart(2,"0")}
     `
 },1000)
 
-// main start
-
+// main START
 nowblock=block(blocklist.shift())
 nowblock.style.position="absolute"
 nowblock.style.top=nowblockpositiony+"px"
 nowblock.style.left=nowblockpositionx+"px"
 
 nowblocktimeinterval=setInterval(function(){
-    nowblock.style.top=(nowblockpositiony+blocklength)+"px"
     nowblockpositiony=nowblockpositiony+blocklength
+    nowblock.style.top=nowblockpositiony+"px"
+    console.log("nowblockpositiony="+nowblockpositiony)
     blockzeroposition=[blockzeroposition[0],blockzeroposition[1]+1]
 
     if(blockzeroposition[1]==15){
         clearInterval(nowblocktimeinterval)
         console.log(temparray)
         console.log(blockarray)
-
         console.log(blockzeroposition)
 
-        temparray[blockzeroposition[1]+0][blockzeroposition[0]]=blockarray[0][0]
-        temparray[blockzeroposition[1]+1][blockzeroposition[0]]=blockarray[0][1]
-        temparray[blockzeroposition[1]+2][blockzeroposition[0]]=blockarray[0][2]
-        temparray[blockzeroposition[1]+3][blockzeroposition[0]]=blockarray[0][3]
+        temparray[blockzeroposition[1]+0][blockzeroposition[0]+0]=blockarray[0][0]
+        temparray[blockzeroposition[1]+1][blockzeroposition[0]+0]=blockarray[0][1]
+        temparray[blockzeroposition[1]+2][blockzeroposition[0]+0]=blockarray[0][2]
+        temparray[blockzeroposition[1]+3][blockzeroposition[0]+0]=blockarray[0][3]
         temparray[blockzeroposition[1]+0][blockzeroposition[0]+1]=blockarray[1][0]
         temparray[blockzeroposition[1]+1][blockzeroposition[0]+1]=blockarray[1][1]
         temparray[blockzeroposition[1]+2][blockzeroposition[0]+1]=blockarray[1][2]

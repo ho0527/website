@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <title>Document</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
         <script src="error.js"></script>
-        <link rel="stylesheet" href="/plugin/css/chrisplugin.css">
-        <script src="/plugin/js/chrisplugin.js"></script>
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
@@ -83,7 +83,7 @@
                 ?>
             </table>
         </div>
-        <div id="check"></div>
+        <div id="lightbox"></div>
         <?php
             if(isset($_GET["submit"])){
                 $title=$_GET["title"];
