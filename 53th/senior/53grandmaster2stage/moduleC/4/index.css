@@ -328,7 +328,7 @@ table{
 
 .gameboarddiv{
     position: absolute;
-    top: 50%;
+    top: 60%;
     right: 1%;
     transform: translate(-0%,-50%);
 	width: 800px;

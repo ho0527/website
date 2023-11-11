@@ -180,7 +180,7 @@ function doccreate(element){
     return document.createElement(element)
 }
 
-function newajax(method,url,send=null,header=["Content-type","multipart/form-data"]){
+function newajax(method,url,send=null,header=[["Content-type","multipart/form-data"]]){
     let ajax=new XMLHttpRequest()
     ajax.open(method,url)
     for(let i=0;i<header.length;i=i+1){

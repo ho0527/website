@@ -1,0 +1,254 @@
+
+API. 4 查看公開的貼文
+使用者可以依據多個條件搜尋公開的貼文
+GET /api/post/public
+7
+Query parameters
+order_by 排序依據，非必要
+● created_at: 發布時間(預設)
+● like_count: 收藏人數
+order_type 排序方式，非必要
+● asc: 升冪排序
+● desc: 降冪排序(預設)
+content 依據內文搜尋，非必要
+tag 依據標籤搜尋，非必要
+location_name 依據地點名稱搜尋，非必要
+page 頁數，非必要
+預設值為 1
+page_size 每頁貼文數量，範圍為 1~100，非必要
+預設值為 10
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": {
+ "total_count": 200,
+ "posts": Post[]
+ }
+}
+API. 5 查看貼文
+查看貼文和貼文下的留言，沒有權限查看時回傳 MSG_PERMISSION_DENY 的錯誤
+GET /api/post/:post_id
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": {
+ "post": Post,
+ "comments": Comment[]
+ }
+}
+8
+API. 6 發布貼文
+發布貼文時可以輸入照片的地點名稱，發布時會轉換成經緯度存入資料庫供查詢時使用
+POST /api/post
+Request Body
+Content-Type:multipart/form-data
+images[] 類型: File
+驗證內容:
+● 檔案類型為 png 或 jpg
+● 至少一個檔案
+type 類型: String
+驗證內容:
+● public: 所有人都可以查看
+● only_follow: 只追蹤中的使用者可以查看
+● only_self: 只自己可以查看
+tags 類型: String
+驗證內容:
+● 可以不標註標籤
+● 透過空白分隔不同個標籤
+content 類型: String
+驗證內容:
+● 不可為空白
+location_name 類型: String
+驗證內容:
+● 可以不用填寫
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": Post
+}
+API. 7 修改貼文
+POST /api/post/:post_id
+9
+Request Body
+Content-Type:multipart/form-data
+type 類型: String
+驗證內容:
+● public: 所有人都可以查看
+● only_follow: 只追蹤中的使用者可以查看
+● only_self: 只自己可以查看
+tags 類型: String
+驗證內容:
+● 可以不標註標籤
+● 透過空白分隔不同個標籤
+content 類型: String
+驗證內容:
+● 不可為空白
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": Post
+}
+API. 8 刪除貼文
+DELETE /api/post/:post_id
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": ""
+}
+API. 9 收藏/取消收藏貼文
+POST /api/post/:post_id/favorite
+Request Body
+{
+10
+ "favorite": true
+}
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": ""
+}
+API. 10 查看收藏的貼文
+GET /api/post/favorite
+Query parameters
+order_by 排序依據，非必要
+● created_at: 發布時間(預設)
+order_type 排序方式，非必要
+● asc: 升冪排序
+● desc: 降冪排序(預設)
+page 頁數，非必要
+預設值為 1
+page_size 每頁貼文數量，範圍為 1~100，非必要
+預設值為 10
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": POST[]
+}
+API. 11 發布留言
+GET /api/post/:post_id/comment
+Request Body
+{
+ "content": “comment content text”
+}
+11
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": Comment
+}
+API. 12 修改留言
+POST /api/post/:post_id/comment/:comment_id
+Request Body
+{
+ "content": “comment content text”
+}
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": Comment
+}
+API. 13 刪除留言
+DELETE /api/post/:post_id/comment/:comment_id
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": ""
+}
+API. 14 查看使用者發布的貼文
+GET /api/user/:user_id/post
+Query parameters
+order_by 排序依據，非必要
+12
+● created_at: 發布時間(預設)
+order_type 排序方式，非必要
+● asc: 升冪排序
+● desc: 降冪排序(預設)
+page 頁數，非必要
+預設值為 1
+page_size 每頁貼文數量，範圍為 1~100，非必要
+預設值為 10
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": {
+ "total_count": 200,
+ "posts": Post[]
+ }
+}
+API. 15 取得使用者資訊
+GET /api/user/:user_id/profile
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": User
+}
+API. 16 修改使用者資訊
+POST /api/user/:user_id/profile
+Request Body
+Content-Type:multipart/form-data
+nickname 類型: String
+驗證內容:
+● 非必要，如未輸入則不更改
+13
+● 長度 4~16
+● 只允許輸入英文小寫、數字、_
+profile_image 類型: File
+驗證內容:
+● 非必要，如未輸入則不更改
+● 檔案類型為 png 或 jpg
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": User
+}
+API. 17 取得使用者的追蹤名單
+GET /api/user/:user_id/follow
+Query parameters
+order_by 排序依據，非必要
+● created_at: 追蹤時間(預設)
+order_type 排序方式，非必要
+● asc: 升冪排序
+● desc: 降冪排序(預設)
+page 頁數，非必要
+預設值為 1
+page_size 每頁使用者數量，範圍為 1~100，非必要
+預設值為 10
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": {
+ "total_count": 200,
+ "users": User[]
+ }
+}
+14
+API. 18 追蹤使用者
+POST /api/user/:user_id/follow
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": “”
+}
+API. 19 取消追蹤使用者
+DELETE /api/user/:user_id/follow
+Response Body
+{
+ "success": true,
+ "message": "",
+ "data": “”
+}
