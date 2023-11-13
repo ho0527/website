@@ -26,19 +26,22 @@ Response Body
  "posts": Post[]
  }
 }
+
+
 API. 5 查看貼文
 查看貼文和貼文下的留言，沒有權限查看時回傳 MSG_PERMISSION_DENY 的錯誤
 GET /api/post/:post_id
 Response Body
 {
- "success": true,
- "message": "",
- "data": {
- "post": Post,
- "comments": Comment[]
- }
+    "success": true,
+    "message": "",
+    "data": {
+        "post": Post,
+        "comments": Comment[]
+    }
 }
 8
+
 API. 6 發布貼文
 發布貼文時可以輸入照片的地點名稱，發布時會轉換成經緯度存入資料庫供查詢時使用
 POST /api/post
@@ -69,6 +72,7 @@ Response Body
  "message": "",
  "data": Post
 }
+
 API. 7 修改貼文
 POST /api/post/:post_id
 9
@@ -92,6 +96,7 @@ Response Body
  "message": "",
  "data": Post
 }
+
 API. 8 刪除貼文
 DELETE /api/post/:post_id
 Response Body

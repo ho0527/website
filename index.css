@@ -359,10 +359,12 @@ table{
 
 .cdate{
     margin: 0px 10px;
+    user-select: none;
 }
 
 .udate{
     margin: 0px 10px;
+    user-select: none;
 }
 
 .list1{
@@ -391,6 +393,7 @@ table{
 
 .statu{
     font-weight: bold;
+    user-select: none;
 }
 
 .listdiv{
@@ -422,6 +425,7 @@ table{
 
 .dot{
     color: gray;
+    user-select: none;
 }
 
 .listdiv:hover{
@@ -528,7 +532,9 @@ table{
     margin-top: 120px;
 }
 
-
+.nol{
+    user-select: none;
+}
 
 /* 萬聖節特別的東東 */
 /* body{
