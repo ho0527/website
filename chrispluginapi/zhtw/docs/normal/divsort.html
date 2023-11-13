@@ -59,13 +59,14 @@
                 </ul>
             </div>
             <div class="right macossectiondivy" id="main">
-                <div class="command">divsort(card,sortdiv)</div>
+                <div class="command">divsort(card,sortdiv,callback(callback))</div>
                 <div class="commanddescription">讓一群div可以排序</div>
                 <div class="howtouse">
-                    語法: divsort([<i>class(no selector)</i>],[<i>selector</i>])<br><br>
-                    第一個參數放要被拖動的div class<br>
+                    語法: divsort([<i>class(no selector)</i>],[<i>selector</i>],[<i>function</i>])<br><br>
+                    第一個參數 放要被拖動的div class<br>
                     <div class="notice">絕對不可以加選擇器 會出問題 只能用class</div>
-                    第二個參數放div容器的選擇器<br>
+                    第二個參數 放div容器的選擇器<br>
+                    第三個參數 放做完後要處理的事(callback function)(可選)<br>
                 </div>
                 <div class="example">
                     範例:<br>
