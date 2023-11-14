@@ -359,7 +359,7 @@
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
-                                            "description": "link: /api/post/{post_id}",
+                                            "description": "link: /api/post/{postid}",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -404,12 +404,12 @@
                                     ]
                                 },
                                 {
-                                    "no": "02",
-                                    "description": "使用者登出",
+                                    "no": "07",
+                                    "description": "修改貼文",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
-                                            "description": "link: /api/user/logout",
+                                            "description": "link: /api/post/{postid}",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -418,6 +418,114 @@
                                         },
                                         {
                                             "description": "request header: Authorization Bearer <i>[token]</i>",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request body: formdata{<br>&nbsp;&nbsp;&nbsp;&nbsp;type=public | only_follow | only_self<br>&nbsp;&nbsp;&nbsp;&nbsp;?tags=<i>[tag]</i><br>&nbsp;&nbsp;&nbsp;&nbsp;content=<i>[content]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;location_name=<i>[location_name]</i><br>}",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: <i>[postid]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: <i>[userid]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;email: <i>[email]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nickname: <i>[nickname]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profile_image: <i>[profile_image]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: \"ADMIN\" | \"USER\"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images: [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: <i>[imageid]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url: <i>[image_url]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: <i>[image_width]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: <i>[image_height]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;created_at: <i>[createtime]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......(inf.)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;like_count: <i>[post_link_count]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content: <i>[content]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: public | only_follow | only_self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tag: [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"tag1\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......(inf.)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?location_name: <i>[location_name]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?liked: <i>{bool}</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;created_at: <i>[createtime]</i>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updated_at: <i>[updatetime]</i><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}, 200_OK",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "刪除貼文",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "link: /api/post/{postid}",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "method: DELETE",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request header: Authorization Bearer <i>[token]</i>",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "收藏/取消收藏貼文",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "link: /api/post/{postid}/favorite",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "method: POST",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request header: Authorization Bearer <i>[token]</i>",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;favorite: true<br>}",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "查看收藏的貼文",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "link: /api/post/favorite",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "method: GET",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request header: Authorization Bearer <i>[token]</i>",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;?order_by: *created_at,<br>&nbsp;&nbsp;&nbsp;&nbsp;?order_type: asc | *desc,<br>&nbsp;&nbsp;&nbsp;&nbsp;?page: {int>=1} *1<br>&nbsp;&nbsp;&nbsp;&nbsp;?page_size: {100>=int>=1} *10<br>}",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
+                                            "statu": "SUCCESS"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "發布留言",
+                                    "statu": "SUCCESS",
+                                    "data": [
+                                        {
+                                            "description": "link: /api/post/{postid}/comment",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "method: POST",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request header: Authorization Bearer <i>[token]</i>",
+                                            "statu": "SUCCESS"
+                                        },
+                                        {
+                                            "description": "request body: json{<br>&nbsp;&nbsp;&nbsp;&nbsp;content: <i>[content]</i><br>}",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -795,12 +903,12 @@
                                     ]
                                 },
                                 {
-                                    "no": "02",
+                                    "no": "18",
                                     "description": "使用者登出",
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
-                                            "description": "link: /api/user/logout",
+                                            "description": "link: /api/user/{userid}/follow",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -823,103 +931,11 @@
                                     "statu": "SUCCESS",
                                     "data": [
                                         {
-                                            "description": "link: /api/user/logout",
+                                            "description": "link: /api/user/{userid}/follow",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "method: POST",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "request header: Authorization Bearer <i>[token]</i>",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
-                                            "statu": "SUCCESS"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "no": "02",
-                                    "description": "使用者登出",
-                                    "statu": "SUCCESS",
-                                    "data": [
-                                        {
-                                            "description": "link: /api/user/logout",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "method: POST",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "request header: Authorization Bearer <i>[token]</i>",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
-                                            "statu": "SUCCESS"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "no": "02",
-                                    "description": "使用者登出",
-                                    "statu": "SUCCESS",
-                                    "data": [
-                                        {
-                                            "description": "link: /api/user/logout",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "method: POST",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "request header: Authorization Bearer <i>[token]</i>",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
-                                            "statu": "SUCCESS"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "no": "02",
-                                    "description": "使用者登出",
-                                    "statu": "SUCCESS",
-                                    "data": [
-                                        {
-                                            "description": "link: /api/user/logout",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "method: POST",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "request header: Authorization Bearer <i>[token]</i>",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
-                                            "statu": "SUCCESS"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "no": "02",
-                                    "description": "使用者登出",
-                                    "statu": "SUCCESS",
-                                    "data": [
-                                        {
-                                            "description": "link: /api/user/logout",
-                                            "statu": "SUCCESS"
-                                        },
-                                        {
-                                            "description": "method: POST",
+                                            "description": "method: DELETE",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -943,6 +959,15 @@
                     "ps": "list",
                     "createdate": "2023/02/05",
                     "updatedate": "2023/06/09",
+                    "data": []
+                },
+                {
+                    "title": "ModuleE-SPA(backend type)",
+                    "link": "moduleebackendtype",
+                    "statu": "FAILED",
+                    "ps": "list",
+                    "createdate": "2023/11/14",
+                    "updatedate": "2023/11/14",
                     "data": []
                 },
                 {

@@ -420,3 +420,8 @@ table{
     top: 90px;
     right: 85px;
 }
+
+.item{
+    cursor: pointer;
+    transition: 0.05s linear;
+}

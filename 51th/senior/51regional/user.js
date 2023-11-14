@@ -136,7 +136,7 @@ function main(){
                 }
             }else if(questionrow[i][3]=="qa"){
                 output=`
-                    output
+                    ${output}
                     <textarea cols="30" rows="5" class="question" placeholder="問答題"></textarea>
                 `
             }else{ sql001();location.href="admin.php" }

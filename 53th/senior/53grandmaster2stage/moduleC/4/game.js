@@ -1,36 +1,24 @@
 function game(){
-    let nickname=weblsget("53grandmaster2stagemodulecnickname")
-    let stagelist={
-        1: {
-            "score": 1000,
-            "timelimit": 300
-        },
-        2: {
-            "score": 1500,
-            "timelimit": 270
-        },
-        3: {
-            "score": 2000,
-            "timelimit": 240
-        },
-        4: {
-            "score": 2500,
-            "timelimit": 210
-        },
-        5: {
-            "score": 3000,
-            "timelimit": 180
-        }
-    }
     let stage=1
     let score=0
-    let sec=parseInt(stagelist[stage]["timelimit"]%60)
-    let min=parseInt(stagelist[stage]["timelimit"]/60)
-    let totaltime=0 // (s)
     let select=false
-    let canclick=false
+    let canclick=true
+    let stagelist=[
+        [1000,300],
+        [1500,270],
+        [2000,240],
+        [2500,210],
+        [3000,180]
+    ]
     let mainarray=[]
     let timer
+    let sec
+    let min
+
+    /*
+    stagelist:
+    stage-1[score,timelimit]
+    */
 
     /*
     mainarray:
@@ -42,125 +30,211 @@ function game(){
     */
 
     function move(key){
-        if(select){
+        if(select&&canclick){
+            let temp=mainarray[select[0]][select[1]]
+            let selectfruit=docgetall(".item")[select[0]*8+select[1]].innerHTML
+            let hasmove=false
+
             if(key=="up"){
+                if(0<=select[0]-1){
+                    mainarray[select[0]][select[1]]=mainarray[select[0]-1][select[1]]
+                    mainarray[select[0]-1][select[1]]=temp
+                        docgetall(".item")[select[0]*8+select[1]].innerHTML=docgetall(".item")[(select[0]-1)*8+select[1]].innerHTML
+                        docgetall(".item")[(select[0]-1)*8+select[1]].innerHTML=selectfruit
 
+                    hasmove=true
+                }
             }else if(key=="down"){
+                if(select[0]+1<=7){
+                    mainarray[select[0]][select[1]]=mainarray[select[0]+1][select[1]]
+                    mainarray[select[0]+1][select[1]]=temp
+                    docgetall(".item")[select[0]*8+select[1]].innerHTML=docgetall(".item")[(select[0]+1)*8+select[1]].innerHTML
+                    docgetall(".item")[(select[0]+1)*8+select[1]].innerHTML=selectfruit
 
+                    hasmove=true
+                }
             }else if(key=="left"){
+                if(0<=select[1]-1){
+                    mainarray[select[0]][select[1]]=mainarray[select[0]][select[1]-1]
+                    mainarray[select[0]][select[1]-1]=temp
+                    docgetall(".item")[select[0]*8+select[1]].innerHTML=docgetall(".item")[select[0]*8+select[1]-1].innerHTML
+                    docgetall(".item")[select[0]*8+select[1]-1].innerHTML=selectfruit
 
+                    hasmove=true
+                }
             }else if(key=="right"){
+                if((select[1]+1)<=7){
+                    mainarray[select[0]][select[1]]=mainarray[select[0]][select[1]+1]
+                    mainarray[select[0]][select[1]+1]=temp
+                    docgetall(".item")[select[0]*8+select[1]].innerHTML=docgetall(".item")[select[0]*8+select[1]+1].innerHTML
+                    docgetall(".item")[select[0]*8+select[1]+1].innerHTML=selectfruit
 
-            }else{
-
+                    hasmove=true
+                }
+            }else{ conlog("[ERROR]function move key not exist","15","red") }
+            
+            // 清除選擇方塊
+            if(hasmove){
+                select=false
+                docgetall(".item").forEach(function(event){
+                    event.style.border="none"
+                })
             }
-        }
-    }
 
-    // 初始化 START
-    docgetid("gamestage").innerHTML=`
-        stage-${stage}
-    `
-
-    docgetid("gamenickname").innerHTML=`
-        ${nickname}
-    `
-
-    docgetid("gamescore").innerHTML=`
-        ${score}
-    `
-
-    timer=setInterval(function(){
-        totaltime=totaltime+1
-
-        if(sec==0){
-            min=min-1
-            sec=60
-        }
-
-        sec=sec-1
-
-        // 遊戲結束判斷
-        if(min==0&&sec==0){
-            // game end
-        }
-
-        docgetid("timer").innerHTML=`${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`
-    },1000)
-
-    setInterval(function(){
-        let lostwidth=(stagelist[stage]["timelimit"]/4)/475
-
-        docgetid("timerimage").style.width=(parseFloat(docgetid("timerimage").style.width)-lostwidth)+"px"
-        docgetid("timerimage").style.right=(parseFloat(docgetid("timerimage").style.right)+lostwidth)+"px"
-    },100)
-
-    docgetid("timerimage").style.width="475px"
-    docgetid("timerimage").style.right="85px"
-
-    for(let i=0;i<8;i=i+1){
-        mainarray[i]=[]
-        for(let j=0;j<8;j=j+1){
-            let random=parseInt(Math.random()*5)
-            let itemlist=["apple","banana","grape","peach","watermelon"]
-
-            mainarray[i].push(random)
-            docgetid("gameboard"+i).innerHTML=`
-                ${docgetid("gameboard"+i).innerHTML}
-                <div class="item item${j+1}" data-id="${i+"_"+j}">
-                    <img src="material/picture/fruit-${itemlist[random]}.png" alt="${itemlist[random]}" class="itemimage" draggable="false">
-                </div>
+            // 連線判斷 START
+            score=score+100
+            totalscore=totalscore+100
+            docgetid("gamescore").innerHTML=`
+                ${score}
             `
+            // 連線判斷 END
+
+            // 分數判斷 START
+            if(score>=stagelist[stage-1][0]){
+                if(stage==5){
+                    end()
+                    result=true
+                }else{
+                    stage=stage+1
+                    score=0
+                    main()
+                    clearInterval(timer)
+                }
+            }
+            // 分數判斷 END
         }
     }
 
-    docgetall(".item").forEach(function(event){
-        event.onclick=function(){
-            docgetall(".item").forEach(function(event){
-                event.style.border="none"
-            })
-            event.style.border="5px yellow solid"
-            select=[event.dataset.id.split("_")[0],event.dataset.id.split("_")[1]]
-        }
-    })
+    function main(){
+        // 初始化 START
+        sec=parseInt(stagelist[stage-1][1]%60)
+        min=parseInt(stagelist[stage-1][1]/60)
 
-    // 初始化 END
+        docgetid("gamestage").innerHTML=`
+            stage-${stage}
+        `
+    
+        docgetid("gamenickname").innerHTML=`
+            ${nickname}
+        `
 
-    document.onkeydown=function(event){
-        if(event.key=="ArrowUp"){
-            if(!canclick){
-                canclick=true
-                move("up")
+        docgetid("gamescore").innerHTML=`
+            ${score}
+        `
+
+        docgetid("gameboard").innerHTML=`
+            <img src="material/picture/game-boards.svg" class="gameinfoimage" draggable="false">
+            <div class="gameboard0 gameboarditem" id="gameboard0"></div>
+            <div class="gameboard1 gameboarditem" id="gameboard1"></div>
+            <div class="gameboard2 gameboarditem" id="gameboard2"></div>
+            <div class="gameboard3 gameboarditem" id="gameboard3"></div>
+            <div class="gameboard4 gameboarditem" id="gameboard4"></div>
+            <div class="gameboard5 gameboarditem" id="gameboard5"></div>
+            <div class="gameboard6 gameboarditem" id="gameboard6"></div>
+            <div class="gameboard7 gameboarditem" id="gameboard7"></div>
+        `
+    
+        timer=setInterval(function(){
+            totaltime=totaltime+1
+    
+            if(sec==0){
+                min=min-1
+                sec=60
             }
-        }else if(event.key=="ArrowDown"){
-            if(!canclick){
-                canclick=true
-                move("down")
+    
+            sec=sec-1
+    
+            // 遊戲結束判斷
+            if(min==0&&sec==0){
+                // game end
+                // end()
             }
-        }else if(event.key=="ArrowLeft"){
-            if(!canclick){
-                canclick=true
-                move("left")
-            }
-        }else if(event.key=="ArrowRight"){
-            if(!canclick){
-                canclick=true
-                move("right")
+    
+            docgetid("timer").innerHTML=`${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`
+        },1000)
+    
+        setInterval(function(){
+            let lostwidth=(stagelist[stage-1][1]/4)/475
+    
+            docgetid("timerimage").style.width=(parseFloat(docgetid("timerimage").style.width)-lostwidth)+"px"
+            docgetid("timerimage").style.right=(parseFloat(docgetid("timerimage").style.right)+lostwidth)+"px"
+        },100)
+    
+        docgetid("timerimage").style.width="475px"
+        docgetid("timerimage").style.right="85px"
+    
+        for(let i=0;i<8;i=i+1){
+            mainarray[i]=[]
+            for(let j=0;j<8;j=j+1){
+                let random=parseInt(Math.random()*5)
+                let itemlist=["apple","banana","grape","peach","watermelon"]
+    
+                mainarray[i].push(random)
+                docgetid("gameboard"+i).innerHTML=`
+                    ${docgetid("gameboard"+i).innerHTML}
+                    <div class="item item${j+1}" data-id="${i+"_"+j}">
+                        <img src="material/picture/fruit-${itemlist[random]}.png" alt="${itemlist[random]}" class="itemimage" draggable="false">
+                    </div>
+                `
             }
         }
+    
+        docgetall(".item").forEach(function(event){
+            event.onclick=function(){
+                docgetall(".item").forEach(function(event){
+                    event.style.border="none"
+                })
+                event.style.border="5px yellow solid"
+                event.childNodes[1].style.width="95%" // 縮小該水果
+                select=[parseInt(event.dataset.id.split("_")[0]),parseInt(event.dataset.id.split("_")[1])]
+            }
+        })
+        // 初始化 END
+    
+        // 移動水果 START
+        document.onkeydown=function(event){
+            if(event.key=="ArrowUp"){
+                if(canclick){
+                    move("up")
+                    canclick=false
+                }
+            }else if(event.key=="ArrowDown"){
+                if(canclick){
+                    move("down")
+                    canclick=false
+                }
+            }else if(event.key=="ArrowLeft"){
+                if(canclick){
+                    move("left")
+                    canclick=false
+                }
+            }else if(event.key=="ArrowRight"){
+                if(canclick){
+                    move("right")
+                    canclick=false
+                }
+            }
+        }
+        // 移動水果 END
+    
+        // 復原 START
+        document.onkeyup=function(event){
+            if(event.key=="ArrowUp"){
+                canclick=true
+            }else if(event.key=="ArrowDown"){
+                canclick=true
+            }else if(event.key=="ArrowLeft"){
+                canclick=true
+            }else if(event.key=="ArrowRight"){
+                canclick=true
+            }
+        }
+        // 復原 END
     }
 
-    document.onkeyup=function(event){
-        if(event.key=="ArrowUp"){
-            canclick=false
-        }else if(event.key=="ArrowDown"){
-            canclick=false
-        }else if(event.key=="ArrowLeft"){
-            canclick=false
-        }else if(event.key=="ArrowRight"){
-            canclick=false
-        }
-    }
+    nickname=weblsget("53grandmaster2stagemodulecnickname")
+
+    main()
 }
 
 game()

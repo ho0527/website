@@ -65,10 +65,11 @@
                 },
                 {
                     "title": "ModuleG-BACKEND",
-                    "statu": "N/A",
+                    "statu": "2023/11/14",
+                    "link": "moduleg/",
                     "ps": "question",
-                    "createdate": "N/A",
-                    "updatedate": "N/A",
+                    "createdate": "2023/11/14",
+                    "updatedate": "2023/11/14",
                     "data": [
                     ]
                 },

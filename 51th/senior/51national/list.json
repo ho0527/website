@@ -1,18 +1,18 @@
 {
     "data": [
         {
-            "title": "52national",
+            "title": "51national",
             "statu": "FAILED",
             "ps": "list",
-            "createdate": "2023/05/05",
-            "updatedate": "2023/11/02",
+            "createdate": "2023/11/14",
+            "updatedate": "2023/11/14",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
                     "statu": "SUCCESS",
                     "ps": "list",
-                    "createdate": "2023/02/05",
-                    "updatedate": "2023/06/10",
+                    "createdate": "2023/11/14",
+                    "updatedate": "2023/11/14",
                     "data": [
                         {
                             "list": 1,
@@ -88,145 +88,6 @@
                                     "link": "TaskA/10",
                                     "statu": "SUCCESS",
                                     "data": []
-                                },
-                                {
-                                    "no": 11,
-                                    "description": "A11",
-                                    "link": "TaskA/11",
-                                    "statu": "FAILED",
-                                    "data": []
-                                },
-                                {
-                                    "no": 12,
-                                    "description": "A12",
-                                    "link": "TaskA/12",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": 13,
-                                    "description": "A13",
-                                    "link": "TaskA/13",
-                                    "statu": "FAILED",
-                                    "data": []
-                                },
-                                {
-                                    "no": 14,
-                                    "description": "A14",
-                                    "link": "TaskA/14",
-                                    "statu": "N/A",
-                                    "data": []
-                                },
-                                {
-                                    "no": 15,
-                                    "description": "A15",
-                                    "link": "TaskA/15",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": 16,
-                                    "description": "A16",
-                                    "link": "../../../worldskill/2019/TaskA/D04",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": 17,
-                                    "description": "A17",
-                                    "link": "TaskA/17",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": 18,
-                                    "description": "A18",
-                                    "link": "TaskA/18",
-                                    "statu": "N/A",
-                                    "data": []
-                                },
-                                {
-                                    "no": 19,
-                                    "description": "A19",
-                                    "link": "TaskA/19",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": 20,
-                                    "description": "A20",
-                                    "link": "../../../worldskill/2019/TaskA/B15",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "F1",
-                                    "description": "AFM10",
-                                    "link": "../../../worldskill/2022/TaskA/C12/a.html",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "F2",
-                                    "description": "AFM11",
-                                    "link": "../../../worldskill/2022/TaskA/C15",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "F3",
-                                    "description": "AFM12",
-                                    "link": "../../../worldskill/2022/TaskA/C14",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "F4",
-                                    "description": "AFM13",
-                                    "link": "TaskA/FM-13",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "F5",
-                                    "description": "AFM14",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                }
-                            ]
-                        },
-                        {
-                            "list": 2,
-                            "description": "self",
-                            "statu": "SUCCESS",
-                            "data": [
-                                {
-                                    "no": "01",
-                                    "description": "A02",
-                                    "link": "TaskA/02 copy",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "02",
-                                    "description": "A02",
-                                    "link": "TaskA/02 copy 2",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "03",
-                                    "description": "A03kj",
-                                    "link": "TaskA/03kj",
-                                    "statu": "SUCCESS",
-                                    "data": []
-                                },
-                                {
-                                    "no": "04",
-                                    "description": "A05copy",
-                                    "link": "TaskA/05 copy",
-                                    "statu": "SUCCESS",
-                                    "data": []
                                 }
                             ]
                         }
@@ -241,7 +102,7 @@
                     "data": []
                 },
                 {
-                    "title": "ModuleMC-CS",
+                    "title": "ModuleC-CMS",
                     "statu": "N/A",
                     "ps": "list",
                     "createdate": "N/A",
@@ -250,17 +111,17 @@
                 },
                 {
                     "title": "ModuleD-API",
-                    "link": "https://hiiamchris.ddns.net:444/website/52th/senior/52national/TaskD/",
+                    "link": "moduled/",
                     "statu": "FAILED",
                     "ps": "list",
-                    "createdate": "2023/02/05",
-                    "updatedate": "2023/11/02",
+                    "createdate": "2023/11/14",
+                    "updatedate": "2023/11/14",
                     "data": []
                 },
                 {
                     "title": "ModuleE-SPA",
                     "link": "TaskE/",
-                    "statu": "FAILED",
+                    "statu": "N/A",
                     "ps": "list",
                     "createdate": "2023/02/05",
                     "updatedate": "2023/06/09",
