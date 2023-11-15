@@ -29,6 +29,12 @@ function game(){
     4=watermelon
     */
 
+    function nextstage(){
+        stage=stage+1
+        score=0
+        main()
+    }
+
     function move(key){
         if(select&&canclick){
             let temp=mainarray[select[0]][select[1]]
@@ -95,10 +101,32 @@ function game(){
                     end()
                     result=true
                 }else{
-                    stage=stage+1
-                    score=0
-                    main()
                     clearInterval(timer)
+                    // 清空移動水果 START
+                    document.onkeydown=function(event){
+                        if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
+                            event.preventDefault()
+                            canclick=false
+                        }
+                    }
+                    // 清空移動水果 END
+                
+                    // 清空復原 START
+                    document.onkeyup=function(event){
+                        if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
+                            event.preventDefault()
+                            canclick=false
+                        }
+                    }
+                    // 清空復原 END
+                    lightbox(null,"lightbox",function(){
+                        return `
+                            第${stage}關 完成!<br>
+                            總分: ${totalscore}<br>
+                            總用時: ${totaltime}s<br><br>
+                            <input type="button" class="bluebutton" id="closelightbox" onclick="${nextstage()}" value="next stage">
+                        `
+                    },"closelightbox",null,false,"none")
                 }
             }
             // 分數判斷 END
@@ -190,25 +218,29 @@ function game(){
             }
         })
         // 初始化 END
-    
+
         // 移動水果 START
         document.onkeydown=function(event){
             if(event.key=="ArrowUp"){
+                event.preventDefault()
                 if(canclick){
                     move("up")
                     canclick=false
                 }
             }else if(event.key=="ArrowDown"){
+                event.preventDefault()
                 if(canclick){
                     move("down")
                     canclick=false
                 }
             }else if(event.key=="ArrowLeft"){
+                event.preventDefault()
                 if(canclick){
                     move("left")
                     canclick=false
                 }
             }else if(event.key=="ArrowRight"){
+                event.preventDefault()
                 if(canclick){
                     move("right")
                     canclick=false
@@ -220,12 +252,16 @@ function game(){
         // 復原 START
         document.onkeyup=function(event){
             if(event.key=="ArrowUp"){
+                event.preventDefault()
                 canclick=true
             }else if(event.key=="ArrowDown"){
+                event.preventDefault()
                 canclick=true
             }else if(event.key=="ArrowLeft"){
+                event.preventDefault()
                 canclick=true
             }else if(event.key=="ArrowRight"){
+                event.preventDefault()
                 canclick=true
             }
         }
