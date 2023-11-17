@@ -455,6 +455,38 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "list": 6,
+                    "description": "自行新增",
+                    "statu": "FAILED",
+                    "data": [
+                        {
+                            "no": "43",
+                            "description": "當使用者(有登入)定要填寫以填寫之問卷需使用上次之問卷",
+                            "statu": "FAILED",
+                            "data": [
+                            ]
+                        },
+                        {
+                            "no": "44",
+                            "description": "當使用者在填寫問卷時可以不受重整影響記憶內容",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "description": "使用儲存按鈕或自動儲存",
+                                    "statu": "FAILED"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "45",
+                            "description": "在進行填寫題目分頁切換時畫面不得重整",
+                            "statu": "SUCCESS",
+                            "data": [
+                            ]
+                        }
+                    ]
                 }
             ]
         }

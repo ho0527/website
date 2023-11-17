@@ -35,9 +35,9 @@
                 <tr>
             </table><br><br>
             <div class="buttondiv">
-                <input type="button" onclick="location.href='api/api.php?logout='" value="返回">
+                <input type="button" onclick="location.href='api/api.php?logout='" value="登出">
                 <input type="button" id="next" value="切換">
-                <input type="button" id="submit" value="送出">
+                <input type="button" id="submit" value="確定">
             </div>
         </div>
         <script src="verify.js"></script>

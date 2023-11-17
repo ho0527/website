@@ -55,65 +55,65 @@
             </div>
             <table class="admintable">
                 <?php
-                    $ob="number";
-                    $ot="ASC";
-                    $ot1="DESC";
-                    $ot2="DESC";
-                    $ot3="DESC";
-                    $ov1="升冪";
-                    $ov2="升冪";
-                    $ov3="升冪";
-                    if(isset($_GET["ob"])){
-                        if($_GET["ob"]=="number"){
-                            if($_GET["ot"]=="ASC"){
-                                $ob="number";
-                                $ot="ASC";
+                    $keyarray=["number","username","name"];
+
+                    // 初始化排序狀態
+                    if(!isset($_SESSION["sort"])){
+                        $_SESSION["sort"]=["number","ASC"];
+                    }
+
+                    // 處理排序按鈕
+                    if(isset($_GET["orderby"])){
+                        $orderby=$_GET["orderby"];
+                        $ordertype=$_GET["ordertype"];
+                        // 驗證排序欄位
+                        if(!in_array($orderby,$keyarray)){
+                            $orderby="number";
+                        }
+                        // 更新session
+                        $_SESSION["sort"]=[$orderby,$ordertype];
+                    }
+
+                    $orderby=$_SESSION["sort"][0];
+                    $ordertype=$_SESSION["sort"][1];
+
+                    // 排序按鈕
+                    $button=[];
+                    for($i=0;$i<count($keyarray);$i=$i+1){
+                        $buttonordervalue="升冪";
+                        $buttonordertype="ASC";
+                        if($keyarray[$i]==$orderby){
+                            if($ordertype=="ASC"){
+                                $buttonordervalue="升冪";
+                                $buttonordertype="DESC";
                             }else{
-                                $ob="number";
-                                $ot="DESC";
-                                $ot1="ASC";
-                                $ov1="降冪";
-                            }
-                        }else if($_GET["ob"]=="username"){
-                            if($_GET["ot"]=="ASC"){
-                                $ob="username";
-                                $ot="ASC";
-                            }else{
-                                $ob="username";
-                                $ot="DESC";
-                                $ot2="ASC";
-                                $ov2="降冪";
-                            }
-                        }else{
-                            if($_GET["ot"]=="ASC"){
-                                $ob="name";
-                                $ot="ASC";
-                            }else{
-                                $ob="name";
-                                $ot="DESC";
-                                $ot3="ASC";
-                                $ov3="降冪";
+                                $buttonordervalue="降冪";
+                                $buttonordertype="ASC";
                             }
                         }
+                        $button[]="<input type=\"button\" onclick=\"location.href='?orderby=$keyarray[$i]&ordertype=$buttonordertype'\" value=\"$buttonordervalue\">";
                     }
 
                 ?>
                 <tr>
-                    <td class="admintd">使用者編號 <input type="button" onclick="location.href='?ob=number&ot=<?= $ot1 ?>'" value="<?= $ov1 ?>"></td>
-                    <td class="admintd">帳號 <input type="button" onclick="location.href='?ob=username&ot=<?= $ot2 ?>'" value="<?= $ov2 ?>"></td>
+                    <td class="admintd">使用者編號 <?= $button[0] ?></td>
+                    <td class="admintd">帳號 <?= $button[1] ?></td>
                     <td class="admintd">密碼 </td>
-                    <td class="admintd">姓名 <input type="button" onclick="location.href='?ob=name&ot=<?= $ot3 ?>'" value="<?= $ov3 ?>"></td>
+                    <td class="admintd">姓名 <?= $button[2] ?></td>
                     <td class="admintd">權限</td>
                     <td class="admintd">function</td>
                 </tr>
                 <?php
-                    if(isset($_SESSION["search"])){
-                        $text=$_SESSION["search"];
-                    }else{
+                    if(!isset($_SESSION["search"])){
                         $_SESSION["search"]="";
-                        $text=$_SESSION["search"];
                     }
-                    $row=query($db,"SELECT*FROM `user` WHERE `number`LIKE?OR`username`LIKE?OR`password`LIKE?OR`name`LIKE?",["%$text%","%$text%","%$text%","%$text%"]);
+
+                    if(isset($_GET["search"])){
+                        $_SESSION["search"]=$_GET["search"];
+                        ?><script>location.href="admin.php"</script><?php
+                    }
+
+                    $row=query($db,"SELECT*FROM `user` WHERE `number`LIKE?OR`username`LIKE?OR`password`LIKE?OR`name`LIKE? ORDER BY `$orderby` $ordertype",["%".$_SESSION["search"]."%","%".$_SESSION["search"]."%","%".$_SESSION["search"]."%","%".$_SESSION["search"]."%"]);
                     for($i=0;$i<count($row);$i=$i+1){
                         ?>
                         <tr>
@@ -124,12 +124,7 @@
                             <td class="admintd"><?= $row[$i][4] ?></td>
                             <td class="admintd">
                                 <?php
-                                    if($row[$i][0]==1){
-                                        ?>
-                                        <input type="button" value="修改">
-                                        <input type="button" value="刪除">
-                                        <?php
-                                    }else{
+                                    if($row[$i][0]!=1){
                                         ?>
                                         <input type="button" onclick="location.href='edituser.php?edituser=&id=<?= $row[$i][0] ?>'" value="修改">
                                         <input type="button" onclick="location.href='api/api.php?deluser=&id=<?= $row[$i][0] ?>'" value="刪除">

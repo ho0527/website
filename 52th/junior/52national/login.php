@@ -29,7 +29,7 @@
                 <div class="adminpost" id="main">
                     <div class="postbody">
                         <?php
-                            $a=fetchall(query("SELECT*FROM `message`"));
+                            $a=query($db,"SELECT*FROM `message`");
                             usort($a,function($a,$b){
                                 return strcmp($b[8],$a[8]);
                             });
@@ -42,14 +42,11 @@
                                         <td class="message" rowspan="2"><?= $a[$i][3] ?></td>
                                         <?php
                                             if($a[$i][9]!=""){
-                                                ?>
-                                                <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="75px"></td>
-                                                <?php
+                                                ?><td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="75px"></td><?php
                                             }else{
-                                                ?>
-                                                <td class="pictre" rowspan="4"></td>
-                                                <?php
+                                                ?><td class="pictre" rowspan="4"></td><?php
                                             }
+
                                             if($a[$i][11]==""){
                                                 ?>
                                                 <td class="edit" rowspan="4">
@@ -100,49 +97,31 @@
                                     <tr>
                                         <?php
                                             if($a[$i][11]!=""){
-                                                ?>
-                                                <td class="postdate" colspan="2">刪除於:<?= $a[$i][11] ?></td>
-                                                <?php
+                                                ?><td class="postdate" colspan="2">刪除於:<?= $a[$i][11] ?></td><?php
                                             }elseif($a[$i][10]!=""){
-                                                ?>
-                                                <td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?> 修改於:<?= $a[$i][10] ?></td>
-                                                <?php
+                                                ?><td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?> 修改於:<?= $a[$i][10] ?></td><?php
                                             }else{
-                                                ?>
-                                                <td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?></td>
-                                                <?php
+                                                ?><td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?></td><?php
                                             }
                                             ?></tr><tr><?php
                                             if($a[$i][5]=="yes"){
                                                 if($a[$i][7]=="yes"){
-                                                    ?>
-                                                    <td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:<?= $a[$i][6] ?></td>
-                                                    <?php
+                                                    ?><td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:<?= $a[$i][6] ?></td><?php
                                                 }else{
-                                                    ?>
-                                                    <td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:未提供</td>
-                                                    <?php
+                                                    ?><td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:未提供</td><?php
                                                 }
                                             }else{
                                                 if($a[$i][7]=="yes"){
-                                                    ?>
-                                                    <td class="postemail" colspan="2">E-mail:未提供 電話:<?= $a[$i][6] ?></td>
-                                                    <?php
+                                                    ?><td class="postemail" colspan="2">E-mail:未提供 電話:<?= $a[$i][6] ?></td><?php
                                                 }else{
-                                                    ?>
-                                                    <td class="postemail" colspan="2">E-mail:未提供 電話:未提供</td>
-                                                    <?php
+                                                    ?><td class="postemail" colspan="2">E-mail:未提供 電話:未提供</td><?php
                                                 }
                                             }
                                             ?></tr><tr><?php
                                             if($a[$i][12]==""){
-                                                ?>
-                                                <td class="adminmessage" colspan="4">管理員回應: 無</td>
-                                                <?php
+                                                ?><td class="adminmessage" colspan="4">管理員回應: 無</td><?php
                                             }else{
-                                                ?>
-                                                <td class="adminmessage" colspan="4">管理員回應: <?= $a[$i][12] ?></td>
-                                                <?php
+                                                ?><td class="adminmessage" colspan="4">管理員回應: <?= $a[$i][12] ?></td><?php
                                             }
                                         ?>
                                     </tr>
@@ -154,8 +133,7 @@
                 </div>
                 <?php
                 if(isset($_GET["edit"])){
-                    $sn=$_GET["edit"];
-                    $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
+                    $row=query($db,"SELECT*FROM `message` WHERE `sn`=?",[$_GET["edit"]])[0];
                     ?>
                     <div class="main" id="editchatdiv">
                         <form>
@@ -171,11 +149,12 @@
                     </div>
                     <?php
                 }
+
                 if(isset($_GET["del"])){
-                    $sn=$_GET["del"];
-                    query("DELETE FROM `message` WHERE `sn`='$sn'");
+                    query($db,"DELETE FROM `message` WHERE `sn`=?",[$_GET["del"]]);
                     ?><script>alert("刪除成功!");location.href="login.php"</script><?php
                 }
+
                 if(isset($_GET["editsubmit"])){
                     $username=$_GET["username"];
                     $email=$_GET["email"];
@@ -184,30 +163,31 @@
                     $telbox=$_GET["telbox"];
                     $message=$_GET["message"];
                     $sn=$_GET['sn'];
-                    if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/", $email)) {
+                    if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$email)){
                         ?><script>alert("email驗證失敗!");location.href="login.php"</script><?php
                     }elseif(!preg_match("/^[0-9-]+$/",$tel)){
                         ?><script>alert("電話驗證失敗!");location.href="login.php"</script><?php
                     }elseif($username==""){
                         ?><script>alert("請輸入名字!");location.href="login.php"</script><?php
                     }else{
-                        if(isset($emailbox)){
-                            if(isset($telbox)){
-                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
-                                ?><script>alert("更改成功!");location.href="login.php"</script><?php
-                            }else{
-                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
-                                ?><script>alert("更改成功!");location.href="login.php"</script><?php
-                            }
-                        }else{
-                            if(isset($telbox)){
-                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
-                                ?><script>alert("更改成功!");location.href="login.php"</script><?php
-                            }else{
-                                query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
-                                ?><script>alert("更改成功!");location.href="login.php"</script><?php
-                            }
+                        $emailboxvalue="yes";
+                        $telboxvalue="yes";
+
+                        if(!isset($emailbox)){
+                            $emailboxvalue="no";
                         }
+
+                        if(!isset($telbox)){
+                            $telboxvalue="no";
+                        }
+
+                        query(
+                            $db,
+                            "UPDATE `message` SET `username`=?,`message`=?,`email`=?,`emailbox`=?,`tel`=?,`telbox`=?,`edit`=? WHERE `sn`=?",
+                            [$username,$message,$email,$emailboxvalue,$tel,$telboxvalue,$date,$sn]
+                        );
+
+                        ?><script>alert("更改成功!");location.href="login.php"</script><?php
                     }
                 }
             }else{
@@ -252,23 +232,19 @@
                                 $_SESSION["password"]=$code;
                                 $verify=$_GET["verify"];
                                 $ans=$_GET["verifyans"];
-                                if(block($username)){
-                                    ?><script>alert("帳號有誤");location.href="login.php"</script><?php
-                                }else{
-                                    if($row=fetch(query("SELECT*FROM `user` WHERE `username`='$username'"))){
-                                        if($row[2]==$code){
-                                            if($ans==$verify){
-                                                ?><script>alert("登入成功");location.href="login.php"</script><?php
-                                                $_SESSION["data"]=$username;
-                                            }else{
-                                                ?><script>alert("圖形驗證碼有誤");location.href="login.php"</script><?php
-                                            }
+                                if($row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0]){
+                                    if($row[2]==$code){
+                                        if($ans==$verify){
+                                            ?><script>alert("登入成功");location.href="login.php"</script><?php
+                                            $_SESSION["data"]=$username;
                                         }else{
-                                            ?><script>alert("密碼有誤");location.href="login.php"</script><?php
+                                            ?><script>alert("圖形驗證碼有誤");location.href="login.php"</script><?php
                                         }
                                     }else{
-                                        ?><script>alert("帳號有誤");location.href="login.php"</script><?php
+                                        ?><script>alert("密碼有誤");location.href="login.php"</script><?php
                                     }
+                                }else{
+                                    ?><script>alert("帳號有誤");location.href="login.php"</script><?php
                                 }
                             }
                         ?>
@@ -276,20 +252,22 @@
                 </div>
                 <?php
             }
+
             if(isset($_GET["pin"])){
                 $sn=$_GET["pin"];
-                $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"));
+                $row=query($db,"SELECT*FROM `message` WHERE `sn`='$sn'")[0];
                 if($row[13]=="yes"){
-                    query("UPDATE `message` SET `pin`='' WHERE `sn`='$sn'");
+                    query($db,"UPDATE `message` SET `pin`='' WHERE `sn`='$sn'");
                     ?><script>alert("解訂成功!");location.href="login.php"</script><?php
                 }else{
-                    query("UPDATE `message` SET `pin`='yes' WHERE `sn`='$sn'");
+                    query($db,"UPDATE `message` SET `pin`='yes' WHERE `sn`='$sn'");
                     ?><script>alert("訂選成功!");location.href="login.php"</script><?php
                 }
             }
+
             if(isset($_GET["resp"])){
                 $sn=$_GET["resp"];
-                $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
+                $row=query($db,"SELECT*FROM `message` WHERE `sn`='$sn'")[0];
                 ?>
                 <div class="adminresp" id="editchatdiv">
                     <form class="signupdiv">
@@ -302,10 +280,9 @@
                 </div>
                 <?php
             }
+
             if(isset($_GET["respsubmit"])){
-                $message=$_GET["message"];
-                $sn=$_GET['sn'];
-                query("UPDATE `message` SET `respond`='$message' WHERE `sn`='$sn'");
+                query($db,"UPDATE `message` SET `respond`=? WHERE `sn`=?",[$_GET["message"],$_GET["sn"]]);
                 ?><script>alert("更改成功!");location.href="login.php"</script><?php
             }
         ?>

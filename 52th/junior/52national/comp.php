@@ -30,16 +30,16 @@
                     <form>
                         <table class="compmaintable">
                             <?php
-                            $comp=fetchall(query("SELECT*FROM `comp`"));
-                            $maxid=fetch(query("SELECT MAX(`id`) FROM `comp`"))[0];
+                            $comp=query($db,"SELECT*FROM `comp`");
+                            $maxid=query($db,"SELECT MAX(`id`) FROM `comp`")[0][0];
                             $countcomp=count($comp);
                             $maxnum=round($countcomp/2);
                             for($i=1;$i<=$maxnum;$i=$i+1){
                                 $team=[];
                                 for($j=1;$j<=$maxid;$j=$j+1){
-                                    $temporarystorage=fetch(query("SELECT*FROM `comp` WHERE `id`='$j' AND `team`='$i'"));
+                                    $temporarystorage=query($db,"SELECT*FROM `comp` WHERE `id`='$j' AND `team`='$i'");
                                     if($temporarystorage){
-                                        $team[]=$temporarystorage;
+                                        $team[]=$temporarystorage[0];
                                     }
                                 }
                                 if(count($team)==2&&$team[0]!=""){
@@ -61,7 +61,7 @@
                                     <?php
                                 }
                             }
-                            $noteamrow=fetchall(query("SELECT*FROM `comp` WHERE `team`=''"));
+                            $noteamrow=query($db,"SELECT*FROM `comp` WHERE `team`=''");
                             for($i=0;$i<count($noteamrow);$i=$i+1){
                                 ?>
                                 <tr>
@@ -82,9 +82,9 @@
                 </div>
                 <?php
                 if(isset($_GET["submit"])){
-                    $row=fetchall(query("SELECT*FROM `comp`"));
-                    $ingame=fetchall(query("SELECT*FROM `comp` WHERE `team`!=''"));
-                    $notingame=fetchall(query("SELECT*FROM `comp` WHERE `team`=''"));
+                    $row=query($db,"SELECT*FROM `comp`")[0];
+                    $ingame=query($db,"SELECT*FROM `comp` WHERE `team`!=''")[0];
+                    $notingame=query($db,"SELECT*FROM `comp` WHERE `team`=''")[0];
                     $count=(int)(count($row)/2);
                     $range=range(1,$count);
                     for($i=0;$i<$count;$i=$i+1){
@@ -106,7 +106,7 @@
                             $team=$range[$i];
                             $id1=$notingameid[$rand[0]];
                             $id2=$notingameid[$rand[1]];
-                            query("UPDATE `comp` SET `team`='$team' WHERE `id`='$id1'or`id`='$id2'");
+                            query($db,"UPDATE `comp` SET `team`='$team' WHERE `id`='$id1'or`id`='$id2'");
                             unset($notingameid[$rand[0]]);
                             unset($notingameid[$rand[1]]);
                             $notingameid=array_values($notingameid);
@@ -121,7 +121,7 @@
                 $arr=explode(" ",$_GET["cancel"]);
                 for($i=0;$i<2;$i=$i+1){
                     $temp=$arr[$i];
-                    query("UPDATE `comp` SET `team`='' WHERE `id`='$temp'");
+                    query($db,"UPDATE `comp` SET `team`='' WHERE `id`='$temp'");
                 }
                 ?><script>alert("取消配對成功!");location.href="comp.php"</script><?php
             }

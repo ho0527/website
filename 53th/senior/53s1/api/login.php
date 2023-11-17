@@ -21,24 +21,23 @@
                     query($db,"INSERT INTO `log`(`usernumber`,`username`,`name`,`movetime`,`action`,`success`)VALUES(?,?,?,?,?,?)",[$row[0][5],$username,$row[0][3],$time,"登入","成功"]);
                     ?><script>alert("登入成功");location.href="../verify.php"</script><?php
                 }else{
+                    query($db,"INSERT INTO `log`(`usernumber`,`username`,`name`,`movetime`,`action`,`success`)VALUES(?,?,?,?,?,?)",[$row[0][5],$row[0][1],$row[0][3],$time,"登入","失敗"]);
                     $_SESSION["error"]=$_SESSION["error"]+1;
                     ?><script>alert("圖形驗證碼有誤")</script><?php
                 }
             }else{
+                query($db,"INSERT INTO `log`(`usernumber`,`username`,`name`,`movetime`,`action`,`success`)VALUES(?,?,?,?,?,?)",[$row[0][5],$row[0][1],$row[0][3],$time,"登入","失敗"]);
                 $_SESSION["error"]=$_SESSION["error"]+1;
                 ?><script>alert("密碼有誤")</script><?php
             }
         }else{
+            query($db,"INSERT INTO `log`(`usernumber`,`username`,`name`,`movetime`,`action`,`success`)VALUES(?,?,?,?,?,?)",["未知","","",$time,"登入","失敗"]);
             $_SESSION["error"]=$_SESSION["error"]+1;
             ?><script>alert("帳號有誤")</script><?php
         }
 
-        if($_SESSION["error"]>=3){
-            if($row){
-                query($db,"INSERT INTO `log`(`usernumber`,`username`,`name`,`movetime`,`action`,`success`)VALUES(?,?,?,?,?,?)",[$row[0][5],$row[0][1],$row[0][3],$time,"登入","失敗"]);
-            }else{
-                query($db,"INSERT INTO `log`(`usernumber`,`username`,`name`,`movetime`,`action`,`success`)VALUES(?,?,?,?,?,?)",["未知","","",$time,"登入","失敗"]);
-            }
+        if($_SESSION["error"]==3){
+            session_unset();
             ?><script>location.href="../error.html"</script><?php
 
         }else{

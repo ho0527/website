@@ -52,6 +52,5 @@
                 ?><script>alert("修改成功");location.href="admin.php"</script><?php
             }
         ?>
-        <script src="index.js"></script>
     </body>
 </html>

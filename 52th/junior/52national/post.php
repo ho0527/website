@@ -38,9 +38,7 @@
                 $username=$_SESSION["name"];
                 $email=$_SESSION["email"];
                 $tel=$_SESSION["tel"];
-                if(block($username)){
-                    ?><script>alert("禁止輸入特殊字元(username)!");location.href="post.php"</script><?php
-                }elseif(!preg_match("/^.+\@.+\..+((\..+)+)?$/",$email)) {
+                if(!preg_match("/^.+\@.+\..+((\..+)+)?$/",$email)) {
                     ?><script>alert("email驗證失敗!");location.href="post.php"</script><?php
                 }elseif(!preg_match("/^[0-9]+(\-[0-9]+)?$/",$tel)){
                     ?><script>alert("電話驗證失敗!");location.href="post.php"</script><?php
@@ -52,7 +50,7 @@
                         move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
                         $picture="image/".$_FILES["picture"]["name"];
                     }
-                    query("INSERT INTO `comp`(`username`,`email`,`tel`,`picture`)VALUES('$username','$email','$tel','$picture')");
+                    query($db,"INSERT INTO `comp`(`username`,`email`,`tel`,`picture`)VALUES(?,?,?,?)",[$username,$email,$tel,$picture]);
                     ?><script>alert("新增成功!");location.href="post.php"</script><?php
                     unset($_SESSION["name"]);
                     unset($_SESSION["email"]);

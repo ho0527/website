@@ -4,28 +4,10 @@
     $date=date("Y-m-d H:i:s");
     session_start();
 
-    function query($query){
-        global $db;
-        return $db->query($query);
-    }
-
-    //function query($query,$data=[]){
-    //    global $db;
-    //    $prepare=$db->prepare($query);
-    //    $prepare->execute($data);
-    //    return $prepare->fetchAll();
-    //}
-
-    function fetch($result){
-        return $result->fetch();
-    }
-
-    function fetchall($result){
-        return $result->fetchAll();
-    }
-
-    function block($name){
-        return preg_match("/([ ,\!,\@,\#,\$,\%,\^,\&,\*,\(,\),\_,\-,\+,\=,\{,\},\[,\],\|,\\\,\:,\;,\',\",\<,\>,\,,\.,\?,\/ ])/",$name,$e);
+    function query($db,$query,$data=[]){
+       $prepare=$db->prepare($query);
+       $prepare->execute($data);
+       return $prepare->fetchAll();
     }
 
     if(isset($_GET["logout"])){

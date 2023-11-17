@@ -20,28 +20,27 @@
                 密碼: <input type="text" name="password" id="password"><br><br>
                 圖形驗證碼:<br><br>
                 <?php
-                    $_SESSION["verifycode"]="";
+                    $verifycode=[];
                     for($i=0;$i<4;$i=$i+1){
                         $str="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789"[rand(0,61)];
                         ?>
                         <img src="api/verifycode.php?str=<?= $str ?>" class="verifycodeimage" id="<?= $i ?>" data-id="<?= $str ?>">
                         <?php
-                        $_SESSION["verifycode"]=$_SESSION["verifycode"].$str;
+                        $verifycode[]=$str;
                     }
                 ?><br><br>
                 輸入框提示規則<br>
                 請拖動驗證碼<span id="val">
                     <?php
-                        $code=[$_SESSION["verifycode"][0],$_SESSION["verifycode"][1],$_SESSION["verifycode"][2],$_SESSION["verifycode"][3]];
                         $rand=rand(0,1);
                         if($rand==0){
                             echo("'由小排到大'");
-                            sort($code);
+                            sort($verifycode);
                         }else{
                             echo("'由大排到小'");
-                            rsort($code);
+                            rsort($verifycode);
                         }
-                        $_SESSION["verifycode"]=implode("",$code);
+                        $_SESSION["verifycode"]=implode("",$verifycode);
                     ?>
                 </span>:<br><br>
                 <div class="box" id="drop"></div><br>

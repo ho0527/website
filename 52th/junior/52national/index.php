@@ -25,8 +25,7 @@
                 <div class="pinpostmessage">
                     <?php
                         include("link.php");
-                        $a=fetchall(query("SELECT*FROM `message` WHERE `pin`='yes'"));
-                        //$a=query("SELECT*FROM `message` WHERE `pin`=?",["yes"]);
+                        $a=query($db,"SELECT*FROM `message` WHERE `pin`='yes'");
                         usort($a,function($a,$b){ return $a[8]<$b[8]; });
                         for($i=0;$i<count($a);$i=$i+1){
                             $id=$a[$i][0];
@@ -37,13 +36,9 @@
                                     <td class="message" rowspan="2"><?= $a[$i][3] ?></td>
                                     <?php
                                     if($a[$i][9]!=""){
-                                        ?>
-                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="100px"></td>
-                                        <?php
+                                        ?><td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="100px"></td><?php
                                     }else{
-                                        ?>
-                                        <td class="pictre" rowspan="4"></td>
-                                        <?php
+                                        ?><td class="pictre" rowspan="4"></td><?php
                                     }
                                     ?>
                                 </tr>
@@ -52,49 +47,31 @@
                                 <tr>
                                     <?php
                                         if($a[$i][11]!=""){
-                                            ?>
-                                            <td class="postdate" colspan="2">刪除於:<?= $a[$i][11] ?></td>
-                                            <?php
+                                            ?><td class="postdate" colspan="2">刪除於:<?= $a[$i][11] ?></td><?php
                                         }elseif($a[$i][10]!=""){
-                                            ?>
-                                            <td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?> 修改於:<?= $a[$i][10] ?></td>
-                                            <?php
+                                            ?><td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?> 修改於:<?= $a[$i][10] ?></td><?php
                                         }else{
-                                            ?>
-                                            <td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?></td>
-                                            <?php
+                                            ?><td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?></td><?php
                                         }
                                         ?></tr><tr><?php
                                         if($a[$i][5]=="yes"){
                                             if($a[$i][7]=="yes"){
-                                                ?>
-                                                <td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:<?= $a[$i][6] ?></td>
-                                                <?php
+                                                ?><td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:<?= $a[$i][6] ?></td><?php
                                             }else{
-                                                ?>
-                                                <td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:未提供</td>
-                                                <?php
+                                                ?><td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:未提供</td><?php
                                             }
                                         }else{
                                             if($a[$i][7]=="yes"){
-                                                ?>
-                                                <td class="postemail" colspan="2">E-mail:未提供 電話:<?= $a[$i][6] ?></td>
-                                                <?php
+                                                ?><td class="postemail" colspan="2">E-mail:未提供 電話:<?= $a[$i][6] ?></td><?php
                                             }else{
-                                                ?>
-                                                <td class="postemail" colspan="2">E-mail:未提供 電話:未提供</td>
-                                                <?php
+                                                ?><td class="postemail" colspan="2">E-mail:未提供 電話:未提供</td><?php
                                             }
                                         }
                                         ?></tr><tr><?php
                                         if($a[$i][12]==""){
-                                            ?>
-                                            <td class="adminmessage" colspan="3">管理員回應: 無</td>
-                                            <?php
+                                            ?><td class="adminmessage" colspan="3">管理員回應: 無</td><?php
                                         }else{
-                                            ?>
-                                            <td class="adminmessage" colspan="3">管理員回應: <?= $a[$i][12] ?></td>
-                                            <?php
+                                            ?><td class="adminmessage" colspan="3">管理員回應: <?= $a[$i][12] ?></td><?php
                                         }
                                     ?>
                                 </tr>
@@ -109,16 +86,16 @@
                 <div class="newsmessage">
                     <table class="compmaintable">
                         <?php
-                        $comp=fetchall(query("SELECT*FROM `comp`"));
-                        $maxid=fetch(query("SELECT MAX(`id`) FROM `comp`"))[0];
+                        $comp=query($db,"SELECT*FROM `comp`");
+                        $maxid=query($db,"SELECT MAX(`id`) FROM `comp`")[0][0];
                         $countcomp=count($comp);
                         $maxnum=round($countcomp/2);
                         for($i=1;$i<=$maxnum;$i=$i+1){
                             $team=[];
                             for($j=1;$j<=$maxid;$j=$j+1){
-                                $temporarystorage=fetch(query("SELECT*FROM `comp` WHERE `id`='$j' AND `team`='$i'"));
+                                $temporarystorage=query($db,"SELECT*FROM `comp` WHERE `id`='$j' AND `team`='$i'");
                                 if($temporarystorage){
-                                    $team[]=$temporarystorage;
+                                    $team[]=$temporarystorage[0];
                                 }
                             }
                             if(count($team)==2&&$team[0]!=""){
@@ -133,7 +110,7 @@
                                 <?php
                             }
                         }
-                        $row=fetchall(query("SELECT*FROM `comp` WHERE `team`=''"));
+                        $row=query($db,"SELECT*FROM `comp` WHERE `team`=''");
                         for($i=0;$i<count($row);$i=$i+1){
                             if($row){
                                 ?>
@@ -160,7 +137,7 @@
             </div>
             <div class="postbody">
                 <?php
-                    $a=fetchall(query("SELECT*FROM `message`"));
+                    $a=query($db,"SELECT*FROM `message`");
                     usort($a,function($a,$b){ return strcmp($b[8],$a[8]); });
                     for($i=0;$i<sizeof($a);$i=$i+1){
                         $id=$a[$i][0];
@@ -171,13 +148,9 @@
                                 <td class="message" rowspan="2"><?= $a[$i][3] ?></td>
                                 <?php
                                     if($a[$i][9]!=""){
-                                        ?>
-                                        <td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="100px"></td>
-                                        <?php
+                                        ?><td class="pictre" rowspan="4"><img src="<?= $a[$i][9] ?>" width="100px"></td><?php
                                     }else{
-                                        ?>
-                                        <td class="pictre" rowspan="4"></td>
-                                        <?php
+                                        ?><td class="pictre" rowspan="4"></td><?php
                                     }
                                     if($a[$i][11]==""){
                                         ?>
@@ -206,49 +179,31 @@
                             <tr>
                                 <?php
                                     if($a[$i][11]!=""){
-                                        ?>
-                                        <td class="postdate" colspan="2">刪除於:<?= $a[$i][11] ?></td>
-                                        <?php
+                                        ?><td class="postdate" colspan="2">刪除於:<?= $a[$i][11] ?></td><?php
                                     }elseif($a[$i][10]!=""){
-                                        ?>
-                                        <td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?> 修改於:<?= $a[$i][10] ?></td>
-                                        <?php
+                                        ?><td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?> 修改於:<?= $a[$i][10] ?></td><?php
                                     }else{
-                                        ?>
-                                        <td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?></td>
-                                        <?php
+                                        ?><td class="postdate" colspan="2">發表於:<?= $a[$i][8] ?></td><?php
                                     }
                                     ?></tr><tr><?php
                                     if($a[$i][5]=="yes"){
                                         if($a[$i][7]=="yes"){
-                                            ?>
-                                            <td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:<?= $a[$i][6] ?></td>
-                                            <?php
+                                            ?><td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:<?= $a[$i][6] ?></td><?php
                                         }else{
-                                            ?>
-                                            <td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:未提供</td>
-                                            <?php
+                                            ?><td class="postemail" colspan="2">E-mail:<?= $a[$i][4] ?> 電話:未提供</td><?php
                                         }
                                     }else{
                                         if($a[$i][7]=="yes"){
-                                            ?>
-                                            <td class="postemail" colspan="2">E-mail:未提供 電話:<?= $a[$i][6] ?></td>
-                                            <?php
+                                            ?><td class="postemail" colspan="2">E-mail:未提供 電話:<?= $a[$i][6] ?></td><?php
                                         }else{
-                                            ?>
-                                            <td class="postemail" colspan="2">E-mail:未提供 電話:未提供</td>
-                                            <?php
+                                            ?><td class="postemail" colspan="2">E-mail:未提供 電話:未提供</td><?php
                                         }
                                     }
                                     ?></tr><tr><?php
                                     if($a[$i][12]==""){
-                                        ?>
-                                        <td class="adminmessage" colspan="4">管理員回應: 無</td>
-                                        <?php
+                                        ?><td class="adminmessage" colspan="4">管理員回應: 無</td><?php
                                     }else{
-                                        ?>
-                                        <td class="adminmessage" colspan="4">管理員回應: <?= $a[$i][12] ?></td>
-                                        <?php
+                                        ?><td class="adminmessage" colspan="4">管理員回應: <?= $a[$i][12] ?></td><?php
                                     }
                                 ?>
                             </tr>
@@ -288,7 +243,7 @@
                 @$message=$_SESSION["message"];
                 @$picture=$_FILES["picture"]["name"];
                 @$sn=$_SESSION["sn"];
-                $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"));
+                $row=query($db,"SELECT*FROM `message` WHERE `sn`='$sn'")[0];
                 if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/", $email)) {
                     ?><script>alert("email驗證失敗!");location.href="index.php"</script><?php
                 }elseif(!preg_match("/^[0-9-]+$/",$tel)){
@@ -300,37 +255,28 @@
                 }elseif($username==""||$sn==""){
                     ?><script>alert("請輸入名字及序號!");location.href="index.php"</script><?php
                 }else{
+                    $picture="";
+                    $emailboxvalue="yes";
+                    $telboxvalue="yes";
                     if(!empty($_FILES["picture"]["name"])){
                         move_uploaded_file($_FILES["picture"]["tmp_name"],"image/".$_FILES["picture"]["name"]);
                         $picture="image/".$_FILES["picture"]["name"];
-                        if(isset($emailbox)){
-                            if(isset($telbox)){
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','$picture','','','')");
-                            }else{
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','$picture','','','')");
-                            }
-                        }else{
-                            if(isset($telbox)){
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','$picture','','','')");
-                            }else{
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','$picture','','','')");
-                            }
-                        }
-                    }else{
-                        if(isset($emailbox)){
-                            if(isset($telbox)){
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','yes','$date','','','','')");
-                            }else{
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','yes','$tel','no','$date','','','','')");
-                            }
-                        }else{
-                            if(isset($telbox)){
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','yes','$date','','','','')");
-                            }else{
-                                query("INSERT INTO `message`(`sn`, `username`, `message`, `email`, `emailbox`, `tel`, `telbox`, `date`, `picture`, `edit`, `del`, `respond`) VALUES ('$sn','$username','$message','$email','no','$tel','no','$date','','','','')");
-                            }
-                        }
                     }
+
+                    if(!isset($emailbox)){
+                        $emailboxvalue="yes";
+                    }
+
+                    if(!isset($telbox)){
+                        $telboxvalue="yes";
+                    }
+
+                    query(
+                        $db,
+                        "INSERT INTO `message`(`sn`,`username`,`message`,`email`,`emailbox`,`tel`,`telbox`,`date`,`picture`,`edit`,`del`,`respond`)VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                        [$sn,$username,$message,$email,$emailboxvalue,$tel,$telboxvalue,$date,$picture,"","",""]
+                    );
+
                     unset($username,$email,$email,$tel,$message,$sn);
                     ?><script>alert("新增成功!");location.href="index.php"</script><?php
                 }
@@ -338,7 +284,7 @@
             if(isset($_GET["edit"])){
                 $sn=$_GET["text"];
                 if($sn==$_GET["edit"]){
-                    $row=fetch(query("SELECT*FROM `message` WHERE `sn`='$sn'"))
+                    $row=query($db,"SELECT*FROM `message` WHERE `sn`='$sn'");
                     ?>
                     <div class="main" id="editchatdiv">
                         <form>
@@ -348,7 +294,7 @@
                             電&nbsp&nbsp話: <input type="text" class="input2" name="tel" placeholder="只能包含數字或-" value="<?= @$row[6] ?>"> 顯示:<input type="checkbox" class="checkbox" name="telbox" checked><br><br>
                             留言內容: <textarea name="message" rows="5" cols="50"><?= @$row[3] ?></textarea><br><br>
                             留言序號:<input type="text" name="sn" placeholder="4位數字" style="width: 50px;" value="<?= @$sn ?>" readonly>
-                            <input type="button" class="button" onclick="location.href='login.php'" value="返回">
+                            <input type="button" class="button" onclick="location.href='index.php'" value="返回">
                             <input type="submit" class="button" name="editsubmit" value="送出">
                         </form>
                     </div>
@@ -357,15 +303,17 @@
                     ?><script>alert("序號錯誤!");location.href="index.php"</script><?php
                 }
             }
+
             if(isset($_GET["del"])){
                 $sn=$_GET["text"];
                 if($sn==$_GET["del"]){
-                    query("UPDATE `message` SET `emailbox`='no',`telbox`='no',`del`='$date' WHERE `sn`='$sn'");
+                    query($db,"UPDATE `message` SET `emailbox`='no',`telbox`='no',`del`='$date' WHERE `sn`=?",[$sn]);
                     ?><script>alert("刪除成功!");location.href="index.php"</script><?php
                 }else{
                     ?><script>alert("序號錯誤!");location.href="index.php"</script><?php
                 }
             }
+
             if(isset($_GET["editsubmit"])){
                 $username=$_GET["username"];
                 $email=$_GET["email"];
@@ -381,19 +329,23 @@
                 }elseif($username==""){
                     ?><script>alert("請輸入名字!");location.href="index.php"</script><?php
                 }else{
-                    if(isset($emailbox)){
-                        if(isset($telbox)){
-                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
-                        }else{
-                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='yes',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
-                        }
-                    }else{
-                        if(isset($telbox)){
-                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='yes',`edit`='$date' WHERE `sn`='$sn'");
-                        }else{
-                            query("UPDATE `message` SET `username`='$username',`message`='$message',`email`='$email',`emailbox`='no',`tel`='$tel',`telbox`='no',`edit`='$date' WHERE `sn`='$sn'");
-                        }
+                    $emailboxvalue="yes";
+                    $telboxvalue="yes";
+
+                    if(!isset($emailbox)){
+                        $emailboxvalue="no";
                     }
+
+                    if(!isset($telbox)){
+                        $telboxvalue="no";
+                    }
+
+                    query(
+                        $db,
+                        "UPDATE `message` SET `username`=?,`message`=?,`email`=?,`emailbox`=?,`tel`=?,`telbox`=?,`edit`=? WHERE `sn`=?",
+                        [$username,$message,$email,$emailboxvalue,$tel,$telboxvalue,$date,$sn]
+                    );
+
                     ?><script>alert("更改成功!");location.href="index.php"</script><?php
                 }
             }
