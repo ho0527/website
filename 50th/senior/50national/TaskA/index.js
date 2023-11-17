@@ -509,17 +509,14 @@ function createaside(){
             docgetid("aside").style.width="55%"
             docgetid("openaside").style.left="55%"
             docgetid("openaside").value="<"
-            docgetid("body").innerHTML=`
-                ${docgetid("body").innerHTML}
-                <div class="mask" id="asidemask"></div>
-            `
+            docgetid("asidemask").style.display="block"
             aside="open"
             createaside()
         }else{
             docgetid("aside").style.width="0px"
             docgetid("openaside").style.left="0px"
             docgetid("openaside").value=">"
-            docgetid("asidemask").remove()
+            docgetid("asidemask").style.display="none"
             aside="close"
             docgetid("aside").innerHTML=``
             if(asideback=="main"){
@@ -690,10 +687,7 @@ newajax("GET","albumlist.json").onload=function(){
         docgetid("aside").style.width="55%"
         docgetid("openaside").style.left="55%"
         docgetid("openaside").value="<"
-        docgetid("body").innerHTML=`
-            ${docgetid("body").innerHTML}
-            <div class="mask" id="asidemask"></div>
-        `
+        docgetid("asidemask").style.display="block"
         aside="open"
         createaside()
     }else{ conlog("[ERROR]","red","15") }
@@ -756,17 +750,14 @@ docgetid("openaside").onclick=function(){
         docgetid("aside").style.width="55%"
         docgetid("openaside").style.left="55%"
         docgetid("openaside").value="<"
-        docgetid("body").innerHTML=`
-            ${docgetid("body").innerHTML}
-            <div class="mask" id="asidemask"></div>
-        `
+        docgetid("asidemask").style.display="block"
         aside="open"
         createaside()
     }else{
         docgetid("aside").style.width="0%"
         docgetid("openaside").style.left="0%"
         docgetid("openaside").value=">"
-        docgetid("asidemask").remove()
+        docgetid("asidemask").style.display="none"
         aside="close"
         docgetid("aside").innerHTML=``
         if(asideback=="main"){

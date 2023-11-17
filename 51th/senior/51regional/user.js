@@ -62,9 +62,13 @@ function save(){
     }
 
     console.log(insertdata)
-    // newajax("POST","newans.php",[
-    //     "data",insertdata
-    // ]).onload=function(){
+
+    // 送出資料
+    // newajax("POST","newans.php",formdata([
+    //     ["userid",insertdata],
+    //     ["questionid",insertdata],
+    //     ["response",insertdata],
+    // ])).onload=function(){
     //     let data=JSON.parse(this.responseText)
     // }
 }
@@ -74,11 +78,6 @@ function main(){
     docgetid("maindiv").innerHTML=``
     for(let i=0;i<maincount;i=i+1){
         if(questionrow[i][3]!="none"){
-            count=count+1
-            let required=""
-            if(questionrow[i][2]==true){
-                required="<div class='required'>必填*</div>"
-            }
             let mod={
                 "none":"未設定",
                 "yesno":"是非題",
@@ -86,18 +85,26 @@ function main(){
                 "multi":"多選題",
                 "qa":"問答題",
             }
+            let required=""
             let modkey=Object.keys(mod)
             let all=""
             let check=0
+            let output=""
+            let option=questionrow[i][4].split("|&|")
+
+            if(questionrow[i][2]==true){
+                required="<div class='required'>必填*</div>"
+            }
+
             for(let j=0;j<modkey.length;j=j+1){
                 if(modkey[j]==questionrow[i][3]){
                     check=1
                     all=mod[modkey[j]]
                 }
             }
+
             if(check!=1){ sql001();location.href="admin.php" }
-            let output=""
-            let option=questionrow[i][4].split("|&|")
+
             output=output+"題目說明: "+questionrow[i][1]+"<br>"
 
             if(questionrow[i][3]=="yesno"){
@@ -140,6 +147,7 @@ function main(){
                     <textarea cols="30" rows="5" class="question" placeholder="問答題"></textarea>
                 `
             }else{ sql001();location.href="admin.php" }
+
             docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
                 <div class="grid" id="${i}">
                     <div class="order">
@@ -156,6 +164,8 @@ function main(){
                     </div>
                 </div>
             `
+
+            count=count+1
         }
     }
 }

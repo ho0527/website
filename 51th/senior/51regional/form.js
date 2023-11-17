@@ -91,8 +91,6 @@ function main(){
     count=0
     docgetid("maindiv").innerHTML=``
     for(let i=0;i<maincount;i=i+1){
-        console.log(questionrow[i])
-        count=count+1
         let mod={
             "none":"未設定",
             "yesno":"是非題",
@@ -103,6 +101,8 @@ function main(){
         let modkey=Object.keys(mod)
         let all=""
         let check=0
+        let output=""
+
         if(questionrow==""){
             for(let j=0;j<modkey.length;j=j+1){
                 let type=modkey[j]
@@ -131,8 +131,9 @@ function main(){
                 all=all+"<input type='radio' class='radio "+type+" select"+i+"' data-id='"+type+" "+i+"' name='select"+i+"' value='"+type+"' "+checked+">"+mod[modkey[j]]
             }
         }
+
         if(check!=1){ sql001();location.href="admin.php" }
-        let output=""
+
         if(questionrow==""||questionrow[i][3]==undefined||questionrow[i][3]=="none"){
             output="<input type='hidden' class='desciption required showmultimorerespond option"+i+"'>"
         }else{
@@ -171,6 +172,7 @@ function main(){
                 output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimorerespond option"+i+"'>"
             }else{ sql001();location.href="admin.php" }
         }
+
         docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
             <div class="grid" id="${i}">
                 <div class="order">
@@ -187,6 +189,8 @@ function main(){
                 </div>
             </div>
         `
+
+        count=count+1
     }
 }
 

@@ -251,10 +251,10 @@
                 {
                     "title": "ModuleD-BACKEND",
                     "link": "https://hiiamchris.ddns.net:444/website/52th/senior/52national/TaskD/",
-                    "statu": "FAILED",
+                    "statu": "SUCCESS",
                     "ps": "list",
                     "createdate": "2023/02/05",
-                    "updatedate": "2023/11/02",
+                    "updatedate": "2023/11/17",
                     "data": [
                         {
                             "list": 1,

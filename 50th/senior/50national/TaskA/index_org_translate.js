@@ -347,17 +347,14 @@ function createaside(){
             document.getElementById("aside").style.width="55%"
             document.getElementById("openaside").style.left="55%"
             document.getElementById("openaside").value="<"
-            document.getElementById("body").innerHTML=`
-                ${document.getElementById("body").innerHTML}
-                <div class="mask" id="asidemask"></div>
-            `
+            document.getElementById("asidemask").style.display="block"
             aside="open"
             createaside()
         }else{
             document.getElementById("aside").style.width="0px"
             document.getElementById("openaside").style.left="0px"
             document.getElementById("openaside").value=">"
-            document.getElementById("asidemask").remove()
+            document.getElementById("asidemask").style.display="none"
             aside="close"
             document.getElementById("aside").innerHTML=``
             main()
@@ -527,10 +524,11 @@ newajax("GET","albumlist.json").onload=function(){
         document.getElementById("aside").style.width="55%"
         document.getElementById("openaside").style.left="55%"
         document.getElementById("openaside").value="<"
-        document.getElementById("body").innerHTML=`
-            ${document.getElementById("body").innerHTML}
-            <div class="mask" id="asidemask"></div>
-        `
+        document.getElementById("asidemask").style.display="block"
+        // document.getElementById("body").innerHTML=`
+        //     ${document.getElementById("body").innerHTML}
+        //     <div class="mask" id="asidemask"></div>
+        // `
         aside="open"
         createaside()
     }else{ conlog("[ERROR]","red","15") }
@@ -592,17 +590,14 @@ document.getElementById("openaside").onclick=function(){
         document.getElementById("aside").style.width="55%"
         document.getElementById("openaside").style.left="55%"
         document.getElementById("openaside").value="<"
-        document.getElementById("body").innerHTML=`
-            ${document.getElementById("body").innerHTML}
-            <div class="mask" id="asidemask"></div>
-        `
+        document.getElementById("asidemask").style.display="block"
         aside="open"
         createaside()
     }else{
         document.getElementById("aside").style.width="0%"
         document.getElementById("openaside").style.left="0%"
         document.getElementById("openaside").value=">"
-        document.getElementById("asidemask").remove()
+        document.getElementById("asidemask").style.display="none"
         aside="close"
         document.getElementById("aside").innerHTML=``
         main()

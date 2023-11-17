@@ -478,6 +478,9 @@ function ghostmove(name,array){
 
 // 玩家移動
 function playermove(type){
+    setTimeout(function(){
+
+    },1000)
     if(type=="up"){
         if(mainarray[player[0][0]-1][player[0][1]]!=0&&mainarray[player[0][0]-1][player[0][1]]!=4){
             moveto("up",player[0][0],player[0][1])
