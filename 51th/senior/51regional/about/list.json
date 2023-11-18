@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/07/08",
-            "updatedate": "2023/09/16",
+            "updatedate": "2023/11/18",
             "data": [
                 {
                     "list": 1,
@@ -256,7 +256,7 @@
                         {
                             "no": "21",
                             "description": "可設定問卷題目是否必填，若為必填題目，使用者在填寫問卷時，必須填寫該題目才能送出，預設為非必填。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "description": "包含可設定及修改的功能",

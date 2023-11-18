@@ -20,8 +20,9 @@
             else{ ?><script>user("true")</script><?php }
         ?>
         <script>
+            let userid=<?php echo($_SESSION["data"]) ?>;
             let row=<?php echo(json_encode($row)) ?>;
-            let questionrow=<?php echo(json_encode($row[7])) ?>;
+            let questionrow=JSON.parse(<?php echo(json_encode($row[7])) ?>)
         </script>
         <script src="user.js"></script>
     </body>

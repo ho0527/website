@@ -32,6 +32,7 @@
                 <?php
                 $data=$_SESSION["data"];
                 $row=query($db,"SELECT*FROM `question` WHERE `ps`!='del'");
+                $userrow=query($db,"SELECT*FROM `user` WHERE `id`=?",[$data])[0];
                 for($i=0;$i<count($row);$i=$i+1){
                     $id=$row[$i][0];
                     $coderow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'");
@@ -71,7 +72,7 @@
                                 <input type="button" class="workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
                                 <?php
                             }
-                            $checkrow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'AND(`user`='$data'OR`user`='')");
+                            $checkrow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'AND(`user`=?OR`user`='')",[$userrow[1]]);
                             if($checkrow||count($coderow)==0){
                                 ?><input type="button" class="workbutton" onclick="location.href='?mod=respone&id=<?php echo($row[$i][0]) ?>'" value="填寫問卷"><?php
                             }

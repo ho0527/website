@@ -1,5 +1,5 @@
 <?php
-    include("link.php");
+    include("../link.php");
     $userdata=$_SESSION["data"];
     $data=json_decode(file_get_contents("php://input"),true);
     $maindata=$data[0];

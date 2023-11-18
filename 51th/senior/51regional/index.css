@@ -830,3 +830,10 @@ table{
 .indexmain{
     width: 35%;
 }
+
+.background_none{
+    border: none;
+    background: none;
+    color: lightgray;
+    text-align: center;
+}

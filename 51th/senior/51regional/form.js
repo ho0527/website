@@ -275,7 +275,7 @@ all.forEach(function(event){
 
 docgetall(".questiondel").forEach(function(event){
     event.onclick=function(){
-        let id=parseInt(event.dataset.id("data-id"))
+        let id=event.dataset.id
         docgetid(id).remove()
         for(let i=id;i<count-1;i=i+1){
             docgetid(i+1).id=i

@@ -1,6 +1,13 @@
-let count=0
 let id=row[0]
-let maincount
+let insertdata=[]
+let questionrownotnone=[]
+
+/*
+questionrow:
+questionid,description,required,mod,option,showmultimorerespond,ps
+*/
+
+console.log(questionrow)
 
 function checknull(data){
     if(data==null||data==undefined||data==""){ return true }
@@ -10,172 +17,211 @@ function checknull(data){
 function pregmatch(context,data){ return context.test(data) }
 
 function tempsave(){
-    save()
+    let success=true
+
+    for(let i=0;i<count;i=i+1){
+        console.log(questionrow[i])
+        let id=docgetid("count"+i).innerHTML
+        let mod=questionrow[i][4]
+        let desciption=questionrow[i][1]
+        let required=questionrow[i][2]
+        let showmultimorerespond=""
+        let response=null
+
+        if(required){
+            if(!response){
+                alert("第"+count+"題為必填但未填寫")
+                success=false
+                break
+            }
+        }
+        
+        if(mod=="single"||mod=="multi"){
+            for(let j=0;j<6;j=j+1){
+                if(!checknull(docgetid(i+"option"+j).value)){
+                    option=option+docgetid(i+"option"+j).value+"|&|"
+                }
+            }
+        }else{
+            response=""
+        }
+        
+        if(docgetid("showmultimorerespond"+i)){ showmultimorerespond=docgetid("showmultimorerespond"+i).innerHTML }
+
+        console.log(id)
+        insertdata.push([id,desciption,required,mod,response,showmultimorerespond,""])
+    }
+
+    if(success){
+        save()
+    }
 }
 
 function save(){
-    let insertdata=[]
-    // let maxcount=docgetid("count").value
-    // let pagelen=docgetid("pagelen").value
-    // if(!pregmatch(/[0-9]+/,maxcount)&&maxcount!=""){
-    //     alert("最大長度只能是數字或空白")
-    //     maxcount=oldmaxcount
-    // }
-    // if(!pregmatch(/[0-9]+/,pagelen)){
-    //     alert("頁面長度只能是數字")
-    //     pagelen=oldpagelen
-    // }e
-    // insertdata.push([id,docgetid("title").value,count,pagelen,maxcount])
-    for(let i=0;i<count;i=i+1){
-        let mod
-        docgetall(".select"+i).forEach(function(event){
-            if(event.checked==true){ mod=event.value }
-        })
-        let count
-        let desciption
-        let required
-        let option
-        let showmultimorerespond
-        if(mod=="none"){
-            count=docgetid("count"+i).innerHTML
-            desciption=""
-            required="false"
-            option=""
-            showmultimorerespond=false
-        }else{
-            count=docgetid("count"+i).innerHTML
-            desciption=docgetid("desciption"+i).value
-            required=docgetid("required"+i).checked
-            option=""
-            if(mod=="single"||mod=="multi"){
-                for(let j=0;j<6;j=j+1){
-                    if(!checknull(docgetid(i+"option"+j).value)){
-                        option=option+docgetid(i+"option"+j).value+"|&|"
+    let success=true
+
+    for(let i=0;i<questionrownotnone.length;i=i+1){
+        let id=questionrownotnone[i][0]
+        console.log("id="+id)
+        let mod=questionrownotnone[i][3]
+        console.log("mod="+mod)
+        let desciption=questionrownotnone[i][1]
+        let required=questionrownotnone[i][2]
+        let showmultimorerespond=""
+        let response=null
+
+        if(mod=="yesno"){
+            if(docgetid(i+"yes").checked){
+                response=true
+            }else if(docgetid(i+"no").checked){
+                response=false
+            }
+        }else if(mod=="single"||mod=="multi"){
+            let option=[]
+            for(let j=0;j<6;j=j+1){
+                if(docgetid(i+"option"+j)){
+                    if(docgetid(i+"option"+j).checked){
+                        option.push(docgetid(i+"option"+j).value)
                     }
                 }
-            }else{ option="" }
-            showmultimorerespond=true
-            if(docgetid("showmultimorerespond"+i)==null||docgetid("showmultimorerespond"+i).checked==false){ showmultimorerespond=false }
+            }
+            if(option.length>0){
+                response=option.join("|&|")
+            }
+        }else{
+            if(docgetid("qa"+i).value!=""){
+                response=docgetid("qa"+i).value
+            }
         }
-        console.log(count)
-        insertdata.push([count,desciption,required,mod,option,showmultimorerespond,""])
+        
+        console.log("required="+required)
+        if(required){
+            console.log("response="+response)
+            if(response==null){
+                alert("第"+id+"題為必填但未填寫")
+                success=false
+                break
+            }
+        }
+
+        if(docgetid("showmultimorerespond"+i)){
+            showmultimorerespond=docgetid("showmultimorerespond"+i).innerHTML
+        }
+
+        console.log([id,desciption,required,mod,response,showmultimorerespond,""])
+        insertdata.push([id,desciption,required,mod,response,showmultimorerespond,""])
     }
 
-    console.log(insertdata)
-
-    // 送出資料
-    // newajax("POST","newans.php",formdata([
-    //     ["userid",insertdata],
-    //     ["questionid",insertdata],
-    //     ["response",insertdata],
-    // ])).onload=function(){
-    //     let data=JSON.parse(this.responseText)
-    // }
+    if(success){
+        // 送出資料
+        newajax("POST","api/newresponse.php",JSON.stringify({
+            "userid": userid,
+            "questionid": row[0],
+            "response": insertdata
+        }),[]).onload=function(){
+            let data=JSON.parse(this.responseText)
+            if(data["success"]){
+                alert("新增成功")
+                location.href="index.php"
+            }
+        }
+    }
 }
 
 function main(){
     count=0
     docgetid("maindiv").innerHTML=``
-    for(let i=0;i<maincount;i=i+1){
-        if(questionrow[i][3]!="none"){
-            let mod={
-                "none":"未設定",
-                "yesno":"是非題",
-                "single":"單選題",
-                "multi":"多選題",
-                "qa":"問答題",
-            }
-            let required=""
-            let modkey=Object.keys(mod)
-            let all=""
-            let check=0
-            let output=""
-            let option=questionrow[i][4].split("|&|")
 
-            if(questionrow[i][2]==true){
-                required="<div class='required'>必填*</div>"
-            }
-
-            for(let j=0;j<modkey.length;j=j+1){
-                if(modkey[j]==questionrow[i][3]){
-                    check=1
-                    all=mod[modkey[j]]
-                }
-            }
-
-            if(check!=1){ sql001();location.href="admin.php" }
-
-            output=output+"題目說明: "+questionrow[i][1]+"<br>"
-
-            if(questionrow[i][3]=="yesno"){
-                output=`
-                    ${output}
-                    <label class="label" for="${i}yes">是</label>
-                    <input type="radio" class="yesno radio" id="${i}yes" name="yesno" value="yes">
-                    <label class="label" for="${i}no">否</label>
-                    <input type="radio" class="radio" id="${i}no" name="yesno" value="no">
-                `
-            }else if(questionrow[i][3]=="single"){
-                for(let j=0;j<6;j=j+1){
-                    if(!checknull(option[j])){
-                        output=`
-                            ${output}
-                            <label class="label" for="${i+"option"+j}">${option[j]}</label>
-                            <input type="radio" class="radio option${i}" id="${i+"option"+j}" name="single${i}" value="${option[j]}">
-                        `
-                    }
-                }
-            }else if(questionrow[i][3]=="multi"){
-                for(let j=0;j<6;j=j+1){
-                    if(!checknull(option[j])){
-                        output=`
-                            ${output}
-                            <label class="label" for="${i+"option"+j}">${option[j]}</label>
-                            <input type="checkbox" class="checkbox option${i}" id="${i+"option"+j}" value="${option[j]}">
-                        `
-                    }
-                }
-                if(questionrow[i][5]==true){
-                    output=`
-                    ${output}<br>
-                    其他: <input type='text' class="forminputtext" id="multimorerespond"+i+"" name="multiauther"+i+"">
-                `
-                }
-            }else if(questionrow[i][3]=="qa"){
-                output=`
-                    ${output}
-                    <textarea cols="30" rows="5" class="question" placeholder="問答題"></textarea>
-                `
-            }else{ sql001();location.href="admin.php" }
-
-            docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
-                <div class="grid" id="${i}">
-                    <div class="order">
-                        ${required}
-                        <div id="count${i}">${questionrow[i][0]}</div>
-                    </div>
-                    <div class="newform">
-                        ${all}
-                    </div>
-                    <div class="output">
-                        <div class="questiondiv" id="output${i}">
-                            ${output}
-                        </div>
-                    </div>
-                </div>
-            `
-
-            count=count+1
+    for(let i=0;i<questionrow.length;i=i+1){
+        if(questionrow[i][3]&&questionrow[i][3]!="none"){
+            questionrownotnone.push(questionrow[i])
         }
     }
+
+    console.log(questionrownotnone)
+
+    // 輸出每一個題目 START
+    for(let i=0;i<questionrownotnone.length;i=i+1){
+        let option=questionrownotnone[i][4].split("|&|")
+        let output=""
+        let required=""
+        let modname
+        
+        if(questionrownotnone[i][2]==true){
+            required="<div class='required'>必填*</div>"
+        }
+
+        output=output+"題目說明: "+questionrownotnone[i][1]+"<br>"
+
+        if(questionrownotnone[i][3]=="yesno"){
+            output=`
+                ${output}
+                <label class="label" for="${i}yes">是</label>
+                <input type="radio" class="yesno radio" id="${i}yes" name="yesno" value="yes">
+                <label class="label" for="${i}no">否</label>
+                <input type="radio" class="radio" id="${i}no" name="yesno" value="no">
+            `
+            modname="是非題"
+        }else if(questionrownotnone[i][3]=="single"){
+            for(let j=0;j<6;j=j+1){
+                if(!checknull(option[j])){
+                    output=`
+                        ${output}
+                        <label class="label" for="${i+"option"+j}">${option[j]}</label>
+                        <input type="radio" class="radio option${i}" id="${i+"option"+j}" name="single${i}" value="${option[j]}">
+                    `
+                }
+            }
+            modname="單選題"
+        }else if(questionrownotnone[i][3]=="multi"){
+            for(let j=0;j<6;j=j+1){
+                if(!checknull(option[j])){
+                    output=`
+                        ${output}
+                        <label class="label" for="${i+"option"+j}">${option[j]}</label>
+                        <input type="checkbox" class="checkbox option${i}" id="${i+"option"+j}" value="${option[j]}">
+                    `
+                }
+            }
+            if(questionrownotnone[i][5]==true){
+                output=`
+                    ${output}<br>
+                    其他: <input type='text' class="forminputtext" id="multimorerespond${i}" name="multiauther"+i+"">
+                `
+            }
+            modname="多選題"
+        }else if(questionrownotnone[i][3]=="qa"){
+            output=`
+                ${output}
+                <textarea cols="30" rows="5" class="question" id="qa${i}" placeholder="問答題"></textarea>
+            `
+            modname="問答題"
+        }else{ sql001();location.href="admin.php" }
+
+        docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
+            <div class="grid" id="${i}">
+                <div class="order">
+                    ${required}
+                    <div class="count" id="count${i}">${questionrownotnone[i][0]}</div>
+                </div>
+                <div class="newform">
+                    ${modname}
+                </div>
+                <div class="output">
+                    <div class="questiondiv" id="output${i}">
+                        ${output}
+                    </div>
+                </div>
+            </div>
+        `
+    }
+    // 輸出每一個題目 END
 }
 
 docgetid("id").value=row[0]
 docgetid("title").value=row[1]
 
 if(userkey=="true"){
-    questionrow=Object.values(JSON.parse(questionrow))
-    maincount=questionrow.length
     main()
     docgetid("count").value=count
 }
