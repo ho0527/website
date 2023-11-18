@@ -4,10 +4,55 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="test.css">
         <link rel="stylesheet" href="plugin/css/chrisplugin.css">
         <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
+        <div class="hintdiv hintdiv1" data-body="test lorem">
+        </div>
+        <div class="hintdiv hintdiv2" data-body="test lorem2">
+        </div>
+        <script>
+            let hintcount=0
+            function prev(){
+                if(hintcount>0){
+                    hintcount=hintcount-1
+                    main()
+                }
+            }
+
+            function next(){
+                if(hintcount<docgetall(".hintdiv").length-1){
+                    hintcount=hintcount+1
+                    main()
+                }else{
+                    clear()
+                }
+            }
+
+            function clear(){
+                docgetall(".hintdiv").forEach(function(event){
+                    event.innerHTML=`
+                    `
+                })
+            }
+
+            function main(){
+                clear()
+                docgetall(".hintdiv")[hintcount].innerHTML=`
+                    <div class="hintbox">
+                        <div class="hiintboxclose" onclick="clear()">X</div>
+                        <div class="hiintboxbody">${docgetall(".hintdiv")[hintcount].dataset.body}</div>
+                        <div class="hiintboxbuttondiv">
+                            <input type="button" class="hintboxbutton hintboxbuttonleft" onclick="prev()" value="prev">
+                            <input type="button" class="hintboxbutton hintboxbuttonright" onclick="next()" value="next">
+                        </div>
+                    </div>
+                `
+            }
+
+            main()
+        </script>
     </body>
 </html>

@@ -1,8 +1,5 @@
 <?php
-    $memoryBefore=memory_get_usage();
-    echo("p14\n");
-
-    $n=fgets(STDIN);
+    $n=trim(fgets(STDIN));
     $ans=[];
     for($i=0;$i<$n;$i=$i+1){
         $str=trim(fgets(STDIN));
@@ -44,9 +41,4 @@
     for($i=0;$i<count($ans);$i=$i+1){
         echo($ans[$i]."\n");
     }
-    echo("\n");
-
-    $memoryAfter=memory_get_usage();
-    $memoryDifference=$memoryAfter-$memoryBefore;
-    echo("memory used ".($memoryDifference/1048576)."MB");
 ?>

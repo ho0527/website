@@ -470,7 +470,211 @@
                     "ps": "list",
                     "createdate": "N/A",
                     "updatedate": "N/A",
-                    "data": []
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "Editor functionality for Element",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "When creating a new presentation or clearing the editor, one root element initially appears in the center of the screen",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "WThe editor/viewer project is accessible via required URL",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "The element has 4 interactive areas, (1, 2, 3, 4), which are hidden by default and are displayed only after mouse hover on the element.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "When clicking on one of the interactive areas, a related element should appear on the side of the areas node on which the click was made. Link should also be created.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "It is possible to change the content of element by wysiwyg editor",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "It is possible to change the captions for each sections deduct",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "It is possible to delete of element by delete button",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "Editor functionality for Connections",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "08",
+                                    "description": "Any changes done inside slide editor is saved automatically and will be restored upon refresh.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "When deleting an element, all link of this element must also be deleted",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "The user can delete a link by click on the link and pressing the Delete/Back Space key",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "Elements can be moved by mouse dragging around the editor, links should also follow the element.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "It is possible to link two unrelated elements with the Shift key held down and move a section of one element to a section of another element.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "Cross browser functionality.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "Viewer requirements",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "14",
+                                    "description": "Able to navigate via keyboard 1,2,3,4 keys",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "Viewing begins with the root element.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "The view mode can be seen in full screen mode",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "An indicator is present to show where you are at the moment Just need to be there, not required to be functional.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "It is possible to link two unrelated elements with the Shift key held down and move a section of one element to a section of another element.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "19",
+                                    "description": "Navigation control presented on the screen with the caption from associated interaction areas (navigation button, direction, caption of destination)",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "20",
+                                    "description": "It is possible to go to the desired element. Need to be functional.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "21",
+                                    "description": "Content is correctly displayed. Content input in the editor is shown in the viewer. Content follows rich text editor format.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 4,
+                            "description": "Animation",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "22",
+                                    "description": "The style of the transition animation corresponds to the direction of movement between the elements in view mode",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "23",
+                                    "description": "Quality of used animation for editor.",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "24",
+                                    "description": "Quality of used animation for transition between elements in view mode.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 5,
+                            "description": "Code Quality",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "25",
+                                    "description": "Qll navigation elements are developed in accordance with the WCAG and standard ARIA (Accessible Rich Internet Applications Suite)",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "26",
+                                    "description": "Create easy-to-maintain CSS code.",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "27",
+                                    "description": "Create modular and reusable JavaScript code.",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "28",
+                                    "description": "Create easy-to-maintain JavaScript code.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleF-MARKING PAGE",
