@@ -446,22 +446,466 @@
                     "data": []
                 },
                 {
-                    "title": "ModuleC-API_FONTEND",
+                    "title": "ModuleC-BACKEND",
                     "link": "https://hiiamchris.ddns.net:444/website/TaskC/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
                     "updatedate": "N/A",
-                    "data": []
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "Database",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "Schema and data used as provided.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "Login data for organizers created.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "DB-Dump is provided in /XX_JS-PHP_A/db-dump/ Folder.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "DB-Dump contains fk-constraints and correct columns deduct 0.25 for missing/errors eg. no fk-constraints, wrong columns.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "ERD schema is provided in /XX_JS-PHP_A/db-dump/ Folder.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "Table for event ratings created Fields: event_id, rating, comment, creation_date.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "Table for sessions ratings createdFields: session_id, rating, creation_date.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "DB strucutre is normalized.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "Admin Backend",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "09",
+                                    "description": "List all events.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "Show form for new event.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "Enter information for a new event Deduct 0.25 point per mistake..",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "Enter already used slug for a new event.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "Enter invalid slug for an event.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "Show form for updating event.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "Update event information.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "Not possible to change an event of a different organizer by submitting the form against a different event (changing the action parameter of the form in the html).",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "Show event detail.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "Not possible to see an event of a different organizer by changing the id or slug in the url.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "Ticket and Session",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "19",
+                                    "description": "Show form for new ticketA3b – Enter information for a new ticket.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "20",
+                                    "description": "Show form for new session.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "21",
+                                    "description": "Enter information for a new session.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "22",
+                                    "description": "Enter invalid information for a new session – room booked.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "23",
+                                    "description": "Show form for updating session.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "24",
+                                    "description": "Update session information.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 4,
+                            "description": "Organizer",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "25",
+                                    "description": "Organizer login ok.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "26",
+                                    "description": "Organizer login fail.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "27",
+                                    "description": "Organizer logout.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "28",
+                                    "description": "Show form for new channel.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "29",
+                                    "description": "Enter information for a new channel.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "30",
+                                    "description": "Show form for new room.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "31",
+                                    "description": "Enter information for a new room.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "32",
+                                    "description": "Room capacity exceeded.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "33",
+                                    "description": "Show room overview.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 5,
+                            "description": "REST API",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "31",
+                                    "description": "Read all upcoming events Success.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "32",
+                                    "description": "Read all detail information of a single event Success, invalid event, invalid organizer, event belongs to a different organizer.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "31",
+                                    "description": "Attendee login Success, two attendees with same lastname but different registration code and vice 6versa, invalid lastname or registration code, invalid request parameters.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "32",
+                                    "description": "Attendee logout Success, invalid token, already logged out.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "31",
+                                    "description": "New event registration Success, invalid token, already participated, ticket is no longer available.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "32",
+                                    "description": "Get registrations of a user Success, invalid token.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "20",
+                                    "description": "Templates have been used Header, login, event list, create/view/edit event.",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "21",
+                                    "description": "Use of framework of choice.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                    "title": "ModuleD-API_FONTEND",
+                    "title": "ModuleD-FONTEND",
                     "link": "TaskD/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
                     "updatedate": "N/A",
-                    "data": []
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "Events list and agenda",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "Attendee login ok",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "Attendee login fail",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "Attendee logout",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "List upcoming events",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "Display channels",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "Display talk and workshop sessions",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "Display registered sessions",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "Session and Events",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "08",
+                                    "description": "Display session details on click of registered session.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "Enter registration mode and information should come from API.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "Able to select ticket successfully and cost reflects on the bottom field.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "Select ticket fail.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "Select workshop session and the cost reflects on the bottom field.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "Purchase function works as described from test project.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "General",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "14",
+                                    "description": "Frontend available at http://<hostname>/XX_JS-PHP_B/ No mark if wrong name",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "All data from/to server passed using REST API",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "TPersistent state Reloading any page shows the same page again (Event detail page, with logged in attendee).",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "Error messages on user interface.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 4,
+                            "description": "JS Quality",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "18",
+                                    "description": "Use of framework/library of choice.",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "19",
+                                    "description": "Front-end layout follows the WCAG.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 5,
+                            "description": "Front end design",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "20",
+                                    "description": "Frontend layout follows the designed mock-ups.",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "21",
+                                    "description": "Choice of colors, typography, spacing between the elements enhanes the overall look and feel.",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleE-ISP",

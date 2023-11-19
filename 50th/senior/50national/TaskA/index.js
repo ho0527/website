@@ -809,11 +809,11 @@ document.onkeydown=function(event){
         event.preventDefault()
         if(playing){
             docgetid("player").pause()
-            if(state=="aside"){ docgetid("playpauseicon").src="material/icon/pause.svg" }
+            if(state=="aside"){ docgetid("playpauseicon").src="material/icon/play.svg" }
             playing=false
         }else{
             docgetid("player").play()
-            if(state=="aside"){ docgetid("playpauseicon").src="material/icon/play.svg" }
+            if(state=="aside"){ docgetid("playpauseicon").src="material/icon/pause.svg" }
             playing=true
         }
         url()
