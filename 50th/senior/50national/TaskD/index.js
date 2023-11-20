@@ -1,36 +1,36 @@
 let difficulty="normal" // 預設難易度
 
 // 難易度調整 START
-document.getElementById("easy").onclick=function(){
-    document.getElementById("easy").classList.add("selectbutton")
-    document.getElementById("normal").classList.remove("selectbutton")
-    document.getElementById("hard").classList.remove("selectbutton")
+docgetid("easy").onclick=function(){
+    docgetid("easy").classList.add("selectbutton")
+    docgetid("normal").classList.remove("selectbutton")
+    docgetid("hard").classList.remove("selectbutton")
     difficulty="easy"
 }
 
-document.getElementById("normal").onclick=function(){
-    document.getElementById("normal").classList.add("selectbutton")
-    document.getElementById("easy").classList.remove("selectbutton")
-    document.getElementById("hard").classList.remove("selectbutton")
+docgetid("normal").onclick=function(){
+    docgetid("normal").classList.add("selectbutton")
+    docgetid("easy").classList.remove("selectbutton")
+    docgetid("hard").classList.remove("selectbutton")
     difficulty="normal"
 }
 
-document.getElementById("hard").onclick=function(){
-    document.getElementById("hard").classList.add("selectbutton")
-    document.getElementById("easy").classList.remove("selectbutton")
-    document.getElementById("normal").classList.remove("selectbutton")
+docgetid("hard").onclick=function(){
+    docgetid("hard").classList.add("selectbutton")
+    docgetid("easy").classList.remove("selectbutton")
+    docgetid("normal").classList.remove("selectbutton")
     difficulty="hard"
 }
 // 難易度調整 END
 
 // 開始遊戲
-document.getElementById("startgame").onclick=function(){
-    localStorage.setItem("50nationalmoduleddifficulty",difficulty) // 上傳資料
-    localStorage.setItem("50nationalmoduledname",document.getElementById("username").value) // 上傳資料
+docgetid("startgame").onclick=function(){
+    weblsset("50nationalmoduleddifficulty",difficulty) // 上傳資料
+    weblsset("50nationalmoduledname",docgetid("username").value) // 上傳資料
     location.href="main.html" // 導向
 }
 
 // 開始教學
 docgetid("starttutorial").onclick=function(){
-
+    location.href="tutorial.html"
 }

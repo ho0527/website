@@ -6,6 +6,7 @@
     2023/06/28  20:10:16 Bata 1.0.0 // 新增macosselection 以及 sort 函式
     2023/07/05  19:45:17 Bata 1.0.1 // 修改命名
     2023/07/25  22:12:42 Bata 1.0.2 // 修改lightbox css
+    2023/11/20  18:01:04 Bata 1.0.18 // 新增hintbox相關css
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -93,4 +94,48 @@ body[scroll]::-webkit-scrollbar-thumb{
     font-size: 20px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.hintbox{
+    position: absolute;
+    top: -125px;
+    right: -225px;
+    padding: 10px;
+    width: 200px;
+    height: 100px;
+    background: rgb(32, 31, 31);
+}
+
+.hiintboxclose{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.hintboxbutton{
+    cursor: pointer;
+}
+
+.hiintboxbody{
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 50px);
+    text-align: justify;
+    font-size: 15px;
+}
+
+.hintboxbuttonleft{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.hintboxbuttonright{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }

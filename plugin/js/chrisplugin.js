@@ -21,6 +21,7 @@
     2023/08/01  23:22:33 Bata 1.0.15 // 修改formdata函式
     2023/08/09  18:27:14 Bata 1.0.16 // 修改lightbox函式新增clickcolse變數
     2023/09/14  16:57:12 Bata 1.0.17 // 更新startmacossection函式
+    2023/11/20  18:01:04 Bata 1.0.18 // 新增hintbox函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -331,4 +332,57 @@ function pagechanger(data,ipp,key,callback){
     for(let i=start;i<end;i=i+1){
         callback(row[i])
     }
+}
+
+function hintbox(endcallback=function(){},hintname=".hintdiv"){
+    let hintlist=[]
+    let hintcount=0
+
+    docgetall(hintname).forEach(function(event){
+        hintlist[parseInt(event.dataset.id)]=event
+    })
+
+    function clear(){
+        for(let i=0;i<hintlist.length;i=i+1){
+            console.log(hintlist[i])
+            hintlist[i].innerHTML=``
+        }
+    }
+
+    function main(){
+        clear()
+        hintlist[hintcount].innerHTML=`
+            <div class="hintbox">
+                <div class="hiintboxclose" id="chrispluginhintboxclear">X</div>
+                <div class="hiintboxbody">${hintlist[hintcount].dataset.body}</div>
+                <div class="hiintboxbuttondiv">
+                    <input type="button" class="hintboxbutton hintboxbuttonleft" id="chrispluginhintboxprev" value="prev">
+                    <input type="button" class="hintboxbutton hintboxbuttonright" id="chrispluginhintboxnext" value="next">
+                </div>
+            </div>
+        `
+
+        docgetid("chrispluginhintboxclear").onclick=function(){
+            clear()
+            endcallback()
+        }
+
+        docgetid("chrispluginhintboxprev").onclick=function(){
+            if(hintcount>0){
+                hintcount=hintcount-1
+                main()
+            }
+        }
+
+        docgetid("chrispluginhintboxnext").onclick=function(){
+            if(hintcount<hintlist.length-1){
+                hintcount=hintcount+1
+                main()
+            }else{
+                clear()
+                endcallback()
+            }
+        }
+    }
+    main()
 }
