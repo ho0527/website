@@ -79,7 +79,7 @@
         }
         if(isset($_POST["save"])){
             for($i=0;$i<$count;$i=$i+1){
-                $respond="";
+                $response="";
                 $order=$_POST["count".$i];
                 if(isset($_POST["required".$i])){ $required="true"; }else{ $required="false"; }
                 $mod=$questionrow[$order][5];
@@ -87,23 +87,23 @@
                 if($mod=="yesno"){
                     echo "\$in ="; print_r($mod); echo "<br>";
                     if(isset($_POST["yesno".$i])){
-                        $respond=$_POST["yesno".$i];
+                        $response=$_POST["yesno".$i];
                     }
                 }elseif($mod=="single"){
                     if(isset($_POST["single".$i])){
-                        $respond=$respond.$_POST[$i."single"]."|&|";
+                        $response=$response.$_POST[$i."single"]."|&|";
                     }
                 }elseif($mod=="multi"){
                     for($j=1;$j<=6;$j=$j+1){
                         if(isset($_POST[$i."multi".$j])){
-                            $respond=$respond.$_POST[$i."multi".$j]."|&|";
+                            $response=$response.$_POST[$i."multi".$j]."|&|";
                         }
                     }
-                    $respond=$respond.$_POST["multiauther".$i];
+                    $response=$response.$_POST["multiauther".$i];
                 }elseif($mod=="qa"){
-                    $respond=$_POST["qa".$i];
+                    $response=$_POST["qa".$i];
                 }else{}
-                query($db,"INSERT INTO `respond`(`questionid`,`questionorder`,`respond`)VALUES('$id','$order',?)",[$respond]);
+                query($db,"INSERT INTO `response`(`questionid`,`questionorder`,`response`)VALUES('$id','$order',?)",[$response]);
             }
             $count=(int)$row[4]+1;
             query($db,"UPDATE `question` SET `responcount`='$count' WHERE `id`='$id'");

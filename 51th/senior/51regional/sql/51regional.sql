@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-05-16 15:40:42
--- 伺服器版本： 10.4.27-MariaDB
+-- 產生時間： 2023-11-21 08:35:49
+-- 伺服器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -220,7 +220,68 @@ INSERT INTO `log` (`id`, `username`, `move`, `movetime`, `ps`) VALUES
 (178, 'admin', '填寫問卷', '2023-05-15 20:21:31', 'qid=3'),
 (179, 'admin', '編輯問卷', '2023-05-15 20:26:09', 'qid=3'),
 (180, 'admin', '儲存問卷成功', '2023-05-15 20:26:20', 'qid=3'),
-(181, 'admin', '填寫問卷', '2023-05-15 20:26:27', 'qid=3');
+(181, 'admin', '填寫問卷', '2023-05-15 20:26:27', 'qid=3'),
+(182, '1', '編輯問卷', '2023-05-25 09:48:50', 'qid=1'),
+(183, '1', '填寫問卷', '2023-05-25 09:48:58', 'qid=1'),
+(184, '1', '登出系統', '2023-05-25 09:49:07', ''),
+(185, 'admin', '登入系統', '2023-06-03 09:33:15', ''),
+(186, 'admin', '鎖定問卷', '2023-06-03 09:33:22', 'qid=1'),
+(187, 'admin', '解鎖問卷', '2023-06-03 09:34:26', 'qid=1'),
+(188, 'admin', '登出系統', '2023-06-03 09:37:07', ''),
+(189, 'admin', '登入系統', '2023-09-24 08:16:41', ''),
+(190, 'admin', '填寫問卷', '2023-09-24 08:16:53', 'qid=1'),
+(191, 'admin', '登出系統', '2023-09-24 10:23:15', ''),
+(192, '', '登出系統', '2023-09-24 10:23:15', ''),
+(193, 'admin', '登入系統', '2023-09-24 10:23:25', ''),
+(194, '1', '填寫問卷', '2023-09-24 10:23:34', 'qid=1'),
+(195, '1', '編輯問卷', '2023-09-24 10:42:57', 'qid=1'),
+(196, '1', '儲存問卷成功', '2023-09-24 10:46:49', 'qid=1'),
+(197, '1', '儲存問卷成功', '2023-09-24 10:46:55', 'qid=1'),
+(198, '1', '填寫問卷', '2023-09-24 10:48:06', 'qid=1'),
+(199, '1', '新增問卷', '2023-09-24 15:02:51', 'qid=Array'),
+(200, '1', '編輯問卷', '2023-09-24 15:02:58', 'qid=5'),
+(201, '1', '新增問卷', '2023-09-24 15:06:20', 'qid=6'),
+(202, '1', '儲存問卷成功', '2023-09-24 15:06:25', 'qid=6'),
+(203, '1', '刪除問卷', '2023-09-24 15:06:54', 'qid=6'),
+(204, '1', '填寫問卷', '2023-09-24 15:16:49', 'qid=2'),
+(205, '1', '填寫問卷', '2023-09-24 15:16:51', 'qid=1'),
+(206, '1', '登出系統', '2023-09-26 13:17:41', ''),
+(207, 'admin', '登入系統', '2023-10-31 15:40:40', ''),
+(208, '1', '填寫問卷', '2023-10-31 15:41:06', 'qid=1'),
+(209, '1', '填寫問卷', '2023-10-31 15:45:59', 'qid=1'),
+(210, '1', '登出系統', '2023-11-02 16:41:04', ''),
+(211, '', '登出系統', '2023-11-02 16:41:04', ''),
+(212, 'admin', '登入系統', '2023-11-11 08:26:44', ''),
+(213, '1', '填寫問卷', '2023-11-11 08:31:40', 'qid=1'),
+(214, '1', '編輯問卷', '2023-11-11 08:41:29', 'qid=1'),
+(215, '1', '填寫問卷', '2023-11-11 08:44:10', 'qid=1'),
+(216, '1', '填寫問卷', '2023-11-11 08:44:25', 'qid=2'),
+(217, '1', '填寫問卷', '2023-11-11 09:19:30', 'qid=1'),
+(218, '1', '編輯問卷', '2023-11-11 09:21:23', 'qid=1'),
+(219, '1', '填寫問卷', '2023-11-11 09:21:26', 'qid=1'),
+(220, '1', '填寫問卷', '2023-11-12 08:22:43', 'qid=1'),
+(221, '1', '編輯問卷', '2023-11-14 13:40:08', 'qid=1'),
+(222, '1', '填寫問卷', '2023-11-14 13:40:24', 'qid=1'),
+(223, '1', '編輯問卷', '2023-11-18 07:44:45', 'qid=1'),
+(224, '1', '編輯問卷', '2023-11-18 14:27:22', 'qid=1'),
+(225, '1', '儲存問卷成功', '2023-11-18 14:28:28', 'qid=1'),
+(226, '1', '填寫問卷', '2023-11-18 14:28:34', 'qid=1'),
+(227, '1', '編輯問卷', '2023-11-18 14:28:52', 'qid=1'),
+(228, '1', '填寫問卷', '2023-11-18 14:29:46', 'qid=1'),
+(229, '1', '編輯問卷', '2023-11-18 14:30:21', 'qid=1'),
+(230, '1', '儲存問卷成功', '2023-11-18 14:30:33', 'qid=1'),
+(231, '1', '填寫問卷', '2023-11-18 14:30:38', 'qid=1'),
+(232, '1', '回應問卷成功', '2023-11-18 14:45:53', 'qid=1'),
+(233, '1', '回應問卷成功', '2023-11-18 14:47:27', 'qid=1'),
+(234, '1', '填寫問卷', '2023-11-18 14:51:44', 'qid=5'),
+(235, '1', '複製問卷(all)', '2023-11-18 14:51:48', 'qid=3'),
+(236, '1', '填寫問卷', '2023-11-18 14:55:27', 'qid=3'),
+(237, '1', '回應問卷成功', '2023-11-18 14:55:50', 'qid=3'),
+(238, '1', '回應問卷成功', '2023-11-18 14:56:11', 'qid=3'),
+(239, '1', '填寫問卷', '2023-11-20 16:31:39', 'qid=1'),
+(240, '1', '查看問卷填寫結果', '2023-11-21 13:36:13', 'qid=1'),
+(241, '1', '編輯問卷', '2023-11-21 13:37:02', 'qid=1'),
+(242, '1', '查看問卷填寫結果', '2023-11-21 13:37:11', 'qid=1');
 
 -- --------------------------------------------------------
 
@@ -246,10 +307,13 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`id`, `title`, `questioncount`, `pagelen`, `responcount`, `lock`, `maxlen`, `log`, `updatetime`, `ps`) VALUES
-(1, 'test1', '38', '1', '0', 'false', '', '[[\"1\",\"whwtretewh\",false,\"single\",\"rfdfdsfhdfhdf|&|\",false,\"\"],[\"2\",\"yesno\",false,\"yesno\",\"\",false,\"\"],[\"3\",\"single\",false,\"single\",\"sdfhdsfhsdhfg|&|dsgdgsd|&|\",false,\"\"],[\"4\",\"multi\",false,\"multi\",\"dgsdgssdd|&|dsdgsdgsd|&|gdgdgd|&|\",true,\"\"],[\"5\",\"wrgrwq\",false,\"multi\",\"\",false,\"\"],[\"6\",\"\",false,\"single\",\"\",false,\"\"],[\"7\",\"\",false,\"multi\",\"sgsgafsf|&|\",false,\"\"],[\"8\",\"\",false,\"single\",\"sasgfsfa|&|ffsaggfsafgs|&|\",false,\"\"],[\"9\",\"\",false,\"multi\",\"\",true,\"\"],[\"10\",\"\",false,\"single\",\"rqwrgwrq|&|rrqwgrwgqwr|&|\",false,\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",\"wqrwrqgrwgq|&|\",false,\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",\"qrgrqwewqrgwrq|&|wqrwqrgw|&|\",false,\"\"],[\"13\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"14\",\"\",false,\"yesno\",\"\",false,\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",\"\",false,\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",\"\",false,\"\"],[\"17\",\"\",false,\"yesno\",\"\",false,\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"\",false,\"\"],[\"19\",\"\",false,\"single\",\"rgqrgrwq|&|\",false,\"\"],[\"20\",\"\",false,\"qa\",\"\",false,\"\"],[\"21\",\"\",false,\"qa\",\"\",false,\"\"],[\"22\",\"\",false,\"qa\",\"\",false,\"\"],[\"23\",\"rgeqqgwrgrwgwr\",true,\"qa\",\"\",false,\"\"],[\"24\",\"\",false,\"single\",\"\",false,\"\"],[\"25\",\"brgewretgwtewb\",false,\"multi\",\"eweebwtetwbbetwrb|&|\",true,\"\"],[\"26\",\"ebbewtrbtweetb\",false,\"single\",\"ewtebwttee|&|ebetetbeb|&|bretgbeebrt|&|\",false,\"\"],[\"27\",\"\",false,\"yesno\",\"\",false,\"\"],[\"28\",\"\",false,\"multi\",\"\",true,\"\"],[\"29\",\"\",false,\"single\",\"grrewgrgwe|&|rgwqwrgqwrg|&|\",false,\"\"],[\"30\",\"rgererge\",false,\"yesno\",\"\",false,\"\"],[\"31\",\"yrernretyrty\",false,\"single\",\"\",false,\"\"],[\"32\",\"ttyrettyenyetnrytt\",false,\"multi\",\"tytyrrebtenhytyty|&|\",true,\"\"],[\"33\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"34\",\"\",false,\"multi\",\"\",true,\"\"],[\"35\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"36\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"37\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"38\",\"\",\"false\",\"none\",\"\",false,\"\"]]', '2023-05-14 21:28:36', ''),
+(1, 'test1', '38', '1', '1', 'false', '', '[[1,\"whwtretewh\",false,\"single\",\"rfdfdsfhdfhdf|&|\",false,\"\"],[2,\"yesno\",false,\"yesno\",\"\",false,\"\"],[3,\"single\",false,\"single\",\"sdfhdsfhsdhfg|&|dsgdgsd|&|\",false,\"\"],[4,\"multi\",false,\"multi\",\"dgsdgssdd|&|dsdgsdgsd|&|gdgdgd|&|\",false,\"\"],[5,\"wrgrwq\",false,\"multi\",\"\",false,\"\"],[6,\"\",false,\"single\",\"\",false,\"\"],[7,\"\",false,\"multi\",\"sgsgafsf|&|\",false,\"\"],[8,\"\",false,\"single\",\"sasgfsfa|&|ffsaggfsafgs|&|\",false,\"\"],[9,\"\",false,\"multi\",\"\",false,\"\"],[10,\"\",false,\"single\",\"rqwrgwrq|&|rrqwgrwgqwr|&|\",false,\"\"],[11,\"wrwgqrwgqrwgq\",false,\"single\",\"wqrwrqgrwgq|&|\",false,\"\"],[12,\"rqgwrqwegrg\",false,\"single\",\"qrgrqwewqrgwrq|&|wqrwqrgw|&|\",false,\"\"],[13,\"\",false,\"none\",\"\",false,\"\"],[14,\"\",false,\"yesno\",\"\",false,\"\"],[15,\"gqrrqrgqw\",false,\"yesno\",\"\",false,\"\"],[16,\"qrqegrgq\",false,\"yesno\",\"\",false,\"\"],[17,\"\",false,\"yesno\",\"\",false,\"\"],[18,\"\",false,\"yesno\",\"\",false,\"\"],[19,\"\",false,\"single\",\"rgqrgrwq|&|\",false,\"\"],[20,\"\",false,\"qa\",\"\",false,\"\"],[21,\"\",false,\"qa\",\"\",false,\"\"],[22,\"rgeqqgwrgrwgwr\",true,\"qa\",\"\",false,\"\"],[23,\"\",false,\"qa\",\"\",false,\"\"],[24,\"brgewretgwtewb\",false,\"single\",\"\",false,\"\"],[25,\"ebbewtrbtweetb\",false,\"multi\",\"eweebwtetwbbetwrb|&|\",false,\"\"],[26,\"\",false,\"single\",\"ewtebwttee|&|ebetetbeb|&|bretgbeebrt|&|\",false,\"\"],[27,\"\",false,\"yesno\",\"\",false,\"\"],[28,\"\",false,\"multi\",\"\",false,\"\"],[29,\"rgererge\",false,\"single\",\"grrewgrgwe|&|rgwqwrgqwrg|&|\",false,\"\"],[30,\"yrernretyrty\",false,\"yesno\",\"\",false,\"\"],[31,\"ttyrettyenyetnrytt\",false,\"single\",\"\",false,\"\"],[32,\"\",false,\"multi\",\"tytyrrebtenhytyty|&|\",false,\"\"],[33,\"\",false,\"none\",\"\",false,\"\"],[34,\"\",false,\"multi\",\"\",false,\"\"],[35,\"\",false,\"none\",\"\",false,\"\"],[36,\"\",false,\"none\",\"\",false,\"\"],[37,\"\",false,\"none\",\"\",false,\"\"],[38,\"\",false,\"none\",\"\",false,\"\"]]', '2023-11-18 14:30:33', ''),
 (2, 'copy test1', '42', '1', '0', 'true', '', '[[\"1\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"2\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"3\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"4\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"5\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"6\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"7\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"8\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"9\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"10\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"11\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"12\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"13\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"14\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"15\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"16\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"17\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"18\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"19\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"20\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"21\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"22\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"23\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"24\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"25\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"26\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"27\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"28\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"29\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"30\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"31\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"32\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"33\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"34\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"35\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"36\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"37\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"38\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"39\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"40\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"41\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"42\",\"\",\"false\",\"none\",\"\",false,\"\"]]', '2023-05-14 13:09:26', ''),
-(3, 'test1 copy', '34', '1', '0', 'false', '100', '[[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh|&|\",true,\"\"],[\"2\",\"yesno\",false,\"yesno\",\"\",false,\"\"],[\"3\",\"single\",false,\"single\",\"sdfhdsfhsdhfg|&|dsgdgsd|&|\",false,\"\"],[\"4\",\"multi\",false,\"multi\",\"dgsdgssdd|&|dsdgsdgsd|&|gdgdgd|&|\",false,\"\"],[\"5\",\"wrgrwq\",false,\"multi\",\"\",false,\"\"],[\"6\",\"\",false,\"single\",\"\",false,\"\"],[\"7\",\"\",false,\"multi\",\"sgsgafsf|&|\",false,\"\"],[\"8\",\"\",false,\"single\",\"sasgfsfa|&|ffsaggfsafgs|&|\",false,\"\"],[\"9\",\"\",false,\"multi\",\"\",true,\"\"],[\"10\",\"\",false,\"single\",\"rqwrgwrq|&|rrqwgrwgqwr|&|\",false,\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",\"wqrwrqgrwgq|&|\",false,\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",\"qrgrqwewqrgwrq|&|wqrwqrgw|&|\",false,\"\"],[\"13\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"14\",\"\",false,\"yesno\",\"\",false,\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",\"\",false,\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",\"\",false,\"\"],[\"17\",\"\",false,\"yesno\",\"\",false,\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh|&|hgrrfiuyiwuiui|&|uhifdvuhidfuhisdvfuhi|&|\",false,\"\"],[\"19\",\"\",false,\"single\",\"rgqrgrwq|&|\",false,\"\"],[\"20\",\"\",false,\"qa\",\"\",false,\"\"],[\"21\",\"\",false,\"qa\",\"\",false,\"\"],[\"22\",\"\",false,\"qa\",\"\",false,\"\"],[\"23\",\"rgeqqgwrgrwgwr\",true,\"qa\",\"\",false,\"\"],[\"24\",\"\",false,\"single\",\"\",false,\"\"],[\"25\",\"\",false,\"multi\",\"\",true,\"\"],[\"26\",\"\",false,\"single\",\"\",false,\"\"],[\"27\",\"\",false,\"yesno\",\"\",false,\"\"],[\"28\",\"\",false,\"multi\",\"\",true,\"\"],[\"29\",\"\",false,\"single\",\"grrewgrgwe|&|rgwqwrgqwrg|&|\",false,\"\"],[\"30\",\"rgererge\",false,\"yesno\",\"\",false,\"\"],[\"31\",\"\",false,\"single\",\"\",false,\"\"],[\"32\",\"\",false,\"multi\",\"\",true,\"\"],[\"33\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"34\",\"\",\"false\",\"none\",\"\",false,\"\"]]', '2023-05-15 20:26:20', ''),
-(4, 'copy test1 copy', '34', '1', '0', 'false', '100', '', '2023-05-14 16:38:15', 'del');
+(3, 'test1 copy', '34', '1', '1', 'false', '100', '[[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh|&|\",true,\"\"],[\"2\",\"yesno\",false,\"yesno\",\"\",false,\"\"],[\"3\",\"single\",false,\"single\",\"sdfhdsfhsdhfg|&|dsgdgsd|&|\",false,\"\"],[\"4\",\"multi\",false,\"multi\",\"dgsdgssdd|&|dsdgsdgsd|&|gdgdgd|&|\",false,\"\"],[\"5\",\"wrgrwq\",false,\"multi\",\"\",false,\"\"],[\"6\",\"\",false,\"single\",\"\",false,\"\"],[\"7\",\"\",false,\"multi\",\"sgsgafsf|&|\",false,\"\"],[\"8\",\"\",false,\"single\",\"sasgfsfa|&|ffsaggfsafgs|&|\",false,\"\"],[\"9\",\"\",false,\"multi\",\"\",true,\"\"],[\"10\",\"\",false,\"single\",\"rqwrgwrq|&|rrqwgrwgqwr|&|\",false,\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",\"wqrwrqgrwgq|&|\",false,\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",\"qrgrqwewqrgwrq|&|wqrwqrgw|&|\",false,\"\"],[\"13\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"14\",\"\",false,\"yesno\",\"\",false,\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",\"\",false,\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",\"\",false,\"\"],[\"17\",\"\",false,\"yesno\",\"\",false,\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh|&|hgrrfiuyiwuiui|&|uhifdvuhidfuhisdvfuhi|&|\",false,\"\"],[\"19\",\"\",false,\"single\",\"rgqrgrwq|&|\",false,\"\"],[\"20\",\"\",false,\"qa\",\"\",false,\"\"],[\"21\",\"\",false,\"qa\",\"\",false,\"\"],[\"22\",\"\",false,\"qa\",\"\",false,\"\"],[\"23\",\"rgeqqgwrgrwgwr\",true,\"qa\",\"\",false,\"\"],[\"24\",\"\",false,\"single\",\"\",false,\"\"],[\"25\",\"\",false,\"multi\",\"\",true,\"\"],[\"26\",\"\",false,\"single\",\"\",false,\"\"],[\"27\",\"\",false,\"yesno\",\"\",false,\"\"],[\"28\",\"\",false,\"multi\",\"\",true,\"\"],[\"29\",\"\",false,\"single\",\"grrewgrgwe|&|rgwqwrgqwrg|&|\",false,\"\"],[\"30\",\"rgererge\",false,\"yesno\",\"\",false,\"\"],[\"31\",\"\",false,\"single\",\"\",false,\"\"],[\"32\",\"\",false,\"multi\",\"\",true,\"\"],[\"33\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"34\",\"\",\"false\",\"none\",\"\",false,\"\"]]', '2023-05-15 20:26:20', ''),
+(4, 'copy test1 copy', '34', '1', '0', 'false', '100', '', '2023-05-14 16:38:15', 'del'),
+(5, 'main', '10', '5', '0', 'false', '', '', '', ''),
+(6, 'tets3', '2', '1', '0', 'false', '', '[[1,\"\",false,\"none\",\"\",false,\"\"],[2,\"\",false,\"none\",\"\",false,\"\"]]', '2023-09-24 15:06:25', 'del'),
+(7, 'test1 copy copy', '34', '1', '0', 'false', '100', '[[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh|&|\",true,\"\"],[\"2\",\"yesno\",false,\"yesno\",\"\",false,\"\"],[\"3\",\"single\",false,\"single\",\"sdfhdsfhsdhfg|&|dsgdgsd|&|\",false,\"\"],[\"4\",\"multi\",false,\"multi\",\"dgsdgssdd|&|dsdgsdgsd|&|gdgdgd|&|\",false,\"\"],[\"5\",\"wrgrwq\",false,\"multi\",\"\",false,\"\"],[\"6\",\"\",false,\"single\",\"\",false,\"\"],[\"7\",\"\",false,\"multi\",\"sgsgafsf|&|\",false,\"\"],[\"8\",\"\",false,\"single\",\"sasgfsfa|&|ffsaggfsafgs|&|\",false,\"\"],[\"9\",\"\",false,\"multi\",\"\",true,\"\"],[\"10\",\"\",false,\"single\",\"rqwrgwrq|&|rrqwgrwgqwr|&|\",false,\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",\"wqrwrqgrwgq|&|\",false,\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",\"qrgrqwewqrgwrq|&|wqrwqrgw|&|\",false,\"\"],[\"13\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"14\",\"\",false,\"yesno\",\"\",false,\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",\"\",false,\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",\"\",false,\"\"],[\"17\",\"\",false,\"yesno\",\"\",false,\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh|&|hgrrfiuyiwuiui|&|uhifdvuhidfuhisdvfuhi|&|\",false,\"\"],[\"19\",\"\",false,\"single\",\"rgqrgrwq|&|\",false,\"\"],[\"20\",\"\",false,\"qa\",\"\",false,\"\"],[\"21\",\"\",false,\"qa\",\"\",false,\"\"],[\"22\",\"\",false,\"qa\",\"\",false,\"\"],[\"23\",\"rgeqqgwrgrwgwr\",true,\"qa\",\"\",false,\"\"],[\"24\",\"\",false,\"single\",\"\",false,\"\"],[\"25\",\"\",false,\"multi\",\"\",true,\"\"],[\"26\",\"\",false,\"single\",\"\",false,\"\"],[\"27\",\"\",false,\"yesno\",\"\",false,\"\"],[\"28\",\"\",false,\"multi\",\"\",true,\"\"],[\"29\",\"\",false,\"single\",\"grrewgrgwe|&|rgwqwrgqwrg|&|\",false,\"\"],[\"30\",\"rgererge\",false,\"yesno\",\"\",false,\"\"],[\"31\",\"\",false,\"single\",\"\",false,\"\"],[\"32\",\"\",false,\"multi\",\"\",true,\"\"],[\"33\",\"\",\"false\",\"none\",\"\",false,\"\"],[\"34\",\"\",\"false\",\"none\",\"\",false,\"\"]]', '2023-11-18 14:51:48', '');
 
 -- --------------------------------------------------------
 
@@ -276,15 +340,24 @@ INSERT INTO `questioncode` (`id`, `questionid`, `user`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `respond`
+-- 資料表結構 `response`
 --
 
-CREATE TABLE `respond` (
+CREATE TABLE `response` (
   `id` int(11) NOT NULL,
+  `userid` text NOT NULL,
   `questionid` text NOT NULL,
-  `questionorder` text NOT NULL,
-  `respond` text NOT NULL
+  `response` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 傾印資料表的資料 `response`
+--
+
+INSERT INTO `response` (`id`, `userid`, `questionid`, `response`) VALUES
+(1, '1', '1', '[[1,\"whwtretewh\",false,\"single\",null,\"\",\"\"],[2,\"yesno\",false,\"yesno\",null,\"\",\"\"],[3,\"single\",false,\"single\",null,\"\",\"\"],[4,\"multi\",false,\"multi\",null,\"\",\"\"],[5,\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[6,\"\",false,\"single\",null,\"\",\"\"],[7,\"\",false,\"multi\",null,\"\",\"\"],[8,\"\",false,\"single\",null,\"\",\"\"],[9,\"\",false,\"multi\",null,\"\",\"\"],[10,\"\",false,\"single\",null,\"\",\"\"],[11,\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[12,\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[14,\"\",false,\"yesno\",null,\"\",\"\"],[15,\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[16,\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[17,\"\",false,\"yesno\",null,\"\",\"\"],[18,\"\",false,\"yesno\",null,\"\",\"\"],[19,\"\",false,\"single\",null,\"\",\"\"],[20,\"\",false,\"qa\",null,\"\",\"\"],[21,\"\",false,\"qa\",null,\"\",\"\"],[22,\"rgeqqgwrgrwgwr\",true,\"qa\",\"dsffssfda\",\"\",\"\"],[23,\"\",false,\"qa\",\"fsdaasfdfdsfsad\",\"\",\"\"],[24,\"brgewretgwtewb\",false,\"single\",null,\"\",\"\"],[25,\"ebbewtrbtweetb\",false,\"multi\",\"eweebwtetwbbetwrb\",\"\",\"\"],[26,\"\",false,\"single\",\"ebetetbeb\",\"\",\"\"],[27,\"\",false,\"yesno\",false,\"\",\"\"],[28,\"\",false,\"multi\",null,\"\",\"\"],[29,\"rgererge\",false,\"single\",null,\"\",\"\"],[30,\"yrernretyrty\",false,\"yesno\",null,\"\",\"\"],[31,\"ttyrettyenyetnrytt\",false,\"single\",null,\"\",\"\"],[32,\"\",false,\"multi\",null,\"\",\"\"],[34,\"\",false,\"multi\",null,\"\",\"\"],[1,\"whwtretewh\",false,\"single\",null,\"\",\"\"],[2,\"yesno\",false,\"yesno\",null,\"\",\"\"],[3,\"single\",false,\"single\",null,\"\",\"\"],[4,\"multi\",false,\"multi\",null,\"\",\"\"],[5,\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[6,\"\",false,\"single\",null,\"\",\"\"],[7,\"\",false,\"multi\",null,\"\",\"\"],[8,\"\",false,\"single\",null,\"\",\"\"],[9,\"\",false,\"multi\",null,\"\",\"\"],[10,\"\",false,\"single\",null,\"\",\"\"],[11,\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[12,\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[14,\"\",false,\"yesno\",null,\"\",\"\"],[15,\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[16,\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[17,\"\",false,\"yesno\",null,\"\",\"\"],[18,\"\",false,\"yesno\",null,\"\",\"\"],[19,\"\",false,\"single\",null,\"\",\"\"],[20,\"\",false,\"qa\",null,\"\",\"\"],[21,\"\",false,\"qa\",null,\"\",\"\"],[22,\"rgeqqgwrgrwgwr\",true,\"qa\",\"dsffssfda\",\"\",\"\"],[23,\"\",false,\"qa\",\"fsdaasfdfdsfsad\",\"\",\"\"],[24,\"brgewretgwtewb\",false,\"single\",null,\"\",\"\"],[25,\"ebbewtrbtweetb\",false,\"multi\",\"eweebwtetwbbetwrb\",\"\",\"\"],[26,\"\",false,\"single\",\"ebetetbeb\",\"\",\"\"],[27,\"\",false,\"yesno\",false,\"\",\"\"],[28,\"\",false,\"multi\",null,\"\",\"\"],[29,\"rgererge\",false,\"single\",null,\"\",\"\"],[30,\"yrernretyrty\",false,\"yesno\",null,\"\",\"\"],[31,\"ttyrettyenyetnrytt\",false,\"single\",null,\"\",\"\"],[32,\"\",false,\"multi\",null,\"\",\"\"],[34,\"\",false,\"multi\",null,\"\",\"\"]]'),
+(2, '1', '3', '[[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh\",\"\",\"\"],[\"2\",\"yesno\",false,\"yesno\",null,\"\",\"\"],[\"3\",\"single\",false,\"single\",null,\"\",\"\"],[\"4\",\"multi\",false,\"multi\",null,\"\",\"\"],[\"5\",\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[\"6\",\"\",false,\"single\",null,\"\",\"\"],[\"7\",\"\",false,\"multi\",null,\"\",\"\"],[\"8\",\"\",false,\"single\",null,\"\",\"\"],[\"9\",\"\",false,\"multi\",null,\"\",\"\"],[\"10\",\"\",false,\"single\",null,\"\",\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[\"14\",\"\",false,\"yesno\",null,\"\",\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[\"17\",\"\",false,\"yesno\",null,\"\",\"\"],[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh\",\"\",\"\"],[\"2\",\"yesno\",false,\"yesno\",null,\"\",\"\"],[\"3\",\"single\",false,\"single\",null,\"\",\"\"],[\"4\",\"multi\",false,\"multi\",null,\"\",\"\"],[\"5\",\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[\"6\",\"\",false,\"single\",null,\"\",\"\"],[\"7\",\"\",false,\"multi\",null,\"\",\"\"],[\"8\",\"\",false,\"single\",null,\"\",\"\"],[\"9\",\"\",false,\"multi\",null,\"\",\"\"],[\"10\",\"\",false,\"single\",null,\"\",\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[\"14\",\"\",false,\"yesno\",null,\"\",\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[\"17\",\"\",false,\"yesno\",null,\"\",\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh\",\"\",\"\"],[\"19\",\"\",false,\"single\",null,\"\",\"\"],[\"20\",\"\",false,\"qa\",null,\"\",\"\"],[\"21\",\"\",false,\"qa\",null,\"\",\"\"],[\"22\",\"\",false,\"qa\",null,\"\",\"\"],[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh\",\"\",\"\"],[\"2\",\"yesno\",false,\"yesno\",null,\"\",\"\"],[\"3\",\"single\",false,\"single\",null,\"\",\"\"],[\"4\",\"multi\",false,\"multi\",null,\"\",\"\"],[\"5\",\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[\"6\",\"\",false,\"single\",null,\"\",\"\"],[\"7\",\"\",false,\"multi\",null,\"\",\"\"],[\"8\",\"\",false,\"single\",null,\"\",\"\"],[\"9\",\"\",false,\"multi\",null,\"\",\"\"],[\"10\",\"\",false,\"single\",null,\"\",\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[\"14\",\"\",false,\"yesno\",null,\"\",\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[\"17\",\"\",false,\"yesno\",null,\"\",\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh\",\"\",\"\"],[\"19\",\"\",false,\"single\",null,\"\",\"\"],[\"20\",\"\",false,\"qa\",null,\"\",\"\"],[\"21\",\"\",false,\"qa\",null,\"\",\"\"],[\"22\",\"\",false,\"qa\",null,\"\",\"\"],[\"23\",\"rgeqqgwrgrwgwr\",true,\"qa\",\"wdsdwsdasad\",\"\",\"\"],[\"24\",\"\",false,\"single\",null,\"\",\"\"],[\"25\",\"\",false,\"multi\",null,\"\",\"\"],[\"26\",\"\",false,\"single\",null,\"\",\"\"],[\"27\",\"\",false,\"yesno\",null,\"\",\"\"],[\"28\",\"\",false,\"multi\",null,\"\",\"\"],[\"29\",\"\",false,\"single\",null,\"\",\"\"],[\"30\",\"rgererge\",false,\"yesno\",null,\"\",\"\"],[\"31\",\"\",false,\"single\",null,\"\",\"\"],[\"32\",\"\",false,\"multi\",null,\"\",\"\"]]'),
+(3, '1', '3', '[[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh\",\"\",\"\"],[\"2\",\"yesno\",false,\"yesno\",null,\"\",\"\"],[\"3\",\"single\",false,\"single\",null,\"\",\"\"],[\"4\",\"multi\",false,\"multi\",null,\"\",\"\"],[\"5\",\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[\"6\",\"\",false,\"single\",null,\"\",\"\"],[\"7\",\"\",false,\"multi\",null,\"\",\"\"],[\"8\",\"\",false,\"single\",null,\"\",\"\"],[\"9\",\"\",false,\"multi\",null,\"\",\"\"],[\"10\",\"\",false,\"single\",null,\"\",\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[\"14\",\"\",false,\"yesno\",null,\"\",\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[\"17\",\"\",false,\"yesno\",null,\"\",\"\"],[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh\",\"\",\"\"],[\"2\",\"yesno\",false,\"yesno\",null,\"\",\"\"],[\"3\",\"single\",false,\"single\",null,\"\",\"\"],[\"4\",\"multi\",false,\"multi\",null,\"\",\"\"],[\"5\",\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[\"6\",\"\",false,\"single\",null,\"\",\"\"],[\"7\",\"\",false,\"multi\",null,\"\",\"\"],[\"8\",\"\",false,\"single\",null,\"\",\"\"],[\"9\",\"\",false,\"multi\",null,\"\",\"\"],[\"10\",\"\",false,\"single\",null,\"\",\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[\"14\",\"\",false,\"yesno\",null,\"\",\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[\"17\",\"\",false,\"yesno\",null,\"\",\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh\",\"\",\"\"],[\"19\",\"\",false,\"single\",null,\"\",\"\"],[\"20\",\"\",false,\"qa\",null,\"\",\"\"],[\"21\",\"\",false,\"qa\",null,\"\",\"\"],[\"22\",\"\",false,\"qa\",null,\"\",\"\"],[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh\",\"\",\"\"],[\"2\",\"yesno\",false,\"yesno\",null,\"\",\"\"],[\"3\",\"single\",false,\"single\",null,\"\",\"\"],[\"4\",\"multi\",false,\"multi\",null,\"\",\"\"],[\"5\",\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[\"6\",\"\",false,\"single\",null,\"\",\"\"],[\"7\",\"\",false,\"multi\",null,\"\",\"\"],[\"8\",\"\",false,\"single\",null,\"\",\"\"],[\"9\",\"\",false,\"multi\",null,\"\",\"\"],[\"10\",\"\",false,\"single\",null,\"\",\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[\"14\",\"\",false,\"yesno\",null,\"\",\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[\"17\",\"\",false,\"yesno\",null,\"\",\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh\",\"\",\"\"],[\"19\",\"\",false,\"single\",null,\"\",\"\"],[\"20\",\"\",false,\"qa\",null,\"\",\"\"],[\"21\",\"\",false,\"qa\",null,\"\",\"\"],[\"22\",\"\",false,\"qa\",null,\"\",\"\"],[\"23\",\"rgeqqgwrgrwgwr\",true,\"qa\",\"wdsdwsdasad\",\"\",\"\"],[\"24\",\"\",false,\"single\",null,\"\",\"\"],[\"25\",\"\",false,\"multi\",null,\"\",\"\"],[\"26\",\"\",false,\"single\",null,\"\",\"\"],[\"27\",\"\",false,\"yesno\",null,\"\",\"\"],[\"28\",\"\",false,\"multi\",null,\"\",\"\"],[\"29\",\"\",false,\"single\",null,\"\",\"\"],[\"30\",\"rgererge\",false,\"yesno\",null,\"\",\"\"],[\"31\",\"\",false,\"single\",null,\"\",\"\"],[\"32\",\"\",false,\"multi\",null,\"\",\"\"],[\"1\",\"whwtretewh\",false,\"multi\",\"rjthtrgrtgntrgh\",\"\",\"\"],[\"2\",\"yesno\",false,\"yesno\",null,\"\",\"\"],[\"3\",\"single\",false,\"single\",null,\"\",\"\"],[\"4\",\"multi\",false,\"multi\",null,\"\",\"\"],[\"5\",\"wrgrwq\",false,\"multi\",null,\"\",\"\"],[\"6\",\"\",false,\"single\",null,\"\",\"\"],[\"7\",\"\",false,\"multi\",null,\"\",\"\"],[\"8\",\"\",false,\"single\",null,\"\",\"\"],[\"9\",\"\",false,\"multi\",null,\"\",\"\"],[\"10\",\"\",false,\"single\",null,\"\",\"\"],[\"11\",\"wrwgqrwgqrwgq\",false,\"single\",null,\"\",\"\"],[\"12\",\"rqgwrqwegrg\",false,\"single\",null,\"\",\"\"],[\"14\",\"\",false,\"yesno\",null,\"\",\"\"],[\"15\",\"gqrrqrgqw\",false,\"yesno\",null,\"\",\"\"],[\"16\",\"qrqegrgq\",false,\"yesno\",null,\"\",\"\"],[\"17\",\"\",false,\"yesno\",null,\"\",\"\"],[\"18\",\"qrgqgrqrwqr\",true,\"single\",\"iojejiuewhuiewuijbh\",\"\",\"\"],[\"19\",\"\",false,\"single\",null,\"\",\"\"],[\"20\",\"\",false,\"qa\",null,\"\",\"\"],[\"21\",\"\",false,\"qa\",null,\"\",\"\"],[\"22\",\"\",false,\"qa\",null,\"\",\"\"],[\"23\",\"rgeqqgwrgrwgwr\",true,\"qa\",\"wdsdwsdasad\",\"\",\"\"],[\"24\",\"\",false,\"single\",null,\"\",\"\"],[\"25\",\"\",false,\"multi\",null,\"\",\"\"],[\"26\",\"\",false,\"single\",null,\"\",\"\"],[\"27\",\"\",false,\"yesno\",null,\"\",\"\"],[\"28\",\"\",false,\"multi\",null,\"\",\"\"],[\"29\",\"\",false,\"single\",null,\"\",\"\"],[\"30\",\"rgererge\",false,\"yesno\",null,\"\",\"\"],[\"31\",\"\",false,\"single\",null,\"\",\"\"],[\"32\",\"\",false,\"multi\",null,\"\",\"\"]]');
 
 -- --------------------------------------------------------
 
@@ -331,9 +404,9 @@ ALTER TABLE `questioncode`
   ADD PRIMARY KEY (`id`);
 
 --
--- 資料表索引 `respond`
+-- 資料表索引 `response`
 --
-ALTER TABLE `respond`
+ALTER TABLE `response`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -350,13 +423,13 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `questioncode`
@@ -365,10 +438,10 @@ ALTER TABLE `questioncode`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `respond`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `response`
 --
-ALTER TABLE `respond`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `response`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`

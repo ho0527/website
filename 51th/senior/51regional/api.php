@@ -20,4 +20,12 @@
         unset($_SESSION["count"]);
         ?><script>location.href="admin.php"</script><?php
     }
+
+    if(isset($_GET["getresponselist"])){
+        $row=query($db,"SELECT*FROM `response` WHERE `questionid`=?",[$_SESSION["id"]]);
+        echo(json_encode([
+            "success"=>true,
+            "data"=>$row
+        ]));
+    }
 ?>

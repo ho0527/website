@@ -4,7 +4,7 @@ let questionrownotnone=[]
 
 /*
 questionrow:
-questionid,description,required,mod,option,showmultimorerespond,ps
+questionid,description,required,mod,option,showmultimoreresponse,ps
 */
 
 console.log(questionrow)
@@ -25,7 +25,7 @@ function tempsave(){
         let mod=questionrow[i][4]
         let desciption=questionrow[i][1]
         let required=questionrow[i][2]
-        let showmultimorerespond=""
+        let showmultimoreresponse=""
         let response=null
 
         if(required){
@@ -46,10 +46,10 @@ function tempsave(){
             response=""
         }
         
-        if(docgetid("showmultimorerespond"+i)){ showmultimorerespond=docgetid("showmultimorerespond"+i).innerHTML }
+        if(docgetid("showmultimoreresponse"+i)){ showmultimoreresponse=docgetid("showmultimoreresponse"+i).innerHTML }
 
         console.log(id)
-        insertdata.push([id,desciption,required,mod,response,showmultimorerespond,""])
+        insertdata.push([id,desciption,required,mod,response,showmultimoreresponse,""])
     }
 
     if(success){
@@ -67,7 +67,7 @@ function save(){
         console.log("mod="+mod)
         let desciption=questionrownotnone[i][1]
         let required=questionrownotnone[i][2]
-        let showmultimorerespond=""
+        let showmultimoreresponse=""
         let response=null
 
         if(mod=="yesno"){
@@ -104,12 +104,12 @@ function save(){
             }
         }
 
-        if(docgetid("showmultimorerespond"+i)){
-            showmultimorerespond=docgetid("showmultimorerespond"+i).innerHTML
+        if(docgetid("showmultimoreresponse"+i)){
+            showmultimoreresponse=docgetid("showmultimoreresponse"+i).innerHTML
         }
 
-        console.log([id,desciption,required,mod,response,showmultimorerespond,""])
-        insertdata.push([id,desciption,required,mod,response,showmultimorerespond,""])
+        console.log([id,desciption,required,mod,response,showmultimoreresponse,""])
+        insertdata.push([id,desciption,required,mod,response,showmultimoreresponse,""])
     }
 
     if(success){
@@ -186,7 +186,7 @@ function main(){
             if(questionrownotnone[i][5]==true){
                 output=`
                     ${output}<br>
-                    其他: <input type='text' class="forminputtext" id="multimorerespond${i}" name="multiauther"+i+"">
+                    其他: <input type='text' class="forminputtext" id="multimoreresponse${i}" name="multiauther"+i+"">
                 `
             }
             modname="多選題"

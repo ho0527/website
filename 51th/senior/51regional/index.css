@@ -803,17 +803,6 @@ table{
     cursor: pointer;
 }
 
-.grid{
-    display: grid;
-    grid-gap: 1%;
-    grid-template-columns: repeat(100, 1fr);
-    grid-auto-rows: 5%;
-    width: 100%;
-    height: 25%;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-
 .questiondiv{
     color: white;
 }
@@ -836,4 +825,57 @@ table{
     background: none;
     color: lightgray;
     text-align: center;
+}
+
+.responselistdiv{
+    border: 1px white solid;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 70vw;
+    max-height: 50vh;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.responselist{
+    border-bottom: 1px lightgray solid;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.responseno{
+    grid-column: 1/25;
+    grid-row: 1/18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.responseuser{
+    grid-column: 25/60;
+    grid-row: 1/18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.responsedef{
+    grid-column: 60/100;
+    grid-row: 1/18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.responsewarning{
+    grid-column: 1/100;
+    grid-row: 1/18;
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -21,7 +21,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="macosmaindiv macossectiondiv">
+        <div class="macosmaindiv macossectiondivy">
             <table>
                 <tr>
                     <td class="formtdtitle">標題</td>
@@ -66,7 +66,8 @@
                                 <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
                                 <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php  echo($disabled) ?>><br>
                                 <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php  echo($disabled) ?>><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=results&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=responelist&id=<?php echo($row[$i][0]) ?>'" value="回應內容"><br>
+                                <input type="button" class="workbutton" onclick="location.href='?mod=result&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
                                 <input type="button" class="workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>
                                 <input type="button" class="workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>
                                 <input type="button" class="workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
@@ -163,6 +164,16 @@
                     if($mod=="copyquestion"){ $temp="question"; }
                     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','複製問卷\($temp\)','$time','qid=$id')");
                     ?><script>alert("成功");location.href="admin.php"</script><?php
+                }elseif($mod=="responelist"){
+                    $id=$_GET["id"];
+                    $_SESSION["id"]=$id;
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','查看問卷填寫結果','$time','qid=$id')");
+                    ?><script>location.href="responelist.html"</script><?php
+                }elseif($mod=="result"){
+                    // $id=$_GET["id"];
+                    // $_SESSION["id"]=$id;
+                    // query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','填寫問卷','$time','qid=$id')");
+                    ?><script>//location.href="user.php"</script><?php
                 }elseif($mod=="respone"){
                     $id=$_GET["id"];
                     $_SESSION["id"]=$id;

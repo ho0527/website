@@ -42,7 +42,7 @@ function tempsave(){
         let desciption=""
         let required=false
         let option=""
-        let showmultimorerespond=false
+        let showmultimoreresponse=false
         if(mod!="none"){
             desciption=docgetall(".desciption")[i].value
             required=docgetall(".required")[i].checked
@@ -55,10 +55,10 @@ function tempsave(){
                     }
                 })
             }
-            showmultimorerespond=false
-            if(docgetall(".showmultimorerespond")[0].checked==true){ showmultimorerespond=true }
+            showmultimoreresponse=false
+            if(docgetall(".showmultimoreresponse")[0].checked==true){ showmultimoreresponse=true }
         }
-        questionrow.push([i+1,desciption,required,mod,option,showmultimorerespond,""])
+        questionrow.push([i+1,desciption,required,mod,option,showmultimoreresponse,""])
     }
     console.log(questionrow)
 }
@@ -135,7 +135,7 @@ function main(){
         if(check!=1){ sql001();location.href="admin.php" }
 
         if(questionrow==""||questionrow[i][3]==undefined||questionrow[i][3]=="none"){
-            output="<input type='hidden' class='desciption required showmultimorerespond option"+i+"'>"
+            output="<input type='hidden' class='desciption required showmultimoreresponse option"+i+"'>"
         }else{
             let option=questionrow[i][4].split("|&|")
             if(questionrow[i][2]==true){
@@ -145,7 +145,7 @@ function main(){
             }
             output=output+"題目說明:<input type='text' class='desciption' value='"+questionrow[i][1]+"'><br>"
             if(questionrow[i][3]=="yesno"){
-                output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled><br><input type='hidden' class='showmultimorerespond option"+i+"'>"
+                output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled><br><input type='hidden' class='showmultimoreresponse option"+i+"'>"
             }else if(questionrow[i][3]=="single"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
@@ -154,7 +154,7 @@ function main(){
                         output=output+(j+1+".<input type='text' class='option"+i+"' value='"+option[j]+"'>")
                     }
                 }
-                output=output+"<br><input type='hidden' class='showmultimorerespond'>"
+                output=output+"<br><input type='hidden' class='showmultimoreresponse'>"
             }else if(questionrow[i][3]=="multi"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
@@ -164,12 +164,12 @@ function main(){
                     }
                 }
                 if(questionrow[i][5]==true||questionrow[i][5]==undefined){
-                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond' checked>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimoreresponse' checked>"
                 }else{
-                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond'>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimoreresponse'>"
                 }
             }else if(questionrow[i][3]=="qa"){
-                output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimorerespond option"+i+"'>"
+                output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimoreresponse option"+i+"'>"
             }else{ sql001();location.href="admin.php" }
         }
 
@@ -238,9 +238,9 @@ all.forEach(function(event){
             }
             output=output+"題目說明:<input type='text' class='desciption' id='desciption"+data[1]+"' name='direction"+data[1]+"' value='"+questionrow[data[1]][1]+"'><br>"
             if(data[0]=="none"){
-                output="<input type='hidden' class='desciption required showmultimorerespond option"+data[1]+"'>"
+                output="<input type='hidden' class='desciption required showmultimoreresponse option"+data[1]+"'>"
             }else if(data[0]=="yesno"){
-                    output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled><br><input type='hidden' class='showmultimorerespond option"+data[1]+"'>"
+                    output=output+"是<input type='radio' class='yesno' name='yesno' value='yes' disabled>否<input type='radio' name='yesno' value='no' disabled><br><input type='hidden' class='showmultimoreresponse option"+data[1]+"'>"
             }else if(data[0]=="single"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
@@ -249,7 +249,7 @@ all.forEach(function(event){
                         output=output+(j+1+".<input type='text' class='option"+data[1]+"' value='"+option[j]+"'>")
                     }
                 }
-                output=output+"<br><input type='hidden' class='showmultimorerespond'>"
+                output=output+"<br><input type='hidden' class='showmultimoreresponse'>"
             }else if(data[0]=="multi"){
                 for(let j=0;j<6;j=j+1){
                     if(checknull(option[j])){
@@ -259,12 +259,12 @@ all.forEach(function(event){
                     }
                 }
                 if(questionrow[data[1]][5]==true||questionrow[data[1]][5]==undefined){
-                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond' checked>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimoreresponse' checked>"
                 }else{
-                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimorerespond'>"
+                    output=output+"<br>顯示其他選項<input type='checkbox' class='showmultimoreresponse'>"
                 }
             }else if(data[0]=="qa"){
-                output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimorerespond option"+data[1]+"'>"
+                output=output+"<textarea cols='30' rows='2' placeholder='問答題' disabled></textarea><br><input type='hidden' class='showmultimoreresponse option"+data[1]+"'>"
             }else{ sql001();location.href="admin.php" }
             docgetid("output"+data[1]).innerHTML=`
                 ${output}

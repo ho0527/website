@@ -1,5 +1,5 @@
 [
-    [id,description,required,mod,option,showmultimorerespond,ps]
+    [id,description,required,mod,option,showmultimoreresponse,ps]
     [1,"whwtretewh",false,"single","rfdfdsfhdfhdf|&|",false,""],
     [2,"yesno",false,"yesno","",false,""],
     [3,"single",false,"single","sdfhdsfhsdhfg|&|dsgdgsd|&|",false,""],
