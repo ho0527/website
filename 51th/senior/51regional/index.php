@@ -19,7 +19,8 @@
                 <div class="main indexmain">
                     <form method="POST">
                         帳號: <input type="text" class="input" name="username"><br><br>
-                        密碼: <input type="password" class="input" name="password"><br><br>
+                        密碼: <input type="password" class="input" name="password" id="password"><br><br>
+                        <input type="button" class="button" id="showpassword" value="顯示密碼">
                         <input type="button" class="button" onclick="location.href='signup.php'" value="註冊">
                         <input type="reset" class="button" value="清除">
                         <input type="submit" class="button" name="login" value="登入">
@@ -87,6 +88,6 @@
                 }
             }
         ?>
-        <!-- <script src="index.js"></script> -->
+        <script src="index.js"></script>
     </body>
 </html>
