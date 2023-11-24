@@ -1,7 +1,4 @@
 <?php
-    $memoryBefore=memory_get_usage();
-    echo("p07\n");
-
     $n=trim(fgets(STDIN));
     $ans=[];
     $max=0;
@@ -34,8 +31,4 @@
     }else{
         echo("輸入未符合要求");
     }
-
-    $memoryAfter=memory_get_usage();
-    $memoryDifference=$memoryAfter-$memoryBefore;
-    echo("memory used: ".($memoryDifference/1048576)."MB");
 ?>

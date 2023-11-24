@@ -79,7 +79,7 @@
     .hoteldetail{
         background: white;
         width: 25%;
-        height: 180vh;
+        height: 2500px;
         padding: 10px;
         margin-top: calc(5vh + 10px);
     }
@@ -130,7 +130,7 @@
     .event{
         background: white;
         width: 75%;
-        height: 180vh;
+        height: 2500px;
         padding: 10px;
         margin-top: calc(5vh + 10px);
     }
@@ -262,7 +262,7 @@
     .thingtodo{
         background: lightgray;
         width: 10%;
-        height: 180vh;
+        height: 2500px;
         padding: 10px;
         display: none;
     }
