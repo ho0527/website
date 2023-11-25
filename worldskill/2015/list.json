@@ -27,18 +27,18 @@
                 },
                 {
                     "title": "ModuleC-LAYOUT",
-                    "statu": "FAILED",
-                    "link": "modulec",
+                    "statu": "SUCCESS",
+                    "link": "modulec/",
                     "ps": "question",
                     "createdate": "2023/10/02",
-                    "updatedate": "2023/10/21",
+                    "updatedate": "2023/11/25",
                     "data": [
                     ]
                 },
                 {
                     "title": "ModuleD-LAYOUT",
                     "statu": "N/A",
-                    "link": "moduleD",
+                    "link": "moduled/",
                     "ps": "question",
                     "createdate": "N/A",
                     "updatedate": "N/A",

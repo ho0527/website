@@ -1,13 +1,14 @@
 let id=row[0]
 let insertdata=[]
 let questionrownotnone=[]
+let maxlen=row[3]
 
 /*
 questionrow:
 questionid,description,required,mod,option,showmultimoreresponse,ps
 */
 
-console.log(questionrow)
+console.log(row)
 
 function checknull(data){
     if(data==null||data==undefined||data==""){ return true }
@@ -19,41 +20,55 @@ function pregmatch(context,data){ return context.test(data) }
 function tempsave(){
     let success=true
 
-    for(let i=0;i<count;i=i+1){
-        console.log(questionrow[i])
-        let id=docgetid("count"+i).innerHTML
-        let mod=questionrow[i][4]
-        let desciption=questionrow[i][1]
-        let required=questionrow[i][2]
+    for(let i=0;i<questionrownotnone.length;i=i+1){
+        let id=questionrownotnone[i][0]
+        let mod=questionrownotnone[i][3]
+        let desciption=questionrownotnone[i][1]
+        let required=questionrownotnone[i][2]
         let showmultimoreresponse=""
         let response=null
 
+        if(mod=="yesno"){
+            if(docgetid(i+"yes").checked){
+                response=true
+            }else if(docgetid(i+"no").checked){
+                response=false
+            }
+        }else if(mod=="single"||mod=="multi"){
+            let option=[]
+            for(let j=0;j<6;j=j+1){
+                if(docgetid(i+"option"+j)){
+                    if(docgetid(i+"option"+j).checked){
+                        option.push(docgetid(i+"option"+j).value)
+                    }
+                }
+            }
+            if(option.length>0){
+                response=option.join("|&|")
+            }
+        }else{
+            if(docgetid("qa"+i).value!=""){
+                response=docgetid("qa"+i).value
+            }
+        }
+
         if(required){
-            if(!response){
-                alert("第"+count+"題為必填但未填寫")
+            if(response==null){
+                alert("第"+id+"題為必填但未填寫")
                 success=false
                 break
             }
         }
-        
-        if(mod=="single"||mod=="multi"){
-            for(let j=0;j<6;j=j+1){
-                if(!checknull(docgetid(i+"option"+j).value)){
-                    option=option+docgetid(i+"option"+j).value+"|&|"
-                }
-            }
-        }else{
-            response=""
-        }
-        
-        if(docgetid("showmultimoreresponse"+i)){ showmultimoreresponse=docgetid("showmultimoreresponse"+i).innerHTML }
 
-        console.log(id)
+        if(docgetid("showmultimoreresponse"+i)){
+            showmultimoreresponse=docgetid("showmultimoreresponse"+i).innerHTML
+        }
+
         insertdata.push([id,desciption,required,mod,response,showmultimoreresponse,""])
     }
 
     if(success){
-        save()
+        weblsset("51regionalresponse",insertdata)
     }
 }
 
@@ -62,9 +77,7 @@ function save(){
 
     for(let i=0;i<questionrownotnone.length;i=i+1){
         let id=questionrownotnone[i][0]
-        console.log("id="+id)
         let mod=questionrownotnone[i][3]
-        console.log("mod="+mod)
         let desciption=questionrownotnone[i][1]
         let required=questionrownotnone[i][2]
         let showmultimoreresponse=""
@@ -199,7 +212,7 @@ function main(){
         }else{ sql001();location.href="admin.php" }
 
         docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
-            <div class="grid" id="${i}">
+            <div class="questionmain grid" id="${i}">
                 <div class="order">
                     ${required}
                     <div class="count" id="count${i}">${questionrownotnone[i][0]}</div>

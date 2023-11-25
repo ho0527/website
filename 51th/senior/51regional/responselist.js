@@ -35,7 +35,7 @@ newajax("GET","api.php?getresponselist=").onload=function(){
             docgetall(".delete").forEach(function(event){
                 event.onclick=function(){
                     if(confirm("確定刪除?")){
-                        location.href="api/delresponse.php?id="+event.dataset.id
+                        location.href="api.php?delresponse=&id="+event.dataset.id
                     }
                 }
             })

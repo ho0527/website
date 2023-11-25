@@ -12,18 +12,14 @@
         <div class="navigationbar">
             <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統</div></div>
             <div class="navigationbarright">
-                <input type="button" class="navigationbarbutton" onclick="location.href='respone.html'" value="查看回應列表">
+                <input type="button" class="navigationbarbutton" onclick="location.href='responseall.html'" value="查看所有回應">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="responselistdiv" id="responselist">
-            <div class="responselist grid">
-                <div class="responseno">編號</div>
-                <div class="responseuser">使用者</div>
-                <div class="responsedef">功能</div>
-            </div>
-        </div>
-        <script src="responeall.js"></script>
+
+        <div class="responselistdiv macossectiondivy" id="responselist"></div>
+
+        <script src="responselist.js"></script>
     </body>
 </html>

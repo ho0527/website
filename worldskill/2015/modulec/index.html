@@ -9,12 +9,28 @@
         <link rel="stylesheet" href="950.css">
         <link rel="stylesheet" href="1250.css">
         <link rel="stylesheet" href="1450.css">
+        <link rel="stylesheet" href="index.css">
         <script src="photo-gallery.js"></script>
     </head>
     <body>
         <div class="bookroomdiv">
             <div class="bookroom">book a room</div>
-            <div class="bookroommain">123456</div>
+            <div class="bookroommain">
+                <div class="bookroomblock">
+                    Arrival: <input type="date">
+                </div>
+                <div class="bookroomblock">
+                    Departure: <input type="date">
+                </div>
+                <div class="bookroomblock">
+                    <input type="number" class="bookroomnumber" min="1" step="1" value="1"> Nights<br>
+                    <input type="number" class="bookroomnumber" min="1" step="1" value="1"> Adults
+                    <input type="number" class="bookroomnumber" min="1" step="1" value="1"> Children
+                </div>
+                <div class="bookroomblock">
+                    <input type="button" value="Check availability">
+                </div>
+            </div>
         </div>
         <div class="maindiv">
             <div class="main">

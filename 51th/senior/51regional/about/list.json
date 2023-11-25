@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/07/08",
-            "updatedate": "2023/11/21",
+            "updatedate": "2023/11/25",
             "data": [
                 {
                     "list": 1,
@@ -381,7 +381,7 @@
                                 },
                                 {
                                     "description": "可刪除單一已填寫人的問卷的結果，該問卷已填寫的份數會跟著改變。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "每一個問卷名稱後有一個「統計結果」的按鈕，點選後可進入統計結果頁面，在頁面中上以圖表及文字呈現該問卷所有題目的統計結果。",

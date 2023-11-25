@@ -879,3 +879,8 @@ table{
     align-items: center;
     justify-content: center;
 }
+
+.questionmain{
+    height: 20vh;
+    margin: 15px 0px;
+}

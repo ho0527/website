@@ -50,7 +50,7 @@
     .hotelv{
         background: rgb(235, 190, 105);
         width: calc(100% - 20px);
-        height: 5vh;
+        height: 75px;
         padding: 10px;
     }
 

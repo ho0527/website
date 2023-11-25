@@ -174,7 +174,7 @@ function main(){
         }
 
         docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
-            <div class="grid" id="${i}">
+            <div class="questionmain grid" id="${i}">
                 <div class="order">
                     <div class="questiondel" data-id="${i}">X</div>
                     <div id="count${i}">${i+1}</div>

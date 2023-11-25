@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/09/23",
+            "updatedate": "2023/11/25",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -13,7 +13,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2023/09/23",
+                    "updatedate": "2023/11/25",
                     "data": [
                         {
                             "list": "A",
@@ -255,7 +255,7 @@
                                     "no": "10",
                                     "description": "C10-Simple Image Filter",
                                     "link": "TaskA/C10/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
