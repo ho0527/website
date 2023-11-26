@@ -8,7 +8,7 @@
     2023/07/01  12:52:01 Bata 1.0.2 // 修改變數及小問題
     2023/07/01  12:56:24 Bata 1.0.3 // 新增docgetid 及 docgetall 及 weblsset 及 weblsget 函式
     2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
-    2023/07/09  21:54:50 Bata 1.0.5 // 新增newajax 函式
+    2023/07/09  21:54:50 Bata 1.0.5 // 新增ajax 函式
     2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
     2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
     2023/07/02  23:39:12 Bata 1.0.4 // 新增doccreate 函式
@@ -166,7 +166,7 @@ function doccreate(element){ // document.createElement
     return document.createElement(element)
 }
 
-function newajax(method,url,send=null){
+function oldajax(method,url,send=null){
     let ajax=new XMLHttpRequest()
 
     ajax.open(method,url)

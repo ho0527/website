@@ -1,7 +1,7 @@
 function main(request){
     docgetid("main").innerHTML=``
 
-    newajax("GET","api.php?product=").onload=function(){
+    oldajax("GET","api.php?product=").onload=function(){
         let productdata=JSON.parse(this.responseText)
 
         if(productdata["success"]){
@@ -10,7 +10,7 @@ function main(request){
             if(request){
                 url=url+"&search=&"+request
             }
-            newajax("GET",url).onload=function(){
+            oldajax("GET",url).onload=function(){
                 let data=JSON.parse(this.responseText)
                 let maindata=""
                 let edit=""
@@ -133,7 +133,7 @@ function main(request){
 
                     docgetall(".pin").forEach(function(event){
                         event.onclick=function(){
-                            newajax("GET","api.php?pin=&id="+data["data"][event.dataset.id]["id"]).onload=function(){
+                            oldajax("GET","api.php?pin=&id="+data["data"][event.dataset.id]["id"]).onload=function(){
                                 let data=JSON.parse(this.responseText)
                                 if(data["success"]){
                                     main()

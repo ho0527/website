@@ -1,4 +1,4 @@
-newajax("GET","/backend/53regional/gettemplate").onload=function(){
+oldajax("GET","/backend/53regional/gettemplate").onload=function(){
     let data=JSON.parse(this.responseText)
 
     if(data["success"]){

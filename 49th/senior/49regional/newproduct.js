@@ -53,7 +53,7 @@ document.getElementById("submit").onclick=function(){
         }
     })
 
-    newajax("POST","api/newproduct.php",formdata([
+    oldajax("POST","api/newproduct.php",formdata([
         ["submit",true],
         ["name",name],
         ["button",button],

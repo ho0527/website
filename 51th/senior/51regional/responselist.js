@@ -1,4 +1,4 @@
-newajax("GET","api.php?getresponselist=").onload=function(){
+oldajax("GET","api.php?getresponselist=").onload=function(){
     let data=JSON.parse(this.responseText)
 
     docgetid("responselist").innerHTML=`

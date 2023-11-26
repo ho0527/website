@@ -16,7 +16,7 @@ function submit(key,id){
         url="/backend/46nationalmoduled/mangerstation/"+id
         successmessage="修改成功!"
     }
-    newajax(method,url,JSON.stringify({
+    oldajax(method,url,JSON.stringify({
         "englishname": docgetid("englishname").value,
         "name": docgetid("name").value,
     }),[
@@ -47,7 +47,7 @@ lightbox("#new","lightbox",function(){
     `
 },"close")
 
-newajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){
+oldajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){
     let data=JSON.parse(this.response)
     if(data["success"]){
         let row=data["data"]
@@ -78,7 +78,7 @@ newajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){
 
         docgetall(".delbutton").forEach(function(event){
             event.onclick=function(){
-                newajax("DELETE","/backend/46nationalmoduled/mangerstation/"+event.dataset.id).onload=function(){
+                oldajax("DELETE","/backend/46nationalmoduled/mangerstation/"+event.dataset.id).onload=function(){
                     let data=JSON.parse(this.responseText)
                     if(data["success"]){
                         alert("刪除成功!")

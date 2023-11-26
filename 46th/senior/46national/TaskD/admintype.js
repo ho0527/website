@@ -4,7 +4,7 @@ function clear(){
 }
 
 function postsubmit(){
-    newajax("POST","/backend/46nationalmoduled/mangertraintype/",JSON.stringify({
+    oldajax("POST","/backend/46nationalmoduled/mangertraintype/",JSON.stringify({
         "name": docgetid("name").value,
         "passenger": docgetid("passenger").value,
     }),[
@@ -21,7 +21,7 @@ function postsubmit(){
 }
 
 function putsubmit(){
-    newajax("PUT","/backend/46nationalmoduled/mangertraintype/"+docgetid("id").dataset.id,JSON.stringify({
+    oldajax("PUT","/backend/46nationalmoduled/mangertraintype/"+docgetid("id").dataset.id,JSON.stringify({
         "name": docgetid("name").value,
         "passenger": docgetid("passenger").value,
     }),[
@@ -52,7 +52,7 @@ lightbox("#new","lightbox",function(){
     `
 },"close")
 
-newajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){
+oldajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){
     let data=JSON.parse(this.response)
     if(data["success"]){
         row=data["data"]
@@ -85,7 +85,7 @@ newajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){
 
         docgetall(".delbutton").forEach(function(event){
             event.onclick=function(){
-                newajax("DELETE","/backend/46nationalmoduled/mangertraintype/"+event.dataset.id).onload=function(){
+                oldajax("DELETE","/backend/46nationalmoduled/mangertraintype/"+event.dataset.id).onload=function(){
                     let data=JSON.parse(this.responseText)
                     if(data["success"]){
                         alert("刪除成功!")

@@ -9,10 +9,10 @@
         <script src="plugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <div class="hintdiv hintdiv1" data-id="0" data-body="test lorem"></div>
-        <div class="hintdiv hintdiv2" data-id="1" data-body="test lorem2"></div>
         <script>
-            hintbox()
+            ajax("GET","/backend/53regional/getlog",function(event){
+                console.log(JSON.parse(event.responseText))
+            })
         </script>
     </body>
 </html>

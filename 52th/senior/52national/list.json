@@ -283,15 +283,15 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(login failed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_LOGIN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(login failed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_LOGIN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -326,7 +326,7 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -353,23 +353,23 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(user exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 409_CONFLICT",
+                                            "description": "response body(user exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 409_CONFLICT",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(password length error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PASSWORD_NOT_SECURE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 409_CONFLICT",
+                                            "description": "response body(password length error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PASSWORD_NOT_SECURE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 409_CONFLICT",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(image type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_IMAGE_CAN_NOT_PROCESS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(image type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_IMAGE_CAN_NOT_PROCESS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -404,7 +404,7 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -447,11 +447,11 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -498,19 +498,19 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(image type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_IMAGE_CAN_NOT_PROCESS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(image type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_IMAGE_CAN_NOT_PROCESS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -557,23 +557,23 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -616,15 +616,15 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -655,23 +655,23 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -702,11 +702,11 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -753,23 +753,23 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -800,27 +800,27 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(missing filed): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_MISSING_FIELD\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(comment not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_COMMENT_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(comment not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_COMMENT_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -847,19 +847,19 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(comment not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_COMMENT_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(comment not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_COMMENT_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -886,11 +886,11 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -929,7 +929,7 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -956,23 +956,23 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
+                                            "description": "response body(no permission): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_PERMISSION_DENY\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 403_FORBIDDEN",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(post not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_POST_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -1011,11 +1011,11 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
+                                            "description": "response body(data type error): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_WORND_DATA_TYPE\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 400_BAD_REQUEST",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         },
                                         {
@@ -1050,11 +1050,11 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]
@@ -1081,11 +1081,11 @@
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
+                                            "description": "response body(token error/token not exist): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_INVALID_ACCESS_TOKEN\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 401_UNAUTHORIZED",
                                             "statu": "SUCCESS"
                                         },
                                         {
-                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
+                                            "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;message: \"MSG_USER_NOT_EXISTS\",<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 404_NOT_FOUND",
                                             "statu": "SUCCESS"
                                         }
                                     ]

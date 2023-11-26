@@ -8,8 +8,8 @@ if(weblsget("46nationalmoduledtraincode")){
     traincode=weblsget("46nationalmoduledtraincode")
 }
 
-newajax("GET","api.php?traincodelist=").onload=function(){ traincodelist=JSON.parse(this.responseText) }
-newajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){ trainlist=JSON.parse(this.responseText) }
+oldajax("GET","api.php?traincodelist=").onload=function(){ traincodelist=JSON.parse(this.responseText) }
+oldajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){ trainlist=JSON.parse(this.responseText) }
 
 setTimeout(function(){
     let traincodeinnerhtml="<option value=\"na\">車次代碼</option>"
@@ -151,7 +151,7 @@ docgetid("submit").onclick=function(){
         docgetid("error").innerHTML=`` // 清空error區塊
 
         // 傳送資料
-        newajax("POST","/backend/46nationalmoduled/newticket/",JSON.stringify({
+        oldajax("POST","/backend/46nationalmoduled/newticket/",JSON.stringify({
             "trainid": trainid,
             "typeid": trainlist["data"][0][traincode][1],
             "startstationid": start,
@@ -165,7 +165,7 @@ docgetid("submit").onclick=function(){
             let data=JSON.parse(this.responseText)
 
             if(data["success"]){
-                newajax("POST","api/ticketsms.php",formdata([
+                oldajax("POST","api/ticketsms.php",formdata([
                     ["phone",phone],
                     ["traincode",data["data"]["traincode"]],
                     ["getgodate",date],

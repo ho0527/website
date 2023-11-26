@@ -22,7 +22,7 @@
 //         </div>
 //     `
 //     docgetid("login").onclick=function(){
-//         newajax("POST","",JSON.stringify({
+//         oldajax("POST","",JSON.stringify({
 //             "username": docgetid("username").value,
 //             "password": docgetid("password").value
 //         })).onload=function(){
@@ -50,7 +50,7 @@
 // }
 
 // docgetid("responsesubmit").onclick=function(){
-//     newajax("POST","",JSON.stringify({
+//     oldajax("POST","",JSON.stringify({
 //         "username": docgetid("username").value,
 //         "password": docgetid("password").value
 //     })).onload=function(){

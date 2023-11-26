@@ -78,7 +78,7 @@ docgetid("submit").onclick=function(){
     docgetall("#dropbox>.dragimage").forEach(function(event){
         verifycodeuserans=verifycodeuserans+event.dataset.id
     })
-    newajax("POST","/backend/53regional/login",JSON.stringify({
+    oldajax("POST","/backend/53regional/login",JSON.stringify({
         "username": docgetid("username").value,
         "password": docgetid("password").value,
         "verifycodeans": verifycodeans,
@@ -93,7 +93,7 @@ docgetid("submit").onclick=function(){
             weblsset("53regionaluserid",data["data"]["id"])
             weblsset("53regionalpermission",data["data"]["permission"])
             weblsset("53regionaltime",30)
-            newajax("GET","/backend/53regional/logindatatodb?key=success&id="+data["data"]["id"]).onload=function(){
+            oldajax("GET","/backend/53regional/logindatatodb?key=success&id="+data["data"]["id"]).onload=function(){
                 let data=JSON.parse(this.responseText)
                 if(data["success"]){
                     location.href="verify.html"
@@ -103,7 +103,7 @@ docgetid("submit").onclick=function(){
             alert(data["data"]["message"])
             weblsset("53regionalerrortime",parseInt(weblsget("53regionalerrortime"))+1)
             if(weblsget("53regionalerrortime")>=3){
-                newajax("GET","/backend/53regional/logindatatodb?key=error&id="+data["data"]["id"]).onload=function(){
+                oldajax("GET","/backend/53regional/logindatatodb?key=error&id="+data["data"]["id"]).onload=function(){
                     let data=JSON.parse(this.responseText)
                     if(data["success"]){
                         weblsset("53regionalerrortime",null)

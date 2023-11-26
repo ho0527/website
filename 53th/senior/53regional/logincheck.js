@@ -3,7 +3,7 @@ let id=localStorage.getItem("53regionaluserid")
 let permission=localStorage.getItem("53regionalpermission")
 
 function logout(){
-    newajax("GET","/backend/53regional/logout/"+weblsget("53regionaluserid")).onload=function(){
+    oldajax("GET","/backend/53regional/logout/"+weblsget("53regionaluserid")).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             alert("登出成功")

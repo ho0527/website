@@ -1,6 +1,6 @@
 docgetall(".viewbutton").forEach(function(event){
     event.onclick=function(){
-        let ajax=newajax("GET","api/viewplan.php?id="+event.dataset.id)
+        let ajax=oldajax("GET","api/viewplan.php?id="+event.dataset.id)
 
         ajax.onload=function(){
             let data=JSON.parse(ajax.responseText)

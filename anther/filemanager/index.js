@@ -17,7 +17,7 @@ function main(){
         }
     }
 
-    newajax("GET","filelist.php?folder="+folder).onload=function(){
+    oldajax("GET","filelist.php?folder="+folder).onload=function(){
         let data=JSON.parse(this.responseText)
         let folderpath=""
 
@@ -167,7 +167,7 @@ docgetid("submit").onclick=function(){
             <progress id="progress" max="100" value="0"></progress>
         `
     })
-    let ajax=newajax("POST","upload.php",new FormData(docgetid("form")))
+    let ajax=oldajax("POST","upload.php",new FormData(docgetid("form")))
     ajax.upload.addEventListener("progress",function(event){
         if(event.lengthComputable){
             let percent=(event.loaded/event.total)*100

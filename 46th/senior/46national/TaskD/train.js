@@ -3,7 +3,7 @@ let stationdata
 let stationcount=0
 
 function main(url){
-    newajax("GET",url).onload=function(){
+    oldajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             let trainlist=data["data"][0]
@@ -143,8 +143,8 @@ function main(url){
     }
 }
 
-newajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){ traintypedata=JSON.parse(this.responseText) }
-newajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){ stationdata=JSON.parse(this.responseText) }
+oldajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){ traintypedata=JSON.parse(this.responseText) }
+oldajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){ stationdata=JSON.parse(this.responseText) }
 
 setTimeout(function(){
     main("/backend/46nationalmoduled/mangertrain/")

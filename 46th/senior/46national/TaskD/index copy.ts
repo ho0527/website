@@ -4,9 +4,9 @@ let traindata
 let station="<option value='all'>所有</option>"
 let traintype="<option value='all'>所有</option>"
 
-newajax("GET","api.php?traintypelist=").onload=function(){ traintypedata=JSON.parse(this.responseText) }
-newajax("GET","api.php?stationlist=").onload=function(){ stationdata=JSON.parse(this.responseText) }
-newajax("GET","api.php?trainlist=").onload=function(){ traindata=JSON.parse(this.responseText) }
+oldajax("GET","api.php?traintypelist=").onload=function(){ traintypedata=JSON.parse(this.responseText) }
+oldajax("GET","api.php?stationlist=").onload=function(){ stationdata=JSON.parse(this.responseText) }
+oldajax("GET","api.php?trainlist=").onload=function(){ traindata=JSON.parse(this.responseText) }
 
 setTimeout(function(){
     for(let i=0;i<stationdata.length;i=i+1){
@@ -33,7 +33,7 @@ setTimeout(function(){
 },100)
 
 setTimeout(function(){
-    newajax("GET","api.php?trainlist=").onload=function(){
+    oldajax("GET","api.php?trainlist=").onload=function(){
         let data=JSON.parse(this.responseText)
         let trainlist=data[0]
         let stoplist=data[1]

@@ -1,4 +1,4 @@
-newajax("GET","data.json").onload=function(){
+oldajax("GET","data.json").onload=function(){
     let data=JSON.parse(this.responseText);
 
     let commentcount=0

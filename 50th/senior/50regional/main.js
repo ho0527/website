@@ -1,4 +1,4 @@
-newajax("GET","api.php?projectdata=").onload=function(){
+oldajax("GET","api.php?projectdata=").onload=function(){
     let data=JSON.parse(this.responseText)
     for(let i=0;i<data.length;i=i+1){
         if(data[i].status=="leader"){

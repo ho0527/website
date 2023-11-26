@@ -42,7 +42,7 @@
     }
 
     function up($data,$comper){
-        $a=fetchall($data);
+        $a=$data;
         for($i=0;$i<count($a)-1;$i=$i+1){
             for($j=0;$j<count($a)-$i-1;$j=$j+1){
                 if($a[$j][$comper]>$a[$j+1][$comper]){
@@ -56,7 +56,7 @@
     }
 
     function down($data,$comper){
-        $a=fetchall($data);
+        $a=$data;
         for($i=0;$i<count($a)-1;$i=$i+1){
             for($j=0;$j<count($a)-$i-1;$j=$j+1){
                 if($a[$j][$comper]<$a[$j+1][$comper]){

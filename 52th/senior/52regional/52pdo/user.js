@@ -1,7 +1,3 @@
-let user=document.getElementById("user-button")
-let setting=document.getElementById("setting-button")
-let loggout=document.getElementById("loggout-button")
-
 let workbox=document.getElementsByClassName("work-box")
 let button=document.getElementsByClassName("todobut")
 let updownbut=document.getElementById("updownbut")
@@ -9,15 +5,6 @@ let down=false
 let move=false
 //訂定變數
 
-user.style.display="inline"
-setting.style.display="none"
-loggout.style.display="none"
-
-user.onclick=function(){
-    user.style.display="none"
-    setting.style.display="inline"
-    loggout.style.display="inline"
-}
 
 for(let i=0;i<button.length;i=i+1){
     button[i].disabled=true//讓每個button都是disabled

@@ -1,4 +1,4 @@
-newajax("GET","/backend/53regional/gettemplate?id="+weblsget("53regionalproductid")).onload=function(){
+oldajax("GET","/backend/53regional/gettemplate?id="+weblsget("53regionalproductid")).onload=function(){
     let data=JSON.parse(this.responseText)
 
     if(data["success"]){

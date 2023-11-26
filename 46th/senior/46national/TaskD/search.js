@@ -49,7 +49,7 @@ function main(row){
 if(!isset(weblsget("46nationalmoduledpage"))){ weblsset("46nationalmoduledpage",1) }
 
 setTimeout(function(){
-    newajax("GET","/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")).onload=function(){
+    oldajax("GET","/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             maxpage=Math.ceil(data["data"]["maxtotal"]/3)
@@ -66,7 +66,7 @@ docgetid("submit").onclick=function(){
         url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
     }
 
-    newajax("GET",url).onload=function(){
+    oldajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             maxpage=Math.ceil(data["data"]["maxtotal"]/3)
@@ -88,7 +88,7 @@ docgetid("prev").onclick=function(){
             url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
-        newajax("GET",url).onload=function(){
+        oldajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
                 main(data["data"]["data"])
@@ -110,7 +110,7 @@ docgetid("next").onclick=function(){
             url="/backend/46nationalmoduled/searchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
-        newajax("GET",url).onload=function(){
+        oldajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
                 main(data["data"]["data"])

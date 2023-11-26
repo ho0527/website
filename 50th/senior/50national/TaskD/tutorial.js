@@ -189,7 +189,7 @@ function check(){
                         event.preventDefault()
                     }
                 }
-                newajax("POST","register.php",JSON.stringify({
+                oldajax("POST","register.php",JSON.stringify({
                     "adddata": true,
                     "time": min*60+sec,
                     "name": username,
@@ -431,7 +431,7 @@ function ghostmove(name,array){
                         event.preventDefault()
                     }
                 }
-                newajax("POST","register.php",JSON.stringify({
+                oldajax("POST","register.php",JSON.stringify({
                     "adddata": true,
                     "time": min*60+sec,
                     "name": username,
@@ -655,7 +655,7 @@ docgetid("difficulty").innerHTML=difficulty // 拿到難易度並顯示
 docgetid("name").innerHTML=username // 拿到名稱並顯示
 
 // 主程式START
-newajax("GET","map.txt").onload=function(){
+oldajax("GET","map.txt").onload=function(){
     let data=this.responseText.split("\r\n") // 分隔及讀取檔案
     let tempstartcount=starcount
     // 畫面輸出START
@@ -762,7 +762,7 @@ docgetid("statisticaldata").onclick=function(){
     if(docgetid("pausecontinue").innerHTML=="暫停"){ // 如果是運行中就暫停
         stopstart()
     }
-    newajax("GET","register.php?getrank=").onload=function(){ // 獲取排行榜
+    oldajax("GET","register.php?getrank=").onload=function(){ // 獲取排行榜
         let data=JSON.parse(this.responseText)
         rank(data)
     }

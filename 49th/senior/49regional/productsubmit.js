@@ -4,7 +4,7 @@ docgetid("cancel").onclick=function(){
 
 console.log(weblsget("49regionalproductvisibility"))
 docgetid("submit").onclick=function(){
-    newajax("POST","api/product.php",formdata([
+    oldajax("POST","api/product.php",formdata([
         ["submit",true],
         ["date",weblsget("49regionalproductdate")],
         ["description",weblsget("49regionalproductdescription")],

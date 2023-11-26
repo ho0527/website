@@ -1,5 +1,5 @@
 let data={
-    "version": "Bata1.0.17"
+    "version": "Bata1.0.18"
 }
 
 docgetid("footerversion").innerHTML=data.version

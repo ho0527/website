@@ -140,9 +140,9 @@ if(!weblsget("46nationalmoduleduserid")){
     location.href="login.html"
 }
 
-newajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){ traintypedata=JSON.parse(this.responseText) }
-newajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){ stationdata=JSON.parse(this.responseText) }
-newajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){ traindata=JSON.parse(this.responseText) }
+oldajax("GET","/backend/46nationalmoduled/mangertraintype/").onload=function(){ traintypedata=JSON.parse(this.responseText) }
+oldajax("GET","/backend/46nationalmoduled/mangerstation/").onload=function(){ stationdata=JSON.parse(this.responseText) }
+oldajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){ traindata=JSON.parse(this.responseText) }
 
 lightbox("#new","lightbox",function(){
     let traintype=""
@@ -191,7 +191,7 @@ lightbox("#new","lightbox",function(){
 },"close")
 
 setTimeout(function(){
-    newajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){
+    oldajax("GET","/backend/46nationalmoduled/mangertrain/").onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             let trainlist=data["data"][0]

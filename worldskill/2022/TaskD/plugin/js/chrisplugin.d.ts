@@ -9,7 +9,7 @@ declare function blank(data:any):boolean
 declare function weblsset(data:string,value:any):void
 declare function weblsget(data:string):string|null
 declare function doccreate(element:string):HTMLElement
-declare function newajax(method:string,url:string,send?:any):XMLHttpRequest
+declare function oldajax(method:string,url:string,send?:any):XMLHttpRequest
 declare function lightbox(clickelement:string,element:string,lightboxhtml:(event:Event)=>string,closelement?:string|null,islightboxclosewithkeyesc?:boolean):void
 declare function docappendchild(element:string,chlidelement:HTMLElement):void
 declare function regexp(regexptext:string,regexpstring?:string):RegExp

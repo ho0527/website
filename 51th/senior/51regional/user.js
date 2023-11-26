@@ -127,7 +127,7 @@ function save(){
 
     if(success){
         // 送出資料
-        newajax("POST","api/newresponse.php",JSON.stringify({
+        oldajax("POST","api/newresponse.php",JSON.stringify({
             "userid": userid,
             "questionid": row[0],
             "response": insertdata

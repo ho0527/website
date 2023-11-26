@@ -3,7 +3,7 @@ if(weblsget("46nationalmoduleduserid")){
 }
 
 docgetid("submit").onclick=function(){
-    newajax("POST","/backend/46nationalmoduled/login",JSON.stringify({
+    oldajax("POST","/backend/46nationalmoduled/login",JSON.stringify({
         "username": docgetid("username").value,
         "password": docgetid("password").value
     }),[

@@ -3,7 +3,7 @@ docgetid("cancel").onclick=function(){
 }
 
 docgetid("productsubmit").onclick=function(){
-    newajax("POST","/backend/53regional/newproduct",JSON.stringify({
+    oldajax("POST","/backend/53regional/newproduct",JSON.stringify({
         "submit":true,
         "description":weblsget("53regionalproductdescription"),
         "link":weblsget("53regionalproductlink"),

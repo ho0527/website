@@ -53,7 +53,7 @@ document.getElementById("newtemplate").onclick=function(){
         }
     })
 
-    newajax("POST","/backend/53regional/newtemplate",JSON.stringify({
+    oldajax("POST","/backend/53regional/newtemplate",JSON.stringify({
         "submit": true,
         "name": name,
         "cost": cost,

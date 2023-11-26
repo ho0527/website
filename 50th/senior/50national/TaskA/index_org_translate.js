@@ -512,7 +512,7 @@ document.getElementById("openaside").style.left="0%"
 // 初始化aside END
 
 // 讓我偷懶用自己的函式~>~
-newajax("GET","albumlist.json").onload=function(){
+oldajax("GET","albumlist.json").onload=function(){
     data=JSON.parse(this.responseText) // 拿到data
     if(state=="main"){
         main() // 開始主程式

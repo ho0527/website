@@ -38,7 +38,7 @@
                                 <td class="usertable">詳細內容</td>
                             </tr>
                             <?php
-                                $data=query("SELECT*FROM `todo`");
+                                $data=query($db,"SELECT*FROM `todo`");
                                 @$numberud=$_GET["num-up-down"];
                                 @$titleud=$_GET["title-up-down"];
                                 @$timeud=$_GET["time-up-down"];
@@ -64,7 +64,7 @@
                                     down($data,"priority");
                                     ?><script>document.getElementById("priority-up-down").value="降冪";</script><?php
                                 }elseif(isset($numberud)||isset($titleud)||isset($timeud)||isset($dateud)||isset($dealud)||isset($priorityud)){
-                                    header("location:userWelcome.php");
+                                    header("location:user.php");
                                 }else{
                                     up($data,"id");
                                 }
@@ -136,19 +136,17 @@
                         </select><br><br>
                         <button type="submit" class="right" name="selecter">確定(篩選器)</button>
                         <button type="button" class="newtodo" onclick="location.href='useradd.php'">新增todo</button><br><br>
-                        <button type="button" id="setting-button" class="setting-button" onclick="location.href='setting.php'">setting</button>
                         <button type="submit" id="loggout-button" class="loggout-button" name="logout">logout</button>
-                        <button type="button" id="user-button" class="user-button">用戶</button>
                     </form>
                     <?php
                         if(isset($_GET["preview"])){
                             $id=$_GET["preview"];
-                            @$row=fetch(query("SELECT*FROM `todo` WHERE `id`='$id'"));
+                            @$row=query($db,"SELECT*FROM `todo` WHERE `id`='$id'")[0];
                             ?>
                             <div class="div">
                                 標題: <?= @$row[1]; ?><br>
                                 詳細內容: <?= @$row[7]; ?>
-                                <button onclick="location.href='userWelcome.php'" id="button4">關閉</button>
+                                <button onclick="location.href='user.php'" id="button4">關閉</button>
                             </div>
                             <?php
                         }
@@ -168,14 +166,14 @@
                     if($priority!="篩選器"){
                         $todo_conditions=$todo_conditions." AND `priority`='$priority'";
                     }
-                    $todo=query("SELECT*FROM `todo` WHERE $todo_conditions");
+                    $todo=query($db,"SELECT*FROM `todo` WHERE $todo_conditions");
                     if($start=="升冪"){
                         uper($todo);
                     }else{
                         lower($todo);
                     }
                 }else{
-                    $todo=query( "SELECT*FROM `todo` WHERE `date`='$date'");
+                    $todo=query($db, "SELECT*FROM `todo` WHERE `date`='$date'");
                     if($start=="升冪"){
                         uper($todo);
                     }else{
@@ -184,15 +182,15 @@
                 }
                 @$user_data=$_SESSION["data"];
                 if(isset($_GET["logout"])){
-                    $user=query("SELECT*FROM `user` WHERE `userNumber`='$user_data'");
-                    $row=fetch($user);
+                    $row=query($db,"SELECT*FROM `user` WHERE `userNumber`='$user_data'");
                     if(isset($user_data)){
-                        query("UPDATE `data` SET `logouttime`='$time' WHERE `usernumber`='$user_data' AND `logouttime`=''");
-                        query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','登出','$time')");
+                        $row=$row[0];
+                        query($db,"UPDATE `data` SET `logouttime`='$time' WHERE `usernumber`='$user_data' AND `logouttime`=''");
+                        query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','登出','$time')");
                         session_unset();
                         ?><script>alert("登出成功!");location.href="index.php"</script><?php
                     }else{
-                        query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('null','','','','','','','登出','$time')");
+                        query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('null','','','','','','','登出','$time')");
                         session_unset();
                         ?><script>alert("登出成功!");location.href="index.php"</script><?php
                     }
@@ -205,7 +203,7 @@
                 if(isset($_GET["selecter"])){
                     $_SESSION["priority"]=$_GET["priority-select"];
                     $_SESSION["deal"]=$_GET["deal-select"];
-                    ?><script>location.href="userWelcome.php"</script><?php
+                    ?><script>location.href="user.php"</script><?php
                 }
                 if(isset($_GET["starttime"])){
                     if($_GET["starttime"]=="升冪"){
@@ -213,14 +211,14 @@
                     }else{
                         $_SESSION["starttime"]="升冪";
                     }
-                    ?><script>location.href="userWelcome.php"</script><?php
+                    ?><script>location.href="user.php"</script><?php
                 }
                 if(isset($_GET["enter"])){
                     @$_SESSION["date"]=$_GET["date"];
-                    ?><script>location.href="userWelcome.php"</script><?php
+                    ?><script>location.href="user.php"</script><?php
                 }
             ?>
         </form>
-        <script src="todobox.js"></script>
+        <script src="user.js"></script>
     </body>
 </html>

@@ -4,7 +4,7 @@ function main(url){
     page=weblsget("53regionalpage")
     if(!url){ url="/backend/53regional/getproduct?page="+page }
     docgetid("main").innerHTML=``
-    newajax("GET",url).onload=function(){
+    oldajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             let row=data["data"]["data"]
@@ -111,7 +111,7 @@ function main(url){
 
             docgetall(".edit").forEach(function(event){
                 event.onclick=function(){
-                    newajax("GET","/backend/53regional/getproduct?id="+event.dataset.id).onload=function(){
+                    oldajax("GET","/backend/53regional/getproduct?id="+event.dataset.id).onload=function(){
                         let data=JSON.parse(this.responseText)
                         if(data["success"]){
                             row=data["data"][0]

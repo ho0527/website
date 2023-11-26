@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>登入錯誤</title>
+        <title>登入失敗</title>
         <link href="index.css" rel="Stylesheet">
     </head>
     <body class="body">

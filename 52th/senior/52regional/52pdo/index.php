@@ -20,7 +20,7 @@
                         $finalStr=$str[rand(0,25)];
                         ?>
                         <div class="dragbox">
-                            <img src="verifycode.php?val=<?= $finalStr ?>" id="<?= $finalStr ?>" class="dragimg" draggable="true">
+                            <img src="api/verifycode.php?val=<?= $finalStr ?>" id="<?= $finalStr ?>" class="dragimg" draggable="true">
                         </div>
                         <?php
                     }
@@ -52,6 +52,6 @@
                 ?>
             </form>
         </div>
-        <script src="verifycode.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

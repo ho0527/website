@@ -18,10 +18,8 @@ function linktest(link,title){
     }
 }
 
-let ajax=new XMLHttpRequest()
-
-ajax.onload=function(){
-    let data=JSON.parse(ajax.responseText)["data"]
+oldajax("GET","list.json").onload=function(){
+    let data=JSON.parse(this.responseText)["data"]
     for(let i=0;i<data.length;i=i+1){
         let title=data[i]["title"]
         let list=data[i]["data"]
@@ -132,9 +130,6 @@ ajax.onload=function(){
         `
     }
 }
-
-ajax.open("GET","list.json")
-ajax.send()
 
 
 

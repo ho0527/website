@@ -3,9 +3,9 @@ var stationdata;
 var traindata;
 var station = "<option value='all'>所有</option>";
 var traintype = "<option value='all'>所有</option>";
-newajax("GET", "api.php?traintypelist=").onload = function () { traintypedata = JSON.parse(this.responseText); };
-newajax("GET", "api.php?stationlist=").onload = function () { stationdata = JSON.parse(this.responseText); };
-newajax("GET", "api.php?trainlist=").onload = function () { traindata = JSON.parse(this.responseText); };
+oldajax("GET", "api.php?traintypelist=").onload = function () { traintypedata = JSON.parse(this.responseText); };
+oldajax("GET", "api.php?stationlist=").onload = function () { stationdata = JSON.parse(this.responseText); };
+oldajax("GET", "api.php?trainlist=").onload = function () { traindata = JSON.parse(this.responseText); };
 setTimeout(function () {
     for (var i = 0; i < stationdata.length; i = i + 1) {
         station = station + "<option value=\"".concat(stationdata[i][1], "\">").concat(stationdata[i][2], "</option>");
@@ -26,7 +26,7 @@ setTimeout(function () {
     startmacossection();
 }, 100);
 setTimeout(function () {
-    newajax("GET", "api.php?trainlist=").onload = function () {
+    oldajax("GET", "api.php?trainlist=").onload = function () {
         var data = JSON.parse(this.responseText);
         var trainlist = data[0];
         var stoplist = data[1];

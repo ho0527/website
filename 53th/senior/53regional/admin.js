@@ -45,7 +45,7 @@ function userlistmain(){
         </tr>
     `
 
-    newajax("GET","/backend/53regional/getuserlist?keyword="+keyword+"&orderby="+orderby+"&ordertype="+ordertype).onload=function(){
+    oldajax("GET","/backend/53regional/getuserlist?keyword="+keyword+"&orderby="+orderby+"&ordertype="+ordertype).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             let row=data["data"]
@@ -125,7 +125,7 @@ docgetid("search").onkeydown=function(event){
 // userlist END
 
 // log START
-newajax("GET","/backend/53regional/getlog").onload=function(){
+oldajax("GET","/backend/53regional/getlog").onload=function(){
     let data=JSON.parse(this.responseText)
     let row=data["data"]
     for(let i=0;i<row.length;i=i+1){
@@ -198,7 +198,7 @@ docgetid("newuser").onclick=function(){
     },"close",true,"none")
     setTimeout(function(){
         docgetid("submit").onclick=function(){
-            newajax("POST","/backend/53regional/newuser",JSON.stringify({
+            oldajax("POST","/backend/53regional/newuser",JSON.stringify({
                 "username": docgetid("username").value,
                 "password": docgetid("password").value,
                 "name": docgetid("name").value,
@@ -219,7 +219,7 @@ docgetid("newuser").onclick=function(){
 docgetall(".edituser").forEach(function(event){
     event.onclick=function(){
         if(event.dataset.id!="1"){
-            newajax("GET","/backend/53regional/getuser/"+event.dataset.id).onload=function(){
+            oldajax("GET","/backend/53regional/getuser/"+event.dataset.id).onload=function(){
                 let data=JSON.parse(this.responseText)
 
                 let permissioninnerhtml=`
@@ -242,7 +242,7 @@ docgetall(".edituser").forEach(function(event){
                 },"close",true,"none")
                 setTimeout(function(){
                     docgetid("submit").onclick=function(){
-                        newajax("PUT","/backend/53regional/editdeluser/"+event.dataset.id,JSON.stringify({
+                        oldajax("PUT","/backend/53regional/editdeluser/"+event.dataset.id,JSON.stringify({
                             "password": docgetid("password").value,
                             "name": docgetid("name").value,
                             "permission": docgetid("permission").value
@@ -266,7 +266,7 @@ docgetall(".deluser").forEach(function(event){
     event.onclick=function(){
         if(event.dataset.id!="1"){
             if(confirm("是否確定刪除?")){
-                newajax("DELETE","/backend/53regional/editdeluser/"+event.dataset.id).onload=function(){
+                oldajax("DELETE","/backend/53regional/editdeluser/"+event.dataset.id).onload=function(){
                     let data=JSON.parse(this.responseText)
                     if(data["success"]){
                         alert("刪除成功")

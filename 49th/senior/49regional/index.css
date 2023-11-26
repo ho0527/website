@@ -28,14 +28,14 @@ table{
 }
 
 .main{
-    border: 1px white solid;
+    border: 2px white solid;
     position: absolute;
-    top: calc(50% + 50px);
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     font-size: 30px;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .grid{

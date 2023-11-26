@@ -18,7 +18,7 @@ docgetall(".end").forEach(function(event){
     event.onclick=function(){
         let projectid=this.dataset.id
         let check=true
-        newajax("GET","api.php?projectdata=").onload=function(){
+        oldajax("GET","api.php?projectdata=").onload=function(){
             let data=JSON.parse(this.responseText)
             let table=`
                 <div class="lightboxtitle">尚未評分列表</div>

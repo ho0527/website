@@ -8,9 +8,11 @@
         $code=$_GET['code'];
         $_SESSION["username"]=$username;
         $_SESSION["password"]=$code;
-        $user=query("SELECT*FROM `user` WHERE `userName`='$username'");
-        $admin=query("SELECT*FROM `admin` WHERE `adminName`='$username'");
-        if($row=fetch($user)){
+        $user=query($db,"SELECT*FROM `user` WHERE `username`='$username'");
+        $admin=query($db,"SELECT*FROM `admin` WHERE `adminName`='$username'");
+        $location="index.php";
+        if($row=query($db,"SELECT*FROM `user` WHERE `username`='$username'")){
+            $row=$row[0];
             if($row[2]==$code){
                 if(isset($_GET["vererror"])){
                     $_SESSION["error"]=$_SESSION["error"]+1;
@@ -18,16 +20,16 @@
                         ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
                     }else{
                         ?><script>alert("圖形驗證碼有誤");location.href="usererror.php"</script><?php
-                        $login=query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
+                        $login=query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
                         session_unset();
                     }
                 }else{
-                    $login=query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','','登入成功','$time')");
+                    $login=query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','','登入成功','$time')");
                     session_unset();
                     $_SESSION["data"]=$row[4];
                     $_SESSION["date"]=date("Y-m-d");
                     $_SESSION["starttime"]="升冪";
-                    ?><script>alert("登入成功");location.href="userWelcome.php"</script><?php
+                    ?><script>alert("登入成功");location.href="user.php"</script><?php
                 }
             }else{
                 $_SESSION["error"]=$_SESSION["error"]+1;
@@ -35,11 +37,12 @@
                     ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                 }else{
                     ?><script>alert("密碼有誤");location.href="usererror.php"</script><?php
-                    $login=query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
+                    $login=query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
                     session_unset();
                 }
             }
-        }elseif($row=fetch($admin)){
+        }elseif($row=query($db,"SELECT*FROM `admin` WHERE `adminName`='$username'")){
+            $row=$row[0];
             if($row[2]==$code){
                 if(isset($_GET["vererror"])){
                     $_SESSION["error"]=$_SESSION["error"]+1;
@@ -47,12 +50,12 @@
                         ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
                     }else{
                         ?><script>alert("圖形驗證碼有誤");location.href="usererror.php"</script><?php
-                        $login=query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
+                        $login=query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
                         session_unset();
                     }
                 }else{
-                    ?><script>alert("登入成功");location.href="adminWelcome.php"</script><?php
-                    $login=query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','','登入成功','$time')");
+                    ?><script>alert("登入成功");location.href="admin.php"</script><?php
+                    $login=query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','','登入成功','$time')");
                     session_unset();
                     $_SESSION["data"]=$row[4];
                 }
@@ -62,7 +65,7 @@
                     ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                 }else{
                     ?><script>alert("密碼有誤");location.href="usererror.php"</script><?php
-                    $login=query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
+                    $login=query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
                     session_unset();
                 }
             }

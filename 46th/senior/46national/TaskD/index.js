@@ -1,6 +1,6 @@
-newajax("GET","api.php?traintypelist=").onload=function(){
+oldajax("GET","api.php?traintypelist=").onload=function(){
     let traintypedata=JSON.parse(this.responseText)
-    newajax("GET","api.php?stationlist=").onload=function(){
+    oldajax("GET","api.php?stationlist=").onload=function(){
         let stationdata=JSON.parse(this.responseText)
         let stationinnerhtml=`<option value="all">所有</option>`
         let traintypeinnerhtml=`<option value="all">所有</option>`
@@ -30,7 +30,7 @@ newajax("GET","api.php?traintypelist=").onload=function(){
             docgetid("date")
         }
 
-        newajax("GET","api.php?trainlist=").onload=function(){
+        oldajax("GET","api.php?trainlist=").onload=function(){
             let data=JSON.parse(this.responseText)
             // data.filter(function(event){ return regexp(event.name) })
             let trainlist=data[0]

@@ -14,7 +14,7 @@ docgetid("submit").onclick=function(){
     data.append("file",file)
     data.append("extend",extendlist.join("|&|"))
 
-    let ajax=newajax("POST","api/newopinion.php",data)
+    let ajax=oldajax("POST","api/newopinion.php",data)
 
     ajax.onload=function(){
         let id=ajax.responseText

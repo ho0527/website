@@ -6,7 +6,7 @@ docgetid("useropinion").onclick=function(){
     docgetid("projectopinion").classList.add("statisticnoneselect")
     docgetid("projectfacing").classList.remove("statisticselect")
     docgetid("projectfacing").classList.add("statisticnoneselect")
-    newajax("GET","api.php?statistic=useropinion").onload=function(){
+    oldajax("GET","api.php?statistic=useropinion").onload=function(){
         let data=JSON.parse(this.responseText)
         let userlist=[]
         let time=[]
@@ -90,7 +90,7 @@ docgetid("projectopinion").onclick=function(){
     docgetid("useropinion").classList.add("statisticnoneselect")
     docgetid("projectfacing").classList.remove("statisticselect")
     docgetid("projectfacing").classList.add("statisticnoneselect")
-    newajax("GET","api.php?statistic=projectopinion").onload=function(){
+    oldajax("GET","api.php?statistic=projectopinion").onload=function(){
         let data=JSON.parse(this.responseText)
         let projetclist=[]
         let time=[]
@@ -151,7 +151,7 @@ docgetid("projectfacing").onclick=function(){
     docgetid("useropinion").classList.add("statisticnoneselect")
     docgetid("projectopinion").classList.remove("statisticselect")
     docgetid("projectopinion").classList.add("statisticnoneselect")
-    newajax("GET","api.php?statistic=projectfacing").onload=function(){
+    oldajax("GET","api.php?statistic=projectfacing").onload=function(){
         let data=JSON.parse(this.responseText)
 
         for(let i=0;i<data.length;i=i+1){

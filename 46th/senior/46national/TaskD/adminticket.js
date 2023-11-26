@@ -53,7 +53,7 @@ if(!weblsget("46nationalmoduleduserid")){
 if(!isset(weblsget("46nationalmoduledadminpage"))){ weblsset("46nationalmoduledadminpage",1) }
 
 setTimeout(function(){
-    newajax("GET","/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledadminpage")).onload=function(){
+    oldajax("GET","/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledadminpage")).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             maxpage=MAth.ceil(data["data"]["maxtotal"]/5)
@@ -70,7 +70,7 @@ docgetid("submit").onclick=function(){
         url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
     }
 
-    newajax("GET",url).onload=function(){
+    oldajax("GET",url).onload=function(){
         let data=JSON.parse(this.responseText)
         if(data["success"]){
             maxpage=Math.ceil(data["data"]["maxtotal"]/5)
@@ -92,7 +92,7 @@ docgetid("prev").onclick=function(){
             url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
-        newajax("GET",url).onload=function(){
+        oldajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
                 let row=data["data"]["data"]
@@ -115,7 +115,7 @@ docgetid("next").onclick=function(){
             url="/backend/46nationalmoduled/adminsearchticket?page="+weblsget("46nationalmoduledpage")+"key=code&value="+docgetid("code").value
         }
 
-        newajax("GET",url).onload=function(){
+        oldajax("GET",url).onload=function(){
             let data=JSON.parse(this.responseText)
             if(data["success"]){
                 let row=data["data"]["data"]

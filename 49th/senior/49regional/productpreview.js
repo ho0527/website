@@ -2,7 +2,7 @@ if(weblsget("49regionalproductid")==null){
     weblsset("49regionalproductid",1)
 }
 
-newajax("GET","api.php?product=&id="+weblsget("49regionalproductid")).onload=function(){
+oldajax("GET","api.php?product=&id="+weblsget("49regionalproductid")).onload=function(){
     let data=JSON.parse(this.responseText)
 
     if(data["success"]){
