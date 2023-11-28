@@ -8,8 +8,6 @@ questionrow:
 questionid,description,required,mod,option,showmultimoreresponse,ps
 */
 
-console.log(row)
-
 function checknull(data){
     if(data==null||data==undefined||data==""){ return true }
     else{ return false }

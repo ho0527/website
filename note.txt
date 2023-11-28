@@ -1,13 +1,11 @@
 46n/
     MD
     不加外掛怎麼做圖形驗證嗎
-    網址重寫
-
 
 50n/
     MA
-    youtube嵌入audio
-    媒體播放器製作
+    查詢
+    google媒體播放器
 
     MD
     回應值即回傳值(q)
@@ -28,12 +26,17 @@
     讓canva底色變成要求顏色
     shift-key直線繪製
 
-    MD
-    url問題
-
 
 self/
     查詢製作方式
 
 footer/
     lq=>底層的問題(非程式方面技術問題) q=>題目的問題
+
+
+import { FaUserLarge } from "react-icons/fa6" user
+import { FaEyeSlash } from "react-icons/fa6" passclose
+import { IoEyeSharp } from "react-icons/io5" passopen
+import { FiEdit } from "react-icons/fi" edit
+import { IoMdSearch } from "react-icons/io" search
+import { IoMdRefresh } from "react-icons/io" refrash
