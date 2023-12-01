@@ -415,3 +415,29 @@ function hintbox(endcallback=function(){},hintname=".hintdiv"){
     }
     main()
 }
+
+function login(navbar,center,footer){
+    return `
+        <div class="navigationbar">
+            <div class="navigationbarleft">
+                <img src="/material/icon/mainicon.png" class="logo">
+                <div class="maintitle">chrisjudge</div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="iconinputdiv">
+                <div class="iconinputtext">帳號:</div>
+                <input type="text" class="iconiinputinput input" id="username">
+                <div class="iconinputicon"><img src="path/"></div>
+            </div>
+            <div class="iconinputdiv">
+                <div class="iconinputtext">密碼:</div>
+                <input type="password" class="input" id="password">
+                <div class="iconinputicon"><img src="path/"></div>
+            </div>
+            <input type="button" class="button" id="signup" value="註冊">
+            <input type="button" class="button" id="submit" value="登入"><br>
+        </div>
+    `
+}
