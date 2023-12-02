@@ -43,50 +43,49 @@
                               include("admindef.php");
                               @$admin_data=$_SESSION["data"];
                               if(isset($_GET["logout"])){
-                                 $admin=query("SELECT*FROM `admin` WHERE `adminNumber`='$admin_data'");
-                                 $row=fetch($admin);
                                  if(isset($admin_data)){
-                                    query("UPDATE `data` SET `logouttime`='$time' WHERE `usernumber`='$admin_data' AND `logouttime`=''");
-                                    query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$admin_data','$row[1]','$row[2]','$row[3]','管理者','-','-','登出','$time')");
+                                    $row=query($db,"SELECT*FROM `admin` WHERE `adminnumber`='$admin_data'")[0];
+                                    query($db,"UPDATE `data` SET `logouttime`='$time' WHERE `usernumber`='$admin_data' AND `logouttime`=''");
+                                    query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$admin_data','$row[1]','$row[2]','$row[3]','管理者','-','-','登出','$time')");
                                     session_unset();
                                     ?><script>alert("登出成功!");location.href="index.php"</script><?php
                                  }else{
-                                    query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('null','','','','','','','登出','$time')");
+                                    query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('null','','','','','','','登出','$time')");
                                     session_unset();
                                     ?><script>alert("登出成功!");location.href="index.php"</script><?php
                                  }
                               }
                               if(isset($_GET["enter"])){
                                  $_SESSION["type"]=$_GET["search"];
-                                 header("location:adminWelcome.php");
+                                 header("location:admin.php");
                               }
                               if(isset($_SESSION["type"])){
                                  $type=$_SESSION["type"];
                                  if($type==""){
                                     unset($_SESSION["type"]);
-                                    header("location:adminWelcome.php");
+                                    header("location:admin.php");
                                  }else{
-                                    $data=query("SELECT*FROM `data` WHERE `usernumber`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `logintime`LIKE'%$type%' or `logouttime`LIKE'%$type%' or `move`LIKE'%$type%' or `movetime`LIKE'%$type%'");
+                                    $data=query($db,"SELECT*FROM `data` WHERE `usernumber`LIKE'%$type%' or `username`LIKE'%$type%' or `password`LIKE'%$type%' or `name`LIKE'%$type%' or `permission`LIKE'%$type%' or `logintime`LIKE'%$type%' or `logouttime`LIKE'%$type%' or `move`LIKE'%$type%' or `movetime`LIKE'%$type%'");
                                     issetgetupdown($data);
                                  }
                               }else{
-                                 $data=query("SELECT*FROM `data`");
+                                 $data=query($db,"SELECT*FROM `data`");
                                  issetgetupdown($data);
                               }
                               if(isset($_GET["del"])){
                                  $number=$_GET["del"];
-                                 $user=query("SELECT*FROM `user` WHERE `userNumber`='$number'");
-                                 $admin=query("SELECT*FROM `admin` WHERE `adminNumber`='$number'");
-                                 if($row=fetch($user)){
-                                    query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','管理員刪除','$time')");
-                                    query("DELETE FROM `user` WHERE `userNumber`='$number'");
-                                    ?><script>alert("刪除成功!");location.href="adminWelcome.php"</script><?php
-                                 }elseif($row=fetch($admin)){
-                                    query("INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','-','-','管理員刪除','$time')");
-                                    query("DELETE FROM `admin` WHERE `adminNumber`='$number'");
-                                    ?><script>alert("刪除成功!");location.href="adminWelcome.php"</script><?php
+                                 if($row=query($db,"SELECT*FROM `user` WHERE `userNumber`='$number'")){
+                                    $row=$row[0];
+                                    query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','管理員刪除','$time')");
+                                    query($db,"DELETE FROM `user` WHERE `userNumber`='$number'");
+                                    ?><script>alert("刪除成功!");location.href="admin.php"</script><?php
+                                 }elseif($row=query($db,"SELECT*FROM `admin` WHERE `adminnumber`='$number'")){
+                                    $row=$row[0];
+                                    query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','-','-','管理員刪除','$time')");
+                                    query($db,"DELETE FROM `admin` WHERE `adminnumber`='$number'");
+                                    ?><script>alert("刪除成功!");location.href="admin.php"</script><?php
                                  }else{
-                                    ?><script>alert("帳號已被刪除!");location.href="adminWelcome.php"</script><?php
+                                    ?><script>alert("帳號已被刪除!");location.href="admin.php"</script><?php
                                  }
                               }
                            ?>

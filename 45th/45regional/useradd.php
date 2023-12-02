@@ -6,13 +6,12 @@
         <link href="index.css" rel="Stylesheet">
     </head>
     <body>
-        <class class="useradd">
+        <div class="main">
             <?php
                 include("link.php");
                 if(isset($_SESSION["todoval"])){
                     $id=$_SESSION["todoval"];
-                    $todo=query("SELECT*FROM `todo` WHERE `id`='$id'");
-                    $row=fetch($todo);
+                    $row=query($db,"SELECT*FROM `todo` WHERE `id`='$id'")[0];
                     ?>
                     <form>
                         <div class="indextitle">工作修改</div>
@@ -138,14 +137,8 @@
                         <textarea rows="7" cols="25" placeholder="詳細敘述工作內容" name="detaile" id="detaile"><?= $row[7]; ?></textarea><br>
                         <input type="submit" id="cancel-but" name="cancel-but" class="button" value="取消">
                         <button tyep="submit" id="finish-but" name="finish-but" class="button" value="完成">完成</button>
-                        <input type="button" id="del-but" class="button" value="刪除"><br><br>
-                        <div id="confirm">
-                            確定刪除?
-                            <input type="submit" name="confirm-but" class="button" value="確定">
-                            <input type="button" name="no-but" class="button" value="取消" onclick="location.href='useradd.php'"><br>
-                        </div>
-                        <script src="todaydate.js"></script>
-                    </form><br>
+                        <input type="button" id="delbutton" class="button" value="刪除">
+                    </form>
                     <?php
                 }else{
                     ?>
@@ -200,8 +193,7 @@
                         <textarea rows="10" cols="25" placeholder="詳細敘述工作內容" name="detaile" id="detaile"></textarea><br>
                         <input type="submit" id="cancel-but" name="cancel-but" class="button" value="取消">
                         <button tyep="submit" id="finish-but" name="finish-but" class="button" value="完成">完成</button>
-                        <script src="todaydate.js"></script>
-                    </form><br><br>
+                    </form>
                     <?php
                 }
                 if(isset($_GET["finish-but"])){
@@ -216,7 +208,7 @@
                     $detail=$_GET["detaile"];
                     $start=($starthr.":".$startmin);
                     $end=($endhr.":".$endmin);
-                    $todo=fetch(query("SELECT*FROM `todo` WHERE `title`='$title'"));
+                    $todo=query($db,"SELECT*FROM `todo` WHERE `title`='$title'")[0];
                     if($starthr=="hr"||$startmin=="min"||$endhr=="hr"||$endmin=="min"||$title==""){
                         ?><script>alert("請填寫時間/標題");location.href="useradd.php"</script><?php
                     }elseif($start>=$end){
@@ -226,32 +218,32 @@
                             if($row&&$row[0]!=$_SESSION["todoval"]){
                                 ?><script>alert("工作表已存在");location.href="useradd.php"</script><?php
                             }else{
-                                query("UPDATE `todo` SET `title`='$title', `date`='$date', `start_time`='$start',`end_time`='$end', `deal`='$deal', `priority`='$priority', `detail`='$detail' WHERE `id`='$id'");
+                                query($db,"UPDATE `todo` SET `title`='$title', `date`='$date', `start_time`='$start',`end_time`='$end', `deal`='$deal', `priority`='$priority', `detail`='$detail' WHERE `id`='$id'");
                                 unset($id);
-                                ?><script>location.href="userWelcome.php"</script><?php
+                                ?><script>location.href="user.php"</script><?php
                             }
                         }else{
                             if($row){
                                 ?><script>alert("工作表已存在");location.href="useradd.php"</script><?php
                             }else{
-                                query("INSERT INTO `todo`(`title`, `date`, `start_time`, `end_time`, `deal`, `priority`, `detail`)
+                                query($db,"INSERT INTO `todo`(`title`, `date`, `start_time`, `end_time`, `deal`, `priority`, `detail`)
                                 VALUES('$title','$date','$start','$end','$deal','$priority','$detail')");
-                                ?><script>location.href="userWelcome.php"</script><?php
+                                ?><script>location.href="user.php"</script><?php
                             }
                         }
                     }
                 }
                 if(isset($_GET["cancel-but"])){
                     unset($id);
-                    ?><script>location.href="userWelcome.php"</script><?php
+                    ?><script>location.href="user.php"</script><?php
                 }
-                if(isset($_GET["confirm-but"])){
-                    query("DELETE FROM `todo` WHERE `id`='$id'");
+                if(isset($_GET["del"])){
+                    query($db,"DELETE FROM `todo` WHERE `id`='$id'");
                     unset($id);
-                    ?><script>location.href="userWelcome.php"</script><?php
+                    ?><script>location.href="user.php"</script><?php
                 }
             ?>
-        </class>
-        <script src="add.js"></script>
+        </div>
+        <script src="useradd.js"></script>
     </body>
 </html>

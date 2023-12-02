@@ -416,28 +416,77 @@ function hintbox(endcallback=function(){},hintname=".hintdiv"){
     main()
 }
 
-function login(navbar,center,footer){
-    return `
+function login(
+    submitfunction=function(){},
+    navbar=`
         <div class="navigationbar">
             <div class="navigationbarleft">
-                <img src="/material/icon/mainicon.png" class="logo">
-                <div class="maintitle">chrisjudge</div>
+                <img src="/website/material/icon/mainicon.png" class="logo" draggable="false">
+                <div class="maintitle">title</div>
+            </div>
+            <div class="navigationbarright">
             </div>
         </div>
-
-        <div class="main">
+    `,
+    center=`
+        <div class="main" id="loginmain">
             <div class="iconinputdiv">
                 <div class="iconinputtext">帳號:</div>
                 <input type="text" class="iconiinputinput input" id="username">
-                <div class="iconinputicon"><img src="path/"></div>
+                <div class="iconinputicondiv"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
             </div>
             <div class="iconinputdiv">
                 <div class="iconinputtext">密碼:</div>
-                <input type="password" class="input" id="password">
-                <div class="iconinputicon"><img src="path/"></div>
+                <input type="password" class="iconiinputinput input" id="password">
+                <div class="iconinputicondiv"><img src="/website/material/icon/eyeclose.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
             </div>
             <input type="button" class="button" id="signup" value="註冊">
             <input type="button" class="button" id="submit" value="登入"><br>
         </div>
+    `,
+    footer=``
+){
+    docgetall("body")[0].innerHTML=`
+        ${navbar}
+        ${center}
+        ${footer}
     `
+
+    docgetall(".iconinputdiv").forEach(function(event){
+        event.onclick=function(){
+            event.children[1].focus()
+        }
+    })
+
+    if(docgetid("passwordicon")){
+        if(weblsget("passwordshow")=="true"){
+            docgetid("passwordicon").src="/website/material/icon/eyeopen.svg"
+            docgetid("password").type="text"
+        }else{
+            docgetid("passwordicon").src="/website/material/icon/eyeclose.svg"
+            docgetid("password").type="password"
+        }
+
+        docgetid("passwordicon").onclick=function(){
+            if(weblsget("passwordshow")=="true"){
+                docgetid("passwordicon").src="/website/material/icon/eyeclose.svg"
+                docgetid("password").type="password"
+                weblsset("passwordshow","false")
+            }else{
+                docgetid("passwordicon").src="/website/material/icon/eyeopen.svg"
+                docgetid("password").type="text"
+                weblsset("passwordshow","true")
+            }
+        }
+    }
+
+    docgetid("submit").onclick=submitfunction
+}
+
+function smoothscroll(id){
+    if(document.getElementById(id)){
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" })
+    }else{
+        conlog("[ERROR]function smoothscroll id not found","red","12")
+    }
 }
