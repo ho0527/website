@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/09/27",
-            "updatedate": "2023/09/29",
+            "updatedate": "2023/12/04",
             "data": [
                 {
                     "title": "ModuleA-",
@@ -28,7 +28,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/09/27",
-                    "updatedate": "2023/09/29",
+                    "updatedate": "2023/12/04",
                     "data": [
                         {
                             "list": 1,
@@ -73,8 +73,8 @@
                                     "description": "04",
                                     "link": "modulec/4",
                                     "statu": "FAILED",
-                                    "createdate": "N/A",
-                                    "updatedate": "N/A",
+                                    "createdate": "2023/09/27",
+                                    "updatedate": "2023/12/04",
                                     "data": []
                                 }
                             ]

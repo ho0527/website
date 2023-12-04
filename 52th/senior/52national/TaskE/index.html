@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>模組E-學生資料管理系統</title>
+        <title>學生資料管理系統</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <header class="header" id="header">
@@ -12,6 +14,7 @@
                 <input type="text" class="search" name="search" placeholder="搜尋">
             </form>
         </header><br>
+
         <aside class="aside">
             <button class="addsut" id="addStudent">
                 <img src="icon/newstudents.png" class="icon">
@@ -33,10 +36,11 @@
             <button id="export_data">匯出資料</button>
             <button id="import_data">匯入資料</button>
         </aside>
-        <main class="main" id="main">
-        </main>
-        <div id="dialog">
-        </div>
+
+        <main class="main" id="main"></main>
+
+        <div id="dialog" class="lightboxmask"></div>
+
         <script src="index.js"></script>
     </body>
 </html>

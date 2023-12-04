@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/11/25",
+            "updatedate": "2023/12/04尛",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -241,7 +241,7 @@
                                     "no": "08",
                                     "description": "C08-HTML/CSS, JS - Tag-Control",
                                     "link": "TaskA/C08/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {

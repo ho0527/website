@@ -9,6 +9,7 @@ let stagelist=[
     [2500,210],
     [3000,180]
 ]
+let itemlist=["apple","banana","grape","peach","watermelon"]
 let mainarray=[]
 let timer
 let sec
@@ -27,6 +28,33 @@ mainarray:
 3=peach
 4=watermelon
 */
+
+// 檢查是否形成連線(感謝chatgpt)
+function isLineFormed(x, y, fruit) {
+    // Check horizontally
+    if (y >= 2 && mainarray[x][y - 1] === fruit && mainarray[x][y - 2] === fruit) {
+        return true;
+    }
+    if (y <= 5 && mainarray[x] && mainarray[x][y + 1] === fruit && mainarray[x][y + 2] === fruit) {
+        return true;
+    }
+    if (y >= 1 && y <= 6 && mainarray[x][y - 1] === fruit && mainarray[x] && mainarray[x][y + 1] === fruit) {
+        return true;
+    }
+
+    // Check vertically
+    if (x >= 2 && mainarray[x - 1] && mainarray[x - 1][y] === fruit && mainarray[x - 2][y] === fruit) {
+        return true;
+    }
+    if (x <= 5 && mainarray[x + 1] && mainarray[x + 1][y] === fruit && mainarray[x + 2] && mainarray[x + 2][y] === fruit) {
+        return true;
+    }
+    if (x >= 1 && x <= 6 && mainarray[x - 1] && mainarray[x - 1][y] === fruit && mainarray[x + 1] && mainarray[x + 1][y] === fruit) {
+        return true;
+    }
+
+    return false;
+}
 
 function nextstage(){
     docgetid("lightbox").style.transform="translateY(-100%)"
@@ -84,7 +112,7 @@ function move(key){
                 hasmove=true
             }
         }else{ conlog("[ERROR]function move key not exist","15","red") }
-        
+
         // 清除選擇方塊
         if(hasmove){
             select=false
@@ -94,11 +122,92 @@ function move(key){
         }
 
         // 連線判斷 START
-        score=score+100
-        totalscore=totalscore+100
-        docgetid("gamescore").innerHTML=`
-            ${score}
-        `
+        let linesFound=false;
+        let removedFruits=0;
+
+        // Check horizontal lines
+        for (let i=0; i < 8; i++) {
+            for (let j=0; j < 6; j++) {
+                if (mainarray[i][j] !== -1 && mainarray[i][j] === mainarray[i][j + 1] && mainarray[i][j] === mainarray[i][j + 2]) {
+                    let count=0;
+                    for (let k=j; k < 8 && mainarray[i][k] === mainarray[i][j]; k++) {
+                        count++;
+                    }
+                    if (count >= 3) {
+                        for (let k=j; k < j + count; k++) {
+                            mainarray[i][k]=-1; // Mark for removal
+                            removedFruits++;
+                        }
+                        linesFound=true;
+                        j += count - 1; // Skip checked fruits
+                    }
+                }
+            }
+        }
+
+        // Check vertical lines
+        for (let j=0; j < 8; j++) {
+            for (let i=0; i < 6; i++) {
+                if (mainarray[i][j] !== -1 && mainarray[i][j] === mainarray[i + 1][j] && mainarray[i][j] === mainarray[i + 2][j]) {
+                    let count=0;
+                    for (let k=i; k < 8 && mainarray[k][j] === mainarray[i][j]; k++) {
+                        count++;
+                    }
+                    if (count >= 3) {
+                        for (let k=i; k < i + count; k++) {
+                            mainarray[k][j]=-1; // Mark for removal
+                            removedFruits++;
+                        }
+                        linesFound=true;
+                        i += count - 1; // Skip checked fruits
+                    }
+                }
+            }
+        }
+
+        // Update the score and refill the board if lines were found
+        if (linesFound) {
+            score += removedFruits * 20; // 20 points for each removed fruit
+            totalscore=totalscore+removedFruits * 20
+            docgetid("gamescore").innerHTML=score;
+
+            // Refill the board
+            for (let i=0; i < 8; i++) {
+                for (let j=0; j < 8; j++) {
+                    if (mainarray[i][j] === -1) {
+                        let fruit;
+                        do {
+                            fruit=Math.floor(Math.random() * 5); // Assuming 5 different fruits
+                        } while (isLineFormed(i, j, fruit));
+                        mainarray[i][j]=fruit;
+                    }
+                }
+            }
+            for (let i=0; i < 8; i++) {
+                let boardHTML="";
+                for (let j=0; j < 8; j++) {
+                    let fruit=mainarray[i][j];
+                    let itemlist=["apple","banana","grape", "peach", "watermelon"];
+                    boardHTML += `
+                        <div class="item item${j + 1}" data-id="${i + "_" + j}">
+                            <img src="material/picture/fruit-${itemlist[fruit]}.png" alt="${itemlist[fruit]}" class="itemimage" draggable="false">
+                        </div>
+                    `;
+                }
+                docgetid("gameboard" + i).innerHTML=boardHTML;
+            }
+
+            docgetall(".item").forEach(function(event){
+                event.onclick=function(){
+                    docgetall(".item").forEach(function(event){
+                        event.style.border="none"
+                    })
+                    event.style.border="5px yellow solid"
+                    event.childNodes[1].style.width="95%" // 縮小該水果
+                    select=[parseInt(event.dataset.id.split("_")[0]),parseInt(event.dataset.id.split("_")[1])]
+                }
+            })
+        }
         // 連線判斷 END
 
         // 分數判斷 START
@@ -116,7 +225,7 @@ function move(key){
                     }
                 }
                 // 清空移動水果 END
-            
+
                 // 清空復原 START
                 document.onkeyup=function(event){
                     if(event.key=="ArrowUp"||event.key=="ArrowDown"||event.key=="ArrowLeft"||event.key=="ArrowRight"){
@@ -202,14 +311,18 @@ function game(){
     for(let i=0;i<8;i=i+1){
         mainarray[i]=[]
         for(let j=0;j<8;j=j+1){
-            let random=parseInt(Math.random()*5)
-            let itemlist=["apple","banana","grape","peach","watermelon"]
+            let fruit=Math.floor(Math.random()*5) // 隨機產生水果
 
-            mainarray[i].push(random)
+            while(isLineFormed(i,j,fruit)){
+                fruit=Math.floor(Math.random()*5)
+            }
+
+            mainarray[i][j]=fruit
+
             docgetid("gameboard"+i).innerHTML=`
                 ${docgetid("gameboard"+i).innerHTML}
                 <div class="item item${j+1}" data-id="${i+"_"+j}">
-                    <img src="material/picture/fruit-${itemlist[random]}.png" alt="${itemlist[random]}" class="itemimage" draggable="false">
+                    <img src="material/picture/fruit-${itemlist[fruit]}.png" alt="${itemlist[fruit]}" class="itemimage" draggable="false">
                 </div>
             `
         }

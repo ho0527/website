@@ -1,11 +1,3 @@
-function smoothscroll(id){
-    if(document.getElementById(id)){
-        document.getElementById(id).scrollIntoView({ behavior: "smooth" })
-    }else{
-        conlog("[ERROR]function smoothscroll id not found","red","12")
-    }
-}
-
 function showall(id){
     if(document.getElementById(id)){
         document.getElementById(id).style.display="block"

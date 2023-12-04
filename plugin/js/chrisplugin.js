@@ -22,6 +22,7 @@
     2023/08/09  18:27:14 Bata 1.0.16 // 修改lightbox函式新增clickcolse變數
     2023/09/14  16:57:12 Bata 1.0.17 // 更新startmacossection函式
     2023/11/20  18:01:04 Bata 1.0.18 // 新增hintbox函式
+    2023/12/04  14:23:29 Bata 1.0.19 // 新增tag函式
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -223,93 +224,83 @@ function ajax(method,url,onloadcallback,send=null,header=[["Content-type","multi
 function lightbox(clickelement,element,lightboxhtml,closelement=null,islightboxclosewithkeyesc=true,clickcolse="mask"){
     docgetid(element).classList.add("lightboxmask")
 
-    setTimeout(function(){
-        if(!isset(clickelement)){
-            docgetid(element).innerHTML=``
-            docgetid(element).style.display="block"
-            setTimeout(function(){
-                docgetid(element).style.transform="translateY(0)"
-            },10)
-            html=`
-                <div class="lightboxmain macossectiondiv">
-                    ${lightboxhtml()}
-                </div>
-            `
-            docgetid(element).innerHTML=html
-            if(closelement){
-                docgetid(closelement).onclick=function(){
-                    docgetid(element).style.transform="translateY(-100%)"
-
-                    setTimeout(function(){
-                        docgetid(element).style.display="none"
-                        docgetid(element).innerHTML=``
-                    },300)
-                }
-            }
-        }else{
-            docgetid(element).innerHTML=``
-            docgetall(clickelement).forEach(function(event){
-                event.onclick=function(){
-                    docgetid(element).style.display="block"
-                    setTimeout(function(){
-                        docgetid(element).style.transform="translateY(0)"
-                    },10)
-                    html=`
-                        <div class="lightboxmain macossectiondiv">
-                            `+lightboxhtml(event)+`
-                        </div>
-                    `
-                    docgetid(element).innerHTML=html
-                    if(closelement!=null){
-                        docgetid(closelement).onclick=function(){
-                            docgetid(element).style.transform="translateY(-100%)"
-                            setTimeout(function(){
-                                docgetid(element).style.display="none"
-                                docgetid(element).innerHTML=``
-                            },300)
-                        }
-                    }
-                }
-            })
-        }
-
-        if(islightboxclosewithkeyesc){
-            document.addEventListener("keydown",function(event){
-                if(event.key=="Escape"){
-                    event.preventDefault()
-                    docgetid(element).style.transform="translateY(-100%)"
-                    setTimeout(function() {
-                        docgetid(element).style.display="none"
-                        docgetid(element).innerHTML=``
-                    },300)
-                }
-            })
-        }
-
-        if(clickcolse=="body"){
-            document.onclick=function(){
+    if(!isset(clickelement)){
+        docgetid(element).innerHTML=``
+        setTimeout(function(){
+            docgetid(element).style.transform="translateY(0)"
+        },300)
+        docgetid(element).innerHTML=`
+            <div class="lightboxmain macossectiondiv">
+                ${lightboxhtml()}
+            </div>
+        `
+        if(closelement){
+            docgetid(closelement).onclick=function(){
                 docgetid(element).style.transform="translateY(-100%)"
+
                 setTimeout(function(){
-                    docgetid(element).style.display="none"
                     docgetid(element).innerHTML=``
                 },300)
             }
-        }else if(clickcolse=="mask"){
-            docgetid(element).onclick=function(event){
-                if(event.target==docgetid(element)){
-                    docgetid(element).style.transform="translateY(-100%)"
-                    setTimeout(function(){
-                        docgetid(element).style.display="none"
-                        docgetid(element).innerHTML=``
-                    },300)
+        }
+    }else{
+        docgetid(element).innerHTML=``
+        docgetall(clickelement).forEach(function(event){
+            event.onclick=function(){
+                docgetid(element).style.display="block"
+                setTimeout(function(){
+                    docgetid(element).style.transform="translateY(0)"
+                },300)
+                docgetid(element).innerHTML=`
+                    <div class="lightboxmain macossectiondiv">
+                        `+lightboxhtml(event)+`
+                    </div>
+                `
+                if(closelement!=null){
+                    docgetid(closelement).onclick=function(){
+                        docgetid(element).style.transform="translateY(-100%)"
+                        setTimeout(function(){
+                            docgetid(element).innerHTML=``
+                        },300)
+                    }
                 }
             }
-        }else if(clickcolse=="none"){
-        }else{
-            console.log("lightbox clickcolse變數 錯誤")
-            return "lightbox clickcolse變數 錯誤"
+        })
+    }
+
+    if(islightboxclosewithkeyesc){
+        document.addEventListener("keydown",function(event){
+            if(event.key=="Escape"){
+                event.preventDefault()
+                docgetid(element).style.transform="translateY(-100%)"
+                setTimeout(function(){
+                    docgetid(element).innerHTML=``
+                },300)
+            }
+        })
+    }
+
+    if(clickcolse=="body"){
+        document.onclick=function(){
+            docgetid(element).style.transform="translateY(-100%)"
+            setTimeout(function(){
+                docgetid(element).innerHTML=``
+            },300)
         }
-    },70)
+    }else if(clickcolse=="mask"){
+        docgetid(element).onclick=function(event){
+            if(event.target==docgetid(element)){
+                docgetid(element).style.transform="translateY(-100%)"
+                setTimeout(function(){
+                    docgetid(element).innerHTML=``
+                },300)
+            }
+        }
+    }else if(clickcolse=="none"){
+    }else{
+        console.log("lightbox clickcolse變數 錯誤")
+        return "lightbox clickcolse變數 錯誤"
+    }
 }
 
 function docappendchild(element,chlidelement){
@@ -488,5 +479,149 @@ function smoothscroll(id){
         document.getElementById(id).scrollIntoView({ behavior: "smooth" })
     }else{
         conlog("[ERROR]function smoothscroll id not found","red","12")
+    }
+}
+
+function closelightbox(){
+    docgetall(".lightboxmask")[0].style.transform="translateY(-100%)"
+
+    setTimeout(function(){
+        docgetall(".lightboxmask")[0].innerHTML=``
+    },300)
+}
+
+function tag(tagdiv,taglist){
+    let tagset=new Set()
+
+    function updatetaglist(){
+        docgetid("taglist").innerHTML=``
+        for(let i=0;i<taglist.length;i=i+1){
+            docgetid("taglist").innerHTML=`
+                ${docgetid("taglist").innerHTML}
+                <div class="tag" data-name="${taglist[i]["name"]}" style="background: ${taglist[i]["color"]}">
+                    ${taglist[i]["name"]}
+                </div>
+            `
+        }
+
+        // 觸發點擊事件
+        docgetall("#taglist>.tag").forEach(function(event){
+            event.onclick=function(){
+                selecttag(event.dataset.name)
+            }
+        })
+    }
+
+    function selecttag(tagname){
+        if(!tagset.has(tagname)){
+            let color
+
+            tagset.add(tagname)
+
+            for(let i=0;i<taglist.length;i=i+1){
+                if(taglist[i]["name"]==tagname){
+                    color=taglist[i]["color"]
+                    break
+                }
+            }
+
+            docgetid("selecttag").innerHTML=`
+                ${docgetid("selecttag").innerHTML}
+                <div class="tag" data-name="${tagname}" style="background: ${color}">
+                    ${tagname}
+                    <div class="tagdelete">X</div>
+                </div>
+            `
+
+            // 觸發點擊事件
+            docgetall("#selecttag>.tag").forEach(function(event){
+                event.querySelector(".tagdelete").onclick=function(){
+                    tagset.delete(event.dataset.name)
+                    event.remove()
+                    updatetaglist()
+                    filtertags()
+                    docgetid("taglist").style.display="block"
+                }
+            })
+
+            docgetid("taginput").value=""
+            docgetid("taglist").style.display="block"
+        }
+    }
+
+    function filtertags(){
+        let value=docgetid("taginput").value.toLowerCase()
+
+        docgetid("taglist").style.display="block"
+
+        for(let i=0;i<taglist.length;i=i+1){
+            let tagElement=docgetid("taglist").querySelector(`.tag:nth-child(${taglist[i]["id"]})`)
+            if(taglist[i]["name"].toLowerCase().includes(value)){
+                tagElement.style.display="block"
+            }else{
+                tagElement.style.display="none"
+            }
+        }
+    }
+
+    docgetid("tagdiv").classList.add("tagdiv")
+
+    docgetid(tagdiv).innerHTML=`
+        <div class="tagcontrol">
+            <div class="tagwrapper">
+                <div class="selecttag" id="selecttag"></div>
+                <input type="text" class="taginput" id="taginput" placeholder="Add a tag...">
+            </div>
+        </div>
+        <div class="taglist" id="taglist"></div>
+    `
+
+    updatetaglist()
+
+    docgetid("taginput").oninput=filtertags
+
+    docgetid("taginput").onkeydown=function(event){
+        if(event.key=="Enter"){
+            let value=event.target.value.trim()
+            if(value&&!tagset.has(value)){
+                // 查看是否有資料
+                if(!taglist.find(function(tag){ tag.name.toLowerCase()==value.toLowerCase() })){
+                    // 新增tag
+                    taglist.push({ id: taglist.length+1,name: value,color: "" })
+                    updatetaglist()
+                    selecttag(value)
+                }else{
+                    selecttag(value)
+                }
+            }
+            event.target.value=""
+        }else if(event.key=="Backspace"&&event.target.value==""){
+            let selectedtagsDiv=docgetid("selected-taglist")
+            let lasttag=selectedtagsDiv.lastChild
+            if(lasttag){
+                tagset.delete(lasttag.textContent)
+                selectedtagsDiv.removeChild(lasttag)
+            }
+        }
+    }
+
+    docgetid("taginput").onfocus=function(){
+        docgetid("taglist").style.display="block"
+        filtertags() // 確保在顯示時更新標籤列表
+    }
+
+    document.onclick=function(event){
+        if(event.target.id!="taginput"&&event.target.id!="taglist"){
+            docgetid("taglist").style.display="none"
+        }
+    }
+
+    divsort("tag","#selecttag")
+}
+
+window.onload=function(){
+    console.log(docgetid("lightbox"))
+    if(docgetid("lightbox")){
+        docgetid("lightbox").classList.add("lightboxmask")
     }
 }

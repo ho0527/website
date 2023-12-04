@@ -91,7 +91,7 @@ table{
 #########################################
 */
 .div{
-    position: absolute;/* 絕對定位 */
+    position: relative;/* 絕對定位 */
     top: 0px;/* 定位 */
     left: 0px;
     bottom: 0px;
@@ -100,15 +100,6 @@ table{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.mask{
-    position: absolute;/* 絕對定位 */
-    top: 0px;/* 定位 */
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    background-color: rgba(100, 100, 100, 0.25);/* 背景顏色 */
 }
 
 .close{
@@ -223,19 +214,9 @@ table{
 }
 
 .addclassbody{
-    position: absolute;/* 絕對定位 */
-    left: 50%;/* 定位 */
-    top: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;/* 文字置中 */
-    width: 525px;/* 寬度 */
-    height: 300px;/* 高度 */
-    padding: 10px;
+    width: 525px;
+    height: 300px;
     font-size: 20px;
-    border: 1px blue solid;/* 邊框 */
-    background-color: rgba(100, 100, 100, 0.5);/* 背景顏色 */
-    border-radius: 15px;/* 圓弧邊框 */
-    /* display: block; */
 }
 
 .addclass{
