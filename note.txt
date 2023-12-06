@@ -71,3 +71,33 @@ function add(num1,num2){
 
 console.log(add(5,7)) // 輸出 12
 對吧
+
+
+
+當然可以！凱薩密碼是一種古老的加密方法，其中字母會根據固定數目進行偏移。暴力破解凱薩密碼的基本思路是嘗試所有可能的偏移量，然後查看哪一個結果是有意義的文本。以下是一段JavaScript程式碼，用於暴力破解凱薩密碼：
+
+javascript
+Copy code
+function decryptCaesarCipher(str){
+    for(let shift=1;shift<26;shift++){
+        let decrypted=""
+        for(let i=0;i<str.length;i++){
+            let char=str[i]
+            if(char.match(/[a-z]/i)){
+                let code=str.charCodeAt(i)
+                let lower=char == char.toLowerCase()
+                code = lower ? ((code - 97 + shift) % 26) + 97 : ((code - 65 + shift) % 26) + 65
+                decrypted += String.fromCharCode(code)
+            }else{
+                decrypted += char
+            }
+        }
+        console.log("偏移量 " + shift + "： " + decrypted)
+    }
+}
+
+let encryptedText="bqqmft"
+decryptCaesarCipher(encryptedText)
+這個程式碼中，decryptCaesarCipher 函數接收一個被凱薩密碼加密的字串。它對每個可能的偏移量進行迭代，對每個字母進行偏移，並打印出解密結果。這個程式碼假設文本只包含英文字母，並且保留了大小寫。
+
+執行這個函數會顯示所有可能的解密結果，您可以從中檢查哪個是正確的解密文本。這段程式碼遵循了您提供的編程樣式規範。🔍🔓
