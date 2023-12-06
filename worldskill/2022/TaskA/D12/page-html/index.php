@@ -19,7 +19,6 @@
                                 <div class="card-header py-3">
                                     <span class="h6 fw-bold"><?php echo($data[$i]["title"]); ?></span>
                                 </div>
-                                <!-- <div id="gif<?php echo($i) ?>" data-id=""></div> -->
                                 <img src="../previews/<?php echo($data[$i]["preview"]); ?>.gif" alt="preview media here" class="card-img rounded-0">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
@@ -36,5 +35,6 @@
                 ?>
             </div>
         </div>
+        <script src="index.js"></script>
     </body>
 </html>
