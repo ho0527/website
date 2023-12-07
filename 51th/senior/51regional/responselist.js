@@ -1,5 +1,5 @@
-oldajax("GET","api.php?getresponselist=").onload=function(){
-    let data=JSON.parse(this.responseText)
+ajax("GET","api.php?getresponselist=",function(event){
+    let data=JSON.parse(event.responseText)
 
     docgetid("responselist").innerHTML=`
         <div class="responselist grid">
@@ -50,4 +50,4 @@ oldajax("GET","api.php?getresponselist=").onload=function(){
     }else{
         alert(data["data"])
     }
-}
+})
