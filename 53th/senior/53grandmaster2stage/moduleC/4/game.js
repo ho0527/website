@@ -30,37 +30,31 @@ mainarray:
 */
 
 // 檢查是否形成連線(感謝chatgpt)
-function isLineFormed(x, y, fruit) {
+function isLineFormed(x,y,fruit){
     // Check horizontally
-    if (y >= 2 && mainarray[x][y - 1] === fruit && mainarray[x][y - 2] === fruit) {
-        return true;
+    if(y>=2&&mainarray[x][y-1]==fruit&&mainarray[x][y-2]==fruit){
+        return true
+    }else if(y<=5&&mainarray[x]&&mainarray[x][y+1]==fruit&&mainarray[x][y+2]==fruit){
+        return true
+    }else if(y>=1&&y<=6&&mainarray[x][y-1]==fruit&&mainarray[x]&&mainarray[x][y+1]==fruit){
+        return true
     }
-    if (y <= 5 && mainarray[x] && mainarray[x][y + 1] === fruit && mainarray[x][y + 2] === fruit) {
-        return true;
-    }
-    if (y >= 1 && y <= 6 && mainarray[x][y - 1] === fruit && mainarray[x] && mainarray[x][y + 1] === fruit) {
-        return true;
-    }
-
     // Check vertically
-    if (x >= 2 && mainarray[x - 1] && mainarray[x - 1][y] === fruit && mainarray[x - 2][y] === fruit) {
-        return true;
+    else if(x>=2&&mainarray[x-1]&&mainarray[x-1][y]==fruit&&mainarray[x-2][y]==fruit){
+        return true
+    }else if(x<=5&&mainarray[x+1]&&mainarray[x+1][y]==fruit&&mainarray[x+2]&&mainarray[x+2][y]==fruit){
+        return true
+    }else if(x>=1&&x<=6&&mainarray[x-1]&&mainarray[x-1][y]==fruit&&mainarray[x+1]&&mainarray[x+1][y]==fruit){
+        return true
+    }else{
+        return false
     }
-    if (x <= 5 && mainarray[x + 1] && mainarray[x + 1][y] === fruit && mainarray[x + 2] && mainarray[x + 2][y] === fruit) {
-        return true;
-    }
-    if (x >= 1 && x <= 6 && mainarray[x - 1] && mainarray[x - 1][y] === fruit && mainarray[x + 1] && mainarray[x + 1][y] === fruit) {
-        return true;
-    }
-
-    return false;
 }
 
 function nextstage(){
     docgetid("lightbox").style.transform="translateY(-100%)"
 
     setTimeout(function(){
-        docgetid("lightbox").style.display="none"
         docgetid("lightbox").innerHTML=``
     },300)
 
@@ -122,79 +116,78 @@ function move(key){
         }
 
         // 連線判斷 START
-        let linesFound=false;
-        let removedFruits=0;
+        let check=false
+        let removedfruit=0
 
         // Check horizontal lines
-        for (let i=0; i < 8; i++) {
-            for (let j=0; j < 6; j++) {
-                if (mainarray[i][j] !== -1 && mainarray[i][j] === mainarray[i][j + 1] && mainarray[i][j] === mainarray[i][j + 2]) {
-                    let count=0;
-                    for (let k=j; k < 8 && mainarray[i][k] === mainarray[i][j]; k++) {
-                        count++;
+        for(let i=0;i<8;i=i+1){
+            for(let j=0;j<6;j=j+1){
+                if(mainarray[i][j]!=-1&&mainarray[i][j]==mainarray[i][j+1]&&mainarray[i][j]==mainarray[i][j+2]){
+                    let count=0
+                    for(let k=j;k<8&&mainarray[i][k]==mainarray[i][j];k=k+1){
+                        count=count+1
                     }
-                    if (count >= 3) {
-                        for (let k=j; k < j + count; k++) {
-                            mainarray[i][k]=-1; // Mark for removal
-                            removedFruits++;
+                    if(count>=3){
+                        for(let k=j;k<j+count;k=k+1){
+                            mainarray[i][k]=-1
+                            removedfruit=removedfruit+1
                         }
-                        linesFound=true;
-                        j += count - 1; // Skip checked fruits
+                        check=true
+                        j=j+count-1
                     }
                 }
             }
         }
 
-        // Check vertical lines
-        for (let j=0; j < 8; j++) {
-            for (let i=0; i < 6; i++) {
-                if (mainarray[i][j] !== -1 && mainarray[i][j] === mainarray[i + 1][j] && mainarray[i][j] === mainarray[i + 2][j]) {
-                    let count=0;
-                    for (let k=i; k < 8 && mainarray[k][j] === mainarray[i][j]; k++) {
-                        count++;
+        for(let i=0;i<8;i=i+1){
+            for(let j=0;j<6;j=j+1){
+                if(mainarray[j][i]!=-1&&mainarray[j][i]==mainarray[j+1][i]&&mainarray[j][i]==mainarray[j+2][i]){
+                    let count=0
+                    for(let k=j;k<8&&mainarray[k][i]==mainarray[j][i];k=k+1){
+                        count=count+1
                     }
-                    if (count >= 3) {
-                        for (let k=i; k < i + count; k++) {
-                            mainarray[k][j]=-1; // Mark for removal
-                            removedFruits++;
+                    if(count>=3){
+                        for(let k=j;k<j+count;k=k+1){
+                            mainarray[k][i]=-1
+                            removedfruit=removedfruit+1
                         }
-                        linesFound=true;
-                        i += count - 1; // Skip checked fruits
+                        check=true
+                        j=j+count-1
                     }
                 }
             }
         }
 
         // Update the score and refill the board if lines were found
-        if (linesFound) {
-            score += removedFruits * 20; // 20 points for each removed fruit
-            totalscore=totalscore+removedFruits * 20
+        if(check){
+            score=score+removedfruit*20;
+            totalscore=totalscore+removedfruit * 20
             docgetid("gamescore").innerHTML=score;
 
             // Refill the board
-            for (let i=0; i < 8; i++) {
-                for (let j=0; j < 8; j++) {
-                    if (mainarray[i][j] === -1) {
-                        let fruit;
-                        do {
-                            fruit=Math.floor(Math.random() * 5); // Assuming 5 different fruits
-                        } while (isLineFormed(i, j, fruit));
-                        mainarray[i][j]=fruit;
+            for(let i=0;i<8;i=i+1){
+                for(let j=0;j<8;j=j+1){
+                    if(mainarray[i][j]==-1){
+                        let fruit=Math.floor(Math.random()*5)
+                        while(isLineFormed(i,j,fruit)){
+                            fruit=Math.floor(Math.random()*5)
+                        }
+                        mainarray[i][j]=fruit
                     }
                 }
             }
-            for (let i=0; i < 8; i++) {
-                let boardHTML="";
-                for (let j=0; j < 8; j++) {
-                    let fruit=mainarray[i][j];
-                    let itemlist=["apple","banana","grape", "peach", "watermelon"];
-                    boardHTML += `
-                        <div class="item item${j + 1}" data-id="${i + "_" + j}">
+            for(let i=0;i<8;i=i+1){
+                docgetid("gameboard"+i).innerHTML=``
+                for(let j=0;j<8;j=j+1){
+                    let fruit=mainarray[i][j]
+
+                    docgetid("gameboard"+i).innerHTML=`
+                        ${docgetid("gameboard"+i).innerHTML}
+                        <div class="item item${j+1}" data-id="${i+"_"+j}">
                             <img src="material/picture/fruit-${itemlist[fruit]}.png" alt="${itemlist[fruit]}" class="itemimage" draggable="false">
                         </div>
-                    `;
+                    `
                 }
-                docgetid("gameboard" + i).innerHTML=boardHTML;
             }
 
             docgetall(".item").forEach(function(event){
@@ -213,8 +206,8 @@ function move(key){
         // 分數判斷 START
         if(score>=stagelist[stage-1][0]){
             if(stage==5){
-                // end()
-                result=true
+                success=true
+                end()
             }else{
                 clearInterval(timer)
                 // 清空移動水果 START
@@ -289,11 +282,7 @@ function game(){
 
         sec=sec-1
 
-        // 遊戲結束判斷
-        if(min==0&&sec==0){
-            // game end
-            // end()
-        }
+        if(min==0&&sec==0){ end() }
 
         docgetid("timer").innerHTML=`${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`
     },1000)
@@ -390,5 +379,3 @@ function game(){
 
     nickname=weblsget("53grandmaster2stagemodulecnickname")
 }
-
-game()

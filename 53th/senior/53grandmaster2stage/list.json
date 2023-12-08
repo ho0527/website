@@ -72,9 +72,9 @@
                                     "no": "04",
                                     "description": "04",
                                     "link": "modulec/4",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "createdate": "2023/09/27",
-                                    "updatedate": "2023/12/04",
+                                    "updatedate": "2023/12/08",
                                     "data": []
                                 }
                             ]

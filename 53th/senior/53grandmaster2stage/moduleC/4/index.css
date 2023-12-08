@@ -425,3 +425,38 @@ table{
     cursor: pointer;
     transition: 0.05s linear;
 }
+
+.gameendimage{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.endnickname{
+    position: absolute;
+    top: 535px;
+    left: 50%;
+    font-size: 40px;
+}
+
+.endscore{
+    position: absolute;
+    top: 600px;
+    left: 50%;
+    font-size: 40px;
+}
+
+.endtime{
+    position: absolute;
+    top: 665px;
+    left: 50%;
+    font-size: 40px;
+}
+
+.restartbutton{
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+}

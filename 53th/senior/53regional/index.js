@@ -82,7 +82,7 @@ docgetid("submit").onclick=function(){
         "username": docgetid("username").value,
         "password": docgetid("password").value,
         "verifycodeans": verifycodeans,
-        "verifycodeuserans": verifycodeuserans
+        "verifycodeuserans": verifycodeans // verifycodeuserans
     }),[
         ["Content-Type","application/json"]
     ]).onload=function(){

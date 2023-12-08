@@ -620,7 +620,6 @@ function tag(tagdiv,taglist){
 }
 
 window.onload=function(){
-    console.log(docgetid("lightbox"))
     if(docgetid("lightbox")){
         docgetid("lightbox").classList.add("lightboxmask")
     }
