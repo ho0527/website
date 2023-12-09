@@ -41,4 +41,39 @@
             ?><script>alert("查無回應");location.href="responselist.html"</script><?php
         }
     }
+
+    if(isset($_GET["getquestion"])){
+        $maxlen=(int)$_GET["maxlen"];
+        $page=(int)$_GET["page"];
+        $data=[];
+        $dataoffset=[];
+
+        $row=query($db,"SELECT*FROM `question` WHERE `id`=?",[$_GET["id"]]);
+        $question=json_decode($row[0][7]);
+        for($i=0;$i<count($question);$i=$i+1){
+            if($question[$i][3]&&$question[$i][3]!="none"){
+                $data[]=$question[$i];
+            }
+        }
+
+        if($maxlen!=-1){
+            $offset=(int)$page*(int)$maxlen;
+            for($i=$offset;$i<min(count($data),$maxlen+$offset);$i=$i+1){
+                $dataoffset[]=$data[$i];
+            }
+        }
+
+        if($row){
+            echo(json_encode([
+                "success"=>true,
+                "data"=>$dataoffset,
+                "maxpage"=>ceil(count($data)/$maxlen)
+            ]));
+        }else{
+            echo(json_encode([
+                "success"=>false,
+                "data"=>"查無資料"
+            ]));
+        }
+    }
 ?>

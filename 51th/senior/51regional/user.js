@@ -2,6 +2,9 @@ let id=row[0]
 let insertdata=[]
 let questionrownotnone=[]
 let maxlen=row[3]
+let page=0
+let maxpage
+console.log("maxlen="+maxlen)
 
 /*
 questionrow:
@@ -140,92 +143,97 @@ function save(){
 }
 
 function main(){
-    count=0
-    docgetid("maindiv").innerHTML=``
+    ajax("GET","api.php?getquestion=&id="+id+"&page="+page+"&maxlen="+maxlen,function(event){
+        let data=JSON.parse(event.responseText)
 
-    for(let i=0;i<questionrow.length;i=i+1){
-        if(questionrow[i][3]&&questionrow[i][3]!="none"){
-            questionrownotnone.push(questionrow[i])
-        }
-    }
+        if(data["success"]){
+            let row=data["data"]
 
-    console.log(questionrownotnone)
-
-    // 輸出每一個題目 START
-    for(let i=0;i<questionrownotnone.length;i=i+1){
-        let option=questionrownotnone[i][4].split("|&|")
-        let output=""
-        let required=""
-        let modname
+            count=0
+            maxpage=data["maxpage"]
+            console.log("maxpage="+maxpage)
+            docgetid("maindiv").innerHTML=``
         
-        if(questionrownotnone[i][2]==true){
-            required="<div class='required'>必填*</div>"
-        }
-
-        output=output+"題目說明: "+questionrownotnone[i][1]+"<br>"
-
-        if(questionrownotnone[i][3]=="yesno"){
-            output=`
-                ${output}
-                <label class="label" for="${i}yes">是</label>
-                <input type="radio" class="yesno radio" id="${i}yes" name="yesno" value="yes">
-                <label class="label" for="${i}no">否</label>
-                <input type="radio" class="radio" id="${i}no" name="yesno" value="no">
-            `
-            modname="是非題"
-        }else if(questionrownotnone[i][3]=="single"){
-            for(let j=0;j<6;j=j+1){
-                if(!checknull(option[j])){
+            // 輸出每一個題目 START
+            for(let i=0;i<row.length;i=i+1){
+                let option=row[i][4].split("|&|")
+                let output=""
+                let required=""
+                let modname
+                
+                if(row[i][2]==true){
+                    required="<div class='required'>必填*</div>"
+                }
+        
+                output=output+"題目說明: "+row[i][1]+"<br>"
+        
+                if(row[i][3]=="yesno"){
                     output=`
                         ${output}
-                        <label class="label" for="${i+"option"+j}">${option[j]}</label>
-                        <input type="radio" class="radio option${i}" id="${i+"option"+j}" name="single${i}" value="${option[j]}">
+                        <label class="label" for="${i}yes">是</label>
+                        <input type="radio" class="yesno radio" id="${i}yes" name="yesno" value="yes">
+                        <label class="label" for="${i}no">否</label>
+                        <input type="radio" class="radio" id="${i}no" name="yesno" value="no">
                     `
-                }
-            }
-            modname="單選題"
-        }else if(questionrownotnone[i][3]=="multi"){
-            for(let j=0;j<6;j=j+1){
-                if(!checknull(option[j])){
+                    modname="是非題"
+                }else if(row[i][3]=="single"){
+                    for(let j=0;j<6;j=j+1){
+                        if(!checknull(option[j])){
+                            output=`
+                                ${output}
+                                <label class="label" for="${i+"option"+j}">${option[j]}</label>
+                                <input type="radio" class="radio option${i}" id="${i+"option"+j}" name="single${i}" value="${option[j]}">
+                            `
+                        }
+                    }
+                    modname="單選題"
+                }else if(row[i][3]=="multi"){
+                    for(let j=0;j<6;j=j+1){
+                        if(!checknull(option[j])){
+                            output=`
+                                ${output}
+                                <label class="label" for="${i+"option"+j}">${option[j]}</label>
+                                <input type="checkbox" class="checkbox option${i}" id="${i+"option"+j}" value="${option[j]}">
+                            `
+                        }
+                    }
+                    if(row[i][5]==true){
+                        output=`
+                            ${output}<br>
+                            其他: <input type='text' class="forminputtext" id="multimoreresponse${i}" name="multiauther"+i+"">
+                        `
+                    }
+                    modname="多選題"
+                }else if(row[i][3]=="qa"){
                     output=`
                         ${output}
-                        <label class="label" for="${i+"option"+j}">${option[j]}</label>
-                        <input type="checkbox" class="checkbox option${i}" id="${i+"option"+j}" value="${option[j]}">
+                        <textarea cols="30" rows="5" class="question" id="qa${i}" placeholder="問答題"></textarea>
                     `
-                }
-            }
-            if(questionrownotnone[i][5]==true){
-                output=`
-                    ${output}<br>
-                    其他: <input type='text' class="forminputtext" id="multimoreresponse${i}" name="multiauther"+i+"">
+                    modname="問答題"
+                }else{ sql001();location.href="admin.php" }
+        
+                docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
+                    <div class="questionmain grid" id="${i}">
+                        <div class="order">
+                            ${required}
+                            <div class="count" id="count${i}">${row[i][0]}</div>
+                        </div>
+                        <div class="newform">
+                            ${modname}
+                        </div>
+                        <div class="output">
+                            <div class="questiondiv" id="output${i}">
+                                ${output}
+                            </div>
+                        </div>
+                    </div>
                 `
             }
-            modname="多選題"
-        }else if(questionrownotnone[i][3]=="qa"){
-            output=`
-                ${output}
-                <textarea cols="30" rows="5" class="question" id="qa${i}" placeholder="問答題"></textarea>
-            `
-            modname="問答題"
-        }else{ sql001();location.href="admin.php" }
-
-        docgetid("maindiv").innerHTML=docgetid("maindiv").innerHTML+`
-            <div class="questionmain grid" id="${i}">
-                <div class="order">
-                    ${required}
-                    <div class="count" id="count${i}">${questionrownotnone[i][0]}</div>
-                </div>
-                <div class="newform">
-                    ${modname}
-                </div>
-                <div class="output">
-                    <div class="questiondiv" id="output${i}">
-                        ${output}
-                    </div>
-                </div>
-            </div>
-        `
-    }
+        }else{
+            alert(data["data"])
+            location.href="admin.php"
+        }
+    })
     // 輸出每一個題目 END
 }
 
@@ -235,6 +243,26 @@ docgetid("title").value=row[1]
 if(userkey=="true"){
     main()
     docgetid("count").value=count
+}
+
+docgetid("prev").onclick=function(){
+    if(0<page){
+        page=page-1
+        docgetid("progress").style.width=parseInt((page/maxpage)*100)+"%"
+        docgetid("progresstext").innerHTML=`${parseInt((page/maxpage)*100)}/100%`
+        tempsave()
+        main()
+    }
+}
+
+docgetid("next").onclick=function(){
+    if(page+1<maxpage){
+        page=page+1
+        docgetid("progress").style.width=parseInt((page/maxpage)*100)+"%"
+        docgetid("progresstext").innerHTML=`${parseInt((page/maxpage)*100)}/100%`
+        tempsave()
+        main()
+    }
 }
 
 document.onkeydown=function(event){

@@ -94,6 +94,8 @@
                 $row=query($db,"SELECT*FROM `question` WHERE `title`=?",[$title])[0];
                 if($title==""){
                     ?><script>alert("[WARNING]請輸入問卷標題");location.href="admin.php"</script><?php
+                }if($pagelen=="0"){
+                    ?><script>alert("[WARNING]分頁數不得為0");location.href="admin.php"</script><?php
                 }elseif($row){
                     ?><script>alert("[WARNING]問卷已存在");location.href="admin.php"</script><?php
                 }elseif(preg_match("/^[0-9]+$/",$count)&&preg_match("/^[0-9]+$/",$pagelen)){
@@ -168,7 +170,7 @@
                     $id=$_GET["id"];
                     $_SESSION["id"]=$id;
                     query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','查看問卷填寫結果','$time','qid=$id')");
-                    ?><script>location.href="responelist.html"</script><?php
+                    ?><script>location.href="responselist.html"</script><?php
                 }elseif($mod=="result"){
                     // $id=$_GET["id"];
                     // $_SESSION["id"]=$id;

@@ -693,9 +693,9 @@ table{
 
 .macosmaindiv{
     position: absolute;
-    top: 120px;
+    top: 150px;
     width: 100%;
-    height: 85%;
+    height: 80%;
 }
 
 .formtdtitle{
@@ -883,4 +883,43 @@ table{
 .questionmain{
     height: 20vh;
     margin: 15px 0px;
+}
+
+.progressdiv{
+    position: relative;
+    top: 100px;
+    width: 100%;
+    height: 30px;
+    background: rgb(40, 40, 40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progressbutton{
+    width: 5%;
+    margin: 0px 5px;
+}
+
+.progressbar{
+    width: 90%;
+}
+
+.progress{
+    position: relative;
+    top: 10px;
+    width: 0%;
+    height: 30px;
+    background: rgb(77, 77, 197);
+    transition: 1s linear;
+}
+
+.progresstext{
+    position: relative;
+    bottom: 15px;
+    color: whitesmoke;
+}
+
+.responselistdiv{
+    height: 50vh;
 }

@@ -28,8 +28,7 @@ ajax("GET","api.php?getresponselist=",function(event){
     
             docgetall(".view").forEach(function(event){
                 event.onclick=function(){
-                    weblsset("51regionalresponseid",event.dataset.id)
-                    location.href="response.html"
+                    location.href=""+event.dataset.id
                 }
             })
     
@@ -52,8 +51,3 @@ ajax("GET","api.php?getresponselist=",function(event){
         alert(data["data"])
     }
 })
-
-docgetid("seeall").onclick=function(){
-    weblsset("51regionalresponseid","all")
-    location.href="response.html"
-}

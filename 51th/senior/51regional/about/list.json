@@ -6,7 +6,7 @@
             "statu": "FAILED",
             "ps": "question",
             "createdate": "2023/07/08",
-            "updatedate": "2023/11/25",
+            "updatedate": "2023/12/09",
             "data": [
                 {
                     "list": 1,
@@ -271,7 +271,7 @@
                         {
                             "no": "22",
                             "description": "可設定問卷分頁，可設定每 N 題一個頁面，使用上一頁、下一頁來進行切換。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "description": "包含可設定及修改的功能",
@@ -286,7 +286,7 @@
                         {
                             "no": "23",
                             "description": "當填寫分頁的問卷時，會在每頁上方顯示目前的填寫完成度，例如一份問卷有 20 題、每頁 4 題，共 5 頁，則在第 2 頁時，會顯示已完成 20%題目。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         },
                         {

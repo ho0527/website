@@ -14,6 +14,14 @@ function user(key){
                     <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
                 </div>
             </div>
+            <div class="progressdiv">
+                <input type="button" class="progressbutton" id="prev" value="上一頁">
+                <div class="progressbar">
+                    <div class="progress" id="progress"></div>
+                    <div class="progresstext" id="progresstext">0/100%</div>
+                </div>
+                <input type="button" class="progressbutton" id="next" value="下一頁">
+            </div>
             <div class="macosmaindiv macossectiondiv" id="maindiv"></div>
         `
     }else{
