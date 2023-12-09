@@ -209,8 +209,12 @@ function ajax(method,url,onloadcallback,send=null,header=[["Content-type","multi
     if(check){
         let xmlhttprequest=new XMLHttpRequest()
         xmlhttprequest.open(method,url)
-        for(let i=0;i<header.length;i=i+1){
-            xmlhttprequest.setRequestHeader(header[i][0],header[i][1])
+        if(header.length==0&&send instanceof FormData){
+            // Don't set Content-Type for FormData
+        }else{
+            for(let i=0;i<header.length;i=i+1){
+                xmlhttprequest.setRequestHeader(header[i][0],header[i][1])
+            }
         }
         xmlhttprequest.onload=function(){ onloadcallback(this) }
         xmlhttprequest.send(send)
