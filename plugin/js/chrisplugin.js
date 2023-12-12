@@ -363,20 +363,23 @@ function hintbox(endcallback=function(){},hintname=".hintdiv"){
     let hintcount=0
 
     docgetall(hintname).forEach(function(event){
+        event.style.position="relative"
         hintlist[parseInt(event.dataset.id)]=event
     })
 
     function clear(){
         for(let i=0;i<hintlist.length;i=i+1){
-            console.log(hintlist[i])
-            hintlist[i].innerHTML=``
+            if(docgetid("hintbox")){
+                docgetid("hintbox").remove()
+            }
         }
     }
 
     function main(){
         clear()
         hintlist[hintcount].innerHTML=`
-            <div class="hintbox">
+            ${hintlist[hintcount].innerHTML}
+            <div class="hintbox" id="hintbox">
                 <div class="hiintboxclose" id="chrispluginhintboxclear">X</div>
                 <div class="hiintboxbody">${hintlist[hintcount].dataset.body}</div>
                 <div class="hiintboxbuttondiv">

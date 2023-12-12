@@ -32,5 +32,7 @@ docgetid("startgame").onclick=function(){
 
 // 開始教學
 docgetid("starttutorial").onclick=function(){
+    weblsset("50nationalmoduleddifficulty","教學模式") // 上傳資料
+    weblsset("50nationalmoduledname",docgetid("username").value) // 上傳資料
     location.href="tutorial.html"
 }

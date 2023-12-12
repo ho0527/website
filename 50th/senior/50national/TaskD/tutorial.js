@@ -142,6 +142,8 @@ function check(){
         docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
         player[1]=1
     }else if(player[1]==3){ // 星星
+        alert("教學結束，將導向回首頁!")
+        location.href="index.html"
         score=score+50
         mainarray[player[0][0]][player[0][1]]=1
         docgetall(".row>div")[player[0][0]*27+player[0][1]].innerHTML=``
@@ -748,12 +750,16 @@ oldajax("GET","map.txt").onload=function(){
     player=[[f,s],mainarray[f][s]]
     // 玩家定位END
 
-    // 遊戲初始化START
-    docgetid("pausecontinue").onclick=function(){ stopstart() } // 暫停偵測
-    pacmankeydonwn() // 玩家偵測
-    timestart() // 計時開始
-    setInterval(ghostrun,500) // 鬼移動
-    // 遊戲初始化END
+    // 提示框啟動
+    hintbox(function(){
+        alert("請吃到一個星星結束教學!!")
+        // 遊戲初始化START
+        docgetid("pausecontinue").onclick=function(){ stopstart() } // 暫停偵測
+        pacmankeydonwn() // 玩家偵測
+        timestart() // 計時開始
+        setInterval(ghostrun,500) // 鬼移動
+        // 遊戲初始化END
+    })
 }
 // 主程式END
 
