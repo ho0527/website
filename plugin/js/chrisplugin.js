@@ -698,3 +698,28 @@ window.onload=function(){
         docgetid("lightbox").classList.add("lightboxmask")
     }
 }
+
+function passwordshowhide(id="passwordicon"){
+    if(docgetid(id)){
+        if(weblsget("passwordshow")=="true"){
+            docgetid(id).src="material/icon/eyeopen.svg"
+            docgetid("password").type="text"
+        }else{
+            docgetid(id).src="material/icon/eyeclose.svg"
+            docgetid("password").type="password"
+        }
+
+        docgetid(id).onclick=function(){
+            if(weblsget("passwordshow")=="true"){
+                docgetid(id).src="material/icon/eyeclose.svg"
+                docgetid("password").type="password"
+                weblsset("passwordshow","false")
+            }else{
+                docgetid(id).src="material/icon/eyeopen.svg"
+                docgetid("password").type="text"
+                weblsset("passwordshow","true")
+            }
+        }
+    }
+
+}
