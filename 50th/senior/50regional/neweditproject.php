@@ -43,12 +43,12 @@
                             <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                         </div>
                     </div>
-                    <div class="main noborder">
+                    <div class="main center noborder textcenter">
                         <div class="projectgrid">
                             <div class="project">
-                                <input type="text" class="middleinput" name="name" id="name" placeholder="專案名稱">
-                                <input type="text" class="middleinput" name="desciption" id="desciption" placeholder="專案說明">
-                                <input type="button" class="submitbutton" id="submit" value="送出">
+                                <input type="text" class="middleinput stinput" name="name" id="name" placeholder="專案名稱">
+                                <input type="text" class="middleinput stinput" name="desciption" id="desciption" placeholder="專案說明">
+                                <input type="button" class="stbutton light" id="submit" value="送出">
                             </div>
                             <div class="projectmember grid">
                                 <div class="leader sort macossectiondivy" id="leader">
@@ -96,12 +96,12 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main noborder">
+                <div class="main center noborder textcenter">
                     <div class="projectgrid">
                         <div class="project">
-                            <input type="text" class="middleinput" name="name" id="name" placeholder="專案名稱">
-                            <input type="text" class="middleinput" name="desciption" id="desciption" placeholder="專案說明">
-                            <input type="button" class="submitbutton" id="submit" value="送出">
+                            <input type="text" class="middleinput stinput" name="name" id="name" placeholder="專案名稱">
+                            <input type="text" class="middleinput stinput" name="desciption" id="desciption" placeholder="專案說明">
+                            <input type="button" class="stbutton light" id="submit" value="送出">
                         </div>
                         <div class="projectmember grid">
                             <div class="leader sort macossectiondivy" id="leader">

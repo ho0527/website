@@ -28,8 +28,8 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain macossectiondiv">
-            <table>
+        <div class="main mainmain center macossectiondiv">
+            <table class="sttable textcenter">
                 <form>
                     <?php
                         $id=$_GET["id"];
@@ -58,26 +58,26 @@
                                     <td class="maintd"><?php echo($row[$i][2]); ?></td>
                                     <td class="maintd"><?php echo($row[$i][3]); ?></td>
                                     <td class="maintd">
-                                        <input type="button" class="bluebutton" onclick="location.href='viewplan.php?id=<?php echo($row[$i][0]); ?>'" value="查看">
+                                        <input type="button" class="stbutton outline" onclick="location.href='viewplan.php?id=<?php echo($row[$i][0]); ?>'" value="查看">
                                         <?php
                                         if($leader!=$_SESSION["data"]||$_SESSION["data"]=="1"){
                                             if($uservotecheck){
                                                 if($projectrow[8]=="true"){
-                                                    ?><input type="button" class="bluebutton" onclick="location.href='score.php?key=plan&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="評分"><div class="warning">尚未填寫此項目!</div><?php
+                                                    ?><input type="button" class="stbutton outline" onclick="location.href='score.php?key=plan&id=<?php echo($row[$i][0]); ?>&projectid=<?php echo($id); ?>'" value="評分"><div class="warning">尚未填寫此項目!</div><?php
                                                 }elseif($projectrow[8]=="false"){
-                                                    ?><input type="button" class="bluebutton" value="評分尚未開始" disabled><?php
+                                                    ?><input type="button" class="stbutton outline disabled" value="評分尚未開始" disabled><?php
                                                 }else{
-                                                    ?><input type="button" class="bluebutton" value="已結束評分" disabled><?php
+                                                    ?><input type="button" class="stbutton outline disabled" value="已結束評分" disabled><?php
                                                 }
                                             }else{
                                                 if($projectrow[8]=="end"){
-                                                    ?><input type="button" class="bluebutton" value="檢視結果"><?php
+                                                    ?><input type="button" class="stbutton outline" value="檢視結果"><?php
                                                 }else{
-                                                    ?><input type="button" class="bluebutton" value="已完成評分" disabled><?php
+                                                    ?><input type="button" class="stbutton outline disabled" value="已完成評分" disabled><?php
                                                 }
                                             }
                                         }else{
-                                            ?><input type="button" class="bluebutton" value="組長無法評分" disabled><?php
+                                            ?><input type="button" class="stbutton outline disabled" value="組長無法評分" disabled><?php
                                         }
                                         ?>
                                     </td>
@@ -119,7 +119,7 @@
                                     <td class="maintd"><?php echo($i+1); ?></td>
                                     <td class="maintd"><?php echo($data[$i][1]); ?></td>
                                     <td class="maintd"><?php echo($data[$i][2]); ?></td>
-                                    <td class="maintd"><input type="button" class="bluebutton" onclick="location.href='viewplan.php?id=<?php echo($row[$i][0]); ?>'" value="查看"></td>
+                                    <td class="maintd"><input type="button" class="stbutton outline" onclick="location.href='viewplan.php?id=<?php echo($row[$i][0]); ?>'" value="查看"></td>
                                     <td class="maintd"><?php echo($data[$i][3]); ?></td>
                                 </tr>
                                 <?php

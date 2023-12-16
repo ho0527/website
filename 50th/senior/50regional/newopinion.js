@@ -8,19 +8,20 @@ docgetid("submit").onclick=function(){
         extendlist.push(event.dataset.id)
     })
 
-    let data=new FormData()
-    data.append("title",title)
-    data.append("description",description)
-    data.append("file",file)
-    data.append("extend",extendlist.join("|&|"))
+    console.log(extendlist)
 
-    let ajax=oldajax("POST","api/newopinion.php",data)
-
-    ajax.onload=function(){
-        let id=ajax.responseText
+    ajax("POST","api/newopinion.php",function(event){
+        let id=event.responseText
         alert("新增成功")
         location.href="opinion.php?id="+id
-    }
+    },formdata([
+        ["title",title],
+        ["description",description],
+        ["file",file],
+        ["extend",extendlist.join("|&|")]
+    ]),[])
 }
 
 divsort("opiniondiv",".sort")
+
+startmacossection()

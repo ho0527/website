@@ -699,23 +699,23 @@ window.onload=function(){
     }
 }
 
-function passwordshowhide(id="passwordicon"){
+function passwordshowhide(url="/website/",id="passwordicon"){
     if(docgetid(id)){
         if(weblsget("passwordshow")=="true"){
-            docgetid(id).src="material/icon/eyeopen.svg"
+            docgetid(id).src=url+"material/icon/eyeopen.svg"
             docgetid("password").type="text"
         }else{
-            docgetid(id).src="material/icon/eyeclose.svg"
+            docgetid(id).src=url+"material/icon/eyeclose.svg"
             docgetid("password").type="password"
         }
 
         docgetid(id).onclick=function(){
             if(weblsget("passwordshow")=="true"){
-                docgetid(id).src="material/icon/eyeclose.svg"
+                docgetid(id).src=url+"material/icon/eyeclose.svg"
                 docgetid("password").type="password"
                 weblsset("passwordshow","false")
             }else{
-                docgetid(id).src="material/icon/eyeopen.svg"
+                docgetid(id).src=url+"material/icon/eyeopen.svg"
                 docgetid("password").type="text"
                 weblsset("passwordshow","true")
             }

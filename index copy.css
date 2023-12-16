@@ -1,9 +1,6 @@
 body{
     font-family: "Consolas";
-    text-align: center;
     word-break: break-all;
-    -webkit-user-select: none;
-    user-select: none;
     padding: 0px;
     margin: 0px;
 }
@@ -31,7 +28,6 @@ table{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size: 30px;
     padding: 20px;
     border-radius: 20px;
 }
@@ -1007,6 +1003,7 @@ button{
 
 /* ========================================================================== Base ========================================================================== */
 
+
 .stbutton{
     margin: 5px;
     width: auto;
@@ -1023,15 +1020,7 @@ button{
     -moz-osx-font-smoothing: inherit;
     appearance: none;
     -webkit-appearance: none;
-}
-
-.stbutton:focus{
-    outline: 0;
-}
-
-.stbutton{
     border: 2px solid var(--accent-color, var(--stgray-800));
-    min-width: 75px;
     font-size: var(--stfont-size-14px);
     line-height: 1.5;
     font-weight: 500;
@@ -1051,6 +1040,10 @@ button{
 .stbutton:hover{
     cursor: pointer;
     opacity: 0.98;
+}
+
+.stbutton:focus{
+    outline: 0;
 }
 
 /* ==========================================================================
@@ -11079,7 +11072,7 @@ button{
   * Aligns
   */
 
-/*.stpagination.textright{
+/*.stpagination.right{
      margin-left: auto;
  }*/
 
@@ -11786,15 +11779,15 @@ button{
   * Aligns
   */
 
-.sttext.textcenter{
+.textcenter{
     text-align: center;
 }
 
-.sttext.textleft{
+.textleft{
     text-align: left;
 }
 
-.sttext.textright{
+.textright{
     text-align: right;
 }
 
@@ -11988,15 +11981,15 @@ button{
   * Aligns
   */
 
-.sttab.textleft{
+.sttab.left{
     justify-content: flex-start;
 }
 
-.sttab.textcenter{
+.sttab.center{
     justify-content: center;
 }
 
-.sttab.textright{
+.sttab.right{
     justify-content: flex-end;
 }
 
@@ -12338,15 +12331,15 @@ a.stbox:hover{
   * Aligns
   */
 
-.stcontent.textleft{
+.stcontent.left{
     text-align: left;
 }
 
-.stcontent.textright{
+.stcontent.right{
     text-align: right;
 }
 
-.stcontent.textcenter{
+.stcontent.center{
     text-align: center;
 }
 
@@ -12791,19 +12784,19 @@ a.stbox:hover{
   * Aligns
   */
 
-.stmeta:is(.textleft, .textcenter, .textright){
+.stmeta:is(.left, .center, .right){
     display: flex;
 }
 
-.stmeta.textleft{
+.stmeta.left{
     justify-content: flex-start;
 }
 
-.stmeta.textcenter{
+.stmeta.center{
     justify-content: center;
 }
 
-.stmeta.textright{
+.stmeta.right{
     justify-content: flex-end;
 }
 
@@ -13147,15 +13140,15 @@ a.stbox:hover{
   * Aligns
   */
 
-.sttable:is(tr, th, td).textleft{
+.sttable:is(tr, th, td).left{
     text-align: left;
 }
 
-.sttable:is(th, td).textcenter{
+.sttable:is(th, td).center{
     text-align: center;
 }
 
-.sttable:is(th, td).textright{
+.sttable:is(th, td).right{
     text-align: right;
 }
 
@@ -13856,15 +13849,15 @@ a.stbox:hover{
   * Aligns
   */
 
-.stgrid.textleft{
+.stgrid.left{
     justify-content: flex-start;
 }
 
-.stgrid.textcenter{
+.stgrid.center{
     justify-content: center;
 }
 
-.stgrid.textright{
+.stgrid.right{
     justify-content: flex-end;
 }
 
@@ -13880,19 +13873,19 @@ a.stbox:hover{
     align-items: flex-end;
 }
 
-.stgrid .column.textleft{
+.stgrid .column.left{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.stgrid .column.textcenter{
+.stgrid .column.center{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.stgrid .column.textright{
+.stgrid .column.right{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -17052,11 +17045,11 @@ a.stbox:hover{
   * Aligns
   */
 
-.ststatistic.textleft>.value{
+.ststatistic.left>.value{
     justify-content: flex-start;
 }
 
-.ststatistic.textcenter>.value{
+.ststatistic.center>.value{
     justify-content: center;
 }
 
@@ -17900,17 +17893,17 @@ a.stheader:hover{
   * Aligns
   */
 
-.stheader.textcenter{
+.stheader.center{
     text-align: center;
     justify-content: center;
 }
 
-.stheader.textleft{
+.stheader.left{
     text-align: left;
     justify-content: flex-start;
 }
 
-.stheader.textright{
+.stheader.right{
     text-align: right;
     justify-content: flex-end;
 }
@@ -18084,15 +18077,15 @@ a.stsegment:hover{
   * Aligns
   */
 
-.stsegment.textleft{
+.stsegment.left{
     text-align: left;
 }
 
-.stsegment.textright{
+.stsegment.right{
     text-align: right;
 }
 
-.stsegment.textcenter{
+.stsegment.center{
     text-align: center;
 }
 
@@ -18523,27 +18516,27 @@ a.stsegment:hover{
     align-items: flex-end;
 }
 
-.stwrap.textleft{
+.stwrap.left{
     justify-content: flex-start;
 }
 
-.stwrap.textcenter{
+.stwrap.center{
     justify-content: center;
 }
 
-.stwrap.textright{
+.stwrap.right{
     justify-content: flex-end;
 }
 
-.stwrap.textleft.vertical{
+.stwrap.left.vertical{
     align-items: flex-start;
 }
 
-.stwrap.textcenter.vertical{
+.stwrap.center.vertical{
     align-items: center;
 }
 
-.stwrap.textright.vertical{
+.stwrap.right.vertical{
     align-items: flex-end;
 }
 
@@ -18701,7 +18694,7 @@ a.stsegment:hover{
   * Aligns
   */
 
-.stcontrol .label.textleft{
+.stcontrol .label.left{
     text-align: left;
 }
 
@@ -21943,15 +21936,15 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Aligns
   */
 
-.strow.textleft{
+.strow.left{
     justify-content: flex-start;
 }
 
-.strow.textcenter{
+.strow.center{
     justify-content: center;
 }
 
-.strow.textright{
+.strow.right{
     justify-content: flex-end;
 }
 
@@ -21972,7 +21965,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     display: flex;
 }
 
-.strow .column.textcenter{
+.strow .column.center{
     justify-content: center;
     display: flex;
 }
@@ -21982,11 +21975,11 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     display: flex;
 }
 
-.strow .column.textleft{
+.strow .column.left{
     text-align: left;
 }
 
-.strow .column.textright{
+.strow .column.right{
     text-align: right;
 }
 
@@ -22445,8 +22438,8 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 .sttext.is-heavy         bold
 .is-loading              loading
 .is-start-aligned        textleft
-.is-center-aligned       textcenter
-.is-end-aligned          textright
+.is-center-aligned       center
+.is-end-aligned          right
 .is-tiny                 tiny
 .is-small                small
 .is-medium               medium
@@ -22469,4 +22462,3 @@ inline                   新增
 
 
 /* program START */
-

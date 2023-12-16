@@ -31,11 +31,18 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main center">
                     <form method="POST">
-                        指標: <input type="text" class="input" name="index" value="<?php echo($row[2]); ?>"><br><br>
-                        <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
-                        <input type="submit" class="button" name="edit" value="送出"><br>
+                        <div class="inputmargin">
+                            <div class="sttext">指標</div>
+                            <div class="stinput underline">
+                                <input type="text" class="input" name="index" value="<?php echo($row[2]); ?>">
+                            </div>
+                        </div>
+                        <div class="textcenter">
+                            <input type="button" class="stbutton outline" onclick="location.href='scoreindex.php?id=<?php echo($_GET['id']) ?>'" value="返回">
+                            <input type="submit" class="stbutton outline" name="edit" value="送出"><br>
+                        </div>
                     </form>
                 </div>
                 <?php
@@ -56,11 +63,18 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main center">
                     <form method="POST">
-                        指標: <input type="text" class="input" name="index"><br><br>
-                        <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
-                        <input type="submit" class="button" name="new" value="送出"><br>
+                        <div class="inputmargin">
+                            <div class="sttext">指標</div>
+                            <div class="stinput underline">
+                                <input type="text" class="input" name="index">
+                            </div>
+                        </div>
+                        <div class="textcenter">
+                            <input type="button" class="stbutton outline" onclick="location.href='scoreindex.php?id=<?php echo($_GET['id']) ?>'" value="返回">
+                            <input type="submit" class="stbutton outline" name="new" value="送出"><br>
+                        </div>
                     </form>
                 </div>
                 <?php
@@ -104,8 +118,8 @@
             if($row=query($db,"SELECT*FROM `scoreindex` WHERE `id`='$id'")[0]){
                 query($db,"DELETE FROM `scoreindex` WHERE `id`='$id'");
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"刪除評分指標",$time,""]);
-                ?><script>alert("刪除成功!");location.href="scoreindex.php?id=<?php echo($id); ?>"</script><?php
-            }else{ ?><script>alert("帳號已被刪除!");location.href="scoreindex.php?id=<?php echo($id); ?>"</script><?php }
+                ?><script>alert("刪除成功!");location.href="scoreindex.php?id=<?php echo($_GET["id"]); ?>"</script><?php
+            }else{ ?><script>alert("查無此資料!");location.href="scoreindex.php?id=<?php echo($_GET["id"]); ?>"</script><?php }
         }
     ?>
     </body>

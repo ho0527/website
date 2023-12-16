@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>專案討論系統</title>
-        <link href="index.css" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
@@ -14,13 +16,28 @@
         <div class="navigationbar">
             <div class="navigationbartitle center">專案討論系統</div>
         </div>
-        <div class="main">
+        <div class="main center loginmain">
             <form method="POST" action="login.php">
-                帳號: <input type="text" class="input" name="username"><br><br>
-                密碼: <input type="password" class="input" name="password"><br><br>
-                <input type="reset" class="button" value="清除">
-                <input type="submit" class="button" name="submit" value="登入">
+                <div class="inputmargin">
+                    <div class="sttext">帳號</div>
+                    <div class="stinput underline endicon">
+                        <input type="text" name="username">
+                        <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                    </div>
+                </div>
+                <div class="inputmargin">
+                    <div class="sttext">密碼</div>
+                    <div class="stinput underline endicon">
+                        <input type="text" id="password" name="password">
+                        <div class="sticon"><img src="/website/material/icon/eyeclose.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                    </div>
+                </div>
+                <div class="textcenter">
+                    <input type="reset" class="stbutton outline" value="清除">
+                    <input type="submit" class="stbutton outline" name="submit" value="登入">
+                </div>
             </form>
         </div>
+        <script src="index.js"></script>
     </body>
 </html>

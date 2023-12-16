@@ -1043,3 +1043,8 @@ usersearch
 .newproduct{
     color: white;
 }
+
+.product{
+    cursor: pointer;
+    overflow: hidden;
+}

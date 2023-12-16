@@ -56,8 +56,8 @@ docgetall(".end").forEach(function(event){
             table=table+`
                 <table class="table">
                 <div class="lightboxbuttondiv">
-                    <input type="button" class="button" id="back" value="返回">
-                    <input type="button" class="button" onclick="endcheck('notfinish',${projectid})" value="不管他們確定結束">
+                    <input type="button" class="stbutton outline" id="back" value="返回">
+                    <input type="button" class="stbutton negative outline" onclick="endcheck('notfinish',${projectid})" value="不管他們確定結束">
                 </div>
             `
 

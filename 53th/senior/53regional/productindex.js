@@ -10,7 +10,7 @@ oldajax("GET","/backend/53regional/gettemplate").onload=function(){
                 maindata=`
                     ${maindata}
                     <div class="productdiv">
-                        <div class="productleft product macossectiondiv" id="${row[i][0]}">
+                        <div class="productleft product" id="${row[i][0]}">
                             <div class="id">版型: ${row[i][0]}</div>
                             <div class="name" style="${row[i][1]}">商品名稱</div>
                             <div class="cost" style="${row[i][2]}">費用</div>
@@ -23,7 +23,7 @@ oldajax("GET","/backend/53regional/gettemplate").onload=function(){
             }else{
                 maindata=`
                     ${maindata}
-                        <div class="productright product macossectiondiv" id="${row[i][0]}">
+                        <div class="productright product" id="${row[i][0]}">
                             <div class="id">版型: ${row[i][0]}</div>
                             <div class="name" style="${row[i][1]}">商品名稱</div>
                             <div class="cost" style="${row[i][2]}">費用</div>
@@ -50,9 +50,11 @@ oldajax("GET","/backend/53regional/gettemplate").onload=function(){
             event.onclick=function(){
                 docgetall(".product").forEach(function(event){
                     event.style.backgroundColor=""
+                    event.classList.remove("macossectiondivy")
                 })
                 weblsset("53regionalproductid",event.id)
                 event.style.backgroundColor="rgb(203, 203, 38)"
+                event.classList.add("macossectiondivy")
             }
         })
     }

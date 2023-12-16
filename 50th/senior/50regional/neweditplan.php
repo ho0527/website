@@ -21,7 +21,7 @@
                         <div class="navigationbartitle">專案討論系統</div>
                     </div>
                     <div class="navigationbarright">
-                        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='neweditplan.php'" value="修改執行方案">
+                        <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.reload()" value="修改執行方案">
                         <?php
                             if($_SESSION["data"]==1){ ?><input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理"><?php }
                         ?>
@@ -31,10 +31,17 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main center plandiv">
                     <form method="POST">
-                        標題: <input type="text" class="input" name="title" value="<?php echo($row[2]); ?>"><br><br>
-                        說明: <textarea class="textarea" name="description"><?php echo($row[3]); ?></textarea><br><br>
+                        <div class="inputmargin">
+                            <div class="sttext">標題</div>
+                            <div class="stinput underline">
+                                <input type="text" class="input" name="title" value="<?php echo($row[2]); ?>">
+                            </div>
+                        </div>
+                        <div class="stinput">
+                            <textarea class="resizeable" name="description" placeholder="說明"><?php echo($row[3]); ?></textarea>
+                        </div>
                         <?php
                             $projectid=$_SESSION["id"];
                             $facingrow=query($db,"SELECT*FROM `facing` WHERE `projectid`='$projectid'");
@@ -45,30 +52,34 @@
                                 ?>
                                 <div class="selectdiv">
                                     <div class="selecttext"><?php echo($facingrow[$i][2]); ?></div>
-                                    <select class="select" name="facing<?php echo($facingrow[$i][0]); ?>">
-                                        <option value="none">不選擇</option>
-                                        <?php
-                                            for($j=0;$j<count($opinionrow);$j=$j+1){
-                                                $facingopiniionid=$facingrow[$i][0]."_".$opinionrow[$j][0];
-                                                $check=false;
-                                                for($k=0;$k<count($rowplan);$k=$k+1){
-                                                    if($rowplan[$k]==$facingopiniionid){
-                                                        $check=true;
-                                                        ?><option value="<?php echo($opinionrow[$j][0]); ?>" selected><?php echo($opinionrow[$j][4]); ?></option><?php
+                                    <div class="stselect">
+                                        <select class="select" name="facing<?php echo($facingrow[$i][0]); ?>">
+                                            <option value="none">不選擇</option>
+                                            <?php
+                                                for($j=0;$j<count($opinionrow);$j=$j+1){
+                                                    $facingopiniionid=$facingrow[$i][0]."_".$opinionrow[$j][0];
+                                                    $check=false;
+                                                    for($k=0;$k<count($rowplan);$k=$k+1){
+                                                        if($rowplan[$k]==$facingopiniionid){
+                                                            $check=true;
+                                                            ?><option value="<?php echo($opinionrow[$j][0]); ?>" selected><?php echo($opinionrow[$j][4]); ?></option><?php
+                                                        }
+                                                    }
+                                                    if(!$check){
+                                                        ?><option value="<?php echo($opinionrow[$j][0]); ?>"><?php echo($opinionrow[$j][4]); ?></option><?php
                                                     }
                                                 }
-                                                if(!$check){
-                                                    ?><option value="<?php echo($opinionrow[$j][0]); ?>"><?php echo($opinionrow[$j][4]); ?></option><?php
-                                                }
-                                            }
-                                        ?>
-                                    </select><br>
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 <?php
                             }
                         ?><br>
-                        <input type="button" class="button" onclick="location.href='plan.php?id=<?php echo($_GET['id']); ?>'" value="返回">
-                        <input type="submit" class="button" name="edit" value="送出"><br>
+                        <div class="textcenter">
+                            <input type="button" class="stbutton outline" onclick="location.href='plan.php?id=<?php echo($_GET['id']); ?>'" value="返回">
+                            <input type="submit" class="stbutton outline" name="edit" value="修改"><br>
+                        </div>
                     </form>
                 </div>
                 <?php
@@ -89,10 +100,17 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main center plandiv">
                     <form method="POST">
-                        標題: <input type="text" class="input" name="title"><br><br>
-                        說明: <textarea class="textarea" name="description"></textarea><br><br>
+                        <div class="inputmargin">
+                            <div class="sttext">標題</div>
+                            <div class="stinput underline">
+                                <input type="text" class="input" name="title">
+                            </div>
+                        </div>
+                        <div class="stinput">
+                            <textarea class="resizeable" name="description" placeholder="說明"></textarea>
+                        </div>
                         <?php
                             $projectid=$_SESSION["id"];
                             $projectrow=query($db,"SELECT*FROM `project` WHERE `id`='$projectid'")[0];
@@ -103,20 +121,24 @@
                                 ?>
                                 <div class="selectdiv">
                                     <div class="selecttext"><?php echo($facingrow[$i][2]); ?></div>
-                                    <select class="select" name="facing<?php echo($facingrow[$i][0]); ?>">
-                                        <option value="none">不選擇</option>
-                                        <?php
-                                            for($j=0;$j<count($opinionrow);$j=$j+1){
-                                                ?><option value="<?php echo($opinionrow[$j][0]); ?>"><?php echo($opinionrow[$j][4]); ?></option><?php
-                                            }
-                                        ?>
-                                    </select><br>
+                                    <div class="stselect">
+                                        <select name="facing<?php echo($facingrow[$i][0]); ?>">
+                                            <option value="none">不選擇</option>
+                                            <?php
+                                                for($j=0;$j<count($opinionrow);$j=$j+1){
+                                                    ?><option value="<?php echo($opinionrow[$j][0]); ?>"><?php echo($opinionrow[$j][4]); ?></option><?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 <?php
                             }
                         ?><br>
-                        <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
-                        <input type="submit" class="button" name="new" value="送出"><br>
+                        <div class="textcenter">
+                            <input type="button" class="stbutton outline" onclick="location.href='plan.php?id=<?php echo($_GET['id']); ?>'" value="返回">
+                            <input type="submit" class="stbutton outline" name="new" value="新增"><br>
+                        </div>
                     </form>
                 </div>
                 <?php
@@ -182,8 +204,8 @@
             if($row=query($db,"SELECT*FROM `plan` WHERE `id`='$id'")[0]){
                 query($db,"DELETE FROM `plan` WHERE `id`='$id'");
                 query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"刪除執行方案",$time,""]);
-                ?><script>alert("刪除成功!");location.href="plan.php?id=<?php echo($id); ?>"</script><?php
-            }else{ ?><script>alert("帳號已被刪除!");location.href="plan.php?id=<?php echo($id); ?>"</script><?php }
+                ?><script>alert("刪除成功!");location.href="plan.php?id=<?php echo($_GET["id"]); ?>"</script><?php
+            }else{ ?><script>alert("查無此方案!");location.href="plan.php?id=<?php echo($_GET["id"]); ?>"</script><?php }
         }
     ?>
     </body>

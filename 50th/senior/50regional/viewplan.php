@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>管理者專區</title>
+        <title>執行方案列表</title>
         <link href="index.css" rel="stylesheet">
         <link rel="stylesheet" href="plugin/css/chrisplugin.css">
         <script src="plugin/js/chrisplugin.js"></script>
@@ -33,8 +33,8 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain viewmain macossectiondiv">
-            <table>
+        <div class="main mainmain center viewmain macossectiondiv">
+            <table class="sttable textcenter">
                 <tr>
                     <td class="maintd">no.</td>
                     <td class="maintd">facingname</td>
@@ -44,19 +44,27 @@
                 <?php
                     $userdata=$_SESSION["data"];
                     $facingopinionidlist=explode("|&|",$row[4]);
-                    for($i=0;$i<count($facingopinionidlist);$i=$i+1){
-                        $facingid=explode("_",$facingopinionidlist[$i])[0];
-                        $opinionid=explode("_",$facingopinionidlist[$i])[1];
-                        $facingrow=query($db,"SELECT*FROM `facing` WHERE `id`='$facingid'")[0];
-                        $opinionrow=query($db,"SELECT*FROM `opinion` WHERE `id`='$opinionid'")[0];
+                    if($facingopinionidlist[0]!=""){
+                        for($i=0;$i<count($facingopinionidlist);$i=$i+1){
+                            $facingid=explode("_",$facingopinionidlist[$i])[0];
+                            $opinionid=explode("_",$facingopinionidlist[$i])[1];
+                            $facingrow=query($db,"SELECT*FROM `facing` WHERE `id`='$facingid'")[0];
+                            $opinionrow=query($db,"SELECT*FROM `opinion` WHERE `id`='$opinionid'")[0];
+                            ?>
+                            <tr>
+                                <td class="maintd">意見<?php echo($i+1); ?>:</td>
+                                <td class="maintd"><?php echo($facingrow[2]); ?></td>
+                                <td class="maintd"><?php echo($opinionrow[4]); ?></td>
+                                <td class="maintd">
+                                    <input type="button" class="stbutton outline viewbutton" data-id="<?php echo($opinionid); ?>" value="查看意見">
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                    }else{
                         ?>
                         <tr>
-                            <td class="maintd">意見<?php echo($i+1); ?>:</td>
-                            <td class="maintd"><?php echo($facingrow[2]); ?></td>
-                            <td class="maintd"><?php echo($opinionrow[4]); ?></td>
-                            <td class="maintd">
-                                <input type="button" class="bluebutton viewbutton" data-id="<?php echo($opinionid); ?>" value="查看意見">
-                            </td>
+                            <td class="maintd sttext negative massive bold" colspan="4">暫無資料</td>
                         </tr>
                         <?php
                     }

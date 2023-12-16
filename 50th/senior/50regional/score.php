@@ -21,6 +21,7 @@
                 $_SESSION["id"]=$_GET["id"];
                 $_SESSION["projectid"]=$_GET["projectid"];
             }
+            // $planrow=query($db,"SELECT*FROM `plan` WHERE `id`=?",[$_SESSION["id"]])
         ?>
         <div class="navigationbar">
             <div class="navigationbarleft">
@@ -37,11 +38,16 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main macossectiondiv">
+        <div class="main center macossectiondiv">
             <form method="POST">
-                分數: <input type="text" class="input" name="score" value="3"><br><br>
-                <input type="button" class="button" onclick="location.href='viewplan.php?id=<?php echo($_GET['id']); ?>'" value="查看意見">
-                <input type="submit" class="button" name="submit" value="送出">
+                <div class="inputmargin">
+                    <div class="sttext">分數</div>
+                    <div class="stinput underline">
+                        <input type="number" name="score" value="3" min="1" max="5" step="1">
+                    </div>
+                </div>
+                <input type="button" class="stbutton outline" onclick="location.href='viewplan.php?id=<?php echo($_GET['id']); ?>'" value="查看意見">
+                <input type="submit" class="stbutton outline" name="submit" value="送出">
             </form>
         </div>
         <?php

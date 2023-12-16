@@ -27,13 +27,33 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main center loginmain">
                     <form method="POST">
-                        帳號: <input type="text" class="input" name="username" value="<?php echo($row[1]); ?>"><br><br>
-                        密碼: <input type="password" class="input" name="password" value="<?php echo($row[2]); ?>"><br><br>
-                        姓名: <input type="text" class="input" name="name" value="<?php echo($row[3]); ?>"><br><br>
-                        <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
-                        <input type="submit" class="button" name="edit" value="送出"><br>
+                        <div class="inputmargin">
+                            <div class="sttext">帳號</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" name="username" value="<?php echo($row[1]) ?>">
+                                <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="inputmargin">
+                            <div class="sttext">密碼</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" name="password" value="<?php echo($row[2]) ?>">
+                                <div class="sticon"><img src="/website/material/icon/lock.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="inputmargin">
+                            <div class="sttext">姓名</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" name="name" value="<?php echo($row[3]) ?>">
+                                <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="textcenter">
+                            <input type="button" class="stbutton outline" onclick="location.href='admin.php'" value="返回">
+                            <input type="submit" class="stbutton outline" name="edit" value="修改">
+                        </div>
                     </form>
                 </div>
                 <?php
@@ -52,63 +72,83 @@
                         <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main">
+                <div class="main center loginmain">
                     <form method="POST">
-                        帳號: <input type="text" class="input" name="username"><br><br>
-                        密碼: <input type="password" class="input" name="password"><br><br>
-                        姓名: <input type="text" class="input" name="name"><br><br>
-                        <input type="button" class="button" onclick="location.href='admin.php'" value="返回">
-                        <input type="submit" class="button" name="signup" value="送出"><br>
+                        <div class="inputmargin">
+                            <div class="sttext">帳號</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" name="username">
+                                <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="inputmargin">
+                            <div class="sttext">密碼</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" name="password">
+                                <div class="sticon"><img src="/website/material/icon/lock.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="inputmargin">
+                            <div class="sttext">姓名</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" name="name">
+                                <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="textcenter">
+                            <input type="button" class="stbutton outline" onclick="location.href='admin.php'" value="返回">
+                            <input type="submit" class="stbutton is-secondary outline" name="signup" value="註冊">
+                        </div>
                     </form>
                 </div>
                 <?php
             }
         ?>
-    <?php
-        $data=$_SESSION["data"];
-        if(isset($_POST["signup"])){
-            $username=$_POST["username"];
-            $password=$_POST["password"];
-            $name=$_POST["name"];
-            $row=query($db,"SELECT*FROM `user` WHERE `username`='$username'")[0];
-            if($row){
-                ?><script>alert("帳號已被註冊");location.href="signupedit.php"</script><?php
-            }elseif($username==""||$password==""){
-                ?><script>alert("請輸入帳密");location.href="signupedit.php"</script><?php
-            }else{
-                query($db,"INSERT INTO `user`(`username`,`password`,`name`)VALUES(?,?,?)",[$username,$password,$name]);
-                $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
-                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"新增使用者",$time,""]);
-                ?><script>alert("新增成功");location.href="admin.php"</script><?php
+        <?php
+            $data=$_SESSION["data"];
+            if(isset($_POST["signup"])){
+                $username=$_POST["username"];
+                $password=$_POST["password"];
+                $name=$_POST["name"];
+                $row=query($db,"SELECT*FROM `user` WHERE `username`='$username'")[0];
+                if($row){
+                    ?><script>alert("帳號已被註冊");location.href="signupedit.php"</script><?php
+                }elseif($username==""||$password==""){
+                    ?><script>alert("請輸入帳密");location.href="signupedit.php"</script><?php
+                }else{
+                    query($db,"INSERT INTO `user`(`username`,`password`,`name`)VALUES(?,?,?)",[$username,$password,$name]);
+                    $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"新增使用者",$time,""]);
+                    ?><script>alert("新增成功");location.href="admin.php"</script><?php
+                }
             }
-        }
 
-        if(isset($_POST["edit"])){
-            $id=$_SESSION["id"];
-            $username=$_POST["username"];
-            $password=$_POST["password"];
-            $name=$_POST["name"];
-            $row=query($db,"SELECT*FROM `user` WHERE `username`='$username'")[0];
-            if($row&&$row[0]!=$id){
-                ?><script>alert("帳號已被註冊");location.href="signupedit.php"</script><?php
-            }elseif($username==""||$password==""){
-                ?><script>alert("請輸入帳密");location.href="signupedit.php"</script><?php
-            }else{
-                query($db,"UPDATE`user`SET `username`=?,`password`=?,`name`=? WHERE `id`='$id'",[$username,$password,$name]);
-                $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
-                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"編輯使用者",$time,""]);
-                ?><script>alert("修改成功");location.href="admin.php"</script><?php
+            if(isset($_POST["edit"])){
+                $id=$_SESSION["id"];
+                $username=$_POST["username"];
+                $password=$_POST["password"];
+                $name=$_POST["name"];
+                $row=query($db,"SELECT*FROM `user` WHERE `username`='$username'")[0];
+                if($row&&$row[0]!=$id){
+                    ?><script>alert("帳號已被註冊");location.href="signupedit.php"</script><?php
+                }elseif($username==""||$password==""){
+                    ?><script>alert("請輸入帳密");location.href="signupedit.php"</script><?php
+                }else{
+                    query($db,"UPDATE`user`SET `username`=?,`password`=?,`name`=? WHERE `id`='$id'",[$username,$password,$name]);
+                    $row=query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])[0];
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"編輯使用者",$time,""]);
+                    ?><script>alert("修改成功");location.href="admin.php"</script><?php
+                }
             }
-        }
 
-        if(isset($_GET["del"])){
-            $id=$_GET["del"];
-            if($row=query($db,"SELECT*FROM `user` WHERE `id`='$id'")[0]){
-                query($db,"DELETE FROM `user` WHERE `id`='$id'");
-                query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"刪除使用者",$time,""]);
-                ?><script>alert("刪除成功!");location.href="admin.php"</script><?php
-            }else{ ?><script>alert("帳號已被刪除!");location.href="admin.php"</script><?php }
-        }
-    ?>
+            if(isset($_GET["del"])){
+                $id=$_GET["del"];
+                if($row=query($db,"SELECT*FROM `user` WHERE `id`='$id'")[0]){
+                    query($db,"DELETE FROM `user` WHERE `id`='$id'");
+                    query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES(?,?,?,?)",[$data,"刪除使用者",$time,""]);
+                    ?><script>alert("刪除成功!");location.href="admin.php"</script><?php
+                }else{ ?><script>alert("帳號已被刪除!");location.href="admin.php"</script><?php }
+            }
+        ?>
     </body>
 </html>

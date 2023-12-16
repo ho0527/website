@@ -28,8 +28,8 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain macossectiondiv">
-            <table>
+        <div class="main mainmain center macossectiondiv">
+            <table class="sttable textcenter">
                 <form>
                     <tr>
                         <td class="maintd">title</td>
@@ -45,8 +45,8 @@
                                     <td class="maintd"><?php echo($row[$i][2]); ?></td>
                                     <td class="maintd"><?php echo($row[$i][3]); ?></td>
                                     <td class="maintd">
-                                        <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                        <input type="button" class="bluebutton" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
+                                        <input type="button" class="stbutton light" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&edit=<?php echo($row[$i][0]); ?>'" value="修改">
+                                        <input type="button" class="stbutton negative" onclick="location.href='neweditplan.php?id=<?php echo($id); ?>&del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
                                     </td>
                                 </tr>
                             <?php

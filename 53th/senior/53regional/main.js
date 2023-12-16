@@ -69,32 +69,32 @@ function main(url){
                     <input type="button" class="numberspeedsearch" value="2000~5000">
                     <input type="button" class="numberspeedsearch" value="5000~10000">
                 </div><br>
-                <input type="button" id="first" value="到最前一頁">
-                <input type="button" id="prev" value="上一頁">
-                <input type="button" id="next" value="下一頁">
-                <input type="button" id="end" value="到最後一頁">
+                <input type="button" id="pagefirst" value="到最前一頁">
+                <input type="button" id="pageprev" value="上一頁">
+                <input type="button" id="pagenext" value="下一頁">
+                <input type="button" id="pageend" value="到最後一頁">
                 ${maininnerhtml}
             `
-            docgetid("first").onclick=function(){
+            docgetid("pagefirst").onclick=function(){
                 weblsset("53regionalpage",0)
                 main(url+"&page="+weblsget("53regionalpage"))
             }
 
-            docgetid("prev").onclick=function(){
+            docgetid("pageprev").onclick=function(){
                 if(weblsget("53regionalpage")>0){
                     weblsset("53regionalpage",parseInt(weblsget("53regionalpage"))-1)
                     main(url+"&page="+weblsget("53regionalpage"))
                 }
             }
 
-            docgetid("next").onclick=function(){
+            docgetid("pagenext").onclick=function(){
                 if(weblsget("53regionalpage")<maxcount){
                     weblsset("53regionalpage",parseInt(weblsget("53regionalpage"))+1)
                     main(url+"&page="+weblsget("53regionalpage"))
                 }
             }
 
-            docgetid("end").onclick=function(){
+            docgetid("pageend").onclick=function(){
                 weblsset("53regionalpage",maxcount)
                 main(url+"&page="+weblsget("53regionalpage"))
             }

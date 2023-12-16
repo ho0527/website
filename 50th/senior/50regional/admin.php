@@ -26,37 +26,50 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain macossectiondivy">
-            <table>
+        <div class="main mainmain center macossectiondivy">
+            <table class="sttable textcenter">
                 <form>
                     <tr>
                         <td class="maintd">id</td>
                         <td class="maintd">帳號<input type="submit" name="updown" value="排序"></td>
                         <td class="maintd">密碼</td>
                         <td class="maintd">名稱</td>
+                        <td class="maintd">function</td>
                     </tr>
                     <?php
                         $row=query($db,"SELECT*FROM `user`");
                         if(isset($_GET["updown"])){
                             if($_SESSION["updown"]=="up"){
-                                usort($row,function($a,$b){ return $a[1]<$b[1]||($a[1]==$b[1]&&$a[0]>$b[0]); });
+                                usort($row,function($a,$b){
+                                    if($a[1]<$b[1]||($a[1]==$b[1]&&$a[0]>$b[0])){
+                                        return 1;
+                                    }else{
+                                        return -1;
+                                    }
+                                });
                                 $_SESSION["updown"]="down";
                             }else{
-                                usort($row,function($a,$b){ return $a[1]>$b[1]||($a[1]==$b[1]&&$a[0]>$b[0]); });
+                                usort($row,function($a,$b){
+                                    if($a[1]>$b[1]||($a[1]==$b[1]&&$a[0]>$b[0])){
+                                        return 1;
+                                    }else{
+                                        return -1;
+                                    }
+                                });
                                 $_SESSION["updown"]="up";
                             }
                         }
                         for($i=0;$i<count($row);$i=$i+1){
                             ?>
                                 <tr>
-                                    <td class="maintd">
-                                        <?php echo($row[$i][0]); ?>
-                                        <input type="button" class="bluebutton" onclick="location.href='signupedit.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                        <input type="button" class="bluebutton" onclick="location.href='signupedit.php?del=<?php echo($row[$i][0]); ?>'" value="刪除">
-                                    </td>
+                                    <td class="maintd"><?php echo($row[$i][0]); ?></td>
                                     <td class="maintd"><?php echo($row[$i][1]); ?></td>
                                     <td class="maintd"><?php echo($row[$i][2]); ?></td>
                                     <td class="maintd"><?php echo($row[$i][3]); ?></td>
+                                    <td class="maintd">
+                                        <input type="button" class="stbutton small light" onclick="location.href='signupedit.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
+                                        <input type="button" class="stbutton small negative" onclick="location.href='signupedit.php?del=<?php echo($row[$i][0]); ?>'" value="刪除">
+                                    </td>
                                 </tr>
                             <?php
                         }

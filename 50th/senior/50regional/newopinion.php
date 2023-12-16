@@ -3,12 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>管理者專區</title>
+        <title>新增意見</title>
         <link href="index.css" rel="stylesheet">
-        <link rel="stylesheet" href="plugin/css/macossection.css">
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/macossection.js"></script>
-        <script src="plugin/js/chrisplugin.js"></script>
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
@@ -22,7 +20,7 @@
                 <div class="navigationbartitle">專案討論系統</div>
             </div>
             <div class="navigationbarright">
-                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='neweditproject.php?id=<?php echo($_GET['id']); ?>'" value="發表意見">
+                <input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='newopinion.php?id=<?php echo($_GET['id']); ?>'" value="發表意見">
                 <?php
                     if($_SESSION["data"]==1){ ?><input type="button" class="navigationbarbutton" onclick="location.href='admin.php'" value="使用者管理"><?php }
                 ?>
@@ -32,11 +30,18 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main macossectiondiv">
+        <div class="main center macossectiondiv">
             <form method="POST" enctype="multipart/form-data">
-                標題: <input type="text" class="input" id="title"><br><br>
-                說明: <textarea class="textarea" id="description"></textarea><br><br>
-                <div class="opinionlistdivdiv">
+                <div class="inputmargin">
+                    <div class="sttext">標題</div>
+                    <div class="stinput underline">
+                        <input type="text" class="input" id="title">
+                    </div>
+                </div>
+                <div class="stinput">
+                    <textarea class="resizeable" id="description" placeholder="說明"></textarea>
+                </div>
+                <div class="opinionlistdivdiv textcenter">
                     <div class="opinionlistdiv">
                         意見列表
                         <hr>
@@ -52,13 +57,15 @@
                     <div class="opinionlistdiv">
                         延伸意見
                         <hr>
-                        <div class="opinionlist sort macossectiondivy" id="list">
+                        <div class="opinionlist sort macossectiondivy" id="extend">
                         </div>
                     </div>
                 </div><br>
-                <input type="file" class="file" id="file">
-                <input type="reset" class="button" value="清除">
-                <input type="button" class="button" id="submit" value="送出">
+                <div class="textcenter">
+                    <input type="file" class="file" id="file">
+                    <input type="reset" class="stbutton outline" value="清除">
+                    <input type="button" class="stbutton outline" id="submit" value="送出">
+                </div>
             </form>
         </div>
         <script src="newopinion.js"></script>

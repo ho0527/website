@@ -28,12 +28,12 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain macossectiondiv">
-            <table>
+        <div class="main mainmain center macossectiondiv">
+            <table class="sttable textcenter">
                 <tr>
-                    <td class="maintd">project name</td>
-                    <td class="maintd">project desciption</td>
-                    <td class="maintd">project function</td>
+                    <td class="maintd">name</td>
+                    <td class="maintd">desciption</td>
+                    <td class="maintd">function</td>
                 </tr>
                 <?php
                     $data=$_SESSION["data"];
@@ -54,14 +54,14 @@
                                 <td class="maintd"><?php echo($row[$i][1]); ?></td>
                                 <td class="maintd"><?php echo($row[$i][2]); ?></td>
                                 <td class="maintd">
-                                    <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
-                                    <input type="button" class="bluebutton" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
-                                    <input type="button" class="bluebutton" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
+                                    <input type="button" class="stbutton small light" onclick="location.href='neweditproject.php?edit=<?php echo($row[$i][0]); ?>'" value="修改">
+                                    <input type="button" class="stbutton small negative" onclick="location.href='neweditproject.php?del=<?php echo($row[$i][0]); ?>'" value="刪除"><br>
+                                    <input type="button" class="stbutton small outline" onclick="location.href='choosefacing.php?id=<?php echo($row[$i][0]); ?>'" value="專案管理">
                                     <?php
                                         if($row[$i][8]=="end"){
-                                            ?><input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>&isend=true'" value="執行方案檢視結果"><?php
+                                            ?><input type="button" class="stbutton small outline" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>&isend=true'" value="執行方案檢視結果"><?php
                                         }else{
-                                            ?><input type="button" class="bluebutton" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>&isend=false'" value="執行方案"><?php
+                                            ?><input type="button" class="stbutton small outline" onclick="location.href='planmember.php?id=<?php echo($row[$i][0]); ?>&isend=false'" value="執行方案"><?php
                                         }
                                     ?>
                                 </td>

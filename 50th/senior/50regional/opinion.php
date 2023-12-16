@@ -5,10 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>管理者專區</title>
         <link href="index.css" rel="stylesheet">
-        <link rel="stylesheet" href="plugin/css/macossection.css">
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/macossection.js"></script>
-        <script src="plugin/js/chrisplugin.js"></script>
+        <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
+        <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
         <?php
@@ -34,7 +32,7 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain opinionmain macossectiondiv">
+        <div class="main mainmain center opinionmain macossectiondivy">
             <?php
                 $userdata=$_SESSION["data"];
                 $row=query($db,"SELECT*FROM `opinion` WHERE `project_facingid`='$id'");
@@ -59,7 +57,7 @@
                         for($j=0;$j<count($extendidlist);$j=$j+1){
                             $extendid=$extendidlist[$j];
                             $opinionrow=query($db,"SELECT*FROM `opinion` WHERE `id`='$extendid'")[0];
-                            $extend[]="<a href='#opinion".$extendid."'>".$opinionrow[4]."</a>";
+                            $extend[]="<a href='#' onclick=\"smoothscroll('opinion".$extendid."')\">".$opinionrow[4]."</a>";
                         }
                         if(count($extend)>0){ $extend=implode(",",$extend); }
                     }else{ $extend="無引用"; }
@@ -74,9 +72,9 @@
                         <div class="time">評價人數: <?php echo($count); ?></div>
                         <?php
                             if($usercheck){
-                                ?><input type="button" class="button" onclick="location.href='score.php?key=opinion&id=<?php echo($_GET['id']); ?>&opinionid=<?php echo($row[$i][0]); ?>'" value="評價"><?php
+                                ?><input type="button" class="stbutton light" onclick="location.href='score.php?key=opinion&id=<?php echo($_GET['id']); ?>&opinionid=<?php echo($row[$i][0]); ?>'" value="評價"><?php
                             }else{
-                                ?><input type="button" class="button disabled" value="已完成評價" disabled><?php
+                                ?><input type="button" class="stbutton light disabled" value="已完成評價" disabled><?php
                             }
 
                             if($row[$i][7]=="audio"){
@@ -87,7 +85,12 @@
                                 ?><div class="mediadiv"><img src="<?php echo($row[$i][6]); ?>" class="media"></div><?php
                             }else{ }
                         ?>
-                        <div class="time">發布時間: <?php echo($row[$i][8]); ?></div>
+                        <div class="time">發佈時間: <?php echo($row[$i][8]); ?></div>
+                        <?php
+                            if($i<count($row)-1){
+                                ?><hr><?php
+                            }
+                        ?>
                     </div>
                     <?php
                 }

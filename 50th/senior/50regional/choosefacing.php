@@ -28,8 +28,8 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmain macossectiondiv">
-            <table>
+        <div class="main mainmain center macossectiondiv">
+            <table class="sttable textcenter">
                 <tr>
                     <td class="maintd">facing</td>
                     <td class="maintd">function</td>
@@ -44,7 +44,7 @@
                                 <tr>
                                     <td class="maintd"><?php echo($facingrow[$i][2]); ?></td>
                                     <td class="maintd">
-                                        <input type="button" class="bluebutton" onclick="location.href='opinion.php?id=<?php echo($id.'_'.$facingrow[$i][0]); ?>'" value="進入討論">
+                                        <input type="button" class="stbutton light" onclick="location.href='opinion.php?id=<?php echo($id.'_'.$facingrow[$i][0]); ?>'" value="進入討論">
                                     </td>
                                 </tr>
                             <?php
