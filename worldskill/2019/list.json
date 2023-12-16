@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/12/04尛",
+            "updatedate": "2023/12/16",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -912,8 +912,8 @@
                     "link": "TaskE/",
                     "statu": "FAILED",
                     "ps": "list",
-                    "createdate": "N/A",
-                    "updatedate": "N/A",
+                    "createdate": "2023/12/16",
+                    "updatedate": "2023/12/16",
                     "data": [
                         {
                             "list": 1,
