@@ -22437,6 +22437,12 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     height: 125px;
 }
 
+.elementposition2{
+    position: relative;
+    width: 70px;
+    height: 70px;
+}
+
 .element{
     border: 2px white solid;
     position: absolute;
@@ -22447,37 +22453,46 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     height: 70px;
 }
 
-.elementhover{
-    width: 0;
-    height: 0;
-    border: 25px solid;
-    border-color: #0099e5 #ff4c4c #34bf49 #fbb034;
-}
-
 .element1{
-    width: 0;
-    height: 0;
-    border: 25px solid;
-    border-color: #0099e5 #ff4c4c #34bf49 #fbb034;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-color: black;
+    border-style: solid;
+    border-top-width: 2px;
+    transform: rotate(45deg);
+    transform-origin: bottom left;
 }
 
 .element2{
-    width: 0;
-    height: 0;
-    border: 25px solid;
-    border-color: #0099e5 #ff4c4c #34bf49 #fbb034;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-color: black;
+    border-style: solid;
+    border-top-width: 2px;
+    transform: rotate(-45deg);
+    transform-origin: bottom right;
 }
 
 .element3{
-    width: 0;
-    height: 0;
-    border: 25px solid;
-    border-color: #0099e5 #ff4c4c #34bf49 #fbb034;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-color: black;
+    border-style: solid;
+    border-right-width: 2px;
+    transform: rotate(-45deg);
+    transform-origin: top left;
 }
 
 .element4{
-    width: 0;
-    height: 0;
-    border: 25px solid;
-    border-color: #0099e5 #ff4c4c #34bf49 #fbb034;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-color: black;
+    border-style: solid;
+    border-right-width: 2px;
+    transform: rotate(45deg);
+    transform-origin: top right;
 }

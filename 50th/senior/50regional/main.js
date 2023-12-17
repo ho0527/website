@@ -26,7 +26,7 @@ oldajax("GET","api.php?projectdata=").onload=function(){
                 tr.innerHTML=`
                     <td class="maintd">${data[i]["projectid"]}</td>
                     <td class="maintd">${data[i]["status"]}</td>
-                    <td class="maintd" colspan="3">${data[i]["data"]}</td>
+                    <td class="maintd sttext negative bold" colspan="3">${data[i]["data"]}</td>
                 `
                 docappendchild("table",tr)
             }
@@ -41,7 +41,7 @@ oldajax("GET","api.php?projectdata=").onload=function(){
                     }else{
                         td4data="尚未評分"
                         td5data=`
-                            <input type="button" class="bluebutton" onclick="location.href='score.php?key=plan&id=${data[i]["data"][j]["planid"]}&projectid=${data[i]["projectid"]}'" value="去評分">
+                            <input type="button" class="stbutton outline" onclick="location.href='score.php?key=plan&id=${data[i]["data"][j]["planid"]}&projectid=${data[i]["projectid"]}'" value="去評分">
                         `
                     }
 
@@ -59,7 +59,7 @@ oldajax("GET","api.php?projectdata=").onload=function(){
                 tr.innerHTML=`
                     <td class="maintd">${data[i]["projectid"]}</td>
                     <td class="maintd">${data[i]["status"]}</td>
-                    <td class="maintd" colspan="3">${data[i]["data"]}</td>
+                    <td class="maintd sttext negative bold" colspan="3">${data[i]["data"]}</td>
                 `
                 docappendchild("table",tr)
             }

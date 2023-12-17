@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="projectfacing macossectiondivy">
-                                <input type="button" class="button" id="newfacing" value="新增面向">
+                                <input type="button" class="stbutton secondary" id="newfacing" value="新增面向">
                                 <div class="facingmaindiv macossectiondivy" id="projectfacing"></div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="projectfacing">
-                            <input type="button" class="button" id="newfacing" value="新增面向">
+                            <input type="button" class="stbutton secondary" id="newfacing" value="新增面向">
                             <div class="facingmaindiv macossectiondivy" id="projectfacing">
                                 <div class="facingdiv">
                                     <div class="facing grid">

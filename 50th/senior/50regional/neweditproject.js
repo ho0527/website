@@ -48,45 +48,26 @@ if(key=="edit"){
 }
 
 docgetid("newfacing").onclick=function(){
-    if(facingcount<=10){
-        let div=doccreate("div")
-        div.classList.add("facingdiv")
-        div.innerHTML=`
-            <div class="facing grid">
-                <input type="text" class="input2 facingname" placeholder="面向名稱">
-                <input type="text" class="input2 facingdesciption" placeholder="面向說明">
-                <input type="button" class="noborderbutton facingdelect" value="X">
+    if(facingcount<10){
+        docgetid("projectfacing").innerHTML=`
+            ${docgetid("projectfacing").innerHTML}
+            <div class="facingdiv">
+                <div class="facing grid">
+                    <input type="text" class="input2 facingname" placeholder="面向名稱">
+                    <input type="text" class="input2 facingdesciption" placeholder="面向說明">
+                    <input type="button" class="noborderbutton facingdelect" value="X">
+                </div>
             </div>
         `
-        docgetid("projectfacing").appendChild(div)
         facingcount=facingcount+1
     }else{ alert("以到面向上限") }
 
-    for(let i=0;i<docgetall(".facingdelect").length;i=i+1){
-        docgetall(".facingdelect")[i].onclick=function(){
-            docgetall(".facingdiv")[i].remove()
+    docgetall(".facingdelect").forEach(function(event){
+        event.onclick=function(){
+            event.parentElement.parentElement.remove() // 刪除facingdiv
             facingcount=facingcount-1
-            for(let i=0;i<docgetall(".facingdelect").length;i=i+1){
-                docgetall(".facingdelect")[i].onclick=function(){
-                    docgetall(".facingdiv")[i].remove()
-                    facingcount=facingcount-1
-                }
-            }
         }
-    }
-}
-
-for(let i=0;i<docgetall(".facingdelect").length;i=i+1){
-    docgetall(".facingdelect")[i].onclick=function(){
-        docgetall(".facingdiv")[i].remove()
-        facingcount=facingcount-1
-        for(let i=0;i<docgetall(".facingdelect").length;i=i+1){
-            docgetall(".facingdelect")[i].onclick=function(){
-                docgetall(".facingdiv")[i].remove()
-                facingcount=facingcount-1
-            }
-        }
-    }
+    })
 }
 
 docgetid("submit").onclick=function(){

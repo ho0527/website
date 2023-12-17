@@ -28,8 +28,8 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main statisticmain macossectiondivy ">
-            <table class="table">
+        <div class="main statisticmain center macossectiondivy ">
+            <table class="sttable">
                 <tr>
                     <td class="statistictd statisticnoneselect" id="useropinion">
                         使用者意見發表統計

@@ -564,7 +564,7 @@ function closelightbox(){
     },300)
 }
 
-function tag(tagdiv,taglist){
+function tag(tagdiv,taglist,newtag=function(){}){
     let tagset=new Set()
 
     function updatetaglist(){
@@ -664,6 +664,7 @@ function tag(tagdiv,taglist){
                     taglist.push({ id: taglist.length+1,name: value,color: "" })
                     updatetaglist()
                     selecttag(value)
+                    newtag(value)
                 }else{
                     selecttag(value)
                 }

@@ -10,7 +10,7 @@ docgetall(".elementdiv").forEach(function(event){
     // hover時顯示
     event.onmouseover=function(){
         event.querySelectorAll(".element")[0].innerHTML=`
-            <div class="elementposition">
+            <div class="elementposition2">
                 <div class="element1" id="1">1</div>
                 <div class="element2" id="2">2</div>
                 <div class="element3" id="3">3</div>

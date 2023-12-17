@@ -59,76 +59,6 @@ function verifycode(){
 
 if(!weblsget("45regionalerrortime")){ weblsset("45regionalerrortime",0) }
 
-login(
-    function(){
-        let verifycodeuserans=""
-        docgetall("#dropbox>.dragimage").forEach(function(event){
-            verifycodeuserans=verifycodeuserans+event.dataset.id
-        })
-        if(docgetid("username").value=="admin"&&docgetid("password").value=="1234"){
-            alert("登入成功")
-        }
-        ajax("POST","/backend/45regional/login",function(event){
-            let data=JSON.parse(event.responseText)
-            if(data["success"]){
-                alert("登入成功")
-                weblsset("45regionalerrortime",null)
-                weblsset("45regionaluserid",data["data"]["id"])
-                weblsset("45regionalpermission",data["data"]["permission"])
-                if(data["data"]["permission"]=="1"){
-                    location.href="admin.html"
-                }else{
-                    location.href="user.html"
-                }
-            }else{
-                alert(data["data"]["message"])
-                weblsset("45regionalerrortime",parseInt(weblsget("45regionalerrortime"))+1)
-                if(weblsget("45regionalerrortime")>=3){
-                    weblsset("45regionalerrortime",null)
-                    location.href="usererror.html"
-                }
-                verifycode()
-            }
-        },JSON.stringify({
-            "username": docgetid("username").value,
-            "password": docgetid("password").value,
-            "verifycodeans": verifycodeans,
-            "verifycodeuserans": verifycodeuserans
-        }),[
-            ["Content-Type","application/json"]
-        ])
-    },
-    `
-        <div class="navigationbar">
-            <div class="navigationbarleft">
-                <img src="/website/material/icon/mainicon.png" class="logo" draggable="false">
-            </div>
-            <div class="navigationbartitle">TODO工作管理系統</div>
-        </div>
-    `,
-    `
-        <div class="main" id="loginmain">
-            <div class="iconinputdiv">
-                <div class="iconinputtext">帳號:</div>
-                <input type="text" class="iconiinputinput input" id="username">
-                <div class="iconinputicondiv"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
-            </div>
-            <div class="iconinputdiv">
-                <div class="iconinputtext">密碼:</div>
-                <input type="text" class="iconiinputinput input" id="password">
-                <div class="iconinputicondiv"><img src="/website/material/icon/lock.svg" class="iconinputicon" draggable="false"></div>
-            </div>
-            驗證碼:<br>
-            <div id="verifycodediv"></div><br>
-            <div id="key"></div>
-            <div class="dropbox" id="dropbox"></div><br><br>
-            <input type="button" class="button" id="reflashverifycode" value="重新產生">
-            <input type="button" class="button" id="clear" value="清除">
-            <input type="button" class="button" id="submit" value="登入"><br>
-        </div>
-    `
-)
-
 if(isset(weblsget("45regionalusername"))){ docgetid("username").value=weblsget("45regionalusername") }
 if(isset(weblsget("45regionalpassword"))){ docgetid("password").value=weblsget("45regionalpassword") }
 verifycode()
@@ -141,6 +71,45 @@ docgetid("clear").onclick=function(){
     docgetid("username").value=""
     docgetid("password").value=""
     verifycode()
+}
+
+docgetid("submit").onclick=function(){
+    let verifycodeuserans=""
+    docgetall("#dropbox>.dragimage").forEach(function(event){
+        verifycodeuserans=verifycodeuserans+event.dataset.id
+    })
+    if(docgetid("username").value=="admin"&&docgetid("password").value=="1234"){
+        alert("登入成功")
+    }
+    ajax("POST","/backend/45regional/login",function(event){
+        let data=JSON.parse(event.responseText)
+        if(data["success"]){
+            alert("登入成功")
+            weblsset("45regionalerrortime",null)
+            weblsset("45regionaluserid",data["data"]["id"])
+            weblsset("45regionalpermission",data["data"]["permission"])
+            if(data["data"]["permission"]=="管理者"){
+                location.href="admin.html"
+            }else{
+                location.href="user.html"
+            }
+        }else{
+            alert(data["data"]["message"])
+            weblsset("45regionalerrortime",parseInt(weblsget("45regionalerrortime"))+1)
+            if(weblsget("45regionalerrortime")>=3){
+                weblsset("45regionalerrortime",null)
+                location.href="usererror.html"
+            }
+            verifycode()
+        }
+    },JSON.stringify({
+        "username": docgetid("username").value,
+        "password": docgetid("password").value,
+        "verifycodeans": verifycodeans,
+        "verifycodeuserans": verifycodeuserans
+    }),[
+        ["Content-Type","application/json"]
+    ])
 }
 
 document.onkeydown=function(event){

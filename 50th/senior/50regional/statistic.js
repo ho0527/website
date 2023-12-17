@@ -158,7 +158,7 @@ docgetid("projectfacing").onclick=function(){
             let tr=doccreate("tr")
             tr.innerHTML=`
                 <td class="maintd">${data[i][0]}</td>
-                <td class="maintd"><input type="button" class="bluebutton see" data-id="${i}" value="查看"></td>
+                <td class="maintd"><input type="button" class="stbutton outline see" data-id="${i}" value="查看"></td>
             `
             docappendchild("table",tr)
         }

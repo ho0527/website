@@ -1,8 +1,11 @@
 body{
     font-family: "Consolas";
+    user-select: none;
     word-break: break-all;
     padding: 0px;
     margin: 0px;
+
+    -moz-user-select: none;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -13,7 +16,7 @@ h1,h2,h3,h4,h5,h6{
 hr{
     border: 1px white solid;
     width: 100%;
-    margin: 15px 0px;
+    margin: 5px 0px;
 }
 
 table{
@@ -22,7 +25,7 @@ table{
     color: white;
 }
 
-.main{
+/* .main{
     border: 2px white solid;
     position: absolute;
     top: 50%;
@@ -30,7 +33,7 @@ table{
     transform: translate(-50%,-50%);
     padding: 20px;
     border-radius: 20px;
-}
+} */
 
 .grid{
     display: grid;
@@ -98,7 +101,7 @@ table{
 .navigationbartitle{
     font-size: 50px;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .navigationbarbutton{
@@ -164,15 +167,9 @@ table{
 }
 
 .middleinput{
-    border: none;
-    border-bottom: 1px black solid;
-    background: none;
-    width: 35%;
-    height: 40px;
-    outline: none;
+    width: 35% !important;
     margin: 0px 5%;
-    font-size: 30px;
-    color: white;
+    font-size: 25px;
 }
 
 .inputhint{
@@ -357,7 +354,7 @@ html{
 
 /* Light */
 
-html,html.light,.u-light,html.dark .u-inverted{
+html,html.mainlight,.u-light,html.maindark .u-inverted{
     color-scheme: light;
 
     --stgray-50: var(--stlight-gray-50);
@@ -385,7 +382,7 @@ html,html.light,.u-light,html.dark .u-inverted{
     --sttonal-warning-800: #866800;
 }
 
-html.light .u-inverted,.u-inverted,html.dark,.u-dark{
+html.mainlight .u-inverted,.u-inverted,html.maindark,.u-dark{
     color-scheme: dark;
 
     --stgray-50: var(--stdark-gray-50);
@@ -417,7 +414,7 @@ html.light .u-inverted,.u-inverted,html.dark,.u-dark{
 
 /* Hidden */
 
-html.light .u-light-hidden,html.dark .u-dark-hidden{
+html.mainlight .u-light-hidden,html.maindark .u-dark-hidden{
     display: none !important;
 }
 
@@ -616,13 +613,9 @@ html{
     --stnegative-700: #a8071a;
     --stnegative-800: #820014;
     --stnegative-900: #5c0011;
-}
 
-/**
-    * Sizes
-    */
+    /* Sizes */
 
-html{
     --stinput-height-large: 42px;
     --stinput-height-large-dense: 37px;
     --stinput-height-medium: 37px;
@@ -682,15 +675,13 @@ html{
     --stspace-gap-huge: 4.5rem;
 }
 
-/* ==========================================================================
-    Color Schemes
-    ========================================================================== */
+/* ==========================================================================Color Schemes========================================================================== */
 
 /**
     * Light
     */
 
-html,html.light,.has-light,html.dark .has-inverted{
+html,html.mainlight,.light,html.maindark .inverted{
     color-scheme: light;
 
     --stgray-50: var(--stlight-gray-50);
@@ -718,7 +709,7 @@ html,html.light,.has-light,html.dark .has-inverted{
     --sttonal-warning-800: #866800;
 }
 
-html.light .has-inverted,.has-inverted,html.dark,.has-dark{
+html.mainlight .inverted,.inverted,html.maindark,.dark{
     color-scheme: dark;
 
     --stgray-50: var(--stdark-gray-50);
@@ -752,18 +743,18 @@ html.light .has-inverted,.has-inverted,html.dark,.has-dark{
     * Hidden
     */
 
-html.light .has-light-hidden,html.dark .has-dark-hidden{
+html.mainlight .light-hidden,html.maindark .dark-hidden{
     display: none !important;
 }
 
 @media (prefers-color-scheme: light){
-    html:not(.dark) .has-light-hidden{
+    html:not(.dark) .light-hidden{
         display: none !important;
     }
 }
 
 @media (prefers-color-scheme: dark){
-    html:not(.light) .has-dark-hidden{
+    html:not(.light) .dark-hidden{
         display: none !important;
     }
 }
@@ -808,7 +799,7 @@ html.light .has-light-hidden,html.dark .has-dark-hidden{
         --sttonal-warning-800: #463f00;
     }
 
-    html:not(.light) .has-inverted{
+    html:not(.light) .inverted{
         color-scheme: light;
 
         --stgray-50: var(--stlight-gray-50);
@@ -857,7 +848,7 @@ html.large,html.large body{
     Background Color
     ========================================================================== */
 
-html.is-secondary,html.is-secondary body{
+html.secondary,html.secondary body{
     background-color: var(--stgray-75);
 }
 
@@ -1003,7 +994,6 @@ button{
 
 /* ========================================================================== Base ========================================================================== */
 
-
 .stbutton{
     margin: 5px;
     width: auto;
@@ -1020,6 +1010,13 @@ button{
     -moz-osx-font-smoothing: inherit;
     appearance: none;
     -webkit-appearance: none;
+}
+
+.stbutton:focus{
+    outline: 0;
+}
+
+.stbutton{
     border: 2px solid var(--accent-color, var(--stgray-800));
     font-size: var(--stfont-size-14px);
     line-height: 1.5;
@@ -1042,10 +1039,6 @@ button{
     opacity: 0.98;
 }
 
-.stbutton:focus{
-    outline: 0;
-}
-
 /* ==========================================================================
     Variations
     ========================================================================== */
@@ -1054,7 +1047,7 @@ button{
   * Secondary
 */
 
-.stbutton.is-secondary{
+.stbutton.secondary{
     color: var(--accent-color, var(--stgray-800));
     border-color: var(--stgray-100);
     background: var(--stgray-100);
@@ -1147,7 +1140,7 @@ button{
     left: 50%;
 }
 
-.stbutton.loading:is(.outline, .is-secondary, .is-tertiary, .is-ghost)::after{
+.stbutton.loading:is(.outline, .secondary, .is-tertiary, .is-ghost)::after{
     color: var(--stgray-800);
 }
 
@@ -1290,7 +1283,7 @@ button{
     border: 2px solid var(--stgray-300);
 }
 
-.stbutton.is-secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     background: var(--stgray-200);
 }
 
@@ -1383,7 +1376,7 @@ button{
     background: var(--stnegative-400);
 }
 
-.stbuttons .stbutton.is-secondary::before{
+.stbuttons .stbutton.secondary::before{
     background: var(--stgray-400);
 }
 
@@ -9456,7 +9449,7 @@ button{
   * Secondary
   */
 
-.sticon.is-secondary{
+.sticon.secondary{
     color: var(--stgray-500);
 }
 
@@ -9710,13 +9703,11 @@ button{
     border-bottom-color: var(--stprimary-600);
 }
 
-/**
-  * Resizable
-  */
+/* Resizable */
 
-.stinput.is-resizable input,.stinput.is-resizable textarea{
-    min-height: 5rem;
-    resize: vertical;
+.resizeable{
+    min-height: 5rem !important;
+    resize: vertical !important;
 }
 
 /**
@@ -10842,7 +10833,7 @@ button{
   * Secondary
   */
 
-.stprogress .bar.is-secondary{
+.stprogress .bar.secondary{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -10912,7 +10903,7 @@ button{
   * Secondary
   */
 
-.stbadge.is-secondary{
+.stbadge.secondary{
     background: var(--stgray-200);
     color: var(--accent-color, var(--stgray-800));
 }
@@ -11120,7 +11111,7 @@ button{
   * Secondary
   */
 
-.stpagination.is-secondary{
+.stpagination.secondary{
     padding: 0;
     background: transparent;
     border-color: transparent;
@@ -11259,7 +11250,7 @@ button{
     width: 1.18em;
     -webkit-font-smoothing: antialiased;
     backface-visibility: hidden;
-    content: "\f078";
+    content: "▼";
     font-size: 13px;
 }
 
@@ -11618,7 +11609,7 @@ button{
   * Secondary
   */
 
-.sttext.is-secondary{
+.sttext.secondary{
     color: var(--stgray-500);
 }
 
@@ -11875,7 +11866,7 @@ button{
     color: var(--stnegative-600);
 }
 
-.sttext.negative.is-secondary{
+.sttext.negative.secondary{
     color: var(--stnegative-500);
 }
 
@@ -11972,7 +11963,7 @@ button{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.sttab.is-pilled.is-secondary .item.is-active{
+.sttab.is-pilled.secondary .item.is-active{
     background: var(--stgray-200);
     color: var(--accent-color, var(--stgray-800));
 }
@@ -12306,7 +12297,7 @@ a.stbox:hover{
   * Dark
   */
 
-.stcontent.has-dark{
+.stcontent.dark{
     background: var(--stgray-50);
     color: var(--stgray-800);
 }
@@ -12315,7 +12306,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.stcontent.is-secondary{
+.stcontent.secondary{
     background: var(--stgray-75);
 }
 
@@ -12804,7 +12795,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.stmeta.is-secondary .item{
+.stmeta.secondary .item{
     color: var(--stgray-500);
 }
 
@@ -12985,7 +12976,6 @@ a.stbox:hover{
     border-spacing: 0;
     border-color: inherit;
     vertical-align: inherit;
-    text-align: left;
     font-weight: inherit;
     font-size: 14px;
 
@@ -13176,7 +13166,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.sttable:is(tr, tr th, tr td).is-secondary{
+.sttable:is(tr, tr th, tr td).secondary{
     background: var(--stgray-75);
 }
 
@@ -14282,7 +14272,7 @@ a.stbox:hover{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.stchip.is-toggle.is-secondary input:checked+.content{
+.stchip.is-toggle.secondary input:checked+.content{
     color: var(--accent-color, var(--stgray-800));
     background: var(--stgray-200);
     border-color: var(--accent-color, var(--stgray-600));
@@ -14298,7 +14288,7 @@ a.stbox:hover{
     color: var(--accent-foreground-color, var(--stwhite));
 }
 
-.stchip.is-input.is-secondary input:checked+.content{
+.stchip.is-input.secondary input:checked+.content{
     color: var(--accent-color, var(--stprimary-600));
     background: var(--stgray-100);
     border-color: var(--accent-color, var(--stprimary-600));
@@ -14458,7 +14448,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.stclose.is-secondary{
+.stclose.secondary{
     background: var(--stgray-300);
     color: var(--stgray-800);
 }
@@ -17582,7 +17572,7 @@ details.staccordion[open] summary{
   * Secondary
   */
 
-.stmask.is-secondary{
+.stmask.secondary{
     background: transparent;
     color: var(--stgray-800);
 }
@@ -17963,7 +17953,7 @@ a.stheader:hover{
   * Secondary
   */
 
-.stheader.is-secondary{
+.stheader.secondary{
     color: var(--stgray-500);
 }
 
@@ -17999,7 +17989,7 @@ a.stheader:hover{
     Variables
     ========================================================================== */
 
-.stsegment{
+.main{
     --accent-color: initial;
     --accent-foreground-color: initial;
     --stindicator-color: var(--accent-color, var(--stgray-900));
@@ -18009,7 +17999,7 @@ a.stheader:hover{
     Base
     ========================================================================== */
 
-.stsegment{
+.main{
     display: block;
     text-decoration: none;
     color: inherit;
@@ -18021,7 +18011,7 @@ a.stheader:hover{
     background: var(--stgray-50);
 }
 
-a.stsegment:hover{
+a.main:hover{
     border-color: var(--stgray-400);
 }
 
@@ -18033,7 +18023,7 @@ a.stsegment:hover{
   * Collapsed
   */
 
-.stsegment.is-collapsed{
+.main.is-collapsed{
     width: fit-content;
 }
 
@@ -18041,19 +18031,19 @@ a.stsegment:hover{
   * Indicated
   */
 
-.stsegment.is-top-indicated{
+.main.is-top-indicated{
     border-top: 3px solid var(--stindicator-color);
 }
 
-.stsegment.is-bottom-indicated{
+.main.is-bottom-indicated{
     border-bottom: 3px solid var(--stindicator-color);
 }
 
-.stsegment.is-left-indicated{
+.main.is-left-indicated{
     border-left: 3px solid var(--stindicator-color);
 }
 
-.stsegment.is-right-indicated{
+.main.is-right-indicated{
     border-right: 3px solid var(--stindicator-color);
 }
 
@@ -18061,7 +18051,7 @@ a.stsegment:hover{
   * Secondary
   */
 
-.stsegment.is-secondary{
+.main.secondary{
     background: var(--stgray-75);
 }
 
@@ -18069,39 +18059,23 @@ a.stsegment:hover{
   * Tertiary
   */
 
-.stsegment.is-tertiary{
+.main.is-tertiary{
     background: var(--stgray-100);
-}
-
-/**
-  * Aligns
-  */
-
-.stsegment.left{
-    text-align: left;
-}
-
-.stsegment.right{
-    text-align: right;
-}
-
-.stsegment.center{
-    text-align: center;
 }
 
 /**
   * Emphasises
   */
 
-.stsegment[class*="-indicated"].negative{
+.main[class*="-indicated"].negative{
     --stindicator-color: var(--stnegative-500);
 }
 
-.stsegment[class*="-indicated"].is-positive{
+.main[class*="-indicated"].is-positive{
     --stindicator-color: var(--stpositive-500);
 }
 
-.stsegment[class*="-indicated"].is-warning{
+.main[class*="-indicated"].is-warning{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -18109,11 +18083,11 @@ a.stsegment:hover{
   * Elevated
   */
 
-.stsegment.is-elevated{
+.main.is-elevated{
     box-shadow: 0px 1px 5px 0 #00000024;
 }
 
-.stsegment.is-very-elevated{
+.main.is-very-elevated{
     box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
 }
 
@@ -18121,30 +18095,30 @@ a.stsegment:hover{
   * Padded
   */
 
-.stsegment.is-padded{
+.main.is-padded{
     padding: 1.5rem;
 }
 
-.stsegment.is-horizontally-padded{
+.main.is-horizontally-padded{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
 }
 
-.stsegment.vertically-padded{
+.main.vertically-padded{
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
 
-.stsegment.is-very-padded{
+.main.is-very-padded{
     padding: 3.5rem;
 }
 
-.stsegment.is-horizontally-very-padded{
+.main.is-horizontally-very-padded{
     padding-left: 3.5rem;
     padding-right: 3.5rem;
 }
 
-.stsegment.vertically-very-padded{
+.main.vertically-very-padded{
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
 }
@@ -18153,7 +18127,7 @@ a.stsegment:hover{
   * Dense
   */
 
-.stsegment.is-dense{
+.main.is-dense{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
@@ -18240,12 +18214,12 @@ a.stsegment:hover{
   * Secondary
   */
 
-.stquote.is-secondary{
+.stquote.secondary{
     border-left: 5px solid var(--accent-color, var(--stgray-300));
     padding: 0 0 0 2rem;
 }
 
-.stquote.is-secondary::before{
+.stquote.secondary::before{
     display: none;
 }
 
@@ -18364,7 +18338,7 @@ a.stsegment:hover{
   * Secondary
   */
 
-.stapp-layout .cell.is-secondary{
+.stapp-layout .cell.secondary{
     background: var(--stgray-75);
 }
 
@@ -20931,7 +20905,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     display: contents;
 }
 
-.sttimeline>.item.is-secondary{
+.sttimeline>.item.secondary{
     --sttimeline-top-line-height: 2px;
     --sttimeline-top-distance: calc(var(--sttimeline-top-line-height) - 4px);
 }
@@ -20967,7 +20941,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     grid-column: 2 / 3;
 }
 
-.sttimeline>.item.is-break+.item.is-secondary .indicator,.sttimeline>.item.is-secondary:first-child .indicator{
+.sttimeline>.item.is-break+.item.secondary .indicator,.sttimeline>.item.secondary:first-child .indicator{
     margin-top: 6px;
 }
 
@@ -21051,7 +21025,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     color: var(--stgray-600);
 }
 
-.sttimeline>.item.is-secondary .indicator .sticon{
+.sttimeline>.item.secondary .indicator .sticon{
     aspect-ratio: 1/1;
     width: 16px;
     height: 16px;
@@ -21072,7 +21046,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     color: var(--stwhite);
 }
 
-.sttimeline>.item.negative.is-secondary .indicator .sticon{
+.sttimeline>.item.negative.secondary .indicator .sticon{
     background: initial;
     color: var(--stnegative-500);
 }
@@ -21086,7 +21060,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.sttimeline>.item.is-active.is-secondary .indicator .sticon{
+.sttimeline>.item.is-active.secondary .indicator .sticon{
     background: initial;
     color: var(--stgray-800);
 }
@@ -21254,11 +21228,11 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Secondary
   */
 
-.stblankslate.is-secondary>.sticon{
+.stblankslate.secondary>.sticon{
     color: var(--stgray-500);
 }
 
-.stblankslate.is-secondary .header{
+.stblankslate.secondary .header{
     color: var(--stgray-500);
 }
 

@@ -101,7 +101,7 @@ table{
 .navigationbartitle{
     font-size: 50px;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .navigationbarbutton{
@@ -848,7 +848,7 @@ html.large,html.large body{
     Background Color
     ========================================================================== */
 
-html.is-secondary,html.is-secondary body{
+html.secondary,html.secondary body{
     background-color: var(--stgray-75);
 }
 
@@ -1047,7 +1047,7 @@ button{
   * Secondary
 */
 
-.stbutton.is-secondary{
+.stbutton.secondary{
     color: var(--accent-color, var(--stgray-800));
     border-color: var(--stgray-100);
     background: var(--stgray-100);
@@ -1140,7 +1140,7 @@ button{
     left: 50%;
 }
 
-.stbutton.loading:is(.outline, .is-secondary, .is-tertiary, .is-ghost)::after{
+.stbutton.loading:is(.outline, .secondary, .is-tertiary, .is-ghost)::after{
     color: var(--stgray-800);
 }
 
@@ -1283,7 +1283,7 @@ button{
     border: 2px solid var(--stgray-300);
 }
 
-.stbutton.is-secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     background: var(--stgray-200);
 }
 
@@ -1376,7 +1376,7 @@ button{
     background: var(--stnegative-400);
 }
 
-.stbuttons .stbutton.is-secondary::before{
+.stbuttons .stbutton.secondary::before{
     background: var(--stgray-400);
 }
 
@@ -9449,7 +9449,7 @@ button{
   * Secondary
   */
 
-.sticon.is-secondary{
+.sticon.secondary{
     color: var(--stgray-500);
 }
 
@@ -10833,7 +10833,7 @@ button{
   * Secondary
   */
 
-.stprogress .bar.is-secondary{
+.stprogress .bar.secondary{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -10903,7 +10903,7 @@ button{
   * Secondary
   */
 
-.stbadge.is-secondary{
+.stbadge.secondary{
     background: var(--stgray-200);
     color: var(--accent-color, var(--stgray-800));
 }
@@ -11111,7 +11111,7 @@ button{
   * Secondary
   */
 
-.stpagination.is-secondary{
+.stpagination.secondary{
     padding: 0;
     background: transparent;
     border-color: transparent;
@@ -11609,7 +11609,7 @@ button{
   * Secondary
   */
 
-.sttext.is-secondary{
+.sttext.secondary{
     color: var(--stgray-500);
 }
 
@@ -11866,7 +11866,7 @@ button{
     color: var(--stnegative-600);
 }
 
-.sttext.negative.is-secondary{
+.sttext.negative.secondary{
     color: var(--stnegative-500);
 }
 
@@ -11963,7 +11963,7 @@ button{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.sttab.is-pilled.is-secondary .item.is-active{
+.sttab.is-pilled.secondary .item.is-active{
     background: var(--stgray-200);
     color: var(--accent-color, var(--stgray-800));
 }
@@ -12306,7 +12306,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.stcontent.is-secondary{
+.stcontent.secondary{
     background: var(--stgray-75);
 }
 
@@ -12795,7 +12795,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.stmeta.is-secondary .item{
+.stmeta.secondary .item{
     color: var(--stgray-500);
 }
 
@@ -13166,7 +13166,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.sttable:is(tr, tr th, tr td).is-secondary{
+.sttable:is(tr, tr th, tr td).secondary{
     background: var(--stgray-75);
 }
 
@@ -14272,7 +14272,7 @@ a.stbox:hover{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.stchip.is-toggle.is-secondary input:checked+.content{
+.stchip.is-toggle.secondary input:checked+.content{
     color: var(--accent-color, var(--stgray-800));
     background: var(--stgray-200);
     border-color: var(--accent-color, var(--stgray-600));
@@ -14288,7 +14288,7 @@ a.stbox:hover{
     color: var(--accent-foreground-color, var(--stwhite));
 }
 
-.stchip.is-input.is-secondary input:checked+.content{
+.stchip.is-input.secondary input:checked+.content{
     color: var(--accent-color, var(--stprimary-600));
     background: var(--stgray-100);
     border-color: var(--accent-color, var(--stprimary-600));
@@ -14448,7 +14448,7 @@ a.stbox:hover{
   * Secondary
   */
 
-.stclose.is-secondary{
+.stclose.secondary{
     background: var(--stgray-300);
     color: var(--stgray-800);
 }
@@ -17572,7 +17572,7 @@ details.staccordion[open] summary{
   * Secondary
   */
 
-.stmask.is-secondary{
+.stmask.secondary{
     background: transparent;
     color: var(--stgray-800);
 }
@@ -17953,7 +17953,7 @@ a.stheader:hover{
   * Secondary
   */
 
-.stheader.is-secondary{
+.stheader.secondary{
     color: var(--stgray-500);
 }
 
@@ -18051,7 +18051,7 @@ a.main:hover{
   * Secondary
   */
 
-.main.is-secondary{
+.main.secondary{
     background: var(--stgray-75);
 }
 
@@ -18214,12 +18214,12 @@ a.main:hover{
   * Secondary
   */
 
-.stquote.is-secondary{
+.stquote.secondary{
     border-left: 5px solid var(--accent-color, var(--stgray-300));
     padding: 0 0 0 2rem;
 }
 
-.stquote.is-secondary::before{
+.stquote.secondary::before{
     display: none;
 }
 
@@ -18338,7 +18338,7 @@ a.main:hover{
   * Secondary
   */
 
-.stapp-layout .cell.is-secondary{
+.stapp-layout .cell.secondary{
     background: var(--stgray-75);
 }
 
@@ -20905,7 +20905,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     display: contents;
 }
 
-.sttimeline>.item.is-secondary{
+.sttimeline>.item.secondary{
     --sttimeline-top-line-height: 2px;
     --sttimeline-top-distance: calc(var(--sttimeline-top-line-height) - 4px);
 }
@@ -20941,7 +20941,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     grid-column: 2 / 3;
 }
 
-.sttimeline>.item.is-break+.item.is-secondary .indicator,.sttimeline>.item.is-secondary:first-child .indicator{
+.sttimeline>.item.is-break+.item.secondary .indicator,.sttimeline>.item.secondary:first-child .indicator{
     margin-top: 6px;
 }
 
@@ -21025,7 +21025,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     color: var(--stgray-600);
 }
 
-.sttimeline>.item.is-secondary .indicator .sticon{
+.sttimeline>.item.secondary .indicator .sticon{
     aspect-ratio: 1/1;
     width: 16px;
     height: 16px;
@@ -21046,7 +21046,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     color: var(--stwhite);
 }
 
-.sttimeline>.item.negative.is-secondary .indicator .sticon{
+.sttimeline>.item.negative.secondary .indicator .sticon{
     background: initial;
     color: var(--stnegative-500);
 }
@@ -21060,7 +21060,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.sttimeline>.item.is-active.is-secondary .indicator .sticon{
+.sttimeline>.item.is-active.secondary .indicator .sticon{
     background: initial;
     color: var(--stgray-800);
 }
@@ -21228,11 +21228,11 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Secondary
   */
 
-.stblankslate.is-secondary>.sticon{
+.stblankslate.secondary>.sticon{
     color: var(--stgray-500);
 }
 
-.stblankslate.is-secondary .header{
+.stblankslate.secondary .header{
     color: var(--stgray-500);
 }
 
@@ -22754,7 +22754,7 @@ inline                   新增
 }
 
 .loginmain{
-    width: 25vw;
+    width: 300px;
 }
 
 .inputmargin{

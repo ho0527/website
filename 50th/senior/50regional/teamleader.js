@@ -21,8 +21,8 @@ docgetall(".end").forEach(function(event){
         oldajax("GET","api.php?projectdata=").onload=function(){
             let data=JSON.parse(this.responseText)
             let table=`
-                <div class="lightboxtitle">尚未評分列表</div>
-                <table class="lightboxtable macossectiondivy">
+                <div class="lightboxtitle textcenter">尚未評分列表</div>
+                <table class="lightboxtable textcenter macossectiondivy">
                     <tr>
                         <td class="maintd">專案id</td>
                         <td class="maintd">職位</td>
@@ -55,9 +55,9 @@ docgetall(".end").forEach(function(event){
 
             table=table+`
                 <table class="table">
-                <div class="lightboxbuttondiv">
-                    <input type="button" class="stbutton outline" id="back" value="返回">
-                    <input type="button" class="stbutton negative outline" onclick="endcheck('notfinish',${projectid})" value="不管他們確定結束">
+                <div class="lightboxbuttondiv textcenter">
+                    <input type="button" class="stbutton light" id="back" value="返回">
+                    <input type="button" class="stbutton negative" onclick="endcheck('notfinish',${projectid})" value="不管他們確定結束">
                 </div>
             `
 

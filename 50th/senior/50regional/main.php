@@ -28,8 +28,8 @@
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
             </div>
         </div>
-        <div class="main mainmainmain macossectiondivy">
-            <table class="table" id="table">
+        <div class="main mainmainmain center macossectiondivy">
+            <table class="sttable textcenter" id="table">
                 <tr>
                     <td class="maintd">專案id</td>
                     <td class="maintd">職位</td>
