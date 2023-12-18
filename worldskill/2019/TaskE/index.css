@@ -22445,54 +22445,91 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .element{
     border: 2px white solid;
+    border-radius: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
 }
 
 .element1{
+    border: 1px white solid;
+    border-top-left-radius: 100%;
     position: absolute;
-    width: 70px;
-    height: 70px;
-    border-color: black;
-    border-style: solid;
-    border-top-width: 2px;
+    top: -10px;
+    left: 19px;
+    width: 45px;
+    height: 45px;
     transform: rotate(45deg);
-    transform-origin: bottom left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.element1text{
+    transform: rotate(-45deg);
+    position: relative;
+    left: 5px;
 }
 
 .element2{
+    border: 1px white solid;
+    border-top-left-radius: 100%;
     position: absolute;
-    width: 70px;
-    height: 70px;
-    border-color: black;
-    border-style: solid;
-    border-top-width: 2px;
-    transform: rotate(-45deg);
-    transform-origin: bottom right;
+    top: 21px;
+    left: 51px;
+    width: 45px;
+    height: 45px;
+    transform: rotate(135deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.element2text{
+    transform: rotate(-135deg);
+    position: relative;
+    left: 5px;
 }
 
 .element3{
+    border: 1px white solid;
+    border-top-left-radius: 100%;
     position: absolute;
-    width: 70px;
-    height: 70px;
-    border-color: black;
-    border-style: solid;
-    border-right-width: 2px;
-    transform: rotate(-45deg);
-    transform-origin: top left;
+    top: 52px;
+    left: 19px;
+    width: 45px;
+    height: 45px;
+    transform: rotate(225deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.element3text{
+    transform: rotate(-225deg);
+    position: relative;
+    top: 5px;
 }
 
 .element4{
+    border: 1px white solid;
+    border-top-left-radius: 100%;
     position: absolute;
-    width: 70px;
-    height: 70px;
-    border-color: black;
-    border-style: solid;
-    border-right-width: 2px;
-    transform: rotate(45deg);
-    transform-origin: top right;
+    top: 20px;
+    left: -12px;
+    width: 45px;
+    height: 45px;
+    transform: rotate(315deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.element4text{
+    transform: rotate(-315deg);
+    position: relative;
+    top: 5px;
 }

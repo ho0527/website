@@ -11,10 +11,10 @@ docgetall(".elementdiv").forEach(function(event){
     event.onmouseover=function(){
         event.querySelectorAll(".element")[0].innerHTML=`
             <div class="elementposition2">
-                <div class="element1" id="1">1</div>
-                <div class="element2" id="2">2</div>
-                <div class="element3" id="3">3</div>
-                <div class="element4" id="4">4</div>
+                <div class="element1" id="1"><div class="element1text">1</div></div>
+                <div class="element2" id="2"><div class="element2text">2</div></div>
+                <div class="element3" id="3"><div class="element3text">3</div></div>
+                <div class="element4" id="4"><div class="element4text">4</div></div>
             </div>
         `
 
