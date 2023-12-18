@@ -346,77 +346,14 @@ table{
     cursor: pointer;
 }
 
+/* ================================================================================================================================================================== */
+
 html{
     --staccent-color: #5c79ff;
 }
 
 /* ========================================================================== Color Schemes ========================================================================== */
 
-/* Light */
-
-html,html.mainlight,.u-light,html.maindark .u-inverted{
-    color-scheme: light;
-
-    --stgray-50: var(--stlight-gray-50);
-    --stgray-75: var(--stlight-gray-75);
-    --stgray-100: var(--stlight-gray-100);
-    --stgray-200: var(--stlight-gray-200);
-    --stgray-300: var(--stlight-gray-300);
-    --stgray-400: var(--stlight-gray-400);
-    --stgray-500: var(--stlight-gray-500);
-    --stgray-600: var(--stlight-gray-600);
-    --stgray-700: var(--stlight-gray-700);
-    --stgray-800: var(--stlight-gray-800);
-    --stgray-900: var(--stlight-gray-900);
-
-    --sttonal-positive-400: #cdffbe;
-    --sttonal-positive-800: #357016;
-
-    --sttonal-negative-400: #ffbebe;
-    --sttonal-negative-800: #701616;
-
-    --sttonal-primary-400: #d9edff;
-    --sttonal-primary-800: #005cde;
-
-    --sttonal-warning-400: #fff7ae;
-    --sttonal-warning-800: #866800;
-}
-
-html.mainlight .u-inverted,.u-inverted,html.maindark,.u-dark{
-    color-scheme: dark;
-
-    --stgray-50: var(--stdark-gray-50);
-    --stgray-75: var(--stdark-gray-75);
-    --stgray-100: var(--stdark-gray-100);
-    --stgray-200: var(--stdark-gray-200);
-    --stgray-300: var(--stdark-gray-300);
-    --stgray-400: var(--stdark-gray-400);
-    --stgray-500: var(--stdark-gray-500);
-    --stgray-600: var(--stdark-gray-600);
-    --stgray-700: var(--stdark-gray-700);
-    --stgray-800: var(--stdark-gray-800);
-    --stgray-900: var(--stdark-gray-900);
-
-    --stlink-700: #8887ff;
-
-    --sttonal-positive-400: #92d34f;
-    --sttonal-positive-800: #0e4600;
-
-    --sttonal-negative-400: #d60000;
-    --sttonal-negative-800: #fff;
-
-    --sttonal-primary-400: #0a6ffd;
-    --sttonal-primary-800: #ffffff;
-
-    --sttonal-warning-400: #edff00;
-    --sttonal-warning-800: #463f00;
-}
-
-/* Hidden */
-
-html.mainlight .u-light-hidden,html.maindark .u-dark-hidden{
-    display: none !important;
-}
 
 @media (prefers-color-scheme: light){
     html:not(.dark) .u-light-hidden{
@@ -677,75 +614,6 @@ html{
 
 /* ==========================================================================Color Schemes========================================================================== */
 
-/**
-    * Light
-    */
-
-html,html.mainlight,.light,html.maindark .inverted{
-    color-scheme: light;
-
-    --stgray-50: var(--stlight-gray-50);
-    --stgray-75: var(--stlight-gray-75);
-    --stgray-100: var(--stlight-gray-100);
-    --stgray-200: var(--stlight-gray-200);
-    --stgray-300: var(--stlight-gray-300);
-    --stgray-400: var(--stlight-gray-400);
-    --stgray-500: var(--stlight-gray-500);
-    --stgray-600: var(--stlight-gray-600);
-    --stgray-700: var(--stlight-gray-700);
-    --stgray-800: var(--stlight-gray-800);
-    --stgray-900: var(--stlight-gray-900);
-
-    --sttonal-positive-400: #cdffbe;
-    --sttonal-positive-800: #357016;
-
-    --sttonal-negative-400: #ffbebe;
-    --sttonal-negative-800: #701616;
-
-    --sttonal-primary-400: #d9edff;
-    --sttonal-primary-800: #005cde;
-
-    --sttonal-warning-400: #fff7ae;
-    --sttonal-warning-800: #866800;
-}
-
-html.mainlight .inverted,.inverted,html.maindark,.dark{
-    color-scheme: dark;
-
-    --stgray-50: var(--stdark-gray-50);
-    --stgray-75: var(--stdark-gray-75);
-    --stgray-100: var(--stdark-gray-100);
-    --stgray-200: var(--stdark-gray-200);
-    --stgray-300: var(--stdark-gray-300);
-    --stgray-400: var(--stdark-gray-400);
-    --stgray-500: var(--stdark-gray-500);
-    --stgray-600: var(--stdark-gray-600);
-    --stgray-700: var(--stdark-gray-700);
-    --stgray-800: var(--stdark-gray-800);
-    --stgray-900: var(--stdark-gray-900);
-
-    --stlink-700: #8887ff;
-
-    --sttonal-positive-400: #92d34f;
-    --sttonal-positive-800: #0e4600;
-
-    --sttonal-negative-400: #d60000;
-    --sttonal-negative-800: #fff;
-
-    --sttonal-primary-400: #0a6ffd;
-    --sttonal-primary-800: #ffffff;
-
-    --sttonal-warning-400: #edff00;
-    --sttonal-warning-800: #463f00;
-}
-
-/**
-    * Hidden
-    */
-
-html.mainlight .light-hidden,html.maindark .dark-hidden{
-    display: none !important;
-}
 
 @media (prefers-color-scheme: light){
     html:not(.dark) .light-hidden{
@@ -826,6 +694,142 @@ html.mainlight .light-hidden,html.maindark .dark-hidden{
         --sttonal-warning-400: #fff7ae;
         --sttonal-warning-800: #866800;
     }
+}
+
+/* Hidden */
+
+html.mainlight .u-light-hidden,html.maindark .u-dark-hidden{
+    display: none !important;
+}
+
+/* Light */
+
+html,html.mainlight,.u-light,html.maindark .u-inverted{
+    color-scheme: light;
+
+    --stgray-50: var(--stlight-gray-50);
+    --stgray-75: var(--stlight-gray-75);
+    --stgray-100: var(--stlight-gray-100);
+    --stgray-200: var(--stlight-gray-200);
+    --stgray-300: var(--stlight-gray-300);
+    --stgray-400: var(--stlight-gray-400);
+    --stgray-500: var(--stlight-gray-500);
+    --stgray-600: var(--stlight-gray-600);
+    --stgray-700: var(--stlight-gray-700);
+    --stgray-800: var(--stlight-gray-800);
+    --stgray-900: var(--stlight-gray-900);
+
+    --sttonal-positive-400: #cdffbe;
+    --sttonal-positive-800: #357016;
+
+    --sttonal-negative-400: #ffbebe;
+    --sttonal-negative-800: #701616;
+
+    --sttonal-primary-400: #d9edff;
+    --sttonal-primary-800: #005cde;
+
+    --sttonal-warning-400: #fff7ae;
+    --sttonal-warning-800: #866800;
+}
+
+html.mainlight .u-inverted,.u-inverted,html.maindark,.u-dark{
+    color-scheme: dark;
+
+    --stgray-50: var(--stdark-gray-50);
+    --stgray-75: var(--stdark-gray-75);
+    --stgray-100: var(--stdark-gray-100);
+    --stgray-200: var(--stdark-gray-200);
+    --stgray-300: var(--stdark-gray-300);
+    --stgray-400: var(--stdark-gray-400);
+    --stgray-500: var(--stdark-gray-500);
+    --stgray-600: var(--stdark-gray-600);
+    --stgray-700: var(--stdark-gray-700);
+    --stgray-800: var(--stdark-gray-800);
+    --stgray-900: var(--stdark-gray-900);
+
+    --stlink-700: #8887ff;
+
+    --sttonal-positive-400: #92d34f;
+    --sttonal-positive-800: #0e4600;
+
+    --sttonal-negative-400: #d60000;
+    --sttonal-negative-800: #fff;
+
+    --sttonal-primary-400: #0a6ffd;
+    --sttonal-primary-800: #ffffff;
+
+    --sttonal-warning-400: #edff00;
+    --sttonal-warning-800: #463f00;
+}
+
+/**
+    * Light
+    */
+
+html,html.mainlight,.light,html.maindark .inverted{
+    color-scheme: light;
+
+    --stgray-50: var(--stlight-gray-50);
+    --stgray-75: var(--stlight-gray-75);
+    --stgray-100: var(--stlight-gray-100);
+    --stgray-200: var(--stlight-gray-200);
+    --stgray-300: var(--stlight-gray-300);
+    --stgray-400: var(--stlight-gray-400);
+    --stgray-500: var(--stlight-gray-500);
+    --stgray-600: var(--stlight-gray-600);
+    --stgray-700: var(--stlight-gray-700);
+    --stgray-800: var(--stlight-gray-800);
+    --stgray-900: var(--stlight-gray-900);
+
+    --sttonal-positive-400: #cdffbe;
+    --sttonal-positive-800: #357016;
+
+    --sttonal-negative-400: #ffbebe;
+    --sttonal-negative-800: #701616;
+
+    --sttonal-primary-400: #d9edff;
+    --sttonal-primary-800: #005cde;
+
+    --sttonal-warning-400: #fff7ae;
+    --sttonal-warning-800: #866800;
+}
+
+html.mainlight .inverted,.inverted,html.maindark,.dark{
+    color-scheme: dark;
+
+    --stgray-50: var(--stdark-gray-50);
+    --stgray-75: var(--stdark-gray-75);
+    --stgray-100: var(--stdark-gray-100);
+    --stgray-200: var(--stdark-gray-200);
+    --stgray-300: var(--stdark-gray-300);
+    --stgray-400: var(--stdark-gray-400);
+    --stgray-500: var(--stdark-gray-500);
+    --stgray-600: var(--stdark-gray-600);
+    --stgray-700: var(--stdark-gray-700);
+    --stgray-800: var(--stdark-gray-800);
+    --stgray-900: var(--stdark-gray-900);
+
+    --stlink-700: #8887ff;
+
+    --sttonal-positive-400: #92d34f;
+    --sttonal-positive-800: #0e4600;
+
+    --sttonal-negative-400: #d60000;
+    --sttonal-negative-800: #fff;
+
+    --sttonal-primary-400: #0a6ffd;
+    --sttonal-primary-800: #ffffff;
+
+    --sttonal-warning-400: #edff00;
+    --sttonal-warning-800: #463f00;
+}
+
+/**
+    * Hidden
+    */
+
+html.mainlight .light-hidden,html.maindark .dark-hidden{
+    display: none !important;
 }
 
 /* ==========================================================================
@@ -951,7 +955,7 @@ button{
   * Paragraphy
   */
 
-[class*="st"]:where(p){
+/* [class*="st"]:where(p){
     margin-block-start: 1em;
     margin-block-end: 1em;
 }
@@ -970,7 +974,7 @@ button{
 
 [class*="st"]:where(a){
     color: inherit;
-}
+} */
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -1077,13 +1081,13 @@ button{
   * Negative
   */
 
-.stbutton.negative{
+.stbutton.error{
     color: var(--stwhite);
     border-color: var(--stnegative-500);
     background: var(--stnegative-500);
 }
 
-.stbutton.negative.outline{
+.stbutton.error.outline{
     color: var(--stnegative-500);
     border-color: var(--stgray-300);
     background: transparent;
@@ -1103,7 +1107,7 @@ button{
     background: var(--stgray-100);
 }
 
-.stbutton.is-ghost.negative{
+.stbutton.is-ghost.error{
     color: var(--stnegative-500);
 }
 
@@ -1111,7 +1115,7 @@ button{
   * Loading
   */
 
-.stbutton.loading,.stbutton.loading.negative{
+.stbutton.loading,.stbutton.loading.error{
     color: transparent;
     pointer-events: none;
     opacity: 0.5;
@@ -1273,7 +1277,7 @@ button{
     border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.stbutton.negative:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.error:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     background: var(--stnegative-400);
 }
 
@@ -1372,7 +1376,7 @@ button{
     display: none;
 }
 
-.stbuttons .stbutton.negative::before{
+.stbuttons .stbutton.error::before{
     background: var(--stnegative-400);
 }
 
@@ -9417,7 +9421,7 @@ button{
   * Negative
   */
 
-.sticon.negative{
+.sticon.error{
     color: var(--stnegative-500);
 }
 
@@ -9890,28 +9894,28 @@ button{
   * Negative
   */
 
-.stinput.negative:is(input, textarea){
+.stinput.error:is(input, textarea){
     color: var(--stnegative-600);
     border-color: var(--stnegative-400);
     font-weight: 500;
 }
 
-.stinput.negative .label{
+.stinput.error .label{
     border-color: var(--stnegative-400);
 }
 
 /** Solid */
-.stinput.negative.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+.stinput.error.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
     border-color: var(--stnegative-400);
 }
 
-.stinput.negative.is-solid input:focus,.stinput.negative.is-solid textarea:focus{
+.stinput.error.is-solid input:focus,.stinput.error.is-solid textarea:focus{
     background: var(--stgray-100);
     border: 1px solid var(--stnegative-400);
 }
 
 /** Underlined */
-.stinput.negative.underline:is(.label, input, textarea){
+.stinput.error.underline:is(.label, input, textarea){
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -10180,13 +10184,13 @@ button{
   * Negative
   */
 
-.stfile.negative input{
+.stfile.error input{
     border-color: var(--stnegative-400);
     color: var(--stnegative-600);
     font-weight: 500;
 }
 
-.stfile.negative.underline input{
+.stfile.error.underline input{
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -10289,12 +10293,12 @@ button{
   * Negative
   */
 
-.stnotice.negative{
+.stnotice.error{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.stnotice.negative .title{
+.stnotice.error .title{
     background: var(--stwhite);
     color: var(--stnegative-600);
 }
@@ -10314,7 +10318,7 @@ button{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.stnotice.outline.negative .title{
+.stnotice.outline.error .title{
     background: var(--stnegative-500);
     color: var(--stgray-50);
 }
@@ -10474,7 +10478,7 @@ button{
   * Negative
   */
 
-.stcheckbox.negative input{
+.stcheckbox.error input{
     border-color: var(--stnegative-600);
     border-width: 2px;
 }
@@ -10646,7 +10650,7 @@ button{
   * Negative
   */
 
-.radio.negative input{
+.radio.error input{
     border-color: var(--stnegative-600);
     border-width: 2px;
 }
@@ -10922,12 +10926,12 @@ button{
   * Negative
   */
 
-.stbadge.negative{
+.stbadge.error{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.stbadge.negative.outline{
+.stbadge.error.outline{
     background: transparent;
     border-color: var(--stnegative-500);
     color: var(--stnegative-700);
@@ -11389,16 +11393,16 @@ button{
   * Negative
   */
 
-.stselect.negative{
+.stselect.error{
     border-color: var(--stnegative-400);
 }
 
-.stselect.negative select{
+.stselect.error select{
     color: var(--stnegative-600);
     font-weight: 500;
 }
 
-.stselect.negative.underline{
+.stselect.error.underline{
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -11816,11 +11820,9 @@ button{
     user-select: none;
 }
 
-/**
-  * Required
-  */
+/* Required */
 
-.sttext.is-required::after{
+.require::after{
     content: " *";
     font-weight: bold;
     color: var(--stnegative-600);
@@ -11862,11 +11864,11 @@ button{
   * Negative
   */
 
-.sttext.negative{
+.sttext.error{
     color: var(--stnegative-600);
 }
 
-.sttext.negative.secondary{
+.sttext.error.secondary{
     color: var(--stnegative-500);
 }
 
@@ -12214,7 +12216,7 @@ a.stbox:hover{
   * Emphasises
   */
 
-.stbox[class*="-indicated"].negative{
+.stbox[class*="-indicated"].error{
     --stindicator-color: var(--stnegative-500);
 }
 
@@ -12222,7 +12224,7 @@ a.stbox:hover{
     --stindicator-color: var(--stpositive-500);
 }
 
-.stbox[class*="-indicated"].is-warning{
+.stbox[class*="-indicated"].warning{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -12684,7 +12686,7 @@ a.stbox:hover{
   * Negative
   */
 
-.stswitch.negative input{
+.stswitch.error input{
     border-radius: 100rem;
     border: 2px solid var(--stnegative-600);
 }
@@ -13212,7 +13214,7 @@ a.stbox:hover{
     box-shadow: 2px 0 0 var(--stgray-900) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.negative{
+.sttable:is(tr, tr th, tr td).is-indicated.error{
     box-shadow: 2px 0 0 var(--stnegative-600) inset;
 }
 
@@ -13220,7 +13222,7 @@ a.stbox:hover{
     box-shadow: 2px 0 0 var(--stpositive-600) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.is-warning{
+.sttable:is(tr, tr th, tr td).is-indicated.warning{
     box-shadow: 2px 0 0 var(--stwarning-600) inset;
 }
 
@@ -13534,13 +13536,13 @@ a.stbox:hover{
   * Negative
   */
 
-.stprocedure .item.negative .indicator{
+.stprocedure .item.error .indicator{
     background: var(--stnegative-500);
     color: var(--stwhite);
     border-color: var(--stnegative-500);
 }
 
-.stprocedure .item.negative .label{
+.stprocedure .item.error .label{
     color: var(--stnegative-500);
 }
 
@@ -17438,7 +17440,7 @@ a.stbox:hover{
   * Negative
   */
 
-.stsnackbar .action.negative{
+.stsnackbar .action.error{
     color: var(--stnegative-500);
 }
 
@@ -17867,7 +17869,7 @@ a.stheader:hover{
   * Negative
   */
 
-.stheader.negative{
+.stheader.error{
     color: var(--stnegative-600);
 }
 
@@ -18067,7 +18069,7 @@ a.main:hover{
   * Emphasises
   */
 
-.main[class*="-indicated"].negative{
+.main[class*="-indicated"].error{
     --stindicator-color: var(--stnegative-500);
 }
 
@@ -18075,7 +18077,7 @@ a.main:hover{
     --stindicator-color: var(--stpositive-500);
 }
 
-.main[class*="-indicated"].is-warning{
+.main[class*="-indicated"].warning{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -18930,7 +18932,7 @@ a.main:hover{
   * Negative
   */
 
-.stchecklist .item.negative::before{
+.stchecklist .item.error::before{
     content: "\f00d";
     background: var(--sttonal-negative-400);
     color: var(--sttonal-negative-800);
@@ -18970,7 +18972,7 @@ a.main:hover{
   * Info
   */
 
-.stchecklist .item.is-warning::before{
+.stchecklist .item.warning::before{
     content: "\21";
     background: var(--sttonal-warning-400);
     color: var(--sttonal-warning-800);
@@ -19356,7 +19358,7 @@ a.main:hover{
   *
   */
 
-.stconversation:is(.is-sent, .is-sending, .is-error, .is-read, .is-warning) .bubble .meta::after{
+.stconversation:is(.is-sent, .is-sending, .error, .is-read, .warning) .bubble .meta::after{
     color: var(--stgray-500);
 
     font-family: "Icons";
@@ -19384,7 +19386,7 @@ a.main:hover{
     content: "\f560";
 }
 
-.stconversation.is-error .bubble .meta::after{
+.stconversation.error .bubble .meta::after{
     content: "\f071";
     color: var(--stnegative-400);
 }
@@ -21041,12 +21043,12 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Negative
   */
 
-.sttimeline>.item.negative .indicator .sticon{
+.sttimeline>.item.error .indicator .sticon{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.sttimeline>.item.negative.secondary .indicator .sticon{
+.sttimeline>.item.error.secondary .indicator .sticon{
     background: initial;
     color: var(--stnegative-500);
 }
@@ -22388,8 +22390,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 .inline{
     display: inline-block;
 }
-
-
 
 /*
 
