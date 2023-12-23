@@ -1,6 +1,8 @@
 <?php
     include("link.php");
-    $data=$_SESSION["data"];
+    if(isset($_SESSION["data"])){
+        $data=$_SESSION["data"];
+    }
 
     if(isset($_GET["logout"])){
         query($db,"INSERT INTO `log`(`username`,`move`,`movetime`,`ps`)VALUES('$data','登出系統','$time','')");

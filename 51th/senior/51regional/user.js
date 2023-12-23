@@ -19,13 +19,14 @@ function pregmatch(context,data){ return context.test(data) }
 
 function tempsave(){
     let success=true
+    let errorlist=[]
     let tempdata=[]
 
     docgetall(".questionmain").forEach(function(event){
         let id=event.id
-        let no=event.querySelector(".order>.count").innerHTML // questionrownotnone[i][0]
-        let tempmod=event.dataset.mod //questionrownotnone[i][3]
-        let desciption=event.dataset.desciption
+        let no=event.querySelector(".order>.count").innerHTML
+        let tempmod=event.dataset.mod
+        let description=event.dataset.description
         let required=event.dataset.required
         let showmultimoreresponse=""
         let response=null
@@ -71,102 +72,55 @@ function tempsave(){
             mod="qa"
         }
 
-        if(required){
+        if(required=="true"){
             if(response==null){
-                alert("第"+no+"題為必填但未填寫")
                 success=false
-                return
+                errorlist.push(no)
             }
         }
 
-        if(docgetid("showmultimoreresponse"+i)){
-            showmultimoreresponse=docgetid("showmultimoreresponse"+i).innerHTML
+        if(docgetid("showmultimoreresponse"+id)){
+            showmultimoreresponse=docgetid("showmultimoreresponse"+id).innerHTML
         }
 
-        tempdata.push([no,desciption,required,mod,response,showmultimoreresponse,""])
+        tempdata.push([no,description,required,mod,response,showmultimoreresponse,""])
     })
 
     if(success){
-        for(let i=0;i<insertdata.length;i=i+1){
+        for(let i=0;i<tempdata.length;i=i+1){
             let check=false
-            for(let j=0;j<tempdata.length;j=j+1){
-                if(insertdata[i][0]==tempdata[j][0]){
-                    insertdata[i]=tempdata[j]
+            for(let j=0;j<insertdata.length;j=j+1){
+                if(insertdata[j][0]==tempdata[i][0]){
+                    insertdata[j]=tempdata[i]
                     check=true
                 }
             }
             if(!check){
-                insertdata.push(tempdata[j])
+                insertdata.push(tempdata[i])
             }
         }
+        return true
+    }else{
+        alert("第"+errorlist.join(" ")+"題為必填但未填寫")
+        return false
     }
 }
 
 function save(){
-    if(page.length==maxpage-1){
-        let success=true
-
-        for(let i=0;i<questionrownotnone.length;i=i+1){
-            let id=questionrownotnone[i][0]
-            let mod=questionrownotnone[i][3]
-            let desciption=questionrownotnone[i][1]
-            let required=questionrownotnone[i][2]
-            let showmultimoreresponse=""
-            let response=null
-
-            if(mod=="yesno"){
-                if(docgetid(i+"yes").checked){
-                    response=true
-                }else if(docgetid(i+"no").checked){
-                    response=false
-                }
-            }else if(mod=="single"||mod=="multi"){
-                let option=[]
-                for(let j=0;j<6;j=j+1){
-                    if(docgetid(i+"option"+j)){
-                        if(docgetid(i+"option"+j).checked){
-                            option.push(docgetid(i+"option"+j).value)
-                        }
-                    }
-                }
-                if(option.length>0){
-                    response=option.join("|&|")
-                }
-            }else{
-                if(docgetid("qa"+i).value!=""){
-                    response=docgetid("qa"+i).value
-                }
-            }
-
-            if(required){
-                if(response==null){
-                    alert("第"+id+"題為必填但未填寫")
-                    success=false
-                    break
-                }
-            }
-
-            if(docgetid("showmultimoreresponse"+i)){
-                showmultimoreresponse=docgetid("showmultimoreresponse"+i).innerHTML
-            }
-
-            // console.log([id,desciption,required,mod,response,showmultimoreresponse,""])
-            insertdata.push([id,desciption,required,mod,response,showmultimoreresponse,""])
-        }
-
-        if(success){
+    if(page==maxpage-1){
+        if(tempsave()){
             // 送出資料
             ajax("POST","api/newresponse.php",function(event){
                 let data=JSON.parse(event.responseText)
                 if(data["success"]){
-                    alert("新增成功")
+                    alert("送出成功感謝您的填寫!~")
                     location.href="index.php"
                 }
             },JSON.stringify({
                 "userid": userid,
                 "questionid": row[0],
                 "response": insertdata
-            }))
+            }),[])
         }
     }else{
         alert("請先翻到最後一再送出")
@@ -288,11 +242,10 @@ docgetid("prev").onclick=function(){
 }
 
 docgetid("next").onclick=function(){
-    if(page+1<maxpage){
+    if(page+1<maxpage&&tempsave()){
         page=page+1
         docgetid("progress").style.width=parseInt((page/maxpage)*100)+"%"
         docgetid("progresstext").innerHTML=`${parseInt((page/maxpage)*100)}/100%`
-        tempsave()
         main()
     }
 }

@@ -38,7 +38,7 @@
                             <input type="submit" class="stbutton outline" name="login" value="登入">
                         </div>
                     </form><br>
-                    <form method="POST">
+                    <form>
                         <div class="sttext big">填寫問卷網址:</div><br>
                         <div class="stinput underline indexinput">
                             <input type="text" name="text" placeholder="請輸入網址">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="main indexmain center">
-                    <form method="POST">
+                    <form>
                         <div class="sttext big">填寫問卷網址:</div><br>
                         <div class="stinput underline indexinput">
                             <input type="text" name="text" placeholder="請輸入網址">
@@ -88,8 +88,8 @@
                 }
             }
 
-            if(isset($_POST["submit"])){
-                $code=$_POST["text"];
+            if(isset($_GET["submit"])){
+                $code=$_GET["text"];
                 $data=$_SESSION["data"];
                 if(!isset($data)){ $data=""; }
                 if($row=query($db,"SELECT*FROM `questioncode` WHERE `code`='$code'")[0]){

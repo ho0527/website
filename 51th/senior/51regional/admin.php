@@ -98,7 +98,7 @@
                     ?><script>alert("[WARNING]分頁數不得為0");location.href="admin.php"</script><?php
                 }elseif($row){
                     ?><script>alert("[WARNING]問卷已存在");location.href="admin.php"</script><?php
-                }elseif(preg_match("/^[0-9]+$/",$count)&&preg_match("/^[0-9]+$/",$pagelen)){
+                }elseif(preg_match("/^[0-9]+$/",$count)&&preg_match("/^-?[0-9]+$/",$pagelen)){
                     query($db,"INSERT INTO `question`(`title`,`questioncount`,`pagelen`,`responcount`,`lock`)VALUES(?,?,'$pagelen','0','false')",[$title,$count]);
                     $_SESSION["title"]=$title;
                     $_SESSION["count"]=$count;

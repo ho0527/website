@@ -22506,19 +22506,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     width: 100%;
 }
 
-.newform{
-    grid-column: 15/100;
-    grid-row: 1/5;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(125, 125, 125);
-    width: 100%;
-}
-
 .formtext{
     border-radius: 5px;
     width: 195px;
@@ -22687,24 +22674,37 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     grid-column: 2/15;
     grid-row: 1/18;
     position: relative;
-    border: 1px black solid;
     font-size: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(213, 109, 12);
+    background: var(--stgray-100);
 }
 
 .output{
     grid-column: 15/100;
     grid-row: 5/18;
-    background-color: rgb(133, 133, 133);
+    background: var(--stgray-75);
     font-size: 20px;
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow-y: auto;
+}
+
+.newform{
+    grid-column: 15/100;
+    grid-row: 1/5;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--stgray-75);
+    width: 100%;
+    padding: 0px 50px;
 }
 
 .warning{
@@ -22715,7 +22715,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .questioncodemaindiv{
     position: relative;
-    top: 120px;
+    top: 100px;
 }
 
 .required{
@@ -22751,15 +22751,12 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     right: 5px;
     width: 40px;
     font-size: 20px;
-    color: rgba(0, 0, 0, 0.25);
+    text-align: center;
+    color: rgba(201, 201, 201, 0.5);
     cursor: pointer;
 }
 
 .questiondiv{
-    color: white;
-}
-
-.order{
     color: white;
 }
 
@@ -22892,4 +22889,8 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .textunderline{
     border-bottom: 1px white solid;
+}
+
+.usermain{
+    height: 85vh;
 }

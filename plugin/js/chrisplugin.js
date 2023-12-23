@@ -71,7 +71,7 @@ function startmacossection(){
     },200)
 }
 
-function divsort(card,sortdiv,callback){
+function divsort(card,sortdiv,callback=function(){}){
     document.querySelectorAll("."+card).forEach(function(event){
         event.draggable="true"
     })

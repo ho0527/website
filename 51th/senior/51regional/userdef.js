@@ -22,7 +22,7 @@ function user(key){
                 </div>
                 <input type="button" class="progressbutton" id="next" value="下一頁">
             </div>
-            <div class="macosmaindiv macossectiondiv" id="maindiv"></div>
+            <div class="usermain macosmaindiv macossectiondiv" id="maindiv"></div>
         `
     }else{
         docgetid("body").innerHTML=`
