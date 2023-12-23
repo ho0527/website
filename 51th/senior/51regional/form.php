@@ -23,7 +23,7 @@
         </script>
         <form method="POST">
             <div id="htmlform"></div>
-            <div class="macosmaindiv macossectiondiv" id="maindiv"></div>
+            <div class="macosmaindiv macossectiondiv formmaindiv" id="maindiv"></div>
         </form>
         <script src="form.js"></script>
     </body>

@@ -76,4 +76,20 @@
             ]));
         }
     }
+
+    if(isset($_GET["getresponse"])){
+        $row=query($db,"SELECT*FROM `response` WHERE `id`=?",[$_GET["id"]]);
+
+        if($row){
+            echo(json_encode([
+                "success"=>true,
+                "data"=>$row[0]
+            ]));
+        }else{
+            echo(json_encode([
+                "success"=>false,
+                "data"=>"查無資料"
+            ]));
+        }
+    }
 ?>

@@ -10,7 +10,6 @@ function random(div,result){
     let charactersLength=characters.length
     result=result+characters.charAt(Math.floor(Math.random()*charactersLength))
     div.innerHTML=result
-    console.log(result)
     return result
 }
 

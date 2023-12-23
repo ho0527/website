@@ -22439,8 +22439,8 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .elementposition2{
     position: relative;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
 }
 
 .element{
@@ -22543,6 +22543,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     font-size: 10px;
     padding: 0px 2px;
     cursor: pointer;
+    z-index: 100;
 }
 
 .elementdelete{
@@ -22553,4 +22554,5 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     font-size: 10px;
     padding: 0px 2px;
     cursor: pointer;
+    z-index: 100;
 }

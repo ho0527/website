@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="macosmaindiv macossectiondivy">
-            <table>
+            <table class="sttable textcenter">
                 <tr>
                     <td class="formtdtitle">標題</td>
                     <td class="formtdtitle">邀請碼</td>
@@ -63,19 +63,19 @@
                             }
                             if($_SESSION["data"]==1 ){
                                 ?>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php  echo($disabled) ?>><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php  echo($disabled) ?>><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=responelist&id=<?php echo($row[$i][0]) ?>'" value="回應內容"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=result&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>
-                                <input type="button" class="workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
+                                <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
+                                <input type="button" class="stbutton light workbutton <?php echo($disabled) ?>" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php echo($disabled) ?>><br>
+                                <input type="button" class="stbutton workbutton error <?php echo($disabled) ?>" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php echo($disabled) ?>><br>
+                                <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=responelist&id=<?php echo($row[$i][0]) ?>'" value="回應內容"><br>
+                                <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=result&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
+                                <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>
+                                <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=copyquestion&id=<?php echo($row[$i][0]) ?>'" value="複製問題"><br>
+                                <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=copyall&id=<?php echo($row[$i][0]) ?>'" value="複製全部"><br>
                                 <?php
                             }
                             $checkrow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'AND(`user`=?OR`user`='')",[$userrow[1]]);
                             if($checkrow||count($coderow)==0){
-                                ?><input type="button" class="workbutton" onclick="location.href='?mod=respone&id=<?php echo($row[$i][0]) ?>'" value="填寫問卷"><?php
+                                ?><input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=respone&id=<?php echo($row[$i][0]) ?>'" value="填寫問卷"><?php
                             }
                             ?>
                         </td>

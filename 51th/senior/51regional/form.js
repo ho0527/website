@@ -23,7 +23,7 @@ function newquestion(){
             <input type="radio" class="radio multi select${count}" value="multi">多選題
             <input type="radio" class="radio qa select${count}" value="qa">問答題
         </div>
-        <div class="output">
+        <div class="output textcenter">
             <div class="questiondiv" id="output${count}"></div>
         </div>
     </div>
@@ -182,7 +182,7 @@ function main(){
                 <div class="newform">
                     ${all}
                 </div>
-                <div class="output">
+                <div class="output textcenter">
                     <div class="questiondiv" id="output${i}">
                         ${output}
                     </div>

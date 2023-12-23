@@ -19,8 +19,8 @@ ajax("GET","api.php?getresponselist=",function(event){
                         <div class="responseno">${row[i][0]}</div>
                         <div class="responseuser">${row[i][1]}</div>
                         <div class="responsedef">
-                            <input type="button" class="bluebutton view" data-id="${row[i][0]}" value="查看">
-                            <input type="button" class="bluebutton delete" data-id="${row[i][0]}" value="刪除">
+                            <input type="button" class="stbutton light view" data-id="${row[i][0]}" value="查看">
+                            <input type="button" class="stbutton error delete" data-id="${row[i][0]}" value="刪除">
                         </div>
                     </div>
                 `

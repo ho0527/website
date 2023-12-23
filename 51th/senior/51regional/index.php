@@ -16,19 +16,34 @@
                 <div class="navigationbar">
                     <div class="navigationbartitle center">網路問卷調查系統</div>
                 </div>
-                <div class="main indexmain">
+                <div class="main indexmain center">
                     <form method="POST">
-                        帳號: <input type="text" class="input" name="username"><br><br>
-                        密碼: <input type="password" class="input" name="password" id="password"><br><br>
-                        <input type="button" class="button" id="showpassword" value="顯示密碼">
-                        <input type="button" class="button" onclick="location.href='signup.php'" value="註冊">
-                        <input type="reset" class="button" value="清除">
-                        <input type="submit" class="button" name="login" value="登入">
+                        <div class="inputmargin">
+                            <div class="sttext">帳號</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" name="username">
+                                <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="inputmargin">
+                            <div class="sttext">密碼</div>
+                            <div class="stinput underline endicon">
+                                <input type="text" id="password" name="password">
+                                <div class="sticon"><img src="/website/material/icon/eyeclose.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                            </div>
+                        </div>
+                        <div class="textcenter">
+                            <input type="button" class="stbutton outline" onclick="location.href='signup.php'" value="註冊">
+                            <input type="reset" class="stbutton outline" value="清除">
+                            <input type="submit" class="stbutton outline" name="login" value="登入">
+                        </div>
                     </form><br>
                     <form method="POST">
-                        填寫問卷網址:<br><br>
-                        <input type="text" class="input" name="text" placeholder="請輸入網址">
-                        <input type="submit" class="button" name="submit" value="送出">
+                        <div class="sttext big">填寫問卷網址:</div><br>
+                        <div class="stinput underline indexinput">
+                            <input type="text" name="text" placeholder="請輸入網址">
+                        </div>
+                        <input type="submit" class="stbutton outline" name="submit" value="送出">
                     </form>
                 </div>
                 <?php
@@ -41,11 +56,13 @@
                         <input type="submit" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
                     </div>
                 </div>
-                <div class="main indexmain">
+                <div class="main indexmain center">
                     <form method="POST">
-                        填寫問卷網址:<br><br>
-                        <input type="text" class="input" name="text" placeholder="請輸入網址">
-                        <input type="submit" class="button" name="submit" value="送出">
+                        <div class="sttext big">填寫問卷網址:</div><br>
+                        <div class="stinput underline indexinput">
+                            <input type="text" name="text" placeholder="請輸入網址">
+                        </div>
+                        <input type="submit" class="stbutton outline" name="submit" value="送出">
                     </form>
                 </div>
                 <?php

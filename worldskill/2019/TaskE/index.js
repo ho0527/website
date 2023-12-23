@@ -23,11 +23,12 @@ if(!weblsget("worldskill2022ME")){
 }
 data=JSON.parse(weblsget("worldskill2022ME"))
 
+
 // 初始化 START
 for(let i=0;i<data["data"].length;i=i+1){
     maininnerhtml=`
         ${maininnerhtml}
-        <div class="elementdiv" id="${data["data"][i]["position"]["top"]}" style="position: absolute;top: ${data["data"][i]["position"]["top"]}px;left: ${data["data"][i]["position"]["left"]}px;transform: ${data["data"][i]["position"]["transform"]};">
+        <div class="elementdiv" id="${data["data"][i]["id"]}" style="position: absolute;top: ${data["data"][i]["position"]["top"]}px;left: ${data["data"][i]["position"]["left"]}px;transform: ${data["data"][i]["position"]["transform"]};">
             <div class="elementposition">
                 <div class="element"></div>
             </div>
@@ -51,6 +52,7 @@ docgetall(".elementdiv").forEach(function(event){
             </div>
         `
 
+        console.log(docgetid("delete"))
         // 各元素創建 START
         docgetid("element1").onclick=function(){
 
@@ -76,7 +78,7 @@ docgetall(".elementdiv").forEach(function(event){
             console.log("inininininininin")
             docgetid(this.dataset.id).remove()
             for(let i=0;i<data["data"].length;i=i+1){
-                if(data["data"][i]["id"]==this.dataset.id){
+                if(data["data"][i]["id"]==this.dataset.id``){
                     delete data["data"][i]
                 }
             }

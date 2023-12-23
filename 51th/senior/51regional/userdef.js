@@ -9,14 +9,14 @@ function user(key){
                     id: <input type="text" class="formtext background_none" id="id" style="width: 40px" disabled>
                     標題: <input type="text" class="formtext background_none" id="title" style="width: 100px" disabled>
                     總數: <input type="text" class="formtext background_none" id="count" style="width: 35px" disabled>
-                    <input type="button" class="button" onclick="location.href='index.php'" value="返回">
-                    <input type="button" class="button" onclick="save()" value="送出">
-                    <input type="button" class="button" onclick="location.href='api.php?logout='" value="登出">
+                    <input type="button" class="stbutton outline" onclick="location.href='index.php'" value="返回">
+                    <input type="button" class="stbutton outline" onclick="save()" value="送出">
+                    <input type="button" class="stbutton outline" onclick="location.href='api.php?logout='" value="登出">
                 </div>
             </div>
             <div class="progressdiv">
                 <input type="button" class="progressbutton" id="prev" value="上一頁">
-                <div class="progressbar">
+                <div class="progressbar textcenter">
                     <div class="progress" id="progress"></div>
                     <div class="progresstext" id="progresstext">0/100%</div>
                 </div>
@@ -31,7 +31,7 @@ function user(key){
                 <div class="navigationbarright">
                     id: <input type="text" class="formtext background_none" id="id" style="width: 40px" disabled>
                     標題: <input type="text" class="formtext background_none" id="title" style="width: 100px" disabled>
-                    <input type="button" class="button" onclick="location.href='index.php'" value="返回">
+                    <input type="button" class="stbutton outline" onclick="location.href='index.php'" value="返回">
                 </div>
             </div>
             <div class="warning center">

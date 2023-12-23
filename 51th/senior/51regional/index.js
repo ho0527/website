@@ -58,22 +58,24 @@
 //     }
 // }
 
-if(weblsget("showpassword")=="true"){
-    docgetid("showpassword").value=`隱藏密碼`
-    docgetid("password").type="text"
-}else{
-    docgetid("showpassword").value=`顯示密碼`
-    docgetid("password").type="password"
-}
+// if(weblsget("showpassword")=="true"){
+//     docgetid("showpassword").value=`隱藏密碼`
+//     docgetid("password").type="text"
+// }else{
+//     docgetid("showpassword").value=`顯示密碼`
+//     docgetid("password").type="password"
+// }
 
-docgetid("showpassword").onclick=function(){
-    if(weblsget("showpassword")=="true"){
-        docgetid("showpassword").value=`顯示密碼`
-        docgetid("password").type="password"
-        weblsset("showpassword","false")
-    }else{
-        docgetid("showpassword").value=`隱藏密碼`
-        docgetid("password").type="text"
-        weblsset("showpassword","true")
-    }
-}
+// docgetid("showpassword").onclick=function(){
+//     if(weblsget("showpassword")=="true"){
+//         docgetid("showpassword").value=`顯示密碼`
+//         docgetid("password").type="password"
+//         weblsset("showpassword","false")
+//     }else{
+//         docgetid("showpassword").value=`隱藏密碼`
+//         docgetid("password").type="text"
+//         weblsset("showpassword","true")
+//     }
+// }
+
+passwordshowhide()
