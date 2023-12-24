@@ -308,7 +308,7 @@ docgetid("log").onclick=function(){
 }
 
 docgetid("logout").onclick=function(){
-    oldajax("GET","/backend/45regional/getlog").onload=function(){
+    ajax("GET","/backend/45regional/logout/"+weblsget("45regionaluserid"),function(){
         let data=JSON.parse(this.responseText)
 
         if(data["success"]){
@@ -320,7 +320,7 @@ docgetid("logout").onclick=function(){
             weblsset("45regionalsortname",null)
             location.href="index.html"
         }
-    }
+    })
 }
 
 startmacossection()
