@@ -44,7 +44,7 @@
                             <input type="text" name="text" placeholder="請輸入網址">
                         </div>
                         <input type="submit" class="stbutton outline" name="submit" value="送出">
-                    </form>
+                    </form>6
                 </div>
                 <?php
             }else{

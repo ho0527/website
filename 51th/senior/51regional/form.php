@@ -17,7 +17,7 @@
             $row=query($db,"SELECT*FROM `question` WHERE `id`='$id'")[0];
         ?>
         <div class="navigationbar">
-            <div class="navigationbarleft">
+            <div class="ˊㄊ">
                 <div class="stinput basic forminput" style="width:170px">
                     標題: <input type="text" class="textcenter textunderline" id="title" style="width:120px">
                 </div>

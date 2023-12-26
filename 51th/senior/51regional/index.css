@@ -22713,6 +22713,11 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     font-weight: bold;
 }
 
+.question{
+    width: 30vw;
+    height: 10vh;
+}
+
 .questioncodemaindiv{
     position: relative;
     top: 100px;

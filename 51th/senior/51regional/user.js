@@ -123,7 +123,7 @@ function save(){
             }),[])
         }
     }else{
-        alert("請先翻到最後一再送出")
+        alert("請先翻到最後一頁再送出")
     }
 }
 
@@ -157,9 +157,9 @@ function main(){
                     output=`
                         ${output}
                         <label class="label" for="${i}yes">是</label>
-                        <input type="radio" class="yesno radio" id="${i}yes" name="yesno" value="yes">
+                        <input type="radio" class="yesno radio" id="${i}yes" name="yesno${i}" value="yes">
                         <label class="label" for="${i}no">否</label>
-                        <input type="radio" class="radio" id="${i}no" name="yesno" value="no">
+                        <input type="radio" class="radio" id="${i}no" name="yesno${i}" value="no">
                     `
                     modname="是非題"
                 }else if(row[i][3]=="single"){
@@ -193,7 +193,9 @@ function main(){
                 }else if(row[i][3]=="qa"){
                     output=`
                         ${output}
-                        <textarea cols="30" rows="5" class="question" id="qa${i}" placeholder="問答題"></textarea>
+                        <div class="stinput textarea question">
+                            <textarea id="qa${i}" placeholder="問答題"></textarea>
+                        </div>
                     `
                     modname="問答題"
                 }else{ sql001();location.href="admin.php" }
@@ -238,6 +240,8 @@ docgetid("prev").onclick=function(){
         docgetid("progresstext").innerHTML=`${parseInt((page/maxpage)*100)}/100%`
         tempsave()
         main()
+    }else{
+        alert("已在最前一頁")
     }
 }
 
@@ -247,6 +251,8 @@ docgetid("next").onclick=function(){
         docgetid("progress").style.width=parseInt((page/maxpage)*100)+"%"
         docgetid("progresstext").innerHTML=`${parseInt((page/maxpage)*100)}/100%`
         main()
+    }else{
+        alert("已到最後一頁")
     }
 }
 

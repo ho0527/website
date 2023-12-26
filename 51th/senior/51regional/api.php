@@ -58,18 +58,22 @@
             }
         }
 
-        if($maxlen!=-1){
+        if($maxlen==-1){
+            $dataoffset=$data;
+            $maxpage=1;
+        }else{
             $offset=(int)$page*(int)$maxlen;
             for($i=$offset;$i<min(count($data),$maxlen+$offset);$i=$i+1){
                 $dataoffset[]=$data[$i];
             }
+            $maxpage=ceil(count($data)/$maxlen);
         }
 
         if($row){
             echo(json_encode([
                 "success"=>true,
                 "data"=>$dataoffset,
-                "maxpage"=>ceil(count($data)/$maxlen)
+                "maxpage"=>$maxpage
             ]));
         }else{
             echo(json_encode([
