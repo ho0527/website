@@ -1187,10 +1187,10 @@ button{
 }
 
 /**
-  * Fluid
+  * fill
   */
 
-.stbutton.fluid{
+.stbutton.fill{
     width: 100%;
 }
 
@@ -9683,13 +9683,13 @@ button{
   * Solid
   */
 
-.stinput.is-solid input,.stinput.is-solid textarea{
+.stinput.solid input,.stinput.solid textarea{
     border-radius: var(--border-radius);
     border: 1px solid transparent;
     background: var(--stgray-100);
 }
 
-.stinput.is-solid input:focus,.stinput.is-solid textarea:focus{
+.stinput.solid input:focus,.stinput.solid textarea:focus{
     background: var(--stgray-50);
     border: 1px solid var(--stgray-300);
 }
@@ -9812,12 +9812,12 @@ button{
 }
 
 /** Solid */
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid .label{
+.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).solid .label{
     border-color: transparent;
     background: var(--stgray-200);
 }
 
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid:focus-within .label{
+.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).solid:focus-within .label{
     border-color: var(--stgray-300);
 }
 
@@ -9907,11 +9907,11 @@ button{
 }
 
 /** Solid */
-.stinput.negative.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+.stinput.negative.solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
     border-color: var(--stnegative-400);
 }
 
-.stinput.negative.is-solid input:focus,.stinput.negative.is-solid textarea:focus{
+.stinput.negative.solid input:focus,.stinput.negative.solid textarea:focus{
     background: var(--stgray-100);
     border: 1px solid var(--stnegative-400);
 }
@@ -9940,12 +9940,12 @@ button{
   * Fluid
   */
 
-.stinput.fluid{
+.stinput.fill{
     display: flex;
     width: 100%;
 }
 
-.stinput.fluid input,.stinput.fluid textarea{
+.stinput.fill input,.stinput.fill textarea{
     width: 100%;
 }
 
@@ -10162,12 +10162,12 @@ button{
   * Solid
   */
 
-.stfile.is-solid input{
+.stfile.solid input{
     background: var(--stgray-100);
     border-color: transparent;
 }
 
-.stfile:is(.is-solid, .underline) input::file-selector-button,.stfile:is(.is-solid, .underline) input::-webkit-file-upload-button{
+.stfile:is(.solid, .underline) input::file-selector-button,.stfile:is(.solid, .underline) input::-webkit-file-upload-button{
     background: var(--accent-color, var(--stgray-300));
 }
 
@@ -11051,7 +11051,7 @@ button{
   * Fluid
   */
 
-.stpagination.fluid{
+.stpagination.fill{
     display: flex;
 }
 
@@ -11204,10 +11204,8 @@ button{
     line-height: 1.5;
     font-size: var(--stfont-size-14px);
     color: var(--stgray-800);
-
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     padding-right: 2.5rem;
-
     width: 100%;
     cursor: pointer;
 }
@@ -11304,7 +11302,7 @@ button{
   * Solid
   */
 
-.stselect.is-solid{
+.stselect.solid{
     background: var(--stgray-100);
     border-color: transparent;
 }
@@ -11387,7 +11385,7 @@ button{
   * Fluid
   */
 
-.stselect.fluid{
+.stselect.fill{
     width: 100%;
 }
 
@@ -12053,11 +12051,11 @@ button{
   * Fluid
   */
 
-.sttab.fluid{
+.sttab.fill{
     display: flex;
 }
 
-.sttab.fluid .item{
+.sttab.fill .item{
     flex: 1;
 }
 
@@ -12911,15 +12909,15 @@ a.stbox:hover{
   * Fluid
   */
 
-.selection.fluid{
+.selection.fill{
     width: 100%;
 }
 
-.selection.fluid .item{
+.selection.fill .item{
     flex: 1;
 }
 
-.selection.fluid .item .text{
+.selection.fill .item .text{
     width: 100%;
 }
 
@@ -13107,7 +13105,7 @@ a.stbox:hover{
   * Striped
   */
 
-.sttable.is-striped>tbody>tr:nth-child(even){
+.stripe>tbody>tr:nth-child(even){
     background: var(--stgray-75);
 }
 
@@ -14030,7 +14028,7 @@ a.stbox:hover{
   * Fluid
   */
 
-.stgrid .column.fluid{
+.stgrid .column.fill{
     flex: 1;
     min-width: 0;
     flex-grow: 1;
@@ -14336,11 +14334,11 @@ a.stbox:hover{
   * Fluid
   */
 
-.stchip.fluid{
+.stchip.fill{
     display: flex;
 }
 
-.stchip.fluid .content{
+.stchip.fill .content{
     width: 100%;
 }
 
@@ -17097,7 +17095,7 @@ a.stbox:hover{
   * Fluid
   */
 
-.ststatistic.fluid{
+.ststatistic.fill{
     width: 100%;
 }
 
@@ -17279,11 +17277,11 @@ a.stbox:hover{
   * Fluid
   */
 
-.stapp-navbar.fluid{
+.stapp-navbar.fill{
     display: flex;
 }
 
-.stapp-navbar.fluid .item{
+.stapp-navbar.fill .item{
     flex: 1;
 }
 
@@ -18335,7 +18333,7 @@ a.main:hover{
   * Fluid
   */
 
-.stapp-layout .cell.fluid{
+.stapp-layout .cell.fill{
     flex: 1;
     flex-shrink: 1;
 }
@@ -18589,7 +18587,7 @@ a.main:hover{
   * Fluid
   */
 
-.stcontainer.fluid{
+.stcontainer.fill{
     max-width: 100%;
 }
 
@@ -18666,7 +18664,7 @@ a.main:hover{
   * Fluid
   */
 
-.stcontrol .content.fluid{
+.stcontrol .content.fill{
     max-width: initial;
 }
 
@@ -21985,7 +21983,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Fluid
   */
 
-.strow .column.fluid{
+.strow .column.fill{
     flex: 1;
     min-width: 0;
     flex-grow: 1;
@@ -22395,6 +22393,26 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     display: inline-block;
 }
 
+/* ---自訂 */
+
+.outborder{
+    border: 1px var(--stgray-400) solid;
+}
+
+.inborder>tbody>tr>td{
+    border-left: 1px var(--stgray-400) solid;
+    border-right: 1px var(--stgray-400) solid;
+}
+
+.allborder{
+    border: 1px var(--stgray-400) solid;
+}
+
+.allborder>tbody>tr>td{
+    border-left: 1px var(--stgray-400) solid;
+    border-right: 1px var(--stgray-400) solid;
+}
+
 /*
 
 .ts-*                    st*
@@ -22595,6 +22613,7 @@ inline                   新增
     border: 0.5px black solid;
     height: 785px;
     text-align: center;
+    padding: 0px 10px;
 }
 
 .usertable{
@@ -22842,4 +22861,47 @@ inline                   新增
 .top3px{
     position: relative;
     top: 3px;
+}
+
+.todotitle{
+    color: white;
+    font-size: 25px;
+}
+
+.todotabletime{
+    width: 10%;
+}
+
+.userbody{
+    overflow: hidden;
+}
+
+.userfunctionbutton{
+    width: 95%;
+}
+
+.userlightbox{
+    width: 30vw;
+}
+
+.colorwhite{
+    color: white;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.todotextarea{
+    height: 20vh;
+}
+
+.inputmargin{
+    margin: 5px 0px;
+}
+
+.newtodotitle{
+    font-size: 25px;
+    font-weight: bold;
 }

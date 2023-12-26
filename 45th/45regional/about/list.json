@@ -6,7 +6,7 @@
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/12/02",
-            "updatedate": "2023/12/17",
+            "updatedate": "2023/12/24",
             "data": [
                 {
                     "list": 1,
@@ -96,7 +96,7 @@
                         },
                         {
                             "no": "07",
-                            "description": "預設管理者帳號是:todo，密碼是:1234，可以執行帳號及密碼的驗證，驗證成功就顯示成功登入的訊息，否則顯示錯誤的訊息。",
+                            "description": "預設管理者帳號是:admin，密碼是:1234，可以執行帳號及密碼的驗證，驗證成功就顯示成功登入的訊息，否則顯示錯誤的訊息。",
                             "statu": "SUCCESS",
                             "data": []
                         },
@@ -106,7 +106,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "圖片包含3個小寫英文字母",
+                                    "description": "圖片包含4個英文字母及數字",
                                     "statu": "SUCCESS"
                                 }
                             ]
@@ -125,19 +125,13 @@
                         },
                         {
                             "no": "11",
-                            "description": "登入若連續錯誤 3 次，則自動切換到「登入失敗」的頁面，頁面內容顯示\"連續錯誤3次\"的訊息。",
+                            "description": "登入若連續錯誤3次，則自動切換到「登入失敗」的頁面，頁面內容顯示\"連續錯誤3次\"的訊息。",
                             "statu": "SUCCESS",
                             "data": []
                         },
                         {
                             "no": "12",
                             "description": "點擊「重新產生」按鈕時，會更換新驗證碼圖片。",
-                            "statu": "SUCCESS",
-                            "data": []
-                        },
-                        {
-                            "no": "13",
-                            "description": "點擊「清除」按鈕時，會清除所有欄位的內容。包含拖拉的區域。",
                             "statu": "SUCCESS",
                             "data": []
                         }
@@ -165,7 +159,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "是以流水號的方式產生，共4碼從 001 開始的數字，「管理者」編號為a001開始，「一般使用者」編號為u001開始",
+                                    "description": "是以流水號的方式產生，共4碼從0001開始的數字。",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -173,11 +167,7 @@
                                     "statu": "SUCCESS"
                                 },
                                 {
-                                    "description": "管理者帳號 admin 的「使用者編號」為a001，姓名為「超級管理者」，權限為「管理者」。",
-                                    "statu": "SUCCESS"
-                                },
-                                {
-                                    "description": "預設使用者帳號 todo 的「使用者編號」為u001，權限為「「一般使用者」。",
+                                    "description": "管理者帳號 admin 的「使用者編號」為0000，姓名為「超級管理者」，權限為「管理者」。",
                                     "statu": "SUCCESS"
                                 }
                             ]
@@ -194,7 +184,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "包含帳號、密碼、及姓名，並能在前台成功登入，但不能修改使用者編號。",
+                                    "description": "包含帳號、密碼、姓名、權限，並能在前台成功登入，但不能修改使用者編號。",
                                     "statu": "SUCCESS"
                                 }
                             ]
@@ -242,13 +232,7 @@
                         },
                         {
                             "no": "25",
-                            "description": "系統具有登入登出紀錄功能，管理者身份的使用者可以檢視紀錄資料。紀錄資料包含，使用者的編號，帳號，登入時間、登出時間及動作行為。動作行為，至少分為，登入失敗、登入成功。若因登入失敗，則登出時間紀錄為「null」.",
-                            "statu": "SUCCESS",
-                            "data": []
-                        },
-                        {
-                            "no": "26",
-                            "description": "動作行為，若能再記錄登入系統後，對系統操作的動作及該動作操作時的時間，至少能紀錄3種不同操作動作。",
+                            "description": "系統具有登入登出紀錄功能，管理者身份的使用者可以檢視紀錄資料。",
                             "statu": "SUCCESS",
                             "data": []
                         }
@@ -256,25 +240,21 @@
                 },
                 {
                     "list": 4,
-                    "description": "TODO 工作管理系統-基本功能",
-                    "statu": "SUCCESS",
+                    "description": "日工作計畫表-基本功能",
+                    "statu": "FAILED",
                     "data": [
                         {
                             "no": "27",
-                            "description": "設計一個「「TODO 工作表」頁面.",
+                            "description": "設計一個「日工作計畫表」頁面。",
                             "statu": "SUCCESS",
                             "data": [
-                                {
-                                    "description": "當使用者登入系統後，能顯示當天「TODO 工作表」頁面",
-                                    "statu": "SUCCESS"
-                                },
                                 {
                                     "description": "包含一天的工作項目，時間從每日的 00:00~24:00",
                                     "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "每一工作項目至少包含工作名稱、開始時間及結束時間、處理狀態、優先順序及工作內容訊息。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 }
                             ]
                         },
@@ -293,21 +273,9 @@
                                 },
                                 {
                                     "description": "並將一天的所有工作項目，每一工作項目以一個工作區塊的方式，填入到表格中。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 }
                             ]
-                        },
-                        {
-                            "no": "29",
-                            "description": "呈現時間區間格線時，時間區間以 2 種底色交互呈現。",
-                            "statu": "SUCCESS",
-                            "data": []
-                        },
-                        {
-                            "no": "30",
-                            "description": "每一個工作區塊，用與底色不同顏色來填入到表格中。並能依時間長短依比例呈現不同大小。",
-                            "statu": "SUCCESS",
-                            "data": []
                         },
                         {
                             "no": "31",
@@ -315,7 +283,7 @@
                             "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "一個工作項目，是以半小時為最小計算單位",
+                                    "description": "一個工作項目，以1小時為最小計算單位",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -327,160 +295,127 @@
                         {
                             "no": "32",
                             "description": "能修改一個工作項目",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": [
                                 {
-                                    "description": "一個工作項目，是以半小時為最小計算單位",
-                                    "statu": "SUCCESS"
+                                    "description": "一個工作項目，以1小時為最小計算單位",
+                                    "statu": "FAILED"
                                 },
                                 {
                                     "description": "至少包含工作名稱、開始時間、結束時間、處理情形、優先情形及工作內容。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 }
                             ]
                         },
                         {
                             "no": "33",
                             "description": "能刪除一個工作項目，在執行刪除動作前，必須有確認的動作。",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": []
                         },
                         {
                             "no": "34",
                             "description": "能排序當天的所有工作項目，可依開始時間、處理情形、或優先情形3種方式來排序，依升冪或降冪來排序。",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": [
+                            {
+                                "description": "並依工作「開始時間」升冪或降冪來排序，列出升冪或降冪的選項。",
+                                "statu": "FAILED"
+                            },
                                 {
                                     "description": "排序的結果是在新的頁面或原來的頁面呈現皆可。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 }
                             ]
                         },
                         {
                             "no": "35",
                             "description": "能檢索篩選的條件",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": [
                                 {
                                     "description": "列出當天所有符合檢索篩選條件的工作項目，可依處理情形、或優先情形 2 種方式來設定檢索條件",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 },
                                 {
                                     "description": "並依工作「開始時間」升冪或降冪來排序，列出升冪或降冪的選項。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 },
                                 {
                                     "description": "檢索的結果可在新的頁面或原來的頁面呈現皆可。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 }
                             ]
-                        },
-                        {
-                            "no": "35",
-                            "description": "能運用拖拉的方式，來修改工作項目的時間。",
-                            "statu": "SUCCESS",
-                            "data": []
                         }
                     ]
                 },
                 {
                     "list": 5,
-                    "description": "TODO 工作管理系統-進階功能",
-                    "statu": "SUCCESS",
+                    "description": "日工作計畫管理系統-進階功能",
+                    "statu": "FAILED",
                     "data": [
                         {
                             "no": "37",
                             "description": "若設計的頁面是以表格方式呈現。",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": [
                                 {
-                                    "description": "能使用滑鼠在「TODO 工作表」中拖曳「工作項目」區塊來改變開始時間。",
-                                    "statu": "SUCCESS"
+                                    "description": "能使用滑鼠在「日工作計畫表」中拖曳「工作項目」區塊來改變開始時間。",
+                                    "statu": "FAILED"
                                 },
                                 {
                                     "description": "不管由上往下，或者由下往上拖曳時，「工作項目」區塊能隨著拖曳時所橫跨的時間區間正確顯示。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 },
                                 {
-                                    "description": "拖曳時, 時間變動單位為 0.5 小時",
-                                    "statu": "SUCCESS"
+                                    "description": "拖曳時, 時間變動單位為1小時",
+                                    "statu": "FAILED"
                                 }
                             ]
                         },
                         {
-                            "no": "38",
-                            "description": "能使用滑鼠在「TODO 工作表」中空白處拖曳及放開後，能新增「工作項目」。",
-                            "statu": "SUCCESS",
-                            "data": []
-                        },
-                        {
                             "no": "39",
                             "description": "若設計的頁面是以表格方式呈現",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": [
                                 {
-                                    "description": "「TODO 工作表」上的每一「工作項目」上有編輯按鈕",
-                                    "statu": "SUCCESS"
+                                    "description": "「日工作計畫表」上的每一「工作項目」上有編輯按鈕",
+                                    "statu": "FAILED"
                                 },
                                 {
                                     "description": "當滑鼠點選某一「工作項目」區塊時，滑鼠再按編輯按鈕時",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 },
                                 {
                                     "description": "會秀出一個「工作項目」編輯表單讓使用者編輯該工作計畫項目的內容。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 },
                                 {
-                                    "description": "「TODO 工作表」上的每一「工作項目」上有預覽按鈕",
-                                    "statu": "SUCCESS"
+                                    "description": "「日工作計畫表」上的每一「工作項目」上有預覽按鈕",
+                                    "statu": "FAILED"
                                 },
                                 {
                                     "description": "當滑鼠點選某一「工作項目」區塊時，滑鼠再按預覽按鈕時，可預覽該工作計畫項目之詳細內容。",
-                                    "statu": "SUCCESS"
+                                    "statu": "FAILED"
                                 }
                             ]
                         },
                         {
                             "no": "40",
-                            "description": "當使用者編修完畢後，該「TODO 工作表」之內容必須正確更新。",
-                            "statu": "SUCCESS",
+                            "description": "當使用者編修完畢後，該「日工作計畫表」之內容必須正確更新。",
+                            "statu": "FAILED",
                             "data": []
                         },
                         {
                             "no": "41",
                             "description": "使用者若有修改「開始時間」與「結束時間」，該工作計畫項目所橫跨的時間區間也會跟著進行變更。",
-                            "statu": "SUCCESS",
+                            "statu": "FAILED",
                             "data": []
                         },
                         {
                             "no": "42",
-                            "description": "「TODO 工作表」能切換日期，編輯不同的日期的「工作項目」。",
-                            "statu": "SUCCESS",
-                            "data": []
-                        },
-                        {
-                            "no": "43",
-                            "description": "能檢索篩選的條件",
-                            "statu": "SUCCESS",
-                            "data": [
-                                {
-                                    "description": "列出所有(系統內多天的內容)符合檢索篩選條件的工作項目，可依處理情形、或優先情形 2 種方式來設定檢索條件",
-                                    "statu": "SUCCESS"
-                                },
-                                {
-                                    "description": "並依工作「開始時間」升冪或降冪來排序，列出升冪或降冪的選項。",
-                                    "statu": "SUCCESS"
-                                },
-                                {
-                                    "description": "檢索的結果可在新的頁面或原來的頁面呈現皆可。",
-                                    "statu": "SUCCESS"
-                                }
-                            ]
-                        },
-                        {
-                            "no": "44",
-                            "description": "設計美觀",
-                            "statu": "subjective",
+                            "description": "「日工作計畫表」能切換日期，編輯不同的日期的「工作項目」。",
+                            "statu": "FAILED",
                             "data": []
                         }
                     ]

@@ -348,6 +348,8 @@ table{
 
 /* ================================================================================================================================================================== */
 
+/* ================================================================================================================================================================== */
+
 html{
     --staccent-color: #5c79ff;
 }
@@ -955,7 +957,7 @@ button{
   * Paragraphy
   */
 
-/* [class*="st"]:where(p){
+[class*="st"]:where(p){
     margin-block-start: 1em;
     margin-block-end: 1em;
 }
@@ -974,7 +976,7 @@ button{
 
 [class*="st"]:where(a){
     color: inherit;
-} */
+}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -1081,13 +1083,13 @@ button{
   * Negative
   */
 
-.stbutton.error{
+.stbutton.negative{
     color: var(--stwhite);
     border-color: var(--stnegative-500);
     background: var(--stnegative-500);
 }
 
-.stbutton.error.outline{
+.stbutton.negative.outline{
     color: var(--stnegative-500);
     border-color: var(--stgray-300);
     background: transparent;
@@ -1107,7 +1109,7 @@ button{
     background: var(--stgray-100);
 }
 
-.stbutton.is-ghost.error{
+.stbutton.is-ghost.negative{
     color: var(--stnegative-500);
 }
 
@@ -1115,7 +1117,7 @@ button{
   * Loading
   */
 
-.stbutton.loading,.stbutton.loading.error{
+.stbutton.loading,.stbutton.loading.negative{
     color: transparent;
     pointer-events: none;
     opacity: 0.5;
@@ -1185,10 +1187,10 @@ button{
 }
 
 /**
-  * Fluid
+  * fill
   */
 
-.stbutton.fluid{
+.stbutton.fill{
     width: 100%;
 }
 
@@ -1277,7 +1279,7 @@ button{
     border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.stbutton.error:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.negative:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     background: var(--stnegative-400);
 }
 
@@ -1376,7 +1378,7 @@ button{
     display: none;
 }
 
-.stbuttons .stbutton.error::before{
+.stbuttons .stbutton.negative::before{
     background: var(--stnegative-400);
 }
 
@@ -9421,7 +9423,7 @@ button{
   * Negative
   */
 
-.sticon.error{
+.sticon.negative{
     color: var(--stnegative-500);
 }
 
@@ -9894,28 +9896,28 @@ button{
   * Negative
   */
 
-.stinput.error:is(input, textarea){
+.stinput.negative:is(input, textarea){
     color: var(--stnegative-600);
     border-color: var(--stnegative-400);
     font-weight: 500;
 }
 
-.stinput.error .label{
+.stinput.negative .label{
     border-color: var(--stnegative-400);
 }
 
 /** Solid */
-.stinput.error.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+.stinput.negative.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
     border-color: var(--stnegative-400);
 }
 
-.stinput.error.is-solid input:focus,.stinput.error.is-solid textarea:focus{
+.stinput.negative.is-solid input:focus,.stinput.negative.is-solid textarea:focus{
     background: var(--stgray-100);
     border: 1px solid var(--stnegative-400);
 }
 
 /** Underlined */
-.stinput.error.underline:is(.label, input, textarea){
+.stinput.negative.underline:is(.label, input, textarea){
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -9938,12 +9940,12 @@ button{
   * Fluid
   */
 
-.stinput.fluid{
+.stinput.fill{
     display: flex;
     width: 100%;
 }
 
-.stinput.fluid input,.stinput.fluid textarea{
+.stinput.fill input,.stinput.fill textarea{
     width: 100%;
 }
 
@@ -10184,13 +10186,13 @@ button{
   * Negative
   */
 
-.stfile.error input{
+.stfile.negative input{
     border-color: var(--stnegative-400);
     color: var(--stnegative-600);
     font-weight: 500;
 }
 
-.stfile.error.underline input{
+.stfile.negative.underline input{
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -10293,12 +10295,12 @@ button{
   * Negative
   */
 
-.stnotice.error{
+.stnotice.negative{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.stnotice.error .title{
+.stnotice.negative .title{
     background: var(--stwhite);
     color: var(--stnegative-600);
 }
@@ -10318,7 +10320,7 @@ button{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.stnotice.outline.error .title{
+.stnotice.outline.negative .title{
     background: var(--stnegative-500);
     color: var(--stgray-50);
 }
@@ -10478,7 +10480,7 @@ button{
   * Negative
   */
 
-.stcheckbox.error input{
+.stcheckbox.negative input{
     border-color: var(--stnegative-600);
     border-width: 2px;
 }
@@ -10650,7 +10652,7 @@ button{
   * Negative
   */
 
-.radio.error input{
+.radio.negative input{
     border-color: var(--stnegative-600);
     border-width: 2px;
 }
@@ -10926,12 +10928,12 @@ button{
   * Negative
   */
 
-.stbadge.error{
+.stbadge.negative{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.stbadge.error.outline{
+.stbadge.negative.outline{
     background: transparent;
     border-color: var(--stnegative-500);
     color: var(--stnegative-700);
@@ -11049,7 +11051,7 @@ button{
   * Fluid
   */
 
-.stpagination.fluid{
+.stpagination.fill{
     display: flex;
 }
 
@@ -11202,10 +11204,8 @@ button{
     line-height: 1.5;
     font-size: var(--stfont-size-14px);
     color: var(--stgray-800);
-
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     padding-right: 2.5rem;
-
     width: 100%;
     cursor: pointer;
 }
@@ -11385,7 +11385,7 @@ button{
   * Fluid
   */
 
-.stselect.fluid{
+.stselect.fill{
     width: 100%;
 }
 
@@ -11393,16 +11393,16 @@ button{
   * Negative
   */
 
-.stselect.error{
+.stselect.negative{
     border-color: var(--stnegative-400);
 }
 
-.stselect.error select{
+.stselect.negative select{
     color: var(--stnegative-600);
     font-weight: 500;
 }
 
-.stselect.error.underline{
+.stselect.negative.underline{
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -11820,9 +11820,11 @@ button{
     user-select: none;
 }
 
-/* Required */
+/**
+  * Required
+  */
 
-.require::after{
+.sttext.is-required::after{
     content: " *";
     font-weight: bold;
     color: var(--stnegative-600);
@@ -11864,11 +11866,11 @@ button{
   * Negative
   */
 
-.sttext.error{
+.sttext.negative{
     color: var(--stnegative-600);
 }
 
-.sttext.error.secondary{
+.sttext.negative.secondary{
     color: var(--stnegative-500);
 }
 
@@ -12049,11 +12051,11 @@ button{
   * Fluid
   */
 
-.sttab.fluid{
+.sttab.fill{
     display: flex;
 }
 
-.sttab.fluid .item{
+.sttab.fill .item{
     flex: 1;
 }
 
@@ -12216,7 +12218,7 @@ a.stbox:hover{
   * Emphasises
   */
 
-.stbox[class*="-indicated"].error{
+.stbox[class*="-indicated"].negative{
     --stindicator-color: var(--stnegative-500);
 }
 
@@ -12224,7 +12226,7 @@ a.stbox:hover{
     --stindicator-color: var(--stpositive-500);
 }
 
-.stbox[class*="-indicated"].warning{
+.stbox[class*="-indicated"].is-warning{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -12686,7 +12688,7 @@ a.stbox:hover{
   * Negative
   */
 
-.stswitch.error input{
+.stswitch.negative input{
     border-radius: 100rem;
     border: 2px solid var(--stnegative-600);
 }
@@ -12907,15 +12909,15 @@ a.stbox:hover{
   * Fluid
   */
 
-.selection.fluid{
+.selection.fill{
     width: 100%;
 }
 
-.selection.fluid .item{
+.selection.fill .item{
     flex: 1;
 }
 
-.selection.fluid .item .text{
+.selection.fill .item .text{
     width: 100%;
 }
 
@@ -13103,7 +13105,7 @@ a.stbox:hover{
   * Striped
   */
 
-.sttable.is-striped>tbody>tr:nth-child(even){
+.stripe>tbody>tr:nth-child(even){
     background: var(--stgray-75);
 }
 
@@ -13214,7 +13216,7 @@ a.stbox:hover{
     box-shadow: 2px 0 0 var(--stgray-900) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.error{
+.sttable:is(tr, tr th, tr td).is-indicated.negative{
     box-shadow: 2px 0 0 var(--stnegative-600) inset;
 }
 
@@ -13222,7 +13224,7 @@ a.stbox:hover{
     box-shadow: 2px 0 0 var(--stpositive-600) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.warning{
+.sttable:is(tr, tr th, tr td).is-indicated.is-warning{
     box-shadow: 2px 0 0 var(--stwarning-600) inset;
 }
 
@@ -13536,13 +13538,13 @@ a.stbox:hover{
   * Negative
   */
 
-.stprocedure .item.error .indicator{
+.stprocedure .item.negative .indicator{
     background: var(--stnegative-500);
     color: var(--stwhite);
     border-color: var(--stnegative-500);
 }
 
-.stprocedure .item.error .label{
+.stprocedure .item.negative .label{
     color: var(--stnegative-500);
 }
 
@@ -14026,7 +14028,7 @@ a.stbox:hover{
   * Fluid
   */
 
-.stgrid .column.fluid{
+.stgrid .column.fill{
     flex: 1;
     min-width: 0;
     flex-grow: 1;
@@ -14332,11 +14334,11 @@ a.stbox:hover{
   * Fluid
   */
 
-.stchip.fluid{
+.stchip.fill{
     display: flex;
 }
 
-.stchip.fluid .content{
+.stchip.fill .content{
     width: 100%;
 }
 
@@ -17093,7 +17095,7 @@ a.stbox:hover{
   * Fluid
   */
 
-.ststatistic.fluid{
+.ststatistic.fill{
     width: 100%;
 }
 
@@ -17275,11 +17277,11 @@ a.stbox:hover{
   * Fluid
   */
 
-.stapp-navbar.fluid{
+.stapp-navbar.fill{
     display: flex;
 }
 
-.stapp-navbar.fluid .item{
+.stapp-navbar.fill .item{
     flex: 1;
 }
 
@@ -17440,7 +17442,7 @@ a.stbox:hover{
   * Negative
   */
 
-.stsnackbar .action.error{
+.stsnackbar .action.negative{
     color: var(--stnegative-500);
 }
 
@@ -17869,7 +17871,7 @@ a.stheader:hover{
   * Negative
   */
 
-.stheader.error{
+.stheader.negative{
     color: var(--stnegative-600);
 }
 
@@ -18069,7 +18071,7 @@ a.main:hover{
   * Emphasises
   */
 
-.main[class*="-indicated"].error{
+.main[class*="-indicated"].negative{
     --stindicator-color: var(--stnegative-500);
 }
 
@@ -18077,7 +18079,7 @@ a.main:hover{
     --stindicator-color: var(--stpositive-500);
 }
 
-.main[class*="-indicated"].warning{
+.main[class*="-indicated"].is-warning{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -18331,7 +18333,7 @@ a.main:hover{
   * Fluid
   */
 
-.stapp-layout .cell.fluid{
+.stapp-layout .cell.fill{
     flex: 1;
     flex-shrink: 1;
 }
@@ -18585,7 +18587,7 @@ a.main:hover{
   * Fluid
   */
 
-.stcontainer.fluid{
+.stcontainer.fill{
     max-width: 100%;
 }
 
@@ -18662,7 +18664,7 @@ a.main:hover{
   * Fluid
   */
 
-.stcontrol .content.fluid{
+.stcontrol .content.fill{
     max-width: initial;
 }
 
@@ -18932,7 +18934,7 @@ a.main:hover{
   * Negative
   */
 
-.stchecklist .item.error::before{
+.stchecklist .item.negative::before{
     content: "\f00d";
     background: var(--sttonal-negative-400);
     color: var(--sttonal-negative-800);
@@ -18972,7 +18974,7 @@ a.main:hover{
   * Info
   */
 
-.stchecklist .item.warning::before{
+.stchecklist .item.is-warning::before{
     content: "\21";
     background: var(--sttonal-warning-400);
     color: var(--sttonal-warning-800);
@@ -19358,7 +19360,7 @@ a.main:hover{
   *
   */
 
-.stconversation:is(.is-sent, .is-sending, .error, .is-read, .warning) .bubble .meta::after{
+.stconversation:is(.is-sent, .is-sending, .is-error, .is-read, .is-warning) .bubble .meta::after{
     color: var(--stgray-500);
 
     font-family: "Icons";
@@ -19386,7 +19388,7 @@ a.main:hover{
     content: "\f560";
 }
 
-.stconversation.error .bubble .meta::after{
+.stconversation.is-error .bubble .meta::after{
     content: "\f071";
     color: var(--stnegative-400);
 }
@@ -21043,12 +21045,12 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Negative
   */
 
-.sttimeline>.item.error .indicator .sticon{
+.sttimeline>.item.negative .indicator .sticon{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.sttimeline>.item.error.secondary .indicator .sticon{
+.sttimeline>.item.negative.secondary .indicator .sticon{
     background: initial;
     color: var(--stnegative-500);
 }
@@ -21981,7 +21983,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Fluid
   */
 
-.strow .column.fluid{
+.strow .column.fill{
     flex: 1;
     min-width: 0;
     flex-grow: 1;
@@ -22389,6 +22391,26 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .inline{
     display: inline-block;
+}
+
+/* ---自訂 */
+
+.outborder{
+    border: 1px var(--stgray-400) solid;
+}
+
+.inborder>tbody>tr>td{
+    border-left: 1px var(--stgray-400) solid;
+    border-right: 1px var(--stgray-400) solid;
+}
+
+.allborder{
+    border: 1px var(--stgray-400) solid;
+}
+
+.allborder>tbody>tr>td{
+    border-left: 1px var(--stgray-400) solid;
+    border-right: 1px var(--stgray-400) solid;
 }
 
 /*
