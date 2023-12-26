@@ -5,14 +5,14 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/09/27",
-            "updatedate": "2023/12/04",
+            "updatedate": "2023/12/26",
             "data": [
                 {
-                    "title": "ModuleA-",
-                    "statu": "N/A",
+                    "title": "ModuleA-API(GraphQL)",
+                    "statu": "FAILED",
                     "ps": "list",
-                    "createdate": "N/A",
-                    "updatedate": "N/A",
+                    "createdate": "2023/12/25",
+                    "updatedate": "2023/12/26",
                     "data": []
                 },
                 {
