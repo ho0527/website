@@ -52,7 +52,6 @@ docgetall(".elementdiv").forEach(function(event){
             </div>
         `
 
-        console.log(docgetid("delete"))
         // 各元素創建 START
         docgetid("element1").onclick=function(){
 
