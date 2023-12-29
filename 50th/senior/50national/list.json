@@ -89,7 +89,7 @@
                                 },
                                 {
                                     "no": "12",
-                                    "description": "播放器有所有題目中的元素，每少一個扣 0.25 分",
+                                    "description": "播放器有所有題目中的元素",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
@@ -155,7 +155,7 @@
                                 },
                                 {
                                     "no": "23",
-                                    "description": "播放清單有題目上的所有元素，每少一個扣 0.25 分",
+                                    "description": "播放清單有題目上的所有元素，",
                                     "statu": "SUCCESS",
                                     "data": []
                                 },
@@ -254,7 +254,225 @@
                     "ps": "list",
                     "createdate": "2023/06/22",
                     "updatedate": "2023/10/31",
-                    "data": []
+                    "data": [
+                        {
+                            "list": "task",
+                            "description": "game",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "起始頁至少包含題目描述元素，包含:開始遊戲按鈕，教學按鈕，字體大小按鈕和難易度（簡單，正常和困難）",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "遊戲畫面至少包含題目描述元素，包含:暫停/繼續按鈕，遊戲區域，鬼的重生區域，字體大小按鈕，計時器，難易度，吃豆人，鬼，豆子，星星，玩家姓名，最高分，分數和統計數據",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "排名表對話框至少包含題目描述元素，包含:遊戲畫面，重新啟動遊戲按鈕，難易度，得分，排名表與列：排名，玩家姓名，得分和時間，排名值，前三名和當前位置必須出現在表中。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "遊戲在正確的解析度上開發: 768x1024",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "按鈕具有 active 和 hover 的效果，包含: 開始遊戲、教學、退出教學、暫停/繼續、字體大小。每個按鈕每個狀態錯誤扣 0.25",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "在遊戲畫面，字體可以放大或縮小字體",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "難易度與起始頁設定的一致",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "按下開始按鈕後，生成遊戲區域，所有牆壁佔 1 格寬，豆子及星星佔 1格寬。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": " map.txt 相同",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "遊戲區域使用 ajax 讀取 map.txt",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "吃豆人吃到豆子時，畫面上的分數會同時更新。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "吃豆人吃到星星時，畫面上的分數會同時更新。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "鬼的數量及星星的數量依照選取的遊戲難易度生成。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "按下「上、下、左、右」鍵，可正確移動。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "吃豆人本身需有動畫效果，移動時也需要有移動方向(上/下/左/右)的動畫效果。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "鬼本身需有動畫效果，移動時也需要有移動方向(上/下/左/右)的動畫效果。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "在吃豆人移動的道路上需鋪滿豆子或星星。豆子、星星不能重疊，也不能顯示在牆壁上。吃豆人吃到豆子後不會再產生新豆子，豆子被吃掉後會消失。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "持續按同個按鍵 250ms 後可以重複執行該按鍵的動作直到按鍵放開",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "19",
+                                    "description": "不可以將吃豆人移動到遊戲區外，也不可穿越牆壁。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "20",
+                                    "description": "當吃豆人被鬼碰到時，扣除一條生命值。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "21",
+                                    "description": "當生命值歸零時，遊戲結束。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "22",
+                                    "description": "點暫停按鈕，遊戲暫停，計時器也暫停計時，任何按鍵皆無法操作吃豆人，文字變為【繼續】；點選【繼續】後繼續遊戲",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "23",
+                                    "description": "分數可以透過 AJAX 送到伺服器上，並將分數儲存到指定的資料庫的資料表內",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "24",
+                                    "description": "可以顯示排行榜對話框，向玩家顯示排名，其中“重啟遊戲”按鈕允許重新開始遊戲。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "25",
+                                    "description": "排名資料顯示正確，且可以標記出目前玩家的排名排名需要按分數降冪排列。如果多個玩家具有相同的分數，同分部分以時間升冪排列，且排名若相同，會占用後續的名次",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "26",
+                                    "description": "遊玩中，蘋果/鳳梨/草莓會在沒有豆子或星星的乾淨的道路上隨機生成。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "27",
+                                    "description": "吃到蘋果時可增加一條生命值。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "28",
+                                    "description": "吃到鳳梨時可增加吃豆人的速度增加兩倍。",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "29",
+                                    "description": "吃到草莓時吃豆人可以擁有 15 秒的無敵時間，在無敵時間的狀態下碰到鬼時，鬼會被送至重生區，而吃豆人可以獲得 100 分的積分。",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "30",
+                                    "description": "吃豆人在靠近鬼的五個格子內時，鬼會朝著吃豆人移動",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "31",
+                                    "description": "整體遊戲畫面設計具有一致性",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "32",
+                                    "description": "CSS/HTML/JS 是否容易維護",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "33",
+                                    "description": "遊戲主畫面按鈕容易操作",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "34",
+                                    "description": "遊戲排行榜畫面易於閱讀。",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "35",
+                                    "description": "遊戲中所使用的動畫流暢。",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleE-SPEEDTEST",

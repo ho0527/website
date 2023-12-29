@@ -1245,7 +1245,7 @@ button{
   * Labeled Icon
   */
 
-.stbutton:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton:is(.startlabel-icon, .endlabel-icon) .sticon{
     position: absolute;
     top: -2px;
     bottom: -2px;
@@ -1257,43 +1257,43 @@ button{
     width: calc(2.75rem + 2px);
 }
 
-.stbutton:where(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton:where(.startlabel-icon, .endlabel-icon) .sticon{
     font-size: 1.2em;
 }
 
-.stbutton.is-start-labeled-icon{
+.stbutton.startlabel-icon{
     padding-left: calc(var(--horizontal-padding) + 2.75em);
 }
 
-.stbutton.is-start-labeled-icon .sticon{
+.stbutton.startlabel-icon .sticon{
     left: -2px;
     border-radius: 0.4rem 0 0 0.4rem;
 }
 
-.stbutton.is-end-labeled-icon{
+.stbutton.endlabel-icon{
     padding-right: calc(var(--horizontal-padding) + 2.75em);
 }
 
-.stbutton.is-end-labeled-icon .sticon{
+.stbutton.endlabel-icon .sticon{
     right: -2px;
     border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.stbutton.negative:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.negative:is(.startlabel-icon, .endlabel-icon) .sticon{
     background: var(--stnegative-400);
 }
 
-.stbutton.outline:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.outline:is(.startlabel-icon, .endlabel-icon) .sticon{
     /*background: var(--stgray-300);*/
     background: transparent;
     border: 2px solid var(--stgray-300);
 }
 
-.stbutton.secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.secondary:is(.startlabel-icon, .endlabel-icon) .sticon{
     background: var(--stgray-200);
 }
 
-.stbutton.is-tertiary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+.stbutton.is-tertiary:is(.startlabel-icon, .endlabel-icon) .sticon{
     background: var(--stgray-400);
 }
 
@@ -9728,7 +9728,7 @@ button{
   * Basic
   */
 
-.stinput.is-basic input{
+.stinput.basic input{
     padding: 0;
     border: 0;
     background: transparent;
@@ -9738,15 +9738,14 @@ button{
   * Labeled
   */
 
-.stinput:is(.is-start-labeled, .is-end-labeled, .islabel):is(.input, .label){
+.stinput:is(.startlabel, .endlabel, .islabel):is(.input, .label){
     border-radius: var(--border-radius);
 }
 
-.stinput:is(.is-start-labeled, .is-end-labeled, .islabel) .label{
+.stinput:is(.startlabel, .endlabel, .islabel) .label{
     line-height: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
     background: var(--stgray-100);
     padding: 0 0.6rem;
     font-size: var(--stfont-size-14px);
@@ -9754,24 +9753,24 @@ button{
     border: 1px solid var(--stgray-300);
 }
 
-.stinput:is(.is-start-labeled, .islabel) .label{
+.stinput:is(.startlabel, .islabel) .label{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right-width: 0;
 }
 
-.stinput:is(.is-start-labeled, .islabel) input{
+.stinput:is(.startlabel, .islabel) input{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel) .label{
+.stinput:is(.endlabel, .islabel) .label{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left-width: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel) input{
+.stinput:is(.endlabel, .islabel) input{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -9789,35 +9788,35 @@ button{
 }
 
 /** Underlined */
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).underline .label{
+.stinput:is(.startlabel, .islabel, .endlabel).underline .label{
     border: 0;
     border-bottom: 2px solid var(--stgray-400);
     background: var(--stgray-200);
 }
 
-.stinput:is(.is-start-labeled, .islabel).underline .label{
+.stinput:is(.startlabel, .islabel).underline .label{
     border-bottom-left-radius: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel).underline .label{
+.stinput:is(.endlabel, .islabel).underline .label{
     border-bottom-right-radius: 0;
 }
 
-.stinput:is(.is-start-labeled, .islabel).underline input{
+.stinput:is(.startlabel, .islabel).underline input{
     border-left: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel).underline input{
+.stinput:is(.endlabel, .islabel).underline input{
     border-right: 0;
 }
 
 /** Solid */
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid .label{
+.stinput:is(.startlabel, .islabel, .endlabel).is-solid .label{
     border-color: transparent;
     background: var(--stgray-200);
 }
 
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid:focus-within .label{
+.stinput:is(.startlabel, .islabel, .endlabel).is-solid:focus-within .label{
     border-color: var(--stgray-300);
 }
 
@@ -9907,7 +9906,7 @@ button{
 }
 
 /** Solid */
-.stinput.negative.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+.stinput.negative.is-solid:is(.startlabel, .islabel, .endlabel) .label{
     border-color: var(--stnegative-400);
 }
 
@@ -11353,19 +11352,19 @@ button{
   * Basic
   */
 
-.stselect.is-basic{
+.stselect.basic{
     padding: 0;
     background: transparent;
     border-color: transparent;
     min-height: initial;
 }
 
-.stselect.is-basic select{
+.stselect.basic select{
     line-height: 1;
     padding: 0 1.4rem 0 0;
 }
 
-.stselect.is-basic::after{
+.stselect.basic::after{
     right: 0;
     font-size: 12px;
     padding-top: 2px;
@@ -13069,7 +13068,7 @@ a.stbox:hover{
   * Basic
   */
 
-.sttable:is(.is-basic, .is-very-basic) tr th{
+.sttable:is(.basic, .is-very-basic) tr th{
     background: transparent;
 }
 
