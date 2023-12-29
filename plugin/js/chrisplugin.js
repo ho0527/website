@@ -551,6 +551,9 @@ function signin(
 function smoothscroll(id){
     if(document.getElementById(id)){
         document.getElementById(id).scrollIntoView({ behavior: "smooth" })
+        setTimeout(function(){
+            history.pushState(null,null,"#"+id)
+        },50)
     }else{
         conlog("[ERROR]function smoothscroll id not found","red","12")
     }
@@ -697,6 +700,13 @@ function tag(tagdiv,taglist,newtag=function(){}){
 window.onload=function(){
     if(docgetid("lightbox")){
         docgetid("lightbox").classList.add("lightboxmask")
+    }
+
+    if(location.href.split("#").length>1){
+        let id=location.href.split("#")[location.href.split("#").length-1]
+        if(docgetid(id)){
+            docgetid(id).scrollIntoView({ behavior: "smooth" })
+        }
     }
 }
 
