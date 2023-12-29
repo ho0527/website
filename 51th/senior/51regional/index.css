@@ -22665,11 +22665,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     transition-duration: 0.5s;
 }
 
-.workbutton:hover{
-    background: rgb(54, 54, 54);
-    color: white;
-}
-
 .order{
     grid-column: 2/15;
     grid-row: 1/18;
