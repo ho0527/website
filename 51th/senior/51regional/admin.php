@@ -65,7 +65,7 @@
                                 ?>
                                 <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=lock&id=<?php echo($row[$i][0]) ?>'" value="<?php echo($value) ?>"><br>
                                 <input type="button" class="stbutton light workbutton <?php echo($disabled) ?>" onclick="location.href='?mod=edit&id=<?php echo($row[$i][0]) ?>'" value="編輯" <?php echo($disabled) ?>><br>
-                                <input type="button" class="stbutton workbutton error <?php echo($disabled) ?>" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php echo($disabled) ?>><br>
+                                <input type="button" class="stbutton error workbutton <?php echo($disabled) ?>" onclick="location.href='?mod=del&id=<?php echo($row[$i][0]) ?>'" value="刪除" <?php echo($disabled) ?>><br>
                                 <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=responelist&id=<?php echo($row[$i][0]) ?>'" value="回應內容"><br>
                                 <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=result&id=<?php echo($row[$i][0]) ?>'" value="統計結果"><br>
                                 <input type="button" class="stbutton outline workbutton" onclick="location.href='?mod=output&id=<?php echo($row[$i][0]) ?>'" value="輸出問卷"><br>

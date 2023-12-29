@@ -2,6 +2,7 @@ let midx=window.innerWidth/2-60
 let midy=window.innerHeight/2-60
 let maininnerhtml=``
 let data={}
+let count=1
 
 if(!weblsget("worldskill2022ME")){
     weblsset("worldskill2022ME",JSON.stringify({
@@ -36,6 +37,8 @@ for(let i=0;i<data["data"].length;i=i+1){
     `
 }
 docgetid("main").innerHTML=maininnerhtml
+
+count=data["data"].length
 // 初始化 END
 
 docgetall(".elementdiv").forEach(function(event){
@@ -53,34 +56,37 @@ docgetall(".elementdiv").forEach(function(event){
         `
 
         // 各元素創建 START
-        docgetid("element1").onclick=function(){
-
+        docgetid("element1").onmousedown=function(){
+            event.querySelectorAll(".element")[0].innerHTML=``
         }
 
-        docgetid("element2").onclick=function(){
-            console.log("inininin")
+        docgetid("element2").onmousedown=function(){
+            event.querySelectorAll(".element")[0].innerHTML=``
         }
 
-        docgetid("element3").onclick=function(){
-
+        docgetid("element3").onmousedown=function(){
+            event.querySelectorAll(".element")[0].innerHTML=``
         }
 
-        docgetid("element4").onclick=function(){
-
+        docgetid("element4").onmousedown=function(){
+            event.querySelectorAll(".element")[0].innerHTML=``
         }
 
-        docgetid("edit").onclick=function(){
-
+        docgetid("edit").onmousedown=function(){
+            lightbox(null,"lightbox",function(){
+                return ``
+            })
+            event.querySelectorAll(".element")[0].innerHTML=``
         }
 
-        docgetid("delete").onclick=function(){
-            console.log("inininininininin")
-            docgetid(this.dataset.id).remove()
+        docgetid("delete").onmousedown=function(){
             for(let i=0;i<data["data"].length;i=i+1){
-                if(data["data"][i]["id"]==this.dataset.id``){
+                if(data["data"][i]["id"]==this.dataset.id){
                     delete data["data"][i]
                 }
             }
+            docgetid(this.dataset.id).remove()
+            weblsset("worldskill2022ME",JSON.stringify(data))
         }
         // 各元素創建 END
     }

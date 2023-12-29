@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2023/12/16",
+            "updatedate": "2023/12/29",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -913,7 +913,7 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/12/16",
-                    "updatedate": "2023/12/19",
+                    "updatedate": "2023/12/29",
                     "data": [
                         {
                             "list": 1,
@@ -923,19 +923,19 @@
                                 {
                                     "no": "01",
                                     "description": "When creating a new presentation or clearing the editor, one root element initially appears in the center of the screen",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "02",
                                     "description": "WThe editor/viewer project is accessible via required URL",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
                                     "no": "03",
                                     "description": "The element has 4 interactive areas, (1, 2, 3, 4), which are hidden by default and are displayed only after mouse hover on the element.",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -959,7 +959,7 @@
                                 {
                                     "no": "07",
                                     "description": "It is possible to delete of element by delete button",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 }
                             ]
