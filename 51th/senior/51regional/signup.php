@@ -8,19 +8,37 @@
         <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <div class="main">
-            <form>
-                帳號: <input type="text" class="input" name="username"><br><br>
-                密碼: <input type="password" class="input" name="password"><br><br>
-                <input type="button" onclick="location.href='index.php'" class="button" value="返回">
-                <input type="submit" class="button" value="送出"><br>
+        <div class="navigationbar">
+            <div class="navigationbartitle center">網路問卷調查系統</div>
+        </div>
+        <div class="main center">
+            <form method="POST">
+                <div class="inputmargin">
+                    <div class="sttext">帳號</div>
+                    <div class="stinput underline endicon">
+                        <input type="text" name="username">
+                        <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                    </div>
+                </div>
+                <div class="inputmargin">
+                    <div class="sttext">密碼</div>
+                    <div class="stinput underline endicon">
+                        <input type="text" id="password" name="password">
+                        <div class="sticon"><img src="/website/material/icon/eyeclose.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                    </div>
+                </div>
+                <div class="textcenter">
+                    <input type="button" class="stbutton outline" onclick="location.href='index.php'" value="返回">
+                    <input type="reset" class="stbutton outline" value="清除">
+                    <input type="submit" class="stbutton outline" name="login" value="登入">
+                </div>
             </form>
         </div>
     <?php
         include("link.php");
-        if(isset($_GET["username"])){
-            $username=$_GET["username"];
-            $password=$_GET["password"];
+        if(isset($_POST["username"])){
+            $username=$_POST["username"];
+            $password=$_POST["password"];
             if(query($db,"SELECT*FROM `user` WHERE `username`=?",[$username])){
                 echo("帳號已被註冊");
             }elseif($username==""||$password==""){

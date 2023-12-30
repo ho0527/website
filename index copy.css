@@ -25,16 +25,6 @@ table{
     color: white;
 }
 
-/* .main{
-    border: 2px white solid;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 20px;
-    border-radius: 20px;
-} */
-
 .grid{
     display: grid;
     grid-gap: 1%;
@@ -348,8 +338,6 @@ table{
 
 /* ================================================================================================================================================================== */
 
-/* ================================================================================================================================================================== */
-
 html{
     --staccent-color: #5c79ff;
 }
@@ -381,6 +369,7 @@ html{
         --stgray-200: var(--stlight-gray-200);
         --stgray-300: var(--stlight-gray-300);
         --stgray-400: var(--stlight-gray-400);
+        --stgray-450: var(--stlight-gray-450);
         --stgray-500: var(--stlight-gray-500);
         --stgray-600: var(--stlight-gray-600);
         --stgray-700: var(--stlight-gray-700);
@@ -465,6 +454,7 @@ html{
     --stlight-gray-200: rgb(238, 238, 238);
     --stlight-gray-300: rgb(225, 225, 225);
     --stlight-gray-400: rgb(215, 215, 215);
+    --stlight-gray-450: rgb(145, 145, 145);
     --stlight-gray-500: rgb(118, 118, 118);
     --stlight-gray-600: rgb(90, 90, 90);
     --stlight-gray-700: rgb(70, 70, 70);
@@ -477,6 +467,7 @@ html{
     --stdark-gray-200: rgb(47, 47, 47);
     --stdark-gray-300: rgb(62, 62, 62);
     --stdark-gray-400: rgb(80, 80, 80);
+    --stdark-gray-450: rgb(110, 110, 110);
     --stdark-gray-500: rgb(180, 180, 180);
     --stdark-gray-600: rgb(220, 220, 220);
     --stdark-gray-700: rgb(245, 245, 245);
@@ -641,6 +632,7 @@ html{
         --stgray-200: var(--stdark-gray-200);
         --stgray-300: var(--stdark-gray-300);
         --stgray-400: var(--stdark-gray-400);
+        --stgray-450: var(--stdark-gray-450);
         --stgray-500: var(--stdark-gray-500);
         --stgray-600: var(--stdark-gray-600);
         --stgray-700: var(--stdark-gray-700);
@@ -957,7 +949,7 @@ button{
   * Paragraphy
   */
 
-[class*="st"]:where(p){
+/* [class*="st"]:where(p){
     margin-block-start: 1em;
     margin-block-end: 1em;
 }
@@ -976,7 +968,7 @@ button{
 
 [class*="st"]:where(a){
     color: inherit;
-}
+} */
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -1016,13 +1008,7 @@ button{
     -moz-osx-font-smoothing: inherit;
     appearance: none;
     -webkit-appearance: none;
-}
 
-.stbutton:focus{
-    outline: 0;
-}
-
-.stbutton{
     border: 2px solid var(--accent-color, var(--stgray-800));
     font-size: var(--stfont-size-14px);
     line-height: 1.5;
@@ -1038,20 +1024,21 @@ button{
 
     padding: 0 var(--horizontal-padding);
     border-radius: 0.4rem;
+    transition: 0.2s linear;
 }
 
 .stbutton:hover{
     cursor: pointer;
-    opacity: 0.98;
+    opacity: 0.75;
 }
 
-/* ==========================================================================
-    Variations
-    ========================================================================== */
+.stbutton:focus{
+    outline: 0;
+}
 
-/**
-  * Secondary
-*/
+/* ========================================================================== Variations ========================================================================== */
+
+/* Secondary */
 
 .stbutton.secondary{
     color: var(--accent-color, var(--stgray-800));
@@ -1059,9 +1046,7 @@ button{
     background: var(--stgray-100);
 }
 
-/**
-  * Tertiary
-  */
+/* Tertiary */
 
 .stbutton.is-tertiary{
     color: var(--stgray-800);
@@ -1069,55 +1054,78 @@ button{
     border-color: var(--stgray-300);
 }
 
-/**
-  * Outlined
-  */
+/* outline */
 
 .stbutton.outline{
     background: transparent;
-    border: 2px solid var(--stgray-300);
+    border: 2px solid var(--stgray-450);
     color: var(--accent-color, var(--stgray-800));
 }
 
-/**
-  * Negative
-  */
+/* hover */
+.stbutton.outline:hover{
+    border: 2px var(--stgray-900) solid;
+    font-weight: bold;
+    font-size: 15.7px;
+}
 
-.stbutton.negative{
+/* error */
+
+/* .stbutton.error{
     color: var(--stwhite);
     border-color: var(--stnegative-500);
     background: var(--stnegative-500);
 }
 
-.stbutton.negative.outline{
+.stbutton.error:hover{
     color: var(--stnegative-500);
     border-color: var(--stgray-300);
     background: transparent;
+} */
+
+/* .stbutton.error:hover{
+    color: var(--stwhite);
+    border-color: var(--stnegative-500);
+    background: var(--stnegative-500);
 }
 
-/**
-  * Ghost
-  */
+.stbutton.error{
+    color: var(--stnegative-500);
+    border-color: var(--stgray-300);
+    background: transparent;
+} */
 
-.stbutton.is-ghost{
+.stbutton.error{
+    color: var(--stwhite);
+    border-color: var(--stnegative-500);
+    background: var(--stnegative-500);
+}
+
+.stbutton.error:hover{
+    border: 2px var(--stnegative-700) solid;
+       background: var(--stnegative-700);
+    font-weight: bold;
+}
+
+/* Ghost */
+
+.stbutton.ghost{
     background: transparent;
     color: var(--stgray-800);
     border: 2px solid transparent;
 }
 
-.stbutton.is-ghost:hover{
+.stbutton.ghost:hover{
     background: var(--stgray-100);
 }
 
-.stbutton.is-ghost.negative{
+.stbutton.ghost.error{
     color: var(--stnegative-500);
 }
 
-/**
-  * Loading
-  */
+/* Loading */
 
-.stbutton.loading,.stbutton.loading.negative{
+.stbutton.loading,.stbutton.loading.error{
     color: transparent;
     pointer-events: none;
     opacity: 0.5;
@@ -1146,22 +1154,18 @@ button{
     left: 50%;
 }
 
-.stbutton.loading:is(.outline, .secondary, .is-tertiary, .is-ghost)::after{
+.stbutton.loading:is(.outline, .secondary, .is-tertiary, .ghost)::after{
     color: var(--stgray-800);
 }
 
-/**
-  * Tertiary
-  */
+/* Tertiary */
 
 /*.stbutton.is-tertiary:hover{
      background: var(--stgray-100);
      opacity: 1;
  }*/
 
-/**
-  * Sizes
-  */
+/* Sizes */
 
 .stbutton.small{
     --height: var(--stinput-height-small);
@@ -1187,10 +1191,10 @@ button{
 }
 
 /**
-  * fill
+  * Fluid
   */
 
-.stbutton.fill{
+.stbutton.fluid{
     width: 100%;
 }
 
@@ -1245,7 +1249,7 @@ button{
   * Labeled Icon
   */
 
-.stbutton:is(.startlabel-icon, .endlabel-icon) .sticon{
+.stbutton:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     position: absolute;
     top: -2px;
     bottom: -2px;
@@ -1257,43 +1261,43 @@ button{
     width: calc(2.75rem + 2px);
 }
 
-.stbutton:where(.startlabel-icon, .endlabel-icon) .sticon{
+.stbutton:where(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     font-size: 1.2em;
 }
 
-.stbutton.startlabel-icon{
+.stbutton.is-start-labeled-icon{
     padding-left: calc(var(--horizontal-padding) + 2.75em);
 }
 
-.stbutton.startlabel-icon .sticon{
+.stbutton.is-start-labeled-icon .sticon{
     left: -2px;
     border-radius: 0.4rem 0 0 0.4rem;
 }
 
-.stbutton.endlabel-icon{
+.stbutton.is-end-labeled-icon{
     padding-right: calc(var(--horizontal-padding) + 2.75em);
 }
 
-.stbutton.endlabel-icon .sticon{
+.stbutton.is-end-labeled-icon .sticon{
     right: -2px;
     border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.stbutton.negative:is(.startlabel-icon, .endlabel-icon) .sticon{
+.stbutton.error:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     background: var(--stnegative-400);
 }
 
-.stbutton.outline:is(.startlabel-icon, .endlabel-icon) .sticon{
+.stbutton.outline:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     /*background: var(--stgray-300);*/
     background: transparent;
     border: 2px solid var(--stgray-300);
 }
 
-.stbutton.secondary:is(.startlabel-icon, .endlabel-icon) .sticon{
+.stbutton.secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     background: var(--stgray-200);
 }
 
-.stbutton.is-tertiary:is(.startlabel-icon, .endlabel-icon) .sticon{
+.stbutton.is-tertiary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
     background: var(--stgray-400);
 }
 
@@ -1378,7 +1382,7 @@ button{
     display: none;
 }
 
-.stbuttons .stbutton.negative::before{
+.stbuttons .stbutton.error::before{
     background: var(--stnegative-400);
 }
 
@@ -7394,7 +7398,7 @@ button{
     content: "\f06e";
 }
 
-.sticon.is-ghost-icon::before{
+.sticon.ghost-icon::before{
     content: "\f6e2";
 }
 
@@ -9423,7 +9427,7 @@ button{
   * Negative
   */
 
-.sticon.negative{
+.sticon.error{
     color: var(--stnegative-500);
 }
 
@@ -9738,14 +9742,15 @@ button{
   * Labeled
   */
 
-.stinput:is(.startlabel, .endlabel, .islabel):is(.input, .label){
+.stinput:is(.is-start-labeled, .is-end-labeled, .islabel):is(.input, .label){
     border-radius: var(--border-radius);
 }
 
-.stinput:is(.startlabel, .endlabel, .islabel) .label{
+.stinput:is(.is-start-labeled, .is-end-labeled, .islabel) .label{
     line-height: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: var(--stgray-100);
     padding: 0 0.6rem;
     font-size: var(--stfont-size-14px);
@@ -9753,24 +9758,24 @@ button{
     border: 1px solid var(--stgray-300);
 }
 
-.stinput:is(.startlabel, .islabel) .label{
+.stinput:is(.is-start-labeled, .islabel) .label{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right-width: 0;
 }
 
-.stinput:is(.startlabel, .islabel) input{
+.stinput:is(.is-start-labeled, .islabel) input{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.stinput:is(.endlabel, .islabel) .label{
+.stinput:is(.is-end-labeled, .islabel) .label{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left-width: 0;
 }
 
-.stinput:is(.endlabel, .islabel) input{
+.stinput:is(.is-end-labeled, .islabel) input{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -9788,35 +9793,35 @@ button{
 }
 
 /** Underlined */
-.stinput:is(.startlabel, .islabel, .endlabel).underline .label{
+.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).underline .label{
     border: 0;
     border-bottom: 2px solid var(--stgray-400);
     background: var(--stgray-200);
 }
 
-.stinput:is(.startlabel, .islabel).underline .label{
+.stinput:is(.is-start-labeled, .islabel).underline .label{
     border-bottom-left-radius: 0;
 }
 
-.stinput:is(.endlabel, .islabel).underline .label{
+.stinput:is(.is-end-labeled, .islabel).underline .label{
     border-bottom-right-radius: 0;
 }
 
-.stinput:is(.startlabel, .islabel).underline input{
+.stinput:is(.is-start-labeled, .islabel).underline input{
     border-left: 0;
 }
 
-.stinput:is(.endlabel, .islabel).underline input{
+.stinput:is(.is-end-labeled, .islabel).underline input{
     border-right: 0;
 }
 
 /** Solid */
-.stinput:is(.startlabel, .islabel, .endlabel).is-solid .label{
+.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid .label{
     border-color: transparent;
     background: var(--stgray-200);
 }
 
-.stinput:is(.startlabel, .islabel, .endlabel).is-solid:focus-within .label{
+.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid:focus-within .label{
     border-color: var(--stgray-300);
 }
 
@@ -9895,28 +9900,28 @@ button{
   * Negative
   */
 
-.stinput.negative:is(input, textarea){
+.stinput.error:is(input, textarea){
     color: var(--stnegative-600);
     border-color: var(--stnegative-400);
     font-weight: 500;
 }
 
-.stinput.negative .label{
+.stinput.error .label{
     border-color: var(--stnegative-400);
 }
 
 /** Solid */
-.stinput.negative.is-solid:is(.startlabel, .islabel, .endlabel) .label{
+.stinput.error.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
     border-color: var(--stnegative-400);
 }
 
-.stinput.negative.is-solid input:focus,.stinput.negative.is-solid textarea:focus{
+.stinput.error.is-solid input:focus,.stinput.error.is-solid textarea:focus{
     background: var(--stgray-100);
     border: 1px solid var(--stnegative-400);
 }
 
 /** Underlined */
-.stinput.negative.underline:is(.label, input, textarea){
+.stinput.error.underline:is(.label, input, textarea){
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -9939,12 +9944,12 @@ button{
   * Fluid
   */
 
-.stinput.fill{
+.stinput.fluid{
     display: flex;
     width: 100%;
 }
 
-.stinput.fill input,.stinput.fill textarea{
+.stinput.fluid input,.stinput.fluid textarea{
     width: 100%;
 }
 
@@ -10185,13 +10190,13 @@ button{
   * Negative
   */
 
-.stfile.negative input{
+.stfile.error input{
     border-color: var(--stnegative-400);
     color: var(--stnegative-600);
     font-weight: 500;
 }
 
-.stfile.negative.underline input{
+.stfile.error.underline input{
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -10294,12 +10299,12 @@ button{
   * Negative
   */
 
-.stnotice.negative{
+.stnotice.error{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.stnotice.negative .title{
+.stnotice.error .title{
     background: var(--stwhite);
     color: var(--stnegative-600);
 }
@@ -10319,7 +10324,7 @@ button{
     color: var(--accent-foreground-color, var(--stgray-50));
 }
 
-.stnotice.outline.negative .title{
+.stnotice.outline.error .title{
     background: var(--stnegative-500);
     color: var(--stgray-50);
 }
@@ -10479,7 +10484,7 @@ button{
   * Negative
   */
 
-.stcheckbox.negative input{
+.stcheckbox.error input{
     border-color: var(--stnegative-600);
     border-width: 2px;
 }
@@ -10651,7 +10656,7 @@ button{
   * Negative
   */
 
-.radio.negative input{
+.radio.error input{
     border-color: var(--stnegative-600);
     border-width: 2px;
 }
@@ -10927,12 +10932,12 @@ button{
   * Negative
   */
 
-.stbadge.negative{
+.stbadge.error{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.stbadge.negative.outline{
+.stbadge.error.outline{
     background: transparent;
     border-color: var(--stnegative-500);
     color: var(--stnegative-700);
@@ -11050,7 +11055,7 @@ button{
   * Fluid
   */
 
-.stpagination.fill{
+.stpagination.fluid{
     display: flex;
 }
 
@@ -11203,8 +11208,10 @@ button{
     line-height: 1.5;
     font-size: var(--stfont-size-14px);
     color: var(--stgray-800);
-    padding: 0 0.5rem;
+
+    padding: 0 1rem;
     padding-right: 2.5rem;
+
     width: 100%;
     cursor: pointer;
 }
@@ -11384,7 +11391,7 @@ button{
   * Fluid
   */
 
-.stselect.fill{
+.stselect.fluid{
     width: 100%;
 }
 
@@ -11392,16 +11399,16 @@ button{
   * Negative
   */
 
-.stselect.negative{
+.stselect.error{
     border-color: var(--stnegative-400);
 }
 
-.stselect.negative select{
+.stselect.error select{
     color: var(--stnegative-600);
     font-weight: 500;
 }
 
-.stselect.negative.underline{
+.stselect.error.underline{
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -11493,7 +11500,7 @@ button{
     background: transparent;
 }
 
-.stselect[data-tocas="input-combo"] .content.is-ghosting{
+.stselect[data-tocas="input-combo"] .content.ghosting{
     opacity: 0.5;
 }
 
@@ -11819,11 +11826,9 @@ button{
     user-select: none;
 }
 
-/**
-  * Required
-  */
+/* Required */
 
-.sttext.is-required::after{
+.require::after{
     content: " *";
     font-weight: bold;
     color: var(--stnegative-600);
@@ -11865,11 +11870,11 @@ button{
   * Negative
   */
 
-.sttext.negative{
+.sttext.error{
     color: var(--stnegative-600);
 }
 
-.sttext.negative.secondary{
+.sttext.error.secondary{
     color: var(--stnegative-500);
 }
 
@@ -12050,11 +12055,11 @@ button{
   * Fluid
   */
 
-.sttab.fill{
+.sttab.fluid{
     display: flex;
 }
 
-.sttab.fill .item{
+.sttab.fluid .item{
     flex: 1;
 }
 
@@ -12217,7 +12222,7 @@ a.stbox:hover{
   * Emphasises
   */
 
-.stbox[class*="-indicated"].negative{
+.stbox[class*="-indicated"].error{
     --stindicator-color: var(--stnegative-500);
 }
 
@@ -12225,7 +12230,7 @@ a.stbox:hover{
     --stindicator-color: var(--stpositive-500);
 }
 
-.stbox[class*="-indicated"].is-warning{
+.stbox[class*="-indicated"].warning{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -12687,7 +12692,7 @@ a.stbox:hover{
   * Negative
   */
 
-.stswitch.negative input{
+.stswitch.error input{
     border-radius: 100rem;
     border: 2px solid var(--stnegative-600);
 }
@@ -12908,15 +12913,15 @@ a.stbox:hover{
   * Fluid
   */
 
-.selection.fill{
+.selection.fluid{
     width: 100%;
 }
 
-.selection.fill .item{
+.selection.fluid .item{
     flex: 1;
 }
 
-.selection.fill .item .text{
+.selection.fluid .item .text{
     width: 100%;
 }
 
@@ -12996,11 +13001,11 @@ a.stbox:hover{
     ========================================================================== */
 
 .sttable thead tr{
-    border-bottom: 1px solid var(--stgray-300);
+    border-bottom: 1px solid var(--stgray-450);
 }
 
 .sttable tfoot tr{
-    border-top: 1px solid var(--stgray-300);
+    border-top: 1px solid var(--stgray-450);
 }
 
 .sttable tr th{
@@ -13014,20 +13019,16 @@ a.stbox:hover{
 }
 
 .sttable tbody tr+tr{
-    border-top: 1px solid var(--stgray-300);
+    border-top: 1px solid var(--stgray-450);
 }
 
 .sttable tbody tr td{
     padding: 0.5rem 1rem;
 }
 
-/* ==========================================================================
-    Variations
-    ========================================================================== */
+/* ========================================================================== Variations ========================================================================== */
 
-/**
-  * Sizes
-  */
+/* Sizes */
 
 .sttable.small,.sttable.small:is(thead, tbody, tfoot, tr, th, td){
     font-size: var(--stfont-size-13px);
@@ -13037,9 +13038,7 @@ a.stbox:hover{
     font-size: var(--stfont-size-16px);
 }
 
-/**
-  * Collapsed
-  */
+/* Collapsed */
 
 .sttable.is-collapsed{
     width: auto;
@@ -13104,7 +13103,7 @@ a.stbox:hover{
   * Striped
   */
 
-.stripe>tbody>tr:nth-child(even){
+.sttable.is-striped>tbody>tr:nth-child(even){
     background: var(--stgray-75);
 }
 
@@ -13215,7 +13214,7 @@ a.stbox:hover{
     box-shadow: 2px 0 0 var(--stgray-900) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.negative{
+.sttable:is(tr, tr th, tr td).is-indicated.error{
     box-shadow: 2px 0 0 var(--stnegative-600) inset;
 }
 
@@ -13223,7 +13222,7 @@ a.stbox:hover{
     box-shadow: 2px 0 0 var(--stpositive-600) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.is-warning{
+.sttable:is(tr, tr th, tr td).is-indicated.warning{
     box-shadow: 2px 0 0 var(--stwarning-600) inset;
 }
 
@@ -13537,13 +13536,13 @@ a.stbox:hover{
   * Negative
   */
 
-.stprocedure .item.negative .indicator{
+.stprocedure .item.error .indicator{
     background: var(--stnegative-500);
     color: var(--stwhite);
     border-color: var(--stnegative-500);
 }
 
-.stprocedure .item.negative .label{
+.stprocedure .item.error .label{
     color: var(--stnegative-500);
 }
 
@@ -14027,7 +14026,7 @@ a.stbox:hover{
   * Fluid
   */
 
-.stgrid .column.fill{
+.stgrid .column.fluid{
     flex: 1;
     min-width: 0;
     flex-grow: 1;
@@ -14333,11 +14332,11 @@ a.stbox:hover{
   * Fluid
   */
 
-.stchip.fill{
+.stchip.fluid{
     display: flex;
 }
 
-.stchip.fill .content{
+.stchip.fluid .content{
     width: 100%;
 }
 
@@ -17094,7 +17093,7 @@ a.stbox:hover{
   * Fluid
   */
 
-.ststatistic.fill{
+.ststatistic.fluid{
     width: 100%;
 }
 
@@ -17276,11 +17275,11 @@ a.stbox:hover{
   * Fluid
   */
 
-.stapp-navbar.fill{
+.stapp-navbar.fluid{
     display: flex;
 }
 
-.stapp-navbar.fill .item{
+.stapp-navbar.fluid .item{
     flex: 1;
 }
 
@@ -17441,7 +17440,7 @@ a.stbox:hover{
   * Negative
   */
 
-.stsnackbar .action.negative{
+.stsnackbar .action.error{
     color: var(--stnegative-500);
 }
 
@@ -17870,7 +17869,7 @@ a.stheader:hover{
   * Negative
   */
 
-.stheader.negative{
+.stheader.error{
     color: var(--stnegative-600);
 }
 
@@ -18070,7 +18069,7 @@ a.main:hover{
   * Emphasises
   */
 
-.main[class*="-indicated"].negative{
+.main[class*="-indicated"].error{
     --stindicator-color: var(--stnegative-500);
 }
 
@@ -18078,7 +18077,7 @@ a.main:hover{
     --stindicator-color: var(--stpositive-500);
 }
 
-.main[class*="-indicated"].is-warning{
+.main[class*="-indicated"].warning{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -18332,7 +18331,7 @@ a.main:hover{
   * Fluid
   */
 
-.stapp-layout .cell.fill{
+.stapp-layout .cell.fluid{
     flex: 1;
     flex-shrink: 1;
 }
@@ -18586,7 +18585,7 @@ a.main:hover{
   * Fluid
   */
 
-.stcontainer.fill{
+.stcontainer.fluid{
     max-width: 100%;
 }
 
@@ -18663,7 +18662,7 @@ a.main:hover{
   * Fluid
   */
 
-.stcontrol .content.fill{
+.stcontrol .content.fluid{
     max-width: initial;
 }
 
@@ -18933,7 +18932,7 @@ a.main:hover{
   * Negative
   */
 
-.stchecklist .item.negative::before{
+.stchecklist .item.error::before{
     content: "\f00d";
     background: var(--sttonal-negative-400);
     color: var(--sttonal-negative-800);
@@ -18973,7 +18972,7 @@ a.main:hover{
   * Info
   */
 
-.stchecklist .item.is-warning::before{
+.stchecklist .item.warning::before{
     content: "\21";
     background: var(--sttonal-warning-400);
     color: var(--sttonal-warning-800);
@@ -19359,7 +19358,7 @@ a.main:hover{
   *
   */
 
-.stconversation:is(.is-sent, .is-sending, .is-error, .is-read, .is-warning) .bubble .meta::after{
+.stconversation:is(.is-sent, .is-sending, .error, .is-read, .warning) .bubble .meta::after{
     color: var(--stgray-500);
 
     font-family: "Icons";
@@ -19387,7 +19386,7 @@ a.main:hover{
     content: "\f560";
 }
 
-.stconversation.is-error .bubble .meta::after{
+.stconversation.error .bubble .meta::after{
     content: "\f071";
     color: var(--stnegative-400);
 }
@@ -21044,12 +21043,12 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Negative
   */
 
-.sttimeline>.item.negative .indicator .sticon{
+.sttimeline>.item.error .indicator .sticon{
     background: var(--stnegative-500);
     color: var(--stwhite);
 }
 
-.sttimeline>.item.negative.secondary .indicator .sticon{
+.sttimeline>.item.error.secondary .indicator .sticon{
     background: initial;
     color: var(--stnegative-500);
 }
@@ -21982,7 +21981,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
   * Fluid
   */
 
-.strow .column.fill{
+.strow .column.fluid{
     flex: 1;
     min-width: 0;
     flex-grow: 1;
@@ -22365,10 +22364,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     margin-right: var(--stspace-gap-huge);
 }
 
-/**
-  * Hidden
-  */
-
 .u-hidden{
     display: none !important;
 }
@@ -22376,10 +22371,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 .u-invisible{
     visibility: hidden !important;
 }
-
-/**
-  * Edged
-  */
 
 .u-edged{
     border-left: 0 !important;
@@ -22391,67 +22382,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 .inline{
     display: inline-block;
 }
-
-/* ---自訂 */
-
-.outborder{
-    border: 1px var(--stgray-400) solid;
-}
-
-.inborder>tbody>tr>td{
-    border-left: 1px var(--stgray-400) solid;
-    border-right: 1px var(--stgray-400) solid;
-}
-
-.allborder{
-    border: 1px var(--stgray-400) solid;
-}
-
-.allborder>tbody>tr>td{
-    border-left: 1px var(--stgray-400) solid;
-    border-right: 1px var(--stgray-400) solid;
-}
-
-/*
-
-.ts-*                    st*
-.is-dark                 dark
-.is-light                light
-.is-disabled             disabled
-.is-fluid                fluid
-.ts-radio                radio
-.is-icon                 fullicon
-.is-start-icon           starticon
-.is-end-icon             endicon
-.is-underlined           underline
-.is-vertical             vertical
-.is-labeled              label
-.is-sttext.is-label      sttextlabel
-.is-outlined             outline
-.is-negative             negative
-.is-sttext.is-mark       mark
-.sttext.is-heavy         bold
-.is-loading              loading
-.is-start-aligned        textleft
-.is-center-aligned       center
-.is-end-aligned          right
-.is-tiny                 tiny
-.is-small                small
-.is-medium               medium
-.is-large                large
-.is-big                  big
-.is-huge                 huge
-.is-massive              massive
-
--------------棄用-------------
-.sttext.is-uppercased    棄用
-.sttext.is-lowercased    棄用
-.sttext.is-bold          棄用
-
--------------new-------------
-inline                   新增
-
-*/
 
 /* END */
 

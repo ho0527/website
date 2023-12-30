@@ -699,7 +699,11 @@ function tag(tagdiv,taglist,newtag=function(){}){
 
 window.onload=function(){
     if(docgetid("lightbox")){
+        docgetid("lightbox").style.display="none"
         docgetid("lightbox").classList.add("lightboxmask")
+        setTimeout(function(){
+            docgetid("lightbox").style.display="block"
+        },100)
     }
 
     if(location.href.split("#").length>1){

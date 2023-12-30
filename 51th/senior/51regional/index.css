@@ -25,16 +25,6 @@ table{
     color: white;
 }
 
-/* .main{
-    border: 2px white solid;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 20px;
-    border-radius: 20px;
-} */
-
 .grid{
     display: grid;
     grid-gap: 1%;
@@ -379,6 +369,7 @@ html{
         --stgray-200: var(--stlight-gray-200);
         --stgray-300: var(--stlight-gray-300);
         --stgray-400: var(--stlight-gray-400);
+        --stgray-450: var(--stlight-gray-450);
         --stgray-500: var(--stlight-gray-500);
         --stgray-600: var(--stlight-gray-600);
         --stgray-700: var(--stlight-gray-700);
@@ -463,6 +454,7 @@ html{
     --stlight-gray-200: rgb(238, 238, 238);
     --stlight-gray-300: rgb(225, 225, 225);
     --stlight-gray-400: rgb(215, 215, 215);
+    --stlight-gray-450: rgb(145, 145, 145);
     --stlight-gray-500: rgb(118, 118, 118);
     --stlight-gray-600: rgb(90, 90, 90);
     --stlight-gray-700: rgb(70, 70, 70);
@@ -475,6 +467,7 @@ html{
     --stdark-gray-200: rgb(47, 47, 47);
     --stdark-gray-300: rgb(62, 62, 62);
     --stdark-gray-400: rgb(80, 80, 80);
+    --stdark-gray-450: rgb(110, 110, 110);
     --stdark-gray-500: rgb(180, 180, 180);
     --stdark-gray-600: rgb(220, 220, 220);
     --stdark-gray-700: rgb(245, 245, 245);
@@ -639,6 +632,7 @@ html{
         --stgray-200: var(--stdark-gray-200);
         --stgray-300: var(--stdark-gray-300);
         --stgray-400: var(--stdark-gray-400);
+        --stgray-450: var(--stdark-gray-450);
         --stgray-500: var(--stdark-gray-500);
         --stgray-600: var(--stdark-gray-600);
         --stgray-700: var(--stdark-gray-700);
@@ -1014,13 +1008,7 @@ button{
     -moz-osx-font-smoothing: inherit;
     appearance: none;
     -webkit-appearance: none;
-}
 
-.stbutton:focus{
-    outline: 0;
-}
-
-.stbutton{
     border: 2px solid var(--accent-color, var(--stgray-800));
     font-size: var(--stfont-size-14px);
     line-height: 1.5;
@@ -1036,20 +1024,21 @@ button{
 
     padding: 0 var(--horizontal-padding);
     border-radius: 0.4rem;
+    transition: 0.2s linear;
 }
 
 .stbutton:hover{
     cursor: pointer;
-    opacity: 0.98;
+    opacity: 0.75;
 }
 
-/* ==========================================================================
-    Variations
-    ========================================================================== */
+.stbutton:focus{
+    outline: 0;
+}
 
-/**
-  * Secondary
-*/
+/* ========================================================================== Variations ========================================================================== */
+
+/* Secondary */
 
 .stbutton.secondary{
     color: var(--accent-color, var(--stgray-800));
@@ -1057,9 +1046,7 @@ button{
     background: var(--stgray-100);
 }
 
-/**
-  * Tertiary
-  */
+/* Tertiary */
 
 .stbutton.is-tertiary{
     color: var(--stgray-800);
@@ -1067,19 +1054,46 @@ button{
     border-color: var(--stgray-300);
 }
 
-/**
-  * Outlined
-  */
+/* outline */
 
 .stbutton.outline{
     background: transparent;
-    border: 2px solid var(--stgray-300);
+    border: 2px solid var(--stgray-450);
     color: var(--accent-color, var(--stgray-800));
 }
 
-/**
-  * Negative
-  */
+/* hover */
+.stbutton.outline:hover{
+    border: 2px var(--stgray-900) solid;
+    font-weight: bold;
+    font-size: 15.7px;
+}
+
+/* error */
+
+/* .stbutton.error{
+    color: var(--stwhite);
+    border-color: var(--stnegative-500);
+    background: var(--stnegative-500);
+}
+
+.stbutton.error:hover{
+    color: var(--stnegative-500);
+    border-color: var(--stgray-300);
+    background: transparent;
+} */
+
+/* .stbutton.error:hover{
+    color: var(--stwhite);
+    border-color: var(--stnegative-500);
+    background: var(--stnegative-500);
+}
+
+.stbutton.error{
+    color: var(--stnegative-500);
+    border-color: var(--stgray-300);
+    background: transparent;
+} */
 
 .stbutton.error{
     color: var(--stwhite);
@@ -1087,33 +1101,29 @@ button{
     background: var(--stnegative-500);
 }
 
-.stbutton.error.outline{
-    color: var(--stnegative-500);
-    border-color: var(--stgray-300);
-    background: transparent;
+.stbutton.error:hover{
+    border: 2px var(--stnegative-700) solid;
+       background: var(--stnegative-700);
+    font-weight: bold;
 }
 
-/**
-  * Ghost
-  */
+/* Ghost */
 
-.stbutton.is-ghost{
+.stbutton.ghost{
     background: transparent;
     color: var(--stgray-800);
     border: 2px solid transparent;
 }
 
-.stbutton.is-ghost:hover{
+.stbutton.ghost:hover{
     background: var(--stgray-100);
 }
 
-.stbutton.is-ghost.error{
+.stbutton.ghost.error{
     color: var(--stnegative-500);
 }
 
-/**
-  * Loading
-  */
+/* Loading */
 
 .stbutton.loading,.stbutton.loading.error{
     color: transparent;
@@ -1144,22 +1154,18 @@ button{
     left: 50%;
 }
 
-.stbutton.loading:is(.outline, .secondary, .is-tertiary, .is-ghost)::after{
+.stbutton.loading:is(.outline, .secondary, .is-tertiary, .ghost)::after{
     color: var(--stgray-800);
 }
 
-/**
-  * Tertiary
-  */
+/* Tertiary */
 
 /*.stbutton.is-tertiary:hover{
      background: var(--stgray-100);
      opacity: 1;
  }*/
 
-/**
-  * Sizes
-  */
+/* Sizes */
 
 .stbutton.small{
     --height: var(--stinput-height-small);
@@ -7392,7 +7398,7 @@ button{
     content: "\f06e";
 }
 
-.sticon.is-ghost-icon::before{
+.sticon.ghost-icon::before{
     content: "\f6e2";
 }
 
@@ -11494,7 +11500,7 @@ button{
     background: transparent;
 }
 
-.stselect[data-tocas="input-combo"] .content.is-ghosting{
+.stselect[data-tocas="input-combo"] .content.ghosting{
     opacity: 0.5;
 }
 
@@ -12995,11 +13001,11 @@ a.stbox:hover{
     ========================================================================== */
 
 .sttable thead tr{
-    border-bottom: 1px solid var(--stgray-300);
+    border-bottom: 1px solid var(--stgray-450);
 }
 
 .sttable tfoot tr{
-    border-top: 1px solid var(--stgray-300);
+    border-top: 1px solid var(--stgray-450);
 }
 
 .sttable tr th{
@@ -13013,20 +13019,16 @@ a.stbox:hover{
 }
 
 .sttable tbody tr+tr{
-    border-top: 1px solid var(--stgray-300);
+    border-top: 1px solid var(--stgray-450);
 }
 
 .sttable tbody tr td{
     padding: 0.5rem 1rem;
 }
 
-/* ==========================================================================
-    Variations
-    ========================================================================== */
+/* ========================================================================== Variations ========================================================================== */
 
-/**
-  * Sizes
-  */
+/* Sizes */
 
 .sttable.small,.sttable.small:is(thead, tbody, tfoot, tr, th, td){
     font-size: var(--stfont-size-13px);
@@ -13036,9 +13038,7 @@ a.stbox:hover{
     font-size: var(--stfont-size-16px);
 }
 
-/**
-  * Collapsed
-  */
+/* Collapsed */
 
 .sttable.is-collapsed{
     width: auto;
@@ -22662,7 +22662,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     margin-bottom: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition-duration: 0.5s;
+    /* transition-duration: 0.5s; */
 }
 
 .order{

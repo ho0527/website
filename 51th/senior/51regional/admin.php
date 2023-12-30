@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="">
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
@@ -16,6 +16,7 @@
         <div class="navigationbar">
             <div class="navigationbarleft"><div class="navigationbartitle">網路問卷管理系統</div></div>
             <div class="navigationbarright">
+                <input type="button" class="navigationbarbutton" id="changecolor" value="變色:)">
                 <input type="button" class="navigationbarbutton" onclick="location.href='index.php'" value="首頁">
                 <input type="button" class="navigationbarbutton" id="newform" value="新增問卷">
                 <input type="button" class="navigationbarbutton" onclick="location.href='api.php?logout='" value="登出">
@@ -24,10 +25,10 @@
         <div class="macosmaindiv macossectiondivy">
             <table class="sttable textcenter">
                 <tr>
-                    <td class="formtdtitle">標題</td>
-                    <td class="formtdtitle">邀請碼</td>
-                    <td class="formtdtitle">填寫份數</td>
-                    <td class="formtdtitle">功能</td>
+                    <td>標題</td>
+                    <td>邀請碼</td>
+                    <td>填寫份數</td>
+                    <td>功能</td>
                 </tr>
                 <?php
                 $data=$_SESSION["data"];
@@ -38,8 +39,8 @@
                     $coderow=query($db,"SELECT*FROM `questioncode` WHERE `questionid`='$id'");
                     ?>
                     <tr id="<?php echo($id) ?>">
-                        <td class="formtd"><?php echo($row[$i][1]) ?></td>
-                        <td class="formtd">
+                        <td><?php echo($row[$i][1]) ?></td>
+                        <td>
                             <?php
                                 for($j=0;$j<count($coderow);$j=$j+1){
                                     if($coderow[$j][2]==""){ echo($coderow[$j][3]."<br>"); }
@@ -47,13 +48,13 @@
                                 }
                             ?>
                         </td>
-                        <td class="formtd">
+                        <td>
                             <?php
                             if($row[$i][6]!=""){ echo($row[$i][4]."/".$row[$i][6]); }
                             else{ echo($row[$i][4]); }
                             ?>
                         </td>
-                        <td class="formtd">
+                        <td>
                             <?php
                             $value="鎖定";
                             $disabled="";
@@ -186,6 +187,7 @@
                 }
             }
         ?>
+        <script src="initialization.js"></script>
         <script src="admin.js"></script>
     </body>
 </html>
