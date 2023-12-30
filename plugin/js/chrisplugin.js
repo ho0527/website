@@ -216,7 +216,7 @@ function ajax(method,url,onloadcallback,send=null,header=[["Content-type","multi
                 xmlhttprequest.setRequestHeader(header[i][0],header[i][1])
             }
         }
-        xmlhttprequest.onload=function(){ onloadcallback(this) }
+        xmlhttprequest.onload=function(){ onloadcallback(this,JSON.parse(this.responseText)) }
         xmlhttprequest.send(send)
         for(let i=0;i<callback.length;i=i+1){
             xmlhttprequest[callback[i][0]]=function(){ callback[i][1](this) }

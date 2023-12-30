@@ -1066,7 +1066,6 @@ button{
 .stbutton.outline:hover{
     border: 2px var(--stgray-900) solid;
     font-weight: bold;
-    font-size: 15.7px;
 }
 
 /* error */
@@ -13100,23 +13099,21 @@ a.stbox:hover{
 }
 
 /**
-  * Striped
+  * Stripe
   */
 
-.sttable.is-striped>tbody>tr:nth-child(even){
+.tablestripe>tbody>tr:nth-child(even){
     background: var(--stgray-75);
 }
 
-/**
-  * Empty
-  */
+/* Empty */
 
-.sttable td.is-empty{
+.tdempty{
     color: var(--stgray-300);
     font-weight: 500;
 }
 
-.sttable td.is-empty::after{
+.tdempty::after{
     content: "—";
 }
 
@@ -22382,6 +22379,27 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 .inline{
     display: inline-block;
 }
+
+/* ---自訂 */
+
+.outborder{
+    border: 1px var(--stgray-400) solid;
+}
+
+.inborder>tbody>tr>td{
+    border-left: 1px var(--stgray-400) solid;
+    border-right: 1px var(--stgray-400) solid;
+}
+
+.allborder{
+    border: 1px var(--stgray-400) solid;
+}
+
+.allborder>tbody>tr>td{
+    border-left: 1px var(--stgray-400) solid;
+    border-right: 1px var(--stgray-400) solid;
+}
+
 
 /* END */
 
