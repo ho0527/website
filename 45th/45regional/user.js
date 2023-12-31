@@ -177,6 +177,7 @@ function downdrop(e){
 }
 
 // -------------------------
+let positiontype="top"
 let maintableinnerhtml=`
     <tr>
         <td class="todotabletime">時間</td>
@@ -194,12 +195,7 @@ if(weblsget("45regionaltodosorttype")=="ASC"){
             ${maintableinnerhtml}
             <tr>
                 <td class="todotabletime">${String(i).padStart(2,"0")}~${String(i+2).padStart(2,"0")}</td>
-                <td id="${i}">
-                    <div id="<?= $i ?>up" class="upusertablediv"></div>
-                    <div id="<?= $i+0.5 ?>up" class="upusertablediv"></div>
-                    <div id="<?= $i+1 ?>up" class="upusertablediv"></div>
-                    <div id="<?= $i+1.5 ?>up" class="upusertablediv"></div>
-                </td>
+                <td class="todotablecontent"></td>
             </tr>
         `
     }
@@ -210,16 +206,12 @@ if(weblsget("45regionaltodosorttype")=="ASC"){
             ${maintableinnerhtml}
             <tr>
                 <td class="todotabletime">${String(i+2).padStart(2,"0")}~${String(i).padStart(2,"0")}</td>
-                <td id="${i}">
-                    <div id="<?= $i ?>up" class="upusertablediv"></div>
-                    <div id="<?= $i+0.5 ?>up" class="upusertablediv"></div>
-                    <div id="<?= $i+1 ?>up" class="upusertablediv"></div>
-                    <div id="<?= $i+1.5 ?>up" class="upusertablediv"></div>
-                </td>
+                <td class="todotablecontent"></td>
             </tr>
         `
     }
     docgetid("updownbutton").value="降冪"
+    positiontype="bottom"
 }
 
 docgetid("maintable").innerHTML=maintableinnerhtml
@@ -250,17 +242,61 @@ docgetid("logout").onclick=function(){
 }
 
 // 讀取(初始化)各工作項目
-ajax("GET","/backend/45regional/gettodolist",function(event){
-    let data=JSON.parse(event.responseText)
+ajax("GET","/backend/45regional/gettodolist",function(event,data){
     if(data["success"]){
         let row=data["data"]
+        let maintableinnerhtml=``
         for(let i=0;i<row.length;i=i+1){
+            let starthr=parseInt(row[i][2])
+            let endhr=parseInt(row[i][3])
 
+            maintableinnerhtml=`
+                ${maintableinnerhtml}
+                <div class="todoblockdiv macossectiondivy" id="${row[i][0]}" style="position: absolute;${positiontype}: ${40+30*(starthr)}px;left: 110px;">
+                    <div class="todoblock" style="height: ${30*(endhr-starthr)}px">
+                        <img src="icon/close.svg" class="tododeleteicon" data-id="${row[i][0]}">
+                        <img src="icon/edit.svg" class="todoediticon" data-id="${row[i][0]}">
+                        <div class="todoblocktitle">工作名稱: ${row[i][1]}</div>
+                        <div class="todoblocktime">執行時間: ${String(starthr).padStart(2,"0")}:00~${String(endhr).padStart(2,"0")}:00</div>
+                        <div class="todoblocktime">處理情形: ${row[i][4]}</div>
+                        <div class="todoblocktime">優先情形: ${row[i][5]}</div>
+                    </div>
+                </div>
+            `
         }
+        docgetid("maintable").innerHTML=`
+            ${docgetid("maintable").innerHTML}
+            ${maintableinnerhtml}
+        `
+
+        // 各事件執行
+        docgetall(".todoblock").forEach(function(event){
+            event.onmouseover=function(){}
+        })
+
+        docgetall(".todoediticon").forEach(function(event){
+            event.onclick=function(){}
+        })
+
+        docgetall(".tododeleteicon").forEach(function(event){
+            event.onclick=function(){
+                if(confirm("確定刪除?")){
+                    ajax("DELETE","/backend/45regional/deletetodo/"+event.dataset.id,function(event,data){
+                        if(data["success"]){
+                            alert("刪除成功")
+                            location.reload()
+                        }else{
+                            alert("刪除失敗: "+data["data"])
+                        }
+                    })
+                }
+            }
+        })
     }else{
         alert(data["data"])
     }
 })
+
 
 // 創建新工作
 docgetid("newtodo").onclick=function(){
@@ -353,3 +389,5 @@ docgetid("newtodo").onclick=function(){
         }
     }
 }
+
+startmacossection()

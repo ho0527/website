@@ -7,17 +7,19 @@
         <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
         <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
-    <body class="userbody">
+    <body>
         <table>
             <tr>
-                <td class="todo" rowspan="2">
+                <td class="textcenter" rowspan="2">
                     <div class="sttext todotitle">日工作計畫表</div>
-                    <table class="sttable stripe allborder" id="maintable"></table>
+                    <div class="todomaintable macossectiondivy">
+                        <table class="sttable stripe allborder" id="maintable"></table>
+                    </div>
                 </td>
                 <td class="title">一般會員專區</td>
             </tr>
             <tr>
-                <td class="user-table4">
+                <td class="verticalaligntop">
                     開始時間: <input type="button" class="table4but" id="updownbutton"><br>
                     處理情形:
                     <select class="table4but" id="dealselect">

@@ -254,7 +254,7 @@
                                 },
                                 {
                                     "description": "每一工作項目至少包含工作名稱、開始時間及結束時間、處理狀態、優先順序及工作內容訊息。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 }
                             ]
                         },
@@ -273,7 +273,7 @@
                                 },
                                 {
                                     "description": "並將一天的所有工作項目，每一工作項目以一個工作區塊的方式，填入到表格中。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 }
                             ]
                         },
@@ -310,18 +310,14 @@
                         {
                             "no": "33",
                             "description": "能刪除一個工作項目，在執行刪除動作前，必須有確認的動作。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         },
                         {
                             "no": "34",
-                            "description": "能排序當天的所有工作項目，可依開始時間、處理情形、或優先情形3種方式來排序，依升冪或降冪來排序。",
+                            "description": "能排序當天的所有工作項目，可依開始時間方式來排序，依升冪或降冪來排序。",
                             "statu": "FAILED",
                             "data": [
-                            {
-                                "description": "並依工作「開始時間」升冪或降冪來排序，列出升冪或降冪的選項。",
-                                "statu": "FAILED"
-                            },
                                 {
                                     "description": "排序的結果是在新的頁面或原來的頁面呈現皆可。",
                                     "statu": "FAILED"
