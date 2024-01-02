@@ -152,6 +152,42 @@ function docgetall(selector){
     return document.querySelectorAll(selector)
 }
 
+function domget(key,selector){
+    if(key=="id"){
+        return document.getElementById(selector)
+    }
+    if(key=="animation"){
+        return document.getAnimations(selector)
+    }
+    if(key=="class"){
+        return document.getElementsByClassName(selector)
+    }
+    if(key=="name"){
+        return document.getElementsByName(selector)
+    }
+    if(key=="tag"){
+        return document.getElementsByTagName(selector)
+    }
+    if(key=="tagns"){
+        return document.getElementsByTagNameNS(selector)
+    }
+    if(key=="qtor"){
+        return document.querySelector(selector)
+    }
+    if(key=="all"){
+        return document.querySelectorAll(selector)
+    }
+    conlog("[ERROR]dget key not found"+key)
+}
+
+function domgetid(selector){
+    return document.getElementById(selector)
+}
+
+function domgetall(selector){
+    return document.querySelectorAll(selector)
+}
+
 function conlog(data,color="white",size="12",weight="normal"){
     console.log(`%c${data}`,`color:${color};font-size:${size}px;font-weight:${weight}`)
 }

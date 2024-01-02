@@ -2,6 +2,7 @@ let midx=window.innerWidth/2-60
 let midy=window.innerHeight/2-60
 let data={}
 let count=1
+let counter
 
 // 初始化函式
 function main(){
@@ -68,27 +69,61 @@ function main(){
 
             for(let j=1;j<=4;j=j+1){
                 if(data["data"][i][j]["title"]!=""){
-                    let elementdistance=(((data["data"][i]["position"]["top"]-data["data"][i][j]["position"]["top"])**2)+((data["data"][i]["position"]["left"]-data["data"][i][j]["position"]["left"])**2))**(1/2)
-                    maininnerhtml=`
-                        ${maininnerhtml}
-                        <div class="line" id="${i}" style="
-                            position: absolute;top: ${data["data"][i]["position"]["top"]+110}px;left: ${data["data"][i]["position"]["left"]+60}px;
-                            height: ${elementdistance-90}px;
-                        "></div>
-                    `
+                    let toplength=(data["data"][i]["position"]["top"]-data["data"][i][j]["position"]["top"])
+                    let leftlength=(data["data"][i]["position"]["left"]-data["data"][i][j]["position"]["left"])
+                    let elementdistance=((toplength**2)+(leftlength**2))**(1/2)
+                    let rotate
+                    let top
+                    let left
+
+                    if(leftlength==0){
+                        if(j==1){
+                            rotate="0"
+                        }else{
+                            rotate="180"
+                        }
+                    }else{
+                        rotate=Math.asin(leftlength/elementdistance)*(180/Math.PI)
+                    }
+
+                    if(j=="1"){
+                        top=-140
+                        left=60
+                    }else if(j=="2"){
+                        top=-20
+                        left=185
+                    }else if(j=="3"){
+                        top=110
+                        left=60
+                    }else if(j=="4"){
+                        top=-20
+                        left=-65
+                    }
+
+                    if(data["data"][i]["id"]<parseInt(data["data"][i][j]["id"])){
+                        maininnerhtml=`
+                            ${maininnerhtml}
+                            <div class="line" id="line_${i}_${j}" style="
+                                position: absolute;top: ${data["data"][i]["position"]["top"]+top}px;left: ${data["data"][i]["position"]["left"]+left}px;height: ${elementdistance-90}px;rotate: ${rotate}deg;
+                            "></div>
+                        `
+                    }
                 }
             }
         }
     }
-    docgetid("main").innerHTML=maininnerhtml
+    domgetid("main").innerHTML=maininnerhtml
     
     count=data["data"].length
 
-    docgetall(".elementdiv").forEach(function(event){
+    domgetall(".elementdiv").forEach(function(event){
+        let time=0
+        let clickelement=""
+
         // hover時顯示
         event.onmouseover=function(){
             event.querySelectorAll(".element")[0].innerHTML=`
-                <div class="elementposition2">
+                <div class="elementposition2" id="mainelement">
                     <div class="element1" id="element1"><div class="element1text">1</div></div>
                     <div class="element2" id="element2"><div class="element2text">2</div></div>
                     <div class="element3" id="element3"><div class="element3text">3</div></div>
@@ -97,63 +132,166 @@ function main(){
                     <input type="button" class="elementdelete" id="delete" value="X">
                 </div>
             `
-    
+
+            // 驗證初始化 START
+            domgetid("mainelement").onmousedown=function(){
+                counter=setInterval(function(){
+                    time=time+1
+                },10)
+            }
+
+            domgetid("mainelement").onmousemove=function(event2){
+                if(time>10){
+                    let x=event2.pageX
+                    let y=event2.pageY
+                    event.style.top=y-125+"px"
+                    event.style.left=x-62.5+"px"
+                    for(let i=1;i<=4;i=i=1){
+                        domgetall("."+event.id+"_"+i).forEach(function(event3){
+                            let toplength=(data["data"][event.id]["position"]["top"]-data["data"][event.id][i]["position"]["top"])
+                            let leftlength=(data["data"][event.id]["position"]["left"]-data["data"][event.id][i]["position"]["left"])
+                            let elementdistance=((toplength**2)+(leftlength**2))**(1/2)
+                            let rotate
+                            let top
+                            let left
+
+                            if(leftlength==0){
+                                if(j==1){
+                                    rotate="0"
+                                }else{
+                                    rotate="180"
+                                }
+                            }else{
+                                rotate=Math.asin(leftlength/elementdistance)*(180/Math.PI)
+                            }
+
+                            if(j=="1"){
+                                top=-140
+                                left=60
+                            }else if(j=="2"){
+                                top=-20
+                                left=185
+                            }else if(j=="3"){
+                                top=110
+                                left=60
+                            }else if(j=="4"){
+                                top=-20
+                                left=-65
+                            }
+
+                            // event3.style.top=
+                            maininnerhtml=`
+                                ${maininnerhtml}
+                                <div class="line ${i}_${j}" style="
+                                    position: absolute;top: ${data["data"][i]["position"]["top"]+top}px;left: ${data["data"][i]["position"]["left"]+left}px;height: ${elementdistance-90}px;rotate: ${rotate}deg;
+                                "></div>
+                            `
+                        })
+                    }
+                }
+            }
+
+            domgetid("mainelement").onmouseup=function(){
+                if(time<=10){
+                    newelement(event.id,clickelement)
+                    clearInterval(counter)
+                    clickelement=""
+                    time=0
+                }else{
+                    main()
+                    clearInterval(counter)
+                    clickelement=""
+                    time=0
+                }
+            }
+
+            domgetid("mainelement").onmouseout=function(){
+                clearInterval(counter)
+                clickelement=""
+                time=0
+            }
+
+            document.onmouseup=function(){
+                clearInterval(counter)
+                clickelement=""
+                time=0
+            }
+            // 驗證初始化 END
+
             // 各元素創建 START
-            docgetid("element1").onmousedown=function(){
-                newelement(event.id,"1")
+            domgetid("element1").onmousedown=function(){
+                clickelement="1"
             }
     
-            docgetid("element2").onmousedown=function(){
-                newelement(event.id,"2")
+            domgetid("element2").onmousedown=function(){
+                clickelement="2"
             }
     
-            docgetid("element3").onmousedown=function(){
-                newelement(event.id,"3")
+            domgetid("element3").onmousedown=function(){
+                clickelement="3"
             }
     
-            docgetid("element4").onmousedown=function(){
-                newelement(event.id,"4")
+            domgetid("element4").onmousedown=function(){
+                clickelement="4"
             }
     
-            docgetid("edit").onmousedown=function(){
+            domgetid("edit").onmousedown=function(){
                 lightbox(null,"lightbox",function(){
+                    let disabled1=""
+                    let disabled2=""
+                    let disabled3=""
+                    let disabled4=""
+
+                    if(data["data"][event.id]["1"]["id"]==""){
+                        disabled1="disabled"
+                    }
+                    if(data["data"][event.id]["2"]["id"]==""){
+                        disabled2="disabled"
+                    }
+                    if(data["data"][event.id]["3"]["id"]==""){
+                        disabled3="disabled"
+                    }
+                    if(data["data"][event.id]["4"]["id"]==""){
+                        disabled4="disabled"
+                    }
+
                     return `
                         <div class="close" id="close">X</div>
                         <div class="stinput light">
                             <textarea class="edittextarea" id="description" placeholder="pls type word that need to show">${data["data"][event.id]["content"]}</textarea>
                         </div>
                         <div class="stinput inputmargin light">
-                            <input class="editinput" id="relationtitle1" placeholder="relation 1" value="${data["data"][event.id]["1"]["title"]}">
+                            <input class="editinput ${disabled1}" id="relationtitle1" placeholder="relation 1" value="${data["data"][event.id]["1"]["title"]}" ${disabled1}>
                         </div>
                         <div class="stinput inputmargin light">
-                            <input class="editinput" id="relationtitle2" placeholder="relation 2" value="${data["data"][event.id]["2"]["title"]}">
+                            <input class="editinput ${disabled2}" id="relationtitle2" placeholder="relation 2" value="${data["data"][event.id]["2"]["title"]}" ${disabled2}>
                         </div>
                         <div class="stinput inputmargin light">
-                            <input class="editinput" id="relationtitle3" placeholder="relation 3" value="${data["data"][event.id]["3"]["title"]}">
+                            <input class="editinput ${disabled3}" id="relationtitle3" placeholder="relation 3" value="${data["data"][event.id]["3"]["title"]}" ${disabled3}>
                         </div>
                         <div class="stinput inputmargin light">
-                            <input class="editinput" id="relationtitle3" placeholder="relation 4" value="${data["data"][event.id]["4"]["title"]}">
+                            <input class="editinput ${disabled3}" id="relationtitle4" placeholder="relation 4" value="${data["data"][event.id]["4"]["title"]}" ${disabled3}>
                         </div>
                     `
                 },"close",true,"none")
-                docgetid("description").onchange=function(){
+                domgetid("description").onchange=function(){
                     data["data"][event.id]["content"]=this.value
                 }
 
-                docgetid("relationtitle1").onchange=function(){
+                domgetid("relationtitle1").onchange=function(){
                     data["data"][event.id]["1"]["title"]=this.value
                 }
 
-                docgetid("relationtitle2").onchange=function(){
+                domgetid("relationtitle2").onchange=function(){
                     data["data"][event.id]["2"]["title"]=this.value
                 }
 
-                docgetid("relationtitle3").onchange=function(){
+                domgetid("relationtitle3").onchange=function(){
                     data["data"][event.id]["3"]["title"]=this.value
                 }
 
-                docgetid("relationtitle3").onchange=function(){
-                    data["data"][event.id]["3"]["title"]=this.value
+                domgetid("relationtitle4").onchange=function(){
+                    data["data"][event.id]["4"]["title"]=this.value
                 }
 
                 event.querySelectorAll(".element")[0].innerHTML=``
@@ -161,27 +299,31 @@ function main(){
                 main()
             }
     
-            docgetid("delete").onmousedown=function(){
-                for(let i=0;i<data["data"].length;i=i+1){
-                    if(data["data"][i]){
-                        for(let j=1;j<=4;j=j+1){
-                            if(data["data"][i][j]["id"]==event.id){
-                                data["data"][i][j]={
-                                    "id": "",
-                                    "title": "",
-                                    "position": {
-                                        "top": 0,
-                                        "left": 0
+            domgetid("delete").onmousedown=function(){
+                if(event.id!=0){
+                    for(let i=0;i<data["data"].length;i=i+1){
+                        if(data["data"][i]){
+                            for(let j=1;j<=4;j=j+1){
+                                if(data["data"][i][j]["id"]==event.id){
+                                    data["data"][i][j]={
+                                        "id": "",
+                                        "title": "",
+                                        "position": {
+                                            "top": 0,
+                                            "left": 0
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+                    delete data["data"][event.id]
+                    domgetid(event.id).remove()
+                    weblsset("worldskill2022ME",JSON.stringify(data))
+                    main()
+                }else{
+                    alert("不得刪除根元素")
                 }
-                delete data["data"][event.id]
-                docgetid(event.id).remove()
-                weblsset("worldskill2022ME",JSON.stringify(data))
-                main()
             }
             // 各元素創建 END
         }
@@ -211,8 +353,8 @@ function newelement(id,key){
     }
 
     if(topchange!=0||leftchange!=0){
-        docgetid("main").innerHTML=`
-            ${docgetid("main").innerHTML}
+        domgetid("main").innerHTML=`
+            ${domgetid("main").innerHTML}
             <div class="elementdiv" id="${count}" style="position: absolute;top: ${thisdata["position"]["top"]+topchange}px;left: ${thisdata["position"]["left"]+leftchange}px;">
                 <div class="elementposition">
                     <div class="element"></div>

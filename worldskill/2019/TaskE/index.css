@@ -22567,6 +22567,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     position: absolute;
     top: 5px;
     right: 5px;
+    cursor: pointer;
 }
 
 .edittextarea{
