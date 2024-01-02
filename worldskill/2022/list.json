@@ -5,7 +5,7 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2024/01/01",
+            "updatedate": "2023/10/28",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
@@ -576,11 +576,11 @@
                 },
                 {
                     "title": "ModuleC-API",
-                    "link": "TaskC",
+                    "link": "TaskC/",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/11/01",
-                    "updatedate": "2024/01/01",
+                    "updatedate": "2024/01/02",
                     "data": []
                 },
                 {
