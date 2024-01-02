@@ -581,7 +581,352 @@
                     "ps": "list",
                     "createdate": "2023/11/01",
                     "updatedate": "2024/01/02",
-                    "data": []
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "Developer",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "Login to the portal is reachable via the path /XX_module_c/admin",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "Login data for admin created as described",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "DB-Dump is provided",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "DB-dump contains FK-constraints and correct columns",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "ER diagram schema is provided",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "At least 1 comment per file For the part where competitors write on. Not for the framework built-in code.",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "There are git commits At least 3 commits.",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "One or more extra branch is created Aside from the main/master branch. Any branch name accepted.",
+                                    "statu": "SUCCESS",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "DB structure is normalized",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "PHP code is easy to maintain",
+                                    "statu": "subjective",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "Git commit messages is readable and easy to understand",
+                                    "statu": "subjective",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "Discovering games",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "POST /api/v1/auth/signup",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "User sign-up",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "POST /api/v1/auth/signin",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "User sign-in",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "03",
+                                    "description": " POST /api/v1/auth/signout",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "User sign-out",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "POST /api/v1/games",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "Only test success, and test invalid only in one place, to avoid double deducting marks for the same error.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "POST /api/v1/games/:slug/upload",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "If the upload fails because of the described reasons, the response contains plain text explanation of the error.",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "User not authored of the game, zip file extraction fails, file size too big",
+                                            "statu": "FAILED"
+                                        },
+                                        {
+                                            "description": "If the game exists, uploading a new file create a new version If the game exists, uploading a new file create a new version",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "GET /api/v1/games",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "deleted game is hidden from the API list",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "GET /api/v1/games/:slug",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "GET /games/:slug/:version/",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "PUT /api/v1/games/:slug",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "DELETE /api/v1/games/:slug",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "GET /api/v1/users/:username",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "GET /api/v1/games/:slug/scores",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "POST /api/v1/games/:slug/scores.",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "Posted game score is saved to the latest version",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "Invalid request body",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "If the `POST` or `PUT` request had invalid fields, they are validated and a response is returned that lists the violations.",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "Missing or invalid auth header",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "description": "If the consumer makes a call to a path that requires the auth header to be present, but provides an invalid or not existing auth token, response as described",
+                                            "statu": "FAILED"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "Non-existing API If the consumer makes a call to a non-existing path, or a resource that does not exist, this must be the response:",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "Visitors and Games",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "Administrator can block a game Blocked game is not listed public.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "Administrator can block a developer Developer cannot login after blocked. An error message showed",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "03",
+                                    "description": "Tabbing between input fields are in logical order Accessibility inspector > sort order",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "Form is protected from SQL Injection Choose an input to test, choose by team and be consistant.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "The admin can see all admin users in the database with username, created timestamp and last login timestamp.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "The admin can see all platform users with username, registration timestamp, last login timestamp and click a link to their profile page.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "Link format to specific user as described /XX_module_c/user/:username, where :username is replaced with user’s username",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "The admin can block and unblock users given a choice of reasons.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "The blocked user's profile is no longer reachable and instead treated as it would not exist 404",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "If the user was already logged in, they will be logged out and shown the reason the next time they interact with the backend.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "The admin can see all games with title, description, thumbnail, author, all version timestamps and click a link to the game page.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "A text input to allow admin to filter listed game. Only show the games with title, description, author containing the text input value.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "Link format to the game as described /XX_module_c/game/:slug",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "The admin can mark a game as deleted in the database. The admin still sees it with status \"deleted\".",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "The admin can see all scores of all players per game.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "The admin can reset the highscores for a game. This means all game's scores are removed from the database and the players will not see them anymore.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "The admin can delete a single player score from a game.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "The admin can delete all scores of a single player for a given game.",
+                                    "statu": "FAILED",
+                                    "data": []
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleD-FONTEND",
