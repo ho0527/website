@@ -22540,7 +22540,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     position: absolute;
     top: 30px;
     left: -20px;
-    font-size: 10px;
+    font-size: 13px;
     padding: 0px 2px;
     cursor: pointer;
     z-index: 100;
@@ -22551,7 +22551,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     position: absolute;
     top: 30px;
     left: 95px;
-    font-size: 10px;
+    font-size: 13px;
     padding: 0px 2px;
     cursor: pointer;
     z-index: 100;
@@ -22559,7 +22559,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .line{
     position: absolute;
-    width: 2px;
+    width: 4px;
     background: lightgray;
 }
 

@@ -2,6 +2,7 @@ let midx=window.innerWidth/2-60
 let midy=window.innerHeight/2-60
 let data={}
 let count=1
+let candelete=false
 let counter
 
 // 初始化函式
@@ -116,6 +117,53 @@ function main(){
     
     count=data["data"].length
 
+    domgetall(".line").forEach(function(event){
+        event.onmousedown=function(){
+            let eventid=event.id.split("_")
+            let tempid
+            domgetall(".line").forEach(function(event){
+                event.style.backgroundColor="lightgray"
+            })        
+            event.style.backgroundColor="lightblue"
+            if(eventid[2]=="1"){
+                tempid="3"
+            }else if(eventid[2]=="2"){
+                tempid="4"
+            }else if(eventid[2]=="3"){
+                tempid="1"
+            }else if(eventid[2]=="4"){
+                tempid="2"
+            }
+            candelete=true
+
+            document.onkeydown=function(event2){
+                if((event2.key=="Delete"||event2.key=="Backspace")&&candelete){
+                    data["data"][data["data"][eventid[1]][eventid[2]]["id"]][tempid]={
+                        "id": "",
+                        "title": "",
+                        "position": {
+                            "top": 0,
+                            "left": 0
+                        }
+                    }
+                    data["data"][eventid[1]][eventid[2]]={
+                        "id": "",
+                        "title": "",
+                        "position": {
+                            "top": 0,
+                            "left": 0
+                        }
+                    }
+                    event.remove()
+                    weblsset("worldskill2022ME",JSON.stringify(data))
+                    main()
+                    candelete=false
+                }
+            }
+            
+        }
+    })
+
     domgetall(".elementdiv").forEach(function(event){
         let time=0
         let clickelement=""
@@ -138,6 +186,7 @@ function main(){
                 counter=setInterval(function(){
                     time=time+1
                 },10)
+                candelete=false
             }
 
             domgetid("mainelement").onmousemove=function(event2){
@@ -147,48 +196,45 @@ function main(){
                     event.style.top=y-125+"px"
                     event.style.left=x-62.5+"px"
                     for(let i=1;i<=4;i=i=1){
-                        domgetall("."+event.id+"_"+i).forEach(function(event3){
-                            let toplength=(data["data"][event.id]["position"]["top"]-data["data"][event.id][i]["position"]["top"])
-                            let leftlength=(data["data"][event.id]["position"]["left"]-data["data"][event.id][i]["position"]["left"])
-                            let elementdistance=((toplength**2)+(leftlength**2))**(1/2)
-                            let rotate
-                            let top
-                            let left
+                        let toplength=(data["data"][event.id]["position"]["top"]-data["data"][event.id][i]["position"]["top"])
+                        let leftlength=(data["data"][event.id]["position"]["left"]-data["data"][event.id][i]["position"]["left"])
+                        let elementdistance=((toplength**2)+(leftlength**2))**(1/2)
+                        let rotate
+                        let top
+                        let left
 
-                            if(leftlength==0){
-                                if(j==1){
-                                    rotate="0"
-                                }else{
-                                    rotate="180"
-                                }
+                        if(leftlength==0){
+                            if(j==1){
+                                rotate="0"
                             }else{
-                                rotate=Math.asin(leftlength/elementdistance)*(180/Math.PI)
+                                rotate="180"
                             }
+                        }else{
+                            rotate=Math.asin(leftlength/elementdistance)*(180/Math.PI)
+                        }
 
-                            if(j=="1"){
-                                top=-140
-                                left=60
-                            }else if(j=="2"){
-                                top=-20
-                                left=185
-                            }else if(j=="3"){
-                                top=110
-                                left=60
-                            }else if(j=="4"){
-                                top=-20
-                                left=-65
-                            }
+                        if(i=="1"){
+                            top=-140
+                            left=60
+                        }else if(i=="2"){
+                            top=-20
+                            left=185
+                        }else if(i=="3"){
+                            top=110
+                            left=60
+                        }else if(i=="4"){
+                            top=-20
+                            left=-65
+                        }
 
-                            // event3.style.top=
-                            maininnerhtml=`
-                                ${maininnerhtml}
-                                <div class="line ${i}_${j}" style="
-                                    position: absolute;top: ${data["data"][i]["position"]["top"]+top}px;left: ${data["data"][i]["position"]["left"]+left}px;height: ${elementdistance-90}px;rotate: ${rotate}deg;
-                                "></div>
-                            `
-                        })
+                        // line update
+                        domgetid("line"+event.id+"_"+i).style.top=data["data"][i]["position"]["top"]+top+"px"
+                        domgetid("line"+event.id+"_"+i).style.left=data["data"][i]["position"]["left"]+left+"px"
+                        domgetid("line"+event.id+"_"+i).style.height=elementdistance-90+"px"
+                        domgetid("line"+event.id+"_"+i).style.rotate=rotate+"deg"
                     }
                 }
+                candelete=false
             }
 
             domgetid("mainelement").onmouseup=function(){
@@ -203,36 +249,36 @@ function main(){
                     clickelement=""
                     time=0
                 }
+                candelete=false
             }
 
             domgetid("mainelement").onmouseout=function(){
                 clearInterval(counter)
                 clickelement=""
                 time=0
-            }
-
-            document.onmouseup=function(){
-                clearInterval(counter)
-                clickelement=""
-                time=0
+                candelete=false
             }
             // 驗證初始化 END
 
             // 各元素創建 START
             domgetid("element1").onmousedown=function(){
                 clickelement="1"
+                candelete=false
             }
     
             domgetid("element2").onmousedown=function(){
                 clickelement="2"
+                candelete=false
             }
     
             domgetid("element3").onmousedown=function(){
                 clickelement="3"
+                candelete=false
             }
     
             domgetid("element4").onmousedown=function(){
                 clickelement="4"
+                candelete=false
             }
     
             domgetid("edit").onmousedown=function(){
@@ -270,7 +316,7 @@ function main(){
                             <input class="editinput ${disabled3}" id="relationtitle3" placeholder="relation 3" value="${data["data"][event.id]["3"]["title"]}" ${disabled3}>
                         </div>
                         <div class="stinput inputmargin light">
-                            <input class="editinput ${disabled3}" id="relationtitle4" placeholder="relation 4" value="${data["data"][event.id]["4"]["title"]}" ${disabled3}>
+                            <input class="editinput ${disabled4}" id="relationtitle4" placeholder="relation 4" value="${data["data"][event.id]["4"]["title"]}" ${disabled4}>
                         </div>
                     `
                 },"close",true,"none")
@@ -297,6 +343,7 @@ function main(){
                 event.querySelectorAll(".element")[0].innerHTML=``
                 weblsset("worldskill2022ME",JSON.stringify(data))
                 main()
+                candelete=false
             }
     
             domgetid("delete").onmousedown=function(){
@@ -324,6 +371,7 @@ function main(){
                 }else{
                     alert("不得刪除根元素")
                 }
+                candelete=false
             }
             // 各元素創建 END
         }
@@ -435,6 +483,7 @@ function newelement(id,key){
         weblsset("worldskill2022ME",JSON.stringify(data))
         main()
     }
+    candelete=false
 }
 
 main()
