@@ -22375,7 +22375,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     border-radius: 0 !important;
 }
 
-
 .inline{
     display: inline-block;
 }
@@ -22400,6 +22399,9 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     border-right: 1px var(--stgray-400) solid;
 }
 
+.fill{
+    width: 100% !important;
+}
 
 /* END */
 

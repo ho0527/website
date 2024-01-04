@@ -118,7 +118,7 @@ function main(){
     count=data["data"].length
 
     domgetall(".line").forEach(function(event){
-        event.onmousedown=function(){
+        event.onpointerdown=function(){
             let eventid=event.id.split("_")
             let tempid
             domgetall(".line").forEach(function(event){
@@ -169,7 +169,7 @@ function main(){
         let clickelement=""
 
         // hover時顯示
-        event.onmouseover=function(){
+        event.onpointerover=function(){
             event.querySelectorAll(".element")[0].innerHTML=`
                 <div class="elementposition2" id="mainelement">
                     <div class="element1" id="element1"><div class="element1text">1</div></div>
@@ -182,15 +182,19 @@ function main(){
             `
 
             // 驗證初始化 START
-            domgetid("mainelement").onmousedown=function(){
+            domgetid("mainelement").onpointerdown=function(){
+                document.onkeydown=function(event){
+                    if(event.shiftKey){
+                    }
+                }
                 counter=setInterval(function(){
                     time=time+1
                 },10)
                 candelete=false
             }
 
-            domgetid("mainelement").onmousemove=function(event2){
-                if(time>10){
+            domgetid("mainelement").onpointermove=function(event2){
+                if(time>12){
                     let x=event2.pageX
                     let y=event2.pageY
                     event.style.top=y-125+"px"
@@ -237,8 +241,8 @@ function main(){
                 candelete=false
             }
 
-            domgetid("mainelement").onmouseup=function(){
-                if(time<=10){
+            domgetid("mainelement").onpointerup=function(){
+                if(time<=12){
                     newelement(event.id,clickelement)
                     clearInterval(counter)
                     clickelement=""
@@ -252,7 +256,7 @@ function main(){
                 candelete=false
             }
 
-            domgetid("mainelement").onmouseout=function(){
+            domgetid("mainelement").onpointerout=function(){
                 clearInterval(counter)
                 clickelement=""
                 time=0
@@ -261,27 +265,27 @@ function main(){
             // 驗證初始化 END
 
             // 各元素創建 START
-            domgetid("element1").onmousedown=function(){
+            domgetid("element1").onpointerdown=function(){
                 clickelement="1"
                 candelete=false
             }
     
-            domgetid("element2").onmousedown=function(){
+            domgetid("element2").onpointerdown=function(){
                 clickelement="2"
                 candelete=false
             }
     
-            domgetid("element3").onmousedown=function(){
+            domgetid("element3").onpointerdown=function(){
                 clickelement="3"
                 candelete=false
             }
     
-            domgetid("element4").onmousedown=function(){
+            domgetid("element4").onpointerdown=function(){
                 clickelement="4"
                 candelete=false
             }
     
-            domgetid("edit").onmousedown=function(){
+            domgetid("edit").onpointerdown=function(){
                 lightbox(null,"lightbox",function(){
                     let disabled1=""
                     let disabled2=""
@@ -346,7 +350,7 @@ function main(){
                 candelete=false
             }
     
-            domgetid("delete").onmousedown=function(){
+            domgetid("delete").onpointerdown=function(){
                 if(event.id!=0){
                     for(let i=0;i<data["data"].length;i=i+1){
                         if(data["data"][i]){
@@ -377,7 +381,7 @@ function main(){
         }
     
         // 離開時清空
-        event.onmouseleave=function(){
+        event.onpointerleave=function(){
             event.querySelectorAll(".element")[0].innerHTML=``
         }
     })
