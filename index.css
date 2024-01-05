@@ -22381,22 +22381,34 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 /* ---自訂 */
 
+.noborder{
+    border: none !important;
+}
+
+.noborder>tbody>tr{
+    border: none !important;
+}
+
+.noborder>tbody>tr>td{
+    border: none !important;
+}
+
 .outborder{
-    border: 1px var(--stgray-400) solid;
+    border: 1px var(--stgray-400) solid !important;
 }
 
 .inborder>tbody>tr>td{
-    border-left: 1px var(--stgray-400) solid;
-    border-right: 1px var(--stgray-400) solid;
+    border-left: 1px var(--stgray-400) solid !important;
+    border-right: 1px var(--stgray-400) solid !important;
 }
 
 .allborder{
-    border: 1px var(--stgray-400) solid;
+    border: 1px var(--stgray-400) solid !important;
 }
 
 .allborder>tbody>tr>td{
-    border-left: 1px var(--stgray-400) solid;
-    border-right: 1px var(--stgray-400) solid;
+    border-left: 1px var(--stgray-400) solid !important;
+    border-right: 1px var(--stgray-400) solid !important;
 }
 
 .fill{
