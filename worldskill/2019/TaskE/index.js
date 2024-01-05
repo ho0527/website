@@ -57,10 +57,11 @@ function main(){
     }
     data=JSON.parse(weblsget("worldskill2022ME"))
 
+    domgetid("main").innerHTML=``
     for(let i=0;i<data["data"].length;i=i+1){
         if(data["data"][i]){
-            maininnerhtml=`
-                ${maininnerhtml}
+            domgetid("main").innerHTML=`
+                ${domgetid("main").innerHTML}
                 <div class="elementdiv" id="${i}" style="position: absolute;top: ${data["data"][i]["position"]["top"]}px;left: ${data["data"][i]["position"]["left"]}px;">
                     <div class="elementposition">
                         <div class="element"></div>
@@ -76,6 +77,7 @@ function main(){
                     let rotate
                     let top
                     let left
+                    let tempid
 
                     if(leftlength==0){
                         if(j==1){
@@ -90,30 +92,35 @@ function main(){
                     if(j=="1"){
                         top=-140
                         left=60
+                        tempid="3"
                     }else if(j=="2"){
                         top=-20
                         left=185
+                        tempid="4"
                     }else if(j=="3"){
                         top=110
                         left=60
+                        tempid="1"
                     }else if(j=="4"){
                         top=-20
                         left=-65
+                        tempid="2"
                     }
 
                     if(data["data"][i]["id"]<parseInt(data["data"][i][j]["id"])){
-                        maininnerhtml=`
-                            ${maininnerhtml}
+                        domgetid("main").innerHTML=`
+                            ${domgetid("main").innerHTML}
                             <div class="line" id="line_${i}_${j}" style="
                                 position: absolute;top: ${data["data"][i]["position"]["top"]+top}px;left: ${data["data"][i]["position"]["left"]+left}px;height: ${elementdistance-90}px;rotate: ${rotate}deg;
                             "></div>
                         `
                     }
+
+                    domgetid(i).dataset["link"+j+"to"]=data["data"][i][j]["id"]+"_"+tempid
                 }
             }
         }
     }
-    domgetid("main").innerHTML=maininnerhtml
     
     count=data["data"].length
 
@@ -197,45 +204,60 @@ function main(){
                 if(time>12){
                     let x=event2.pageX
                     let y=event2.pageY
-                    event.style.top=y-125+"px"
+                    event.style.top=y-150+"px"
                     event.style.left=x-62.5+"px"
-                    for(let i=1;i<=4;i=i=1){
-                        let toplength=(data["data"][event.id]["position"]["top"]-data["data"][event.id][i]["position"]["top"])
-                        let leftlength=(data["data"][event.id]["position"]["left"]-data["data"][event.id][i]["position"]["left"])
-                        let elementdistance=((toplength**2)+(leftlength**2))**(1/2)
-                        let rotate
-                        let top
-                        let left
-
-                        if(leftlength==0){
-                            if(j==1){
-                                rotate="0"
+                    for(let i=1;i<=4;i=i+1){
+                        if(event.dataset["link"+i+"to"]){
+                            let linkid=event.dataset["link"+i+"to"].split("_")[0]
+                            let keyid=event.dataset["link"+i+"to"].split("_")[1]
+                            let toplength=(y-130-data["data"][linkid]["position"]["top"])
+                            let leftlength=(x-62.5-data["data"][linkid]["position"]["left"])
+                            let elementdistance=((toplength**2)+(leftlength**2))**(1/2)
+                            let rotate
+                            let top
+                            let left
+                            let tempid
+                            let lineid
+    
+                            if(leftlength==0){
+                                if(i==1){
+                                    rotate="0"
+                                }else{
+                                    rotate="180"
+                                }
                             }else{
-                                rotate="180"
+                                rotate=Math.asin(leftlength/elementdistance)*(180/Math.PI)
                             }
-                        }else{
-                            rotate=Math.asin(leftlength/elementdistance)*(180/Math.PI)
+    
+                            if(i=="1"){
+                                top=-140
+                                left=60
+                                tempid="3"
+                            }else if(i=="2"){
+                                top=-20
+                                left=185
+                                tempid="4"
+                            }else if(i=="3"){
+                                top=110
+                                left=60
+                                tempid="1"
+                            }else if(i=="4"){
+                                top=-20
+                                left=-65
+                                tempid="2"
+                            }
+    
+                            // line update
+                            if(linkid<event.id){
+                                lineid=linkid+"_"+keyid
+                            }else{
+                                lineid=event+"_"+i
+                            }
+                            // domgetid("line_"+lineid).style.top=top+"px"
+                            // domgetid("line_"+lineid).style.left=left+"px"
+                            domgetid("line_"+lineid).style.height=elementdistance-90+"px"
+                            domgetid("line_"+lineid).style.rotate=rotate+"deg"
                         }
-
-                        if(i=="1"){
-                            top=-140
-                            left=60
-                        }else if(i=="2"){
-                            top=-20
-                            left=185
-                        }else if(i=="3"){
-                            top=110
-                            left=60
-                        }else if(i=="4"){
-                            top=-20
-                            left=-65
-                        }
-
-                        // line update
-                        domgetid("line"+event.id+"_"+i).style.top=data["data"][i]["position"]["top"]+top+"px"
-                        domgetid("line"+event.id+"_"+i).style.left=data["data"][i]["position"]["left"]+left+"px"
-                        domgetid("line"+event.id+"_"+i).style.height=elementdistance-90+"px"
-                        domgetid("line"+event.id+"_"+i).style.rotate=rotate+"deg"
                     }
                 }
                 candelete=false

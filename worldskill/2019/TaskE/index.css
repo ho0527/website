@@ -1,15 +1,21 @@
+body{
+    overflow: hidden;
+}
+
 .navigationbarbutton{
     width: 200px !important;
 }
 
 .indexmain{
-    margin-top: 75px;
-    height: calc(100vh - 75px)
+    padding: 0px;
+    margin-top: 100px;
+    height: calc(100vh - 100px)
 }
 
 .elementdiv{
     width: 125px;
     height: 125px;
+    font-size: 20px;
 }
 
 .elementposition{
