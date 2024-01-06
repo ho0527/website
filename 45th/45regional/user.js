@@ -1,183 +1,6 @@
-let workbox=document.getElementsByClassName("work-box")
-let button=document.getElementsByClassName("todobut")
-let updownbut=document.getElementById("updownbut")
-let down=false
-let move=false
-//訂定變數
-
-
-for(let i=0;i<button.length;i=i+1){
-    button[i].disabled=true//讓每個button都是disabled
-}
-
-for(let i=0;i<workbox.length;i=i+1){//做總workbox數
-    workbox[i].addEventListener('click',function(){
-        down=false
-        move=false
-        let buttons=this.querySelectorAll(".todobut")//選擇該todobut
-        for(let i=0;i<button.length;i=i+1){
-            button[i].disabled=true//將其他todobut disabled
-        }
-        for(let i=0;i<buttons.length;i=i+1){
-            buttons[i].disabled=false//將該todobut disabled false
-            setTimeout(function(){
-                for(let j=0;j<button.length;j=j+1){
-                    button[j].disabled=true //等待5秒設為true
-                }
-            },5000)
-        }
-        console.log(workbox[i]);
-    })
-}
-
-// document.querySelectorAll(".todo").forEach(function(element){
-//     element.addEventListener("mousedown",function(){
-//         down=true
-//     })
-// })
-
-// document.querySelectorAll(".todo").forEach(function(element){
-//     element.addEventListener("mousemove",function(event){
-//         if(down==true){
-//             move=true
-//         }
-//     })
-// })
-
-// document.querySelectorAll(".todo").forEach(function(element){
-//     element.addEventListener("mouseup",function(){
-//         if(move==true){
-//             location.href="useradd.php"
-//         }
-//     })
-// })
-
-let upusertablediv=document.querySelectorAll(".upusertablediv")
-let downusertablediv=document.querySelectorAll(".downusertablediv")
-let boxid
-var boxs
-document.querySelectorAll('.work-box').forEach(function(element){
-    element.addEventListener("mousedown",function(){
-        boxid=this.id//取得id
-        down=false
-        move=false
-        boxs=document.querySelectorAll("#"+boxid)
-        boxs.forEach(function(box){
-            box.addEventListener("dragstart",dragstart)
-        })
-    })
-})
-
-upusertablediv.forEach(function(up){
-    up.addEventListener("dragenter",dragenter)
-    up.addEventListener("dragover",dragover)
-    up.addEventListener("dragleave",dragleave)
-    up.addEventListener("drop",updrop)
-})
-
-downusertablediv.forEach(function(down){
-    down.addEventListener("dragenter",dragenter)
-    down.addEventListener("dragover",dragover)
-    down.addEventListener("dragleave",dragleave)
-    down.addEventListener("drop",downdrop)
-})
-
-function dragstart(e){
-    e.dataTransfer.setData("text",boxid)
-}
-
-function dragenter(e){
-    e.preventDefault()
-    e.target.classList.add("drag-over")
-}
-
-function dragover(e){
-    e.preventDefault()
-    e.target.classList.add("drag-over")
-}
-
-function dragleave(e){
-    e.preventDefault()
-    e.target.classList.remove("drag-over")
-}
-
-function updrop(e){
-    e.target.classList.remove("drag-over")
-    let id=e.dataTransfer.getData("text")
-    let box=document.getElementById(id)
-    e.target.appendChild(box)
-    box.style.top="0px"
-    box.style.left="10px"
-    let boxheight=box.style.height
-    let time=parseInt(boxheight)/30
-    let divtarget=parseFloat(e.target.id)
-    let starthr=Math.floor(divtarget)
-    let startmin=((divtarget-starthr)*60).toFixed(0)
-    if(starthr<10){
-        starthr="0"+starthr
-    }
-    if(startmin<10){
-        startmin="0"+startmin
-    }
-    let starttime=starthr+":"+startmin
-    let endhr=parseInt(starthr)+parseInt(time)
-    let decimalonly=time%1*10
-    let endmin=parseInt(startmin)+((decimalonly/5)*30)
-    if(endmin<10){
-        endmin="0"+endmin
-    }
-    if(endmin==60){
-        endmin="00"
-        endhr=endhr+1
-    }
-    if(endhr<10){
-        endhr="0"+endhr
-    }
-    let endtime=endhr+":"+endmin
-    document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${starttime}`
-    document.getElementById(boxid+"endtime").innerHTML=`結束時間: ${endtime}`
-}
-
-
-function downdrop(e){
-    e.preventDefault()
-    e.target.classList.remove("drag-over")
-    const id=e.dataTransfer.getData("text")
-    const box=document.getElementById(id)
-    e.target.appendChild(box)
-    box.style.top="0px"
-    box.style.left="10px"
-    let height=box.style.height
-    let time=parseInt(height)/30
-    let divtarget=parseFloat(e.target.id)
-    let starthr=Math.floor(divtarget)
-    let startmin=((divtarget-starthr)*60).toFixed(0)
-    if(starthr<10){
-        starthr="0"+starthr
-    }
-    if(startmin<10){
-        startmin="0"+startmin
-    }
-    let starttime=starthr+":"+startmin
-    let endhr=parseInt(starthr)-parseInt(time)
-    let decimalonly=time%1*10
-    let endmin=parseInt(startmin)+((decimalonly/5)*30)
-    if(endmin<10){
-        endmin="0"+endmin
-    }
-    if(endmin==60){
-        endmin="00"
-    }
-    if(endhr<10){
-        endhr="0"+endhr
-    }
-    let endtime=endhr+":"+endmin
-    document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${endtime}`
-    document.getElementById(boxid+"endtime").innerHTML=`結束時間: ${starttime}`
-}
-
-// -------------------------
 let positiontype="top"
+let check=false
+let dragid=null
 let maintableinnerhtml=`
     <tr>
         <td class="todotabletime">時間</td>
@@ -199,7 +22,7 @@ if(weblsget("45regionaltodosorttype")=="ASC"){
             </tr>
         `
     }
-    docgetid("updownbutton").value="升冪"
+    domgetid("updownbutton").value="升冪"
 }else{
     for(let i=22;i>=0;i=i-2){
         maintableinnerhtml=`
@@ -210,13 +33,13 @@ if(weblsget("45regionaltodosorttype")=="ASC"){
             </tr>
         `
     }
-    docgetid("updownbutton").value="降冪"
+    domgetid("updownbutton").value="降冪"
     positiontype="bottom"
 }
 
-docgetid("maintable").innerHTML=maintableinnerhtml
+domgetid("maintable").innerHTML=maintableinnerhtml
 
-docgetid("updownbutton").onclick=function(){
+domgetid("updownbutton").onclick=function(){
     if(weblsget("45regionaltodosorttype")=="ASC"){
         weblsset("45regionaltodosorttype","DESC")
     }else{
@@ -225,10 +48,8 @@ docgetid("updownbutton").onclick=function(){
     location.reload()
 }
 
-docgetid("logout").onclick=function(){
-    ajax("GET","/backend/45regional/logout/"+weblsget("45regionaluserid"),function(){
-        let data=JSON.parse(this.responseText)
-
+domgetid("logout").onclick=function(){
+    ajax("POST","/backend/45regional/logout/"+weblsget("45regionaluserid"),function(event,data){
         if(data["success"]){
             alert("登出成功")
             weblsset("45regionaluserid",null)
@@ -252,10 +73,10 @@ ajax("GET","/backend/45regional/gettodolist",function(event,data){
 
             maintableinnerhtml=`
                 ${maintableinnerhtml}
-                <div class="todoblockdiv macossectiondivy" id="${row[i][0]}" style="position: absolute;${positiontype}: ${40+30*(starthr)}px;left: 110px;">
+                <div class="todoblockdiv macossectiondivy" id="${row[i][0]}" data-starttime="${row[i][2]}" data-endtime="${row[i][3]}" style="position: absolute;${positiontype}: ${40+30*(starthr)}px;left: 110px;">
                     <div class="todoblock" style="height: ${30*(endhr-starthr)}px">
+                        <div class="dragable" data-id="${row[i][0]}"></div>
                         <img src="icon/close.svg" class="tododeleteicon" data-id="${row[i][0]}">
-                        <img src="icon/edit.svg" class="todoediticon" data-id="${row[i][0]}">
                         <div class="todoblocktitle">工作名稱: ${row[i][1]}</div>
                         <div class="todoblocktime">執行時間: ${String(starthr).padStart(2,"0")}:00~${String(endhr).padStart(2,"0")}:00</div>
                         <div class="todoblocktime">處理情形: ${row[i][4]}</div>
@@ -264,21 +85,70 @@ ajax("GET","/backend/45regional/gettodolist",function(event,data){
                 </div>
             `
         }
-        docgetid("maintable").innerHTML=`
-            ${docgetid("maintable").innerHTML}
+        domgetid("maintable").innerHTML=`
+            ${domgetid("maintable").innerHTML}
             ${maintableinnerhtml}
         `
 
         // 各事件執行
-        docgetall(".todoblock").forEach(function(event){
-            event.onmouseover=function(){}
+        domgetall(".dragable").forEach(function(event){
+            event.onmousemove=function(){
+                dragid=event.dataset.id
+            }
+            event.onmouseout=function(){
+                dragid=null
+            }
         })
 
-        docgetall(".todoediticon").forEach(function(event){
+        domgetall(".todoblockdiv").forEach(function(event){
+            event.onmousedown=function(){
+                check=true
+            }
+            event.onmousemove=function(event2){
+                if(check&&dragid==event.id){
+                    let timecross=parseInt(event.dataset.endtime)-parseInt(event.dataset.starttime)
+                    let y=event2.pageY-45
+                    let starttime
+                    let endtime
+
+                    if(y<65){
+                        starttime="00"
+                        endtime=String(timecross).padStart(2,"0")
+                    }else if(24<(Math.round((y-55)/30)+timecross)){
+                        starttime=String(24-timecross).padStart(2,"0")
+                        endtime="24"
+                    }else{
+                        event.style.top=y-30+"px"
+                        starttime=String(Math.round((y-65)/30)).padStart(2,"0")
+                        endtime=String(Math.round((y-65)/30)+timecross).padStart(2,"0")
+                    }
+
+                    event.querySelectorAll(".todoblock>.todoblocktime")[0].innerHTML=`
+                        執行時間: ${starttime}:00~${endtime}:00
+                    `
+
+                    event.style.zIndex="1000"
+                    event.dataset.starttime=starttime
+                    event.dataset.endtime=endtime
+                }
+            }
+            event.onmouseup=function(){
+                check=false
+                dragid=null
+                event.style.zIndex="1"
+                ajax("PUT","/backend/45regional/edittodo/"+event.id,function(event,data){
+                },JSON.stringify({
+                    "starttime": event.dataset.starttime,
+                    "endtime": event.dataset.endtime,
+                }))
+            }
+        })
+
+        domgetall(".todoediticon").forEach(function(event){
             event.onclick=function(){}
         })
 
-        docgetall(".tododeleteicon").forEach(function(event){
+        domgetall(".tododeleteicon").forEach(function(event){
             event.onclick=function(){
                 if(confirm("確定刪除?")){
                     ajax("DELETE","/backend/45regional/deletetodo/"+event.dataset.id,function(event,data){
@@ -299,7 +169,7 @@ ajax("GET","/backend/45regional/gettodolist",function(event,data){
 
 
 // 創建新工作
-docgetid("newtodo").onclick=function(){
+domgetid("newtodo").onclick=function(){
     lightbox(null,"lightbox",function(){
         let timeoptionlist=``
 
@@ -320,13 +190,13 @@ docgetid("newtodo").onclick=function(){
                     </div>
                 </div>
                 <div class="stselect fill colorwhite inputmargin">
-                    <select class="textcenter" id="starthour">
+                    <select class="textcenter" id="starttime">
                         <option value="na">開始時間</option>
                         ${timeoptionlist}
                     </select>
                 </div><br>
                 <div class="stselect fill colorwhite inputmargin">
-                    <select class="textcenter" id="endhour">
+                    <select class="textcenter" id="endtime">
                         <option value="na">結束時間</option>
                         ${timeoptionlist}
                     </select>
@@ -362,9 +232,9 @@ docgetid("newtodo").onclick=function(){
         `
     },"close",true,"none")
 
-    docgetid("submit").onclick=function(){
-        if(docgetid("starthour").value!="na"&&docgetid("endhour").value!="na"){
-            if(parseInt(docgetid("starthour").value)<parseInt(docgetid("endhour").value)){
+    domgetid("submit").onclick=function(){
+        if(domgetid("starttime").value!="na"&&domgetid("endtime").value!="na"){
+            if(parseInt(domgetid("starttime").value)<parseInt(domgetid("endtime").value)){
                 ajax("POST","/backend/45regional/newtodo",function(event){
                     let data=JSON.parse(event.responseText)
                     if(data["success"]){
@@ -374,12 +244,12 @@ docgetid("newtodo").onclick=function(){
                         alert(data["data"])
                     }
                 },JSON.stringify({
-                    "title": docgetid("title").value,
-                    "starthour": docgetid("starthour").value,
-                    "endhour": docgetid("endhour").value,
-                    "deal": docgetid("deal").value,
-                    "priority": docgetid("priority").value,
-                    "description": docgetid("description").value
+                    "title": domgetid("title").value,
+                    "starttime": domgetid("starttime").value,
+                    "endtime": domgetid("endtime").value,
+                    "deal": domgetid("deal").value,
+                    "priority": domgetid("priority").value,
+                    "description": domgetid("description").value
                 }))
             }else{
                 alert("結束時間不可大於開始時間!")
@@ -388,6 +258,11 @@ docgetid("newtodo").onclick=function(){
             alert("請選擇時間!")
         }
     }
+}
+
+document.onmouseup=function(){
+    check=false
+    dragid=null
 }
 
 startmacossection()

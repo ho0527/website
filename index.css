@@ -13098,11 +13098,9 @@ a.stbox:hover{
     border-right: 1px solid var(--stgray-300);
 }
 
-/**
-  * Stripe
-  */
+/* stripe */
 
-.tablestripe>tbody>tr:nth-child(even){
+.stripe>tbody>tr:nth-child(even){
     background: var(--stgray-75);
 }
 

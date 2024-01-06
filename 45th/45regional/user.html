@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>一般會員專區</title>
-        <link href="index.css" rel="stylesheet">
+        <link rel="stylesheet" href="/website/index.css">
+        <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="/website/plugin/css/chrisplugin.css">
         <script src="/website/plugin/js/chrisplugin.js"></script>
     </head>
@@ -12,7 +13,7 @@
             <tr>
                 <td class="textcenter" rowspan="2">
                     <div class="sttext todotitle">日工作計畫表</div>
-                    <div class="todomaintable macossectiondivy">
+                    <div class="todomaintable">
                         <table class="sttable stripe allborder" id="maintable"></table>
                     </div>
                 </td>
@@ -40,19 +41,6 @@
                         <input type="button" class="stbutton outline fill" id="newtodo" value="新增todo"><br>
                         <input type="button" class="stbutton outline fill" id="logout" value="登出">
                     </div>
-                    <?php
-                        if(isset($_GET["preview"])){
-                            $id=$_GET["preview"];
-                            @$row=query($db,"SELECT*FROM `todo` WHERE `id`='$id'")[0];
-                            ?>
-                            <div class="div">
-                                標題: <?= @$row[1]; ?><br>
-                                詳細內容: <?= @$row[7]; ?>
-                                <button onclick="location.href='user.php'" id="button4">關閉</button>
-                            </div>
-                            <?php
-                        }
-                    ?>
                 </td>
             </tr>
         </table>

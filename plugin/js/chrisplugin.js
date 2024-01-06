@@ -245,14 +245,20 @@ function ajax(method,url,onloadcallback,send=null,header=[["Content-type","multi
     if(check){
         let xmlhttprequest=new XMLHttpRequest()
         xmlhttprequest.open(method,url)
-        if(header.length==0&&send instanceof FormData){
-            // Don't set Content-Type for FormData
-        }else{
+        if(!send instanceof FormData){ // Don't set Content-Type for FormData
             for(let i=0;i<header.length;i=i+1){
                 xmlhttprequest.setRequestHeader(header[i][0],header[i][1])
             }
         }
-        xmlhttprequest.onload=function(){ onloadcallback(this,JSON.parse(this.responseText)) }
+        xmlhttprequest.onload=function(){
+            let data=this.responseText
+
+            try{
+                data=JSON.parse(this.responseText)
+            }finally{
+                onloadcallback(this,data)
+            }
+        }
         xmlhttprequest.send(send)
         for(let i=0;i<callback.length;i=i+1){
             xmlhttprequest[callback[i][0]]=function(){ callback[i][1](this) }

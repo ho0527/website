@@ -308,7 +308,7 @@ docgetid("log").onclick=function(){
 }
 
 docgetid("logout").onclick=function(){
-    ajax("GET","/backend/45regional/logout/"+weblsget("45regionaluserid"),function(){
+    ajax("POST","/backend/45regional/logout/"+weblsget("45regionaluserid"),function(){
         let data=JSON.parse(this.responseText)
 
         if(data["success"]){

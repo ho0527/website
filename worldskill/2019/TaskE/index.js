@@ -119,7 +119,7 @@ function main(){
             }
         }
     }
-    
+
     count=data["data"].length
 
     domgetall(".line").forEach(function(event){
@@ -128,7 +128,7 @@ function main(){
             let tempid
             domgetall(".line").forEach(function(event){
                 event.style.backgroundColor="lightgray"
-            })        
+            })
             event.style.backgroundColor="lightblue"
             if(eventid[2]=="1"){
                 tempid="3"
@@ -165,7 +165,7 @@ function main(){
                     candelete=false
                 }
             }
-            
+
         }
     })
 
@@ -216,7 +216,7 @@ function main(){
                             let left
                             let tempid
                             let lineid
-    
+
                             if(leftlength==0){
                                 if(i==1){
                                     rotate="0"
@@ -226,7 +226,7 @@ function main(){
                             }else{
                                 rotate=Math.asin(leftlength/elementdistance)*(180/Math.PI)
                             }
-    
+
                             if(i=="1"){
                                 top=-140
                                 left=60
@@ -244,7 +244,7 @@ function main(){
                                 left=-65
                                 tempid="2"
                             }
-    
+
                             // line update
                             if(linkid<event.id){
                                 lineid=linkid+"_"+keyid
@@ -288,22 +288,22 @@ function main(){
                 clickelement="1"
                 candelete=false
             }
-    
+
             domgetid(event.id+"_element2").onpointerdown=function(){
                 clickelement="2"
                 candelete=false
             }
-    
+
             domgetid(event.id+"_element3").onpointerdown=function(){
                 clickelement="3"
                 candelete=false
             }
-    
+
             domgetid(event.id+"_element4").onpointerdown=function(){
                 clickelement="4"
                 candelete=false
             }
-    
+
             domgetid(event.id+"_edit").onpointerdown=function(){
                 lightbox(null,"lightbox",function(){
                     let disabled1=""
@@ -368,7 +368,7 @@ function main(){
                 main()
                 candelete=false
             }
-    
+
             domgetid(event.id+"_delete").onpointerdown=function(){
                 if(event.id!=0){
                     for(let i=0;i<data["data"].length;i=i+1){
@@ -398,13 +398,12 @@ function main(){
             }
             // 各元素創建 END
         }
-    
+
         // 離開時清空
         event.onpointerleave=function(){
             event.querySelectorAll(".element")[0].innerHTML=``
         }
     })
-    
 }
 
 // 新元素函式
@@ -431,10 +430,10 @@ function newelement(id,key){
                     <div class="element"></div>
                 </div>
             </div>
-    
+
             <div class="line"></div>
         `
-    
+
         data["data"].push({
             "id": count,
             "position": {
@@ -475,7 +474,7 @@ function newelement(id,key){
                 }
             }
         })
-    
+
         if(key=="1"){
             data["data"][data["data"].length-1]["3"]["id"]=id
             data["data"][data["data"].length-1]["3"]["title"]="default relation 3"
@@ -502,7 +501,7 @@ function newelement(id,key){
         thisdata[key]["id"]=count
         thisdata[key]["position"]["top"]=thisdata["position"]["top"]+topchange
         thisdata[key]["position"]["left"]=thisdata["position"]["left"]+leftchange
-    
+
         weblsset("worldskill2022ME",JSON.stringify(data))
         main()
     }
@@ -530,7 +529,7 @@ function presentationmain(id){
             ${buttoninnerhtml}
         </div>
     `
-    
+
 }
 
 main()
