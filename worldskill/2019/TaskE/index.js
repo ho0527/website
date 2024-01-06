@@ -7,8 +7,6 @@ let counter
 
 // 初始化函式
 function main(){
-    let maininnerhtml=``
-
     if(!weblsget("worldskill2022ME")){
         weblsset("worldskill2022ME",JSON.stringify({
             "data": [
@@ -178,18 +176,18 @@ function main(){
         // hover時顯示
         event.onpointerover=function(){
             event.querySelectorAll(".element")[0].innerHTML=`
-                <div class="elementposition2" id="mainelement">
-                    <div class="element1" id="element1"><div class="element1text">1</div></div>
-                    <div class="element2" id="element2"><div class="element2text">2</div></div>
-                    <div class="element3" id="element3"><div class="element3text">3</div></div>
-                    <div class="element4" id="element4"><div class="element4text">4</div></div>
-                    <input type="button" class="elementedit" id="edit" value="E">
-                    <input type="button" class="elementdelete" id="delete" value="X">
+                <div class="elementposition2" id="${event.id}_mainelement">
+                    <div class="element1" id="${event.id}_element1"><div class="element1text">1</div></div>
+                    <div class="element2" id="${event.id}_element2"><div class="element2text">2</div></div>
+                    <div class="element3" id="${event.id}_element3"><div class="element3text">3</div></div>
+                    <div class="element4" id="${event.id}_element4"><div class="element4text">4</div></div>
+                    <input type="button" class="elementedit" id="${event.id}_edit" value="E">
+                    <input type="button" class="elementdelete" id="${event.id}_delete" value="X">
                 </div>
             `
 
             // 驗證初始化 START
-            domgetid("mainelement").onpointerdown=function(){
+            domgetid(event.id+"_mainelement").onpointerdown=function(){
                 document.onkeydown=function(event){
                     if(event.shiftKey){
                     }
@@ -200,8 +198,8 @@ function main(){
                 candelete=false
             }
 
-            domgetid("mainelement").onpointermove=function(event2){
-                if(time>12){
+            domgetid(event.id+"_mainelement").onpointermove=function(event2){
+                if(time>15){
                     let x=event2.pageX
                     let y=event2.pageY
                     event.style.top=y-150+"px"
@@ -253,8 +251,7 @@ function main(){
                             }else{
                                 lineid=event+"_"+i
                             }
-                            // domgetid("line_"+lineid).style.top=top+"px"
-                            // domgetid("line_"+lineid).style.left=left+"px"
+
                             domgetid("line_"+lineid).style.height=elementdistance-90+"px"
                             domgetid("line_"+lineid).style.rotate=rotate+"deg"
                         }
@@ -263,8 +260,8 @@ function main(){
                 candelete=false
             }
 
-            domgetid("mainelement").onpointerup=function(){
-                if(time<=12){
+            domgetid(event.id+"_mainelement").onpointerup=function(){
+                if(time<=15){
                     newelement(event.id,clickelement)
                     clearInterval(counter)
                     clickelement=""
@@ -278,7 +275,7 @@ function main(){
                 candelete=false
             }
 
-            domgetid("mainelement").onpointerout=function(){
+            domgetid(event.id+"_mainelement").onpointerout=function(){
                 clearInterval(counter)
                 clickelement=""
                 time=0
@@ -287,27 +284,27 @@ function main(){
             // 驗證初始化 END
 
             // 各元素創建 START
-            domgetid("element1").onpointerdown=function(){
+            domgetid(event.id+"_element1").onpointerdown=function(){
                 clickelement="1"
                 candelete=false
             }
     
-            domgetid("element2").onpointerdown=function(){
+            domgetid(event.id+"_element2").onpointerdown=function(){
                 clickelement="2"
                 candelete=false
             }
     
-            domgetid("element3").onpointerdown=function(){
+            domgetid(event.id+"_element3").onpointerdown=function(){
                 clickelement="3"
                 candelete=false
             }
     
-            domgetid("element4").onpointerdown=function(){
+            domgetid(event.id+"_element4").onpointerdown=function(){
                 clickelement="4"
                 candelete=false
             }
     
-            domgetid("edit").onpointerdown=function(){
+            domgetid(event.id+"_edit").onpointerdown=function(){
                 lightbox(null,"lightbox",function(){
                     let disabled1=""
                     let disabled2=""
@@ -345,7 +342,7 @@ function main(){
                             <input class="editinput ${disabled4}" id="relationtitle4" placeholder="relation 4" value="${data["data"][event.id]["4"]["title"]}" ${disabled4}>
                         </div>
                     `
-                },"close",true,"none")
+                },"close",true,"mask")
                 domgetid("description").onchange=function(){
                     data["data"][event.id]["content"]=this.value
                 }
@@ -372,7 +369,7 @@ function main(){
                 candelete=false
             }
     
-            domgetid("delete").onpointerdown=function(){
+            domgetid(event.id+"_delete").onpointerdown=function(){
                 if(event.id!=0){
                     for(let i=0;i<data["data"].length;i=i+1){
                         if(data["data"][i]){
@@ -512,7 +509,51 @@ function newelement(id,key){
     candelete=false
 }
 
+function presentationmain(id){
+    let thisdata=data["data"][id]
+    let buttoninnerhtml=``
+
+    for(let i=1;i<=4;i=i+1){
+        if(thisdata[i]["id"]!=""){
+            buttoninnerhtml=`
+                ${buttoninnerhtml}
+                <input type="button" class="stbutton light fill" id="${i}" onclick="presentationmain(${thisdata[i]["id"]})" value="${i}-${thisdata[i]["title"]}">
+            `
+        }
+    }
+
+    docgetid("main").innerHTML=`
+        <div class="stinput presentationcontent disabled">
+            <textarea disabled>${thisdata["content"]}</textarea>
+        </div>
+        <div class="presentationbuttondiv" id="buttondiv">
+            ${buttoninnerhtml}
+        </div>
+    `
+    
+}
+
 main()
+
+domgetid("mode").onclick=function(){
+    if(!document.fullscreenElement){
+        document.documentElement.requestFullscreen()
+        domgetid("main").classList.remove("indexmain")
+        domgetid("main").classList.remove("macossectiondivy")
+        domgetid("main").classList.add("presentationmain")
+        domgetid("main").classList.add("center")
+        presentationmain(0)
+        this.value="design mode"
+    }else{
+        document.exitFullscreen()
+        domgetid("main").classList.add("indexmain")
+        domgetid("main").classList.add("macossectiondivy")
+        domgetid("main").classList.remove("presentationmain")
+        domgetid("main").classList.remove("center")
+        main()
+        this.value="presentation mode"
+    }
+}
 
 // 函式庫初始化
 startmacossection()

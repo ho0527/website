@@ -183,6 +183,11 @@
     display: block;
 }
 
+.feature3image{
+    max-width: 100%;
+    max-height: 30vh;
+}
+
 .featurediv:has(.feature4:checked)>.featuremaindiv>.feature4div{
     display: block;
 }

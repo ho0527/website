@@ -425,6 +425,12 @@ function hintbox(endcallback=function(){},hintname=".hintdiv"){
             </div>
         `
 
+        if(domgetid("hintbox").getBoundingClientRect().top<=225){
+            domgetid("hintbox").style.top="25px"
+        }else{
+            domgetid("hintbox").style.top="-100px"
+        }
+
         docgetid("chrispluginhintboxclear").onclick=function(){
             clear()
             endcallback()
