@@ -75,6 +75,8 @@ function main(){ // 主程式(起始)
             album()
         }
     })
+
+    docgetid("asidemask").style.display="none"
 }
 
 // 專輯內文
@@ -185,6 +187,8 @@ function album(){
             }
         }
     }
+
+    docgetid("asidemask").style.display="none"
 }
 
 function createaside(){
@@ -509,14 +513,12 @@ function createaside(){
             docgetid("aside").style.width="55%"
             docgetid("openaside").style.left="55%"
             docgetid("openaside").value="<"
-            docgetid("asidemask").style.display="block"
             aside="open"
             createaside()
         }else{
             docgetid("aside").style.width="0px"
             docgetid("openaside").style.left="0px"
             docgetid("openaside").value=">"
-            docgetid("asidemask").style.display="none"
             aside="close"
             docgetid("aside").innerHTML=``
             if(asideback=="main"){
@@ -527,6 +529,7 @@ function createaside(){
         }
     }
 
+    docgetid("asidemask").style.display="block"
     url()
 }
 
@@ -639,6 +642,8 @@ function search(title,artist,album){
     docgetid("counter").innerHTML=`
         結果:${count}筆
     `
+
+    docgetid("asidemask").style.display="none"
 }
 
 function tracklistedit(key){
@@ -750,14 +755,12 @@ docgetid("openaside").onclick=function(){
         docgetid("aside").style.width="55%"
         docgetid("openaside").style.left="55%"
         docgetid("openaside").value="<"
-        docgetid("asidemask").style.display="block"
         aside="open"
         createaside()
     }else{
         docgetid("aside").style.width="0%"
         docgetid("openaside").style.left="0%"
         docgetid("openaside").value=">"
-        docgetid("asidemask").style.display="none"
         aside="close"
         docgetid("aside").innerHTML=``
         if(asideback=="main"){

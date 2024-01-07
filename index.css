@@ -1201,7 +1201,7 @@ button{
   * Circular
   */
 
-.stbutton.is-circular{
+.stbuttonround{
     border-radius: 100rem;
 }
 
@@ -9396,7 +9396,7 @@ button{
   * Circular
   */
 
-.sticon.is-circular,.sticon.is-rounded{
+.sticonround,.sticon.is-rounded{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -9723,7 +9723,7 @@ button{
   * Circular
   */
 
-.stinput.is-circular{
+.stinputround{
     --border-radius: 100rem;
 }
 
@@ -9822,6 +9822,10 @@ button{
 
 .stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid:focus-within .label{
     border-color: var(--stgray-300);
+}
+
+.stinput.round{
+    --border-radius: 100rem;
 }
 
 /**
@@ -12465,7 +12469,7 @@ a.stbox:hover{
   * Circular
   */
 
-.stimage.is-circular img{
+.stimageround img{
     border-radius: 100rem !important;
 }
 
@@ -12900,11 +12904,11 @@ a.stbox:hover{
   * Circular
   */
 
-.selection.is-circular{
+.selectionround{
     border-radius: 100rem;
 }
 
-.selection.is-circular .item .text{
+.selectionround .item .text{
     border-radius: 100rem;
 }
 
@@ -14246,7 +14250,7 @@ a.stbox:hover{
   * Circular
   */
 
-.stchip.is-circular,.stchip.is-circular .content{
+.stchipround,.stchipround .content{
     border-radius: 100rem;
 }
 
@@ -14840,17 +14844,17 @@ a.stbox:hover{
     height: 1.2rem;
 }
 
-.stflag.small:is(.is-squared, .is-circular){
+.stflag.small:is(.is-squared, round){
     width: 0.95rem;
     height: 0.95rem;
 }
 
-.stflag:is(.is-squared, .is-circular){
+.stflag:is(.is-squared, round){
     width: 1.05rem;
     height: 1.05rem;
 }
 
-.stflag.large:is(.is-squared, .is-circular){
+.stflag.large:is(.is-squared, round){
     width: 1.2rem;
     height: 1.2rem;
 }
@@ -14876,7 +14880,7 @@ a.stbox:hover{
   * Circular
   */
 
-.stflag.is-circular{
+.stflaground{
     border-radius: 100rem;
 }
 
@@ -14914,7 +14918,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ad.svg");
 }
 
-.stflag:is(.is-ad-flag, .is-andorra-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ad-flag, .is-andorra-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ad.svg");
 }
 
@@ -14922,7 +14926,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ae.svg");
 }
 
-.stflag:is(.is-ae-flag, .is-uae-flag, .is-united-arab-emirates-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ae-flag, .is-uae-flag, .is-united-arab-emirates-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ae.svg");
 }
 
@@ -14930,7 +14934,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/af.svg");
 }
 
-.stflag:is(.is-af-flag, .is-afghanistan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-af-flag, .is-afghanistan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/af.svg");
 }
 
@@ -14938,7 +14942,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ag.svg");
 }
 
-.stflag:is(.is-ag-flag, .is-antigua-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ag-flag, .is-antigua-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ag.svg");
 }
 
@@ -14946,7 +14950,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ai.svg");
 }
 
-.stflag:is(.is-ai-flag, .is-anguilla-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ai-flag, .is-anguilla-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ai.svg");
 }
 
@@ -14954,7 +14958,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/al.svg");
 }
 
-.stflag:is(.is-al-flag, .is-albania-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-al-flag, .is-albania-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/al.svg");
 }
 
@@ -14962,7 +14966,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/am.svg");
 }
 
-.stflag:is(.is-am-flag, .is-armenia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-am-flag, .is-armenia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/am.svg");
 }
 
@@ -14970,7 +14974,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ao.svg");
 }
 
-.stflag:is(.is-ao-flag, .is-angola-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ao-flag, .is-angola-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ao.svg");
 }
 
@@ -14978,7 +14982,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/aq.svg");
 }
 
-.stflag:is(.is-aq-flag, .is-antarctica-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-aq-flag, .is-antarctica-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/aq.svg");
 }
 
@@ -14986,7 +14990,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ar.svg");
 }
 
-.stflag:is(.is-ar-flag, .is-argentina-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ar-flag, .is-argentina-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ar.svg");
 }
 
@@ -14994,7 +14998,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/as.svg");
 }
 
-.stflag:is(.is-as-flag, .is-american-samoa-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-as-flag, .is-american-samoa-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/as.svg");
 }
 
@@ -15002,7 +15006,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/at.svg");
 }
 
-.stflag:is(.is-at-flag, .is-austria-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-at-flag, .is-austria-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/at.svg");
 }
 
@@ -15010,7 +15014,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/au.svg");
 }
 
-.stflag:is(.is-au-flag, .is-australia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-au-flag, .is-australia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/au.svg");
 }
 
@@ -15018,7 +15022,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/aw.svg");
 }
 
-.stflag:is(.is-aw-flag, .is-aruba-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-aw-flag, .is-aruba-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/aw.svg");
 }
 
@@ -15026,7 +15030,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ax.svg");
 }
 
-.stflag:is(.is-ax-flag, .is-aland-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ax-flag, .is-aland-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ax.svg");
 }
 
@@ -15034,7 +15038,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/az.svg");
 }
 
-.stflag:is(.is-az-flag, .is-azerbaijan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-az-flag, .is-azerbaijan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/az.svg");
 }
 
@@ -15042,7 +15046,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ba.svg");
 }
 
-.stflag:is(.is-ba-flag, .is-bosnia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ba-flag, .is-bosnia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ba.svg");
 }
 
@@ -15050,7 +15054,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bb.svg");
 }
 
-.stflag:is(.is-bb-flag, .is-barbados-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bb-flag, .is-barbados-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bb.svg");
 }
 
@@ -15058,7 +15062,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bd.svg");
 }
 
-.stflag:is(.is-bd-flag, .is-bangladesh-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bd-flag, .is-bangladesh-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bd.svg");
 }
 
@@ -15066,7 +15070,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/be.svg");
 }
 
-.stflag:is(.is-be-flag, .is-belgium-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-be-flag, .is-belgium-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/be.svg");
 }
 
@@ -15074,7 +15078,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bf.svg");
 }
 
-.stflag:is(.is-bf-flag, .is-burkina-faso-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bf-flag, .is-burkina-faso-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bf.svg");
 }
 
@@ -15082,7 +15086,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bg.svg");
 }
 
-.stflag:is(.is-bg-flag, .is-bulgaria-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bg-flag, .is-bulgaria-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bg.svg");
 }
 
@@ -15090,7 +15094,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bh.svg");
 }
 
-.stflag:is(.is-bh-flag, .is-bahrain-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bh-flag, .is-bahrain-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bh.svg");
 }
 
@@ -15098,7 +15102,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bi.svg");
 }
 
-.stflag:is(.is-bi-flag, .is-burundi-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bi-flag, .is-burundi-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bi.svg");
 }
 
@@ -15106,7 +15110,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bj.svg");
 }
 
-.stflag:is(.is-bj-flag, .is-benin-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bj-flag, .is-benin-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bj.svg");
 }
 
@@ -15114,7 +15118,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bl.svg");
 }
 
-.stflag:is(.is-bl-flag, .is-saint-barthélemy-flag, .is-saint-barthelemy-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bl-flag, .is-saint-barthélemy-flag, .is-saint-barthelemy-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bl.svg");
 }
 
@@ -15122,7 +15126,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bm.svg");
 }
 
-.stflag:is(.is-bm-flag, .is-bermuda-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bm-flag, .is-bermuda-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bm.svg");
 }
 
@@ -15130,7 +15134,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bn.svg");
 }
 
-.stflag:is(.is-bn-flag, .is-brunei-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bn-flag, .is-brunei-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bn.svg");
 }
 
@@ -15138,7 +15142,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bo.svg");
 }
 
-.stflag:is(.is-bo-flag, .is-bolivia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bo-flag, .is-bolivia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bo.svg");
 }
 
@@ -15146,7 +15150,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bq.svg");
 }
 
-.stflag:is(.is-bq-flag, .is-caribbean-netherlands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bq-flag, .is-caribbean-netherlands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bq.svg");
 }
 
@@ -15154,7 +15158,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/br.svg");
 }
 
-.stflag:is(.is-br-flag, .is-brazil-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-br-flag, .is-brazil-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/br.svg");
 }
 
@@ -15162,7 +15166,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bs.svg");
 }
 
-.stflag:is(.is-bs-flag, .is-bahamas-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bs-flag, .is-bahamas-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bs.svg");
 }
 
@@ -15170,7 +15174,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bt.svg");
 }
 
-.stflag:is(.is-bt-flag, .is-bhutan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bt-flag, .is-bhutan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bt.svg");
 }
 
@@ -15178,7 +15182,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bv.svg");
 }
 
-.stflag:is(.is-bv-flag, .is-bouvet-island-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bv-flag, .is-bouvet-island-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bv.svg");
 }
 
@@ -15186,7 +15190,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bw.svg");
 }
 
-.stflag:is(.is-bw-flag, .is-botswana-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bw-flag, .is-botswana-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bw.svg");
 }
 
@@ -15194,7 +15198,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/by.svg");
 }
 
-.stflag:is(.is-by-flag, .is-belarus-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-by-flag, .is-belarus-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/by.svg");
 }
 
@@ -15202,7 +15206,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/bz.svg");
 }
 
-.stflag:is(.is-bz-flag, .is-belize-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-bz-flag, .is-belize-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/bz.svg");
 }
 
@@ -15210,7 +15214,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ca.svg");
 }
 
-.stflag:is(.is-ca-flag, .is-canada-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ca-flag, .is-canada-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ca.svg");
 }
 
@@ -15218,7 +15222,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cc.svg");
 }
 
-.stflag:is(.is-cc-flag, .is-cocos-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cc-flag, .is-cocos-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cc.svg");
 }
 
@@ -15226,7 +15230,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cd.svg");
 }
 
-.stflag:is(.is-cd-flag, .is-congo-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cd-flag, .is-congo-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cd.svg");
 }
 
@@ -15234,7 +15238,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cf.svg");
 }
 
-.stflag:is(.is-cf-flag, .is-central-african-republic-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cf-flag, .is-central-african-republic-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cf.svg");
 }
 
@@ -15242,7 +15246,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cg.svg");
 }
 
-.stflag:is(.is-cg-flag, .is-congo-brazzaville-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cg-flag, .is-congo-brazzaville-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cg.svg");
 }
 
@@ -15250,7 +15254,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ch.svg");
 }
 
-.stflag:is(.is-ch-flag, .is-switzerland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ch-flag, .is-switzerland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ch.svg");
 }
 
@@ -15258,7 +15262,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ci.svg");
 }
 
-.stflag:is(.is-ci-flag, .is-cote-divoire-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ci-flag, .is-cote-divoire-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ci.svg");
 }
 
@@ -15266,7 +15270,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ck.svg");
 }
 
-.stflag:is(.is-ck-flag, .is-cook-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ck-flag, .is-cook-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ck.svg");
 }
 
@@ -15274,7 +15278,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cl.svg");
 }
 
-.stflag:is(.is-cl-flag, .is-chile-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cl-flag, .is-chile-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cl.svg");
 }
 
@@ -15282,7 +15286,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cm.svg");
 }
 
-.stflag:is(.is-cm-flag, .is-cameroon-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cm-flag, .is-cameroon-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cm.svg");
 }
 
@@ -15290,7 +15294,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cn.svg");
 }
 
-.stflag:is(.is-cn-flag, .is-china-flag, .is-peoples-republic-of-china-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cn-flag, .is-china-flag, .is-peoples-republic-of-china-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cn.svg");
 }
 
@@ -15298,7 +15302,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/co.svg");
 }
 
-.stflag:is(.is-co-flag, .is-colombia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-co-flag, .is-colombia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/co.svg");
 }
 
@@ -15306,7 +15310,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cr.svg");
 }
 
-.stflag:is(.is-cr-flag, .is-costa-rica-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cr-flag, .is-costa-rica-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cr.svg");
 }
 
@@ -15314,7 +15318,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cu.svg");
 }
 
-.stflag:is(.is-cu-flag, .is-cuba-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cu-flag, .is-cuba-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cu.svg");
 }
 
@@ -15322,7 +15326,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cv.svg");
 }
 
-.stflag:is(.is-cv-flag, .is-cape-verde-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cv-flag, .is-cape-verde-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cv.svg");
 }
 
@@ -15330,7 +15334,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cw.svg");
 }
 
-.stflag:is(.is-cw-flag, .is-curaçao-flag, .is-curacao-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cw-flag, .is-curaçao-flag, .is-curacao-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cw.svg");
 }
 
@@ -15338,7 +15342,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cx.svg");
 }
 
-.stflag:is(.is-cx-flag, .is-christmas-island-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cx-flag, .is-christmas-island-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cx.svg");
 }
 
@@ -15346,7 +15350,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cy.svg");
 }
 
-.stflag:is(.is-cy-flag, .is-cyprus-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cy-flag, .is-cyprus-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cy.svg");
 }
 
@@ -15354,7 +15358,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/cz.svg");
 }
 
-.stflag:is(.is-cz-flag, .is-czech-republic-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-cz-flag, .is-czech-republic-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/cz.svg");
 }
 
@@ -15362,7 +15366,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/de.svg");
 }
 
-.stflag:is(.is-de-flag, .is-germany-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-de-flag, .is-germany-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/de.svg");
 }
 
@@ -15370,7 +15374,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/dj.svg");
 }
 
-.stflag:is(.is-dj-flag, .is-djibouti-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-dj-flag, .is-djibouti-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/dj.svg");
 }
 
@@ -15378,7 +15382,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/dk.svg");
 }
 
-.stflag:is(.is-dk-flag, .is-denmark-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-dk-flag, .is-denmark-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/dk.svg");
 }
 
@@ -15386,7 +15390,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/dm.svg");
 }
 
-.stflag:is(.is-dm-flag, .is-dominica-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-dm-flag, .is-dominica-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/dm.svg");
 }
 
@@ -15394,7 +15398,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/do.svg");
 }
 
-.stflag:is(.is-do-flag, .is-dominican-republic-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-do-flag, .is-dominican-republic-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/do.svg");
 }
 
@@ -15402,7 +15406,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/dz.svg");
 }
 
-.stflag:is(.is-dz-flag, .is-algeria-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-dz-flag, .is-algeria-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/dz.svg");
 }
 
@@ -15410,7 +15414,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ec.svg");
 }
 
-.stflag:is(.is-ec-flag, .is-ecuador-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ec-flag, .is-ecuador-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ec.svg");
 }
 
@@ -15418,7 +15422,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ee.svg");
 }
 
-.stflag:is(.is-ee-flag, .is-estonia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ee-flag, .is-estonia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ee.svg");
 }
 
@@ -15426,7 +15430,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/eg.svg");
 }
 
-.stflag:is(.is-eg-flag, .is-egypt-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-eg-flag, .is-egypt-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/eg.svg");
 }
 
@@ -15434,7 +15438,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/eh.svg");
 }
 
-.stflag:is(.is-eh-flag, .is-western-sahara-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-eh-flag, .is-western-sahara-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/eh.svg");
 }
 
@@ -15442,7 +15446,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/er.svg");
 }
 
-.stflag:is(.is-er-flag, .is-eritrea-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-er-flag, .is-eritrea-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/er.svg");
 }
 
@@ -15450,7 +15454,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/es.svg");
 }
 
-.stflag:is(.is-es-flag, .is-spain-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-es-flag, .is-spain-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/es.svg");
 }
 
@@ -15458,7 +15462,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/es-ct.svg");
 }
 
-.stflag:is(.is-es-ct-flag, .is-scotland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-es-ct-flag, .is-scotland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/es-ct.svg");
 }
 
@@ -15466,7 +15470,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/et.svg");
 }
 
-.stflag:is(.is-et-flag, .is-ethiopia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-et-flag, .is-ethiopia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/et.svg");
 }
 
@@ -15474,7 +15478,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/eu.svg");
 }
 
-.stflag:is(.is-eu-flag, .is-european-union-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-eu-flag, .is-european-union-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/eu.svg");
 }
 
@@ -15482,7 +15486,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/fi.svg");
 }
 
-.stflag:is(.is-fi-flag, .is-finland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-fi-flag, .is-finland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/fi.svg");
 }
 
@@ -15490,7 +15494,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/fj.svg");
 }
 
-.stflag:is(.is-fj-flag, .is-fiji-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-fj-flag, .is-fiji-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/fj.svg");
 }
 
@@ -15498,7 +15502,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/fk.svg");
 }
 
-.stflag:is(.is-fk-flag, .is-falkland-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-fk-flag, .is-falkland-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/fk.svg");
 }
 
@@ -15506,7 +15510,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/fm.svg");
 }
 
-.stflag:is(.is-fm-flag, .is-micronesia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-fm-flag, .is-micronesia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/fm.svg");
 }
 
@@ -15514,7 +15518,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/fo.svg");
 }
 
-.stflag:is(.is-fo-flag, .is-faroe-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-fo-flag, .is-faroe-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/fo.svg");
 }
 
@@ -15522,7 +15526,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/fr.svg");
 }
 
-.stflag:is(.is-fr-flag, .is-france-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-fr-flag, .is-france-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/fr.svg");
 }
 
@@ -15530,7 +15534,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ga.svg");
 }
 
-.stflag:is(.is-ga-flag, .is-gabon-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ga-flag, .is-gabon-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ga.svg");
 }
 
@@ -15538,7 +15542,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gb.svg");
 }
 
-.stflag:is(.is-gb-flag, .is-united-kingdom-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gb-flag, .is-united-kingdom-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gb.svg");
 }
 
@@ -15546,7 +15550,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gb-eng.svg");
 }
 
-.stflag:is(.is-gb-eng-flag, .is-england-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gb-eng-flag, .is-england-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gb-eng.svg");
 }
 
@@ -15554,7 +15558,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gb-nir.svg");
 }
 
-.stflag:is(.is-gb-nir-flag, .is-northern-ireland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gb-nir-flag, .is-northern-ireland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gb-nir.svg");
 }
 
@@ -15562,7 +15566,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gb-sct.svg");
 }
 
-.stflag:is(.is-gb-sct-flag, .is-scotland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gb-sct-flag, .is-scotland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gb-sct.svg");
 }
 
@@ -15570,7 +15574,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gb-wls.svg");
 }
 
-.stflag:is(.is-gb-wls-flag, .is-wales-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gb-wls-flag, .is-wales-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gb-wls.svg");
 }
 
@@ -15578,7 +15582,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gd.svg");
 }
 
-.stflag:is(.is-gd-flag, .is-grenada-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gd-flag, .is-grenada-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gd.svg");
 }
 
@@ -15586,7 +15590,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ge.svg");
 }
 
-.stflag:is(.is-ge-flag, .is-georgia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ge-flag, .is-georgia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ge.svg");
 }
 
@@ -15594,7 +15598,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gf.svg");
 }
 
-.stflag:is(.is-gf-flag, .is-french-guiana-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gf-flag, .is-french-guiana-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gf.svg");
 }
 
@@ -15602,7 +15606,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gg.svg");
 }
 
-.stflag:is(.is-gg-flag, .is-guernsey-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gg-flag, .is-guernsey-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gg.svg");
 }
 
@@ -15610,7 +15614,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gh.svg");
 }
 
-.stflag:is(.is-gh-flag, .is-ghana-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gh-flag, .is-ghana-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gh.svg");
 }
 
@@ -15618,7 +15622,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gi.svg");
 }
 
-.stflag:is(.is-gi-flag, .is-gibraltar-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gi-flag, .is-gibraltar-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gi.svg");
 }
 
@@ -15626,7 +15630,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gl.svg");
 }
 
-.stflag:is(.is-gl-flag, .is-greenland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gl-flag, .is-greenland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gl.svg");
 }
 
@@ -15634,7 +15638,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gm.svg");
 }
 
-.stflag:is(.is-gm-flag, .is-gambia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gm-flag, .is-gambia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gm.svg");
 }
 
@@ -15642,7 +15646,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gn.svg");
 }
 
-.stflag:is(.is-gn-flag, .is-guinea-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gn-flag, .is-guinea-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gn.svg");
 }
 
@@ -15650,7 +15654,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gp.svg");
 }
 
-.stflag:is(.is-gp-flag, .is-guadeloupe-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gp-flag, .is-guadeloupe-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gp.svg");
 }
 
@@ -15658,7 +15662,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gq.svg");
 }
 
-.stflag:is(.is-gq-flag, .is-equatorial-guinea-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gq-flag, .is-equatorial-guinea-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gq.svg");
 }
 
@@ -15666,7 +15670,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gr.svg");
 }
 
-.stflag:is(.is-gr-flag, .is-greece-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gr-flag, .is-greece-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gr.svg");
 }
 
@@ -15674,7 +15678,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gs.svg");
 }
 
-.stflag:is(.is-gs-flag, .is-sandwich-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gs-flag, .is-sandwich-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gs.svg");
 }
 
@@ -15682,7 +15686,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gt.svg");
 }
 
-.stflag:is(.is-gt-flag, .is-guatemala-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gt-flag, .is-guatemala-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gt.svg");
 }
 
@@ -15690,7 +15694,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gu.svg");
 }
 
-.stflag:is(.is-gu-flag, .is-guam-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gu-flag, .is-guam-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gu.svg");
 }
 
@@ -15698,7 +15702,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gw.svg");
 }
 
-.stflag:is(.is-gw-flag, .is-guinea-bissau-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gw-flag, .is-guinea-bissau-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gw.svg");
 }
 
@@ -15706,7 +15710,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/gy.svg");
 }
 
-.stflag:is(.is-gy-flag, .is-guyana-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-gy-flag, .is-guyana-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/gy.svg");
 }
 
@@ -15714,7 +15718,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/hk.svg");
 }
 
-.stflag:is(.is-hk-flag, .is-hong-kong-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-hk-flag, .is-hong-kong-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/hk.svg");
 }
 
@@ -15722,7 +15726,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/hm.svg");
 }
 
-.stflag:is(.is-hm-flag, .is-heard-island-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-hm-flag, .is-heard-island-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/hm.svg");
 }
 
@@ -15730,7 +15734,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/hn.svg");
 }
 
-.stflag:is(.is-hn-flag, .is-honduras-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-hn-flag, .is-honduras-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/hn.svg");
 }
 
@@ -15738,7 +15742,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/hr.svg");
 }
 
-.stflag:is(.is-hr-flag, .is-croatia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-hr-flag, .is-croatia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/hr.svg");
 }
 
@@ -15746,7 +15750,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ht.svg");
 }
 
-.stflag:is(.is-ht-flag, .is-haiti-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ht-flag, .is-haiti-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ht.svg");
 }
 
@@ -15754,7 +15758,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/hu.svg");
 }
 
-.stflag:is(.is-hu-flag, .is-hungary-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-hu-flag, .is-hungary-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/hu.svg");
 }
 
@@ -15762,7 +15766,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/id.svg");
 }
 
-.stflag:is(.is-id-flag, .is-indonesia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-id-flag, .is-indonesia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/id.svg");
 }
 
@@ -15770,7 +15774,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ie.svg");
 }
 
-.stflag:is(.is-ie-flag, .is-ireland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ie-flag, .is-ireland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ie.svg");
 }
 
@@ -15778,7 +15782,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/il.svg");
 }
 
-.stflag:is(.is-il-flag, .is-israel-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-il-flag, .is-israel-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/il.svg");
 }
 
@@ -15786,7 +15790,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/im.svg");
 }
 
-.stflag:is(.is-im-flag, .is-isle-of-man-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-im-flag, .is-isle-of-man-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/im.svg");
 }
 
@@ -15794,7 +15798,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/in.svg");
 }
 
-.stflag:is(.is-in-flag, .is-india-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-in-flag, .is-india-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/in.svg");
 }
 
@@ -15802,7 +15806,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/io.svg");
 }
 
-.stflag:is(.is-io-flag, .is-indian-ocean-territory-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-io-flag, .is-indian-ocean-territory-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/io.svg");
 }
 
@@ -15810,7 +15814,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/iq.svg");
 }
 
-.stflag:is(.is-iq-flag, .is-iraq-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-iq-flag, .is-iraq-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/iq.svg");
 }
 
@@ -15818,7 +15822,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ir.svg");
 }
 
-.stflag:is(.is-ir-flag, .is-iran-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ir-flag, .is-iran-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ir.svg");
 }
 
@@ -15826,7 +15830,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/is.svg");
 }
 
-.stflag:is(.is-is-flag, .is-iceland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-is-flag, .is-iceland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/is.svg");
 }
 
@@ -15834,7 +15838,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/it.svg");
 }
 
-.stflag:is(.is-it-flag, .is-italy-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-it-flag, .is-italy-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/it.svg");
 }
 
@@ -15842,7 +15846,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/je.svg");
 }
 
-.stflag:is(.is-je-flag, .is-jersey-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-je-flag, .is-jersey-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/je.svg");
 }
 
@@ -15850,7 +15854,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/jm.svg");
 }
 
-.stflag:is(.is-jm-flag, .is-jamaica-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-jm-flag, .is-jamaica-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/jm.svg");
 }
 
@@ -15858,7 +15862,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/jo.svg");
 }
 
-.stflag:is(.is-jo-flag, .is-jordan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-jo-flag, .is-jordan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/jo.svg");
 }
 
@@ -15866,7 +15870,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/jp.svg");
 }
 
-.stflag:is(.is-jp-flag, .is-japan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-jp-flag, .is-japan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/jp.svg");
 }
 
@@ -15874,7 +15878,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ke.svg");
 }
 
-.stflag:is(.is-ke-flag, .is-kenya-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ke-flag, .is-kenya-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ke.svg");
 }
 
@@ -15882,7 +15886,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/kg.svg");
 }
 
-.stflag:is(.is-kg-flag, .is-kyrgyzstan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-kg-flag, .is-kyrgyzstan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/kg.svg");
 }
 
@@ -15890,7 +15894,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/kh.svg");
 }
 
-.stflag:is(.is-kh-flag, .is-cambodia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-kh-flag, .is-cambodia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/kh.svg");
 }
 
@@ -15898,7 +15902,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ki.svg");
 }
 
-.stflag:is(.is-ki-flag, .is-kiribati-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ki-flag, .is-kiribati-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ki.svg");
 }
 
@@ -15906,7 +15910,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/km.svg");
 }
 
-.stflag:is(.is-km-flag, .is-comoros-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-km-flag, .is-comoros-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/km.svg");
 }
 
@@ -15914,7 +15918,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/kn.svg");
 }
 
-.stflag:is(.is-kn-flag, .is-saint-kitstand-nevis-flag, .is-saint-kitstflag, .is-nevis-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-kn-flag, .is-saint-kitstand-nevis-flag, .is-saint-kitstflag, .is-nevis-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/kn.svg");
 }
 
@@ -15922,7 +15926,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/kp.svg");
 }
 
-.stflag:is(.is-kp-flag, .is-north-korea-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-kp-flag, .is-north-korea-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/kp.svg");
 }
 
@@ -15930,7 +15934,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/kr.svg");
 }
 
-.stflag:is(.is-kr-flag, .is-south-korea-flag, .is-korea-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-kr-flag, .is-south-korea-flag, .is-korea-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/kr.svg");
 }
 
@@ -15938,7 +15942,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/kw.svg");
 }
 
-.stflag:is(.is-kw-flag, .is-kuwait-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-kw-flag, .is-kuwait-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/kw.svg");
 }
 
@@ -15946,7 +15950,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ky.svg");
 }
 
-.stflag:is(.is-ky-flag, .is-cayman-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ky-flag, .is-cayman-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ky.svg");
 }
 
@@ -15954,7 +15958,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/kz.svg");
 }
 
-.stflag:is(.is-kz-flag, .is-kazakhstan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-kz-flag, .is-kazakhstan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/kz.svg");
 }
 
@@ -15962,7 +15966,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/la.svg");
 }
 
-.stflag:is(.is-la-flag, .is-laos-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-la-flag, .is-laos-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/la.svg");
 }
 
@@ -15970,7 +15974,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/lb.svg");
 }
 
-.stflag:is(.is-lb-flag, .is-lebanon-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-lb-flag, .is-lebanon-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/lb.svg");
 }
 
@@ -15978,7 +15982,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/lc.svg");
 }
 
-.stflag:is(.is-lc-flag, .is-saint-lucia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-lc-flag, .is-saint-lucia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/lc.svg");
 }
 
@@ -15986,7 +15990,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/li.svg");
 }
 
-.stflag:is(.is-li-flag, .is-liechtenstein-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-li-flag, .is-liechtenstein-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/li.svg");
 }
 
@@ -15994,7 +15998,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/lk.svg");
 }
 
-.stflag:is(.is-lk-flag, .is-sri-lanka-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-lk-flag, .is-sri-lanka-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/lk.svg");
 }
 
@@ -16002,7 +16006,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/lr.svg");
 }
 
-.stflag:is(.is-lr-flag, .is-liberia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-lr-flag, .is-liberia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/lr.svg");
 }
 
@@ -16010,7 +16014,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ls.svg");
 }
 
-.stflag:is(.is-ls-flag, .is-lesotho-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ls-flag, .is-lesotho-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ls.svg");
 }
 
@@ -16018,7 +16022,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/lt.svg");
 }
 
-.stflag:is(.is-lt-flag, .is-lithuania-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-lt-flag, .is-lithuania-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/lt.svg");
 }
 
@@ -16026,7 +16030,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/lu.svg");
 }
 
-.stflag:is(.is-lu-flag, .is-luxembourg-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-lu-flag, .is-luxembourg-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/lu.svg");
 }
 
@@ -16034,7 +16038,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/lv.svg");
 }
 
-.stflag:is(.is-lv-flag, .is-latvia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-lv-flag, .is-latvia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/lv.svg");
 }
 
@@ -16042,7 +16046,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ly.svg");
 }
 
-.stflag:is(.is-ly-flag, .is-libya-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ly-flag, .is-libya-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ly.svg");
 }
 
@@ -16050,7 +16054,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ma.svg");
 }
 
-.stflag:is(.is-ma-flag, .is-morocco-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ma-flag, .is-morocco-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ma.svg");
 }
 
@@ -16058,7 +16062,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mc.svg");
 }
 
-.stflag:is(.is-mc-flag, .is-monaco-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mc-flag, .is-monaco-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mc.svg");
 }
 
@@ -16066,7 +16070,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/md.svg");
 }
 
-.stflag:is(.is-md-flag, .is-moldova-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-md-flag, .is-moldova-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/md.svg");
 }
 
@@ -16074,7 +16078,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/me.svg");
 }
 
-.stflag:is(.is-me-flag, .is-montenegro-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-me-flag, .is-montenegro-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/me.svg");
 }
 
@@ -16082,7 +16086,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mf.svg");
 }
 
-.stflag:is(.is-mf-flag, .is-saint-martin-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mf-flag, .is-saint-martin-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mf.svg");
 }
 
@@ -16090,7 +16094,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mg.svg");
 }
 
-.stflag:is(.is-mg-flag, .is-madagascar-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mg-flag, .is-madagascar-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mg.svg");
 }
 
@@ -16098,7 +16102,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mh.svg");
 }
 
-.stflag:is(.is-mh-flag, .is-marshall-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mh-flag, .is-marshall-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mh.svg");
 }
 
@@ -16106,7 +16110,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mk.svg");
 }
 
-.stflag:is(.is-mk-flag, .is-macedonia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mk-flag, .is-macedonia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mk.svg");
 }
 
@@ -16114,7 +16118,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ml.svg");
 }
 
-.stflag:is(.is-ml-flag, .is-mali-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ml-flag, .is-mali-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ml.svg");
 }
 
@@ -16122,7 +16126,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mm.svg");
 }
 
-.stflag:is(.is-mm-flag, .is-burma-flag, .is-myanmar-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mm-flag, .is-burma-flag, .is-myanmar-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mm.svg");
 }
 
@@ -16130,7 +16134,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mn.svg");
 }
 
-.stflag:is(.is-mn-flag, .is-mongolia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mn-flag, .is-mongolia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mn.svg");
 }
 
@@ -16138,7 +16142,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mo.svg");
 }
 
-.stflag:is(.is-mo-flag, .is-macau-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mo-flag, .is-macau-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mo.svg");
 }
 
@@ -16146,7 +16150,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mp.svg");
 }
 
-.stflag:is(.is-mp-flag, .is-northern-mariana-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mp-flag, .is-northern-mariana-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mp.svg");
 }
 
@@ -16154,7 +16158,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mq.svg");
 }
 
-.stflag:is(.is-mq-flag, .is-martinique-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mq-flag, .is-martinique-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mq.svg");
 }
 
@@ -16162,7 +16166,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mr.svg");
 }
 
-.stflag:is(.is-mr-flag, .is-mauritania-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mr-flag, .is-mauritania-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mr.svg");
 }
 
@@ -16170,7 +16174,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ms.svg");
 }
 
-.stflag:is(.is-ms-flag, .is-montserrat-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ms-flag, .is-montserrat-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ms.svg");
 }
 
@@ -16178,7 +16182,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mt.svg");
 }
 
-.stflag:is(.is-mt-flag, .is-malta-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mt-flag, .is-malta-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mt.svg");
 }
 
@@ -16186,7 +16190,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mu.svg");
 }
 
-.stflag:is(.is-mu-flag, .is-mauritius-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mu-flag, .is-mauritius-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mu.svg");
 }
 
@@ -16194,7 +16198,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mv.svg");
 }
 
-.stflag:is(.is-mv-flag, .is-maldives-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mv-flag, .is-maldives-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mv.svg");
 }
 
@@ -16202,7 +16206,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mw.svg");
 }
 
-.stflag:is(.is-mw-flag, .is-malawi-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mw-flag, .is-malawi-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mw.svg");
 }
 
@@ -16210,7 +16214,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mx.svg");
 }
 
-.stflag:is(.is-mx-flag, .is-mexico-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mx-flag, .is-mexico-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mx.svg");
 }
 
@@ -16218,7 +16222,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/my.svg");
 }
 
-.stflag:is(.is-my-flag, .is-malaysia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-my-flag, .is-malaysia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/my.svg");
 }
 
@@ -16226,7 +16230,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/mz.svg");
 }
 
-.stflag:is(.is-mz-flag, .is-mozambique-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-mz-flag, .is-mozambique-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/mz.svg");
 }
 
@@ -16234,7 +16238,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/na.svg");
 }
 
-.stflag:is(.is-na-flag, .is-namibia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-na-flag, .is-namibia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/na.svg");
 }
 
@@ -16242,7 +16246,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/nc.svg");
 }
 
-.stflag:is(.is-nc-flag, .is-new-caledonia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-nc-flag, .is-new-caledonia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/nc.svg");
 }
 
@@ -16250,7 +16254,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ne.svg");
 }
 
-.stflag:is(.is-ne-flag, .is-niger-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ne-flag, .is-niger-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ne.svg");
 }
 
@@ -16258,7 +16262,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/nf.svg");
 }
 
-.stflag:is(.is-nf-flag, .is-norfolk-island-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-nf-flag, .is-norfolk-island-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/nf.svg");
 }
 
@@ -16266,7 +16270,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ng.svg");
 }
 
-.stflag:is(.is-ng-flag, .is-nigeria-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ng-flag, .is-nigeria-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ng.svg");
 }
 
@@ -16274,7 +16278,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ni.svg");
 }
 
-.stflag:is(.is-ni-flag, .is-nicaragua-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ni-flag, .is-nicaragua-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ni.svg");
 }
 
@@ -16282,7 +16286,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/nl.svg");
 }
 
-.stflag:is(.is-nl-flag, .is-netherlands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-nl-flag, .is-netherlands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/nl.svg");
 }
 
@@ -16290,7 +16294,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/no.svg");
 }
 
-.stflag:is(.is-no-flag, .is-norway-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-no-flag, .is-norway-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/no.svg");
 }
 
@@ -16298,7 +16302,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/np.svg");
 }
 
-.stflag:is(.is-np-flag, .is-nepal-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-np-flag, .is-nepal-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/np.svg");
 }
 
@@ -16306,7 +16310,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/nr.svg");
 }
 
-.stflag:is(.is-nr-flag, .is-nauru-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-nr-flag, .is-nauru-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/nr.svg");
 }
 
@@ -16314,7 +16318,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/nu.svg");
 }
 
-.stflag:is(.is-nu-flag, .is-niue-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-nu-flag, .is-niue-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/nu.svg");
 }
 
@@ -16322,7 +16326,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/nz.svg");
 }
 
-.stflag:is(.is-nz-flag, .is-new-zealand-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-nz-flag, .is-new-zealand-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/nz.svg");
 }
 
@@ -16330,7 +16334,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/om.svg");
 }
 
-.stflag:is(.is-om-flag, .is-oman-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-om-flag, .is-oman-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/om.svg");
 }
 
@@ -16338,7 +16342,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pa.svg");
 }
 
-.stflag:is(.is-pa-flag, .is-panama-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pa-flag, .is-panama-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pa.svg");
 }
 
@@ -16346,7 +16350,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pe.svg");
 }
 
-.stflag:is(.is-pe-flag, .is-peru-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pe-flag, .is-peru-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pe.svg");
 }
 
@@ -16354,7 +16358,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pf.svg");
 }
 
-.stflag:is(.is-pf-flag, .is-french-polynesia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pf-flag, .is-french-polynesia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pf.svg");
 }
 
@@ -16362,7 +16366,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pg.svg");
 }
 
-.stflag:is(.is-pg-flag, .is-new-guinea-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pg-flag, .is-new-guinea-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pg.svg");
 }
 
@@ -16370,7 +16374,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ph.svg");
 }
 
-.stflag:is(.is-ph-flag, .is-philippines-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ph-flag, .is-philippines-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ph.svg");
 }
 
@@ -16378,7 +16382,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pk.svg");
 }
 
-.stflag:is(.is-pk-flag, .is-pakistan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pk-flag, .is-pakistan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pk.svg");
 }
 
@@ -16386,7 +16390,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pl.svg");
 }
 
-.stflag:is(.is-pl-flag, .is-poland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pl-flag, .is-poland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pl.svg");
 }
 
@@ -16394,7 +16398,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pm.svg");
 }
 
-.stflag:is(.is-pm-flag, .is-saint-pierre-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pm-flag, .is-saint-pierre-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pm.svg");
 }
 
@@ -16402,7 +16406,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pn.svg");
 }
 
-.stflag:is(.is-pn-flag, .is-pitcairn-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pn-flag, .is-pitcairn-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pn.svg");
 }
 
@@ -16410,7 +16414,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pr.svg");
 }
 
-.stflag:is(.is-pr-flag, .is-puerto-rico-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pr-flag, .is-puerto-rico-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pr.svg");
 }
 
@@ -16418,7 +16422,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ps.svg");
 }
 
-.stflag:is(.is-ps-flag, .is-palestine-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ps-flag, .is-palestine-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ps.svg");
 }
 
@@ -16426,7 +16430,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pt.svg");
 }
 
-.stflag:is(.is-pt-flag, .is-portugal-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pt-flag, .is-portugal-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pt.svg");
 }
 
@@ -16434,7 +16438,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/pw.svg");
 }
 
-.stflag:is(.is-pw-flag, .is-palau-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-pw-flag, .is-palau-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/pw.svg");
 }
 
@@ -16442,7 +16446,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/py.svg");
 }
 
-.stflag:is(.is-py-flag, .is-paraguay-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-py-flag, .is-paraguay-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/py.svg");
 }
 
@@ -16450,7 +16454,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/qa.svg");
 }
 
-.stflag:is(.is-qa-flag, .is-qatar-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-qa-flag, .is-qatar-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/qa.svg");
 }
 
@@ -16458,7 +16462,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/re.svg");
 }
 
-.stflag:is(.is-re-flag, .is-reunion-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-re-flag, .is-reunion-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/re.svg");
 }
 
@@ -16466,7 +16470,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ro.svg");
 }
 
-.stflag:is(.is-ro-flag, .is-romania-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ro-flag, .is-romania-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ro.svg");
 }
 
@@ -16474,7 +16478,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/rs.svg");
 }
 
-.stflag:is(.is-rs-flag, .is-serbia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-rs-flag, .is-serbia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/rs.svg");
 }
 
@@ -16482,7 +16486,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ru.svg");
 }
 
-.stflag:is(.is-ru-flag, .is-russia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ru-flag, .is-russia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ru.svg");
 }
 
@@ -16490,7 +16494,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/rw.svg");
 }
 
-.stflag:is(.is-rw-flag, .is-rwanda-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-rw-flag, .is-rwanda-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/rw.svg");
 }
 
@@ -16498,7 +16502,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sa.svg");
 }
 
-.stflag:is(.is-sa-flag, .is-saudi-arabia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sa-flag, .is-saudi-arabia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sa.svg");
 }
 
@@ -16506,7 +16510,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sb.svg");
 }
 
-.stflag:is(.is-sb-flag, .is-solomon-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sb-flag, .is-solomon-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sb.svg");
 }
 
@@ -16514,7 +16518,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sc.svg");
 }
 
-.stflag:is(.is-sc-flag, .is-seychelles-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sc-flag, .is-seychelles-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sc.svg");
 }
 
@@ -16522,7 +16526,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sd.svg");
 }
 
-.stflag:is(.is-sd-flag, .is-sudan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sd-flag, .is-sudan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sd.svg");
 }
 
@@ -16530,7 +16534,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/se.svg");
 }
 
-.stflag:is(.is-se-flag, .is-sweden-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-se-flag, .is-sweden-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/se.svg");
 }
 
@@ -16538,7 +16542,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sg.svg");
 }
 
-.stflag:is(.is-sg-flag, .is-singapore-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sg-flag, .is-singapore-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sg.svg");
 }
 
@@ -16546,7 +16550,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sh.svg");
 }
 
-.stflag:is(.is-sh-flag, .is-saint-helena-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sh-flag, .is-saint-helena-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sh.svg");
 }
 
@@ -16554,7 +16558,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/si.svg");
 }
 
-.stflag:is(.is-si-flag, .is-slovenia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-si-flag, .is-slovenia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/si.svg");
 }
 
@@ -16562,7 +16566,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sj.svg");
 }
 
-.stflag:is(.is-sj-flag, .is-jan-mayen-and-svalbard-flag, .is-svalbard-flag, .is-jan-mayen-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sj-flag, .is-jan-mayen-and-svalbard-flag, .is-svalbard-flag, .is-jan-mayen-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sj.svg");
 }
 
@@ -16570,7 +16574,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sk.svg");
 }
 
-.stflag:is(.is-sk-flag, .is-slovakia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sk-flag, .is-slovakia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sk.svg");
 }
 
@@ -16578,7 +16582,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sl.svg");
 }
 
-.stflag:is(.is-sl-flag, .is-sierra-leone-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sl-flag, .is-sierra-leone-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sl.svg");
 }
 
@@ -16586,7 +16590,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sm.svg");
 }
 
-.stflag:is(.is-sm-flag, .is-san-marino-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sm-flag, .is-san-marino-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sm.svg");
 }
 
@@ -16594,7 +16598,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sn.svg");
 }
 
-.stflag:is(.is-sn-flag, .is-senegal-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sn-flag, .is-senegal-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sn.svg");
 }
 
@@ -16602,7 +16606,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/so.svg");
 }
 
-.stflag:is(.is-so-flag, .is-somalia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-so-flag, .is-somalia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/so.svg");
 }
 
@@ -16610,7 +16614,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sr.svg");
 }
 
-.stflag:is(.is-sr-flag, .is-suriname-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sr-flag, .is-suriname-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sr.svg");
 }
 
@@ -16618,7 +16622,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ss.svg");
 }
 
-.stflag:is(.is-ss-flag, .is-south-sudan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ss-flag, .is-south-sudan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ss.svg");
 }
 
@@ -16626,7 +16630,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/st.svg");
 }
 
-.stflag:is(.is-st-flag, .is-sao-tome-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-st-flag, .is-sao-tome-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/st.svg");
 }
 
@@ -16634,7 +16638,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sv.svg");
 }
 
-.stflag:is(.is-sv-flag, .is-el-salvador-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sv-flag, .is-el-salvador-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sv.svg");
 }
 
@@ -16642,7 +16646,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sx.svg");
 }
 
-.stflag:is(.is-sx-flag, .is-sint-maarten-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sx-flag, .is-sint-maarten-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sx.svg");
 }
 
@@ -16650,7 +16654,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sy.svg");
 }
 
-.stflag:is(.is-sy-flag, .is-syria-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sy-flag, .is-syria-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sy.svg");
 }
 
@@ -16658,7 +16662,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/sz.svg");
 }
 
-.stflag:is(.is-sz-flag, .is-swaziland-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-sz-flag, .is-swaziland-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/sz.svg");
 }
 
@@ -16666,7 +16670,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tc.svg");
 }
 
-.stflag:is(.is-tc-flag, .is-caicos-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tc-flag, .is-caicos-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tc.svg");
 }
 
@@ -16674,7 +16678,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/td.svg");
 }
 
-.stflag:is(.is-td-flag, .is-chad-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-td-flag, .is-chad-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/td.svg");
 }
 
@@ -16682,7 +16686,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tf.svg");
 }
 
-.stflag:is(.is-tf-flag, .is-french-territories-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tf-flag, .is-french-territories-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tf.svg");
 }
 
@@ -16690,7 +16694,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tg.svg");
 }
 
-.stflag:is(.is-tg-flag, .is-togo-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tg-flag, .is-togo-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tg.svg");
 }
 
@@ -16698,7 +16702,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/th.svg");
 }
 
-.stflag:is(.is-th-flag, .is-thailand-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-th-flag, .is-thailand-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/th.svg");
 }
 
@@ -16706,7 +16710,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tj.svg");
 }
 
-.stflag:is(.is-tj-flag, .is-tajikistan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tj-flag, .is-tajikistan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tj.svg");
 }
 
@@ -16714,7 +16718,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tk.svg");
 }
 
-.stflag:is(.is-tk-flag, .is-tokelau-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tk-flag, .is-tokelau-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tk.svg");
 }
 
@@ -16722,7 +16726,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tl.svg");
 }
 
-.stflag:is(.is-tl-flag, .is-timorleste-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tl-flag, .is-timorleste-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tl.svg");
 }
 
@@ -16730,7 +16734,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tm.svg");
 }
 
-.stflag:is(.is-tm-flag, .is-turkmenistan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tm-flag, .is-turkmenistan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tm.svg");
 }
 
@@ -16738,7 +16742,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tn.svg");
 }
 
-.stflag:is(.is-tn-flag, .is-tunisia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tn-flag, .is-tunisia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tn.svg");
 }
 
@@ -16746,7 +16750,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/to.svg");
 }
 
-.stflag:is(.is-to-flag, .is-tonga-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-to-flag, .is-tonga-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/to.svg");
 }
 
@@ -16754,7 +16758,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tr.svg");
 }
 
-.stflag:is(.is-tr-flag, .is-turkey-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tr-flag, .is-turkey-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tr.svg");
 }
 
@@ -16762,7 +16766,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tt.svg");
 }
 
-.stflag:is(.is-tt-flag, .is-trinidad-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tt-flag, .is-trinidad-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tt.svg");
 }
 
@@ -16770,7 +16774,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tv.svg");
 }
 
-.stflag:is(.is-tv-flag, .is-tuvalu-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tv-flag, .is-tuvalu-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tv.svg");
 }
 
@@ -16778,7 +16782,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tw.svg");
 }
 
-.stflag:is(.is-tw-flag, .is-taiwan-flag, .is-republic-of-china-flag, .is-formosa-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tw-flag, .is-taiwan-flag, .is-republic-of-china-flag, .is-formosa-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tw.svg");
 }
 
@@ -16786,7 +16790,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/tz.svg");
 }
 
-.stflag:is(.is-tz-flag, .is-tanzania-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-tz-flag, .is-tanzania-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/tz.svg");
 }
 
@@ -16794,7 +16798,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ua.svg");
 }
 
-.stflag:is(.is-ua-flag, .is-ukraine-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ua-flag, .is-ukraine-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ua.svg");
 }
 
@@ -16802,7 +16806,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ug.svg");
 }
 
-.stflag:is(.is-ug-flag, .is-uganda-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ug-flag, .is-uganda-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ug.svg");
 }
 
@@ -16810,7 +16814,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/um.svg");
 }
 
-.stflag:is(.is-um-flag, .is-us-minor-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-um-flag, .is-us-minor-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/um.svg");
 }
 
@@ -16818,7 +16822,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/un.svg");
 }
 
-.stflag:is(.is-un-flag, .is-united-nations-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-un-flag, .is-united-nations-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/un.svg");
 }
 
@@ -16826,7 +16830,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/us.svg");
 }
 
-.stflag:is(.is-us-flag, .is-united-states-flag, .is-america-flag, .is-usa-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-us-flag, .is-united-states-flag, .is-america-flag, .is-usa-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/us.svg");
 }
 
@@ -16834,7 +16838,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/uy.svg");
 }
 
-.stflag:is(.is-uy-flag, .is-uruguay-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-uy-flag, .is-uruguay-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/uy.svg");
 }
 
@@ -16842,7 +16846,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/uz.svg");
 }
 
-.stflag:is(.is-uz-flag, .is-uzbekistan-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-uz-flag, .is-uzbekistan-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/uz.svg");
 }
 
@@ -16850,7 +16854,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/va.svg");
 }
 
-.stflag:is(.is-va-flag, .is-vatican-city-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-va-flag, .is-vatican-city-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/va.svg");
 }
 
@@ -16858,7 +16862,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/vc.svg");
 }
 
-.stflag:is(.is-vc-flag, .is-saint-vincent-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-vc-flag, .is-saint-vincent-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/vc.svg");
 }
 
@@ -16866,7 +16870,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ve.svg");
 }
 
-.stflag:is(.is-ve-flag, .is-venezuela-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ve-flag, .is-venezuela-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ve.svg");
 }
 
@@ -16874,7 +16878,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/vg.svg");
 }
 
-.stflag:is(.is-vg-flag, .is-british-virgin-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-vg-flag, .is-british-virgin-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/vg.svg");
 }
 
@@ -16882,7 +16886,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/vi.svg");
 }
 
-.stflag:is(.is-vi-flag, .is-us-virgin-islands-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-vi-flag, .is-us-virgin-islands-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/vi.svg");
 }
 
@@ -16890,7 +16894,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/vn.svg");
 }
 
-.stflag:is(.is-vn-flag, .is-vietnam-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-vn-flag, .is-vietnam-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/vn.svg");
 }
 
@@ -16898,7 +16902,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/vu.svg");
 }
 
-.stflag:is(.is-vu-flag, .is-vanuatu-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-vu-flag, .is-vanuatu-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/vu.svg");
 }
 
@@ -16906,7 +16910,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/wf.svg");
 }
 
-.stflag:is(.is-wf-flag, .is-wallis-and-futuna-flag, .is-wallis-flag, .is-futuna-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-wf-flag, .is-wallis-and-futuna-flag, .is-wallis-flag, .is-futuna-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/wf.svg");
 }
 
@@ -16914,7 +16918,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ws.svg");
 }
 
-.stflag:is(.is-ws-flag, .is-samoa-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ws-flag, .is-samoa-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ws.svg");
 }
 
@@ -16922,7 +16926,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/ye.svg");
 }
 
-.stflag:is(.is-ye-flag, .is-yemen-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-ye-flag, .is-yemen-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/ye.svg");
 }
 
@@ -16930,7 +16934,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/yt.svg");
 }
 
-.stflag:is(.is-yt-flag, .is-mayotte-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-yt-flag, .is-mayotte-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/yt.svg");
 }
 
@@ -16938,7 +16942,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/za.svg");
 }
 
-.stflag:is(.is-za-flag, .is-south-africa-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-za-flag, .is-south-africa-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/za.svg");
 }
 
@@ -16946,7 +16950,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/zm.svg");
 }
 
-.stflag:is(.is-zm-flag, .is-zambia-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-zm-flag, .is-zambia-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/zm.svg");
 }
 
@@ -16954,7 +16958,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/zw.svg");
 }
 
-.stflag:is(.is-zw-flag, .is-zimbabwe-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-zw-flag, .is-zimbabwe-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/zw.svg");
 }
 
@@ -16962,7 +16966,7 @@ a.stbox:hover{
     background-image: url("./flags/4x3/zz.svg");
 }
 
-.stflag:is(.is-zz-flag, .is-unknown-flag):is(.is-squared, .is-circular){
+.stflag:is(.is-zz-flag, .is-unknown-flag):is(.is-squared, round){
     background-image: url("./flags/1x1/zz.svg");
 }
 
@@ -18390,7 +18394,7 @@ a.main:hover{
   * Circular
   */
 
-.stavatar.is-circular,.stavatar.is-circular img{
+.stavatarround,.stavatarround img{
     border-radius: 100rem;
 }
 
@@ -19081,29 +19085,29 @@ a.main:hover{
   * Circular
   */
 
-.stimageset.is-circular.is-portrait .item:first-child img{
+.stimagesetround.is-portrait .item:first-child img{
     border-top-left-radius: 0.4rem;
     border-bottom-left-radius: 0.4rem;
 }
 
-.stimageset.is-circular.is-portrait .item:nth-child(2) img{
+.stimagesetround.is-portrait .item:nth-child(2) img{
     border-top-right-radius: 0.4rem;
 }
 
-.stimageset.is-circular.is-portrait .item:last-child img{
+.stimagesetround.is-portrait .item:last-child img{
     border-bottom-right-radius: 0.4rem;
 }
 
-.stimageset.is-circular:not(.is-portrait) .item:first-child img{
+.stimagesetround:not(.is-portrait) .item:first-child img{
     border-top-right-radius: 0.4rem;
     border-top-left-radius: 0.4rem;
 }
 
-.stimageset.is-circular:not(.is-portrait) .item:nth-child(2) img{
+.stimagesetround:not(.is-portrait) .item:nth-child(2) img{
     border-bottom-left-radius: 0.4rem;
 }
 
-.stimageset.is-circular:not(.is-portrait) .item:last-child img{
+.stimagesetround:not(.is-portrait) .item:last-child img{
     border-bottom-right-radius: 0.4rem;
 }
 
@@ -19172,7 +19176,7 @@ a.main:hover{
   * Circular
   */
 
-.sticonset.is-circular .sticon{
+.sticonsetround .sticon{
     border-radius: 100rem;
 }
 
@@ -19187,13 +19191,9 @@ a.main:hover{
     box-sizing: border-box;
 }
 
-/* ==========================================================================
-    Variables
-    ========================================================================== */
+/* ========================================================================== Variables ========================================================================== */
 
-/* ==========================================================================
-    Base
-    ========================================================================== */
+/* ========================================================================== Base ========================================================================== */
 
 .stconversation{
     display: flex;
@@ -19577,12 +19577,12 @@ a.main:hover{
   * Circular
   */
 
-.stgauge.is-circular{
+.stgaugeround{
     transform: initial;
     --length: 1;
 }
 
-.stgauge.is-circular .bar .text{
+.stgaugeround .bar .text{
     transform: initial;
 }
 
