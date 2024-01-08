@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="/website/index.css">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="plugin/css/chrisplugin.css">
         <script src="plugin/js/chrisplugin.js"></script>
@@ -19,12 +20,26 @@
                 <input type="button" class="navigationbarbutton" id="signin" onclick="location.href='signinsignup.html?key=signin'" value="Sign In">
             </div>
         </div>
-        <div class="main" id="main">
-            username: <input type="text" class="input" id="username"><br><br>
-            password: <input type="password" class="input" id="password">
-            <div class="error usererror" id="error"></div>
-            <input type="button" class="button" id="cancel" value="cancel">
-            <input type="button" class="button" id="submit">
+        <div class="main center" id="main">
+            <div class="inputmargin">
+                <div class="sttext">username</div>
+                <div class="stinput underline endicon">
+                    <input type="text" id="username">
+                    <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                </div>
+            </div>
+            <div class="inputmargin">
+                <div class="sttext">password</div>
+                <div class="stinput underline endicon">
+                    <input type="text" id="password">
+                    <div class="sticon"><img src="/website/material/icon/lock.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                </div>
+            </div>
+            <div class="sttext error bold textcenter" id="error"></div>
+            <div class="textcenter">
+                <input type="button" class="stbutton outline" id="cancel" value="cancel">
+                <input type="button" class="stbutton outline" id="submit">
+            </div>
         </div>
         <script src="signinsignup.js"></script>
     </body>

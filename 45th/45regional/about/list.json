@@ -6,7 +6,7 @@
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/12/02",
-            "updatedate": "2023/12/24",
+            "updatedate": "2024/01/08",
             "data": [
                 {
                     "list": 1,
@@ -353,30 +353,30 @@
                         {
                             "no": "37",
                             "description": "若設計的頁面是以表格方式呈現。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "description": "能使用滑鼠在「日工作計畫表」中拖曳「工作項目」區塊來改變開始時間。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "不管由上往下，或者由下往上拖曳時，「工作項目」區塊能隨著拖曳時所橫跨的時間區間正確顯示。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "拖曳時, 時間變動單位為1小時",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 }
                             ]
                         },
                         {
                             "no": "39",
                             "description": "若設計的頁面是以表格方式呈現",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
-                                    "description": "「日工作計畫表」上的每一「工作項目」上有編輯按鈕",
-                                    "statu": "FAILED"
+                                    "description": "「日工作計畫表」上有共同的編輯按鈕",
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "當滑鼠點選某一「工作項目」區塊時，滑鼠再按編輯按鈕時",
@@ -387,8 +387,8 @@
                                     "statu": "FAILED"
                                 },
                                 {
-                                    "description": "「日工作計畫表」上的每一「工作項目」上有預覽按鈕",
-                                    "statu": "FAILED"
+                                    "description": "「日工作計畫表」上有共同的預覽按鈕",
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "當滑鼠點選某一「工作項目」區塊時，滑鼠再按預覽按鈕時，可預覽該工作計畫項目之詳細內容。",

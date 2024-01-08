@@ -1183,10 +1183,9 @@ button{
   */
 
 .stbutton.disabled{
-    cursor: not-allowed;
-    pointer-events: none;
     opacity: 0.5;
     user-select: none;
+    cursor: not-allowed;
 }
 
 /**
@@ -9318,7 +9317,7 @@ button{
     Variables
     ========================================================================== */
 
-@font-face{
+/* @font-face{
     font-family: "Icons";
     src: url("fonts/icons/fa-solid-900.woff2") format("woff2"), url("fonts/icons/fa-solid-900.ttf") format("truetype");
     font-style: normal;
@@ -9346,7 +9345,7 @@ button{
     font-variant: normal;
     text-decoration: inherit;
     text-transform: none;
-}
+} */
 
 @keyframes sticon-spin{
     from{

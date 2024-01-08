@@ -1,5 +1,5 @@
 function leaderboard(){
-    oldajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/games/"+weblsget("worldskill2022MDgame")+"/scores").onload=function(){
+    oldajax("GET","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskill2022MDgame")+"/scores").onload=function(){
         let data=JSON.parse(this.responseText)
         let username=false
         let usercheck=false
@@ -51,7 +51,7 @@ if(!isset(weblsget("worldskill2022MDgame"))){
     location.href="indx.html"
 }
 
-oldajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/games/"+weblsget("worldskill2022MDgame")).onload=function(){
+oldajax("GET","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskill2022MDgame")).onload=function(){
     let data=JSON.parse(this.responseText)
     console.log(data)
     docgetid("navigationbartitle2").innerHTML=`
@@ -62,7 +62,7 @@ oldajax("GET","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_
     `
 
     docgetid("game").innerHTML=`
-        <iframe src="https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/storage/app/games/${data["gamePath"]}" class="iframe"></iframe>
+        <iframe src="${data["gamePath"]}" class="iframe"></iframe>
     `
 }
 
@@ -78,7 +78,7 @@ if(isset(weblsget("worldskill2022MDtoken"))){
 
     // logout
     docgetid("signout").onclick=function(){
-        let ajax=oldajax("POST","https://hiiamchris.ddns.net:444/website/worldskill/2022/module_c_solution/public/api/v1/auth/signout",null,[
+        let ajax=oldajax("POST","/backend/worldskill2022modulec/api/v1/auth/signout",null,[
             ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
         ])
         ajax.onload=function(){
