@@ -450,6 +450,9 @@
 }
 
 .todoblockdiv{
+    border: 1px var(--stgray-200) solid;
+    background: var(--stgray-300);
+    border-radius: 10px;
     width: 185px;
     text-align: left;
     padding: 5px;
@@ -457,9 +460,6 @@
 }
 
 .todoblock{
-    border: 1px var(--stgray-200) solid;
-    background: var(--stgray-300);
-    border-radius: 5px;
     width: 175px;
     text-align: left;
     padding: 5px;

@@ -1,6 +1,5 @@
 function leaderboard(){
-    oldajax("GET","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskill2022MDgame")+"/scores").onload=function(){
-        let data=JSON.parse(this.responseText)
+    ajax("GET","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskill2022MDgame")+"/scores",function(event,data){
         let username=false
         let usercheck=false
         docgetid("gameleaderboard").innerHTML=``
@@ -44,15 +43,14 @@ function leaderboard(){
                 }
             }
         }
-    }
+    })
 }
 
 if(!isset(weblsget("worldskill2022MDgame"))){
     location.href="indx.html"
 }
 
-oldajax("GET","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskill2022MDgame")).onload=function(){
-    let data=JSON.parse(this.responseText)
+ajax("GET","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskill2022MDgame"),function(event,data){
     console.log(data)
     docgetid("navigationbartitle2").innerHTML=`
         (Game: ${data["title"]})
@@ -64,7 +62,7 @@ oldajax("GET","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskil
     docgetid("game").innerHTML=`
         <iframe src="${data["gamePath"]}" class="iframe"></iframe>
     `
-}
+})
 
 leaderboard()
 setInterval(leaderboard,5000)

@@ -1,5 +1,5 @@
 let positiontype="top"
-let positiondeviation=35
+let positiondeviation=40
 let check=false
 let dragid=null
 let clickid=null
@@ -37,7 +37,7 @@ if(weblsget("45regionaltodosorttype")=="ASC"){
     }
     domgetid("updownbutton").value="降冪"
     positiontype="bottom"
-    positiondeviation=-5
+    positiondeviation=0
 }
 
 domgetid("maintable").innerHTML=maintableinnerhtml
@@ -76,8 +76,8 @@ ajax("GET","/backend/45regional/gettodolist",function(event,data){
 
             maintableinnerhtml=`
                 ${maintableinnerhtml}
-                <div class="todoblockdiv macossectiondivy" id="${row[i][0]}" data-starttime="${row[i][2]}" data-endtime="${row[i][3]}" style="position: absolute;${positiontype}: ${positiondeviation+30*(starthr)}px;left: 110px;">
-                    <div class="todoblock" style="height: ${30*(endhr-starthr)}px">
+                <div class="todoblockdiv macossectiondivy" id="${row[i][0]}" data-starttime="${row[i][2]}" data-endtime="${row[i][3]}" style="position: absolute;${positiontype}: ${positiondeviation+30*(starthr)}px;left: 110px;height: ${30*(endhr-starthr)}px;">
+                    <div class="todoblock" style="height: ${30*(endhr-starthr)}px;">
                         <div class="dragable" data-id="${row[i][0]}"></div>
                         <img src="icon/close.svg" class="tododeleteicon" data-id="${row[i][0]}">
                         <div class="todoblocktitle">工作名稱: ${row[i][1]}</div>
@@ -105,14 +105,14 @@ ajax("GET","/backend/45regional/gettodolist",function(event,data){
 
         onmousedown(".todoblockdiv",function(element,event){
             if(dragid==null){
-                domgetall(".todoblock").forEach(function(event2){
+                domgetall(".todoblockdiv").forEach(function(event2){
                     event2.style.backgroundColor="var(--stgray-300)"
                     event2.style.color="white"
                 })
 
                 if(clickid!=element.id){
                     clickid=element.id
-                    element.querySelectorAll(".todoblock")[0].style.backgroundColor="var(--stprimary-400)"
+                    element.style.backgroundColor="var(--stprimary-400)"
                     domgetid("edit").classList.remove("disabled")
                     domgetid("see").classList.remove("disabled")
                     domgetid("edit").disabled=false
