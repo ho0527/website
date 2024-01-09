@@ -3,7 +3,6 @@ body{
     background: rgb(25, 25, 25);
     color: lightgray;
     text-align: center;
-    word-break: break-all;
     padding: 0px;
     margin: 0px;
 }
@@ -397,19 +396,17 @@ table{
 }
 
 .listdiv{
-    display: flex;
-    margin-top: 5px;
     color: white;
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .questiondiv{
-    display: flex;
-    margin-top: 5px;
     color: white;
-}
-
-.m5{
-    margin-left: 5px;
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .no{
@@ -417,15 +414,17 @@ table{
 }
 
 .descriptiondiv{
-    display: flex;
     margin-top: 5px;
     color: white;
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .dot{
     color: gray;
     user-select: none;
+    margin-left: 5px;
 }
 
 .listdiv:hover{
@@ -533,7 +532,14 @@ table{
 }
 
 .nol{
+    max-width: 75px;
     user-select: none;
+}
+
+.description{
+    text-align: justify;
+    width: 60vw;
+    margin-left: 10px;
 }
 
 /* 萬聖節特別的東東 */

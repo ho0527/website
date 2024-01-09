@@ -37,7 +37,7 @@ oldajax("GET","list.json").onload=function(){
                             descriptiondata=descriptiondata+`
                                 <div class="descriptiondiv">
                                     <div class="nol">-</div>
-                                    <div class="title m5">${question[l]["data"][m]["description"]}</div>
+                                    <div class="description">${question[l]["data"][m]["description"]}</div>
                                     <div class="dot">............</div>
                                     <div class="statu" style="color: ${statutest(question[l]["data"][m]["statu"])}">${question[l]["data"][m]["statu"]}</div>
                                 </div>
@@ -46,7 +46,7 @@ oldajax("GET","list.json").onload=function(){
                         questiondata=questiondata+`
                             <div class="questiondiv">
                                 <div class="nol">no.${question[l]["no"]}</div>
-                                <div class="title m5">${linktest(question[l],question[l]["description"])}</div>
+                                <div class="description">${linktest(question[l],question[l]["description"])}</div>
                                 <div class="dot">............</div>
                                 <div class="statu" style="color: ${statutest(question[l]["statu"])}">${question[l]["statu"]}</div>
                             </div>
@@ -87,7 +87,7 @@ oldajax("GET","list.json").onload=function(){
                         descriptiondata=descriptiondata+`
                             <div class="descriptiondiv">
                                 <div class="nol">-</div>
-                                <div class="title m5">${question[k]["data"][l]["description"]}</div>
+                                <div class="description">${question[k]["data"][l]["description"]}</div>
                                 <div class="dot">............</div>
                                 <div class="statu" style="color: ${statutest(question[k]["data"][l]["statu"])}">${question[k]["data"][l]["statu"]}</div>
                             </div>
@@ -97,7 +97,7 @@ oldajax("GET","list.json").onload=function(){
                     questiondata=questiondata+`
                         <div class="questiondiv">
                             <div class="nol">no.${question[k]["no"]}</div>
-                            <div class="title m5">${question[k]["description"]}</div>
+                            <div class="description">${question[k]["description"]}</div>
                             <div class="dot">............</div>
                             <div class="statu" style="color: ${statutest(question[k]["statu"])}">${question[k]["statu"]}</div>
                         </div>

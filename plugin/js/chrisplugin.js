@@ -2473,11 +2473,11 @@ function onpaymentmethodchange(element,callback=function(){}){
 }
 
 // onplay
-function play(element,callback=function(){}){
-    domgetall(element).forEach(function(event){
-        event.onplay=function(onevent){ callback(event,onevent) }
-    })
-}
+// function play(element,callback=function(){}){
+//     domgetall(element).forEach(function(event){
+//         event.onplay=function(onevent){ callback(event,onevent) }
+//     })
+// }
 
 function onplay(element,callback=function(){}){
     domgetall(element).forEach(function(event){
@@ -2486,11 +2486,11 @@ function onplay(element,callback=function(){}){
 }
 
 // onplaying
-function playing(element,callback=function(){}){
-    domgetall(element).forEach(function(event){
-        event.onplaying=function(onevent){ callback(event,onevent) }
-    })
-}
+// function playing(element,callback=function(){}){
+//     domgetall(element).forEach(function(event){
+//         event.onplaying=function(onevent){ callback(event,onevent) }
+//     })
+// }
 
 function onplaying(element,callback=function(){}){
     domgetall(element).forEach(function(event){
