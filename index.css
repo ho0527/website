@@ -1,11 +1,11 @@
 body{
     font-family: "Consolas";
-    user-select: none;
-    word-break: break-all;
+    /* user-select: none; */
+    /* word-break: break-all; */
     padding: 0px;
     margin: 0px;
 
-    -moz-user-select: none;
+    /* -moz-user-select: none; */
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -27,7 +27,7 @@ table{
 
 .grid{
     display: grid;
-    grid-gap: 1%;
+    /* grid-gap: 1%; */
     grid-template-columns: repeat(100, 1fr);
     grid-auto-rows: 5%;
 }
@@ -167,14 +167,6 @@ table{
     display: inline-block;
     word-break: normal;
     word-wrap: break-word;
-}
-
-.inputdiv{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
 }
 
 .checkbox{
@@ -9902,28 +9894,34 @@ button{
   * Negative
   */
 
-.stinput.error:is(input, textarea){
+.inputerror input{
     color: var(--stnegative-600);
     border-color: var(--stnegative-400);
     font-weight: 500;
 }
 
-.stinput.error .label{
+.inputerror textarea{
+    color: var(--stnegative-600);
+    border-color: var(--stnegative-400);
+    font-weight: 500;
+}
+
+.inputerror .label{
     border-color: var(--stnegative-400);
 }
 
 /** Solid */
-.stinput.error.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+.inputerror.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
     border-color: var(--stnegative-400);
 }
 
-.stinput.error.is-solid input:focus,.stinput.error.is-solid textarea:focus{
+.inputerror.is-solid input:focus,.inputerror.is-solid textarea:focus{
     background: var(--stgray-100);
     border: 1px solid var(--stnegative-400);
 }
 
 /** Underlined */
-.stinput.error.underline:is(.label, input, textarea){
+.inputerror.underline:is(.label, input, textarea){
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
@@ -10428,7 +10426,7 @@ button{
 .stcheckbox input::after{
     position: absolute;
     display: none;
-    content: "\f00c";
+    content: "✔";
     font-family: "Icons";
     font-weight: normal;
     font-style: normal;
@@ -11806,6 +11804,7 @@ button{
     font-weight: 500;
     color: var(--stgray-800);
     font-size: var(--stfont-size-14px);
+    margin: 2px 0px;
     line-height: 1;
 }
 

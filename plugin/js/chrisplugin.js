@@ -655,6 +655,14 @@ function closelightbox(){
     },300)
 }
 
+function lightboxclose(){
+    docgetall(".lightboxmask")[0].style.transform="translateY(-100%)"
+
+    setTimeout(function(){
+        docgetall(".lightboxmask")[0].innerHTML=``
+    },300)
+}
+
 function tag(tagdiv,taglist,newtag=function(){}){
     let tagset=new Set()
 
