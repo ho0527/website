@@ -202,7 +202,7 @@ function main(){
                 if(time>15){
                     let x=event2.pageX
                     let y=event2.pageY
-                    event.style.top=y-150+"px"
+                    event.style.top=y-70+"px"
                     event.style.left=x-62.5+"px"
                     for(let i=1;i<=4;i=i+1){
                         if(event.dataset["link"+i+"to"]){
