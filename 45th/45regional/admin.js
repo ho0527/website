@@ -53,7 +53,7 @@ function userlistmain(){
             for(let i=0;i<row.length;i=i+1){
                 let def=`
                     <input type="button" class="stbutton light edituser" data-id="${row[i][0]}" value="修改">
-                    <input type="button" class="stbutton negative deluser" data-id="${row[i][0]}" value="刪除">
+                    <input type="button" class="stbutton error deluser" data-id="${row[i][0]}" value="刪除">
                 `
 
                 if(row[i][0]==1){
