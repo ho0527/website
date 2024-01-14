@@ -251,13 +251,27 @@ function ajax(method,url,onloadcallback,send=null,header=[["Content-type","multi
                 xmlhttprequest.setRequestHeader(header[i][0],header[i][1])
             }
         }
-        xmlhttprequest.onload=function(){
-            let data=this.responseText
+        xmlhttprequest.onreadystatechange=function(){
+            if(this.readyState==0){
+            }
 
-            try{
-                data=JSON.parse(this.responseText)
-            }finally{
-                onloadcallback(this,data)
+            if(this.readyState==1){
+            }
+
+            if(this.readyState==2){
+            }
+
+            if(this.readyState==3){
+            }
+
+            if(this.readyState==4){
+                let data=this.responseText
+
+                try{
+                    data=JSON.parse(this.responseText)
+                }finally{
+                    onloadcallback(this,data)
+                }
             }
         }
         xmlhttprequest.send(send)

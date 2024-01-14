@@ -425,6 +425,7 @@ table{
     color: gray;
     user-select: none;
     margin-left: 5px;
+    overflow: hidden;
 }
 
 .listdiv:hover{

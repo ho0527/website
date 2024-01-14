@@ -31,53 +31,36 @@
                     "updatedate": "2023/12/04",
                     "data": [
                         {
-                            "list": 1,
-                            "description": "Task",
+                            "list": "C",
+                            "description": "1",
+                            "link": "modulec/1",
                             "statu": "FAILED",
-                            "data": [
-                                {
-                                    "no": "01",
-                                    "description": "01",
-                                    "link": "modulec/1",
-                                    "statu": "FAILED",
-                                    "createdate": "N/A",
-                                    "updatedate": "N/A",
-                                    "data": []
-                                },
-                                {
-                                    "no": "02",
-                                    "description": "02",
-                                    "link": "../../../worldskill/2022/TaskE",
-                                    "statu": "NOT UPDATE HERE",
-                                    "data": [
-                                        {
-                                            "description": "本處不更新(請見2019/modulee)",
-                                            "statu": "NOT UPDATE HERE"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "no": "03",
-                                    "description": "03",
-                                    "link": "../../../worldskill/2022/TaskD",
-                                    "statu": "NOT UPDATE HERE",
-                                    "data": [
-                                        {
-                                            "description": "本處不更新(請見2022/moduled)",
-                                            "statu": "NOT UPDATE HERE"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "no": "04",
-                                    "description": "04",
-                                    "link": "modulec/4",
-                                    "statu": "SUCCESS",
-                                    "createdate": "2023/09/27",
-                                    "updatedate": "2023/12/08",
-                                    "data": []
-                                }
-                            ]
+                            "createdate": "N/A",
+                            "updatedate": "N/A",
+                            "data": []
+                        },
+                        {
+                            "list": "C",
+                            "description": "2",
+                            "link": "../../../worldskill/2022/TaskE",
+                            "statu": "NOT UPDATE HERE",
+                            "data": []
+                        },
+                        {
+                            "list": "C",
+                            "description": "3",
+                            "link": "../../../worldskill/2022/TaskD",
+                            "statu": "NOT UPDATE HERE",
+                            "data": []
+                        },
+                        {
+                            "list": "C",
+                            "description": "4",
+                            "link": "modulec/4",
+                            "statu": "SUCCESS",
+                            "createdate": "2023/09/27",
+                            "updatedate": "2023/12/08",
+                            "data": []
                         }
                     ]
                 },

@@ -38,7 +38,7 @@ oldajax("GET","list.json").onload=function(){
                                 <div class="descriptiondiv">
                                     <div class="nol">-</div>
                                     <div class="description">${question[l]["data"][m]["description"]}</div>
-                                    <div class="dot">............</div>
+                                    <div class="dot">.....................</div>
                                     <div class="statu" style="color: ${statutest(question[l]["data"][m]["statu"])}">${question[l]["data"][m]["statu"]}</div>
                                 </div>
                             `
@@ -47,7 +47,7 @@ oldajax("GET","list.json").onload=function(){
                             <div class="questiondiv">
                                 <div class="nol">no.${question[l]["no"]}</div>
                                 <div class="description">${linktest(question[l],question[l]["description"])}</div>
-                                <div class="dot">............</div>
+                                <div class="dot">.....................</div>
                                 <div class="statu" style="color: ${statutest(question[l]["statu"])}">${question[l]["statu"]}</div>
                             </div>
                             <div class="list3">${descriptiondata}</div>
@@ -56,8 +56,8 @@ oldajax("GET","list.json").onload=function(){
 
                     listdata2=listdata2+`
                         <div class="listdiv">
-                            <div class="title">項目: ${list[j]["data"][k]["list"]}-${list[j]["data"][k]["description"]}</div>
-                            <div class="dot">............</div>
+                            <div class="title">${linktest(list[j]["data"][k],"項目: "+list[j]["data"][k]["list"]+"-"+list[j]["data"][k]["description"])}</div>
+                            <div class="dot">.....................</div>
                             <div class="statu" style="color: ${statutest(list[j]["data"][k]["statu"])}">${list[j]["data"][k]["statu"]}</div>
                         </div>
                         <div class="list2">${questiondata}</div>
@@ -67,7 +67,7 @@ oldajax("GET","list.json").onload=function(){
                 listdata=listdata+`
                     <div class="listdiv">
                         <div class="title">${linktest(list[j],list[j]["title"])}</div>
-                        <div class="dot">............</div>
+                        <div class="dot">.....................</div>
                         <div class="statu" style="color: ${statutest(list[j]["statu"])}">${list[j]["statu"]}</div>
                         <div class="cdate">createdate: ${list[j]["createdate"]}</div>
                         <div class="udate">updatedate: ${list[j]["updatedate"]}</div>
@@ -88,7 +88,7 @@ oldajax("GET","list.json").onload=function(){
                             <div class="descriptiondiv">
                                 <div class="nol">-</div>
                                 <div class="description">${question[k]["data"][l]["description"]}</div>
-                                <div class="dot">............</div>
+                                <div class="dot">.....................</div>
                                 <div class="statu" style="color: ${statutest(question[k]["data"][l]["statu"])}">${question[k]["data"][l]["statu"]}</div>
                             </div>
                         `
@@ -98,7 +98,7 @@ oldajax("GET","list.json").onload=function(){
                         <div class="questiondiv">
                             <div class="nol">no.${question[k]["no"]}</div>
                             <div class="description">${question[k]["description"]}</div>
-                            <div class="dot">............</div>
+                            <div class="dot">.....................</div>
                             <div class="statu" style="color: ${statutest(question[k]["statu"])}">${question[k]["statu"]}</div>
                         </div>
                         <div class="list3">${descriptiondata}</div>
@@ -108,7 +108,7 @@ oldajax("GET","list.json").onload=function(){
                 listdata=listdata+`
                     <div class="listdiv">
                         <div class="title">項目: ${list[j]["list"]}-${list[j]["description"]}</div>
-                        <div class="dot">............</div>
+                        <div class="dot">.....................</div>
                         <div class="statu" style="color: ${statutest(list[j]["statu"])}">${list[j]["statu"]}</div>
                     </div>
                     <div class="list2">${questiondata}</div>
