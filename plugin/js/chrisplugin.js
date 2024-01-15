@@ -186,7 +186,8 @@ function domgetid(selector){
 }
 
 function domgetall(selector,callback=function(){}){
-    return document.querySelectorAll(selector).forEach(function(event){ callback(event) })
+    document.querySelectorAll(selector).forEach(function(event){ callback(event) })
+    return document.querySelectorAll(selector)
 }
 
 function conlog(data,color="white",size="12",weight="normal"){
