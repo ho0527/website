@@ -307,10 +307,8 @@ docgetid("log").onclick=function(){
     })
 }
 
-docgetid("logout").onclick=function(){
-    ajax("POST","/backend/45regional/logout/"+weblsget("45regionaluserid"),function(){
-        let data=JSON.parse(this.responseText)
-
+onclick("#logout",function(element,event){
+    ajax("POST","/backend/45regional/logout/"+weblsget("45regionaluserid"),function(event,data){
         if(data["success"]){
             alert("登出成功")
             weblsset("45regionaluserid",null)
@@ -321,6 +319,6 @@ docgetid("logout").onclick=function(){
             location.href="index.html"
         }
     })
-}
+})
 
 startmacossection()

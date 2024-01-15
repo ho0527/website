@@ -35,35 +35,35 @@
 ::-webkit-scrollbar-thumb:hover{
     border: 5px transparent solid;
     background-clip: content-box;
-    background: rgba(0,0,0,0.3);
+    background: rgba(50, 50, 50, 0.3);
     border-radius: 1000px;
 }
 
 body[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
-    background: rgba(0,0,0,0.3);
+    background: rgba(50, 50, 50, 0.3);
     border-radius: 1000px;
 }
 
 .macossectiondiv[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
-    background: rgba(0,0,0,0.3);
+    background: rgba(50, 50, 50, 0.3);
     border-radius: 1000px;
 }
 
 .macossectiondivx[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
-    background: rgba(0,0,0,0.3);
+    background: rgba(50, 50, 50, 0.3);
     border-radius: 1000px;
 }
 
 .macossectiondivy[scroll]::-webkit-scrollbar-thumb{
     border: 5px transparent solid;
     background-clip: content-box;
-    background: rgba(0,0,0,0.3);
+    background: rgba(50, 50, 50, 0.3);
     border-radius: 1000px;
 }
 

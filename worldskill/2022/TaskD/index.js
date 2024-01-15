@@ -18,8 +18,7 @@ function main(){
                 }
 
                 // game div
-                docgetid("main").innerHTML=`
-                    ${docgetid("main").innerHTML}
+                innerhtml("#main",`
                     <div class="game grid" data-id="${data["content"][i]["slug"]}">
                         <div class="title">${data["content"][i]["title"]}</div>
                         <div class="author">by ${data["content"][i]["author"]}</div>
@@ -27,7 +26,7 @@ function main(){
                         <div class="scorecount">score submit: ${data["content"][i]["scoreCount"]}</div>
                         <div class="imagediv"><img src="${pictureurl}" class="image"></div>
                     </div>
-                `
+                `)
             }
             docgetid("gamecount").innerHTML=`${total}`
 

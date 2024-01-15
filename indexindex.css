@@ -1,6 +1,6 @@
 body{
     font-family: "Consolas";
-    background: rgb(25, 25, 25);
+    background: rgb(15, 15, 17);
     color: lightgray;
     text-align: center;
     padding: 0px;
@@ -260,7 +260,7 @@ table{
 }
 
 .footer{
-    background: rgb(25, 25, 25);
+    background: rgb(15, 15, 17);
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -311,7 +311,7 @@ table{
 
 body{
     font-family: "Consolas";
-    background: rgb(25, 25, 25);
+    background: rgb(15, 15, 17);
     color: lightgray;
     padding: 5px;
 }
