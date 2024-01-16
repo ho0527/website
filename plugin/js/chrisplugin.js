@@ -24,6 +24,7 @@
     2023/11/20  18:01:04 Bata 1.0.18 // 新增hintbox函式
     2023/12/04  14:23:29 Bata 1.0.19 // 新增tag函式
     2024/01/08  21:17:23 Bata 1.0.25 // 新增on*函式
+    2024/01/16  18:25:29 Bata 1.1.0 // 函式大更新
 
         |-------    -----    -                     -     -----  -----  -----   -------|
        |-------    -        -            - - -          -                     -------|
@@ -246,12 +247,13 @@ function ajax(method,url,onloadcallback,send=null,header=[["Content-type","multi
     }
     if(check){
         let xmlhttprequest=new XMLHttpRequest()
+
         xmlhttprequest.open(method,url)
-        if(!send instanceof FormData){ // Don't set Content-Type for FormData
-            for(let i=0;i<header.length;i=i+1){
-                xmlhttprequest.setRequestHeader(header[i][0],header[i][1])
-            }
+
+        for(let i=0;i<header.length;i=i+1){
+            xmlhttprequest.setRequestHeader(header[i][0],header[i][1])
         }
+
         xmlhttprequest.onreadystatechange=function(){
             if(this.readyState==0){
                 statechange[0](this)
@@ -2188,16 +2190,14 @@ function onmerchantvalidation(element,callback=function(){}){
 }
 
 // onmessage
-function message(element,callback=function(){}){
-    domgetall(element).forEach(function(event){
-        event.onmessage=function(onevent){ callback(event,onevent) }
-    })
-}
+// function message(element,callback=function(){}){
+//     domgetall(element).forEach(function(event){
+//         event.onmessage=function(onevent){ callback(event,onevent) }
+//     })
+// }
 
-function onmessage(element,callback=function(){}){
-    domgetall(element).forEach(function(event){
-        event.onmessage=function(onevent){ callback(event,onevent) }
-    })
+function message(callback=function(){}){
+    window.onmessage=function(onevent){ callback(this,onevent) }
 }
 
 // onmessageerror
