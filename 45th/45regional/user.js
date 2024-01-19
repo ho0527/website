@@ -210,13 +210,13 @@ onclick("#newtodo",function(element,event){
                 </div>
                 <div class="stselect fill colorwhite inputmargin">
                     <select class="textcenter" id="starttime">
-                        <option value="na">開始時間</option>
+                        <option value="na" disabled selected>開始時間</option>
                         ${timeoptionlist}
                     </select>
                 </div><br>
                 <div class="stselect fill colorwhite inputmargin">
                     <select class="textcenter" id="endtime">
-                        <option value="na">結束時間</option>
+                        <option value="na" disabled selected>結束時間</option>
                         ${timeoptionlist}
                     </select>
                 </div><br>
@@ -280,67 +280,168 @@ onclick("#newtodo",function(element,event){
 })
 
 onclick("#edit",function(element,event){
-    lightbox(null,"lightbox",function(){
-        let timeoptionlist=``
+    ajax("GET","/backend/45regional/gettodo/"+clickid,function(event,data){
+        if(data["success"]){
+            let row=data["data"]
+            let starttime=parseInt(row[2])
+            let endtime=parseInt(row[3])
 
-        for(let i=0;i<=24;i=i+1){
-            timeoptionlist=`
-                ${timeoptionlist}
-                <option value="${String(i).padStart(2,"0")}">${String(i).padStart(2,"0")}:00</option>
-            `
+            lightbox(null,"lightbox",function(){
+                let starttimelist=``
+                let endtimelist=``
+                let deallist=``
+                let prioritylist=``
+
+                for(let i=0;i<=24;i=i+1){
+                    if(starttime==i){
+                        starttimelist=`
+                            ${starttimelist}
+                            <option value="${String(i).padStart(2,"0")}" selected>${String(i).padStart(2,"0")}:00</option>
+                        `
+                    }else{
+                        starttimelist=`
+                            ${starttimelist}
+                            <option value="${String(i).padStart(2,"0")}">${String(i).padStart(2,"0")}:00</option>
+                        `
+                    }
+
+                    if(endtime==i){
+                        endtimelist=`
+                            ${endtimelist}
+                            <option value="${String(i).padStart(2,"0")}" selected>${String(i).padStart(2,"0")}:00</option>
+                        `
+                    }else{
+                        endtimelist=`
+                            ${endtimelist}
+                            <option value="${String(i).padStart(2,"0")}">${String(i).padStart(2,"0")}:00</option>
+                        `
+                    }
+                }
+
+                // deallist START
+                if(row[4]=="未處理"){
+                    deallist=`
+                        <option value="未處理" selected>未處理</option>
+                        <option value="處理中">處理中</option>
+                        <option value="已完成">已完成</option>
+                    `
+                }
+
+                if(row[4]=="處理中"){
+                    deallist=`
+                        <option value="未處理">未處理</option>
+                        <option value="處理中" selected>處理中</option>
+                        <option value="已完成">已完成</option>
+                    `
+                }
+
+                if(row[4]=="已完成"){
+                    deallist=`
+                        <option value="未處理">未處理</option>
+                        <option value="處理中">處理中</option>
+                        <option value="已完成" selected>已完成</option>
+                    `
+                }
+                // deallist END
+
+                // prioritylist START
+                if(row[5]=="普通"){
+                    prioritylist=`
+                        <option value="普通" selected>普通</option>
+                        <option value="速件">速件</option>
+                        <option value="最速件">最速件</option>
+                    `
+                }
+
+                if(row[5]=="速件"){
+                    prioritylist=`
+                        <option value="普通">普通</option>
+                        <option value="速件" selected>速件</option>
+                        <option value="最速件">最速件</option>
+                    `
+                }
+
+                if(row[5]=="最速件"){
+                    prioritylist=`
+                        <option value="普通">普通</option>
+                        <option value="速件">速件</option>
+                        <option value="最速件" selected>最速件</option>
+                    `
+                }
+                // prioritylist END
+
+                return `
+                    <div class="textcenter userlightbox">
+                        <div class="newtodotitle">編輯工作</div>
+                        <div class="inputmargin textleft">
+                            <div class="sttextlabel light">工作標題:</div>
+                            <div class="stinput underline">
+                                <input type="text" id="title" value="${row[1]}">
+                            </div>
+                        </div>
+                        <div class="stselect fill colorwhite inputmargin">
+                            <select class="textcenter" id="starttime">
+                                <option value="na" disabled>開始時間</option>
+                                ${starttimelist}
+                            </select>
+                        </div><br>
+                        <div class="stselect fill colorwhite inputmargin">
+                            <select class="textcenter" id="endtime">
+                                <option value="na" disabled>結束時間</option>
+                                ${endtimelist}
+                            </select>
+                        </div><br>
+                        <div class="flex inputmargin">
+                            <div class="box">
+                                處理情形:
+                                <div class="stselect solid">
+                                    <select class="textcenter" id="deal">
+                                        ${deallist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box">
+                                類別:
+                                <div class="stselect solid">
+                                    <select class="textcenter" id="priority">
+                                        ${prioritylist}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stinput inputmargin">
+                            <textarea class="todotextarea" id="description" placeholder="詳細敘述工作內容">${row[6]}</textarea>
+                        </div>
+                        <input type="button" class="stbutton light" id="close" value="取消">
+                        <input type="button" class="stbutton light" id="submit" value="完成">
+                    </div>
+                `
+            },"close",true,"none")
+
+            onclick("#submit",function(element,event){
+                if(parseInt(domgetid("starttime").value)<parseInt(domgetid("endtime").value)){
+                    ajax("PUT","/backend/45regional/edittodo/"+clickid,function(event){
+                        let data=JSON.parse(event.responseText)
+                        if(data["success"]){
+                            alert("編輯成功")
+                            location.reload()
+                        }else{
+                            alert(data["data"])
+                        }
+                    },JSON.stringify({
+                        "title": domgetid("title").value,
+                        "starttime": domgetid("starttime").value,
+                        "endtime": domgetid("endtime").value,
+                        "deal": domgetid("deal").value,
+                        "priority": domgetid("priority").value,
+                        "description": domgetid("description").value
+                    }))
+                }else{
+                    alert("結束時間不可大於開始時間!")
+                }
+            })
         }
-
-        return `
-            <div class="textcenter userlightbox">
-                <div class="newtodotitle">編輯工作</div>
-                <div class="inputmargin textleft">
-                    <div class="sttextlabel light">工作標題:</div>
-                    <div class="stinput underline">
-                        <input type="text" id="title" value="work">
-                    </div>
-                </div>
-                <div class="stselect fill colorwhite inputmargin">
-                    <select class="textcenter" id="starttime">
-                        <option value="na">開始時間</option>
-                        ${timeoptionlist}
-                    </select>
-                </div><br>
-                <div class="stselect fill colorwhite inputmargin">
-                    <select class="textcenter" id="endtime">
-                        <option value="na">結束時間</option>
-                        ${timeoptionlist}
-                    </select>
-                </div><br>
-                <div class="flex inputmargin">
-                    <div class="box">
-                        處理情形:
-                        <div class="stselect solid">
-                            <select class="textcenter" id="deal">
-                                <option value="未處理">未處理</option>
-                                <option value="處理中">處理中</option>
-                                <option value="已完成">已完成</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="box">
-                        類別:
-                        <div class="stselect solid">
-                            <select class="textcenter" id="priority">
-                                <option value="普通">普通</option>
-                                <option value="速件">速件</option>
-                                <option value="最速件">最速件</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="stinput inputmargin">
-                    <textarea class="todotextarea" id="description" placeholder="詳細敘述工作內容"></textarea>
-                </div>
-                <input type="button" class="stbutton light" id="close" value="取消">
-                <input type="button" class="stbutton light" id="submit" value="完成">
-            </div>
-        `
-    },"close",true,"none")
+    })
 })
 
 onclick("#see",function(element,event){
