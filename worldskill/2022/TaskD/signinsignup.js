@@ -15,7 +15,7 @@ docgetid("submit").value=`${key}`
 
 docgetid("submit").onclick=function(){
     if(this.value=="signin"){
-        let ajax=oldajax("POST","/backend/worldskill2022modulec/api/v1/auth/signin",JSON.stringify({
+        let ajax=oldajax("POST",ajaxurl+"api/v1/auth/signin",JSON.stringify({
             "username": docgetid("username").value,
             "password": docgetid("password").value
         }),[
@@ -57,7 +57,7 @@ docgetid("submit").onclick=function(){
             }
         }
     }else{
-        let ajax=oldajax("POST","/backend/worldskill2022modulec/api/v1/auth/signup",JSON.stringify({
+        let ajax=oldajax("POST",ajaxurl+"api/v1/auth/signup",JSON.stringify({
             "username": docgetid("username").value,
             "password": docgetid("password").value
         }),[

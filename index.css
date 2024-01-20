@@ -174,27 +174,6 @@ table{
     height: 20px;
 }
 
-.button{
-    border: 1px black solid;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    transition-duration: 0.5s;
-}
-
-.button:hover{
-    background: gray;
-    color: white;
-}
-
-.button:active{
-	position: relative;
-	top: 1px;
-}
-
 .bluebutton{
 	box-shadow: inset 1px -3px 7px 0px #29bbff;
 	background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
@@ -508,19 +487,18 @@ html{
 
 
 @media (prefers-color-scheme: light){
-    html:not(.dark) .u-light-hidden{
+    html:not(.maindark) .u-light-hidden{
         display: none !important;
     }
 }
 
 @media (prefers-color-scheme: dark){
-    html:not(.light) .u-dark-hidden{
+    html:not(.mainlight) .u-dark-hidden{
         display: none !important;
     }
 }
 
 /* Dark */
-
 @media (prefers-color-scheme: dark){
     .u-inverted{
         color-scheme: light;
@@ -575,7 +553,6 @@ html{
 /* ========================================================================== Variables ========================================================================== */
 
 /* ========================================================================== Base ========================================================================== */
-
 .ststash{
     position: absolute;
     top: 0;
@@ -589,8 +566,6 @@ html{
 }
 
 /* ==========================================================================Color Schemes========================================================================== */
-
-
 @media (prefers-color-scheme: light){
     html:not(.dark) .light-hidden{
         display: none !important;
@@ -603,8 +578,7 @@ html{
     }
 }
 
-/* * Dark */
-
+/* Dark */
 @media (prefers-color-scheme: dark){
     html:not(.light){
         color-scheme: dark;
@@ -740,7 +714,6 @@ html.mainlight .u-inverted,.u-inverted,html.maindark,.u-dark{
 }
 
 /* Light */
-
 html,html.mainlight,.light,html.maindark .inverted{
     color-scheme: light;
 
@@ -800,9 +773,7 @@ html.mainlight .inverted,.inverted,html.maindark,.dark{
     --sttonal-warning-800: #463f00;
 }
 
-/*
-    * Hidden
-    */
+/* Hidden */
 
 html.mainlight .light-hidden,html.maindark .dark-hidden{
     display: none !important;
@@ -860,11 +831,6 @@ html{
     line-height: 1.75;
 }
 
-body{
-    width: 100%;
-    height: 100%;
-}
-
 /*
 Body
 1. 移除所有瀏覽器上的外距。
@@ -872,8 +838,9 @@ Body
 3. 避免 iOS 在轉向之後變更字體縮放大小。
 4. 改為透明來移除 Webkit 瀏覽器上的點擊高光。
 */
-
 body{
+    width: 100%;
+    height: 100%;
     margin: 0;
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
@@ -939,27 +906,23 @@ button{
 
 /* ========================================================================== Variables ========================================================================== */
 
-@keyframes stbutton-loading{
+@keyframes stbuttonloading{
     from{
         transform: translate(-50%, -50%) rotate(0deg);
     }
-
     to{
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
-.stbutton{
-    --horizontal-padding: 1.25em;
-    --height: var(--stinput-height-medium);
-
-    --accent-color: initial;
-    --accent-foreground-color: initial;
-}
-
 /* ========================================================================== Base ========================================================================== */
 
 .stbutton{
+    --horizontal-padding: 1.25em;
+    --height: var(--stinput-height-medium);
+    --accent-color: initial;
+    --accent-foreground-color: initial;
+
     margin: 5px;
     width: auto;
     font: inherit;
@@ -988,7 +951,6 @@ button{
     justify-content: center;
     align-items: center;
     text-align: center;
-
     padding: 0 var(--horizontal-padding);
     border-radius: 0.4rem;
     transition: 0.2s linear;
@@ -1003,10 +965,57 @@ button{
     outline: 0;
 }
 
+.button{
+    --horizontal-padding: 1.25em;
+    --height: var(--stinput-height-medium);
+    --accent-color: initial;
+    --accent-foreground-color: initial;
+
+    margin: 5px;
+    width: auto;
+    font: inherit;
+    outline: none;
+    box-sizing: border-box;
+    user-select: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: var(--height);
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: 2px solid var(--accent-color, var(--stgray-800));
+    font-size: var(--stfont-size-14px);
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--accent-foreground-color, var(--stgray-50));
+    background: var(--accent-color, var(--stgray-800));
+    text-decoration: none;
+    display: inline-flex;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 var(--horizontal-padding);
+    border-radius: 0.4rem;
+    transition: 0.2s linear;
+}
+
+.button:hover{
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+.button:focus{
+    outline: 0;
+}
+
 /* ========================================================================== Variations ========================================================================== */
 
 /* Secondary */
-
 .stbutton.secondary{
     color: var(--accent-color, var(--stgray-800));
     border-color: var(--stgray-100);
@@ -1014,7 +1023,6 @@ button{
 }
 
 /* Tertiary */
-
 .stbutton.is-tertiary{
     color: var(--stgray-800);
     background: var(--stgray-300);
@@ -1022,7 +1030,6 @@ button{
 }
 
 /* outline */
-
 .stbutton.outline{
     background: transparent;
     border: 2px solid var(--stgray-450);
@@ -1031,6 +1038,87 @@ button{
 
 /* hover */
 .stbutton.outline:hover{
+    border: 2px var(--stgray-900) solid;
+    font-weight: bold;
+}
+
+/* Secondary */
+.stbutton.secondary{
+    color: var(--accent-color, var(--stgray-800));
+    border-color: var(--stgray-100);
+    background: var(--stgray-100);
+}
+
+/* Tertiary */
+.stbutton.is-tertiary{
+    color: var(--stgray-800);
+    background: var(--stgray-300);
+    border-color: var(--stgray-300);
+}
+
+/* outline */
+.stbutton.outline{
+    background: transparent;
+    border: 2px solid var(--stgray-450);
+    color: var(--accent-color, var(--stgray-800));
+}
+
+/* hover */
+.stbutton.outline:hover{
+    border: 2px var(--stgray-900) solid;
+    font-weight: bold;
+}
+
+/* Secondary */
+.button.secondary{
+    color: var(--accent-color, var(--stgray-800));
+    border-color: var(--stgray-100);
+    background: var(--stgray-100);
+}
+
+/* Tertiary */
+.button.is-tertiary{
+    color: var(--stgray-800);
+    background: var(--stgray-300);
+    border-color: var(--stgray-300);
+}
+
+/* outline */
+.button.outline{
+    background: transparent;
+    border: 2px solid var(--stgray-450);
+    color: var(--accent-color, var(--stgray-800));
+}
+
+/* hover */
+.button.outline:hover{
+    border: 2px var(--stgray-900) solid;
+    font-weight: bold;
+}
+
+/* Secondary */
+.button.secondary{
+    color: var(--accent-color, var(--stgray-800));
+    border-color: var(--stgray-100);
+    background: var(--stgray-100);
+}
+
+/* Tertiary */
+.button.is-tertiary{
+    color: var(--stgray-800);
+    background: var(--stgray-300);
+    border-color: var(--stgray-300);
+}
+
+/* outline */
+.button.outline{
+    background: transparent;
+    border: 2px solid var(--stgray-450);
+    color: var(--accent-color, var(--stgray-800));
+}
+
+/* hover */
+.button.outline:hover{
     border: 2px var(--stgray-900) solid;
     font-weight: bold;
 }
@@ -1086,7 +1174,6 @@ button{
 }
 
 /* Ghost */
-
 .stbutton.ghost{
     background: transparent;
     color: var(--stgray-800);
@@ -1128,7 +1215,7 @@ button{
     -webkit-font-smoothing: antialiased;
     backface-visibility: hidden;
     display: inline-block;
-    animation: stbutton-loading 2s linear infinite;
+    animation: stbuttonloading 2s linear infinite;
     color: var(--stgray-50);
     font-size: var(--stfont-size-18px);
     content: "\f110";
@@ -1141,15 +1228,68 @@ button{
     color: var(--stgray-800);
 }
 
-/* Tertiary */
+/* Ghost */
+.button.ghost{
+    background: transparent;
+    color: var(--stgray-800);
+    border: 2px solid transparent;
+}
 
+.button.ghost{
+    background: transparent;
+    color: var(--stgray-800);
+    border: 2px solid transparent;
+}
+
+.button.ghost:hover{
+    background: var(--stgray-100);
+}
+
+.button.ghost.warn{
+    color: var(--stnegative-500);
+}
+
+/* Loading */
+.button.loading,.button.loading.error{
+    color: transparent;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.button.loading .icon{
+    visibility: hidden;
+}
+
+.button.loading::after{
+    font-family: "Icons";
+    font-weight: normal;
+    font-style: normal;
+    display: inline;
+    text-decoration: inherit;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+    display: inline-block;
+    animation: stbuttonloading 2s linear infinite;
+    color: var(--stgray-50);
+    font-size: var(--stfont-size-18px);
+    content: "\f110";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.button.loading:is(.outline, .secondary, .is-tertiary, .ghost)::after{
+    color: var(--stgray-800);
+}
+
+/* Tertiary */
 /*.stbutton.is-tertiary:hover{
      background: var(--stgray-100);
      opacity: 1;
  }*/
 
 /* Sizes */
-
 .stbutton.small{
     --height: var(--stinput-height-small);
 
@@ -1361,6 +1501,219 @@ button{
     border-left-color: transparent;
 }
 
+/* Sizes */
+.button.small{
+    --height: var(--stinput-height-small);
+
+    font-size: var(--stfont-size-13px);
+}
+
+.button.large{
+    --height: var(--stinput-height-large);
+
+    font-size: var(--stfont-size-16px);
+}
+
+/* Disabled */
+
+.button.disabled{
+    opacity: 0.5;
+    user-select: none;
+    cursor: not-allowed;
+}
+
+/* fill */
+
+.button.fill{
+    width: 100%;
+}
+
+/* Circular */
+
+.buttonround{
+    border-radius: 100rem;
+}
+
+/* Icon */
+
+.button.fullicon{
+    padding: 0;
+    min-width: 0;
+    width: calc(var(--height) * 1.1);
+}
+
+.button.fullicon .sticon{
+    font-size: 1.2em;
+}
+
+.button.fullicon.small .sticon{
+    font-size: 1.15em;
+}
+
+/* Side Icon */
+
+.button:where(.starticon, .endicon) .sticon{
+    font-size: 1.2em;
+}
+
+.button:is(.starticon, .endicon) .sticon::before{
+    display: inline-block;
+    margin-top: 1px;
+}
+
+.button.starticon .sticon{
+    margin-right: 0.5em;
+}
+
+.button.endicon .sticon{
+    margin-left: 0.5em;
+}
+
+/* Labeled Icon */
+
+.button:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    background: var(--stgray-900);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(2.75rem + 2px);
+}
+
+.button:where(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+    font-size: 1.2em;
+}
+
+.button.is-start-labeled-icon{
+    padding-left: calc(var(--horizontal-padding) + 2.75em);
+}
+
+.button.is-start-labeled-icon .sticon{
+    left: -2px;
+    border-radius: 0.4rem 0 0 0.4rem;
+}
+
+.button.is-end-labeled-icon{
+    padding-right: calc(var(--horizontal-padding) + 2.75em);
+}
+
+.button.is-end-labeled-icon .sticon{
+    right: -2px;
+    border-radius: 0 0.4rem 0.4rem 0;
+}
+
+.button.error:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+    background: var(--stnegative-400);
+}
+
+.button.outline:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+    /*background: var(--stgray-300);*/
+    background: transparent;
+    border: 2px solid var(--stgray-300);
+}
+
+.button.secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+    background: var(--stgray-200);
+}
+
+.button.is-tertiary:is(.is-start-labeled-icon, .is-end-labeled-icon) .sticon{
+    background: var(--stgray-400);
+}
+
+/* Dense */
+
+.button.is-dense{
+    --height: var(--stinput-height-medium-dense);
+}
+
+.button.is-dense.small{
+    --height: var(--stinput-height-small-dense);
+}
+
+.button.is-dense.large{
+    --height: var(--stinput-height-large-dense);
+}
+
+/* Wide */
+
+.button.is-short{
+    --horizontal-padding: 0.75em;
+
+    min-width: 65px;
+}
+
+.button.is-wide{
+    --horizontal-padding: 2em;
+}
+
+/* Start & End */
+
+.staddon{
+    display: flex;
+    gap: 2px;
+}
+
+.staddon>*:first-child,.staddon>.stinput:first-child:where(input, textarea){
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.staddon>*:last-child,.staddon>.stinput:last-child:where(input, textarea){
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Buttons */
+
+.buttons{
+    display: flex;
+}
+
+.buttons .button:first-child{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.buttons .button:not(:first-child):not(:last-child){
+    border-radius: 0;
+}
+
+.buttons .button:not(:first-child)::before{
+    position: absolute;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 70%;
+    background: var(--stgray-600);
+    width: 1px;
+}
+
+.buttons .button.outline::before{
+    display: none;
+}
+
+.buttons .button.error::before{
+    background: var(--stnegative-400);
+}
+
+.buttons .button.secondary::before{
+    background: var(--stgray-400);
+}
+
+.buttons .button:last-child{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.buttons .button.outline+.button.outline{
+    border-left-color: transparent;
+}
+
+/* ========================================================================== icon ========================================================================== */
 .sticon.is-car-rear-icon::before{
     content: "\f5de";
 }
@@ -9310,22 +9663,16 @@ button{
 } */
 
 @keyframes sticon-spin{
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
-
-.sticon{
-    --accent-color: initial;
-    --accent-foreground-color: initial;
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
 }
 
 /* ========================================================================== Base ========================================================================== */
 
 .sticon{
+    --accent-color: initial;
+    --accent-foreground-color: initial;
+
     font-family: "Icons";
     font-weight: normal;
     font-style: normal;
@@ -9446,7 +9793,6 @@ button{
 /* ========================================================================== Variables ========================================================================== */
 
 /* ========================================================================== Base ========================================================================== */
-
 .stdivider{
     border-top: 1px solid var(--stgray-300);
 }
@@ -18988,12 +19334,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 }
 
 /* ========================================================================== Responsive ========================================================================== */
-
-/*
-  * Minimal
-  * (Below 766px)
-  */
-
 @media screen and (max-width: 766px){
 
     .is-standard-only,    .is-maximal-only{
@@ -19005,21 +19345,11 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     }
 }
 
-/*
-  * Not Minimal
-  * (Above 766px)
-  */
-
 @media screen and (min-width: 766px){
     .is-minimal-only{
         display: none !important;
     }
 }
-
-/*
-  * Minimal & Standard
-  * (Below 993px)
-  */
 
 @media screen and (max-width: 993px){
     .is-maximal-only{
@@ -19027,21 +19357,11 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     }
 }
 
-/*
-  * Standard
-  * (Above 766px & Below 993px)
-  */
-
 @media screen and (min-width: 766px) and (max-width: 993px){
     .is-not-standard{
         display: none !important;
     }
 }
-
-/*
-  * Maximal
-  * (Above 993px)
-  */
 
 @media screen and (min-width: 993px){
 

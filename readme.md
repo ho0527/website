@@ -12,8 +12,11 @@
 
 1. 技能競賽
 例如:
+
 46th 49th 50th等等(恩對我知道 1要用st 2要用nd 3要用rd 但我不想管XD)
+
 在53之前的分類是
+```
 XXth/
     junior/ # (if exsited)
         XXnational/
@@ -25,11 +28,11 @@ XXth/
             TaskX/
             TaskX/
         XXregional/
-
+```
 如果有國手選拔賽(2階)就會加XXgrandmaster2stage在senior/中
 
-在54th後將進行架構調整
-成這樣
+在54th後將進行架構調整成這樣
+```
 XXth/
     jXXnational/ # (if exsited)
     jXXregional/ # (if exsited)
@@ -39,23 +42,23 @@ XXth/
         moduleX/
         moduleX/
     XXregional/
-如果有國手選拔賽(2階)就會加XXgrandmaster2stage
+```
+
+如果有國手選拔賽(2階)就會加XXgrandmaster2stage/
 
 2. 自己的專案
-auther/
- --> 一些奇怪的小東西
 
-externalcase/
- --> 專案
+auther/ --> 一些奇怪的小東西
 
-template/
- --> 模板等等
+externalcase/ --> 專案
+
+template/ --> 模板等等
 
 3. 首頁檔案
 
 4. 公告/新聞區
    - https://hiiamchris.ddns.net/website/news.html
 
-## 在各檔案內會有 about/ 內可以看到該專案的詳細資料
+### 在各檔案內會有 about/ 內可以看到該專案的詳細資料
 
 ---

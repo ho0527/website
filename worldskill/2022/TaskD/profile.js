@@ -1,5 +1,5 @@
 docgetid("signout").onclick=function(){
-    oldajax("POST","/backend/worldskill2022modulec/api/v1/auth/signout",null,[
+    oldajax("POST",ajaxurl+"api/v1/auth/signout",null,[
         ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
     ]).onload=function(){
         let data=JSON.parse(this.responseText)
@@ -14,7 +14,7 @@ docgetid("signout").onclick=function(){
     }
 }
 
-oldajax("GET","/backend/worldskill2022modulec/api/v1/users/"+weblsget("worldskill2022MDusername"),null,[
+oldajax("GET",ajaxurl+"api/v1/users/"+weblsget("worldskill2022MDusername"),null,[
     ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
 ]).onload=function(){
     let data=JSON.parse(this.responseText)
@@ -24,9 +24,9 @@ oldajax("GET","/backend/worldskill2022modulec/api/v1/users/"+weblsget("worldskil
     `
 
     // 製作的遊戲
-    ajax("GET","/backend/worldskill2022modulec/api/v1/games",function(){
+    ajax("GET",ajaxurl+"api/v1/games",function(){
         let data=JSON.parse(this.responseText)
-        ajax("GET","/backend/worldskill2022modulec/api/v1/games?size="+data["totalElements"],function(){
+        ajax("GET",ajaxurl+"api/v1/games?size="+data["totalElements"],function(){
             let data=JSON.parse(this.responseText)
             for(let i=0;i<data["content"].length;i=i+1){
                 if(data["content"][i]["author"]==weblsget("worldskill2022MDusername")){
