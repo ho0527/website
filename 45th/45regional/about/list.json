@@ -6,7 +6,7 @@
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/12/02",
-            "updatedate": "2024/01/08",
+            "updatedate": "2024/01/19",
             "data": [
                 {
                     "list": 1,
@@ -295,15 +295,15 @@
                         {
                             "no": "32",
                             "description": "能修改一個工作項目",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "description": "一個工作項目，以1小時為最小計算單位",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "至少包含工作名稱、開始時間、結束時間、處理情形、優先情形及工作內容。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 }
                             ]
                         },
@@ -316,11 +316,11 @@
                         {
                             "no": "34",
                             "description": "能排序當天的所有工作項目，可依開始時間方式來排序，依升冪或降冪來排序。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "description": "排序的結果是在新的頁面或原來的頁面呈現皆可。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 }
                             ]
                         },
@@ -380,11 +380,11 @@
                                 },
                                 {
                                     "description": "當滑鼠點選某一「工作項目」區塊時，滑鼠再按編輯按鈕時",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "會秀出一個「工作項目」編輯表單讓使用者編輯該工作計畫項目的內容。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "「日工作計畫表」上有共同的預覽按鈕",
@@ -399,19 +399,19 @@
                         {
                             "no": "40",
                             "description": "當使用者編修完畢後，該「日工作計畫表」之內容必須正確更新。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         },
                         {
                             "no": "41",
                             "description": "使用者若有修改「開始時間」與「結束時間」，該工作計畫項目所橫跨的時間區間也會跟著進行變更。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         },
                         {
                             "no": "42",
                             "description": "「日工作計畫表」能切換日期，編輯不同的日期的「工作項目」。",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": []
                         }
                     ]
@@ -454,21 +454,6 @@
                         },
                         {
                             "no": "02",
-                            "description": "使用者登入成功/失敗寫入資料庫 | method: GET, url: /backend/45regional/logindatatodb?key=success|error&id=<i>[userid]</i>",
-                            "statu": "SUCCESS",
-                            "data": [
-                                {
-                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
-                                    "statu": "SUCCESS"
-                                },
-                                {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
-                                    "statu": "SUCCESS"
-                                }
-                            ]
-                        },
-                        {
-                            "no": "03",
                             "description": "使用者登出 | method: POST, url: /backend/45regional/logout/<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
@@ -483,7 +468,7 @@
                             ]
                         },
                         {
-                            "no": "04",
+                            "no": "03",
                             "description": "取得使用者列表 | method: GET, url: /backend/45regional/getuserlist?keyword=<b>{string}</b>&sortby=number|username|name&sorttype=ASC|DESC",
                             "statu": "SUCCESS",
                             "data": [
@@ -493,6 +478,25 @@
                                 },
                                 {
                                     "description": "response body(sorttype is not ASC or DESC): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"Invalid ordertype value. It should be either 'ASC' or 'DESC'.\"<br>}, 400_BAD_REQUEST",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
+                                    "statu": "SUCCESS"
+                                }
+                            ]
+                        },
+                        {
+                            "no": "04",
+                            "description": "取得特定使用者 | method: GET, url: /backend/45regional/getuser/<i>[userid]</i>",
+                            "statu": "SUCCESS",
+                            "data": [
+                                {
+                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
+                                    "statu": "SUCCESS"
+                                },
+                                {
+                                    "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;data: \"使用者不存在.\"<br>}, 400_BAD_REQUEST",
                                     "statu": "SUCCESS"
                                 },
                                 {
@@ -518,26 +522,7 @@
                         },
                         {
                             "no": "06",
-                            "description": "取得特定使用者 | method: GET, url: /backend/45regional/getuser/<i>[userid]</i>",
-                            "statu": "SUCCESS",
-                            "data": [
-                                {
-                                    "description": "response body(success): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: true,<br>&nbsp;&nbsp;&nbsp;&nbsp;data: \"\"<br>}, 200_OK",
-                                    "statu": "SUCCESS"
-                                },
-                                {
-                                    "description": "response body(user not found): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;data: \"使用者不存在.\"<br>}, 400_BAD_REQUEST",
-                                    "statu": "SUCCESS"
-                                },
-                                {
-                                    "description": "response body(sever fail): json{<br>&nbsp;&nbsp;&nbsp;&nbsp;success: false,&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data: [ERROR] unknow error pls tell the admin error:\\n <i>[error]</i><br>}, 500_INTERNAL_SERVER_ERROR",
-                                    "statu": "SUCCESS"
-                                }
-                            ]
-                        },
-                        {
-                            "no": "07",
-                            "description": "使用者新增 | method: POST, url: /backend/45regional/newuser",
+                            "description": "使用者新增 | method: POST, url: /backend/45regional/signup",
                             "statu": "SUCCESS",
                             "data": [
                                 {
@@ -563,7 +548,7 @@
                             ]
                         },
                         {
-                            "no": "08",
+                            "no": "07",
                             "description": "使用者修改 | method: PUT, url: /backend/45regional/editdeluser/<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
@@ -586,7 +571,7 @@
                             ]
                         },
                         {
-                            "no": "09",
+                            "no": "08",
                             "description": "使用者刪除 | method: DELETE, url: /backend/45regional/editdeluser/<i>[userid]</i>",
                             "statu": "SUCCESS",
                             "data": [
