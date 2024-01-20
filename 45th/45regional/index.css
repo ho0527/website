@@ -485,3 +485,25 @@
     cursor: grab;
     z-index: 900;
 }
+
+.top{
+    position: absolute;
+    top: 5px;
+}
+
+.positionrelative{
+    position: relative;
+}
+
+.todoviewdiv{
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    height: 150px;
+    width: 95%;
+    border-radius: 5px;
+    background: var(--stgray-400);
+    font-size: 20px;
+    padding: 5px 10px;
+}

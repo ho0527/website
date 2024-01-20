@@ -6,7 +6,7 @@
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/12/02",
-            "updatedate": "2024/01/19",
+            "updatedate": "2024/01/20",
             "data": [
                 {
                     "list": 1,
@@ -392,7 +392,7 @@
                                 },
                                 {
                                     "description": "當滑鼠點選某一「工作項目」區塊時，滑鼠再按預覽按鈕時，可預覽該工作計畫項目之詳細內容。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 }
                             ]
                         },

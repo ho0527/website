@@ -32,8 +32,204 @@
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/04/23",
-                    "updatedate": "N/A",
-                    "data": []
+                    "updatedate": "2023/04/23",
+                    "data": [
+                        {
+                            "list": 1,
+                            "description": "首頁",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "01",
+                                    "description": "提供難易度讓玩家選擇 「一般」和「困難」",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "02",
+                                    "description": "首頁會顯示最高行數 最高行數會依照選擇的難度而變化",
+                                    "statu": "FAILED"
+                                }
+                            ]
+                        },
+                        {
+                            "list": 2,
+                            "description": "遊戲本體",
+                            "statu": "FAILED",
+                            "data": [
+                                {
+                                    "no": "03",
+                                    "description": "遊戲時間正確計算，並使用「MM:SS」形式呈現",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "04",
+                                    "description": "新出現的方塊會隨機產生並正常顯示",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "05",
+                                    "description": "新出現的方塊會自動向下移動",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "06",
+                                    "description": "方塊下移的速度符合試題說明 難度選擇「一般」時，每 1 秒掉一小格，為「困難」時，每0.25秒掉一小格",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "07",
+                                    "description": "方塊可以正常位移 按下可以加速方塊向下的移動速度，按左、右可以使方塊向左、右移動",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "08",
+                                    "description": "方塊不會超出遊戲邊框",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "09",
+                                    "description": "方塊可以正常旋轉 向左 90 度",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "10",
+                                    "description": "方塊間不會重疊",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "11",
+                                    "description": "每種出現的方塊會有不同的顏色",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "12",
+                                    "description": "方塊停止移動後，顏色不會變化",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "13",
+                                    "description": "可以正常消除整行的小方塊，並正確顯示在畫面上 障礙物不計行數",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "14",
+                                    "description": "當難度選擇困難時，每 10 秒會增加一層障礙物 灰色方塊，每行的空格是隨機的，同時每行向上移動一行",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "15",
+                                    "description": "被消除整行之上方的區域可以正常向下移動",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "16",
+                                    "description": "點選畫面分享按鈕可以下載目前遊戲資訊的圖片 圖片為 JPEG 格式，會跳出下載視窗，需含遊戲畫面、下個方塊、等級、行數及時間，",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "17",
+                                    "description": "暫停按鈕正常運作 按鈕修改為「繼續遊戲」，遊戲畫面會隱藏，並顯示「暫停」，方塊不可移動，時間不會繼續計算",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "18",
+                                    "description": "點選繼續遊戲，可以繼續遊戲 時間繼續計算，方塊繼續移動",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "19",
+                                    "description": "可以判斷遊戲是否結束 新的方塊已經超出上邊界",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "20",
+                                    "description": "遊戲結束時，可以顯示登記暱稱的區塊",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "21",
+                                    "description": "遊戲結束時，可以把暱稱和相關資訊正確儲存下來",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "22",
+                                    "description": "在遊戲狀態可以保存下來關閉目前分頁，在新頁開啟相同網址時，可以繼續先前狀態(行數、時間、遊戲畫面、當前方塊、下一個方塊及遊戲狀態)",
+                                    "statu": "FAILED"
+                                }
+                            ]
+                        },
+                        {
+                            "list": 3,
+                            "description": "排行榜功能",
+                            "statu": "subjective",
+                            "data": [
+                                {
+                                    "no": "23",
+                                    "description": "排行榜的頁籤包含試題中的所有難度 一般、困難",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "24",
+                                    "description": "排行榜的頁籤可以正常切換，且可辨別目前所在的頁籤",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "25",
+                                    "description": "排行榜可以依照難度顯示所需內容 名次、暱稱、行數、時間",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "26",
+                                    "description": "排行榜的排序正確 若行數相同，則依遊戲時間由少到多排序，若相同，則依開始遊戲的時間由先到後排序",
+                                    "statu": "FAILED"
+                                },
+                                {
+                                    "no": "27",
+                                    "description": "排行榜可以辨別目前玩家在遊戲結束後的名次",
+                                    "statu": "FAILED"
+                                }
+                            ]
+                        },
+                        {
+                            "list": 4,
+                            "description": "畫面操作性",
+                            "statu": "subjective",
+                            "data": [
+                                {
+                                    "no": "28",
+                                    "description": "遊戲畫面整體設計感",
+                                    "statu": "subjective"
+                                },
+                                {
+                                    "no": "29",
+                                    "description": "遊戲整體操作及互動性",
+                                    "statu": "subjective"
+                                }
+                            ]
+                        },
+                        {
+                            "list": 5,
+                            "description": "代碼品質",
+                            "statu": "subjective",
+                            "data": [
+                                {
+                                    "no": "30",
+                                    "description": "程式撰寫有良好的架構",
+                                    "statu": "subjective"
+                                },
+                                {
+                                    "no": "31",
+                                    "description": "變數及方法命名可以輕易分辨出變數及方法的作用",
+                                    "statu": "subjective"
+                                },
+                                {
+                                    "no": "32",
+                                    "description": "程式碼有適當的縮排與註解",
+                                    "statu": "subjective"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleD-PHP",
@@ -304,18 +500,15 @@
                                         {
                                             "description": "搭乘日期、車次、手機號碼、訂票編號、搭車站、到達站",
                                             "statu": "SUCCESS"
-                                        }
-                                        ,
+                                        },
                                         {
                                             "description": "分頁功能符合題目要求 頁碼及當前頁面顯示正確，每頁5筆資料",
                                             "statu": "SUCCESS"
-                                        }
-                                        ,
+                                        },
                                         {
                                             "description": "可以取消尚未發車的訂票紀錄",
                                             "statu": "SUCCESS"
-                                        }
-                                        ,
+                                        },
                                         {
                                             "description": "被取消的訂票紀錄，乘客可以收到相關資訊的簡訊",
                                             "statu": "SUCCESS"

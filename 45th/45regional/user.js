@@ -114,15 +114,15 @@ ajax("GET","/backend/45regional/gettodolist",function(event,data){
                     clickid=element.id
                     element.style.backgroundColor="var(--stprimary-400)"
                     domgetid("edit").classList.remove("disabled")
-                    domgetid("see").classList.remove("disabled")
+                    domgetid("view").classList.remove("disabled")
                     domgetid("edit").disabled=false
-                    domgetid("see").disabled=false
+                    domgetid("view").disabled=false
                 }else{
                     clickid=null
                     domgetid("edit").classList.add("disabled")
-                    domgetid("see").classList.add("disabled")
+                    domgetid("view").classList.add("disabled")
                     domgetid("edit").disabled=true
-                    domgetid("see").disabled=true
+                    domgetid("view").disabled=true
                 }
             }else{
                 check=true
@@ -444,8 +444,16 @@ onclick("#edit",function(element,event){
     })
 })
 
-onclick("#see",function(element,event){
+onclick("#view",function(element,event){
+    ajax("GET","/backend/45regional/gettodo/"+clickid,function(event,data){
+        if(data["success"]){
 
+            domgetid("viewdiv").innerHTML=`
+                詳細內容:<br>
+                ${data["data"][6]}
+            `
+        }
+    })
 })
 
 onchange("#dealselect",function(element,event){
