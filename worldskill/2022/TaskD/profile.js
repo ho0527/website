@@ -1,9 +1,5 @@
 docgetid("signout").onclick=function(){
-    oldajax("POST",ajaxurl+"api/v1/auth/signout",null,[
-        ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
-    ]).onload=function(){
-        let data=JSON.parse(this.responseText)
-        console.log(data)
+    ajax("POST",ajaxurl+"api/v1/auth/signout",function(event,data){
         if(data["status"]=="success"){
             weblsset("worldskill2022MDtoken",null)
             weblsset("worldskill2022MDusername",null)
@@ -11,7 +7,9 @@ docgetid("signout").onclick=function(){
         }else{
             alert(data["message"])
         }
-    }
+    },null,[
+        ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
+    ])
 }
 
 oldajax("GET",ajaxurl+"api/v1/users/"+weblsget("worldskill2022MDusername"),null,[
