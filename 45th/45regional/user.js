@@ -447,7 +447,6 @@ onclick("#edit",function(element,event){
 onclick("#view",function(element,event){
     ajax("GET","/backend/45regional/gettodo/"+clickid,function(event,data){
         if(data["success"]){
-
             domgetid("viewdiv").innerHTML=`
                 詳細內容:<br>
                 ${data["data"][6]}
