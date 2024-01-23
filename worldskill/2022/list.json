@@ -389,7 +389,7 @@
                                 {
                                     "no": "C23",
                                     "description": "C23-Range Slider",
-                                    "link": "TaskA/C23/",
+                                    "link": "TaskA/C23/layout",
                                     "statu": "FAILED",
                                     "data": []
                                 },
