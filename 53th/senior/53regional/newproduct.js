@@ -1,6 +1,7 @@
-divsort("list",".newproduct")
 let left=3
 let right=3
+
+divsort("list",".newproduct")
 
 document.getElementById("newtemplate").onclick=function(){
     let name=""
