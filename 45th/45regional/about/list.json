@@ -6,7 +6,7 @@
             "statu": "SUCCESS",
             "ps": "question",
             "createdate": "2023/12/02",
-            "updatedate": "2024/01/20",
+            "updatedate": "2024/01/29",
             "data": [
                 {
                     "list": 1,
@@ -241,7 +241,7 @@
                 {
                     "list": 4,
                     "description": "日工作計畫表-基本功能",
-                    "statu": "FAILED",
+                    "statu": "SUCCESS",
                     "data": [
                         {
                             "no": "27",
@@ -327,19 +327,19 @@
                         {
                             "no": "35",
                             "description": "能檢索篩選的條件",
-                            "statu": "FAILED",
+                            "statu": "SUCCESS",
                             "data": [
                                 {
                                     "description": "列出當天所有符合檢索篩選條件的工作項目，可依處理情形、或優先情形2種方式來設定檢索條件",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "並依工作「開始時間」升冪或降冪來排序，列出升冪或降冪的選項。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 },
                                 {
                                     "description": "檢索的結果可在新的頁面或原來的頁面呈現皆可。",
-                                    "statu": "FAILED"
+                                    "statu": "SUCCESS"
                                 }
                             ]
                         }
@@ -348,7 +348,7 @@
                 {
                     "list": 5,
                     "description": "日工作計畫管理系統-進階功能",
-                    "statu": "FAILED",
+                    "statu": "SUCCESS",
                     "data": [
                         {
                             "no": "37",
