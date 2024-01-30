@@ -8,20 +8,129 @@
             "updatedate": "2023/12/26",
             "data": [
                 {
-                    "title": "ModuleA-API(GraphQL)",
+                    "title": "ModuleA/ModuleB-API(GraphQL)/單元測試",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "2023/12/25",
                     "updatedate": "2023/12/26",
-                    "data": []
-                },
-                {
-                    "title": "ModuleB-",
-                    "statu": "N/A",
-                    "ps": "list",
-                    "createdate": "N/A",
-                    "updatedate": "N/A",
-                    "data": []
+                    "data": [
+                        {
+                            "list": "modulea",
+                            "description": "API",
+                            "statu": "FAILED",
+                            "createdate": "2023/12/25",
+                            "updatedate": "2023/12/26",
+                            "data": [
+                                {
+                                    "list": 1,
+                                    "description": "task",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "no": "01",
+                                            "description": "訪客登入功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "02",
+                                            "description": "訪客登出功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "03",
+                                            "description": "訪客註冊功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "04",
+                                            "description": "取得會員資料功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "05",
+                                            "description": "取得書籍列表功能正常",
+                                            "statu": "FAILED",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "06",
+                                            "description": "新增書本功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "07",
+                                            "description": "刪除書本功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "08",
+                                            "description": "取得會員當前租借列表功能正常",
+                                            "statu": "FAILED",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "09",
+                                            "description": "租借書本功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "10",
+                                            "description": "歸還書本功能正常",
+                                            "statu": "SUCCESS",
+                                            "data": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "list": "moduleb",
+                            "description": "單元測試",
+                            "statu": "subjective",
+                            "createdate": "N/A",
+                            "updatedate": "N/A",
+                            "data": [
+                                {
+                                    "list": 1,
+                                    "description": "task",
+                                    "statu": "FAILED",
+                                    "data": [
+                                        {
+                                            "no": "11",
+                                            "description": "訪客登入之 PHPUnit 撰寫良好 (Coverage、Test Cases)",
+                                            "statu": "subjective",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "12",
+                                            "description": "訪客登出之 PHPUnit 撰寫良好 (Coverage、Test Cases)",
+                                            "statu": "subjective",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "13",
+                                            "description": "訪客註冊之 PHPUnit 撰寫良好 (Coverage、Test Cases)",
+                                            "statu": "subjective",
+                                            "data": []
+                                        },
+                                        {
+                                            "no": "14",
+                                            "description": "取得會員本身資料之 PHPUnit 撰寫良好 (Coverage、Test Cases)",
+                                            "statu": "subjective",
+                                            "data": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "title": "ModuleC-Frontend Module",
