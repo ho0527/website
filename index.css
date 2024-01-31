@@ -228,10 +228,9 @@ table{
 .footer{
     position: relative;
     top: 10px;
-    height: 15vh;
     width: 100%;
     background: rgb(25, 25, 25);
-    text-align: center;
+    padding: 5px 10px;
 }
 
 .a{
@@ -12245,33 +12244,33 @@ a.box:hover{
 
 /* Indicated */
 
-.box.is-top-indicated{
+.box.bordertop{
     border-top: 3px solid var(--stindicator-color);
 }
 
-.box.is-bottom-indicated{
+.box.borderbottom{
     border-bottom: 3px solid var(--stindicator-color);
 }
 
-.box.is-left-indicated{
+.box.borderleft{
     border-left: 3px solid var(--stindicator-color);
 }
 
-.box.is-right-indicated{
+.box.borderright{
     border-right: 3px solid var(--stindicator-color);
 }
 
 /* Emphasises */
 
-.box[class*="-indicated"].error{
+.boxfail{
     --stindicator-color: var(--stnegative-500);
 }
 
-.box[class*="-indicated"].is-positive{
+.boxsuccess{
     --stindicator-color: var(--stpositive-500);
 }
 
-.box[class*="-indicated"].warning{
+.boxwarn{
     --stindicator-color: var(--stwarning-500);
 }
 
@@ -12349,7 +12348,7 @@ a.box:hover{
 
 /* Aligns */
 
-.stcontent.left{
+/* .stcontent.left{
     text-align: left;
 }
 
@@ -12359,7 +12358,7 @@ a.box:hover{
 
 .stcontent.center{
     text-align: center;
-}
+} */
 
 /* Interactive */
 
@@ -21494,92 +21493,92 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 }
 
 /* fontsize START */
-.textsize05px{ font-size: var(--font-size-05px); }
-.textsize06px{ font-size: var(--font-size-06px); }
-.textsize07px{ font-size: var(--font-size-07px); }
-.textsize08px{ font-size: var(--font-size-08px); }
-.textsize09px{ font-size: var(--font-size-09px); }
-.textsize10px{ font-size: var(--font-size-10px); }
-.textsize11px{ font-size: var(--font-size-11px); }
-.textsize12px{ font-size: var(--font-size-12px); }
-.textsize13px{ font-size: var(--font-size-13px); }
-.textsize14px{ font-size: var(--font-size-14px); }
-.textsize15px{ font-size: var(--font-size-15px); }
-.textsize16px{ font-size: var(--font-size-16px); }
-.textsize17px{ font-size: var(--font-size-17px); }
-.textsize18px{ font-size: var(--font-size-18px); }
-.textsize19px{ font-size: var(--font-size-19px); }
-.textsize20px{ font-size: var(--font-size-20px); }
-.textsize21px{ font-size: var(--font-size-21px); }
-.textsize22px{ font-size: var(--font-size-22px); }
-.textsize23px{ font-size: var(--font-size-23px); }
-.textsize24px{ font-size: var(--font-size-24px); }
-.textsize25px{ font-size: var(--font-size-25px); }
-.textsize26px{ font-size: var(--font-size-26px); }
-.textsize27px{ font-size: var(--font-size-27px); }
-.textsize28px{ font-size: var(--font-size-28px); }
-.textsize29px{ font-size: var(--font-size-29px); }
-.textsize30px{ font-size: var(--font-size-30px); }
-.textsize31px{ font-size: var(--font-size-31px); }
-.textsize32px{ font-size: var(--font-size-32px); }
-.textsize33px{ font-size: var(--font-size-33px); }
-.textsize34px{ font-size: var(--font-size-34px); }
-.textsize35px{ font-size: var(--font-size-35px); }
-.textsize36px{ font-size: var(--font-size-36px); }
-.textsize37px{ font-size: var(--font-size-37px); }
-.textsize38px{ font-size: var(--font-size-38px); }
-.textsize39px{ font-size: var(--font-size-39px); }
-.textsize40px{ font-size: var(--font-size-40px); }
-.textsize41px{ font-size: var(--font-size-41px); }
-.textsize42px{ font-size: var(--font-size-42px); }
-.textsize43px{ font-size: var(--font-size-43px); }
-.textsize44px{ font-size: var(--font-size-44px); }
-.textsize45px{ font-size: var(--font-size-45px); }
-.textsize46px{ font-size: var(--font-size-46px); }
-.textsize47px{ font-size: var(--font-size-47px); }
-.textsize48px{ font-size: var(--font-size-48px); }
-.textsize49px{ font-size: var(--font-size-49px); }
-.textsize50px{ font-size: var(--font-size-50px); }
-.textsize51px{ font-size: var(--font-size-51px); }
-.textsize52px{ font-size: var(--font-size-52px); }
-.textsize53px{ font-size: var(--font-size-53px); }
-.textsize54px{ font-size: var(--font-size-54px); }
-.textsize55px{ font-size: var(--font-size-55px); }
-.textsize56px{ font-size: var(--font-size-56px); }
-.textsize57px{ font-size: var(--font-size-57px); }
-.textsize58px{ font-size: var(--font-size-58px); }
-.textsize59px{ font-size: var(--font-size-59px); }
-.textsize60px{ font-size: var(--font-size-60px); }
-.textsize61px{ font-size: var(--font-size-61px); }
-.textsize62px{ font-size: var(--font-size-62px); }
-.textsize63px{ font-size: var(--font-size-63px); }
-.textsize64px{ font-size: var(--font-size-64px); }
-.textsize65px{ font-size: var(--font-size-65px); }
-.textsize66px{ font-size: var(--font-size-66px); }
-.textsize67px{ font-size: var(--font-size-67px); }
-.textsize68px{ font-size: var(--font-size-68px); }
-.textsize69px{ font-size: var(--font-size-69px); }
-.textsize70px{ font-size: var(--font-size-70px); }
-.textsize71px{ font-size: var(--font-size-71px); }
-.textsize72px{ font-size: var(--font-size-72px); }
-.textsize73px{ font-size: var(--font-size-73px); }
-.textsize74px{ font-size: var(--font-size-74px); }
-.textsize75px{ font-size: var(--font-size-75px); }
-.textsize76px{ font-size: var(--font-size-76px); }
-.textsize77px{ font-size: var(--font-size-77px); }
-.textsize78px{ font-size: var(--font-size-78px); }
-.textsize79px{ font-size: var(--font-size-79px); }
-.textsize80px{ font-size: var(--font-size-80px); }
-.textsize81px{ font-size: var(--font-size-81px); }
-.textsize82px{ font-size: var(--font-size-82px); }
-.textsize83px{ font-size: var(--font-size-83px); }
-.textsize84px{ font-size: var(--font-size-84px); }
-.textsize85px{ font-size: var(--font-size-85px); }
-.textsize86px{ font-size: var(--font-size-86px); }
-.textsize87px{ font-size: var(--font-size-87px); }
-.textsize88px{ font-size: var(--font-size-88px); }
-.textsize89px{ font-size: var(--font-size-89px); }
-.textsize90px{ font-size: var(--font-size-90px); }
+.textsize05px{ font-size: var(--stfont-size-05px); }
+.textsize06px{ font-size: var(--stfont-size-06px); }
+.textsize07px{ font-size: var(--stfont-size-07px); }
+.textsize08px{ font-size: var(--stfont-size-08px); }
+.textsize09px{ font-size: var(--stfont-size-09px); }
+.textsize10px{ font-size: var(--stfont-size-10px); }
+.textsize11px{ font-size: var(--stfont-size-11px); }
+.textsize12px{ font-size: var(--stfont-size-12px); }
+.textsize13px{ font-size: var(--stfont-size-13px); }
+.textsize14px{ font-size: var(--stfont-size-14px); }
+.textsize15px{ font-size: var(--stfont-size-15px); }
+.textsize16px{ font-size: var(--stfont-size-16px); }
+.textsize17px{ font-size: var(--stfont-size-17px); }
+.textsize18px{ font-size: var(--stfont-size-18px); }
+.textsize19px{ font-size: var(--stfont-size-19px); }
+.textsize20px{ font-size: var(--stfont-size-20px); }
+.textsize21px{ font-size: var(--stfont-size-21px); }
+.textsize22px{ font-size: var(--stfont-size-22px); }
+.textsize23px{ font-size: var(--stfont-size-23px); }
+.textsize24px{ font-size: var(--stfont-size-24px); }
+.textsize25px{ font-size: var(--stfont-size-25px); }
+.textsize26px{ font-size: var(--stfont-size-26px); }
+.textsize27px{ font-size: var(--stfont-size-27px); }
+.textsize28px{ font-size: var(--stfont-size-28px); }
+.textsize29px{ font-size: var(--stfont-size-29px); }
+.textsize30px{ font-size: var(--stfont-size-30px); }
+.textsize31px{ font-size: var(--stfont-size-31px); }
+.textsize32px{ font-size: var(--stfont-size-32px); }
+.textsize33px{ font-size: var(--stfont-size-33px); }
+.textsize34px{ font-size: var(--stfont-size-34px); }
+.textsize35px{ font-size: var(--stfont-size-35px); }
+.textsize36px{ font-size: var(--stfont-size-36px); }
+.textsize37px{ font-size: var(--stfont-size-37px); }
+.textsize38px{ font-size: var(--stfont-size-38px); }
+.textsize39px{ font-size: var(--stfont-size-39px); }
+.textsize40px{ font-size: var(--stfont-size-40px); }
+.textsize41px{ font-size: var(--stfont-size-41px); }
+.textsize42px{ font-size: var(--stfont-size-42px); }
+.textsize43px{ font-size: var(--stfont-size-43px); }
+.textsize44px{ font-size: var(--stfont-size-44px); }
+.textsize45px{ font-size: var(--stfont-size-45px); }
+.textsize46px{ font-size: var(--stfont-size-46px); }
+.textsize47px{ font-size: var(--stfont-size-47px); }
+.textsize48px{ font-size: var(--stfont-size-48px); }
+.textsize49px{ font-size: var(--stfont-size-49px); }
+.textsize50px{ font-size: var(--stfont-size-50px); }
+.textsize51px{ font-size: var(--stfont-size-51px); }
+.textsize52px{ font-size: var(--stfont-size-52px); }
+.textsize53px{ font-size: var(--stfont-size-53px); }
+.textsize54px{ font-size: var(--stfont-size-54px); }
+.textsize55px{ font-size: var(--stfont-size-55px); }
+.textsize56px{ font-size: var(--stfont-size-56px); }
+.textsize57px{ font-size: var(--stfont-size-57px); }
+.textsize58px{ font-size: var(--stfont-size-58px); }
+.textsize59px{ font-size: var(--stfont-size-59px); }
+.textsize60px{ font-size: var(--stfont-size-60px); }
+.textsize61px{ font-size: var(--stfont-size-61px); }
+.textsize62px{ font-size: var(--stfont-size-62px); }
+.textsize63px{ font-size: var(--stfont-size-63px); }
+.textsize64px{ font-size: var(--stfont-size-64px); }
+.textsize65px{ font-size: var(--stfont-size-65px); }
+.textsize66px{ font-size: var(--stfont-size-66px); }
+.textsize67px{ font-size: var(--stfont-size-67px); }
+.textsize68px{ font-size: var(--stfont-size-68px); }
+.textsize69px{ font-size: var(--stfont-size-69px); }
+.textsize70px{ font-size: var(--stfont-size-70px); }
+.textsize71px{ font-size: var(--stfont-size-71px); }
+.textsize72px{ font-size: var(--stfont-size-72px); }
+.textsize73px{ font-size: var(--stfont-size-73px); }
+.textsize74px{ font-size: var(--stfont-size-74px); }
+.textsize75px{ font-size: var(--stfont-size-75px); }
+.textsize76px{ font-size: var(--stfont-size-76px); }
+.textsize77px{ font-size: var(--stfont-size-77px); }
+.textsize78px{ font-size: var(--stfont-size-78px); }
+.textsize79px{ font-size: var(--stfont-size-79px); }
+.textsize80px{ font-size: var(--stfont-size-80px); }
+.textsize81px{ font-size: var(--stfont-size-81px); }
+.textsize82px{ font-size: var(--stfont-size-82px); }
+.textsize83px{ font-size: var(--stfont-size-83px); }
+.textsize84px{ font-size: var(--stfont-size-84px); }
+.textsize85px{ font-size: var(--stfont-size-85px); }
+.textsize86px{ font-size: var(--stfont-size-86px); }
+.textsize87px{ font-size: var(--stfont-size-87px); }
+.textsize88px{ font-size: var(--stfont-size-88px); }
+.textsize89px{ font-size: var(--stfont-size-89px); }
+.textsize90px{ font-size: var(--stfont-size-90px); }
 /* fontsize END */
 
 .boximage{
@@ -21590,6 +21589,35 @@ html[data-background="secondary"],html[data-background="secondary"] body{
     max-height: 100%;
 }
 
+.textfail{
+    color: var(--stnegative-500);
+}
+
+.textsuccess{
+    color: var(--stpositive-500);
+}
+
+.textwarn{
+    color: var(--stwarning-500);
+}
+
+.flexcenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexxcenter{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.flexycenter{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
 /* END */
 
 
