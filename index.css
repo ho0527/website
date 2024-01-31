@@ -226,8 +226,9 @@ table{
 }
 
 .footer{
-    position: fixed;
-    bottom: 0px;
+    position: relative;
+    top: 10px;
+    height: 15vh;
     width: 100%;
     background: rgb(25, 25, 25);
     text-align: center;
@@ -441,6 +442,13 @@ html{
     --stfont-size-huge: calc(24 / 15 * 1rem);
     --stfont-size-massive: calc(30 / 15 * 1rem);
 
+    --stfont-size-05px: calc(5 / 15 * 1rem);
+    --stfont-size-06px: calc(6 / 15 * 1rem);
+    --stfont-size-07px: calc(7 / 15 * 1rem);
+    --stfont-size-08px: calc(8 / 15 * 1rem);
+    --stfont-size-09px: calc(9 / 15 * 1rem);
+    --stfont-size-10px: calc(10 / 15 * 1rem);
+    --stfont-size-11px: calc(11 / 15 * 1rem);
     --stfont-size-12px: calc(12 / 15 * 1rem);
     --stfont-size-13px: calc(13 / 15 * 1rem);
     --stfont-size-14px: calc(14 / 15 * 1rem);
@@ -448,16 +456,78 @@ html{
     --stfont-size-16px: calc(16 / 15 * 1rem);
     --stfont-size-17px: calc(17 / 15 * 1rem);
     --stfont-size-18px: calc(18 / 15 * 1rem);
+    --stfont-size-19px: calc(19 / 15 * 1rem);
     --stfont-size-20px: calc(20 / 15 * 1rem);
+    --stfont-size-21px: calc(21 / 15 * 1rem);
+    --stfont-size-22px: calc(22 / 15 * 1rem);
+    --stfont-size-23px: calc(23 / 15 * 1rem);
     --stfont-size-24px: calc(24 / 15 * 1rem);
     --stfont-size-25px: calc(25 / 15 * 1rem);
+    --stfont-size-26px: calc(26 / 15 * 1rem);
+    --stfont-size-27px: calc(27 / 15 * 1rem);
+    --stfont-size-28px: calc(28 / 15 * 1rem);
+    --stfont-size-29px: calc(29 / 15 * 1rem);
     --stfont-size-30px: calc(30 / 15 * 1rem);
+    --stfont-size-31px: calc(31 / 15 * 1rem);
+    --stfont-size-32px: calc(32 / 15 * 1rem);
     --stfont-size-33px: calc(33 / 15 * 1rem);
+    --stfont-size-34px: calc(34 / 15 * 1rem);
+    --stfont-size-35px: calc(35 / 15 * 1rem);
+    --stfont-size-36px: calc(36 / 15 * 1rem);
+    --stfont-size-37px: calc(37 / 15 * 1rem);
     --stfont-size-38px: calc(38 / 15 * 1rem);
+    --stfont-size-39px: calc(39 / 15 * 1rem);
+    --stfont-size-40px: calc(40 / 15 * 1rem);
+    --stfont-size-41px: calc(41 / 15 * 1rem);
+    --stfont-size-42px: calc(42 / 15 * 1rem);
+    --stfont-size-43px: calc(43 / 15 * 1rem);
+    --stfont-size-44px: calc(44 / 15 * 1rem);
     --stfont-size-45px: calc(45 / 15 * 1rem);
+    --stfont-size-46px: calc(46 / 15 * 1rem);
+    --stfont-size-47px: calc(47 / 15 * 1rem);
+    --stfont-size-48px: calc(48 / 15 * 1rem);
+    --stfont-size-49px: calc(49 / 15 * 1rem);
+    --stfont-size-50px: calc(50 / 15 * 1rem);
+    --stfont-size-51px: calc(51 / 15 * 1rem);
+    --stfont-size-52px: calc(52 / 15 * 1rem);
+    --stfont-size-53px: calc(53 / 15 * 1rem);
+    --stfont-size-54px: calc(54 / 15 * 1rem);
     --stfont-size-55px: calc(55 / 15 * 1rem);
+    --stfont-size-56px: calc(56 / 15 * 1rem);
+    --stfont-size-57px: calc(57 / 15 * 1rem);
+    --stfont-size-58px: calc(58 / 15 * 1rem);
+    --stfont-size-59px: calc(59 / 15 * 1rem);
+    --stfont-size-60px: calc(60 / 15 * 1rem);
+    --stfont-size-61px: calc(61 / 15 * 1rem);
+    --stfont-size-62px: calc(62 / 15 * 1rem);
+    --stfont-size-63px: calc(63 / 15 * 1rem);
+    --stfont-size-64px: calc(64 / 15 * 1rem);
     --stfont-size-65px: calc(65 / 15 * 1rem);
+    --stfont-size-66px: calc(66 / 15 * 1rem);
+    --stfont-size-67px: calc(67 / 15 * 1rem);
+    --stfont-size-68px: calc(68 / 15 * 1rem);
+    --stfont-size-69px: calc(69 / 15 * 1rem);
+    --stfont-size-70px: calc(70 / 15 * 1rem);
+    --stfont-size-71px: calc(71 / 15 * 1rem);
+    --stfont-size-72px: calc(72 / 15 * 1rem);
+    --stfont-size-73px: calc(73 / 15 * 1rem);
+    --stfont-size-74px: calc(74 / 15 * 1rem);
     --stfont-size-75px: calc(75 / 15 * 1rem);
+    --stfont-size-76px: calc(76 / 15 * 1rem);
+    --stfont-size-77px: calc(77 / 15 * 1rem);
+    --stfont-size-78px: calc(78 / 15 * 1rem);
+    --stfont-size-79px: calc(79 / 15 * 1rem);
+    --stfont-size-80px: calc(80 / 15 * 1rem);
+    --stfont-size-81px: calc(81 / 15 * 1rem);
+    --stfont-size-82px: calc(82 / 15 * 1rem);
+    --stfont-size-83px: calc(83 / 15 * 1rem);
+    --stfont-size-84px: calc(84 / 15 * 1rem);
+    --stfont-size-85px: calc(85 / 15 * 1rem);
+    --stfont-size-86px: calc(86 / 15 * 1rem);
+    --stfont-size-87px: calc(87 / 15 * 1rem);
+    --stfont-size-88px: calc(88 / 15 * 1rem);
+    --stfont-size-89px: calc(89 / 15 * 1rem);
+    --stfont-size-90px: calc(90 / 15 * 1rem);
 
     --stabsolute-mini: calc(12 / 15 * 1rem);
     --stabsolute-tiny: calc(13 / 15 * 1rem);
@@ -499,7 +569,6 @@ html{
     }
 }
 
-/* Dark */
 @media (prefers-color-scheme: dark){
     .u-inverted{
         color-scheme: light;
@@ -11852,20 +11921,19 @@ button{
 }
 
 /* Sizes */
+.sttext.verytiny{
+    font-size: var(--stfont-size-10px);
+}
 
 .sttext.tiny{
     font-size: var(--stfont-size-13px);
 }
 
 .sttext.small{
-    font-size: var(--stfont-size-14px);
-}
-
-.sttext.medium{
     font-size: var(--stfont-size-15px);
 }
 
-.sttext.large{
+.sttext.medium{
     font-size: var(--stfont-size-17px);
 }
 
@@ -11873,12 +11941,20 @@ button{
     font-size: var(--stfont-size-20px);
 }
 
-.sttext.huge{
+.sttext.large{
     font-size: var(--stfont-size-24px);
 }
 
-.sttext.massive{
+.sttext.huge{
     font-size: var(--stfont-size-30px);
+}
+
+.sttext.veryhuge{
+    font-size: var(--stfont-size-35px);
+}
+
+.sttext.max{
+    font-size: var(--stfont-size-45px);
 }
 
 /* error */
@@ -12113,7 +12189,7 @@ button{
 
 /* ========================================================================== Variables ========================================================================== */
 
-.stbox{
+.box{
     --accent-color: initial;
     --accent-foreground-color: initial;
     --stindicator-color: var(--accent-color, var(--stgray-900));
@@ -12121,7 +12197,7 @@ button{
 
 /* ========================================================================== Base ========================================================================== */
 
-.stbox{
+.box{
     display: block;
     text-decoration: none;
     color: inherit;
@@ -12131,13 +12207,13 @@ button{
     background: var(--stgray-50);
 }
 
-a.stbox:hover{
+a.box:hover{
     border-color: var(--stgray-400);
 }
 
 /* ========================================================================== Structure ========================================================================== */
 
-.stbox .symbol .sticon{
+.box .symbol .sticon{
     position: absolute;
     right: 0;
     bottom: 0;
@@ -12156,68 +12232,68 @@ a.stbox:hover{
 
 /* Horizontal */
 
-.stbox.is-horizontal{
+.box.is-horizontal{
     display: flex;
     flex-direction: row;
 }
 
 /* Collapsed */
 
-.stbox.is-collapsed{
+.box.is-collapsed{
     width: fit-content;
 }
 
 /* Indicated */
 
-.stbox.is-top-indicated{
+.box.is-top-indicated{
     border-top: 3px solid var(--stindicator-color);
 }
 
-.stbox.is-bottom-indicated{
+.box.is-bottom-indicated{
     border-bottom: 3px solid var(--stindicator-color);
 }
 
-.stbox.is-left-indicated{
+.box.is-left-indicated{
     border-left: 3px solid var(--stindicator-color);
 }
 
-.stbox.is-right-indicated{
+.box.is-right-indicated{
     border-right: 3px solid var(--stindicator-color);
 }
 
 /* Emphasises */
 
-.stbox[class*="-indicated"].error{
+.box[class*="-indicated"].error{
     --stindicator-color: var(--stnegative-500);
 }
 
-.stbox[class*="-indicated"].is-positive{
+.box[class*="-indicated"].is-positive{
     --stindicator-color: var(--stpositive-500);
 }
 
-.stbox[class*="-indicated"].warning{
+.box[class*="-indicated"].warning{
     --stindicator-color: var(--stwarning-500);
 }
 
 /* Elevated */
 
-.stbox.is-elevated{
+.box.is-elevated{
     box-shadow: 0px 1px 5px 0 #00000024;
 }
 
-.stbox.is-very-elevated{
+.box.is-very-elevated{
     box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
 }
 
 /* Squared */
 
-.stbox.is-squared{
+.box.is-squared{
     border-radius: 0;
 }
 
 /* Hollowed */
 
-.stbox.is-hollowed{
+.box.is-hollowed{
     border: 4px dashed var(--stgray-300);
     background: transparent;
 }
@@ -21415,6 +21491,103 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .fill{
     width: 100% !important;
+}
+
+/* fontsize START */
+.textsize05px{ font-size: var(--font-size-05px); }
+.textsize06px{ font-size: var(--font-size-06px); }
+.textsize07px{ font-size: var(--font-size-07px); }
+.textsize08px{ font-size: var(--font-size-08px); }
+.textsize09px{ font-size: var(--font-size-09px); }
+.textsize10px{ font-size: var(--font-size-10px); }
+.textsize11px{ font-size: var(--font-size-11px); }
+.textsize12px{ font-size: var(--font-size-12px); }
+.textsize13px{ font-size: var(--font-size-13px); }
+.textsize14px{ font-size: var(--font-size-14px); }
+.textsize15px{ font-size: var(--font-size-15px); }
+.textsize16px{ font-size: var(--font-size-16px); }
+.textsize17px{ font-size: var(--font-size-17px); }
+.textsize18px{ font-size: var(--font-size-18px); }
+.textsize19px{ font-size: var(--font-size-19px); }
+.textsize20px{ font-size: var(--font-size-20px); }
+.textsize21px{ font-size: var(--font-size-21px); }
+.textsize22px{ font-size: var(--font-size-22px); }
+.textsize23px{ font-size: var(--font-size-23px); }
+.textsize24px{ font-size: var(--font-size-24px); }
+.textsize25px{ font-size: var(--font-size-25px); }
+.textsize26px{ font-size: var(--font-size-26px); }
+.textsize27px{ font-size: var(--font-size-27px); }
+.textsize28px{ font-size: var(--font-size-28px); }
+.textsize29px{ font-size: var(--font-size-29px); }
+.textsize30px{ font-size: var(--font-size-30px); }
+.textsize31px{ font-size: var(--font-size-31px); }
+.textsize32px{ font-size: var(--font-size-32px); }
+.textsize33px{ font-size: var(--font-size-33px); }
+.textsize34px{ font-size: var(--font-size-34px); }
+.textsize35px{ font-size: var(--font-size-35px); }
+.textsize36px{ font-size: var(--font-size-36px); }
+.textsize37px{ font-size: var(--font-size-37px); }
+.textsize38px{ font-size: var(--font-size-38px); }
+.textsize39px{ font-size: var(--font-size-39px); }
+.textsize40px{ font-size: var(--font-size-40px); }
+.textsize41px{ font-size: var(--font-size-41px); }
+.textsize42px{ font-size: var(--font-size-42px); }
+.textsize43px{ font-size: var(--font-size-43px); }
+.textsize44px{ font-size: var(--font-size-44px); }
+.textsize45px{ font-size: var(--font-size-45px); }
+.textsize46px{ font-size: var(--font-size-46px); }
+.textsize47px{ font-size: var(--font-size-47px); }
+.textsize48px{ font-size: var(--font-size-48px); }
+.textsize49px{ font-size: var(--font-size-49px); }
+.textsize50px{ font-size: var(--font-size-50px); }
+.textsize51px{ font-size: var(--font-size-51px); }
+.textsize52px{ font-size: var(--font-size-52px); }
+.textsize53px{ font-size: var(--font-size-53px); }
+.textsize54px{ font-size: var(--font-size-54px); }
+.textsize55px{ font-size: var(--font-size-55px); }
+.textsize56px{ font-size: var(--font-size-56px); }
+.textsize57px{ font-size: var(--font-size-57px); }
+.textsize58px{ font-size: var(--font-size-58px); }
+.textsize59px{ font-size: var(--font-size-59px); }
+.textsize60px{ font-size: var(--font-size-60px); }
+.textsize61px{ font-size: var(--font-size-61px); }
+.textsize62px{ font-size: var(--font-size-62px); }
+.textsize63px{ font-size: var(--font-size-63px); }
+.textsize64px{ font-size: var(--font-size-64px); }
+.textsize65px{ font-size: var(--font-size-65px); }
+.textsize66px{ font-size: var(--font-size-66px); }
+.textsize67px{ font-size: var(--font-size-67px); }
+.textsize68px{ font-size: var(--font-size-68px); }
+.textsize69px{ font-size: var(--font-size-69px); }
+.textsize70px{ font-size: var(--font-size-70px); }
+.textsize71px{ font-size: var(--font-size-71px); }
+.textsize72px{ font-size: var(--font-size-72px); }
+.textsize73px{ font-size: var(--font-size-73px); }
+.textsize74px{ font-size: var(--font-size-74px); }
+.textsize75px{ font-size: var(--font-size-75px); }
+.textsize76px{ font-size: var(--font-size-76px); }
+.textsize77px{ font-size: var(--font-size-77px); }
+.textsize78px{ font-size: var(--font-size-78px); }
+.textsize79px{ font-size: var(--font-size-79px); }
+.textsize80px{ font-size: var(--font-size-80px); }
+.textsize81px{ font-size: var(--font-size-81px); }
+.textsize82px{ font-size: var(--font-size-82px); }
+.textsize83px{ font-size: var(--font-size-83px); }
+.textsize84px{ font-size: var(--font-size-84px); }
+.textsize85px{ font-size: var(--font-size-85px); }
+.textsize86px{ font-size: var(--font-size-86px); }
+.textsize87px{ font-size: var(--font-size-87px); }
+.textsize88px{ font-size: var(--font-size-88px); }
+.textsize89px{ font-size: var(--font-size-89px); }
+.textsize90px{ font-size: var(--font-size-90px); }
+/* fontsize END */
+
+.boximage{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* END */

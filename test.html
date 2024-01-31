@@ -4,13 +4,100 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="index copy.css">
-        <link rel="stylesheet" href="plugin/css/chrisplugin.css">
-        <script src="plugin/js/chrisplugin.js"></script>
+        <link rel="stylesheet" href="/website/index.css">
+        <link rel="stylesheet" href="test.css">
+        <link rel="stylesheet" href="/chrisplugin/css/chrisplugin.css">
+        <script src="/chrisplugin/js/chrisplugin.js"></script>
     </head>
     <body>
+        <div class="navigationbar">
+            <div class="navigationbarleft">
+                <img src="material/icon/mainicon.png" class="logo">
+            </div>
+            <div class="navigationbarright">
+                <input type="button" class="navigationbarbutton" onclick="location.href='/website/'" value="首頁">
+                <input type="button" class="navigationbarbutton" onclick="location.href='/website/indexmore.html'" value="更多">
+                <input type="button" class="navigationbarbutton" onclick="location.href='/website/news.html'" value="公告">
+            </div>
+        </div>
+
+        <div class="indexmain">
+            <div class="flex">
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textleft ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textright ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textleft ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textright ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textleft ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textright ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textleft ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+                <div class="box fill indexbox" data-link="#">
+                    <img src="image.png" class="boximage">
+                    <div class="stcontent textright ycenter">
+                        <div class="sttext max bold">好吃的千層蛋糕！</div>
+                        <div class="sttext big">在5月之前於線上網路門市訂購，現在還特別加贈限量環保袋。</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer">
+                <div class="sttext textsize20px">熟悉技術: html csss javascript php php-laravel python python-django mysql</div>
+            </div>
+        </div>
+
         <script>
-            login()
+            document.querySelectorAll(".indexbox").forEach(function(event){
+                event.onclick=function(){
+                    location.href=event.dataset.link
+                }
+            })
         </script>
     </body>
 </html>
