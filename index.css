@@ -717,13 +717,11 @@ html{
 }
 
 /* Hidden */
-
 html.mainlight .u-light-hidden,html.maindark .u-dark-hidden{
     display: none !important;
 }
 
 /* Light */
-
 html,html.mainlight,.u-light,html.maindark .u-inverted{
     color-scheme: light;
 
@@ -877,7 +875,6 @@ Document
 1. 讓所有的元素不會因為內距而更改其 `width` 寬度。
 2. 讓元素預設都以相對位置呈現，這樣裡面的 `absolute` 元素才能有父依據。
 */
-
 *,*::before,*::after{
     box-sizing: border-box;
     position: relative;
@@ -888,7 +885,6 @@ HTML
 1. 指定預設的動態背景與文字顏色，這樣才可以支援亮與暗色主題。
 2. 預設要讓網頁能夠填滿整個螢幕才能讓某些元素運用整個高度。
 */
-
 html{
     background: var(--stgray-50);
     color: var(--stgray-800);
