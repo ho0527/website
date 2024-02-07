@@ -167,3 +167,16 @@ function findmax(numbers){
 let number/* 變數不加s */=[3,5,2,8,1] // 有多空白
 let maxvalue=findmax(numbers)
 console.log("最大值：",maxvalue)
+
+19A6
+19D12
+22B5
+22C16
+22C23
+22C29
+19C1(2)
+19C6(2)
+19C19(2)
+19D2(2)
+22C1(2)
+22C24(2)
