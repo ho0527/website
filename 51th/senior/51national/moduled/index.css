@@ -1,0 +1,15 @@
+.top75px{
+    top: 75px;
+}
+
+.margin10px0px{
+    margin: 10px 0px;
+}
+
+.houselist{
+    height: calc(100vh - 325px);
+}
+
+.searchform{
+    height: 250px;
+}

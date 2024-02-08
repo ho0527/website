@@ -34,7 +34,7 @@ table{
 }
 
 .logo{
-    height: 75px;
+    height: 60px;
 }
 
 .maintitle{
@@ -50,7 +50,7 @@ table{
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 100px;
+    height: 75px;
     color: white;
     background: rgba(35, 35, 35, 0.95);
     backdrop-filter: blur(30px);
@@ -60,10 +60,10 @@ table{
 
 .navigationbar2{
     position: fixed;
-    top: 100px;
+    top: 75px;
     left: 0px;
     width: 100%;
-    height: 100px;
+    height: 75px;
     color: white;
     background: rgba(50, 50, 50, 0.95);
     backdrop-filter: blur(20px);
@@ -146,7 +146,7 @@ table{
     transform: translate(0%,-50%);
 }
 
-.input{
+/* .input{
     border: none;
     border-bottom: 1px black solid;
     background: none;
@@ -155,7 +155,7 @@ table{
     outline: none;
     font-size: 30px;
     color: white;
-}
+} */
 
 .middleinput{
     width: 35% !important;
@@ -1506,12 +1506,12 @@ button{
     gap: 2px;
 }
 
-.staddon>*:first-child,.staddon>.stinput:first-child:where(input, textarea){
+.staddon>*:first-child,.staddon>.input:first-child:where(input, textarea){
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.staddon>*:last-child,.staddon>.stinput:last-child:where(input, textarea){
+.staddon>*:last-child,.staddon>.input:last-child:where(input, textarea){
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -1718,12 +1718,12 @@ button{
     gap: 2px;
 }
 
-.staddon>*:first-child,.staddon>.stinput:first-child:where(input, textarea){
+.staddon>*:first-child,.staddon>.input:first-child:where(input, textarea){
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.staddon>*:last-child,.staddon>.stinput:last-child:where(input, textarea){
+.staddon>*:last-child,.staddon>.input:last-child:where(input, textarea){
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -9901,6 +9901,499 @@ button{
 
 /* ========================================================================== Variables ========================================================================== */
 
+.input{
+    --border-radius: 0.4rem;
+    --height: var(--stinput-height-medium);
+}
+
+/* ========================================================================== Base ========================================================================== */
+
+.input{
+    display: flex;
+    width: 100%;
+}
+
+/* ========================================================================== Structure ========================================================================== */
+
+.input input{
+    padding: 0 1rem;
+    height: var(--height);
+}
+
+.input input,.input textarea{
+    margin: 0;
+    width: 100%;
+    overflow: visible;
+    font: inherit;
+    outline: none;
+    box-sizing: border-box;
+    resize: none;
+    font-size: var(--stfont-size-14px);
+    line-height: 1.5;
+    color: var(--stgray-800);
+    background: var(--stgray-50);
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.input textarea{
+    padding: 0.467rem 1rem;
+}
+
+.input input:focus,.input textarea:focus{
+    outline: 0;
+}
+
+/* Input */
+
+.input input,.input textarea{
+    border-radius: var(--border-radius);
+    border: 1px solid var(--stgray-300);
+}
+
+.input input:focus,.input textarea:focus{
+    border-color: var(--stprimary-600);
+}
+
+.input input::-webkit-inner-spin-button,.input input::-webkit-calendar-picker-indicator{
+    opacity: 0.4;
+    line-height: 1;
+}
+
+/* Color */
+
+.input input[type="color"]{
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    width: auto;
+}
+
+.input input[type="color"]::-webkit-color-swatch{
+    padding: 0;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 0;
+    border-radius: 0.4rem;
+    width: auto;
+    height: auto;
+}
+
+.input input[type="color"]::-moz-color-swatch{
+    padding: 0;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 0;
+    border-radius: 0.4rem;
+    width: auto;
+    height: auto;
+}
+
+/* ========================================================================== Variations ========================================================================== */
+
+/* Solid */
+
+.input.is-solid input,.input.is-solid textarea{
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+    background: var(--stgray-100);
+}
+
+.input.is-solid input:focus,.input.is-solid textarea:focus{
+    background: var(--stgray-50);
+    border: 1px solid var(--stgray-300);
+}
+
+/* Underlined */
+
+.input.underline input,.input.underline textarea{
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border: 2px solid transparent;
+    background: var(--stgray-100);
+    border-bottom: 2px solid var(--stgray-400);
+}
+
+.input.underline input:focus,.input.underline textarea:focus{
+    border-bottom-color: var(--stprimary-600);
+}
+
+/* Resizable */
+
+.resizeable{
+    min-height: 5rem !important;
+    resize: vertical !important;
+}
+
+/* Circular */
+
+.inputround{
+    --border-radius: 100rem;
+}
+
+/* Basic */
+
+.input.basic input{
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+/* Labeled */
+
+.input:is(.is-start-labeled, .is-end-labeled, .islabel):is(.input, .label){
+    border-radius: var(--border-radius);
+}
+
+.input:is(.is-start-labeled, .is-end-labeled, .islabel) .label{
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--stgray-100);
+    padding: 0 0.6rem;
+    font-size: var(--stfont-size-14px);
+    color: var(--stgray-700);
+    border: 1px solid var(--stgray-300);
+}
+
+.input:is(.is-start-labeled, .islabel) .label{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+}
+
+.input:is(.is-start-labeled, .islabel) input{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input:is(.is-end-labeled, .islabel) .label{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+}
+
+.input:is(.is-end-labeled, .islabel) input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input.islabel .label:first-child{
+    border-left-width: 1px;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.input.islabel .label:last-child{
+    border-right-width: 1px;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+/* Underlined */
+.input:is(.is-start-labeled, .islabel, .is-end-labeled).underline .label{
+    border: 0;
+    border-bottom: 2px solid var(--stgray-400);
+    background: var(--stgray-200);
+}
+
+.input:is(.is-start-labeled, .islabel).underline .label{
+    border-bottom-left-radius: 0;
+}
+
+.input:is(.is-end-labeled, .islabel).underline .label{
+    border-bottom-right-radius: 0;
+}
+
+.input:is(.is-start-labeled, .islabel).underline input{
+    border-left: 0;
+}
+
+.input:is(.is-end-labeled, .islabel).underline input{
+    border-right: 0;
+}
+
+/* Solid */
+.input:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid .label{
+    border-color: transparent;
+    background: var(--stgray-200);
+}
+
+.input:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid:focus-within .label{
+    border-color: var(--stgray-300);
+}
+
+.input.round{
+    --border-radius: 100rem;
+}
+
+/* Action Icon */
+
+.input.is-end-action-icon:where(a, button).sticon{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: var(--stgray-700);
+    z-index: 1;
+}
+
+.input.is-end-action-icon:where(a, button).sticon{
+    padding: 0 1.5rem;
+    border-radius: 0.4rem;
+    background: var(--stgray-100);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.35rem;
+    padding: 0;
+    aspect-ratio: 1.1 / 1;
+    height: 75%;
+    width: auto;
+    font-size: 1em;
+}
+
+.input.is-end-action-icon:where(a, button).sticon:hover{
+    opacity: 0.9;
+}
+
+.input.is-end-action-icon input{
+    padding-right: 3rem;
+    box-sizing: border-box;
+}
+
+/* Icon */
+
+.input.starticon .sticon:not(a):not(button),.input.endicon .sticon:not(a):not(button),.input.fullicon .sticon:not(a):not(button){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: var(--stgray-700);
+    z-index: 1;
+}
+
+.input.starticon .sticon:not(a):not(button),.input.fullicon .sticon:not(a):not(button):first-child{
+    left: 1rem;
+}
+
+.input.starticon input,.input.fullicon input{
+    padding-left: 2.8rem;
+    box-sizing: border-box;
+}
+
+.input.endicon .sticon:not(a):not(button),.input.fullicon .sticon:not(a):not(button):last-child{
+    right: 1rem;
+}
+
+.input.endicon input,.input.fullicon input{
+    padding-right: 2.8rem;
+    box-sizing: border-box;
+}
+
+/* error */
+
+.inputerror input{
+    color: var(--stnegative-600);
+    border-color: var(--stnegative-400);
+    font-weight: 500;
+}
+
+.inputerror textarea{
+    color: var(--stnegative-600);
+    border-color: var(--stnegative-400);
+    font-weight: 500;
+}
+
+.inputerror .label{
+    border-color: var(--stnegative-400);
+}
+
+/* Solid */
+.inputerror.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+    border-color: var(--stnegative-400);
+}
+
+.inputerror.is-solid input:focus,.inputerror.is-solid textarea:focus{
+    background: var(--stgray-100);
+    border: 1px solid var(--stnegative-400);
+}
+
+/* Underlined */
+.inputerror.underline:is(.label, input, textarea){
+    border-color: transparent;
+    border-bottom-color: var(--stnegative-400);
+}
+
+/* Disabled */
+
+.input.disabled input,.input.disabled textarea{
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.input.disabled.underline{
+    border-bottom-color: var(--stgray-300);
+}
+
+/* fill */
+
+.input.fill{
+    display: flex;
+    width: 100%;
+}
+
+.input.fill input,.input.fill textarea{
+    width: 100%;
+}
+
+/* Dense */
+
+.input.dense input{
+    --height: var(--stinput-height-medium-dense);
+}
+
+.input.dense.small input{
+    --height: var(--stinput-height-small-dense);
+}
+
+.input.dense.large input{
+    --height: var(--stinput-height-large-dense);
+}
+
+/* Relaxed */
+
+.input.relaxed input{
+    --height: var(--stinput-height-large);
+}
+
+/* Sizes */
+
+.input.small input{
+    --height: var(--stinput-height-small);
+}
+
+.input.large input{
+    --height: var(--stinput-height-large);
+}
+
+.input.small:is(input, textarea, .sticon){
+    font-size: var(--stfont-size-13px);
+}
+
+.input.large:is(input, textarea, .sticon){
+    font-size: var(--stfont-size-17px);
+}
+
+/* ========================================================================== Data Input ========================================================================== */
+
+.inputtag{
+    --border-radius: 0.4rem;
+    --height: var(--stinput-height-medium);
+}
+
+.inputtag{
+    padding: 0.25rem 1rem;
+    min-height: var(--height);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--stgray-300);
+    align-items: center;
+    display: flex;
+    cursor: text;
+}
+
+.inputtag.focused{
+    border-color: var(--stprimary-600);
+}
+
+.inputtag .content{
+    align-items: center;
+    display: flex;
+}
+
+.inputtag .append{
+    margin: 0;
+    overflow: visible;
+    font: inherit;
+    outline: none;
+    /* border: none;*/
+    box-sizing: border-box;
+    resize: none;
+    font-size: var(--stfont-size-14px);
+    line-height: 1.5;
+    color: var(--stgray-800);
+    background: var(--stgray-50);
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 10px;
+}
+
+.inputtag input:not(.append){
+    display: none;
+}
+
+.input[data-tocas="input-chips"]{
+    border: 1px solid var(--stgray-300);
+    border-radius: var(--border-radius);
+    min-height: var(--height);
+    padding: 0.25rem 1rem;
+
+    background: var(--stgray-50);
+    box-sizing: border-box;
+    color: var(--stgray-800);
+    font: inherit;
+    font-size: var(--stfont-size-14px);
+    outline: none;
+    overflow: visible;
+    resize: none;
+    width: 100%;
+    cursor: text;
+}
+
+.input[data-tocas="input-chips"] input:not(.append){
+    display: none;
+}
+
+.input[data-tocas="input-chips"] .content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input[data-tocas="input-chips"] .content .stchip{
+    cursor: default;
+    user-select: none;
+}
+
+.input[data-tocas="input-chips"] input.append{
+    border: 0;
+    height: auto;
+    line-height: 1.7;
+    padding: 0;
+    border-radius: 0;
+    width: 1px;
+}
+
+
+/* ========================================================================== Variables ========================================================================== */
+
 .stinput{
     --border-radius: 0.4rem;
     --height: var(--stinput-height-medium);
@@ -10393,7 +10886,7 @@ button{
 
 /* ========================================================================== Variables ========================================================================== */
 
-.stfile{
+.file{
     --height: var(--stinput-height-medium);
     --accent-color: initial;
     --accent-foreground-color: initial;
@@ -10401,14 +10894,14 @@ button{
 
 /* ========================================================================== Base ========================================================================== */
 
-.stfile{
+.file{
     display: flex;
     width: 100%;
 }
 
 /* ========================================================================== Structure ========================================================================== */
 
-.stfile input{
+.file input{
     height: var(--height);
     line-height: calc(var(--height) - 1px);
     font-size: var(--stfont-size-14px);
@@ -10421,7 +10914,7 @@ button{
     width: 100%;
 }
 
-.stfile input::file-selector-button,.stfile input::-webkit-file-upload-button{
+.file input::file-selector-button,.file input::-webkit-file-upload-button{
     border: 0;
     min-width: 75px;
     /* Firefox */
@@ -10445,7 +10938,7 @@ button{
 
 /* Underlined */
 
-.stfile.underline input{
+.file.underline input{
     border-radius: 0.4rem 0.4rem 0 0;
     border: 2px solid transparent;
     background: var(--stgray-100);
@@ -10454,18 +10947,18 @@ button{
 
 /* Solid */
 
-.stfile.is-solid input{
+.file.is-solid input{
     background: var(--stgray-100);
     border-color: transparent;
 }
 
-.stfile:is(.is-solid, .underline) input::file-selector-button,.stfile:is(.is-solid, .underline) input::-webkit-file-upload-button{
+.file:is(.is-solid, .underline) input::file-selector-button,.file:is(.is-solid, .underline) input::-webkit-file-upload-button{
     background: var(--accent-color, var(--stgray-300));
 }
 
 /* Disabled */
 
-.stfile.disabled{
+.file.disabled{
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0.5;
@@ -10474,51 +10967,51 @@ button{
 
 /* error */
 
-.stfile.error input{
+.file.error input{
     border-color: var(--stnegative-400);
     color: var(--stnegative-600);
     font-weight: 500;
 }
 
-.stfile.error.underline input{
+.file.error.underline input{
     border-color: transparent;
     border-bottom-color: var(--stnegative-400);
 }
 
 /* Sizes */
 
-.stfile.small input{
+.file.small input{
     --height: var(--stinput-height-small);
 }
 
-.stfile.large input{
+.file.large input{
     --height: var(--stinput-height-large);
 }
 
-.stfile.small:is(input, input::file-selector-button, input::-webkit-file-upload-button){
+.file.small:is(input, input::file-selector-button, input::-webkit-file-upload-button){
     font-size: var(--stfont-size-13px);
 }
 
-.stfile.large:is(input, input::file-selector-button, input::-webkit-file-upload-button){
+.file.large:is(input, input::file-selector-button, input::-webkit-file-upload-button){
     font-size: var(--stfont-size-17px);
 }
 
 /* Dense */
 
-.stfile.is-dense input{
+.file.is-dense input{
     --height: var(--stinput-height-medium-dense);
 }
 
-.stfile.is-dense input::file-selector-button,.stfile.is-dense input::-webkit-file-upload-button{
+.file.is-dense input::file-selector-button,.file.is-dense input::-webkit-file-upload-button{
     padding-top: 0.15rem;
     padding-bottom: 0.15rem;
 }
 
-.stfile.small.is-dense input{
+.file.small.is-dense input{
     --height: var(--stinput-height-small-dense);
 }
 
-.stfile.large.is-dense input{
+.file.large.is-dense input{
     --height: var(--stinput-height-large-dense);
 }
 
@@ -11642,6 +12135,327 @@ button{
 
 /* ========================================================================== Variables ========================================================================== */
 
+.select{
+    --object-distance-vertical: 0.4rem;
+    --object-distance-horizontal: 0.8rem;
+
+    --height: var(--stinput-height-medium);
+}
+
+/* ========================================================================== Base ========================================================================== */
+
+.select{
+    display: inline-flex;
+    background: var(--stgray-50);
+    border: 1px solid var(--stgray-300);
+    border-radius: 0.4rem;
+    cursor: pointer;
+    height: var(--height);
+}
+
+/* ========================================================================== Structure ========================================================================== */
+
+.select select{
+    border: none;
+    margin: 0;
+    background: inherit;
+    font: inherit;
+    outline: none;
+    box-sizing: border-box;
+    user-select: none;
+    border-radius: 0.4rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.select select:focus{
+    outline: 0;
+}
+
+.select select,.select .content{
+    line-height: 1.5;
+    font-size: var(--stfont-size-14px);
+    color: var(--stgray-800);
+
+    padding: 0 1rem;
+    padding-right: 2.5rem;
+
+    width: 100%;
+    cursor: pointer;
+}
+
+.select .content{
+    user-select: none;
+    display: flex;
+    gap: var(--object-distance-vertical) var(--object-distance-horizontal);
+    align-items: center;
+    width: calc(100% - 2.5rem);
+    overflow: hidden;
+}
+
+.select .content,.select .content *{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.select .content .sticon{
+    font-size: 1.1em;
+}
+
+.select select option{
+    background: inherit;
+}
+
+.select::after{
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stgray-700);
+
+    font-family: "Icons";
+    font-weight: normal;
+    font-style: normal;
+
+    text-decoration: inherit;
+    text-align: center;
+    width: 1.18em;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+    content: "▼";
+    font-size: 13px;
+}
+
+/* ========================================================================== Variations ========================================================================== */
+
+/* Relaxed */
+
+.select.is-relaxed{
+    --height: var(--stinput-height-large);
+}
+
+/* Multiple */
+
+.select.is-multiple{
+    height: auto;
+}
+
+.select.is-multiple::after{
+    content: none;
+}
+
+.select select[multiple]{
+    padding: 0.5rem 0.5rem;
+    overflow-y: auto;
+}
+
+.select select[multiple] option{
+    border-radius: 0.4rem;
+    padding: 0.3rem 0.5rem;
+    margin: 0.1rem 0;
+}
+
+.select select[multiple] option:checked{
+    background: var(--stprimary-700);
+    color: var(--stwhite);
+}
+
+/* Solid */
+
+.select.is-solid{
+    background: var(--stgray-100);
+    border-color: transparent;
+}
+
+/* Focus */
+.select:focus-within{
+    border-color: var(--stprimary-600);
+}
+
+/* Underlined */
+
+.select.underline{
+    border-radius: 0.4rem 0.4rem 0 0;
+    border: 2px solid transparent;
+    background: var(--stgray-100);
+    border-bottom: 2px solid var(--stgray-400);
+}
+
+.select.underline select option{
+    background: var(--stgray-50);
+}
+
+.select.underline:focus-within{
+    border-bottom-color: var(--stprimary-600);
+}
+
+/* Active */
+
+.select.is-active{
+    border-color: var(--stprimary-600);
+}
+
+/* If select is-active then open child .stdropdown also */
+.select.is-active .stdropdown{
+    display: inline-flex;
+}
+
+.select.underline.is-active{
+    border-color: transparent;
+    border-bottom-color: var(--stprimary-600);
+}
+
+/* Basic */
+
+.select.basic{
+    padding: 0;
+    background: transparent;
+    border-color: transparent;
+    min-height: initial;
+}
+
+.select.basic select{
+    line-height: 1;
+    padding: 0 1.4rem 0 0;
+}
+
+.select.basic::after{
+    right: 0;
+    font-size: 12px;
+    padding-top: 2px;
+}
+
+/* Disabled */
+
+.select.disabled{
+    pointer-events: none;
+    opacity: 0.5;
+    user-select: none;
+}
+
+/* fill */
+
+.select.fill{
+    width: 100%;
+}
+
+/* error */
+
+.select.error{
+    border-color: var(--stnegative-400);
+}
+
+.select.error select{
+    color: var(--stnegative-600);
+    font-weight: 500;
+}
+
+.select.error.underline{
+    border-color: transparent;
+    border-bottom-color: var(--stnegative-400);
+}
+
+/* Sizes */
+
+.select.small{
+    --height: var(--stinput-height-small);
+}
+
+.select.large{
+    --height: var(--stinput-height-large);
+}
+
+.select.small select{
+    font-size: var(--stfont-size-13px);
+}
+
+.select.large select{
+    font-size: var(--stfont-size-17px);
+}
+
+/* Dense */
+
+.select.is-dense{
+    --height: var(--stinput-height-medium-dense);
+}
+
+.select.is-dense.small{
+    --height: var(--stinput-height-small-dense);
+}
+
+.select.is-dense.large{
+    --height: var(--stinput-height-large-dense);
+}
+
+/* Wrappable */
+
+.select.is-wrappable{
+    min-height: var(--height);
+    height: auto;
+    padding: 0.184em 0;
+}
+
+.select.is-wrappable .content{
+    flex-wrap: wrap;
+}
+
+.select.is-wrappable::after{
+    top: 0.5em;
+    bottom: initial;
+}
+
+/* ========================================================================== Enhanced ========================================================================== */
+
+.select[data-tocas="input-select"] select{
+    display: none;
+}
+
+.select[data-tocas="input-combo"]{
+    cursor: text;
+}
+
+.select[data-tocas="input-combo"] select{
+    display: none;
+}
+
+.select[data-tocas="input-combo"] input.append{
+    border: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    color: var(--stgray-800);
+    cursor: pointer;
+    font-size: var(--stfont-size-14px);
+    padding: 0 2.5rem 0 0.9rem;
+    width: 100%;
+    z-index: 1;
+    background: transparent;
+}
+
+.select[data-tocas="input-combo"] .content.ghosting{
+    opacity: 0.5;
+}
+
+.select[data-tocas="input-combo"] .content.is-hidden{
+    visibility: hidden;
+}
+
+/* ========================================================================== Variables ========================================================================== */
+
 .stfieldset{
     --accent-color: initial;
     --accent-foreground-color: initial;
@@ -11885,6 +12699,14 @@ button{
 /* Label */
 
 .sttextlabel{
+    font-weight: 500;
+    color: var(--stgray-800);
+    font-size: var(--stfont-size-14px);
+    margin: 2px 0px;
+    line-height: 1;
+}
+
+.textlabel{
     font-weight: 500;
     color: var(--stgray-800);
     font-size: var(--stfont-size-14px);
@@ -12200,6 +13022,7 @@ button{
     border-radius: 0.4rem;
     overflow: hidden;
     background: var(--stgray-50);
+    padding: 10px;
 }
 
 a.box:hover{
