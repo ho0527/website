@@ -49,7 +49,8 @@ function leaderboard(){
 }
 
 if(!isset(weblsget("worldskill2022MDgame"))){
-    location.href="indx.html"
+    weblsset("worldskill2022MDgame","demo-game-2")
+    // location.href="index.html"
 }
 
 ajax("GET",ajaxurl+"api/v1/games/"+weblsget("worldskill2022MDgame"),function(event,data){
@@ -62,11 +63,11 @@ ajax("GET",ajaxurl+"api/v1/games/"+weblsget("worldskill2022MDgame"),function(eve
     `
 
     docgetid("game").innerHTML=`
-        <iframe src="${data["gamePath"]}" class="iframe"></iframe>
+        <iframe src="${data["gamePath"]}" class="iframe" title="這是遊戲"></iframe>
     `
 
     // 回傳分數
-    message(function(element,event){
+    getmessage(function(element,event){
         if(window.confirm("Are you sure you want to submit your score?")){
             ajax("POST","/backend/worldskill2022modulec/api/v1/games/"+weblsget("worldskill2022MDgame")+"/scores",function(event,data){
                 if(data["status"]=="success"){

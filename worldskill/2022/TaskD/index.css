@@ -1,5 +1,5 @@
 .navigationbartitle2{
-    font-size: 40px;
+    font-size: 35px;
     font-style: italic;
     margin-left: 20px;
 }
@@ -26,7 +26,7 @@
 
 .maindiv{
     position: relative;
-    top: 220px;
+    top: 150px;
 }
 
 .game{
@@ -67,9 +67,9 @@
 }
 
 .title{
-    grid-column: 2/50;
+    grid-column: 2/70;
     grid-row: 1/5;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     color: white;
     display: flex;
@@ -252,4 +252,10 @@
 
 .inputmargin{
     margin: 5px 0px;
+}
+
+.profilehightscorediv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

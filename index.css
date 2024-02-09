@@ -90,7 +90,7 @@ table{
 }
 
 .navigationbartitle{
-    font-size: 50px;
+    font-size: 45px;
     font-weight: bold;
     margin-top: 5px;
 }
@@ -1291,23 +1291,24 @@ button{
 }
 
 /* Ghost */
-.button.ghost{
+.buttonghost{
+    background: transparent;
+    color: var(--stgray-800);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.buttonghost{
     background: transparent;
     color: var(--stgray-800);
     border: 2px solid transparent;
 }
 
-.button.ghost{
-    background: transparent;
-    color: var(--stgray-800);
-    border: 2px solid transparent;
+.buttonghost:hover{
+    color: var(--stgray-600);
 }
 
-.button.ghost:hover{
-    background: var(--stgray-100);
-}
-
-.button.ghost.warn{
+.buttonghost.warn{
     color: var(--stnegative-500);
 }
 
@@ -22312,92 +22313,92 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 }
 
 /* fontsize START */
-.textsize05px{ font-size: var(--stfont-size-05px); }
-.textsize06px{ font-size: var(--stfont-size-06px); }
-.textsize07px{ font-size: var(--stfont-size-07px); }
-.textsize08px{ font-size: var(--stfont-size-08px); }
-.textsize09px{ font-size: var(--stfont-size-09px); }
-.textsize10px{ font-size: var(--stfont-size-10px); }
-.textsize11px{ font-size: var(--stfont-size-11px); }
-.textsize12px{ font-size: var(--stfont-size-12px); }
-.textsize13px{ font-size: var(--stfont-size-13px); }
-.textsize14px{ font-size: var(--stfont-size-14px); }
-.textsize15px{ font-size: var(--stfont-size-15px); }
-.textsize16px{ font-size: var(--stfont-size-16px); }
-.textsize17px{ font-size: var(--stfont-size-17px); }
-.textsize18px{ font-size: var(--stfont-size-18px); }
-.textsize19px{ font-size: var(--stfont-size-19px); }
-.textsize20px{ font-size: var(--stfont-size-20px); }
-.textsize21px{ font-size: var(--stfont-size-21px); }
-.textsize22px{ font-size: var(--stfont-size-22px); }
-.textsize23px{ font-size: var(--stfont-size-23px); }
-.textsize24px{ font-size: var(--stfont-size-24px); }
-.textsize25px{ font-size: var(--stfont-size-25px); }
-.textsize26px{ font-size: var(--stfont-size-26px); }
-.textsize27px{ font-size: var(--stfont-size-27px); }
-.textsize28px{ font-size: var(--stfont-size-28px); }
-.textsize29px{ font-size: var(--stfont-size-29px); }
-.textsize30px{ font-size: var(--stfont-size-30px); }
-.textsize31px{ font-size: var(--stfont-size-31px); }
-.textsize32px{ font-size: var(--stfont-size-32px); }
-.textsize33px{ font-size: var(--stfont-size-33px); }
-.textsize34px{ font-size: var(--stfont-size-34px); }
-.textsize35px{ font-size: var(--stfont-size-35px); }
-.textsize36px{ font-size: var(--stfont-size-36px); }
-.textsize37px{ font-size: var(--stfont-size-37px); }
-.textsize38px{ font-size: var(--stfont-size-38px); }
-.textsize39px{ font-size: var(--stfont-size-39px); }
-.textsize40px{ font-size: var(--stfont-size-40px); }
-.textsize41px{ font-size: var(--stfont-size-41px); }
-.textsize42px{ font-size: var(--stfont-size-42px); }
-.textsize43px{ font-size: var(--stfont-size-43px); }
-.textsize44px{ font-size: var(--stfont-size-44px); }
-.textsize45px{ font-size: var(--stfont-size-45px); }
-.textsize46px{ font-size: var(--stfont-size-46px); }
-.textsize47px{ font-size: var(--stfont-size-47px); }
-.textsize48px{ font-size: var(--stfont-size-48px); }
-.textsize49px{ font-size: var(--stfont-size-49px); }
-.textsize50px{ font-size: var(--stfont-size-50px); }
-.textsize51px{ font-size: var(--stfont-size-51px); }
-.textsize52px{ font-size: var(--stfont-size-52px); }
-.textsize53px{ font-size: var(--stfont-size-53px); }
-.textsize54px{ font-size: var(--stfont-size-54px); }
-.textsize55px{ font-size: var(--stfont-size-55px); }
-.textsize56px{ font-size: var(--stfont-size-56px); }
-.textsize57px{ font-size: var(--stfont-size-57px); }
-.textsize58px{ font-size: var(--stfont-size-58px); }
-.textsize59px{ font-size: var(--stfont-size-59px); }
-.textsize60px{ font-size: var(--stfont-size-60px); }
-.textsize61px{ font-size: var(--stfont-size-61px); }
-.textsize62px{ font-size: var(--stfont-size-62px); }
-.textsize63px{ font-size: var(--stfont-size-63px); }
-.textsize64px{ font-size: var(--stfont-size-64px); }
-.textsize65px{ font-size: var(--stfont-size-65px); }
-.textsize66px{ font-size: var(--stfont-size-66px); }
-.textsize67px{ font-size: var(--stfont-size-67px); }
-.textsize68px{ font-size: var(--stfont-size-68px); }
-.textsize69px{ font-size: var(--stfont-size-69px); }
-.textsize70px{ font-size: var(--stfont-size-70px); }
-.textsize71px{ font-size: var(--stfont-size-71px); }
-.textsize72px{ font-size: var(--stfont-size-72px); }
-.textsize73px{ font-size: var(--stfont-size-73px); }
-.textsize74px{ font-size: var(--stfont-size-74px); }
-.textsize75px{ font-size: var(--stfont-size-75px); }
-.textsize76px{ font-size: var(--stfont-size-76px); }
-.textsize77px{ font-size: var(--stfont-size-77px); }
-.textsize78px{ font-size: var(--stfont-size-78px); }
-.textsize79px{ font-size: var(--stfont-size-79px); }
-.textsize80px{ font-size: var(--stfont-size-80px); }
-.textsize81px{ font-size: var(--stfont-size-81px); }
-.textsize82px{ font-size: var(--stfont-size-82px); }
-.textsize83px{ font-size: var(--stfont-size-83px); }
-.textsize84px{ font-size: var(--stfont-size-84px); }
-.textsize85px{ font-size: var(--stfont-size-85px); }
-.textsize86px{ font-size: var(--stfont-size-86px); }
-.textsize87px{ font-size: var(--stfont-size-87px); }
-.textsize88px{ font-size: var(--stfont-size-88px); }
-.textsize89px{ font-size: var(--stfont-size-89px); }
-.textsize90px{ font-size: var(--stfont-size-90px); }
+.textsize05px{ font-size: var(--stfont-size-05px) !important; }
+.textsize06px{ font-size: var(--stfont-size-06px) !important; }
+.textsize07px{ font-size: var(--stfont-size-07px) !important; }
+.textsize08px{ font-size: var(--stfont-size-08px) !important; }
+.textsize09px{ font-size: var(--stfont-size-09px) !important; }
+.textsize10px{ font-size: var(--stfont-size-10px) !important; }
+.textsize11px{ font-size: var(--stfont-size-11px) !important; }
+.textsize12px{ font-size: var(--stfont-size-12px) !important; }
+.textsize13px{ font-size: var(--stfont-size-13px) !important; }
+.textsize14px{ font-size: var(--stfont-size-14px) !important; }
+.textsize15px{ font-size: var(--stfont-size-15px) !important; }
+.textsize16px{ font-size: var(--stfont-size-16px) !important; }
+.textsize17px{ font-size: var(--stfont-size-17px) !important; }
+.textsize18px{ font-size: var(--stfont-size-18px) !important; }
+.textsize19px{ font-size: var(--stfont-size-19px) !important; }
+.textsize20px{ font-size: var(--stfont-size-20px) !important; }
+.textsize21px{ font-size: var(--stfont-size-21px) !important; }
+.textsize22px{ font-size: var(--stfont-size-22px) !important; }
+.textsize23px{ font-size: var(--stfont-size-23px) !important; }
+.textsize24px{ font-size: var(--stfont-size-24px) !important; }
+.textsize25px{ font-size: var(--stfont-size-25px) !important; }
+.textsize26px{ font-size: var(--stfont-size-26px) !important; }
+.textsize27px{ font-size: var(--stfont-size-27px) !important; }
+.textsize28px{ font-size: var(--stfont-size-28px) !important; }
+.textsize29px{ font-size: var(--stfont-size-29px) !important; }
+.textsize30px{ font-size: var(--stfont-size-30px) !important; }
+.textsize31px{ font-size: var(--stfont-size-31px) !important; }
+.textsize32px{ font-size: var(--stfont-size-32px) !important; }
+.textsize33px{ font-size: var(--stfont-size-33px) !important; }
+.textsize34px{ font-size: var(--stfont-size-34px) !important; }
+.textsize35px{ font-size: var(--stfont-size-35px) !important; }
+.textsize36px{ font-size: var(--stfont-size-36px) !important; }
+.textsize37px{ font-size: var(--stfont-size-37px) !important; }
+.textsize38px{ font-size: var(--stfont-size-38px) !important; }
+.textsize39px{ font-size: var(--stfont-size-39px) !important; }
+.textsize40px{ font-size: var(--stfont-size-40px) !important; }
+.textsize41px{ font-size: var(--stfont-size-41px) !important; }
+.textsize42px{ font-size: var(--stfont-size-42px) !important; }
+.textsize43px{ font-size: var(--stfont-size-43px) !important; }
+.textsize44px{ font-size: var(--stfont-size-44px) !important; }
+.textsize45px{ font-size: var(--stfont-size-45px) !important; }
+.textsize46px{ font-size: var(--stfont-size-46px) !important; }
+.textsize47px{ font-size: var(--stfont-size-47px) !important; }
+.textsize48px{ font-size: var(--stfont-size-48px) !important; }
+.textsize49px{ font-size: var(--stfont-size-49px) !important; }
+.textsize50px{ font-size: var(--stfont-size-50px) !important; }
+.textsize51px{ font-size: var(--stfont-size-51px) !important; }
+.textsize52px{ font-size: var(--stfont-size-52px) !important; }
+.textsize53px{ font-size: var(--stfont-size-53px) !important; }
+.textsize54px{ font-size: var(--stfont-size-54px) !important; }
+.textsize55px{ font-size: var(--stfont-size-55px) !important; }
+.textsize56px{ font-size: var(--stfont-size-56px) !important; }
+.textsize57px{ font-size: var(--stfont-size-57px) !important; }
+.textsize58px{ font-size: var(--stfont-size-58px) !important; }
+.textsize59px{ font-size: var(--stfont-size-59px) !important; }
+.textsize60px{ font-size: var(--stfont-size-60px) !important; }
+.textsize61px{ font-size: var(--stfont-size-61px) !important; }
+.textsize62px{ font-size: var(--stfont-size-62px) !important; }
+.textsize63px{ font-size: var(--stfont-size-63px) !important; }
+.textsize64px{ font-size: var(--stfont-size-64px) !important; }
+.textsize65px{ font-size: var(--stfont-size-65px) !important; }
+.textsize66px{ font-size: var(--stfont-size-66px) !important; }
+.textsize67px{ font-size: var(--stfont-size-67px) !important; }
+.textsize68px{ font-size: var(--stfont-size-68px) !important; }
+.textsize69px{ font-size: var(--stfont-size-69px) !important; }
+.textsize70px{ font-size: var(--stfont-size-70px) !important; }
+.textsize71px{ font-size: var(--stfont-size-71px) !important; }
+.textsize72px{ font-size: var(--stfont-size-72px) !important; }
+.textsize73px{ font-size: var(--stfont-size-73px) !important; }
+.textsize74px{ font-size: var(--stfont-size-74px) !important; }
+.textsize75px{ font-size: var(--stfont-size-75px) !important; }
+.textsize76px{ font-size: var(--stfont-size-76px) !important; }
+.textsize77px{ font-size: var(--stfont-size-77px) !important; }
+.textsize78px{ font-size: var(--stfont-size-78px) !important; }
+.textsize79px{ font-size: var(--stfont-size-79px) !important; }
+.textsize80px{ font-size: var(--stfont-size-80px) !important; }
+.textsize81px{ font-size: var(--stfont-size-81px) !important; }
+.textsize82px{ font-size: var(--stfont-size-82px) !important; }
+.textsize83px{ font-size: var(--stfont-size-83px) !important; }
+.textsize84px{ font-size: var(--stfont-size-84px) !important; }
+.textsize85px{ font-size: var(--stfont-size-85px) !important; }
+.textsize86px{ font-size: var(--stfont-size-86px) !important; }
+.textsize87px{ font-size: var(--stfont-size-87px) !important; }
+.textsize88px{ font-size: var(--stfont-size-88px) !important; }
+.textsize89px{ font-size: var(--stfont-size-89px) !important; }
+.textsize90px{ font-size: var(--stfont-size-90px) !important; }
 /* fontsize END */
 
 .boximage{

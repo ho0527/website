@@ -12,30 +12,25 @@ docgetid("signout").onclick=function(){
     ])
 }
 
-oldajax("GET",ajaxurl+"api/v1/users/"+weblsget("worldskill2022MDusername"),null,[
-    ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
-]).onload=function(){
-    let data=JSON.parse(this.responseText)
+ajax("GET",ajaxurl+"api/v1/users/"+weblsget("worldskill2022MDusername"),function(event,data){
     // navbar
     docgetid("navigationbartitle2").innerHTML=`
         (User Profile: ${weblsget("worldskill2022MDusername")})
     `
 
     // 製作的遊戲
-    ajax("GET",ajaxurl+"api/v1/games",function(){
-        let data=JSON.parse(this.responseText)
-        ajax("GET",ajaxurl+"api/v1/games?size="+data["totalElements"],function(){
-            let data=JSON.parse(this.responseText)
-            for(let i=0;i<data["content"].length;i=i+1){
-                if(data["content"][i]["author"]==weblsget("worldskill2022MDusername")){
+    ajax("GET",ajaxurl+"api/v1/games",function(event2,data2){
+        ajax("GET",ajaxurl+"api/v1/games?size="+data2["totalElements"],function(event3,data3){
+            for(let i=0;i<data3["content"].length;i=i+1){
+                if(data3["content"][i]["author"]==weblsget("worldskill2022MDusername")){
                     let pictureurl="material/picture/default.jpg"
 
                     // game div
                     innerhtml("#profilegamediv",`
-                        <div class="game profilegame grid" id="${data["content"][i]["slug"]}">
-                            <div class="title">${data["content"][i]["title"]}</div>
-                            <div class="description">${data["content"][i]["description"]}</div>
-                            <div class="scorecount">score submit: ${data["content"][i]["scoreCount"]}</div>
+                        <div class="game profilegame grid" id="${data3["content"][i]["slug"]}">
+                            <div class="title">${data3["content"][i]["title"]}</div>
+                            <div class="description">${data3["content"][i]["description"]}</div>
+                            <div class="scorecount">score submit: ${data3["content"][i]["scoreCount"]}</div>
                             <div class="imagediv"><img src="${pictureurl}" class="image"></div>
                         </div>
                     `)
@@ -52,13 +47,24 @@ oldajax("GET",ajaxurl+"api/v1/users/"+weblsget("worldskill2022MDusername"),null,
             docgetall(".game").forEach(function(event){
                 event.onclick=function(){
                     location.href="game.html?game="+event.id
+                    weblsset("worldskill2022MDgame",event.id)
                 }
             })
         })
     })
 
-    console.log(data["highscores"])
-}
+    for(let i=0;i<data["highscores"].length;i=i+1){
+        console.log(data["highscores"])
+        innerhtml("#profilehightscore",`
+            <div class="profilehightscorediv">
+                <input type="button" class="buttonghost" onclick="weblsset('worldskill2022MDgame','${data["highscores"][i]["game"]["slug"]}');location.href='game.html'" value="${data["highscores"][i]["game"]["title"]}">
+                <div>${data["highscores"][i]["score"]}</div>
+            </div>
+        `)
+    }
+},null,[
+    ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
+])
 
 docgetid("usernamelink").innerHTML=`
     ${weblsget("worldskill2022MDusername")} profile

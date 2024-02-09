@@ -301,6 +301,7 @@ body{
     bottom: 0px;
     right: 0px;
     background-color: rgba(100, 100, 100, 0.25);/* 背景顏色 */
+    display: none;
 }
 
 .close{

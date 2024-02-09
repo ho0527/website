@@ -501,7 +501,7 @@ function createaside(){
     }else{
         docgetid("playlist").innerHTML=`
             ${docgetid("playlist").innerHTML}
-            <div class="list warning">
+            <div class="list warning textcenter">
                 目前無歌曲
             </div>
         `
@@ -820,6 +820,14 @@ document.onkeydown=function(event){
             playing=true
         }
         url()
+    }
+}
+
+document.onmousedown=function(event){
+    if(event.button==3||event.button==4){
+        setTimeout(function(){
+            location.reload()
+        },250)
     }
 }
 
