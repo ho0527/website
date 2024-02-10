@@ -1,15 +1,25 @@
-.top75px{
-    top: 75px;
-}
+/* style setting START */
+.top-75px{ top: 75px !important; }
+.margin-0px5px{ margin: 0px 5px !important; }
+.margin-10px0px{ margin: 10px 0px !important; }
+.margin-10px5px{ margin: 10px 5px !important; }
+.margin-0px5px0px0px{ margin: 0px 5px 0px 0px !important; }
+.margin-0px0px0px5px{ margin: 0px 0px 0px 5px !important; }
+.flex{ display: flex !important; }
+.alignitems-center{ align-items: center !important; }
+.justifycontent-space_between{ justify-content: space-between !important; }
+.columngap-10px{ column-gap: 10px !important; }
+/* style setting END */
 
-.margin10px0px{
-    margin: 10px 0px;
-}
-
+/* main START */
 .houselist{
     height: calc(100vh - 325px);
 }
 
 .searchform{
     height: 250px;
+}
+
+.signinmain{
+    width: 300px;
 }

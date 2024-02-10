@@ -10,32 +10,25 @@
         <script src="/chrisplugin/js/chrisplugin.js"></script>
     </head>
     <body>
-        <div class="navigationbar">
-            <div class="navigationbarleft">
-                <img src="/website/material/icon/mainicon.png" class="logo">
-            </div>
-            <div class="navigationbarright">
-                <input type="button" class="navigationbarbutton" onclick="location.href='/website/indexmore.html'" value="註冊">
-                <input type="button" class="navigationbarbutton" onclick="location.href='/website/news.html'" value="登入">
-            </div>
-        </div>
-        <div class="top75px">
+        <div class="navigationbar" id="navigationbar"></div>
+
+        <div class="top-75px">
             <!-- 搜尋表單 START -->
             <div class="box searchform">
-                <div class="flexcenter">
-                    <div class="stinput">
+                <div class="flex alignitems-center justifycontent-space_between columngap-10px">
+                    <div class="input">
                         <input type="text" id="keyword" placeholder="關鍵字">
                     </div>
                     <input type="button" class="button light" value="送出">
                 </div>
-                <div class="margin10px0px">
+                <div class="margin-10px0px">
                     <div class="textlabel">價格區間</div>
-                    <div class="stinput flexcenter">
-                        <input type="number" id="minprice"> ~ <input type="number" id="maxprice">
+                    <div class="input flexcenter">
+                        <input type="number" class="margin-0px5px0px0px" id="minprice"> ~ <input type="number" class="margin-0px0px0px5px" id="maxprice">
                     </div>
                 </div>
-                <div class="margin10px0px">
-                    <div class="flexcenter">
+                <div class="margin-10px0px">
+                    <div class="flexcenter columngap-10px">
                         <select class="select fill textcenter">
                             <option value="">房數</option>
                             <option value="1">1</option>
@@ -63,8 +56,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="margin10px0px">
-                    <div class="flexcenter">
+                <div class="margin-10px0px">
+                    <div class="flexcenter columngap-10px">
                         <div class="div fill">
                             <div class="textlabel">排序參照</div>
                             <select class="select fill textcenter">
@@ -83,10 +76,12 @@
                     </div>
                 </div>
             </div>
+
             <!-- 搜尋表單 END -->
             <div class="houselist macossectiondivy"></div>
         </div>
-        <script src="index.js"></script>
+
         <script src="initialize.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>

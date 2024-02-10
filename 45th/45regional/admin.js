@@ -138,21 +138,21 @@ function userlistmain(){
                                     <div class="sttext">帳號</div>
                                     <div class="stinput underline light endicon">
                                         <input type="text" id="username" value="${data["data"][1]}">
-                                        <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                                        <div class="icon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
                                     </div>
                                 </div>
                                 <div class="inputmargin">
                                     <div class="sttext">密碼</div>
                                     <div class="stinput underline light endicon">
                                         <input type="text" id="password" value="${data["data"][2]}">
-                                        <div class="sticon"><img src="/website/material/icon/lock.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                                        <div class="icon"><img src="/website/material/icon/lock.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
                                     </div>
                                 </div>
                                 <div class="inputmargin">
                                     <div class="sttext">姓名</div>
                                     <div class="stinput underline light endicon">
                                         <input type="text" id="name" value="${data["data"][3]}">
-                                        <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                                        <div class="icon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
                                     </div>
                                 </div>
                                 <label class="stcheckbox light">
@@ -223,21 +223,21 @@ docgetid("newuser").onclick=function(){
                 <div class="sttext">帳號</div>
                 <div class="stinput underline light endicon">
                     <input type="text" id="username">
-                    <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                    <div class="icon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
                 </div>
             </div>
             <div class="inputmargin">
                 <div class="sttext">密碼</div>
                 <div class="stinput underline light endicon">
                     <input type="text" id="password">
-                    <div class="sticon"><img src="/website/material/icon/lock.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                    <div class="icon"><img src="/website/material/icon/lock.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
                 </div>
             </div>
             <div class="inputmargin">
                 <div class="sttext">姓名</div>
                 <div class="stinput underline light endicon">
                     <input type="text" id="name">
-                    <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                    <div class="icon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
                 </div>
             </div>
             <label class="stcheckbox light">

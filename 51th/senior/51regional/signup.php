@@ -17,14 +17,14 @@
                     <div class="sttext">帳號</div>
                     <div class="stinput underline endicon">
                         <input type="text" name="username">
-                        <div class="sticon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
+                        <div class="icon"><img src="/website/material/icon/user.svg" class="iconinputicon" draggable="false"></div>
                     </div>
                 </div>
                 <div class="inputmargin">
                     <div class="sttext">密碼</div>
                     <div class="stinput underline endicon">
                         <input type="text" id="password" name="password">
-                        <div class="sticon"><img src="/website/material/icon/eyeclose.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
+                        <div class="icon"><img src="/website/material/icon/eyeclose.svg" class="iconinputicon cursor_pointer" id="passwordicon" draggable="false"></div>
                     </div>
                 </div>
                 <div class="textcenter">
