@@ -17,7 +17,7 @@ if(weblsget("51nationalmoduled-permission")){
             <div class="navigationbarright">
                 <input type="button" class="navigationbarbutton" onclick="location.href=''" value="刊登列表">
                 <input type="button" class="navigationbarbutton" onclick="location.href=''" value="申請列表">
-                <input type="button" class="navigationbarbutton" onclick="location.href=''" value="精選房屋列表">
+                <input type="button" class="navigationbarbutton" onclick="location.href=''" value="精選房屋 列表">
                 <input type="button" class="navigationbarbutton" id="signout" value="登出">
             </div>
         `,false)

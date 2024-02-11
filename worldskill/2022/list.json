@@ -5,14 +5,14 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2024/02/10",
+            "updatedate": "2024/02/11",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2024/02/10",
+                    "updatedate": "2024/02/11",
                     "data": [
                         {
                             "list": "A",
@@ -432,7 +432,7 @@
                                     "no": "C29",
                                     "description": "C29-Create modal window.",
                                     "link": "TaskA/C29/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 }
                             ]

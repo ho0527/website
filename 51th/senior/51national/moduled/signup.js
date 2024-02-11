@@ -1,5 +1,7 @@
+if(weblsget("51nationalmoduled-token")){ href("index.html") }
+
 onclick("#submit",function(element,event){
-    ajax("POST",AJAXURL+"/user/login",function(event,data){
+    ajax("POST",AJAXURL+"/user/register",function(event,data){
         if(data["success"]){
             weblsset("51nationalmoduled-userid",data["data"]["id"])
             weblsset("51nationalmoduled-permission",data["data"]["role"])
@@ -16,6 +18,10 @@ onclick("#submit",function(element,event){
                     errordata.push("password")
                     domgetid("password").parentNode.classList.add("error")
                 }
+                if(domgetid("nickname").value==""){
+                    errordata.push("nickname")
+                    domgetid("nickname").parentNode.classList.add("error")
+                }
             }
             domgetid("error").innerHTML=`
                 ${ERRORMESSAGE[data["message"]]}<br>
@@ -24,7 +30,8 @@ onclick("#submit",function(element,event){
         }
     },JSON.stringify({
         "email": domgetid("email").value,
-        "password": domgetid("password").value
+        "password": domgetid("password").value,
+        "nickname": domgetid("nickname").value
     }))
 })
 
