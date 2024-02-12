@@ -1,5 +1,6 @@
 /* style setting START */
 .top-75px{ top: 75px !important; }
+.margin-0px{ margin: 0px !important; }
 .margin-0px5px{ margin: 0px 5px !important; }
 .margin-10px0px{ margin: 10px 0px !important; }
 .margin-10px5px{ margin: 10px 5px !important; }
@@ -13,13 +14,17 @@
 
 /* main START */
 .houselist{
-    height: calc(100vh - 325px);
+	height: calc(100vh - 355px);
 }
 
 .searchform{
-    height: 250px;
+	height: 250px;
 }
 
 .signinmain{
-    width: 300px;
+	width: 300px;
+}
+
+.pagediv{
+	height: 30px;
 }

@@ -53,8 +53,15 @@ ajax("GET",ajaxurl+"api/v1/users/"+weblsget("worldskill2022MDusername"),function
         })
     })
 
+    data["highscores"].sort(function(a,b){
+        if(b["game"]["title"].toLowerCase()<=a["game"]["title"].toLowerCase()){
+            return 1
+        }else{
+            return -1
+        }
+    })
+
     for(let i=0;i<data["highscores"].length;i=i+1){
-        console.log(data["highscores"])
         innerhtml("#profilehightscore",`
             <div class="profilehightscorediv">
                 <input type="button" class="buttonghost" onclick="weblsset('worldskill2022MDgame','${data["highscores"][i]["game"]["slug"]}');location.href='game.html'" value="${data["highscores"][i]["game"]["title"]}">
