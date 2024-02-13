@@ -19,7 +19,7 @@ function rangeslider(sliderelement,min=0,max=100,step=1,display,defaultmin,defau
                 <div class="circle circle-right rangeslider" id="rangesliderright"></div>
             </div>
         `
-    
+
         if(domgetid(display)){
             domgetid(display).innerHTML=`
                 <div class="cost" id="rangeslidercostmin">
@@ -31,21 +31,21 @@ function rangeslider(sliderelement,min=0,max=100,step=1,display,defaultmin,defau
             `
         }
         // 初始化 END
-    
+
         onmousedown(".rangeslider",function(element,event){
             if(!mouseclick){
                 mouseclick=true
                 clickid=element.id
             }
         })
-    
+
         document.onmousemove=function(event){
             if(mouseclick){
                 domgetid("bar").style.left="40%"
                 domgetid("bar").style.width=event.offsetX+"px"
             }
         }
-    
+
         document.onmouseup=function(event){
             mouseclick=false
         }

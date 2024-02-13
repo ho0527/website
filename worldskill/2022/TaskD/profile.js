@@ -6,6 +6,11 @@ docgetid("signout").onclick=function(){
             location.href="signout.html"
         }else{
             alert(data["message"])
+            if(data["message"]=="invalid token"){
+                weblsset("worldskill2022MDtoken",null)
+                weblsset("worldskill2022MDusername",null)
+                location.href="index.html"
+            }
         }
     },null,[
         ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
@@ -13,6 +18,7 @@ docgetid("signout").onclick=function(){
 }
 
 ajax("GET",ajaxurl+"api/v1/users/"+weblsget("worldskill2022MDusername"),function(event,data){
+    console.log(data)
     // navbar
     docgetid("navigationbartitle2").innerHTML=`
         (User Profile: ${weblsget("worldskill2022MDusername")})

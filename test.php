@@ -1,100 +1,65 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>WTF IS THIS</title>
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <title>文章內容</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="post.js"></script>
+   
 </head>
-<div class="border">
-    <div class="coffee_border">
-        <h1 class="coffee_text">
-            咖啡展示系統
-        </h1>
-    </div>
-    <form method="post">
-    <div class="account">
-        <h6 class="account_text">
-            帳號
-        </h6>
-        <input class="account_border" type="text" name="email">
-    </div>
-    
-    <div class="password">
-        <h6 class="password_text">
-            密碼
-        </h6>
-        <input class="password_border" type="password" name="password">
-    </div>
-    
-    <div class="verification">
-        <div class="verification_1">
-            <h6 class="verification_text_1">C</h6>
-        </div>
-        <div class="verification_2">
-            <h6 class="verification_text_1">O</h6>
-        </div>
-        <div class="verification_3">
-            <h6 class="verification_text_1">F</h6>
-        </div>
-        <div class="verification_4">
-            <h6 class="verification_text_1">F</h6>
-        </div>
-        
-        <div class="verification_reset">
-            <h6 class="verification_reset_text">重新產生</h6>
-        </div>
-    </div>
 
-    <div class="big_to_small_border">
-        <div class="verification_1">
-            <h6 class="verification_text_1"></h6>
-        </div>
-        <div class="verification_2">
-            <h6 class="verification_text_1"></h6>
-        </div>
-        <div class="verification_3">
-            <h6 class="verification_text_1"></h6>
-        </div>
-        <div class="verification_4">
-            <h6 class="verification_text_1"></h6>
-        </div>
-    </div>
-    <h6 class="verification_text">
-        驗證碼
-    </h6>
-    <h6 class="big_to_small">
-        由大到小排列
-    </h6>
+<body>
     
-    <div class="delete">
-        <h6 class="delete_text">清除</h6>
-    </div>
+    <header>
+        <h1>每日文章</h1>
+    </header>
     
-    <div class="lodin_border">
-        <input type="submit" value="登入" name="submit">
-    </div>
-    </form>
-</div>
-<?php
-if(isset($_POST["submit"])){
-    $email=$_POST["email"];
-    $password=$_POST["password"];
-    echo($email);
-    echo($password);
-    $db=new PDO("mysql:host=localhost;dbname=testt;charset=utf8","root","");
-    
-    $a=$db->query("SELECT * FROM `test` WHERE `username`='$email'")->fetch();
-    if($a){
-        if($a["password"]==$password){
-            ?><script>alert("登入成功");location.href="main.html"</script><?php
-        }
-        else{
-            ?><script>alert("密碼有誤");location.href="index.php"</script><?php
-        }
-    }
-    else{
-        ?><script>alert("帳號有誤");location.href="index.php"</script><?php
-    }
-}
+    <main>
 
-?>
+        <?php
+            session_start();
+            require_once 'mysql.inc.php';
+            echo "<p>歡迎, " . $_SESSION['username'] . "!</p>";
+            
+
+            // 檢查 Session 中是否有 username
+            if (isset($_SESSION['username']) && isset($_POST['articleId'])) {
+                $logged_in_username = $_SESSION['username'];
+                $articleId = $_POST['articleId'];
+
+                // 檢查是否已經收藏過
+                $check_duplicate_sql = "SELECT * FROM `posting` WHERE `帳號`='$logged_in_username' AND `類別`='$articleId'";
+                $result = mysqli_query($conn, $check_duplicate_sql);
+                
+                if (mysqli_num_rows($result) > 0) {
+                    echo '已經點選過了！';
+                } else {
+                    $insert_sql = "INSERT INTO `posting` (`帳號`,`類別`) VALUES ('$logged_in_username','$articleId')";
+
+                        if (mysqli_query($conn, $insert_sql)) {
+                            
+                        } else {
+                            echo 'Error inserting record: ' . mysqli_error($conn);
+                        }
+                }
+            }
+             
+            
+        ?>
+
+        <article>
+            <h2>#閒聊 大學生的存款</h2>
+            <p>想問大家覺得現在大學生至少要有多少存款...</p>
+            <button class="collect-btn1" onclick="handleCollect(1)" data-collected="false">喜歡</button>
+        </article>
+
+        <article>
+            <h2>#八卦 柯震東有女友？！</h2>
+            <p>在Threads看到的，這是真假？怎麼都沒新聞 低卡也沒有...</p>
+            <button class="collect-btn2" onclick="handleCollect(2)" data-collected="false">喜歡</button>
+        </article>
+    
+    </main>
 </body>
+</html>
+

@@ -103,6 +103,11 @@ if(isset(weblsget("worldskill2022MDtoken"))){
                 location.href="signout.html"
             }else{
                 alert(data["message"])
+                if(data["message"]=="invalid token"){
+                    weblsset("worldskill2022MDtoken",null)
+                    weblsset("worldskill2022MDusername",null)
+                    location.href="index.html"
+                }
             }
         },null,[
             ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]

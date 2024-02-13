@@ -4,43 +4,36 @@ let sortby="title"
 let sorttype="asc"
 
 function main(){
-    oldajax("GET",ajaxurl+"api/v1/games?page="+page+"&size="+size+"&sortBy="+sortby+"&sortDir="+sorttype).onload=function(){
-        let data=JSON.parse(this.responseText)
-        console.log(data)
-        if(data["status"]!="invalid"){
-            let total=data["totalElements"]
-            for(let i=0;i<data["content"].length;i=i+1){
-                let pictureurl="material/picture/default.jpg"
+    ajax("GET",ajaxurl+"api/v1/games?page="+page+"&size="+size+"&sortBy="+sortby+"&sortDir="+sorttype,function(event,data){
+        let total=data["totalElements"]
+        for(let i=0;i<data["content"].length;i=i+1){
+            let pictureurl="material/picture/default.jpg"
 
-                // 不會接image
-                if(data["content"][i]["thumbnail"]){
-                    pictureurl=data["content"][i]["thumbnail"]
-                }
-
-                // game div
-                innerhtml("#main",`
-                    <div class="game grid" data-id="${data["content"][i]["slug"]}">
-                        <div class="title">${data["content"][i]["title"]}</div>
-                        <div class="author">by ${data["content"][i]["author"]}</div>
-                        <div class="description">${data["content"][i]["description"]}</div>
-                        <div class="scorecount">score submit: ${data["content"][i]["scoreCount"]}</div>
-                        <div class="imagediv"><img src="${pictureurl}" class="image"></div>
-                    </div>
-                `)
+            // 不會接image
+            if(data["content"][i]["thumbnail"]){
+                pictureurl=data["content"][i]["thumbnail"]
             }
-            docgetid("gamecount").innerHTML=`${total}`
 
-            docgetall(".game").forEach(function(event){
-                event.onclick=function(){
-                    weblsset("worldskill2022MDgame",event.dataset.id)
-                    location.href="game.html"
-                }
-            })
-        }else{
-            alert("get an error in request!")
-            location.reload()
+            // game div
+            innerhtml("#main",`
+                <div class="game grid" data-id="${data["content"][i]["slug"]}">
+                    <div class="title">${data["content"][i]["title"]}</div>
+                    <div class="author">by ${data["content"][i]["author"]}</div>
+                    <div class="description">${data["content"][i]["description"]}</div>
+                    <div class="scorecount">score submit: ${data["content"][i]["scoreCount"]}</div>
+                    <div class="imagediv"><img src="${pictureurl}" class="image"></div>
+                </div>
+            `)
         }
-    }
+        docgetid("gamecount").innerHTML=`${total}`
+
+        docgetall(".game").forEach(function(event){
+            event.onclick=function(){
+                weblsset("worldskill2022MDgame",event.dataset.id)
+                location.href="game.html"
+            }
+        })
+    })
     page=page+1
 }
 
@@ -59,20 +52,22 @@ if(isset(weblsget("worldskill2022MDtoken"))){
 
     // logout
     docgetid("signout").onclick=function(){
-        let ajax=oldajax("POST",ajaxurl+"api/v1/auth/signout",null,[
-            ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
-        ])
-        ajax.onload=function(){
-            let data=JSON.parse(ajax.responseText)
-            console.log(data)
+        ajax("POST",ajaxurl+"api/v1/auth/signout",function(event,data){
             if(data["status"]=="success"){
                 weblsset("worldskill2022MDtoken",null)
                 weblsset("worldskill2022MDusername",null)
                 location.href="signout.html"
             }else{
                 alert(data["message"])
+                if(data["message"]=="invalid token"){
+                    weblsset("worldskill2022MDtoken",null)
+                    weblsset("worldskill2022MDusername",null)
+                    location.href="index.html"
+                }
             }
-        }
+        },null,[
+            ["Authorization","Bearer "+weblsget("worldskill2022MDtoken")]
+        ])
     }
 }else{
     docgetid("navigationbarright").innerHTML=`

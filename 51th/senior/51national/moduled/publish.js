@@ -19,7 +19,7 @@ function main(){
 	`,false) // 初始化房屋
 	innerhtml("#page",``,false) // 初始化分頁切換器
 
-	ajax("GET",AJAXURL+"/house?title="+title+"&minprice="+minprice+"&maxprice="+maxprice+"&room="+room+"&minage="+minage+"&maxage="+maxage+"&sortby="+sortby+"&order="+order+"&page="+page,function(event,data){
+	ajax("GET",AJAXURL+"/user/house?title="+title+"&minprice="+minprice+"&maxprice="+maxprice+"&room="+room+"&minage="+minage+"&maxage="+maxage+"&sortby="+sortby+"&order="+order+"&page="+page,function(event,data){
 		if(data["success"]){
 			let row=data["data"]["houses"]
 
@@ -81,8 +81,12 @@ function main(){
 		}else{
 			alert(ERRORMESSAGE[data["message"]])
 		}
-	})
+	},[],[
+		["Authorization","Bearer "+weblsget("51nationalmoduled-token")]
+	])
 }
+
+if(!weblsget("51nationalmoduled-token")){ href("index.html") }
 
 main()
 

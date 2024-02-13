@@ -16,4 +16,50 @@ const ERRORMESSAGE={
 	"MSG_AD_NOT_EXISTS": "精選房屋不存在",
 }
 
+let file=getfile().split(".")[0]
+
+if(weblsget("51nationalmoduled-permission")){
+	if(weblsget("51nationalmoduled-permission")=="USER"){
+		innerhtml("#navigationbar",`
+			<div class="navigationbarleft">
+				<img src="/website/material/icon/mainicon.png" class="logo">
+			</div>
+			<div class="navigationbarright">
+				<input type="button" class="navigationbarbutton" id="index" onclick="href('index.html')" value="首頁">
+				<input type="button" class="navigationbarbutton" id="publish" onclick="href('publish.html')" value="刊登列表">
+				<input type="button" class="navigationbarbutton" id="signout" value="登出">
+			</div>
+		`,false)
+	}else{
+		innerhtml("#navigationbar",`
+			<div class="navigationbarleft">
+				<img src="/website/material/icon/mainicon.png" class="logo">
+			</div>
+			<div class="navigationbarright">
+				<input type="button" class="navigationbarbutton" id="index" onclick="href('index.html')" value="首頁">
+				<input type="button" class="navigationbarbutton" id="publish" onclick="href('publish.html')" value="刊登列表">
+				<input type="button" class="navigationbarbutton" onclick="href('')" value="申請列表">
+				<input type="button" class="navigationbarbutton" onclick="href('')" value="精選房屋列表">
+				<input type="button" class="navigationbarbutton" id="signout" value="登出">
+			</div>
+		`,false)
+	}
+}else{
+	innerhtml("#navigationbar",`
+		<div class="navigationbarleft">
+			<img src="/website/material/icon/mainicon.png" class="logo">
+		</div>
+		<div class="navigationbarright">
+			<input type="button" class="navigationbarbutton" id="index" onclick="href('index.html')" value="首頁">
+			<input type="button" class="navigationbarbutton" id="signup" onclick="href('signup.html')" value="註冊">
+			<input type="button" class="navigationbarbutton" id="signin" onclick="href('signin.html')" value="登入">
+		</div>
+	`,false)
+}
+
+addclass("#"+file,["navigationbarselect"])
+if(file=="house.html"){
+	addclass("#index",["navigationbarselect"])
+}
+
 startmacossection()

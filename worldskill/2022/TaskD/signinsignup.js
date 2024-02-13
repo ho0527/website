@@ -57,15 +57,7 @@ docgetid("submit").onclick=function(){
             }
         }
     }else{
-        let ajax=oldajax("POST",ajaxurl+"api/v1/auth/signup",JSON.stringify({
-            "username": docgetid("username").value,
-            "password": docgetid("password").value
-        }),[
-            ["Content-Type", "application/json"]
-        ])
-        ajax.onload=function(){
-            let data=JSON.parse(ajax.responseText)
-
+        ajax("POST",ajaxurl+"api/v1/auth/signup",function(event,data){
             docgetid("error").innerHTML=``
             if(data["status"]!="invalid"){
                 alert("Sign up successfully!")
@@ -111,7 +103,12 @@ docgetid("submit").onclick=function(){
                     `
                 }
             }
-        }
+        },JSON.stringify({
+            "username": docgetid("username").value,
+            "password": docgetid("password").value
+        }),[
+            ["Content-Type", "application/json"]
+        ])
     }
 }
 
