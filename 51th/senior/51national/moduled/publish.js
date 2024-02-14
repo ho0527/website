@@ -19,7 +19,7 @@ function main(){
 	`,false) // 初始化房屋
 	innerhtml("#page",``,false) // 初始化分頁切換器
 
-	ajax("GET",AJAXURL+"/user/house?title="+title+"&minprice="+minprice+"&maxprice="+maxprice+"&room="+room+"&minage="+minage+"&maxage="+maxage+"&sortby="+sortby+"&order="+order+"&page="+page,function(event,data){
+	ajax("GET",AJAXURL+"user/house?title="+title+"&minprice="+minprice+"&maxprice="+maxprice+"&room="+room+"&minage="+minage+"&maxage="+maxage+"&sortby="+sortby+"&order="+order+"&page="+page,function(event,data){
 		if(data["success"]){
 			let row=data["data"]["houses"]
 
@@ -109,7 +109,7 @@ onclick("#submit",function(element,event){
 })
 
 onclick("#signout",function(element,event){
-	ajax("POST",AJAXURL+"/user/logout",function(event,data){
+	ajax("POST",AJAXURL+"user/logout",function(event,data){
 		if(data["success"]){
 			alert("登出成功")
 			weblsset("51nationalmoduled-userid",null)

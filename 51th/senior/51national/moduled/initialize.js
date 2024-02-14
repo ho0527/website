@@ -1,4 +1,4 @@
-const AJAXURL="/backend/51nationalmoduled/api"
+const AJAXURL="/backend/51nationalmoduled/api/"
 const ERRORMESSAGE={
 	"MSG_INVALID_LOGIN": "登入失敗(帳號或密碼有誤)",
 	"MSG_USER_EXISTS": "使⽤者已存在",
@@ -58,7 +58,7 @@ if(weblsget("51nationalmoduled-permission")){
 }
 
 addclass("#"+file,["navigationbarselect"])
-if(file=="house.html"){
+if(file=="house"){
 	addclass("#index",["navigationbarselect"])
 }
 

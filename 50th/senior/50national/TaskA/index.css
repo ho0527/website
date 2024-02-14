@@ -224,11 +224,11 @@ body{
 .list{
 	width: 100%;
 }
-
+/*
 .icon{
 	width: 45px;
 	margin-right: 10px;
-}
+} */
 
 .albumicon{
 	width: 75px;
@@ -370,7 +370,7 @@ body{
 	width: 140px;
 	font-size: 30px;
 }
-
+/*
 .input{
 	border: none;
 	width: 90%;
@@ -380,7 +380,7 @@ body{
 	border-bottom: 1px black solid;
 	outline: none;
 	font-size: 30px;
-}
+} */
 
 .name{
 	width: 45%;
@@ -441,7 +441,7 @@ body{
 	top: 5px;
 }
 
-.button{
+/* .button{
 	border: 1px black solid;
 	padding: 10px 20px;
 	margin: 5px;
@@ -455,7 +455,7 @@ body{
 .button:hover{
 	background: gray;
 	color: white;
-}
+} */
 
 /*
 #####################################
@@ -476,7 +476,7 @@ body{
 	grid-row: 1;
 }
 
-.main{
+.indexmain{
 	position: relative;
 	top: 75px;
 	width: 100vw;
@@ -517,4 +517,22 @@ body{
 
 .option{
 	font-size: 15px;
+}
+
+/* ==================================================================================================== */
+.signinmain{
+	width: 300px;
+}
+
+.margin-10px_0px{
+	margin: 10px 0px;
+}
+
+.mainmain{
+	width: 75vw;
+	max-height: 75vh;
+}
+
+.td{
+	width: 100000px;
 }

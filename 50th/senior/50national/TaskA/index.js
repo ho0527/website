@@ -676,8 +676,9 @@ domgetid("aside").style.width="0%"
 domgetid("openaside").style.left="0%"
 // 初始化aside END
 
-ajax("GET","albumlist.json",function(event,data){
+ajax("GET","albumlist.json",function(event){
 	let playlistsplit=playlist.split(",")
+	data=JSON.parse(event.responseText)
 
 	if(state=="main"){
 		main() // 開始主程式

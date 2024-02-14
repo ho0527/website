@@ -2,7 +2,7 @@ let id=getget("id")
 
 if(!id){ location.href="index.html" }
 
-ajax("GET",AJAXURL+"/house/"+id,function(event,data){
+ajax("GET",AJAXURL+"house/"+id,function(event,data){
 	if(data["success"]){
 		console.log(data["data"])
 	}else{
@@ -11,7 +11,7 @@ ajax("GET",AJAXURL+"/house/"+id,function(event,data){
 })
 
 onclick("#signout",function(element,event){
-	ajax("POST",AJAXURL+"/user/logout",function(event,data){
+	ajax("POST",AJAXURL+"user/logout",function(event,data){
 		if(data["success"]){
 			alert("登出成功")
 			weblsset("51nationalmoduled-userid",null)
