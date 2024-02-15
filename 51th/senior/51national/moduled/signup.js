@@ -1,5 +1,3 @@
-if(weblsget("51nationalmoduled-token")){ href("index.html") }
-
 onclick("#submit",function(element,event){
 	ajax("POST",AJAXURL+"user/register",function(event,data){
 		if(data["success"]){

@@ -62,4 +62,14 @@ if(file=="house"){
 	addclass("#index",["navigationbarselect"])
 }
 
+if(file=="publish"){
+	if(!weblsget("51nationalmoduled-token")){
+		href("index.html")
+	}
+}else if(file=="signup"||file=="signin"){
+	if(weblsget("51nationalmoduled-token")){
+		href("index.html")
+	}
+}
+
 startmacossection()

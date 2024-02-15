@@ -86,8 +86,6 @@ function main(){
 	])
 }
 
-if(!weblsget("51nationalmoduled-token")){ href("index.html") }
-
 main()
 
 onclick("#submit",function(element,event){
