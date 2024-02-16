@@ -81,6 +81,7 @@
 	max-height: 100%;
 }
 
+/* hosuediv START */
 .housediv{
 	position: absolute;
 	top: 50%;
@@ -90,3 +91,62 @@
 	height: 75vh;
 	padding: 10px 5px;
 }
+
+.housedivcarousel{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivtitle{
+	grid-column: 1/101;
+	grid-row: 1/21;
+	font-size: 35px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.housedivdescription{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivprice{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivsquareroom{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivfloor{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivage{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivaddress{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivnickname{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivemai{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+
+.housedivpublishdate{
+	grid-column: 1/101;
+	grid-row: 1/21;
+}
+/* hosuediv EMD */
