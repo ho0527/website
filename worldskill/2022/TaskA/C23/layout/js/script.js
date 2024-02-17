@@ -50,7 +50,7 @@ function rangeslider(sliderelement,min=0,max=100,step=1,display,defaultmin,defau
             mouseclick=false
         }
     }else{
-        console.error("[KEY_TYPE_IN ERROR]function rangeslider error: max can't lesser then min")
+        console.error("[KEYTYPEIN ERROR]function rangeslider error: max can't lesser then min")
     }
 }
 

@@ -22,6 +22,16 @@ if(4<=weblsget("50nationalmodulea-permission")){
 	`)
 }
 
+ajax("GET",AJAXURL+"getalbumlist",function(event,data){
+	if(data["success"]){
+		console.log(data)
+	}else{
+		alert(ERRORMESSAGE[data["data"]])
+	}
+},null,[
+	["Authorization","Bearer "+weblsget("50nationalmodulea-token")]
+])
+
 onclick("#signout",function(element,event){
 	ajax("POST",AJAXURL+"signout",function(evennt,data){
 		if(data["success"]){

@@ -38,8 +38,8 @@ if(weblsget("51nationalmoduled-permission")){
 			<div class="navigationbarright">
 				<input type="button" class="navigationbarbutton" id="index" onclick="href('index.html')" value="首頁">
 				<input type="button" class="navigationbarbutton" id="publish" onclick="href('publish.html')" value="刊登列表">
-				<input type="button" class="navigationbarbutton" onclick="href('')" value="申請列表">
-				<input type="button" class="navigationbarbutton" onclick="href('')" value="精選房屋列表">
+				<input type="button" class="navigationbarbutton" id="application" onclick="href('application.html')" value="申請列表">
+				<input type="button" class="navigationbarbutton" id="ads" onclick="href('ads.html')" value="精選房屋列表">
 				<input type="button" class="navigationbarbutton" id="signout" value="登出">
 			</div>
 		`,false)
