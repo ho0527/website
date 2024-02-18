@@ -4,230 +4,236 @@ let folder
 let locaitonfolderdata=""
 
 function main(){
-    folderlist=[mainfolder]
-    folder=mainfolder+"/"
+	folderlist=[mainfolder]
+	folder=mainfolder+"/"
 
-    if(isset(location.href.split("#")[1])){
-        locaitonfolderdata=location.href.split("#")[1]
-        folder=folder+locaitonfolderdata
-        for(let i=0;i<locaitonfolderdata.split("/").length;i=i+1){
-            if(isset(locaitonfolderdata.split("/")[i])){
-                folderlist.push(locaitonfolderdata.split("/")[i])
-            }
-        }
-    }
+	if(isset(location.href.split("#")[1])){
+		locaitonfolderdata=location.href.split("#")[1]
+		folder=folder+locaitonfolderdata
+		for(let i=0;i<locaitonfolderdata.split("/").length;i=i+1){
+			if(isset(locaitonfolderdata.split("/")[i])){
+				folderlist.push(locaitonfolderdata.split("/")[i])
+			}
+		}
+	}
 
-    oldajax("GET","filelist.php?folder="+folder).onload=function(){
-        let data=JSON.parse(this.responseText)
-        let folderpath=""
+	ajax("GET","filelist.php?folder="+folder,function(event,data){
+		let row=data["filelist"]
+		let folderpath=""
 
-        if(data["success"]){
-            for(let i=0;i<folderlist.length;i=i+1){
-                folderpath=folderpath+"<div class=\"pathlink\" id=\""+i+"\">"+folderlist[i]+"</div>"+"/"
-            }
+		if(data["success"]){
+			for(let i=0;i<folderlist.length;i=i+1){
+				folderpath=folderpath+"<div class=\"pathlink\" id=\""+i+"\">"+folderlist[i]+"</div>"+"/"
+			}
 
-            docgetall("pathlink").forEach(function(event){
-                // event.onclick=function(){
-                //     location.href="#"+folderlist.join("/")+"/"+event.innerText
-                //     location.reload()
-                // }
-            })
+			domgetall("pathlink").forEach(function(event){
+				// event.onclick=function(){
+				//     location.href="#"+folderlist.join("/")+"/"+event.innerText
+				//     href("")
+				// }
+			})
 
-            docgetid("pathlist").innerHTML=`${folderpath}`
+			domgetid("pathlist").innerHTML=`${folderpath}`
 
-            if(folderlist.length==1){
-                docgetid("pathgoback").innerHTML=`已經在最前一頁了`
-            }else{
-                docgetid("pathgoback").innerHTML=`
-                    <div class="goback" id="goback">回到上一頁</div>
-                `
-                docgetid("goback").onclick=function(){
-                    folderlist.pop()
-                    console.log(folderlist)
-                    if(folderlist.length>1){
-                        location.href="#"+folderlist.join("/")
-                        location.reload()
-                    }else{
-                        location.href=""
-                    }
-                }
-            }
+			if(folderlist.length==1){
+				domgetid("pathgoback").innerHTML=`已經在最前一頁了`
+			}else{
+				domgetid("pathgoback").innerHTML=`
+					<div class="goback" id="goback">回到上一頁</div>
+				`
+				domgetid("goback").onclick=function(){
+					folderlist.pop()
+					console.log(folderlist)
+					if(folderlist.length>1){
+						location.href="#"+folderlist.join("/")
+						href("")
+					}else{
+						location.href=""
+					}
+				}
+			}
 
-            docgetid("filelist").innerHTML=``
-            for(let i=0;i<data["filelist"].length;i=i+1){
-                let filelist=data["filelist"]
+			domgetid("filelist").innerHTML=``
+			for(let i=0;i<row.length;i=i+1){
+				let div2=``
+				let div3=``
 
-                let div=doccreate("div")
-                div.classList.add("fileitem")
-                div.classList.add("grid")
+				if(row[i]["isfolder"]){
+					div2=`
+						<div class="filename folder" data-id="${i}">
+							${row[i]["name"]}
+						</div>
+					`
+				}else{
+					div2=`
+						<div class="filename">
+							${row[i]["name"]}
+						</div>
+					`
+				}
 
-                let div2=doccreate("div")
-                div2.classList.add("filename")
+				// let div3=doccreate("div")
+				// div3.classList.add("fileitembuttondiv")
 
-                if(filelist[i]["isfolder"]){
-                    div2.innerHTML=filelist[i]["name"]
-                    div2.classList.add("folder")
-                    div2.onclick=function(){
-                        location.href="#"+locaitonfolderdata+filelist[i]["name"]
-                        location.reload()
-                    }
-                }else{
-                    div2.innerText=filelist[i]["name"]
-                }
+				if(!row[i]["isfolder"]){
+					div3=`
+						<div class="filename">
+							<input type="button" class="bluebutton fileitembutton downloadbutton" data-href="${folderlist.join("/")}/${row[i]["name"]}" data-download="${row[i]["name"]}" value="下載">
+						</div>
+					`
+					// let input=doccreate("input")
+					// input.classList.add("fileitembutton")
+					// input.classList.add("bluebutton")
+					// input.type="button"
+					// input.value="下載"
+					// input.onclick=function(){
+					// 	let a=doccreate("a")
+					// 	a.href=folderlist.join("/")+"/"+row[i]["name"]
+					// 	a.download=row[i]["name"]
+					// 	a.click()
+					// }
+					// div3.appendChild(input)
+				}
 
-                let div3=doccreate("div")
-                div3.classList.add("fileitembuttondiv")
+				// let deleteButton=doccreate("button")
+				// deleteButton.classList.add("fileitembutton")
+				// deleteButton.classList.add("bluebutton")
+				// deleteButton.innerText="刪除"
+				// deleteButton.addEventListener("click",() => {
+				// 	deletefile(row[i]["name"],row[i]["isfolder"])
+				// })
+				// div3.appendChild(deleteButton)
 
-                if (!filelist[i]["isfolder"]) {
-                    let input=doccreate("input")
-                    input.classList.add("fileitembutton")
-                    input.classList.add("bluebutton")
-                    input.type="button"
-                    input.value="下載"
-                    input.onclick=function(){
-                        let a=doccreate("a")
-                        a.href=folderlist.join("/")+"/"+filelist[i]["name"]
-                        a.download=filelist[i]["name"]
-                        a.click()
-                    }
-                    div3.appendChild(input)
-                }
+				// div.appendChild(div2)
+				// div.appendChild(div3)
 
-                let deleteButton=doccreate("button")
-                deleteButton.classList.add("fileitembutton")
-                deleteButton.classList.add("bluebutton")
-                deleteButton.innerText="刪除"
-                deleteButton.addEventListener("click",() => {
-                    deleteFile(filelist[i]["name"],filelist[i]["isfolder"])
-                })
-                div3.appendChild(deleteButton)
+				innerhtml("#filelist",`
+					<div class="grid fileitem">
+						${div2}
+						<div class="fileitembuttondiv">
+							${div3}
+							<input type="button" class="bluebutton fileitembutton deletebutton" data-name="${row[i]["name"]}" data-isfolder="${row[i]["isfolder"]}" value="刪除">
+						</div>
+					</div>
+				`)
+			}
 
-                div.appendChild(div2)
-                div.appendChild(div3)
+			onclick(".folder",function(element,event){
+				href("#"+locaitonfolderdata+row[dataset("id",element)]["name"])
+				href("")
+			})
 
-                docgetid("filelist").appendChild(div)
-            }
-        }else{
-            docgetid("pathgoback").innerHTML=`
-                <div class="goback" id="goback">回到最前頁</div>
-            `
-            docgetid("filelist").innerHTML=`<div class="warning">查無此路徑</div>`
-            docgetid("goback").onclick=function(){
-                location.href=""
-            }
-        }
-    }
+			onclick(".downloadbutton",function(element,event){
+				innerhtml("body",`
+					<a href="${dataset("href",element)}" download="${dataset("download",element)}" id="download"></a>
+				`)
+
+				click("#download")
+			})
+
+			onclick(".deletebutton",function(element,event){
+				deletefile(dataset("name",element),dataset("isfolder",element))
+			})
+		}else{
+			innerhtml("#pathgoback",`
+				<div class="goback" id="goback">回到最前頁</div>
+			`,false)
+
+			innerhtml("#filelist",`
+				<div class="warning">查無此路徑</div>
+			`,false)
+
+			onclick("goback",function(element,event){
+				href("")
+			})
+		}
+	})
 }
 
-function deleteFile(fileName,isFolder) {
-    Swal.fire({
-        title: "確定刪除?",
-        text: "刪除後將無法恢復。",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "確定",
-        cancelButtonText: "取消",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`delete.php?file=${fileName}&isfolder=${isFolder}`,{
-                method: "DELETE",
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.success) {
-                        Swal.fire({
-                            title: "刪除成功",
-                            icon: "success",
-                            showConfirmButton: false,
-                            timer: 1500,
-                        }).then(function () {
-                            location.reload()
-                        })
-                    } else {
-                        Swal.fire({
-                            title: "刪除失敗",
-                            text: "請稍後再試。",
-                            icon: "error",
-                            confirmButtonText: "確定",
-                        })
-                    }
-                })
-                .catch((error) => {
-                    console.error("Error:",error)
-                })
-        }
-    })
+function deletefile(filename,isfolder){
+	Swal.fire({
+		title: "確定刪除?",
+		text: "刪除後將無法恢復。",
+		icon: "warning",
+		showCancelButton: true,
+		confirmButtonText: "確定",
+		cancelButtonText: "取消",
+	}).then(function(result){
+		if(result.isConfirmed){
+			ajax("DELETE","delete.php?file="+filename+"&isfolder="+isfolder,function(event,data){
+				if(data["success"]){
+					Swal.fire({
+						title: "刪除成功",
+						icon: "success",
+						showConfirmButton: false,
+						timer: 1500,
+					}).then(function(){
+						href("")
+					})
+				}else{
+					Swal.fire({
+						title: "刪除失敗",
+						text: "請聯繫管理員或稍後再試。",
+						icon: "error",
+						confirmButtonText: "確定",
+					})
+				}
+			})
+		}
+	})
 }
 
-docgetid("submit").onclick=function(){
-    lightbox(null,"uploading",function(){
-        return `
-            <h2>UPLOADING...</h2>
-            <div id="percent"></div>
-            <progress id="progress" max="100" value="0"></progress>
-        `
-    })
-    let ajax=oldajax("POST","upload.php",new FormData(docgetid("form")))
-    ajax.upload.addEventListener("progress",function(event){
-        if(event.lengthComputable){
-            let percent=(event.loaded/event.total)*100
-            docgetid("progress").value=percent
-            if(percent==100){
-                docgetid("percent").innerHTML=`
-                    已完成上傳!
-                `
-            }else{
-                docgetid("percent").innerHTML=`
-                    已完成: ${percent}%
-                `
-            }
-        }
-    },false)
-    ajax.onload=function(){
-        if(ajax.readyState==4){
-            if(ajax.status==200){
-                let response=JSON.parse(ajax.responseText)
-                if(response.success){
-                    Swal.fire({
-                        title: "Upload Success",
-                        icon: "success",
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then(function(){
-                        docgetid("filelist").innerHTML=""
-                        docgetid("progress").value=0
-                        location.reload()
-                    })
-                }else{
-                    Swal.fire({
-                        title: "Upload Failed",
-                        text: response.message,
-                        icon: "error",
-                        confirmButtonText: "OK"
-                    }).then(function(){
-                        docgetid("progress").value=0
-                        docgetid("fileinput").disabled=false
-                        docgetid("folderinput").disabled=false
-                    })
-                }
-            }else{
-                Swal.fire({
-                    title: "Upload Failed",
-                    text: "ajax staues get an error",
-                    icon: "error",
-                    confirmButtonText: "OK"
-                }).then(function(){
-                    docgetid("progress").value=0
-                    docgetid("fileinput").disabled=false
-                    docgetid("folderinput").disabled=false
-                })
-            }
-        }
-    }
+domgetid("submit").onclick=function(){
+	lightbox(null,"lightbox",function(){
+		return `
+			<h2>UPLOADING...</h2>
+			<div id="percent"></div>
+			<progress id="progress" max="100" value="0"></progress>
+		`
+	})
+
+	ajax("POST","upload.php",function(event,data){
+		if(data["success"]){
+			Swal.fire({
+				title: "Upload Success",
+				icon: "success",
+				showConfirmButton: false,
+				timer: 1500
+			}).then(function(){
+				href("")
+			})
+		}else{
+			Swal.fire({
+				title: "Upload Failed",
+				text: response.message,
+				icon: "error",
+				confirmButtonText: "OK"
+			}).then(function(){
+				domgetid("progress").value=0
+				domgetid("fileinput").disabled=false
+				domgetid("folderinput").disabled=false
+			})
+		}
+	},new FormData(domgetid("form")),[],function(event,progress){
+		if(domgetid("progress")){
+			domgetid("progress").value=progress
+			if(progress==100){
+				innerhtml("#percent",`
+					已完成上傳!
+				`,false)
+			}else{
+				innerhtml("#percent",`
+					已完成: ${progress}%
+				`,false)
+			}
+		}else{
+			href("./")
+		}
+	})
 }
 
 setInterval(function(){
-    main()
+	main()
 },10000)
 
 main()
