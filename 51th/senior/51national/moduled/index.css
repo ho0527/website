@@ -66,13 +66,19 @@
 
 .houseprice{
 	grid-column: 35/101;
-	grid-row: 6/13;
+	grid-row: 6/11;
 	font-size: 20px;
 }
 
 .housesquareroom{
 	grid-column: 35/101;
-	grid-row: 13/21;
+	grid-row: 11/16;
+	font-size: 20px;
+}
+
+.housefunction{
+	grid-column: 35/101;
+	grid-row: 16/21;
 	font-size: 20px;
 }
 

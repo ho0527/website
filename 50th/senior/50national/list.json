@@ -533,7 +533,7 @@
 									"no": "07",
 									"description": "A07",
 									"link": "TaskE/07",
-									"statu": "FAILED",
+									"statu": "SUCCESS",
 									"data": []
 								},
 								{
