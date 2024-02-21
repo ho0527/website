@@ -5,14 +5,14 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2024/02/11",
+            "updatedate": "2024/02/21",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2024/02/11",
+                    "updatedate": "2024/02/21",
                     "data": [
                         {
                             "list": "A",
@@ -80,7 +80,7 @@
                                     "no": "A09",
                                     "description": "A09-Color Blending",
                                     "link": "TaskA/A09/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
@@ -250,7 +250,7 @@
                                     "no": "C03",
                                     "description": "C03-Get the data type",
                                     "link": "TaskA/C03/",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {

@@ -15,7 +15,6 @@ const ERRORMESSAGE={
 	"MSG_ALREADY_ADVERTISED": "申請已審核",
 	"MSG_AD_NOT_EXISTS": "精選房屋不存在",
 }
-
 let file=getfile().split(".")[0]
 
 if(weblsget("51nationalmoduled-permission")){
