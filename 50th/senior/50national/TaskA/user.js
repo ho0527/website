@@ -17,7 +17,19 @@ if(4<=weblsget("50nationalmodulea-permission")){
 
 ajax("GET",AJAXURL+"getuserlist",function(event,data){
 	if(data["success"]){
-		console.log(data)
+		let row=data["data"]
+		for(let i=0;i<row.length;i=i+1){
+			innerhtml("#main",`
+				<tr>
+					<td>${row[i]["id"]}</td>
+					<td>${row[i]["username"]}</td>
+					<td>
+						<input type="button" class="button outline" data-id="${row[i]["id"]}" value="修改">
+						<input type="button" class="button outline" data-id="${row[i]["id"]}" value="刪除">
+					</td>
+				</tr>
+			`)
+		}
 	}else{
 		alert(ERRORMESSAGE[data["data"]])
 	}
