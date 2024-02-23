@@ -2,6 +2,7 @@ let mainfolder="upload"
 let folderlist
 let folder
 let locaitonfolderdata=""
+let pass=""
 
 function main(){
 	folderlist=[mainfolder]
@@ -181,6 +182,13 @@ function deletefile(filename,isfolder){
 			})
 		}
 	})
+}
+
+while(true){
+	pass=prompt("aaa")
+	if(pass=="chris0527"){
+		break
+	}
 }
 
 domgetid("submit").onclick=function(){
