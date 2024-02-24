@@ -184,10 +184,13 @@ function deletefile(filename,isfolder){
 	})
 }
 
-while(true){
-	pass=prompt("aaa")
-	if(pass=="chris0527"){
-		break
+if(weblsget("filemanager-signin")!="true"){
+	while(true){
+		pass=prompt("aaa")
+		if(pass=="chris0527"){
+			weblsset("filemanager-signin","true")
+			break
+		}
 	}
 }
 
