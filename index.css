@@ -2,12 +2,8 @@
 
 body{
 	font-family: "Consolas";
-	/* user-select: none; */
-	/* word-break: break-all; */
 	padding: 0px;
 	margin: 0px;
-
-	/* -moz-user-select: none; */
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -29,7 +25,6 @@ table{
 
 .grid{
 	display: grid;
-	/* grid-gap: 1%; */
 	grid-template-columns: repeat(100, 1fr);
 	grid-template-rows: repeat(20, 1fr);
 	grid-auto-rows: 5%;
@@ -47,16 +42,16 @@ table{
 }
 
 .navigationbar{
-	border: 1px rgb(49, 53, 53) solid;
+	border: 1px var(--navbar-border-color) solid;
 	position: fixed;
 	top: 0px;
 	left: 0px;
 	width: 100%;
 	height: 75px;
 	color: white;
-	background: rgba(35, 35, 35, 0.95);
+	background: var(--navbar-background);
 	backdrop-filter: blur(30px);
-	box-shadow: 0 8px 32px 0 rgba(70, 70, 70, 0.1);
+	box-shadow: 0 8px 32px 0 var(--navbar-boxshadow-color);
 	z-index: 600;
 }
 
@@ -122,7 +117,6 @@ table{
 	}
 }
 
-
 .navigationbarselect{
 	background: black;
 	color: white;
@@ -147,23 +141,6 @@ table{
 	top: 50%;
 	left: 0px;
 	transform: translate(0%,-50%);
-}
-
-/* .input{
-	border: none;
-	border-bottom: 1px black solid;
-	background: none;
-	width: 75%;
-	height: 40px;
-	outline: none;
-	font-size: 30px;
-	color: white;
-} */
-
-.middleinput{
-	width: 35% !important;
-	margin: 0px 5%;
-	font-size: 25px;
 }
 
 .inputhint{
@@ -330,6 +307,13 @@ html{
 	--stbreakpoint-desktop-max: 1279.98px;
 	--stbreakpoint-widescreen-min: 1280px;
 	--stbreakpoint-widescreen-max: 9999px;
+
+	--navbar-border-color-light: white;
+	--navbar-border-color-dark: rgb(49, 53, 53);
+	--navbar-background-light: rgba(238, 238, 238, 0.95);
+	--navbar-background-dark: rgba(35, 35, 35, 0.95);
+	--navbar-boxshadow-color-light: rgba(70, 70, 70, 0.1);
+	--navbar-boxshadow-color-dark: rgba(70, 70, 70, 0.1);
 
 	--stlight-gray-50: rgb(255, 255, 255);
 	--stlight-gray-75: rgb(250, 250, 250);
@@ -580,6 +564,9 @@ html{
 	.u-inverted{
 		color-scheme: light;
 
+		--navbar-border-color: var(--navbar-border-color-light);
+		--navbar-background: var(--navbar-background-light);
+		--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
 		--stgray-50: var(--stlight-gray-50);
 		--stgray-75: var(--stlight-gray-75);
 		--stgray-100: var(--stlight-gray-100);
@@ -660,6 +647,9 @@ html{
 	html:not(.light){
 		color-scheme: dark;
 
+		--navbar-border-color: var(--navbar-border-color-dark);
+		--navbar-background: var(--navbar-background-dark);
+		--navbar-boxshadow-color: var(--navbar-boxshadow-color-dark);
 		--stgray-50: var(--stdark-gray-50);
 		--stgray-75: var(--stdark-gray-75);
 		--stgray-100: var(--stdark-gray-100);
@@ -698,6 +688,9 @@ html{
 	html:not(.light) .inverted{
 		color-scheme: light;
 
+		--navbar-border-color: var(--navbar-border-color-light);
+		--navbar-background: var(--navbar-background-light);
+		--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
 		--stgray-50: var(--stlight-gray-50);
 		--stgray-75: var(--stlight-gray-75);
 		--stgray-100: var(--stlight-gray-100);
@@ -730,9 +723,12 @@ html.mainlight .lighthidden,html.maindark .darkhidden{
 }
 
 /* Light */
-html,html.mainlight,.u-light,html.maindark .u-inverted{
+html,html.mainlight,.u-light{
 	color-scheme: light;
 
+	--navbar-border-color: var(--navbar-border-color-light);
+	--navbar-background: var(--navbar-background-light);
+	--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
 	--stgray-50: var(--stlight-gray-50);
 	--stgray-75: var(--stlight-gray-75);
 	--stgray-100: var(--stlight-gray-100);
@@ -758,9 +754,12 @@ html,html.mainlight,.u-light,html.maindark .u-inverted{
 	--sttonal-warning-800: #866800;
 }
 
-html.mainlight .u-inverted,.u-inverted,html.maindark,.u-dark{
+html,html.maindark,.u-dark{
 	color-scheme: dark;
 
+	--navbar-border-color: var(--navbar-border-color-dark);
+	--navbar-background: var(--navbar-background-dark);
+	--navbar-boxshadow-color: var(--navbar-boxshadow-color-dark);
 	--stgray-50: var(--stdark-gray-50);
 	--stgray-75: var(--stdark-gray-75);
 	--stgray-100: var(--stdark-gray-100);
@@ -789,9 +788,12 @@ html.mainlight .u-inverted,.u-inverted,html.maindark,.u-dark{
 }
 
 /* Light */
-html,html.mainlight,.light,html.maindark .inverted{
+html,html.mainlight,.light{
 	color-scheme: light;
 
+	--navbar-border-color: var(--navbar-border-color-light);
+	--navbar-background: var(--navbar-background-light);
+	--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
 	--stgray-50: var(--stlight-gray-50);
 	--stgray-75: var(--stlight-gray-75);
 	--stgray-100: var(--stlight-gray-100);
@@ -818,9 +820,12 @@ html,html.mainlight,.light,html.maindark .inverted{
 }
 
 /* dark */
-html.mainlight .inverted,.inverted,html.maindark,.dark{
+html.maindark,.dark{
 	color-scheme: dark;
 
+	--navbar-border-color: var(--navbar-border-color-dark);
+	--navbar-background: var(--navbar-background-dark);
+	--navbar-boxshadow-color: var(--navbar-boxshadow-color-dark);
 	--stgray-50: var(--stdark-gray-50);
 	--stgray-75: var(--stdark-gray-75);
 	--stgray-100: var(--stdark-gray-100);
@@ -849,7 +854,6 @@ html.mainlight .inverted,.inverted,html.maindark,.dark{
 }
 
 /* Hidden */
-
 html.mainlight .light-hidden,html.maindark .dark-hidden{
 	display: none !important;
 }
@@ -16067,6 +16071,13 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	align-items: center;
 	justify-content: start;
 }
+
+.inputdiv{
+	margin: 10px 0px;
+}
+
+.margin-0px{ margin: 0px !important; }
+.padding-0px{ padding: 0px !important; }
 /* END */
 
 
