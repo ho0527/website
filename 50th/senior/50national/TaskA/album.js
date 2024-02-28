@@ -2,6 +2,9 @@ if(!weblsget("50nationalmodulea-token")){ href("index.html") }
 
 if(4<=weblsget("50nationalmodulea-permission")){
 	innerhtml("#navigationbar",`
+		<div class="navigationbarleft">
+			<input type="button" class="navigationbarbutton" id="newalbum" value="新增專輯">
+		</div>
 		<div class="navigationbarright">
 			<input type="button" class="navigationbarbutton" onclick="location.href='index.html'" value="首頁">
 			<input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='album.html'" value="專輯列表">
@@ -13,6 +16,9 @@ if(4<=weblsget("50nationalmodulea-permission")){
 	`)
 }else{
 	innerhtml("#navigationbar",`
+		<div class="navigationbarleft">
+			<input type="button" class="navigationbarbutton" id="newalbum" value="新增專輯">
+		</div>
 		<div class="navigationbarright">
 			<input type="button" class="navigationbarbutton" onclick="location.href='index.html'" value="首頁">
 			<input type="button" class="navigationbarbutton navigationbarselect" onclick="location.href='album.html'" value="專輯列表">
@@ -31,6 +37,12 @@ ajax("GET",AJAXURL+"getalbumlist",function(event,data){
 },null,[
 	["Authorization","Bearer "+weblsget("50nationalmodulea-token")]
 ])
+
+onclick("#newalbum",function(element,event){
+	lightbox(null,"lightbox",function(){
+		return ``
+	})
+})
 
 onclick("#signout",function(element,event){
 	ajax("POST",AJAXURL+"signout",function(evennt,data){
