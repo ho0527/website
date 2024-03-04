@@ -66,7 +66,7 @@ onclick("#newalbum",function(element,event){
 	},"close")
 
 	onclick("#submit",function(element,event){
-		ajax("POST",AJAXURL+"signout",function(evennt,data){
+		ajax("POST",AJAXURL+"newablem",function(evennt,data){
 			if(data["success"]){
 				weblsset("50nationalmodulea-userid",null)
 				weblsset("50nationalmodulea-permission",null)
@@ -79,7 +79,14 @@ onclick("#newalbum",function(element,event){
 				weblsset("50nationalmodulea-token",null)
 				href("index.html")
 			}
-		},null,[
+		},formdata([
+			["title",getvalue("title")],
+			["publisher",getvalue("publisher")],
+			["publicdate",getvalue("publicdate")],
+			["description",getvalue("description")],
+			["albumartist",getvalue("albumartist")],
+			["cover",""]
+		]),[
 			["Authorization","Bearer "+weblsget("50nationalmodulea-token")]
 		])
 	})
