@@ -1045,36 +1045,37 @@ button{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
 
-	border: none;
-	font-size: var(--stfont-size-14px);
-	line-height: 1.5;
-	font-weight: 500;
-	color: var(--accent-foreground-color, var(--stgray-50));
+
+	border: 2px var(--accent-color, var(--stgray-800)) solid;
+	outline: none;
+	box-sizing: border-box;
+	white-space: nowrap;
+	width: auto;
+	height: var(--height);
+	border-radius: 0.4rem;
 	background: var(--accent-color, var(--stgray-800));
+	font: inherit;
+	font-size: var(--stfont-size-14px);
+	font-weight: 500;
 	text-decoration: none;
+	text-align: center;
+	text-overflow: ellipsis;
+	color: var(--accent-foreground-color, var(--stgray-50));
+	line-height: 1.5;
+	padding: 0px var(--horizontal-padding);
+	margin: 2px;
 	display: inline-flex;
 	vertical-align: middle;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
-	padding: 0 var(--horizontal-padding);
-	border-radius: 0.4rem;
 	transition: 0.2s linear;
-	margin: 2px;
-	width: auto;
-	font: inherit;
-	outline: none;
-	box-sizing: border-box;
-	user-select: none;
-	text-overflow: ellipsis;
+	appearance: none;
 	overflow: hidden;
-	white-space: nowrap;
-	height: var(--height);
+	user-select: none;
 
 	-webkit-font-smoothing: inherit;
 	-moz-osx-font-smoothing: inherit;
 	-webkit-appearance: none;
-	appearance: none;
 
 	&:hover{
 		cursor: pointer;

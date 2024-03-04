@@ -40,7 +40,48 @@ ajax("GET",AJAXURL+"getalbumlist",function(event,data){
 
 onclick("#newalbum",function(element,event){
 	lightbox(null,"lightbox",function(){
-		return ``
+		return `
+			<div class="adminfoodtitle">新增專輯</div>
+			<div class="flex">
+				<div class="textleft inputdiv" id="namediv">
+					<div class="textlabel light">餐點名稱:</div>
+					<div class="input light">
+						<input type="text" id="name" value="">
+					</div>
+					<div class="text large bold error errordiv" id="nameerror"></div>
+				</div>
+				<div class="textleft inputdiv" id="pricediv">
+					<div class="textlabel light">價格:</div>
+					<div class="input light">
+						<input type="number" id="price" value="">
+					</div>
+					<div class="text large bold error errordiv" id="usernameerror"></div>
+				</div>
+			</div>
+			<div class="textcenter">
+				<input type="button" class="button light" id="close" value="取消">
+				<input type="button" class="button light" id="submit" value="完成">
+			</div>
+		`
+	},"close")
+
+	onclick("#submit",function(element,event){
+		ajax("POST",AJAXURL+"signout",function(evennt,data){
+			if(data["success"]){
+				weblsset("50nationalmodulea-userid",null)
+				weblsset("50nationalmodulea-permission",null)
+				weblsset("50nationalmodulea-token",null)
+				href("index.html")
+			}else{
+				alert(ERRORMESSAGE[data["data"]])
+				weblsset("50nationalmodulea-userid",null)
+				weblsset("50nationalmodulea-permission",null)
+				weblsset("50nationalmodulea-token",null)
+				href("index.html")
+			}
+		},null,[
+			["Authorization","Bearer "+weblsget("50nationalmodulea-token")]
+		])
 	})
 })
 
