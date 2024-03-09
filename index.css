@@ -25,8 +25,8 @@ table{
 
 .grid{
 	display: grid;
-	grid-template-columns: repeat(100, 1fr);
-	grid-template-rows: repeat(20, 1fr);
+	grid-template-columns: repeat(100,1fr);
+	grid-template-rows: repeat(20,1fr);
 	grid-auto-rows: 5%;
 }
 
@@ -62,9 +62,9 @@ table{
 	width: 100%;
 	height: 75px;
 	color: white;
-	background: rgba(50, 50, 50, 0.95);
+	background: rgba(50,50,50,0.95);
 	backdrop-filter: blur(20px);
-	box-shadow: 0 8px 32px 0 rgba(185, 185, 185, 0.1);
+	box-shadow: 0 8px 32px 0 rgba(185,185,185,0.1);
 	z-index: 600;
 }
 
@@ -113,7 +113,7 @@ table{
 	}
 
 	&:active{
-		box-shadow: 0px 10px 30px 0 rgba(77, 77, 77, 0.68);
+		box-shadow: 0px 10px 30px 0 rgba(77,77,77,0.68);
 	}
 }
 
@@ -157,7 +157,7 @@ table{
 
 .bluebutton{
 	box-shadow: inset 1px -3px 7px 0px #29bbff;
-	background: #2dabf9 linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background: #2dabf9 linear-gradient(to bottom,#2dabf9 5%,#0688fa 100%);
 	border-radius: 5px;
 	border: 1px solid #0b0e07;
 	display: inline-block;
@@ -171,7 +171,7 @@ table{
 	text-shadow: 0px 1px 0px #263666;
 
 	&:hover{
-		background: #0688fa linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+		background: #0688fa linear-gradient(to bottom,#0688fa 5%,#2dabf9 100%);
 	}
 
 	&:active{
@@ -184,7 +184,7 @@ table{
 .reflashbutton{
 	margin-top: 20px;
 	padding: 5px;
-	background: rgb(215, 164, 61);
+	background: rgb(215,164,61);
 	color: white;
 	border: none;
 	border-radius: 5px;
@@ -197,12 +197,12 @@ table{
 }
 
 .reflashbutton:hover{
-	background: rgb(255, 213, 128);
+	background: rgb(255,213,128);
 	color: black;
 }
 
 .selectbutton{
-	background: rgba(35, 35, 35, 0.75);
+	background: rgba(35,35,35,0.75);
 	color: white;
 }
 
@@ -210,7 +210,7 @@ table{
 	position: relative;
 	top: 10px;
 	width: 100%;
-	background: rgb(25, 25, 25);
+	background: rgb(25,25,25);
 	padding: 5px 10px;
 }
 
@@ -309,37 +309,37 @@ html{
 	--stbreakpoint-widescreen-max: 9999px;
 
 	--navbar-border-color-light: white;
-	--navbar-border-color-dark: rgb(49, 53, 53);
-	--navbar-background-light: rgba(238, 238, 238, 0.95);
-	--navbar-background-dark: rgba(35, 35, 35, 0.95);
-	--navbar-boxshadow-color-light: rgba(70, 70, 70, 0.1);
-	--navbar-boxshadow-color-dark: rgba(70, 70, 70, 0.1);
+	--navbar-border-color-dark: rgb(49,53,53);
+	--navbar-background-light: rgba(238,238,238,0.95);
+	--navbar-background-dark: rgba(35,35,35,0.95);
+	--navbar-boxshadow-color-light: rgba(70,70,70,0.1);
+	--navbar-boxshadow-color-dark: rgba(70,70,70,0.1);
 
-	--stlight-gray-50: rgb(255, 255, 255);
-	--stlight-gray-75: rgb(250, 250, 250);
-	--stlight-gray-100: rgb(242, 242, 242);
-	--stlight-gray-200: rgb(238, 238, 238);
-	--stlight-gray-300: rgb(225, 225, 225);
-	--stlight-gray-400: rgb(215, 215, 215);
-	--stlight-gray-450: rgb(145, 145, 145);
-	--stlight-gray-500: rgb(118, 118, 118);
-	--stlight-gray-600: rgb(90, 90, 90);
-	--stlight-gray-700: rgb(70, 70, 70);
-	--stlight-gray-800: rgb(55, 55, 55);
-	--stlight-gray-900: rgb(35, 35, 35);
+	--stlight-gray-50: rgb(255,255,255);
+	--stlight-gray-75: rgb(250,250,250);
+	--stlight-gray-100: rgb(242,242,242);
+	--stlight-gray-200: rgb(238,238,238);
+	--stlight-gray-300: rgb(225,225,225);
+	--stlight-gray-400: rgb(215,215,215);
+	--stlight-gray-450: rgb(145,145,145);
+	--stlight-gray-500: rgb(118,118,118);
+	--stlight-gray-600: rgb(90,90,90);
+	--stlight-gray-700: rgb(70,70,70);
+	--stlight-gray-800: rgb(55,55,55);
+	--stlight-gray-900: rgb(35,35,35);
 
-	--stdark-gray-50: rgb(15, 15, 17);
-	--stdark-gray-75: rgb(35, 35, 35);
-	--stdark-gray-100: rgb(42, 42, 42);
-	--stdark-gray-200: rgb(47, 47, 47);
-	--stdark-gray-300: rgb(62, 62, 62);
-	--stdark-gray-400: rgb(80, 80, 80);
-	--stdark-gray-450: rgb(110, 110, 110);
-	--stdark-gray-500: rgb(180, 180, 180);
-	--stdark-gray-600: rgb(220, 220, 220);
-	--stdark-gray-700: rgb(245, 245, 245);
-	--stdark-gray-800: rgb(250, 250, 250);
-	--stdark-gray-900: rgb(255, 255, 255);
+	--stdark-gray-50: rgb(15,15,17);
+	--stdark-gray-75: rgb(35,35,35);
+	--stdark-gray-100: rgb(42,42,42);
+	--stdark-gray-200: rgb(47,47,47);
+	--stdark-gray-300: rgb(62,62,62);
+	--stdark-gray-400: rgb(80,80,80);
+	--stdark-gray-450: rgb(110,110,110);
+	--stdark-gray-500: rgb(180,180,180);
+	--stdark-gray-600: rgb(220,220,220);
+	--stdark-gray-700: rgb(245,245,245);
+	--stdark-gray-800: rgb(250,250,250);
+	--stdark-gray-900: rgb(255,255,255);
 
 	--ststatic-gray-50: var(--stlight-gray-50);
 	--ststatic-gray-75: var(--stlight-gray-75);
@@ -544,9 +544,9 @@ html{
 	--stspace-gap-big: 3rem;
 	--stspace-gap-huge: 4.5rem;
 
-	--rangeslider-color-light: rgb(51, 51, 51);
+	--rangeslider-color-light: rgb(51,51,51);
 	--rangeslider-border-color-light: black;
-	--rangeslider-color-dark: rgb(235, 235, 235);
+	--rangeslider-color-dark: rgb(235,235,235);
 	--rangeslider-border-color-dark: white;
 }
 
@@ -628,7 +628,7 @@ html{
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: calc(100% - var(--ststash-offset, 5px));
+	width: calc(100% - var(--ststash-offset,5px));
 	visibility: hidden;
 	pointer-events: none;
 	flex-wrap: nowrap;
@@ -937,9 +937,9 @@ body{
 	margin: 0;
 	overflow-x: hidden;
 	-webkit-text-size-adjust: 100%;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 
-	font-family: "Noto Sans TC", "SF Pro TC", "SF Pro Text", "SF Pro Icons", "PingFang TC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft JhengHei", wf_SegoeUI, "Segoe UI", Segoe, "Segoe WP", Tahoma, Verdana, Ubuntu, "Bitstream Vera Sans", "DejaVu Sans", 微軟正黑體, "LiHei Pro", "WenQuanYi Micro Hei", "Droid Sans Fallback", "AR PL UMing TW", Roboto, "Hiragino Maru Gothic ProN", メイリオ, "ヒラギノ丸ゴ ProN W4", Meiryo, "Droid Sans", sans-serif;
+	font-family: "Noto Sans TC","SF Pro TC","SF Pro Text","SF Pro Icons","PingFang TC","Helvetica Neue","Helvetica","Arial","Microsoft JhengHei",wf_SegoeUI,"Segoe UI",Segoe,"Segoe WP",Tahoma,Verdana,Ubuntu,"Bitstream Vera Sans","DejaVu Sans",微軟正黑體,"LiHei Pro","WenQuanYi Micro Hei","Droid Sans Fallback","AR PL UMing TW",Roboto,"Hiragino Maru Gothic ProN",メイリオ,"ヒラギノ丸ゴ ProN W4",Meiryo,"Droid Sans",sans-serif;
 }
 
 /*
@@ -1001,10 +1001,10 @@ button{
 
 @keyframes stbuttonloading{
 	from{
-		transform: translate(-50%, -50%) rotate(0deg);
+		transform: translate(-50%,-50%) rotate(0deg);
 	}
 	to{
-		transform: translate(-50%, -50%) rotate(360deg);
+		transform: translate(-50%,-50%) rotate(360deg);
 	}
 }
 
@@ -1032,12 +1032,12 @@ button{
 	appearance: none;
 	-webkit-appearance: none;
 
-	border: 2px solid var(--accent-color, var(--stgray-800));
+	border: 2px solid var(--accent-color,var(--stgray-800));
 	font-size: var(--stfont-size-14px);
 	line-height: 1.5;
 	font-weight: 500;
-	color: var(--accent-foreground-color, var(--stgray-50));
-	background: var(--accent-color, var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
 	text-decoration: none;
 	display: inline-flex;
 	vertical-align: middle;
@@ -1065,21 +1065,21 @@ button{
 	--accent-foreground-color: initial;
 
 
-	border: 2px var(--accent-color, var(--stgray-800)) solid;
+	border: 2px var(--accent-color,var(--stgray-800)) solid;
 	outline: none;
 	box-sizing: border-box;
 	white-space: nowrap;
 	width: auto;
 	height: var(--height);
 	border-radius: 0.4rem;
-	background: var(--accent-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-800));
 	font: inherit;
 	font-size: var(--stfont-size-14px);
 	font-weight: 500;
 	text-decoration: none;
 	text-align: center;
 	text-overflow: ellipsis;
-	color: var(--accent-foreground-color, var(--stgray-50));
+	color: var(--accent-foreground-color,var(--stgray-50));
 	line-height: 1.5;
 	padding: 0px var(--horizontal-padding);
 	margin: 2px;
@@ -1106,7 +1106,7 @@ button{
 	}
 
 	&.secondary{
-		color: var(--accent-color, var(--stgray-800));
+		color: var(--accent-color,var(--stgray-800));
 		border-color: var(--stgray-100);
 		background: var(--stgray-100);
 	}
@@ -1114,7 +1114,7 @@ button{
 	&.outline{
 		background: transparent;
 		border: 2px solid var(--stgray-450);
-		color: var(--accent-color, var(--stgray-800));
+		color: var(--accent-color,var(--stgray-800));
 
 		&:hover{
 			border: 2px var(--stgray-900) solid;
@@ -1183,7 +1183,7 @@ button{
 			left: 50%;
 		}
 
-		&:is(.outline, .secondary, .is-tertiary, .ghost)::after{
+		&:is(.outline,.secondary,.is-tertiary,.ghost)::after{
 			color: var(--stgray-800);
 		}
 	}
@@ -1235,11 +1235,11 @@ button{
 
 	/* Side Icon */
 
-	&:where(.starticon, .endicon) .icon{
+	&:where(.starticon,.endicon) .icon{
 		font-size: 1.2em;
 	}
 
-	&:is(.starticon, .endicon) .icon::before{
+	&:is(.starticon,.endicon) .icon::before{
 		display: inline-block;
 		margin-top: 1px;
 	}
@@ -1253,7 +1253,7 @@ button{
 	}
 
 	/* Labeled Icon */
-	&:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+	&:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 		position: absolute;
 		top: -2px;
 		bottom: -2px;
@@ -1265,7 +1265,7 @@ button{
 		width: calc(2.75rem + 2px);
 	}
 
-	&:where(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+	&:where(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 		font-size: 1.2em;
 	}
 
@@ -1289,21 +1289,21 @@ button{
 	}
 
 
-	&.error:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+	&.error:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 		background: var(--stnegative-400);
 	}
 
-	&.outline:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+	&.outline:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 		/*background: var(--stgray-300);*/
 		background: transparent;
 		border: 2px solid var(--stgray-300);
 	}
 
-	&.secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+	&.secondary:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 		background: var(--stgray-200);
 	}
 
-	&.is-tertiary:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+	&.is-tertiary:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 		background: var(--stgray-400);
 	}
 
@@ -1361,19 +1361,19 @@ button{
 		font-weight: 600;
 		outline: 2px solid #0000;
 		outline-offset: 2px;
-		transition-property: color, background, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-		transition-property: color, background, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-		transition-property: color, background, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-		transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+		transition-property: color,background,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;
+		transition-property: color,background,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;
+		transition-property: color,background,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;
+		transition-timing-function: cubic-bezier(.4,0,.2,1);
 		transition-duration: .3s;
-		box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);;
+		box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);;
 		cursor: pointer;
 
 		&:hover{
 			--tw-shadow: 0 0 #0000;
 			--tw-shadow-colored: 0 0 #0000
 
-			box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);;
+			box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);;
 		}
 
 		&.small{
@@ -1408,7 +1408,7 @@ button{
 				background: none;
 				border: 1px rgb(67 97 238/var(--tw-border-opacity)) solid;
 				color: rgb(67 97 238/var(--tw-text-opacity));
-				box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);;
+				box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);;
 
 				&:hover{
 					--tw-bg-opacity: 1;
@@ -1440,7 +1440,7 @@ button{
 				background: none;
 				border: 1px rgb(128 93 202/var(--tw-border-opacity)) solid;
 				color: rgb(128 93 202/var(--tw-text-opacity));
-				box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);;
+				box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);;
 
 				&:hover{
 					--tw-bg-opacity: 1;
@@ -1472,7 +1472,7 @@ button{
 				background: none;
 				border: 1px rgb(0 171 85/var(--tw-border-opacity)) solid;
 				color: rgb(0 171 85/var(--tw-text-opacity));
-				box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);;
+				box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);;
 
 				&:hover{
 					--tw-bg-opacity: 1;
@@ -1504,7 +1504,7 @@ button{
 				background: none;
 				border: 1px rgb(231 81 90/var(--tw-border-opacity)) solid;
 				color: rgb(231 81 90/var(--tw-text-opacity));
-				box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+				box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
 
 				&:hover{
 					--tw-bg-opacity: 1;
@@ -1536,7 +1536,7 @@ button{
 				background: none;
 				border: 1px rgb(226 160 63/var(--tw-border-opacity)) solid;
 				color: rgb(226 160 63/var(--tw-text-opacity));
-				box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+				box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
 
 				&:hover{
 					--tw-bg-opacity: 1;
@@ -1568,7 +1568,7 @@ button{
 				background: none;
 				color: rgb(33 150 243/var(--tw-text-opacity));
 				border: 1px rgb(33 150 243/var(--tw-border-opacity)) solid;
-				box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+				box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
 
 				&:hover{
 					--tw-bg-opacity: 1;
@@ -1598,7 +1598,7 @@ button{
 				--tw-shadow-colored: 0 0 #0000;
 
 				background: none;
-				box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+				box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
 				border: 1px rgb(59 63 92/var(--tw-border-opacity)) solid;
 				color: rgb(59 63 92/var(--tw-text-opacity));
 
@@ -1615,18 +1615,18 @@ button{
 		&.gradient{
 			--tw-gradient-from: #ef1262 var(--tw-gradient-from-position);
 			--tw-gradient-to: #ef126200 var(--tw-gradient-to-position);
-			--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+			--tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to);
 			--tw-gradient-to: #4361ee var(--tw-gradient-to-position);
 			--tw-text-opacity: 1;
 
 			background: none;
-			background-image: linear-gradient(to right, var(--tw-gradient-stops));
+			background-image: linear-gradient(to right,var(--tw-gradient-stops));
 			color: rgb(255 255 255/var(--tw-text-opacity));
 
 			&:hover{
 				--tw-gradient-from: #4361ee var(--tw-gradient-from-position);
 				--tw-gradient-to: #4361ee00 var(--tw-gradient-to-position);
-				--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+				--tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to);
 				--tw-gradient-to: #ef1262 var(--tw-gradient-to-position);
 			}
 		}
@@ -1682,12 +1682,12 @@ button{
 	gap: 2px;
 }
 
-.staddon>*:first-child,.staddon>.input:first-child:where(input, textarea){
+.staddon>*:first-child,.staddon>.input:first-child:where(input,textarea){
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
 
-.staddon>*:last-child,.staddon>.input:last-child:where(input, textarea){
+.staddon>*:last-child,.staddon>.input:last-child:where(input,textarea){
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
@@ -1749,7 +1749,7 @@ button{
 
 /* Secondary */
 .stbutton.secondary{
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 	border-color: var(--stgray-100);
 	background: var(--stgray-100);
 }
@@ -1765,7 +1765,7 @@ button{
 .stbutton.outline{
 	background: transparent;
 	border: 2px solid var(--stgray-450);
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 /* hover */
@@ -1776,7 +1776,7 @@ button{
 
 /* Secondary */
 .stbutton.secondary{
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 	border-color: var(--stgray-100);
 	background: var(--stgray-100);
 }
@@ -1792,7 +1792,7 @@ button{
 .stbutton.outline{
 	background: transparent;
 	border: 2px solid var(--stgray-450);
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 /* hover */
@@ -1865,7 +1865,7 @@ button{
 	left: 50%;
 }
 
-.stbutton.loading:is(.outline, .secondary, .is-tertiary, .ghost)::after{
+.stbutton.loading:is(.outline,.secondary,.is-tertiary,.ghost)::after{
 	color: var(--stgray-800);
 }
 
@@ -1927,11 +1927,11 @@ button{
 
 /* Side Icon */
 
-.stbutton:where(.starticon, .endicon) .icon{
+.stbutton:where(.starticon,.endicon) .icon{
 	font-size: 1.2em;
 }
 
-.stbutton:is(.starticon, .endicon) .icon::before{
+.stbutton:is(.starticon,.endicon) .icon::before{
 	display: inline-block;
 	margin-top: 1px;
 }
@@ -1946,7 +1946,7 @@ button{
 
 /* Labeled Icon */
 
-.stbutton:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+.stbutton:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 	position: absolute;
 	top: -2px;
 	bottom: -2px;
@@ -1958,7 +1958,7 @@ button{
 	width: calc(2.75rem + 2px);
 }
 
-.stbutton:where(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+.stbutton:where(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 	font-size: 1.2em;
 }
 
@@ -1980,21 +1980,21 @@ button{
 	border-radius: 0 0.4rem 0.4rem 0;
 }
 
-.stbutton.error:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+.stbutton.error:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 	background: var(--stnegative-400);
 }
 
-.stbutton.outline:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+.stbutton.outline:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 	/*background: var(--stgray-300);*/
 	background: transparent;
 	border: 2px solid var(--stgray-300);
 }
 
-.stbutton.secondary:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+.stbutton.secondary:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 	background: var(--stgray-200);
 }
 
-.stbutton.is-tertiary:is(.is-start-labeled-icon, .is-end-labeled-icon) .icon{
+.stbutton.is-tertiary:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
 	background: var(--stgray-400);
 }
 
@@ -2031,12 +2031,12 @@ button{
 	gap: 2px;
 }
 
-.staddon>*:first-child,.staddon>.input:first-child:where(input, textarea){
+.staddon>*:first-child,.staddon>.input:first-child:where(input,textarea){
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
 
-.staddon>*:last-child,.staddon>.input:last-child:where(input, textarea){
+.staddon>*:last-child,.staddon>.input:last-child:where(input,textarea){
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
@@ -2093,7 +2093,7 @@ button{
 
 /* @font-face{
 	font-family: "Icons";
-	src: url("fonts/icons/fa-solid-900.woff2") format("woff2"), url("fonts/icons/fa-solid-900.ttf") format("truetype");
+	src: url("fonts/icons/fa-solid-900.woff2") format("woff2"),url("fonts/icons/fa-solid-900.ttf") format("truetype");
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -2103,7 +2103,7 @@ button{
 
 @font-face{
 	font-family: "IconsBrands";
-	src: url("fonts/icons/fa-brands-400.woff2") format("woff2"), url("fonts/icons/fa-brands-400.ttf") format("truetype");
+	src: url("fonts/icons/fa-brands-400.woff2") format("woff2"),url("fonts/icons/fa-brands-400.ttf") format("truetype");
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -2113,7 +2113,7 @@ button{
 
 @font-face{
 	font-family: "IconsRegular";
-	src: url("fonts/icons/fa-regular-400.woff2") format("woff2"), url("fonts/icons/fa-regular-400.ttf") format("truetype");
+	src: url("fonts/icons/fa-regular-400.woff2") format("woff2"),url("fonts/icons/fa-regular-400.ttf") format("truetype");
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -2141,7 +2141,7 @@ button{
 	width: 1.18em;
 	-webkit-font-smoothing: antialiased;
 	backface-visibility: hidden;
-	color: var(--accent-color, inherit);
+	color: var(--accent-color,inherit);
 
 	/* ========================================================================== Variations ========================================================================== */
 
@@ -2253,12 +2253,11 @@ button{
 /* ========================================================================== Variables ========================================================================== */
 
 /* ========================================================================== Base ========================================================================== */
-.stdivider{
+.divider{
 	border-top: 1px solid var(--stgray-300);
 	/* ========================================================================== Variations ========================================================================== */
 
 	/* Vertical */
-
 	&.vertical{
 		border-top: 0;
 		border-left: 1px solid var(--stgray-300);
@@ -2266,13 +2265,13 @@ button{
 
 	/* Section */
 
-	&.is-section{
+	&.section{
 		margin: 1rem 0;
 	}
 
 	/* Text */
 
-	&:is(.is-center-text, .is-start-text, .is-end-text){
+	&:is(.centertext,.starttext,.endtext){
 		display: flex;
 		align-items: center;
 		border-top: 0;
@@ -2280,18 +2279,18 @@ button{
 		color: var(--stgray-800);
 	}
 
-	&:is(.is-center-text, .is-start-text, .is-end-text)::before,&:is(.is-center-text, .is-start-text, .is-end-text)::after{
+	&:is(.centertext,.starttext,.endtext)::before,&:is(.centertext,.starttext,.endtext)::after{
 		content: "";
 		height: 1px;
 		background: var(--stgray-300);
 		flex-grow: 1;
 	}
 
-	&.is-start-text::before{
+	&.starttext::before{
 		display: none;
 	}
 
-	&.is-end-text::after{
+	&.endtext::after{
 		display: none;
 	}
 }
@@ -2439,11 +2438,11 @@ button{
 
 	/* Labeled */
 
-	&:is(.is-start-labeled, .is-end-labeled, .islabel):is(&, .label){
+	&:is(.is-start-labeled,.is-end-labeled,.islabel):is(&,.label){
 		border-radius: var(--border-radius);
 	}
 
-	&:is(.is-start-labeled, .is-end-labeled, .islabel) .label{
+	&:is(.is-start-labeled,.is-end-labeled,.islabel) .label{
 		line-height: 1;
 		display: flex;
 		align-items: center;
@@ -2455,24 +2454,24 @@ button{
 		border: 1px solid var(--stgray-300);
 	}
 
-	&:is(.is-start-labeled, .islabel) .label{
+	&:is(.is-start-labeled,.islabel) .label{
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 		border-right-width: 0;
 	}
 
-	&:is(.is-start-labeled, .islabel) input{
+	&:is(.is-start-labeled,.islabel) input{
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 	}
 
-	&:is(.is-end-labeled, .islabel) .label{
+	&:is(.is-end-labeled,.islabel) .label{
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		border-left-width: 0;
 	}
 
-	&:is(.is-end-labeled, .islabel) input{
+	&:is(.is-end-labeled,.islabel) input{
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 	}
@@ -2490,35 +2489,35 @@ button{
 	}
 
 	/* Underlined */
-	&:is(.is-start-labeled, .islabel, .is-end-labeled).underline .label{
+	&:is(.is-start-labeled,.islabel,.is-end-labeled).underline .label{
 		border: 0;
 		border-bottom: 2px solid var(--stgray-400);
 		background: var(--stgray-200);
 	}
 
-	&:is(.is-start-labeled, .islabel).underline .label{
+	&:is(.is-start-labeled,.islabel).underline .label{
 		border-bottom-left-radius: 0;
 	}
 
-	&:is(.is-end-labeled, .islabel).underline .label{
+	&:is(.is-end-labeled,.islabel).underline .label{
 		border-bottom-right-radius: 0;
 	}
 
-	&:is(.is-start-labeled, .islabel).underline input{
+	&:is(.is-start-labeled,.islabel).underline input{
 		border-left: 0;
 	}
 
-	&:is(.is-end-labeled, .islabel).underline input{
+	&:is(.is-end-labeled,.islabel).underline input{
 		border-right: 0;
 	}
 
 	/* Solid */
-	&:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid .label{
+	&:is(.is-start-labeled,.islabel,.is-end-labeled).is-solid .label{
 		border-color: transparent;
 		background: var(--stgray-200);
 	}
 
-	&:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid:focus-within .label{
+	&:is(.is-start-labeled,.islabel,.is-end-labeled).is-solid:focus-within .label{
 		border-color: var(--stgray-300);
 	}
 
@@ -2528,7 +2527,7 @@ button{
 
 	/* Action Icon */
 	&.is-end-action-icon{
-		&:where(a, button).icon{
+		&:where(a,button).icon{
 			position: absolute;
 			top: 0;
 			bottom: 0;
@@ -2686,11 +2685,11 @@ button{
 		--height: var(--stinput-height-large);
 	}
 
-	&.small:is(input, textarea, .icon){
+	&.small:is(input,textarea,.icon){
 		font-size: var(--stfont-size-13px);
 	}
 
-	&.large:is(input, textarea, .icon){
+	&.large:is(input,textarea,.icon){
 		font-size: var(--stfont-size-17px);
 	}
 
@@ -2757,7 +2756,7 @@ button{
 	}
 
 	/* Solid */
-	&.inputerror.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+	&.inputerror.is-solid:is(.is-start-labeled,.islabel,.is-end-labeled) .label{
 		border-color: var(--stnegative-400);
 	}
 
@@ -2799,7 +2798,7 @@ button{
 	}
 
 	/* Solid */
-	&.error.is-solid:is(.is-start-labeled, .islabel, .is-end-labeled) .label{
+	&.error.is-solid:is(.is-start-labeled,.islabel,.is-end-labeled) .label{
 		border-color: var(--stnegative-400);
 	}
 
@@ -3053,11 +3052,11 @@ button{
 
 /* Labeled */
 
-.stinput:is(.is-start-labeled, .is-end-labeled, .islabel):is(.input, .label){
+.stinput:is(.is-start-labeled,.is-end-labeled,.islabel):is(.input,.label){
 	border-radius: var(--border-radius);
 }
 
-.stinput:is(.is-start-labeled, .is-end-labeled, .islabel) .label{
+.stinput:is(.is-start-labeled,.is-end-labeled,.islabel) .label{
 	line-height: 1;
 	display: flex;
 	align-items: center;
@@ -3069,24 +3068,24 @@ button{
 	border: 1px solid var(--stgray-300);
 }
 
-.stinput:is(.is-start-labeled, .islabel) .label{
+.stinput:is(.is-start-labeled,.islabel) .label{
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	border-right-width: 0;
 }
 
-.stinput:is(.is-start-labeled, .islabel) input{
+.stinput:is(.is-start-labeled,.islabel) input{
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel) .label{
+.stinput:is(.is-end-labeled,.islabel) .label{
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	border-left-width: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel) input{
+.stinput:is(.is-end-labeled,.islabel) input{
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
@@ -3104,35 +3103,35 @@ button{
 }
 
 /* Underlined */
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).underline .label{
+.stinput:is(.is-start-labeled,.islabel,.is-end-labeled).underline .label{
 	border: 0;
 	border-bottom: 2px solid var(--stgray-400);
 	background: var(--stgray-200);
 }
 
-.stinput:is(.is-start-labeled, .islabel).underline .label{
+.stinput:is(.is-start-labeled,.islabel).underline .label{
 	border-bottom-left-radius: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel).underline .label{
+.stinput:is(.is-end-labeled,.islabel).underline .label{
 	border-bottom-right-radius: 0;
 }
 
-.stinput:is(.is-start-labeled, .islabel).underline input{
+.stinput:is(.is-start-labeled,.islabel).underline input{
 	border-left: 0;
 }
 
-.stinput:is(.is-end-labeled, .islabel).underline input{
+.stinput:is(.is-end-labeled,.islabel).underline input{
 	border-right: 0;
 }
 
 /* Solid */
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid .label{
+.stinput:is(.is-start-labeled,.islabel,.is-end-labeled).is-solid .label{
 	border-color: transparent;
 	background: var(--stgray-200);
 }
 
-.stinput:is(.is-start-labeled, .islabel, .is-end-labeled).is-solid:focus-within .label{
+.stinput:is(.is-start-labeled,.islabel,.is-end-labeled).is-solid:focus-within .label{
 	border-color: var(--stgray-300);
 }
 
@@ -3142,7 +3141,7 @@ button{
 
 /* Action Icon */
 
-.stinput.is-end-action-icon:where(a, button).icon{
+.stinput.is-end-action-icon:where(a,button).icon{
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -3153,7 +3152,7 @@ button{
 	z-index: 1;
 }
 
-.stinput.is-end-action-icon:where(a, button).icon{
+.stinput.is-end-action-icon:where(a,button).icon{
 	padding: 0 1.5rem;
 	border-radius: 0.4rem;
 	background: var(--stgray-100);
@@ -3167,7 +3166,7 @@ button{
 	font-size: 1em;
 }
 
-.stinput.is-end-action-icon:where(a, button).icon:hover{
+.stinput.is-end-action-icon:where(a,button).icon:hover{
 	opacity: 0.9;
 }
 
@@ -3259,11 +3258,11 @@ button{
 	--height: var(--stinput-height-large);
 }
 
-.stinput.small:is(input, textarea, .icon){
+.stinput.small:is(input,textarea,.icon){
 	font-size: var(--stfont-size-13px);
 }
 
-.stinput.large:is(input, textarea, .icon){
+.stinput.large:is(input,textarea,.icon){
 	font-size: var(--stfont-size-17px);
 }
 
@@ -3405,7 +3404,7 @@ button{
 		border: 0;
 		min-width: 75px;
 		/* Firefox */
-		font-family: "Noto Sans TC", "SF Pro TC", "SF Pro Text", "SF Pro Icons", "PingFang TC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft JhengHei", wf_SegoeUI, "Segoe UI",        Segoe, "Segoe WP", Tahoma, Verdana, Ubuntu, "Bitstream Vera Sans", "DejaVu Sans", 微軟正黑體, "LiHei Pro", "WenQuanYi Micro Hei", "Droid Sans Fallback",        "AR PL UMing TW", Roboto, "Hiragino Maru Gothic ProN", メイリオ, "ヒラギノ丸ゴ ProN W4", Meiryo, "Droid Sans", sans-serif;
+		font-family: "Noto Sans TC","SF Pro TC","SF Pro Text","SF Pro Icons","PingFang TC","Helvetica Neue","Helvetica","Arial","Microsoft JhengHei",wf_SegoeUI,"Segoe UI",       Segoe,"Segoe WP",Tahoma,Verdana,Ubuntu,"Bitstream Vera Sans","DejaVu Sans",微軟正黑體,"LiHei Pro","WenQuanYi Micro Hei","Droid Sans Fallback",       "AR PL UMing TW",Roboto,"Hiragino Maru Gothic ProN",メイリオ,"ヒラギノ丸ゴ ProN W4",Meiryo,"Droid Sans",sans-serif;
 		font-size: var(--strelative-small);
 		line-height: 1.5;
 		font-weight: 500;
@@ -3417,8 +3416,8 @@ button{
 		border-radius: 0.4rem;
 		margin-right: 0.5rem;
 
-		color: var(--accent-foreground-color, var(--stgray-800));
-		background: var(--accent-color, var(--stgray-200));
+		color: var(--accent-foreground-color,var(--stgray-800));
+		background: var(--accent-color,var(--stgray-200));
 	}
 
 	/* ========================================================================== Variations ========================================================================== */
@@ -3439,8 +3438,8 @@ button{
 		border-color: transparent;
 	}
 
-	&:is(.is-solid, .underline) input::file-selector-button,&:is(.is-solid, .underline) input::-webkit-file-upload-button{
-		background: var(--accent-color, var(--stgray-300));
+	&:is(.is-solid,.underline) input::file-selector-button,&:is(.is-solid,.underline) input::-webkit-file-upload-button{
+		background: var(--accent-color,var(--stgray-300));
 	}
 
 	/* Disabled */
@@ -3475,11 +3474,11 @@ button{
 		--height: var(--stinput-height-large);
 	}
 
-	&.small:is(input, input::file-selector-button, input::-webkit-file-upload-button){
+	&.small:is(input,input::file-selector-button,input::-webkit-file-upload-button){
 		font-size: var(--stfont-size-13px);
 	}
 
-	&.large:is(input, input::file-selector-button, input::-webkit-file-upload-button){
+	&.large:is(input,input::file-selector-button,input::-webkit-file-upload-button){
 		font-size: var(--stfont-size-17px);
 	}
 
@@ -3513,9 +3512,9 @@ button{
 /* ========================================================================== Base ========================================================================== */
 
 .stnotice{
-	background: var(--accent-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-800));
 	border: 1px solid transparent;
-	color: var(--accent-foreground-color, var(--stgray-50));
+	color: var(--accent-foreground-color,var(--stgray-50));
 	display: block;
 	padding: 0.45rem 1rem;
 	font-size: var(--stfont-size-14px);
@@ -3525,8 +3524,8 @@ button{
 /* ========================================================================== Structure ========================================================================== */
 
 .stnotice .title{
-	background: var(--accent-foreground-color, var(--stgray-50));
-	color: var(--accent-color, var(--stgray-800));
+	background: var(--accent-foreground-color,var(--stgray-50));
+	color: var(--accent-color,var(--stgray-800));
 	border-radius: 0.4rem;
 	padding: 0.3rem 0.5rem;
 	margin-right: 0.6rem;
@@ -3565,12 +3564,12 @@ button{
 .stnotice.outline{
 	background: transparent;
 	border-color: var(--stgray-300);
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 .stnotice.outline .title{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 .stnotice.outline.error .title{
@@ -3654,8 +3653,8 @@ button{
 }
 
 .stcheckbox input:checked{
-	background: var(--accent-color, var(--stprimary-700));
-	border-color: var(--accent-color, var(--stprimary-700));
+	background: var(--accent-color,var(--stprimary-700));
+	border-color: var(--accent-color,var(--stprimary-700));
 }
 
 .stcheckbox input:focus{
@@ -3683,7 +3682,7 @@ button{
 	-webkit-font-smoothing: antialiased;
 	backface-visibility: hidden;
 	font-size: 1rem;
-	color: var(--accent-foreground-color, var(--stwhite));
+	color: var(--accent-foreground-color,var(--stwhite));
 }
 
 .stcheckbox input:checked::after{
@@ -3808,8 +3807,8 @@ button{
 }
 
 .radio input:checked{
-	background: var(--accent-color, var(--stprimary-700));
-	background: var(--accent-color, var(--stprimary-700));
+	background: var(--accent-color,var(--stprimary-700));
+	background: var(--accent-color,var(--stprimary-700));
 }
 
 .radio input:focus{
@@ -3837,7 +3836,7 @@ button{
 	-webkit-font-smoothing: antialiased;
 	backface-visibility: hidden;
 	font-size: 1rem;
-	color: var(--accent-foreground-color, var(--stwhite));
+	color: var(--accent-foreground-color,var(--stwhite));
 }
 
 .radio input:checked::after{
@@ -3967,8 +3966,8 @@ button{
 	display: inline-flex;
 	align-items: center;
 	justify-content: flex-end;
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 	padding: 0rem 0.5rem;
 	font-size: var(--stfont-size-14px);
 	border-radius: 0.4rem;
@@ -3991,7 +3990,7 @@ button{
 	content: "";
 	background: #5a5a5a;
 	border-radius: 0.4rem;
-	animation: stprogress-active 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+	animation: stprogress-active 2s cubic-bezier(0.4,0,0.2,1) infinite;
 }
 
 /* Empty */
@@ -4005,14 +4004,14 @@ button{
 
 .stprogress.is-processing{
 	background-size: 40px 40px;
-	background-image: linear-gradient(135deg, #9e9e9e 25%, #949494 25%, #949494 50%, #9e9e9e 50%, #9e9e9e 75%, #949494 75%, #949494 100%);
+	background-image: linear-gradient(135deg,#9e9e9e 25%,#949494 25%,#949494 50%,#9e9e9e 50%,#9e9e9e 75%,#949494 75%,#949494 100%);
 	animation: stprogress-animation 2s linear 0s infinite;
 }
 
 /* Indeterminate */
 
 .stprogress.is-indeterminate .bar{
-	animation: stprogress-indeterminate 2s cubic-bezier(0.4, 0, 0.2, 1) 0s infinite;
+	animation: stprogress-indeterminate 2s cubic-bezier(0.4,0,0.2,1) 0s infinite;
 	width: 100% !important;
 	min-width: 0;
 }
@@ -4024,7 +4023,7 @@ button{
 /* Queried */
 
 .stprogress.is-queried .bar{
-	animation: stprogress-indeterminate 2s cubic-bezier(0.4, 0, 0.2, 1) 0s infinite;
+	animation: stprogress-indeterminate 2s cubic-bezier(0.4,0,0.2,1) 0s infinite;
 	animation-direction: reverse;
 	width: 100% !important;
 	min-width: 0;
@@ -4082,8 +4081,8 @@ button{
 	padding: 0.225rem 0.5rem;
 	line-height: 1;
 	border: 1px solid transparent;
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 	font-weight: 400;
 	display: inline-block;
 	white-space: nowrap;
@@ -4098,7 +4097,7 @@ button{
 
 .stbadge.secondary{
 	background: var(--stgray-200);
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 /* Outlined */
@@ -4106,7 +4105,7 @@ button{
 .stbadge.outline{
 	background: transparent;
 	border-color: var(--stgray-300);
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 /* error */
@@ -4193,8 +4192,8 @@ button{
 /* Active */
 
 .stpagination .item.is-active{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 	pointer-events: none;
 }
 
@@ -4952,7 +4951,7 @@ button{
 /* ========================================================================== Base ========================================================================== */
 
 .stfieldset{
-	border: 1px solid var(--accent-color, var(--stgray-300));
+	border: 1px solid var(--accent-color,var(--stgray-300));
 	border-radius: 0.4rem;
 	padding: 1rem;
 	padding-top: 0.5rem;
@@ -4962,7 +4961,7 @@ button{
 /* ========================================================================== Structure ========================================================================== */
 
 .stfieldset legend{
-	color: var(--accent-color, var(--stgray-600));
+	color: var(--accent-color,var(--stgray-600));
 	padding: 0 0.7em;
 	margin-left: -0.7em;
 	font-weight: normal;
@@ -4987,7 +4986,7 @@ button{
 /* ========================================================================== Base ========================================================================== */
 
 .sttext{
-	color: var(--accent-color, inherit);
+	color: var(--accent-color,inherit);
 }
 
 /* ========================================================================== Variations ========================================================================== */
@@ -5003,7 +5002,7 @@ button{
 
 /* Line Clamps */
 
-.sttext:is(.is-1-lines, .is-2-lines, .is-3-lines, .is-4-lines, .is-5-lines){
+.sttext:is(.is-1-lines,.is-2-lines,.is-3-lines,.is-4-lines,.is-5-lines){
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
@@ -5064,7 +5063,7 @@ button{
 /* Link */
 
 .sttext.is-link.is-link.is-link{
-	color: var(--accent-color, var(--stlink-700));
+	color: var(--accent-color,var(--stlink-700));
 }
 
 .sttext.is-link{
@@ -5290,7 +5289,7 @@ button{
 /* ========================================================================== Base ========================================================================== */
 
 .text{
-	color: var(--accent-color, inherit);
+	color: var(--accent-color,inherit);
 }
 
 /* ========================================================================== Variations ========================================================================== */
@@ -5306,7 +5305,7 @@ button{
 
 /* Line Clamps */
 
-.text:is(.is-1-lines, .is-2-lines, .is-3-lines, .is-4-lines, .is-5-lines){
+.text:is(.is-1-lines,.is-2-lines,.is-3-lines,.is-4-lines,.is-5-lines){
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
@@ -5367,7 +5366,7 @@ button{
 /* Link */
 
 .text.is-link.is-link.is-link{
-	color: var(--accent-color, var(--stlink-700));
+	color: var(--accent-color,var(--stlink-700));
 }
 
 .text.is-link{
@@ -5603,7 +5602,7 @@ button{
 /* Active */
 
 .sttab .item.is-active{
-	border-bottom-color: var(--accent-color, var(--stgray-800));
+	border-bottom-color: var(--accent-color,var(--stgray-800));
 	cursor: default;
 }
 
@@ -5630,13 +5629,13 @@ button{
 }
 
 .sttab.is-pilled .item.is-active{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 .sttab.is-pilled.secondary .item.is-active{
 	background: var(--stgray-200);
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 /* Aligns */
@@ -5671,7 +5670,7 @@ button{
 
 .sttab.is-indicated .item.is-active::after{
 	position: absolute;
-	background: var(--accent-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-800));
 	bottom: -2px;
 	content: "";
 	height: 4px;
@@ -5704,8 +5703,8 @@ button{
 }
 
 .sttab.is-segmented .item.is-active{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 /* fill */
@@ -5782,7 +5781,7 @@ button{
 .box{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-	--stindicator-color: var(--accent-color, var(--stgray-900));
+	--stindicator-color: var(--accent-color,var(--stgray-900));
 }
 
 /* ========================================================================== Base ========================================================================== */
@@ -5873,7 +5872,7 @@ a.box:hover{
 }
 
 .box.is-very-elevated{
-	box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+	box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,rgb(0 0 0 / 14%) 0px 3px 4px 0px,rgb(0 0 0 / 12%) 0px 1px 8px 0px;
 }
 
 /* Squared */
@@ -6210,11 +6209,11 @@ label:has(.switch){
     }
 
     &:checked::after{
-        background: var(--accent-color, var(--stprimary-700));
+        background: var(--accent-color,var(--stprimary-700));
     }
 
     &:checked::before{
-        background: var(--accent-foreground-color, var(--stwhite));
+        background: var(--accent-foreground-color,var(--stwhite));
         left: 19px;
     }
 
@@ -6313,7 +6312,7 @@ label:has(.switch){
 
 /* Aligns */
 
-.stmeta:is(.left, .center, .right){
+.stmeta:is(.left,.center,.right){
 	display: flex;
 }
 
@@ -6392,9 +6391,9 @@ label:has(.switch){
 }
 
 .selection input:checked+.text{
-	background: var(--accent-color, var(--stprimary-700));
-	border-color: var(--accent-color, var(--stprimary-700));
-	color: var(--accent-foreground-color, var(--stwhite));
+	background: var(--accent-color,var(--stprimary-700));
+	border-color: var(--accent-color,var(--stprimary-700));
+	color: var(--accent-foreground-color,var(--stwhite));
 }
 
 /* ========================================================================== Variations ========================================================================== */
@@ -6478,7 +6477,7 @@ label:has(.switch){
 
 /* ========================================================================== Base ========================================================================== */
 
-.sttable,.sttable:is(thead, tbody, tfoot, tr, th, td){
+.sttable,.sttable:is(thead,tbody,tfoot,tr,th,td){
 	width: auto;
 	height: auto;
 	margin: 0;
@@ -6514,7 +6513,7 @@ label:has(.switch){
 	background: var(--stgray-100);
 }
 
-.sttable:is(thead, tfoot) tr th{
+.sttable:is(thead,tfoot) tr th{
 	padding: 0.5rem 1rem;
 	color: var(--stgray-600);
 	font-weight: 500;
@@ -6532,11 +6531,11 @@ label:has(.switch){
 
 /* Sizes */
 
-.sttable.small,.sttable.small:is(thead, tbody, tfoot, tr, th, td){
+.sttable.small,.sttable.small:is(thead,tbody,tfoot,tr,th,td){
 	font-size: var(--stfont-size-13px);
 }
 
-.sttable.large,.sttable.large:is(thead, tbody, tfoot, tr, th, td){
+.sttable.large,.sttable.large:is(thead,tbody,tfoot,tr,th,td){
 	font-size: var(--stfont-size-16px);
 }
 
@@ -6546,7 +6545,7 @@ label:has(.switch){
 	width: auto;
 }
 
-.sttable:is(th, td).is-collapsed{
+.sttable:is(th,td).is-collapsed{
 	width: 1px;
 	white-space: nowrap;
 }
@@ -6565,11 +6564,11 @@ label:has(.switch){
 
 /* Basic */
 
-.sttable:is(.basic, .is-very-basic) tr th{
+.sttable:is(.basic,.is-very-basic) tr th{
 	background: transparent;
 }
 
-.sttable.is-very-basic tbody:is(th, td, tr){
+.sttable.is-very-basic tbody:is(th,td,tr){
 	border-color: transparent;
 }
 
@@ -6589,7 +6588,7 @@ label:has(.switch){
 
 /* Celled */
 
-.sttable.is-celled tr:is(td, th):not(:last-child){
+.sttable.is-celled tr:is(td,th):not(:last-child){
 	border-right: 1px solid var(--stgray-300);
 }
 
@@ -6618,27 +6617,27 @@ label:has(.switch){
 
 /* Aligns */
 
-.sttable:is(tr, th, td).left{
+.sttable:is(tr,th,td).left{
 	text-align: left;
 }
 
-.sttable:is(th, td).center{
+.sttable:is(th,td).center{
 	text-align: center;
 }
 
-.sttable:is(th, td).right{
+.sttable:is(th,td).right{
 	text-align: right;
 }
 
-.sttable.is-top-aligned:is(th, td){
+.sttable.is-top-aligned:is(th,td){
 	vertical-align: top;
 }
 
-.sttable:is(th, td).is-top-aligned{
+.sttable:is(th,td).is-top-aligned{
 	vertical-align: top;
 }
 
-.sttable:is(th, td).is-middle-aligned{
+.sttable:is(th,td).is-middle-aligned{
 	vertical-align: middle;
 }
 
@@ -6646,31 +6645,31 @@ label:has(.switch){
 	vertical-align: middle;
 }
 
-.sttable:is(th, td).is-bottom-aligned{
+.sttable:is(th,td).is-bottom-aligned{
 	vertical-align: bottom;
 }
 
 /* Secondary */
 
-.sttable:is(tr, tr th, tr td).secondary{
+.sttable:is(tr,tr th,tr td).secondary{
 	background: var(--stgray-75);
 }
 
 /* Tertiary */
 
-.sttable:is(tr, tr th, tr td).is-tertiary{
+.sttable:is(tr,tr th,tr td).is-tertiary{
 	background: var(--stgray-100);
 }
 
 /* Active */
 
-.sttable:is(tr, tr th, tr td).is-active{
+.sttable:is(tr,tr th,tr td).is-active{
 	background: var(--stgray-300);
 }
 
 /* Disabled */
 
-.sttable:is(tr, tr th, tr td).disabled{
+.sttable:is(tr,tr th,tr td).disabled{
 	opacity: 0.5;
 	user-select: none;
 	pointer-events: none;
@@ -6678,41 +6677,41 @@ label:has(.switch){
 
 /* Single Line */
 
-.sttable.is-single-line:is(tr, tr th, tr td),.sttable:is(tr, tr th, tr td).is-single-line{
+.sttable.is-single-line:is(tr,tr th,tr td),.sttable:is(tr,tr th,tr td).is-single-line{
 	white-space: nowrap;
 }
 
 /* Indicated */
 
-.sttable:is(tr, tr th, tr td).is-indicated{
+.sttable:is(tr,tr th,tr td).is-indicated{
 	box-shadow: 2px 0 0 var(--stgray-900) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.error{
+.sttable:is(tr,tr th,tr td).is-indicated.error{
 	box-shadow: 2px 0 0 var(--stnegative-600) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.is-positive{
+.sttable:is(tr,tr th,tr td).is-indicated.is-positive{
 	box-shadow: 2px 0 0 var(--stpositive-600) inset;
 }
 
-.sttable:is(tr, tr th, tr td).is-indicated.warning{
+.sttable:is(tr,tr th,tr td).is-indicated.warning{
 	box-shadow: 2px 0 0 var(--stwarning-600) inset;
 }
 
 /* Sticked */
 
-.sttable.is-sticked tr *:is(td, th):first-child{
+.sttable.is-sticked tr *:is(td,th):first-child{
 	padding-left: 0;
 }
 
-.sttable.is-sticked tr *:is(td, th):last-child{
+.sttable.is-sticked tr *:is(td,th):last-child{
 	padding-right: 0;
 }
 
 /* Density */
 
-.sttable.is-relaxed:is(thead, tfoot) tr th{
+.sttable.is-relaxed:is(thead,tfoot) tr th{
 	padding-top: 0.8rem;
 	padding-bottom: 0.8rem;
 }
@@ -6722,7 +6721,7 @@ label:has(.switch){
 	padding-bottom: 0.8rem;
 }
 
-.sttable.is-dense:is(thead, tfoot) tr th{
+.sttable.is-dense:is(thead,tfoot) tr th{
 	padding-top: 0.25rem;
 	padding-bottom: 0.25rem;
 }
@@ -6734,12 +6733,12 @@ label:has(.switch){
 
 /* Compact */
 
-.sttable:is(thead, tfoot) tr th.is-compact{
+.sttable:is(thead,tfoot) tr th.is-compact{
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 }
 
-.sttable.is-compact:is(thead, tfoot) tr th{
+.sttable.is-compact:is(thead,tfoot) tr th{
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 }
@@ -6760,7 +6759,7 @@ label:has(.switch){
 	padding: 1rem 1.5rem;
 }
 
-.sttable.is-padded:is(thead, tfoot) tr th{
+.sttable.is-padded:is(thead,tfoot) tr th{
 	padding: 1rem 1.5rem;
 }
 
@@ -6769,7 +6768,7 @@ label:has(.switch){
 	padding-right: 1.5rem;
 }
 
-.sttable.is-horizontally-padded:is(thead, tfoot) tr th{
+.sttable.is-horizontally-padded:is(thead,tfoot) tr th{
 	padding-left: 1.5rem;
 	padding-right: 1.5rem;
 }
@@ -6795,7 +6794,7 @@ label:has(.switch){
 
 /* Fitted */
 
-.sttable.is-fitted:is(thead, tfoot) tr th{
+.sttable.is-fitted:is(thead,tfoot) tr th{
 	padding: 0;
 }
 
@@ -6854,7 +6853,7 @@ label:has(.switch){
 }
 
 .stprocedure:not(.is-compact) .item .indicator:empty::after{
-	content: counter(ordered, decimal);
+	content: counter(ordered,decimal);
 }
 
 .stprocedure .item .content{
@@ -6895,9 +6894,9 @@ label:has(.switch){
 /* Active */
 
 .stprocedure .item.is-active .indicator{
-	background: var(--accent-color, var(--stgray-800));
-	border-color: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	border-color: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 /* Stacked */
@@ -6920,14 +6919,14 @@ label:has(.switch){
 
 .stprocedure .item.is-processing .indicator{
 	background: transparent;
-	border-color: var(--accent-color, var(--stgray-800));
+	border-color: var(--accent-color,var(--stgray-800));
 	color: var(--stgray-800);
 }
 
 /* Completed */
 
 .stprocedure .item.is-completed::after{
-	background: var(--accent-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-800));
 }
 
 .stprocedure .item.is-completed .indicator{
@@ -6938,9 +6937,9 @@ label:has(.switch){
 	text-align: center;
 	-webkit-font-smoothing: antialiased;
 	backface-visibility: hidden;
-	background: var(--accent-color, var(--stgray-800));
-	border-color: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	border-color: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 .stprocedure .item.is-completed .indicator::after,.stprocedure .item.is-completed .indicator *{
@@ -7012,8 +7011,8 @@ label:has(.switch){
 }
 
 .stprocedure.is-unordered .item.is-active .indicator{
-	background: var(--accent-color, var(--stgray-800));
-	border-color: var(--accent-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-800));
+	border-color: var(--accent-color,var(--stgray-800));
 }
 
 .stprocedure.is-unordered .item.is-completed .indicator{
@@ -7025,18 +7024,18 @@ label:has(.switch){
 /* Compact */
 
 .stprocedure.is-compact .item.is-completed .indicator{
-	background: var(--accent-color, var(--stgray-800));
-	border-color: var(--accent-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-800));
+	border-color: var(--accent-color,var(--stgray-800));
 }
 
 .stprocedure.is-compact .item.is-active .indicator{
 	background: transparent;
-	border-color: var(--accent-color, var(--stgray-800));
+	border-color: var(--accent-color,var(--stgray-800));
 }
 
 .stprocedure.is-compact .item.is-active .indicator::after{
 	content: "";
-	background: var(--accent-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-800));
 	position: absolute;
 	top: 2px;
 	left: 2px;
@@ -7444,7 +7443,7 @@ label:has(.switch){
 .strating{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-	--color: var(--accent-color, inherit);
+	--color: var(--accent-color,inherit);
 }
 
 /* ========================================================================== Base ========================================================================== */
@@ -7457,17 +7456,17 @@ label:has(.switch){
 
 /* ========================================================================== Structure ========================================================================== */
 
-.strating:is(.star, .heart){
+.strating:is(.star,.heart){
 	color: var(--stgray-200);
 	text-decoration: none;
 }
 
-.strating:is(.star, .heart).is-active,.strating.is-input:is(.star, .heart):checked,.strating.is-input:is(.star, .heart):hover{
+.strating:is(.star,.heart).is-active,.strating.is-input:is(.star,.heart):checked,.strating.is-input:is(.star,.heart):hover{
 	color: var(--color);
 }
 
 /* Issue #924 */
-.strating.is-input:is(.star, .heart):has(~:is(.star, .heart):hover),.strating.is-input:is(.star, .heart):has(~:is(.star, .heart):checked){
+.strating.is-input:is(.star,.heart):has(~:is(.star,.heart):hover),.strating.is-input:is(.star,.heart):has(~:is(.star,.heart):checked){
 	color: var(--color);
 }
 
@@ -7479,7 +7478,7 @@ label:has(.switch){
 	--color: #ff1100;
 }
 
-.strating:is(.star, .heart)::after,.strating:is(.star, .heart)::before{
+.strating:is(.star,.heart)::after,.strating:is(.star,.heart)::before{
 	font-family: "Icons";
 	font-weight: normal;
 	font-style: normal;
@@ -7533,7 +7532,7 @@ label:has(.switch){
 	margin: 0;
 	cursor: pointer;
 	font-size: 1rem;
-	transition: color 0.1s ease, opacity 0.1s ease;
+	transition: color 0.1s ease,opacity 0.1s ease;
 }
 
 .strating.is-input input:hover:not(:focus)~input,.strating.is-input input:hover:focus~input{
@@ -7581,7 +7580,7 @@ label:has(.switch){
 	line-height: 1.75;
 	min-height: 22px;
 	/*min-width: 55px;*/
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 .stchip.is-input,.stchip.is-toggle{
@@ -7635,29 +7634,29 @@ label:has(.switch){
 /* Toggle */
 
 .stchip.is-toggle input:checked+.content{
-	background: var(--accent-color, var(--stgray-800));
-	border-color: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	border-color: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 .stchip.is-toggle.secondary input:checked+.content{
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 	background: var(--stgray-200);
-	border-color: var(--accent-color, var(--stgray-600));
+	border-color: var(--accent-color,var(--stgray-600));
 }
 
 /* Input */
 
 .stchip.is-input input:checked+.content{
-	background: var(--accent-color, var(--stprimary-700));
-	border-color: var(--accent-color, var(--stprimary-700));
-	color: var(--accent-foreground-color, var(--stwhite));
+	background: var(--accent-color,var(--stprimary-700));
+	border-color: var(--accent-color,var(--stprimary-700));
+	color: var(--accent-foreground-color,var(--stwhite));
 }
 
 .stchip.is-input.secondary input:checked+.content{
-	color: var(--accent-color, var(--stprimary-600));
+	color: var(--accent-color,var(--stprimary-600));
 	background: var(--stgray-100);
-	border-color: var(--accent-color, var(--stprimary-600));
+	border-color: var(--accent-color,var(--stprimary-600));
 }
 
 .stchip.is-input input:checked+.content::before{
@@ -7717,7 +7716,7 @@ label:has(.switch){
 	padding-bottom: 0.1rem;
 }
 
-.stchip.is-dense:is(.is-input, .is-toggle) .content{
+.stchip.is-dense:is(.is-input,.is-toggle) .content{
 	min-height: 20px;
 	padding-top: 0.1rem;
 	padding-bottom: 0.1rem;
@@ -7783,8 +7782,8 @@ label:has(.switch){
 	width: 18px;
 	font-size: var(--stfont-size-12px);
 	line-height: 1;
-	background: var(--accent-color, var(--stgray-600));
-	color: var(--accent-foreground-color, var(--stgray-100));
+	background: var(--accent-color,var(--stgray-600));
+	color: var(--accent-foreground-color,var(--stgray-100));
 	border-radius: 100rem;
 }
 
@@ -7870,7 +7869,7 @@ label:has(.switch){
 .stloading{
 	display: inline-block;
 	text-align: center;
-	color: var(--accent-color, var(--stgray-600));
+	color: var(--accent-color,var(--stgray-600));
 }
 
 .stloading::after{
@@ -7983,7 +7982,7 @@ label:has(.switch){
 /* Active */
 
 .stbreadcrumb .item.is-active{
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 	font-weight: 500;
 }
 
@@ -8011,7 +8010,7 @@ label:has(.switch){
 	content: "-";
 }
 
-.stbreadcrumb:is(.is-chevroned, .is-hyphenated) .item::after{
+.stbreadcrumb:is(.is-chevroned,.is-hyphenated) .item::after{
 	font-family: "Icons";
 	font-weight: normal;
 	font-style: normal;
@@ -8048,11 +8047,11 @@ label:has(.switch){
 
 /* ========================================================================== Variations ========================================================================== */
 
-.stlist:is(.is-ordered, .is-unordered){
+.stlist:is(.is-ordered,.is-unordered){
 	margin-left: 1.2rem;
 }
 
-.stlist:is(.is-unordered, .is-ordered) .item{
+.stlist:is(.is-unordered,.is-ordered) .item{
 	display: list-item;
 }
 
@@ -8121,17 +8120,17 @@ label:has(.switch){
 	height: 1.2rem;
 }
 
-.stflag.small:is(.is-squared, round){
+.stflag.small:is(.is-squared,round){
 	width: 0.95rem;
 	height: 0.95rem;
 }
 
-.stflag:is(.is-squared, round){
+.stflag:is(.is-squared,round){
 	width: 1.05rem;
 	height: 1.05rem;
 }
 
-.stflag.large:is(.is-squared, round){
+.stflag.large:is(.is-squared,round){
 	width: 1.2rem;
 	height: 1.2rem;
 }
@@ -8179,2059 +8178,2059 @@ label:has(.switch){
 
 /* ========================================================================== Countires ========================================================================== */
 
-.stflag:is(.is-ad-flag, .is-andorra-flag){
+.stflag:is(.is-ad-flag,.is-andorra-flag){
 	background-image: url("./flags/4x3/ad.svg");
 }
 
-.stflag:is(.is-ad-flag, .is-andorra-flag):is(.is-squared, round){
+.stflag:is(.is-ad-flag,.is-andorra-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ad.svg");
 }
 
-.stflag:is(.is-ae-flag, .is-uae-flag, .is-united-arab-emirates-flag){
+.stflag:is(.is-ae-flag,.is-uae-flag,.is-united-arab-emirates-flag){
 	background-image: url("./flags/4x3/ae.svg");
 }
 
-.stflag:is(.is-ae-flag, .is-uae-flag, .is-united-arab-emirates-flag):is(.is-squared, round){
+.stflag:is(.is-ae-flag,.is-uae-flag,.is-united-arab-emirates-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ae.svg");
 }
 
-.stflag:is(.is-af-flag, .is-afghanistan-flag){
+.stflag:is(.is-af-flag,.is-afghanistan-flag){
 	background-image: url("./flags/4x3/af.svg");
 }
 
-.stflag:is(.is-af-flag, .is-afghanistan-flag):is(.is-squared, round){
+.stflag:is(.is-af-flag,.is-afghanistan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/af.svg");
 }
 
-.stflag:is(.is-ag-flag, .is-antigua-flag){
+.stflag:is(.is-ag-flag,.is-antigua-flag){
 	background-image: url("./flags/4x3/ag.svg");
 }
 
-.stflag:is(.is-ag-flag, .is-antigua-flag):is(.is-squared, round){
+.stflag:is(.is-ag-flag,.is-antigua-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ag.svg");
 }
 
-.stflag:is(.is-ai-flag, .is-anguilla-flag){
+.stflag:is(.is-ai-flag,.is-anguilla-flag){
 	background-image: url("./flags/4x3/ai.svg");
 }
 
-.stflag:is(.is-ai-flag, .is-anguilla-flag):is(.is-squared, round){
+.stflag:is(.is-ai-flag,.is-anguilla-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ai.svg");
 }
 
-.stflag:is(.is-al-flag, .is-albania-flag){
+.stflag:is(.is-al-flag,.is-albania-flag){
 	background-image: url("./flags/4x3/al.svg");
 }
 
-.stflag:is(.is-al-flag, .is-albania-flag):is(.is-squared, round){
+.stflag:is(.is-al-flag,.is-albania-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/al.svg");
 }
 
-.stflag:is(.is-am-flag, .is-armenia-flag){
+.stflag:is(.is-am-flag,.is-armenia-flag){
 	background-image: url("./flags/4x3/am.svg");
 }
 
-.stflag:is(.is-am-flag, .is-armenia-flag):is(.is-squared, round){
+.stflag:is(.is-am-flag,.is-armenia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/am.svg");
 }
 
-.stflag:is(.is-ao-flag, .is-angola-flag){
+.stflag:is(.is-ao-flag,.is-angola-flag){
 	background-image: url("./flags/4x3/ao.svg");
 }
 
-.stflag:is(.is-ao-flag, .is-angola-flag):is(.is-squared, round){
+.stflag:is(.is-ao-flag,.is-angola-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ao.svg");
 }
 
-.stflag:is(.is-aq-flag, .is-antarctica-flag){
+.stflag:is(.is-aq-flag,.is-antarctica-flag){
 	background-image: url("./flags/4x3/aq.svg");
 }
 
-.stflag:is(.is-aq-flag, .is-antarctica-flag):is(.is-squared, round){
+.stflag:is(.is-aq-flag,.is-antarctica-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/aq.svg");
 }
 
-.stflag:is(.is-ar-flag, .is-argentina-flag){
+.stflag:is(.is-ar-flag,.is-argentina-flag){
 	background-image: url("./flags/4x3/ar.svg");
 }
 
-.stflag:is(.is-ar-flag, .is-argentina-flag):is(.is-squared, round){
+.stflag:is(.is-ar-flag,.is-argentina-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ar.svg");
 }
 
-.stflag:is(.is-as-flag, .is-american-samoa-flag){
+.stflag:is(.is-as-flag,.is-american-samoa-flag){
 	background-image: url("./flags/4x3/as.svg");
 }
 
-.stflag:is(.is-as-flag, .is-american-samoa-flag):is(.is-squared, round){
+.stflag:is(.is-as-flag,.is-american-samoa-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/as.svg");
 }
 
-.stflag:is(.is-at-flag, .is-austria-flag){
+.stflag:is(.is-at-flag,.is-austria-flag){
 	background-image: url("./flags/4x3/at.svg");
 }
 
-.stflag:is(.is-at-flag, .is-austria-flag):is(.is-squared, round){
+.stflag:is(.is-at-flag,.is-austria-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/at.svg");
 }
 
-.stflag:is(.is-au-flag, .is-australia-flag){
+.stflag:is(.is-au-flag,.is-australia-flag){
 	background-image: url("./flags/4x3/au.svg");
 }
 
-.stflag:is(.is-au-flag, .is-australia-flag):is(.is-squared, round){
+.stflag:is(.is-au-flag,.is-australia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/au.svg");
 }
 
-.stflag:is(.is-aw-flag, .is-aruba-flag){
+.stflag:is(.is-aw-flag,.is-aruba-flag){
 	background-image: url("./flags/4x3/aw.svg");
 }
 
-.stflag:is(.is-aw-flag, .is-aruba-flag):is(.is-squared, round){
+.stflag:is(.is-aw-flag,.is-aruba-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/aw.svg");
 }
 
-.stflag:is(.is-ax-flag, .is-aland-islands-flag){
+.stflag:is(.is-ax-flag,.is-aland-islands-flag){
 	background-image: url("./flags/4x3/ax.svg");
 }
 
-.stflag:is(.is-ax-flag, .is-aland-islands-flag):is(.is-squared, round){
+.stflag:is(.is-ax-flag,.is-aland-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ax.svg");
 }
 
-.stflag:is(.is-az-flag, .is-azerbaijan-flag){
+.stflag:is(.is-az-flag,.is-azerbaijan-flag){
 	background-image: url("./flags/4x3/az.svg");
 }
 
-.stflag:is(.is-az-flag, .is-azerbaijan-flag):is(.is-squared, round){
+.stflag:is(.is-az-flag,.is-azerbaijan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/az.svg");
 }
 
-.stflag:is(.is-ba-flag, .is-bosnia-flag){
+.stflag:is(.is-ba-flag,.is-bosnia-flag){
 	background-image: url("./flags/4x3/ba.svg");
 }
 
-.stflag:is(.is-ba-flag, .is-bosnia-flag):is(.is-squared, round){
+.stflag:is(.is-ba-flag,.is-bosnia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ba.svg");
 }
 
-.stflag:is(.is-bb-flag, .is-barbados-flag){
+.stflag:is(.is-bb-flag,.is-barbados-flag){
 	background-image: url("./flags/4x3/bb.svg");
 }
 
-.stflag:is(.is-bb-flag, .is-barbados-flag):is(.is-squared, round){
+.stflag:is(.is-bb-flag,.is-barbados-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bb.svg");
 }
 
-.stflag:is(.is-bd-flag, .is-bangladesh-flag){
+.stflag:is(.is-bd-flag,.is-bangladesh-flag){
 	background-image: url("./flags/4x3/bd.svg");
 }
 
-.stflag:is(.is-bd-flag, .is-bangladesh-flag):is(.is-squared, round){
+.stflag:is(.is-bd-flag,.is-bangladesh-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bd.svg");
 }
 
-.stflag:is(.is-be-flag, .is-belgium-flag){
+.stflag:is(.is-be-flag,.is-belgium-flag){
 	background-image: url("./flags/4x3/be.svg");
 }
 
-.stflag:is(.is-be-flag, .is-belgium-flag):is(.is-squared, round){
+.stflag:is(.is-be-flag,.is-belgium-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/be.svg");
 }
 
-.stflag:is(.is-bf-flag, .is-burkina-faso-flag){
+.stflag:is(.is-bf-flag,.is-burkina-faso-flag){
 	background-image: url("./flags/4x3/bf.svg");
 }
 
-.stflag:is(.is-bf-flag, .is-burkina-faso-flag):is(.is-squared, round){
+.stflag:is(.is-bf-flag,.is-burkina-faso-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bf.svg");
 }
 
-.stflag:is(.is-bg-flag, .is-bulgaria-flag){
+.stflag:is(.is-bg-flag,.is-bulgaria-flag){
 	background-image: url("./flags/4x3/bg.svg");
 }
 
-.stflag:is(.is-bg-flag, .is-bulgaria-flag):is(.is-squared, round){
+.stflag:is(.is-bg-flag,.is-bulgaria-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bg.svg");
 }
 
-.stflag:is(.is-bh-flag, .is-bahrain-flag){
+.stflag:is(.is-bh-flag,.is-bahrain-flag){
 	background-image: url("./flags/4x3/bh.svg");
 }
 
-.stflag:is(.is-bh-flag, .is-bahrain-flag):is(.is-squared, round){
+.stflag:is(.is-bh-flag,.is-bahrain-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bh.svg");
 }
 
-.stflag:is(.is-bi-flag, .is-burundi-flag){
+.stflag:is(.is-bi-flag,.is-burundi-flag){
 	background-image: url("./flags/4x3/bi.svg");
 }
 
-.stflag:is(.is-bi-flag, .is-burundi-flag):is(.is-squared, round){
+.stflag:is(.is-bi-flag,.is-burundi-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bi.svg");
 }
 
-.stflag:is(.is-bj-flag, .is-benin-flag){
+.stflag:is(.is-bj-flag,.is-benin-flag){
 	background-image: url("./flags/4x3/bj.svg");
 }
 
-.stflag:is(.is-bj-flag, .is-benin-flag):is(.is-squared, round){
+.stflag:is(.is-bj-flag,.is-benin-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bj.svg");
 }
 
-.stflag:is(.is-bl-flag, .is-saint-barthélemy-flag, .is-saint-barthelemy-flag){
+.stflag:is(.is-bl-flag,.is-saint-barthélemy-flag,.is-saint-barthelemy-flag){
 	background-image: url("./flags/4x3/bl.svg");
 }
 
-.stflag:is(.is-bl-flag, .is-saint-barthélemy-flag, .is-saint-barthelemy-flag):is(.is-squared, round){
+.stflag:is(.is-bl-flag,.is-saint-barthélemy-flag,.is-saint-barthelemy-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bl.svg");
 }
 
-.stflag:is(.is-bm-flag, .is-bermuda-flag){
+.stflag:is(.is-bm-flag,.is-bermuda-flag){
 	background-image: url("./flags/4x3/bm.svg");
 }
 
-.stflag:is(.is-bm-flag, .is-bermuda-flag):is(.is-squared, round){
+.stflag:is(.is-bm-flag,.is-bermuda-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bm.svg");
 }
 
-.stflag:is(.is-bn-flag, .is-brunei-flag){
+.stflag:is(.is-bn-flag,.is-brunei-flag){
 	background-image: url("./flags/4x3/bn.svg");
 }
 
-.stflag:is(.is-bn-flag, .is-brunei-flag):is(.is-squared, round){
+.stflag:is(.is-bn-flag,.is-brunei-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bn.svg");
 }
 
-.stflag:is(.is-bo-flag, .is-bolivia-flag){
+.stflag:is(.is-bo-flag,.is-bolivia-flag){
 	background-image: url("./flags/4x3/bo.svg");
 }
 
-.stflag:is(.is-bo-flag, .is-bolivia-flag):is(.is-squared, round){
+.stflag:is(.is-bo-flag,.is-bolivia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bo.svg");
 }
 
-.stflag:is(.is-bq-flag, .is-caribbean-netherlands-flag){
+.stflag:is(.is-bq-flag,.is-caribbean-netherlands-flag){
 	background-image: url("./flags/4x3/bq.svg");
 }
 
-.stflag:is(.is-bq-flag, .is-caribbean-netherlands-flag):is(.is-squared, round){
+.stflag:is(.is-bq-flag,.is-caribbean-netherlands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bq.svg");
 }
 
-.stflag:is(.is-br-flag, .is-brazil-flag){
+.stflag:is(.is-br-flag,.is-brazil-flag){
 	background-image: url("./flags/4x3/br.svg");
 }
 
-.stflag:is(.is-br-flag, .is-brazil-flag):is(.is-squared, round){
+.stflag:is(.is-br-flag,.is-brazil-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/br.svg");
 }
 
-.stflag:is(.is-bs-flag, .is-bahamas-flag){
+.stflag:is(.is-bs-flag,.is-bahamas-flag){
 	background-image: url("./flags/4x3/bs.svg");
 }
 
-.stflag:is(.is-bs-flag, .is-bahamas-flag):is(.is-squared, round){
+.stflag:is(.is-bs-flag,.is-bahamas-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bs.svg");
 }
 
-.stflag:is(.is-bt-flag, .is-bhutan-flag){
+.stflag:is(.is-bt-flag,.is-bhutan-flag){
 	background-image: url("./flags/4x3/bt.svg");
 }
 
-.stflag:is(.is-bt-flag, .is-bhutan-flag):is(.is-squared, round){
+.stflag:is(.is-bt-flag,.is-bhutan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bt.svg");
 }
 
-.stflag:is(.is-bv-flag, .is-bouvet-island-flag){
+.stflag:is(.is-bv-flag,.is-bouvet-island-flag){
 	background-image: url("./flags/4x3/bv.svg");
 }
 
-.stflag:is(.is-bv-flag, .is-bouvet-island-flag):is(.is-squared, round){
+.stflag:is(.is-bv-flag,.is-bouvet-island-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bv.svg");
 }
 
-.stflag:is(.is-bw-flag, .is-botswana-flag){
+.stflag:is(.is-bw-flag,.is-botswana-flag){
 	background-image: url("./flags/4x3/bw.svg");
 }
 
-.stflag:is(.is-bw-flag, .is-botswana-flag):is(.is-squared, round){
+.stflag:is(.is-bw-flag,.is-botswana-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bw.svg");
 }
 
-.stflag:is(.is-by-flag, .is-belarus-flag){
+.stflag:is(.is-by-flag,.is-belarus-flag){
 	background-image: url("./flags/4x3/by.svg");
 }
 
-.stflag:is(.is-by-flag, .is-belarus-flag):is(.is-squared, round){
+.stflag:is(.is-by-flag,.is-belarus-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/by.svg");
 }
 
-.stflag:is(.is-bz-flag, .is-belize-flag){
+.stflag:is(.is-bz-flag,.is-belize-flag){
 	background-image: url("./flags/4x3/bz.svg");
 }
 
-.stflag:is(.is-bz-flag, .is-belize-flag):is(.is-squared, round){
+.stflag:is(.is-bz-flag,.is-belize-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/bz.svg");
 }
 
-.stflag:is(.is-ca-flag, .is-canada-flag){
+.stflag:is(.is-ca-flag,.is-canada-flag){
 	background-image: url("./flags/4x3/ca.svg");
 }
 
-.stflag:is(.is-ca-flag, .is-canada-flag):is(.is-squared, round){
+.stflag:is(.is-ca-flag,.is-canada-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ca.svg");
 }
 
-.stflag:is(.is-cc-flag, .is-cocos-islands-flag){
+.stflag:is(.is-cc-flag,.is-cocos-islands-flag){
 	background-image: url("./flags/4x3/cc.svg");
 }
 
-.stflag:is(.is-cc-flag, .is-cocos-islands-flag):is(.is-squared, round){
+.stflag:is(.is-cc-flag,.is-cocos-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cc.svg");
 }
 
-.stflag:is(.is-cd-flag, .is-congo-flag){
+.stflag:is(.is-cd-flag,.is-congo-flag){
 	background-image: url("./flags/4x3/cd.svg");
 }
 
-.stflag:is(.is-cd-flag, .is-congo-flag):is(.is-squared, round){
+.stflag:is(.is-cd-flag,.is-congo-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cd.svg");
 }
 
-.stflag:is(.is-cf-flag, .is-central-african-republic-flag){
+.stflag:is(.is-cf-flag,.is-central-african-republic-flag){
 	background-image: url("./flags/4x3/cf.svg");
 }
 
-.stflag:is(.is-cf-flag, .is-central-african-republic-flag):is(.is-squared, round){
+.stflag:is(.is-cf-flag,.is-central-african-republic-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cf.svg");
 }
 
-.stflag:is(.is-cg-flag, .is-congo-brazzaville-flag){
+.stflag:is(.is-cg-flag,.is-congo-brazzaville-flag){
 	background-image: url("./flags/4x3/cg.svg");
 }
 
-.stflag:is(.is-cg-flag, .is-congo-brazzaville-flag):is(.is-squared, round){
+.stflag:is(.is-cg-flag,.is-congo-brazzaville-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cg.svg");
 }
 
-.stflag:is(.is-ch-flag, .is-switzerland-flag){
+.stflag:is(.is-ch-flag,.is-switzerland-flag){
 	background-image: url("./flags/4x3/ch.svg");
 }
 
-.stflag:is(.is-ch-flag, .is-switzerland-flag):is(.is-squared, round){
+.stflag:is(.is-ch-flag,.is-switzerland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ch.svg");
 }
 
-.stflag:is(.is-ci-flag, .is-cote-divoire-flag){
+.stflag:is(.is-ci-flag,.is-cote-divoire-flag){
 	background-image: url("./flags/4x3/ci.svg");
 }
 
-.stflag:is(.is-ci-flag, .is-cote-divoire-flag):is(.is-squared, round){
+.stflag:is(.is-ci-flag,.is-cote-divoire-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ci.svg");
 }
 
-.stflag:is(.is-ck-flag, .is-cook-islands-flag){
+.stflag:is(.is-ck-flag,.is-cook-islands-flag){
 	background-image: url("./flags/4x3/ck.svg");
 }
 
-.stflag:is(.is-ck-flag, .is-cook-islands-flag):is(.is-squared, round){
+.stflag:is(.is-ck-flag,.is-cook-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ck.svg");
 }
 
-.stflag:is(.is-cl-flag, .is-chile-flag){
+.stflag:is(.is-cl-flag,.is-chile-flag){
 	background-image: url("./flags/4x3/cl.svg");
 }
 
-.stflag:is(.is-cl-flag, .is-chile-flag):is(.is-squared, round){
+.stflag:is(.is-cl-flag,.is-chile-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cl.svg");
 }
 
-.stflag:is(.is-cm-flag, .is-cameroon-flag){
+.stflag:is(.is-cm-flag,.is-cameroon-flag){
 	background-image: url("./flags/4x3/cm.svg");
 }
 
-.stflag:is(.is-cm-flag, .is-cameroon-flag):is(.is-squared, round){
+.stflag:is(.is-cm-flag,.is-cameroon-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cm.svg");
 }
 
-.stflag:is(.is-cn-flag, .is-china-flag, .is-peoples-republic-of-china-flag){
+.stflag:is(.is-cn-flag,.is-china-flag,.is-peoples-republic-of-china-flag){
 	background-image: url("./flags/4x3/cn.svg");
 }
 
-.stflag:is(.is-cn-flag, .is-china-flag, .is-peoples-republic-of-china-flag):is(.is-squared, round){
+.stflag:is(.is-cn-flag,.is-china-flag,.is-peoples-republic-of-china-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cn.svg");
 }
 
-.stflag:is(.is-co-flag, .is-colombia-flag){
+.stflag:is(.is-co-flag,.is-colombia-flag){
 	background-image: url("./flags/4x3/co.svg");
 }
 
-.stflag:is(.is-co-flag, .is-colombia-flag):is(.is-squared, round){
+.stflag:is(.is-co-flag,.is-colombia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/co.svg");
 }
 
-.stflag:is(.is-cr-flag, .is-costa-rica-flag){
+.stflag:is(.is-cr-flag,.is-costa-rica-flag){
 	background-image: url("./flags/4x3/cr.svg");
 }
 
-.stflag:is(.is-cr-flag, .is-costa-rica-flag):is(.is-squared, round){
+.stflag:is(.is-cr-flag,.is-costa-rica-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cr.svg");
 }
 
-.stflag:is(.is-cu-flag, .is-cuba-flag){
+.stflag:is(.is-cu-flag,.is-cuba-flag){
 	background-image: url("./flags/4x3/cu.svg");
 }
 
-.stflag:is(.is-cu-flag, .is-cuba-flag):is(.is-squared, round){
+.stflag:is(.is-cu-flag,.is-cuba-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cu.svg");
 }
 
-.stflag:is(.is-cv-flag, .is-cape-verde-flag){
+.stflag:is(.is-cv-flag,.is-cape-verde-flag){
 	background-image: url("./flags/4x3/cv.svg");
 }
 
-.stflag:is(.is-cv-flag, .is-cape-verde-flag):is(.is-squared, round){
+.stflag:is(.is-cv-flag,.is-cape-verde-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cv.svg");
 }
 
-.stflag:is(.is-cw-flag, .is-curaçao-flag, .is-curacao-flag){
+.stflag:is(.is-cw-flag,.is-curaçao-flag,.is-curacao-flag){
 	background-image: url("./flags/4x3/cw.svg");
 }
 
-.stflag:is(.is-cw-flag, .is-curaçao-flag, .is-curacao-flag):is(.is-squared, round){
+.stflag:is(.is-cw-flag,.is-curaçao-flag,.is-curacao-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cw.svg");
 }
 
-.stflag:is(.is-cx-flag, .is-christmas-island-flag){
+.stflag:is(.is-cx-flag,.is-christmas-island-flag){
 	background-image: url("./flags/4x3/cx.svg");
 }
 
-.stflag:is(.is-cx-flag, .is-christmas-island-flag):is(.is-squared, round){
+.stflag:is(.is-cx-flag,.is-christmas-island-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cx.svg");
 }
 
-.stflag:is(.is-cy-flag, .is-cyprus-flag){
+.stflag:is(.is-cy-flag,.is-cyprus-flag){
 	background-image: url("./flags/4x3/cy.svg");
 }
 
-.stflag:is(.is-cy-flag, .is-cyprus-flag):is(.is-squared, round){
+.stflag:is(.is-cy-flag,.is-cyprus-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cy.svg");
 }
 
-.stflag:is(.is-cz-flag, .is-czech-republic-flag){
+.stflag:is(.is-cz-flag,.is-czech-republic-flag){
 	background-image: url("./flags/4x3/cz.svg");
 }
 
-.stflag:is(.is-cz-flag, .is-czech-republic-flag):is(.is-squared, round){
+.stflag:is(.is-cz-flag,.is-czech-republic-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/cz.svg");
 }
 
-.stflag:is(.is-de-flag, .is-germany-flag){
+.stflag:is(.is-de-flag,.is-germany-flag){
 	background-image: url("./flags/4x3/de.svg");
 }
 
-.stflag:is(.is-de-flag, .is-germany-flag):is(.is-squared, round){
+.stflag:is(.is-de-flag,.is-germany-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/de.svg");
 }
 
-.stflag:is(.is-dj-flag, .is-djibouti-flag){
+.stflag:is(.is-dj-flag,.is-djibouti-flag){
 	background-image: url("./flags/4x3/dj.svg");
 }
 
-.stflag:is(.is-dj-flag, .is-djibouti-flag):is(.is-squared, round){
+.stflag:is(.is-dj-flag,.is-djibouti-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/dj.svg");
 }
 
-.stflag:is(.is-dk-flag, .is-denmark-flag){
+.stflag:is(.is-dk-flag,.is-denmark-flag){
 	background-image: url("./flags/4x3/dk.svg");
 }
 
-.stflag:is(.is-dk-flag, .is-denmark-flag):is(.is-squared, round){
+.stflag:is(.is-dk-flag,.is-denmark-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/dk.svg");
 }
 
-.stflag:is(.is-dm-flag, .is-dominica-flag){
+.stflag:is(.is-dm-flag,.is-dominica-flag){
 	background-image: url("./flags/4x3/dm.svg");
 }
 
-.stflag:is(.is-dm-flag, .is-dominica-flag):is(.is-squared, round){
+.stflag:is(.is-dm-flag,.is-dominica-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/dm.svg");
 }
 
-.stflag:is(.is-do-flag, .is-dominican-republic-flag){
+.stflag:is(.is-do-flag,.is-dominican-republic-flag){
 	background-image: url("./flags/4x3/do.svg");
 }
 
-.stflag:is(.is-do-flag, .is-dominican-republic-flag):is(.is-squared, round){
+.stflag:is(.is-do-flag,.is-dominican-republic-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/do.svg");
 }
 
-.stflag:is(.is-dz-flag, .is-algeria-flag){
+.stflag:is(.is-dz-flag,.is-algeria-flag){
 	background-image: url("./flags/4x3/dz.svg");
 }
 
-.stflag:is(.is-dz-flag, .is-algeria-flag):is(.is-squared, round){
+.stflag:is(.is-dz-flag,.is-algeria-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/dz.svg");
 }
 
-.stflag:is(.is-ec-flag, .is-ecuador-flag){
+.stflag:is(.is-ec-flag,.is-ecuador-flag){
 	background-image: url("./flags/4x3/ec.svg");
 }
 
-.stflag:is(.is-ec-flag, .is-ecuador-flag):is(.is-squared, round){
+.stflag:is(.is-ec-flag,.is-ecuador-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ec.svg");
 }
 
-.stflag:is(.is-ee-flag, .is-estonia-flag){
+.stflag:is(.is-ee-flag,.is-estonia-flag){
 	background-image: url("./flags/4x3/ee.svg");
 }
 
-.stflag:is(.is-ee-flag, .is-estonia-flag):is(.is-squared, round){
+.stflag:is(.is-ee-flag,.is-estonia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ee.svg");
 }
 
-.stflag:is(.is-eg-flag, .is-egypt-flag){
+.stflag:is(.is-eg-flag,.is-egypt-flag){
 	background-image: url("./flags/4x3/eg.svg");
 }
 
-.stflag:is(.is-eg-flag, .is-egypt-flag):is(.is-squared, round){
+.stflag:is(.is-eg-flag,.is-egypt-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/eg.svg");
 }
 
-.stflag:is(.is-eh-flag, .is-western-sahara-flag){
+.stflag:is(.is-eh-flag,.is-western-sahara-flag){
 	background-image: url("./flags/4x3/eh.svg");
 }
 
-.stflag:is(.is-eh-flag, .is-western-sahara-flag):is(.is-squared, round){
+.stflag:is(.is-eh-flag,.is-western-sahara-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/eh.svg");
 }
 
-.stflag:is(.is-er-flag, .is-eritrea-flag){
+.stflag:is(.is-er-flag,.is-eritrea-flag){
 	background-image: url("./flags/4x3/er.svg");
 }
 
-.stflag:is(.is-er-flag, .is-eritrea-flag):is(.is-squared, round){
+.stflag:is(.is-er-flag,.is-eritrea-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/er.svg");
 }
 
-.stflag:is(.is-es-flag, .is-spain-flag){
+.stflag:is(.is-es-flag,.is-spain-flag){
 	background-image: url("./flags/4x3/es.svg");
 }
 
-.stflag:is(.is-es-flag, .is-spain-flag):is(.is-squared, round){
+.stflag:is(.is-es-flag,.is-spain-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/es.svg");
 }
 
-.stflag:is(.is-es-ct-flag, .is-scotland-flag){
+.stflag:is(.is-es-ct-flag,.is-scotland-flag){
 	background-image: url("./flags/4x3/es-ct.svg");
 }
 
-.stflag:is(.is-es-ct-flag, .is-scotland-flag):is(.is-squared, round){
+.stflag:is(.is-es-ct-flag,.is-scotland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/es-ct.svg");
 }
 
-.stflag:is(.is-et-flag, .is-ethiopia-flag){
+.stflag:is(.is-et-flag,.is-ethiopia-flag){
 	background-image: url("./flags/4x3/et.svg");
 }
 
-.stflag:is(.is-et-flag, .is-ethiopia-flag):is(.is-squared, round){
+.stflag:is(.is-et-flag,.is-ethiopia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/et.svg");
 }
 
-.stflag:is(.is-eu-flag, .is-european-union-flag){
+.stflag:is(.is-eu-flag,.is-european-union-flag){
 	background-image: url("./flags/4x3/eu.svg");
 }
 
-.stflag:is(.is-eu-flag, .is-european-union-flag):is(.is-squared, round){
+.stflag:is(.is-eu-flag,.is-european-union-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/eu.svg");
 }
 
-.stflag:is(.is-fi-flag, .is-finland-flag){
+.stflag:is(.is-fi-flag,.is-finland-flag){
 	background-image: url("./flags/4x3/fi.svg");
 }
 
-.stflag:is(.is-fi-flag, .is-finland-flag):is(.is-squared, round){
+.stflag:is(.is-fi-flag,.is-finland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/fi.svg");
 }
 
-.stflag:is(.is-fj-flag, .is-fiji-flag){
+.stflag:is(.is-fj-flag,.is-fiji-flag){
 	background-image: url("./flags/4x3/fj.svg");
 }
 
-.stflag:is(.is-fj-flag, .is-fiji-flag):is(.is-squared, round){
+.stflag:is(.is-fj-flag,.is-fiji-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/fj.svg");
 }
 
-.stflag:is(.is-fk-flag, .is-falkland-islands-flag){
+.stflag:is(.is-fk-flag,.is-falkland-islands-flag){
 	background-image: url("./flags/4x3/fk.svg");
 }
 
-.stflag:is(.is-fk-flag, .is-falkland-islands-flag):is(.is-squared, round){
+.stflag:is(.is-fk-flag,.is-falkland-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/fk.svg");
 }
 
-.stflag:is(.is-fm-flag, .is-micronesia-flag){
+.stflag:is(.is-fm-flag,.is-micronesia-flag){
 	background-image: url("./flags/4x3/fm.svg");
 }
 
-.stflag:is(.is-fm-flag, .is-micronesia-flag):is(.is-squared, round){
+.stflag:is(.is-fm-flag,.is-micronesia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/fm.svg");
 }
 
-.stflag:is(.is-fo-flag, .is-faroe-islands-flag){
+.stflag:is(.is-fo-flag,.is-faroe-islands-flag){
 	background-image: url("./flags/4x3/fo.svg");
 }
 
-.stflag:is(.is-fo-flag, .is-faroe-islands-flag):is(.is-squared, round){
+.stflag:is(.is-fo-flag,.is-faroe-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/fo.svg");
 }
 
-.stflag:is(.is-fr-flag, .is-france-flag){
+.stflag:is(.is-fr-flag,.is-france-flag){
 	background-image: url("./flags/4x3/fr.svg");
 }
 
-.stflag:is(.is-fr-flag, .is-france-flag):is(.is-squared, round){
+.stflag:is(.is-fr-flag,.is-france-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/fr.svg");
 }
 
-.stflag:is(.is-ga-flag, .is-gabon-flag){
+.stflag:is(.is-ga-flag,.is-gabon-flag){
 	background-image: url("./flags/4x3/ga.svg");
 }
 
-.stflag:is(.is-ga-flag, .is-gabon-flag):is(.is-squared, round){
+.stflag:is(.is-ga-flag,.is-gabon-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ga.svg");
 }
 
-.stflag:is(.is-gb-flag, .is-united-kingdom-flag){
+.stflag:is(.is-gb-flag,.is-united-kingdom-flag){
 	background-image: url("./flags/4x3/gb.svg");
 }
 
-.stflag:is(.is-gb-flag, .is-united-kingdom-flag):is(.is-squared, round){
+.stflag:is(.is-gb-flag,.is-united-kingdom-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gb.svg");
 }
 
-.stflag:is(.is-gb-eng-flag, .is-england-flag){
+.stflag:is(.is-gb-eng-flag,.is-england-flag){
 	background-image: url("./flags/4x3/gb-eng.svg");
 }
 
-.stflag:is(.is-gb-eng-flag, .is-england-flag):is(.is-squared, round){
+.stflag:is(.is-gb-eng-flag,.is-england-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gb-eng.svg");
 }
 
-.stflag:is(.is-gb-nir-flag, .is-northern-ireland-flag){
+.stflag:is(.is-gb-nir-flag,.is-northern-ireland-flag){
 	background-image: url("./flags/4x3/gb-nir.svg");
 }
 
-.stflag:is(.is-gb-nir-flag, .is-northern-ireland-flag):is(.is-squared, round){
+.stflag:is(.is-gb-nir-flag,.is-northern-ireland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gb-nir.svg");
 }
 
-.stflag:is(.is-gb-sct-flag, .is-scotland-flag){
+.stflag:is(.is-gb-sct-flag,.is-scotland-flag){
 	background-image: url("./flags/4x3/gb-sct.svg");
 }
 
-.stflag:is(.is-gb-sct-flag, .is-scotland-flag):is(.is-squared, round){
+.stflag:is(.is-gb-sct-flag,.is-scotland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gb-sct.svg");
 }
 
-.stflag:is(.is-gb-wls-flag, .is-wales-flag){
+.stflag:is(.is-gb-wls-flag,.is-wales-flag){
 	background-image: url("./flags/4x3/gb-wls.svg");
 }
 
-.stflag:is(.is-gb-wls-flag, .is-wales-flag):is(.is-squared, round){
+.stflag:is(.is-gb-wls-flag,.is-wales-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gb-wls.svg");
 }
 
-.stflag:is(.is-gd-flag, .is-grenada-flag){
+.stflag:is(.is-gd-flag,.is-grenada-flag){
 	background-image: url("./flags/4x3/gd.svg");
 }
 
-.stflag:is(.is-gd-flag, .is-grenada-flag):is(.is-squared, round){
+.stflag:is(.is-gd-flag,.is-grenada-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gd.svg");
 }
 
-.stflag:is(.is-ge-flag, .is-georgia-flag){
+.stflag:is(.is-ge-flag,.is-georgia-flag){
 	background-image: url("./flags/4x3/ge.svg");
 }
 
-.stflag:is(.is-ge-flag, .is-georgia-flag):is(.is-squared, round){
+.stflag:is(.is-ge-flag,.is-georgia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ge.svg");
 }
 
-.stflag:is(.is-gf-flag, .is-french-guiana-flag){
+.stflag:is(.is-gf-flag,.is-french-guiana-flag){
 	background-image: url("./flags/4x3/gf.svg");
 }
 
-.stflag:is(.is-gf-flag, .is-french-guiana-flag):is(.is-squared, round){
+.stflag:is(.is-gf-flag,.is-french-guiana-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gf.svg");
 }
 
-.stflag:is(.is-gg-flag, .is-guernsey-flag){
+.stflag:is(.is-gg-flag,.is-guernsey-flag){
 	background-image: url("./flags/4x3/gg.svg");
 }
 
-.stflag:is(.is-gg-flag, .is-guernsey-flag):is(.is-squared, round){
+.stflag:is(.is-gg-flag,.is-guernsey-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gg.svg");
 }
 
-.stflag:is(.is-gh-flag, .is-ghana-flag){
+.stflag:is(.is-gh-flag,.is-ghana-flag){
 	background-image: url("./flags/4x3/gh.svg");
 }
 
-.stflag:is(.is-gh-flag, .is-ghana-flag):is(.is-squared, round){
+.stflag:is(.is-gh-flag,.is-ghana-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gh.svg");
 }
 
-.stflag:is(.is-gi-flag, .is-gibraltar-flag){
+.stflag:is(.is-gi-flag,.is-gibraltar-flag){
 	background-image: url("./flags/4x3/gi.svg");
 }
 
-.stflag:is(.is-gi-flag, .is-gibraltar-flag):is(.is-squared, round){
+.stflag:is(.is-gi-flag,.is-gibraltar-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gi.svg");
 }
 
-.stflag:is(.is-gl-flag, .is-greenland-flag){
+.stflag:is(.is-gl-flag,.is-greenland-flag){
 	background-image: url("./flags/4x3/gl.svg");
 }
 
-.stflag:is(.is-gl-flag, .is-greenland-flag):is(.is-squared, round){
+.stflag:is(.is-gl-flag,.is-greenland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gl.svg");
 }
 
-.stflag:is(.is-gm-flag, .is-gambia-flag){
+.stflag:is(.is-gm-flag,.is-gambia-flag){
 	background-image: url("./flags/4x3/gm.svg");
 }
 
-.stflag:is(.is-gm-flag, .is-gambia-flag):is(.is-squared, round){
+.stflag:is(.is-gm-flag,.is-gambia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gm.svg");
 }
 
-.stflag:is(.is-gn-flag, .is-guinea-flag){
+.stflag:is(.is-gn-flag,.is-guinea-flag){
 	background-image: url("./flags/4x3/gn.svg");
 }
 
-.stflag:is(.is-gn-flag, .is-guinea-flag):is(.is-squared, round){
+.stflag:is(.is-gn-flag,.is-guinea-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gn.svg");
 }
 
-.stflag:is(.is-gp-flag, .is-guadeloupe-flag){
+.stflag:is(.is-gp-flag,.is-guadeloupe-flag){
 	background-image: url("./flags/4x3/gp.svg");
 }
 
-.stflag:is(.is-gp-flag, .is-guadeloupe-flag):is(.is-squared, round){
+.stflag:is(.is-gp-flag,.is-guadeloupe-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gp.svg");
 }
 
-.stflag:is(.is-gq-flag, .is-equatorial-guinea-flag){
+.stflag:is(.is-gq-flag,.is-equatorial-guinea-flag){
 	background-image: url("./flags/4x3/gq.svg");
 }
 
-.stflag:is(.is-gq-flag, .is-equatorial-guinea-flag):is(.is-squared, round){
+.stflag:is(.is-gq-flag,.is-equatorial-guinea-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gq.svg");
 }
 
-.stflag:is(.is-gr-flag, .is-greece-flag){
+.stflag:is(.is-gr-flag,.is-greece-flag){
 	background-image: url("./flags/4x3/gr.svg");
 }
 
-.stflag:is(.is-gr-flag, .is-greece-flag):is(.is-squared, round){
+.stflag:is(.is-gr-flag,.is-greece-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gr.svg");
 }
 
-.stflag:is(.is-gs-flag, .is-sandwich-islands-flag){
+.stflag:is(.is-gs-flag,.is-sandwich-islands-flag){
 	background-image: url("./flags/4x3/gs.svg");
 }
 
-.stflag:is(.is-gs-flag, .is-sandwich-islands-flag):is(.is-squared, round){
+.stflag:is(.is-gs-flag,.is-sandwich-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gs.svg");
 }
 
-.stflag:is(.is-gt-flag, .is-guatemala-flag){
+.stflag:is(.is-gt-flag,.is-guatemala-flag){
 	background-image: url("./flags/4x3/gt.svg");
 }
 
-.stflag:is(.is-gt-flag, .is-guatemala-flag):is(.is-squared, round){
+.stflag:is(.is-gt-flag,.is-guatemala-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gt.svg");
 }
 
-.stflag:is(.is-gu-flag, .is-guam-flag){
+.stflag:is(.is-gu-flag,.is-guam-flag){
 	background-image: url("./flags/4x3/gu.svg");
 }
 
-.stflag:is(.is-gu-flag, .is-guam-flag):is(.is-squared, round){
+.stflag:is(.is-gu-flag,.is-guam-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gu.svg");
 }
 
-.stflag:is(.is-gw-flag, .is-guinea-bissau-flag){
+.stflag:is(.is-gw-flag,.is-guinea-bissau-flag){
 	background-image: url("./flags/4x3/gw.svg");
 }
 
-.stflag:is(.is-gw-flag, .is-guinea-bissau-flag):is(.is-squared, round){
+.stflag:is(.is-gw-flag,.is-guinea-bissau-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gw.svg");
 }
 
-.stflag:is(.is-gy-flag, .is-guyana-flag){
+.stflag:is(.is-gy-flag,.is-guyana-flag){
 	background-image: url("./flags/4x3/gy.svg");
 }
 
-.stflag:is(.is-gy-flag, .is-guyana-flag):is(.is-squared, round){
+.stflag:is(.is-gy-flag,.is-guyana-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/gy.svg");
 }
 
-.stflag:is(.is-hk-flag, .is-hong-kong-flag){
+.stflag:is(.is-hk-flag,.is-hong-kong-flag){
 	background-image: url("./flags/4x3/hk.svg");
 }
 
-.stflag:is(.is-hk-flag, .is-hong-kong-flag):is(.is-squared, round){
+.stflag:is(.is-hk-flag,.is-hong-kong-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/hk.svg");
 }
 
-.stflag:is(.is-hm-flag, .is-heard-island-flag){
+.stflag:is(.is-hm-flag,.is-heard-island-flag){
 	background-image: url("./flags/4x3/hm.svg");
 }
 
-.stflag:is(.is-hm-flag, .is-heard-island-flag):is(.is-squared, round){
+.stflag:is(.is-hm-flag,.is-heard-island-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/hm.svg");
 }
 
-.stflag:is(.is-hn-flag, .is-honduras-flag){
+.stflag:is(.is-hn-flag,.is-honduras-flag){
 	background-image: url("./flags/4x3/hn.svg");
 }
 
-.stflag:is(.is-hn-flag, .is-honduras-flag):is(.is-squared, round){
+.stflag:is(.is-hn-flag,.is-honduras-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/hn.svg");
 }
 
-.stflag:is(.is-hr-flag, .is-croatia-flag){
+.stflag:is(.is-hr-flag,.is-croatia-flag){
 	background-image: url("./flags/4x3/hr.svg");
 }
 
-.stflag:is(.is-hr-flag, .is-croatia-flag):is(.is-squared, round){
+.stflag:is(.is-hr-flag,.is-croatia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/hr.svg");
 }
 
-.stflag:is(.is-ht-flag, .is-haiti-flag){
+.stflag:is(.is-ht-flag,.is-haiti-flag){
 	background-image: url("./flags/4x3/ht.svg");
 }
 
-.stflag:is(.is-ht-flag, .is-haiti-flag):is(.is-squared, round){
+.stflag:is(.is-ht-flag,.is-haiti-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ht.svg");
 }
 
-.stflag:is(.is-hu-flag, .is-hungary-flag){
+.stflag:is(.is-hu-flag,.is-hungary-flag){
 	background-image: url("./flags/4x3/hu.svg");
 }
 
-.stflag:is(.is-hu-flag, .is-hungary-flag):is(.is-squared, round){
+.stflag:is(.is-hu-flag,.is-hungary-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/hu.svg");
 }
 
-.stflag:is(.is-id-flag, .is-indonesia-flag){
+.stflag:is(.is-id-flag,.is-indonesia-flag){
 	background-image: url("./flags/4x3/id.svg");
 }
 
-.stflag:is(.is-id-flag, .is-indonesia-flag):is(.is-squared, round){
+.stflag:is(.is-id-flag,.is-indonesia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/id.svg");
 }
 
-.stflag:is(.is-ie-flag, .is-ireland-flag){
+.stflag:is(.is-ie-flag,.is-ireland-flag){
 	background-image: url("./flags/4x3/ie.svg");
 }
 
-.stflag:is(.is-ie-flag, .is-ireland-flag):is(.is-squared, round){
+.stflag:is(.is-ie-flag,.is-ireland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ie.svg");
 }
 
-.stflag:is(.is-il-flag, .is-israel-flag){
+.stflag:is(.is-il-flag,.is-israel-flag){
 	background-image: url("./flags/4x3/il.svg");
 }
 
-.stflag:is(.is-il-flag, .is-israel-flag):is(.is-squared, round){
+.stflag:is(.is-il-flag,.is-israel-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/il.svg");
 }
 
-.stflag:is(.is-im-flag, .is-isle-of-man-flag){
+.stflag:is(.is-im-flag,.is-isle-of-man-flag){
 	background-image: url("./flags/4x3/im.svg");
 }
 
-.stflag:is(.is-im-flag, .is-isle-of-man-flag):is(.is-squared, round){
+.stflag:is(.is-im-flag,.is-isle-of-man-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/im.svg");
 }
 
-.stflag:is(.is-in-flag, .is-india-flag){
+.stflag:is(.is-in-flag,.is-india-flag){
 	background-image: url("./flags/4x3/in.svg");
 }
 
-.stflag:is(.is-in-flag, .is-india-flag):is(.is-squared, round){
+.stflag:is(.is-in-flag,.is-india-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/in.svg");
 }
 
-.stflag:is(.is-io-flag, .is-indian-ocean-territory-flag){
+.stflag:is(.is-io-flag,.is-indian-ocean-territory-flag){
 	background-image: url("./flags/4x3/io.svg");
 }
 
-.stflag:is(.is-io-flag, .is-indian-ocean-territory-flag):is(.is-squared, round){
+.stflag:is(.is-io-flag,.is-indian-ocean-territory-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/io.svg");
 }
 
-.stflag:is(.is-iq-flag, .is-iraq-flag){
+.stflag:is(.is-iq-flag,.is-iraq-flag){
 	background-image: url("./flags/4x3/iq.svg");
 }
 
-.stflag:is(.is-iq-flag, .is-iraq-flag):is(.is-squared, round){
+.stflag:is(.is-iq-flag,.is-iraq-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/iq.svg");
 }
 
-.stflag:is(.is-ir-flag, .is-iran-flag){
+.stflag:is(.is-ir-flag,.is-iran-flag){
 	background-image: url("./flags/4x3/ir.svg");
 }
 
-.stflag:is(.is-ir-flag, .is-iran-flag):is(.is-squared, round){
+.stflag:is(.is-ir-flag,.is-iran-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ir.svg");
 }
 
-.stflag:is(.is-is-flag, .is-iceland-flag){
+.stflag:is(.is-is-flag,.is-iceland-flag){
 	background-image: url("./flags/4x3/is.svg");
 }
 
-.stflag:is(.is-is-flag, .is-iceland-flag):is(.is-squared, round){
+.stflag:is(.is-is-flag,.is-iceland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/is.svg");
 }
 
-.stflag:is(.is-it-flag, .is-italy-flag){
+.stflag:is(.is-it-flag,.is-italy-flag){
 	background-image: url("./flags/4x3/it.svg");
 }
 
-.stflag:is(.is-it-flag, .is-italy-flag):is(.is-squared, round){
+.stflag:is(.is-it-flag,.is-italy-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/it.svg");
 }
 
-.stflag:is(.is-je-flag, .is-jersey-flag){
+.stflag:is(.is-je-flag,.is-jersey-flag){
 	background-image: url("./flags/4x3/je.svg");
 }
 
-.stflag:is(.is-je-flag, .is-jersey-flag):is(.is-squared, round){
+.stflag:is(.is-je-flag,.is-jersey-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/je.svg");
 }
 
-.stflag:is(.is-jm-flag, .is-jamaica-flag){
+.stflag:is(.is-jm-flag,.is-jamaica-flag){
 	background-image: url("./flags/4x3/jm.svg");
 }
 
-.stflag:is(.is-jm-flag, .is-jamaica-flag):is(.is-squared, round){
+.stflag:is(.is-jm-flag,.is-jamaica-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/jm.svg");
 }
 
-.stflag:is(.is-jo-flag, .is-jordan-flag){
+.stflag:is(.is-jo-flag,.is-jordan-flag){
 	background-image: url("./flags/4x3/jo.svg");
 }
 
-.stflag:is(.is-jo-flag, .is-jordan-flag):is(.is-squared, round){
+.stflag:is(.is-jo-flag,.is-jordan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/jo.svg");
 }
 
-.stflag:is(.is-jp-flag, .is-japan-flag){
+.stflag:is(.is-jp-flag,.is-japan-flag){
 	background-image: url("./flags/4x3/jp.svg");
 }
 
-.stflag:is(.is-jp-flag, .is-japan-flag):is(.is-squared, round){
+.stflag:is(.is-jp-flag,.is-japan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/jp.svg");
 }
 
-.stflag:is(.is-ke-flag, .is-kenya-flag){
+.stflag:is(.is-ke-flag,.is-kenya-flag){
 	background-image: url("./flags/4x3/ke.svg");
 }
 
-.stflag:is(.is-ke-flag, .is-kenya-flag):is(.is-squared, round){
+.stflag:is(.is-ke-flag,.is-kenya-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ke.svg");
 }
 
-.stflag:is(.is-kg-flag, .is-kyrgyzstan-flag){
+.stflag:is(.is-kg-flag,.is-kyrgyzstan-flag){
 	background-image: url("./flags/4x3/kg.svg");
 }
 
-.stflag:is(.is-kg-flag, .is-kyrgyzstan-flag):is(.is-squared, round){
+.stflag:is(.is-kg-flag,.is-kyrgyzstan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/kg.svg");
 }
 
-.stflag:is(.is-kh-flag, .is-cambodia-flag){
+.stflag:is(.is-kh-flag,.is-cambodia-flag){
 	background-image: url("./flags/4x3/kh.svg");
 }
 
-.stflag:is(.is-kh-flag, .is-cambodia-flag):is(.is-squared, round){
+.stflag:is(.is-kh-flag,.is-cambodia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/kh.svg");
 }
 
-.stflag:is(.is-ki-flag, .is-kiribati-flag){
+.stflag:is(.is-ki-flag,.is-kiribati-flag){
 	background-image: url("./flags/4x3/ki.svg");
 }
 
-.stflag:is(.is-ki-flag, .is-kiribati-flag):is(.is-squared, round){
+.stflag:is(.is-ki-flag,.is-kiribati-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ki.svg");
 }
 
-.stflag:is(.is-km-flag, .is-comoros-flag){
+.stflag:is(.is-km-flag,.is-comoros-flag){
 	background-image: url("./flags/4x3/km.svg");
 }
 
-.stflag:is(.is-km-flag, .is-comoros-flag):is(.is-squared, round){
+.stflag:is(.is-km-flag,.is-comoros-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/km.svg");
 }
 
-.stflag:is(.is-kn-flag, .is-saint-kitstand-nevis-flag, .is-saint-kitstflag, .is-nevis-flag){
+.stflag:is(.is-kn-flag,.is-saint-kitstand-nevis-flag,.is-saint-kitstflag,.is-nevis-flag){
 	background-image: url("./flags/4x3/kn.svg");
 }
 
-.stflag:is(.is-kn-flag, .is-saint-kitstand-nevis-flag, .is-saint-kitstflag, .is-nevis-flag):is(.is-squared, round){
+.stflag:is(.is-kn-flag,.is-saint-kitstand-nevis-flag,.is-saint-kitstflag,.is-nevis-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/kn.svg");
 }
 
-.stflag:is(.is-kp-flag, .is-north-korea-flag){
+.stflag:is(.is-kp-flag,.is-north-korea-flag){
 	background-image: url("./flags/4x3/kp.svg");
 }
 
-.stflag:is(.is-kp-flag, .is-north-korea-flag):is(.is-squared, round){
+.stflag:is(.is-kp-flag,.is-north-korea-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/kp.svg");
 }
 
-.stflag:is(.is-kr-flag, .is-south-korea-flag, .is-korea-flag){
+.stflag:is(.is-kr-flag,.is-south-korea-flag,.is-korea-flag){
 	background-image: url("./flags/4x3/kr.svg");
 }
 
-.stflag:is(.is-kr-flag, .is-south-korea-flag, .is-korea-flag):is(.is-squared, round){
+.stflag:is(.is-kr-flag,.is-south-korea-flag,.is-korea-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/kr.svg");
 }
 
-.stflag:is(.is-kw-flag, .is-kuwait-flag){
+.stflag:is(.is-kw-flag,.is-kuwait-flag){
 	background-image: url("./flags/4x3/kw.svg");
 }
 
-.stflag:is(.is-kw-flag, .is-kuwait-flag):is(.is-squared, round){
+.stflag:is(.is-kw-flag,.is-kuwait-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/kw.svg");
 }
 
-.stflag:is(.is-ky-flag, .is-cayman-islands-flag){
+.stflag:is(.is-ky-flag,.is-cayman-islands-flag){
 	background-image: url("./flags/4x3/ky.svg");
 }
 
-.stflag:is(.is-ky-flag, .is-cayman-islands-flag):is(.is-squared, round){
+.stflag:is(.is-ky-flag,.is-cayman-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ky.svg");
 }
 
-.stflag:is(.is-kz-flag, .is-kazakhstan-flag){
+.stflag:is(.is-kz-flag,.is-kazakhstan-flag){
 	background-image: url("./flags/4x3/kz.svg");
 }
 
-.stflag:is(.is-kz-flag, .is-kazakhstan-flag):is(.is-squared, round){
+.stflag:is(.is-kz-flag,.is-kazakhstan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/kz.svg");
 }
 
-.stflag:is(.is-la-flag, .is-laos-flag){
+.stflag:is(.is-la-flag,.is-laos-flag){
 	background-image: url("./flags/4x3/la.svg");
 }
 
-.stflag:is(.is-la-flag, .is-laos-flag):is(.is-squared, round){
+.stflag:is(.is-la-flag,.is-laos-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/la.svg");
 }
 
-.stflag:is(.is-lb-flag, .is-lebanon-flag){
+.stflag:is(.is-lb-flag,.is-lebanon-flag){
 	background-image: url("./flags/4x3/lb.svg");
 }
 
-.stflag:is(.is-lb-flag, .is-lebanon-flag):is(.is-squared, round){
+.stflag:is(.is-lb-flag,.is-lebanon-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/lb.svg");
 }
 
-.stflag:is(.is-lc-flag, .is-saint-lucia-flag){
+.stflag:is(.is-lc-flag,.is-saint-lucia-flag){
 	background-image: url("./flags/4x3/lc.svg");
 }
 
-.stflag:is(.is-lc-flag, .is-saint-lucia-flag):is(.is-squared, round){
+.stflag:is(.is-lc-flag,.is-saint-lucia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/lc.svg");
 }
 
-.stflag:is(.is-li-flag, .is-liechtenstein-flag){
+.stflag:is(.is-li-flag,.is-liechtenstein-flag){
 	background-image: url("./flags/4x3/li.svg");
 }
 
-.stflag:is(.is-li-flag, .is-liechtenstein-flag):is(.is-squared, round){
+.stflag:is(.is-li-flag,.is-liechtenstein-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/li.svg");
 }
 
-.stflag:is(.is-lk-flag, .is-sri-lanka-flag){
+.stflag:is(.is-lk-flag,.is-sri-lanka-flag){
 	background-image: url("./flags/4x3/lk.svg");
 }
 
-.stflag:is(.is-lk-flag, .is-sri-lanka-flag):is(.is-squared, round){
+.stflag:is(.is-lk-flag,.is-sri-lanka-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/lk.svg");
 }
 
-.stflag:is(.is-lr-flag, .is-liberia-flag){
+.stflag:is(.is-lr-flag,.is-liberia-flag){
 	background-image: url("./flags/4x3/lr.svg");
 }
 
-.stflag:is(.is-lr-flag, .is-liberia-flag):is(.is-squared, round){
+.stflag:is(.is-lr-flag,.is-liberia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/lr.svg");
 }
 
-.stflag:is(.is-ls-flag, .is-lesotho-flag){
+.stflag:is(.is-ls-flag,.is-lesotho-flag){
 	background-image: url("./flags/4x3/ls.svg");
 }
 
-.stflag:is(.is-ls-flag, .is-lesotho-flag):is(.is-squared, round){
+.stflag:is(.is-ls-flag,.is-lesotho-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ls.svg");
 }
 
-.stflag:is(.is-lt-flag, .is-lithuania-flag){
+.stflag:is(.is-lt-flag,.is-lithuania-flag){
 	background-image: url("./flags/4x3/lt.svg");
 }
 
-.stflag:is(.is-lt-flag, .is-lithuania-flag):is(.is-squared, round){
+.stflag:is(.is-lt-flag,.is-lithuania-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/lt.svg");
 }
 
-.stflag:is(.is-lu-flag, .is-luxembourg-flag){
+.stflag:is(.is-lu-flag,.is-luxembourg-flag){
 	background-image: url("./flags/4x3/lu.svg");
 }
 
-.stflag:is(.is-lu-flag, .is-luxembourg-flag):is(.is-squared, round){
+.stflag:is(.is-lu-flag,.is-luxembourg-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/lu.svg");
 }
 
-.stflag:is(.is-lv-flag, .is-latvia-flag){
+.stflag:is(.is-lv-flag,.is-latvia-flag){
 	background-image: url("./flags/4x3/lv.svg");
 }
 
-.stflag:is(.is-lv-flag, .is-latvia-flag):is(.is-squared, round){
+.stflag:is(.is-lv-flag,.is-latvia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/lv.svg");
 }
 
-.stflag:is(.is-ly-flag, .is-libya-flag){
+.stflag:is(.is-ly-flag,.is-libya-flag){
 	background-image: url("./flags/4x3/ly.svg");
 }
 
-.stflag:is(.is-ly-flag, .is-libya-flag):is(.is-squared, round){
+.stflag:is(.is-ly-flag,.is-libya-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ly.svg");
 }
 
-.stflag:is(.is-ma-flag, .is-morocco-flag){
+.stflag:is(.is-ma-flag,.is-morocco-flag){
 	background-image: url("./flags/4x3/ma.svg");
 }
 
-.stflag:is(.is-ma-flag, .is-morocco-flag):is(.is-squared, round){
+.stflag:is(.is-ma-flag,.is-morocco-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ma.svg");
 }
 
-.stflag:is(.is-mc-flag, .is-monaco-flag){
+.stflag:is(.is-mc-flag,.is-monaco-flag){
 	background-image: url("./flags/4x3/mc.svg");
 }
 
-.stflag:is(.is-mc-flag, .is-monaco-flag):is(.is-squared, round){
+.stflag:is(.is-mc-flag,.is-monaco-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mc.svg");
 }
 
-.stflag:is(.is-md-flag, .is-moldova-flag){
+.stflag:is(.is-md-flag,.is-moldova-flag){
 	background-image: url("./flags/4x3/md.svg");
 }
 
-.stflag:is(.is-md-flag, .is-moldova-flag):is(.is-squared, round){
+.stflag:is(.is-md-flag,.is-moldova-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/md.svg");
 }
 
-.stflag:is(.is-me-flag, .is-montenegro-flag){
+.stflag:is(.is-me-flag,.is-montenegro-flag){
 	background-image: url("./flags/4x3/me.svg");
 }
 
-.stflag:is(.is-me-flag, .is-montenegro-flag):is(.is-squared, round){
+.stflag:is(.is-me-flag,.is-montenegro-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/me.svg");
 }
 
-.stflag:is(.is-mf-flag, .is-saint-martin-flag){
+.stflag:is(.is-mf-flag,.is-saint-martin-flag){
 	background-image: url("./flags/4x3/mf.svg");
 }
 
-.stflag:is(.is-mf-flag, .is-saint-martin-flag):is(.is-squared, round){
+.stflag:is(.is-mf-flag,.is-saint-martin-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mf.svg");
 }
 
-.stflag:is(.is-mg-flag, .is-madagascar-flag){
+.stflag:is(.is-mg-flag,.is-madagascar-flag){
 	background-image: url("./flags/4x3/mg.svg");
 }
 
-.stflag:is(.is-mg-flag, .is-madagascar-flag):is(.is-squared, round){
+.stflag:is(.is-mg-flag,.is-madagascar-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mg.svg");
 }
 
-.stflag:is(.is-mh-flag, .is-marshall-islands-flag){
+.stflag:is(.is-mh-flag,.is-marshall-islands-flag){
 	background-image: url("./flags/4x3/mh.svg");
 }
 
-.stflag:is(.is-mh-flag, .is-marshall-islands-flag):is(.is-squared, round){
+.stflag:is(.is-mh-flag,.is-marshall-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mh.svg");
 }
 
-.stflag:is(.is-mk-flag, .is-macedonia-flag){
+.stflag:is(.is-mk-flag,.is-macedonia-flag){
 	background-image: url("./flags/4x3/mk.svg");
 }
 
-.stflag:is(.is-mk-flag, .is-macedonia-flag):is(.is-squared, round){
+.stflag:is(.is-mk-flag,.is-macedonia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mk.svg");
 }
 
-.stflag:is(.is-ml-flag, .is-mali-flag){
+.stflag:is(.is-ml-flag,.is-mali-flag){
 	background-image: url("./flags/4x3/ml.svg");
 }
 
-.stflag:is(.is-ml-flag, .is-mali-flag):is(.is-squared, round){
+.stflag:is(.is-ml-flag,.is-mali-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ml.svg");
 }
 
-.stflag:is(.is-mm-flag, .is-burma-flag, .is-myanmar-flag){
+.stflag:is(.is-mm-flag,.is-burma-flag,.is-myanmar-flag){
 	background-image: url("./flags/4x3/mm.svg");
 }
 
-.stflag:is(.is-mm-flag, .is-burma-flag, .is-myanmar-flag):is(.is-squared, round){
+.stflag:is(.is-mm-flag,.is-burma-flag,.is-myanmar-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mm.svg");
 }
 
-.stflag:is(.is-mn-flag, .is-mongolia-flag){
+.stflag:is(.is-mn-flag,.is-mongolia-flag){
 	background-image: url("./flags/4x3/mn.svg");
 }
 
-.stflag:is(.is-mn-flag, .is-mongolia-flag):is(.is-squared, round){
+.stflag:is(.is-mn-flag,.is-mongolia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mn.svg");
 }
 
-.stflag:is(.is-mo-flag, .is-macau-flag){
+.stflag:is(.is-mo-flag,.is-macau-flag){
 	background-image: url("./flags/4x3/mo.svg");
 }
 
-.stflag:is(.is-mo-flag, .is-macau-flag):is(.is-squared, round){
+.stflag:is(.is-mo-flag,.is-macau-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mo.svg");
 }
 
-.stflag:is(.is-mp-flag, .is-northern-mariana-islands-flag){
+.stflag:is(.is-mp-flag,.is-northern-mariana-islands-flag){
 	background-image: url("./flags/4x3/mp.svg");
 }
 
-.stflag:is(.is-mp-flag, .is-northern-mariana-islands-flag):is(.is-squared, round){
+.stflag:is(.is-mp-flag,.is-northern-mariana-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mp.svg");
 }
 
-.stflag:is(.is-mq-flag, .is-martinique-flag){
+.stflag:is(.is-mq-flag,.is-martinique-flag){
 	background-image: url("./flags/4x3/mq.svg");
 }
 
-.stflag:is(.is-mq-flag, .is-martinique-flag):is(.is-squared, round){
+.stflag:is(.is-mq-flag,.is-martinique-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mq.svg");
 }
 
-.stflag:is(.is-mr-flag, .is-mauritania-flag){
+.stflag:is(.is-mr-flag,.is-mauritania-flag){
 	background-image: url("./flags/4x3/mr.svg");
 }
 
-.stflag:is(.is-mr-flag, .is-mauritania-flag):is(.is-squared, round){
+.stflag:is(.is-mr-flag,.is-mauritania-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mr.svg");
 }
 
-.stflag:is(.is-ms-flag, .is-montserrat-flag){
+.stflag:is(.is-ms-flag,.is-montserrat-flag){
 	background-image: url("./flags/4x3/ms.svg");
 }
 
-.stflag:is(.is-ms-flag, .is-montserrat-flag):is(.is-squared, round){
+.stflag:is(.is-ms-flag,.is-montserrat-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ms.svg");
 }
 
-.stflag:is(.is-mt-flag, .is-malta-flag){
+.stflag:is(.is-mt-flag,.is-malta-flag){
 	background-image: url("./flags/4x3/mt.svg");
 }
 
-.stflag:is(.is-mt-flag, .is-malta-flag):is(.is-squared, round){
+.stflag:is(.is-mt-flag,.is-malta-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mt.svg");
 }
 
-.stflag:is(.is-mu-flag, .is-mauritius-flag){
+.stflag:is(.is-mu-flag,.is-mauritius-flag){
 	background-image: url("./flags/4x3/mu.svg");
 }
 
-.stflag:is(.is-mu-flag, .is-mauritius-flag):is(.is-squared, round){
+.stflag:is(.is-mu-flag,.is-mauritius-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mu.svg");
 }
 
-.stflag:is(.is-mv-flag, .is-maldives-flag){
+.stflag:is(.is-mv-flag,.is-maldives-flag){
 	background-image: url("./flags/4x3/mv.svg");
 }
 
-.stflag:is(.is-mv-flag, .is-maldives-flag):is(.is-squared, round){
+.stflag:is(.is-mv-flag,.is-maldives-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mv.svg");
 }
 
-.stflag:is(.is-mw-flag, .is-malawi-flag){
+.stflag:is(.is-mw-flag,.is-malawi-flag){
 	background-image: url("./flags/4x3/mw.svg");
 }
 
-.stflag:is(.is-mw-flag, .is-malawi-flag):is(.is-squared, round){
+.stflag:is(.is-mw-flag,.is-malawi-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mw.svg");
 }
 
-.stflag:is(.is-mx-flag, .is-mexico-flag){
+.stflag:is(.is-mx-flag,.is-mexico-flag){
 	background-image: url("./flags/4x3/mx.svg");
 }
 
-.stflag:is(.is-mx-flag, .is-mexico-flag):is(.is-squared, round){
+.stflag:is(.is-mx-flag,.is-mexico-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mx.svg");
 }
 
-.stflag:is(.is-my-flag, .is-malaysia-flag){
+.stflag:is(.is-my-flag,.is-malaysia-flag){
 	background-image: url("./flags/4x3/my.svg");
 }
 
-.stflag:is(.is-my-flag, .is-malaysia-flag):is(.is-squared, round){
+.stflag:is(.is-my-flag,.is-malaysia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/my.svg");
 }
 
-.stflag:is(.is-mz-flag, .is-mozambique-flag){
+.stflag:is(.is-mz-flag,.is-mozambique-flag){
 	background-image: url("./flags/4x3/mz.svg");
 }
 
-.stflag:is(.is-mz-flag, .is-mozambique-flag):is(.is-squared, round){
+.stflag:is(.is-mz-flag,.is-mozambique-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/mz.svg");
 }
 
-.stflag:is(.is-na-flag, .is-namibia-flag){
+.stflag:is(.is-na-flag,.is-namibia-flag){
 	background-image: url("./flags/4x3/na.svg");
 }
 
-.stflag:is(.is-na-flag, .is-namibia-flag):is(.is-squared, round){
+.stflag:is(.is-na-flag,.is-namibia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/na.svg");
 }
 
-.stflag:is(.is-nc-flag, .is-new-caledonia-flag){
+.stflag:is(.is-nc-flag,.is-new-caledonia-flag){
 	background-image: url("./flags/4x3/nc.svg");
 }
 
-.stflag:is(.is-nc-flag, .is-new-caledonia-flag):is(.is-squared, round){
+.stflag:is(.is-nc-flag,.is-new-caledonia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/nc.svg");
 }
 
-.stflag:is(.is-ne-flag, .is-niger-flag){
+.stflag:is(.is-ne-flag,.is-niger-flag){
 	background-image: url("./flags/4x3/ne.svg");
 }
 
-.stflag:is(.is-ne-flag, .is-niger-flag):is(.is-squared, round){
+.stflag:is(.is-ne-flag,.is-niger-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ne.svg");
 }
 
-.stflag:is(.is-nf-flag, .is-norfolk-island-flag){
+.stflag:is(.is-nf-flag,.is-norfolk-island-flag){
 	background-image: url("./flags/4x3/nf.svg");
 }
 
-.stflag:is(.is-nf-flag, .is-norfolk-island-flag):is(.is-squared, round){
+.stflag:is(.is-nf-flag,.is-norfolk-island-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/nf.svg");
 }
 
-.stflag:is(.is-ng-flag, .is-nigeria-flag){
+.stflag:is(.is-ng-flag,.is-nigeria-flag){
 	background-image: url("./flags/4x3/ng.svg");
 }
 
-.stflag:is(.is-ng-flag, .is-nigeria-flag):is(.is-squared, round){
+.stflag:is(.is-ng-flag,.is-nigeria-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ng.svg");
 }
 
-.stflag:is(.is-ni-flag, .is-nicaragua-flag){
+.stflag:is(.is-ni-flag,.is-nicaragua-flag){
 	background-image: url("./flags/4x3/ni.svg");
 }
 
-.stflag:is(.is-ni-flag, .is-nicaragua-flag):is(.is-squared, round){
+.stflag:is(.is-ni-flag,.is-nicaragua-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ni.svg");
 }
 
-.stflag:is(.is-nl-flag, .is-netherlands-flag){
+.stflag:is(.is-nl-flag,.is-netherlands-flag){
 	background-image: url("./flags/4x3/nl.svg");
 }
 
-.stflag:is(.is-nl-flag, .is-netherlands-flag):is(.is-squared, round){
+.stflag:is(.is-nl-flag,.is-netherlands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/nl.svg");
 }
 
-.stflag:is(.is-no-flag, .is-norway-flag){
+.stflag:is(.is-no-flag,.is-norway-flag){
 	background-image: url("./flags/4x3/no.svg");
 }
 
-.stflag:is(.is-no-flag, .is-norway-flag):is(.is-squared, round){
+.stflag:is(.is-no-flag,.is-norway-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/no.svg");
 }
 
-.stflag:is(.is-np-flag, .is-nepal-flag){
+.stflag:is(.is-np-flag,.is-nepal-flag){
 	background-image: url("./flags/4x3/np.svg");
 }
 
-.stflag:is(.is-np-flag, .is-nepal-flag):is(.is-squared, round){
+.stflag:is(.is-np-flag,.is-nepal-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/np.svg");
 }
 
-.stflag:is(.is-nr-flag, .is-nauru-flag){
+.stflag:is(.is-nr-flag,.is-nauru-flag){
 	background-image: url("./flags/4x3/nr.svg");
 }
 
-.stflag:is(.is-nr-flag, .is-nauru-flag):is(.is-squared, round){
+.stflag:is(.is-nr-flag,.is-nauru-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/nr.svg");
 }
 
-.stflag:is(.is-nu-flag, .is-niue-flag){
+.stflag:is(.is-nu-flag,.is-niue-flag){
 	background-image: url("./flags/4x3/nu.svg");
 }
 
-.stflag:is(.is-nu-flag, .is-niue-flag):is(.is-squared, round){
+.stflag:is(.is-nu-flag,.is-niue-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/nu.svg");
 }
 
-.stflag:is(.is-nz-flag, .is-new-zealand-flag){
+.stflag:is(.is-nz-flag,.is-new-zealand-flag){
 	background-image: url("./flags/4x3/nz.svg");
 }
 
-.stflag:is(.is-nz-flag, .is-new-zealand-flag):is(.is-squared, round){
+.stflag:is(.is-nz-flag,.is-new-zealand-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/nz.svg");
 }
 
-.stflag:is(.is-om-flag, .is-oman-flag){
+.stflag:is(.is-om-flag,.is-oman-flag){
 	background-image: url("./flags/4x3/om.svg");
 }
 
-.stflag:is(.is-om-flag, .is-oman-flag):is(.is-squared, round){
+.stflag:is(.is-om-flag,.is-oman-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/om.svg");
 }
 
-.stflag:is(.is-pa-flag, .is-panama-flag){
+.stflag:is(.is-pa-flag,.is-panama-flag){
 	background-image: url("./flags/4x3/pa.svg");
 }
 
-.stflag:is(.is-pa-flag, .is-panama-flag):is(.is-squared, round){
+.stflag:is(.is-pa-flag,.is-panama-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pa.svg");
 }
 
-.stflag:is(.is-pe-flag, .is-peru-flag){
+.stflag:is(.is-pe-flag,.is-peru-flag){
 	background-image: url("./flags/4x3/pe.svg");
 }
 
-.stflag:is(.is-pe-flag, .is-peru-flag):is(.is-squared, round){
+.stflag:is(.is-pe-flag,.is-peru-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pe.svg");
 }
 
-.stflag:is(.is-pf-flag, .is-french-polynesia-flag){
+.stflag:is(.is-pf-flag,.is-french-polynesia-flag){
 	background-image: url("./flags/4x3/pf.svg");
 }
 
-.stflag:is(.is-pf-flag, .is-french-polynesia-flag):is(.is-squared, round){
+.stflag:is(.is-pf-flag,.is-french-polynesia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pf.svg");
 }
 
-.stflag:is(.is-pg-flag, .is-new-guinea-flag){
+.stflag:is(.is-pg-flag,.is-new-guinea-flag){
 	background-image: url("./flags/4x3/pg.svg");
 }
 
-.stflag:is(.is-pg-flag, .is-new-guinea-flag):is(.is-squared, round){
+.stflag:is(.is-pg-flag,.is-new-guinea-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pg.svg");
 }
 
-.stflag:is(.is-ph-flag, .is-philippines-flag){
+.stflag:is(.is-ph-flag,.is-philippines-flag){
 	background-image: url("./flags/4x3/ph.svg");
 }
 
-.stflag:is(.is-ph-flag, .is-philippines-flag):is(.is-squared, round){
+.stflag:is(.is-ph-flag,.is-philippines-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ph.svg");
 }
 
-.stflag:is(.is-pk-flag, .is-pakistan-flag){
+.stflag:is(.is-pk-flag,.is-pakistan-flag){
 	background-image: url("./flags/4x3/pk.svg");
 }
 
-.stflag:is(.is-pk-flag, .is-pakistan-flag):is(.is-squared, round){
+.stflag:is(.is-pk-flag,.is-pakistan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pk.svg");
 }
 
-.stflag:is(.is-pl-flag, .is-poland-flag){
+.stflag:is(.is-pl-flag,.is-poland-flag){
 	background-image: url("./flags/4x3/pl.svg");
 }
 
-.stflag:is(.is-pl-flag, .is-poland-flag):is(.is-squared, round){
+.stflag:is(.is-pl-flag,.is-poland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pl.svg");
 }
 
-.stflag:is(.is-pm-flag, .is-saint-pierre-flag){
+.stflag:is(.is-pm-flag,.is-saint-pierre-flag){
 	background-image: url("./flags/4x3/pm.svg");
 }
 
-.stflag:is(.is-pm-flag, .is-saint-pierre-flag):is(.is-squared, round){
+.stflag:is(.is-pm-flag,.is-saint-pierre-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pm.svg");
 }
 
-.stflag:is(.is-pn-flag, .is-pitcairn-islands-flag){
+.stflag:is(.is-pn-flag,.is-pitcairn-islands-flag){
 	background-image: url("./flags/4x3/pn.svg");
 }
 
-.stflag:is(.is-pn-flag, .is-pitcairn-islands-flag):is(.is-squared, round){
+.stflag:is(.is-pn-flag,.is-pitcairn-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pn.svg");
 }
 
-.stflag:is(.is-pr-flag, .is-puerto-rico-flag){
+.stflag:is(.is-pr-flag,.is-puerto-rico-flag){
 	background-image: url("./flags/4x3/pr.svg");
 }
 
-.stflag:is(.is-pr-flag, .is-puerto-rico-flag):is(.is-squared, round){
+.stflag:is(.is-pr-flag,.is-puerto-rico-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pr.svg");
 }
 
-.stflag:is(.is-ps-flag, .is-palestine-flag){
+.stflag:is(.is-ps-flag,.is-palestine-flag){
 	background-image: url("./flags/4x3/ps.svg");
 }
 
-.stflag:is(.is-ps-flag, .is-palestine-flag):is(.is-squared, round){
+.stflag:is(.is-ps-flag,.is-palestine-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ps.svg");
 }
 
-.stflag:is(.is-pt-flag, .is-portugal-flag){
+.stflag:is(.is-pt-flag,.is-portugal-flag){
 	background-image: url("./flags/4x3/pt.svg");
 }
 
-.stflag:is(.is-pt-flag, .is-portugal-flag):is(.is-squared, round){
+.stflag:is(.is-pt-flag,.is-portugal-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pt.svg");
 }
 
-.stflag:is(.is-pw-flag, .is-palau-flag){
+.stflag:is(.is-pw-flag,.is-palau-flag){
 	background-image: url("./flags/4x3/pw.svg");
 }
 
-.stflag:is(.is-pw-flag, .is-palau-flag):is(.is-squared, round){
+.stflag:is(.is-pw-flag,.is-palau-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/pw.svg");
 }
 
-.stflag:is(.is-py-flag, .is-paraguay-flag){
+.stflag:is(.is-py-flag,.is-paraguay-flag){
 	background-image: url("./flags/4x3/py.svg");
 }
 
-.stflag:is(.is-py-flag, .is-paraguay-flag):is(.is-squared, round){
+.stflag:is(.is-py-flag,.is-paraguay-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/py.svg");
 }
 
-.stflag:is(.is-qa-flag, .is-qatar-flag){
+.stflag:is(.is-qa-flag,.is-qatar-flag){
 	background-image: url("./flags/4x3/qa.svg");
 }
 
-.stflag:is(.is-qa-flag, .is-qatar-flag):is(.is-squared, round){
+.stflag:is(.is-qa-flag,.is-qatar-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/qa.svg");
 }
 
-.stflag:is(.is-re-flag, .is-reunion-flag){
+.stflag:is(.is-re-flag,.is-reunion-flag){
 	background-image: url("./flags/4x3/re.svg");
 }
 
-.stflag:is(.is-re-flag, .is-reunion-flag):is(.is-squared, round){
+.stflag:is(.is-re-flag,.is-reunion-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/re.svg");
 }
 
-.stflag:is(.is-ro-flag, .is-romania-flag){
+.stflag:is(.is-ro-flag,.is-romania-flag){
 	background-image: url("./flags/4x3/ro.svg");
 }
 
-.stflag:is(.is-ro-flag, .is-romania-flag):is(.is-squared, round){
+.stflag:is(.is-ro-flag,.is-romania-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ro.svg");
 }
 
-.stflag:is(.is-rs-flag, .is-serbia-flag){
+.stflag:is(.is-rs-flag,.is-serbia-flag){
 	background-image: url("./flags/4x3/rs.svg");
 }
 
-.stflag:is(.is-rs-flag, .is-serbia-flag):is(.is-squared, round){
+.stflag:is(.is-rs-flag,.is-serbia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/rs.svg");
 }
 
-.stflag:is(.is-ru-flag, .is-russia-flag){
+.stflag:is(.is-ru-flag,.is-russia-flag){
 	background-image: url("./flags/4x3/ru.svg");
 }
 
-.stflag:is(.is-ru-flag, .is-russia-flag):is(.is-squared, round){
+.stflag:is(.is-ru-flag,.is-russia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ru.svg");
 }
 
-.stflag:is(.is-rw-flag, .is-rwanda-flag){
+.stflag:is(.is-rw-flag,.is-rwanda-flag){
 	background-image: url("./flags/4x3/rw.svg");
 }
 
-.stflag:is(.is-rw-flag, .is-rwanda-flag):is(.is-squared, round){
+.stflag:is(.is-rw-flag,.is-rwanda-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/rw.svg");
 }
 
-.stflag:is(.is-sa-flag, .is-saudi-arabia-flag){
+.stflag:is(.is-sa-flag,.is-saudi-arabia-flag){
 	background-image: url("./flags/4x3/sa.svg");
 }
 
-.stflag:is(.is-sa-flag, .is-saudi-arabia-flag):is(.is-squared, round){
+.stflag:is(.is-sa-flag,.is-saudi-arabia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sa.svg");
 }
 
-.stflag:is(.is-sb-flag, .is-solomon-islands-flag){
+.stflag:is(.is-sb-flag,.is-solomon-islands-flag){
 	background-image: url("./flags/4x3/sb.svg");
 }
 
-.stflag:is(.is-sb-flag, .is-solomon-islands-flag):is(.is-squared, round){
+.stflag:is(.is-sb-flag,.is-solomon-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sb.svg");
 }
 
-.stflag:is(.is-sc-flag, .is-seychelles-flag){
+.stflag:is(.is-sc-flag,.is-seychelles-flag){
 	background-image: url("./flags/4x3/sc.svg");
 }
 
-.stflag:is(.is-sc-flag, .is-seychelles-flag):is(.is-squared, round){
+.stflag:is(.is-sc-flag,.is-seychelles-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sc.svg");
 }
 
-.stflag:is(.is-sd-flag, .is-sudan-flag){
+.stflag:is(.is-sd-flag,.is-sudan-flag){
 	background-image: url("./flags/4x3/sd.svg");
 }
 
-.stflag:is(.is-sd-flag, .is-sudan-flag):is(.is-squared, round){
+.stflag:is(.is-sd-flag,.is-sudan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sd.svg");
 }
 
-.stflag:is(.is-se-flag, .is-sweden-flag){
+.stflag:is(.is-se-flag,.is-sweden-flag){
 	background-image: url("./flags/4x3/se.svg");
 }
 
-.stflag:is(.is-se-flag, .is-sweden-flag):is(.is-squared, round){
+.stflag:is(.is-se-flag,.is-sweden-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/se.svg");
 }
 
-.stflag:is(.is-sg-flag, .is-singapore-flag){
+.stflag:is(.is-sg-flag,.is-singapore-flag){
 	background-image: url("./flags/4x3/sg.svg");
 }
 
-.stflag:is(.is-sg-flag, .is-singapore-flag):is(.is-squared, round){
+.stflag:is(.is-sg-flag,.is-singapore-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sg.svg");
 }
 
-.stflag:is(.is-sh-flag, .is-saint-helena-flag){
+.stflag:is(.is-sh-flag,.is-saint-helena-flag){
 	background-image: url("./flags/4x3/sh.svg");
 }
 
-.stflag:is(.is-sh-flag, .is-saint-helena-flag):is(.is-squared, round){
+.stflag:is(.is-sh-flag,.is-saint-helena-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sh.svg");
 }
 
-.stflag:is(.is-si-flag, .is-slovenia-flag){
+.stflag:is(.is-si-flag,.is-slovenia-flag){
 	background-image: url("./flags/4x3/si.svg");
 }
 
-.stflag:is(.is-si-flag, .is-slovenia-flag):is(.is-squared, round){
+.stflag:is(.is-si-flag,.is-slovenia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/si.svg");
 }
 
-.stflag:is(.is-sj-flag, .is-jan-mayen-and-svalbard-flag, .is-svalbard-flag, .is-jan-mayen-flag){
+.stflag:is(.is-sj-flag,.is-jan-mayen-and-svalbard-flag,.is-svalbard-flag,.is-jan-mayen-flag){
 	background-image: url("./flags/4x3/sj.svg");
 }
 
-.stflag:is(.is-sj-flag, .is-jan-mayen-and-svalbard-flag, .is-svalbard-flag, .is-jan-mayen-flag):is(.is-squared, round){
+.stflag:is(.is-sj-flag,.is-jan-mayen-and-svalbard-flag,.is-svalbard-flag,.is-jan-mayen-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sj.svg");
 }
 
-.stflag:is(.is-sk-flag, .is-slovakia-flag){
+.stflag:is(.is-sk-flag,.is-slovakia-flag){
 	background-image: url("./flags/4x3/sk.svg");
 }
 
-.stflag:is(.is-sk-flag, .is-slovakia-flag):is(.is-squared, round){
+.stflag:is(.is-sk-flag,.is-slovakia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sk.svg");
 }
 
-.stflag:is(.is-sl-flag, .is-sierra-leone-flag){
+.stflag:is(.is-sl-flag,.is-sierra-leone-flag){
 	background-image: url("./flags/4x3/sl.svg");
 }
 
-.stflag:is(.is-sl-flag, .is-sierra-leone-flag):is(.is-squared, round){
+.stflag:is(.is-sl-flag,.is-sierra-leone-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sl.svg");
 }
 
-.stflag:is(.is-sm-flag, .is-san-marino-flag){
+.stflag:is(.is-sm-flag,.is-san-marino-flag){
 	background-image: url("./flags/4x3/sm.svg");
 }
 
-.stflag:is(.is-sm-flag, .is-san-marino-flag):is(.is-squared, round){
+.stflag:is(.is-sm-flag,.is-san-marino-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sm.svg");
 }
 
-.stflag:is(.is-sn-flag, .is-senegal-flag){
+.stflag:is(.is-sn-flag,.is-senegal-flag){
 	background-image: url("./flags/4x3/sn.svg");
 }
 
-.stflag:is(.is-sn-flag, .is-senegal-flag):is(.is-squared, round){
+.stflag:is(.is-sn-flag,.is-senegal-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sn.svg");
 }
 
-.stflag:is(.is-so-flag, .is-somalia-flag){
+.stflag:is(.is-so-flag,.is-somalia-flag){
 	background-image: url("./flags/4x3/so.svg");
 }
 
-.stflag:is(.is-so-flag, .is-somalia-flag):is(.is-squared, round){
+.stflag:is(.is-so-flag,.is-somalia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/so.svg");
 }
 
-.stflag:is(.is-sr-flag, .is-suriname-flag){
+.stflag:is(.is-sr-flag,.is-suriname-flag){
 	background-image: url("./flags/4x3/sr.svg");
 }
 
-.stflag:is(.is-sr-flag, .is-suriname-flag):is(.is-squared, round){
+.stflag:is(.is-sr-flag,.is-suriname-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sr.svg");
 }
 
-.stflag:is(.is-ss-flag, .is-south-sudan-flag){
+.stflag:is(.is-ss-flag,.is-south-sudan-flag){
 	background-image: url("./flags/4x3/ss.svg");
 }
 
-.stflag:is(.is-ss-flag, .is-south-sudan-flag):is(.is-squared, round){
+.stflag:is(.is-ss-flag,.is-south-sudan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ss.svg");
 }
 
-.stflag:is(.is-st-flag, .is-sao-tome-flag){
+.stflag:is(.is-st-flag,.is-sao-tome-flag){
 	background-image: url("./flags/4x3/st.svg");
 }
 
-.stflag:is(.is-st-flag, .is-sao-tome-flag):is(.is-squared, round){
+.stflag:is(.is-st-flag,.is-sao-tome-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/st.svg");
 }
 
-.stflag:is(.is-sv-flag, .is-el-salvador-flag){
+.stflag:is(.is-sv-flag,.is-el-salvador-flag){
 	background-image: url("./flags/4x3/sv.svg");
 }
 
-.stflag:is(.is-sv-flag, .is-el-salvador-flag):is(.is-squared, round){
+.stflag:is(.is-sv-flag,.is-el-salvador-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sv.svg");
 }
 
-.stflag:is(.is-sx-flag, .is-sint-maarten-flag){
+.stflag:is(.is-sx-flag,.is-sint-maarten-flag){
 	background-image: url("./flags/4x3/sx.svg");
 }
 
-.stflag:is(.is-sx-flag, .is-sint-maarten-flag):is(.is-squared, round){
+.stflag:is(.is-sx-flag,.is-sint-maarten-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sx.svg");
 }
 
-.stflag:is(.is-sy-flag, .is-syria-flag){
+.stflag:is(.is-sy-flag,.is-syria-flag){
 	background-image: url("./flags/4x3/sy.svg");
 }
 
-.stflag:is(.is-sy-flag, .is-syria-flag):is(.is-squared, round){
+.stflag:is(.is-sy-flag,.is-syria-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sy.svg");
 }
 
-.stflag:is(.is-sz-flag, .is-swaziland-flag){
+.stflag:is(.is-sz-flag,.is-swaziland-flag){
 	background-image: url("./flags/4x3/sz.svg");
 }
 
-.stflag:is(.is-sz-flag, .is-swaziland-flag):is(.is-squared, round){
+.stflag:is(.is-sz-flag,.is-swaziland-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/sz.svg");
 }
 
-.stflag:is(.is-tc-flag, .is-caicos-islands-flag){
+.stflag:is(.is-tc-flag,.is-caicos-islands-flag){
 	background-image: url("./flags/4x3/tc.svg");
 }
 
-.stflag:is(.is-tc-flag, .is-caicos-islands-flag):is(.is-squared, round){
+.stflag:is(.is-tc-flag,.is-caicos-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tc.svg");
 }
 
-.stflag:is(.is-td-flag, .is-chad-flag){
+.stflag:is(.is-td-flag,.is-chad-flag){
 	background-image: url("./flags/4x3/td.svg");
 }
 
-.stflag:is(.is-td-flag, .is-chad-flag):is(.is-squared, round){
+.stflag:is(.is-td-flag,.is-chad-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/td.svg");
 }
 
-.stflag:is(.is-tf-flag, .is-french-territories-flag){
+.stflag:is(.is-tf-flag,.is-french-territories-flag){
 	background-image: url("./flags/4x3/tf.svg");
 }
 
-.stflag:is(.is-tf-flag, .is-french-territories-flag):is(.is-squared, round){
+.stflag:is(.is-tf-flag,.is-french-territories-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tf.svg");
 }
 
-.stflag:is(.is-tg-flag, .is-togo-flag){
+.stflag:is(.is-tg-flag,.is-togo-flag){
 	background-image: url("./flags/4x3/tg.svg");
 }
 
-.stflag:is(.is-tg-flag, .is-togo-flag):is(.is-squared, round){
+.stflag:is(.is-tg-flag,.is-togo-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tg.svg");
 }
 
-.stflag:is(.is-th-flag, .is-thailand-flag){
+.stflag:is(.is-th-flag,.is-thailand-flag){
 	background-image: url("./flags/4x3/th.svg");
 }
 
-.stflag:is(.is-th-flag, .is-thailand-flag):is(.is-squared, round){
+.stflag:is(.is-th-flag,.is-thailand-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/th.svg");
 }
 
-.stflag:is(.is-tj-flag, .is-tajikistan-flag){
+.stflag:is(.is-tj-flag,.is-tajikistan-flag){
 	background-image: url("./flags/4x3/tj.svg");
 }
 
-.stflag:is(.is-tj-flag, .is-tajikistan-flag):is(.is-squared, round){
+.stflag:is(.is-tj-flag,.is-tajikistan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tj.svg");
 }
 
-.stflag:is(.is-tk-flag, .is-tokelau-flag){
+.stflag:is(.is-tk-flag,.is-tokelau-flag){
 	background-image: url("./flags/4x3/tk.svg");
 }
 
-.stflag:is(.is-tk-flag, .is-tokelau-flag):is(.is-squared, round){
+.stflag:is(.is-tk-flag,.is-tokelau-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tk.svg");
 }
 
-.stflag:is(.is-tl-flag, .is-timorleste-flag){
+.stflag:is(.is-tl-flag,.is-timorleste-flag){
 	background-image: url("./flags/4x3/tl.svg");
 }
 
-.stflag:is(.is-tl-flag, .is-timorleste-flag):is(.is-squared, round){
+.stflag:is(.is-tl-flag,.is-timorleste-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tl.svg");
 }
 
-.stflag:is(.is-tm-flag, .is-turkmenistan-flag){
+.stflag:is(.is-tm-flag,.is-turkmenistan-flag){
 	background-image: url("./flags/4x3/tm.svg");
 }
 
-.stflag:is(.is-tm-flag, .is-turkmenistan-flag):is(.is-squared, round){
+.stflag:is(.is-tm-flag,.is-turkmenistan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tm.svg");
 }
 
-.stflag:is(.is-tn-flag, .is-tunisia-flag){
+.stflag:is(.is-tn-flag,.is-tunisia-flag){
 	background-image: url("./flags/4x3/tn.svg");
 }
 
-.stflag:is(.is-tn-flag, .is-tunisia-flag):is(.is-squared, round){
+.stflag:is(.is-tn-flag,.is-tunisia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tn.svg");
 }
 
-.stflag:is(.is-to-flag, .is-tonga-flag){
+.stflag:is(.is-to-flag,.is-tonga-flag){
 	background-image: url("./flags/4x3/to.svg");
 }
 
-.stflag:is(.is-to-flag, .is-tonga-flag):is(.is-squared, round){
+.stflag:is(.is-to-flag,.is-tonga-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/to.svg");
 }
 
-.stflag:is(.is-tr-flag, .is-turkey-flag){
+.stflag:is(.is-tr-flag,.is-turkey-flag){
 	background-image: url("./flags/4x3/tr.svg");
 }
 
-.stflag:is(.is-tr-flag, .is-turkey-flag):is(.is-squared, round){
+.stflag:is(.is-tr-flag,.is-turkey-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tr.svg");
 }
 
-.stflag:is(.is-tt-flag, .is-trinidad-flag){
+.stflag:is(.is-tt-flag,.is-trinidad-flag){
 	background-image: url("./flags/4x3/tt.svg");
 }
 
-.stflag:is(.is-tt-flag, .is-trinidad-flag):is(.is-squared, round){
+.stflag:is(.is-tt-flag,.is-trinidad-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tt.svg");
 }
 
-.stflag:is(.is-tv-flag, .is-tuvalu-flag){
+.stflag:is(.is-tv-flag,.is-tuvalu-flag){
 	background-image: url("./flags/4x3/tv.svg");
 }
 
-.stflag:is(.is-tv-flag, .is-tuvalu-flag):is(.is-squared, round){
+.stflag:is(.is-tv-flag,.is-tuvalu-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tv.svg");
 }
 
-.stflag:is(.is-tw-flag, .is-taiwan-flag, .is-republic-of-china-flag, .is-formosa-flag){
+.stflag:is(.is-tw-flag,.is-taiwan-flag,.is-republic-of-china-flag,.is-formosa-flag){
 	background-image: url("./flags/4x3/tw.svg");
 }
 
-.stflag:is(.is-tw-flag, .is-taiwan-flag, .is-republic-of-china-flag, .is-formosa-flag):is(.is-squared, round){
+.stflag:is(.is-tw-flag,.is-taiwan-flag,.is-republic-of-china-flag,.is-formosa-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tw.svg");
 }
 
-.stflag:is(.is-tz-flag, .is-tanzania-flag){
+.stflag:is(.is-tz-flag,.is-tanzania-flag){
 	background-image: url("./flags/4x3/tz.svg");
 }
 
-.stflag:is(.is-tz-flag, .is-tanzania-flag):is(.is-squared, round){
+.stflag:is(.is-tz-flag,.is-tanzania-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/tz.svg");
 }
 
-.stflag:is(.is-ua-flag, .is-ukraine-flag){
+.stflag:is(.is-ua-flag,.is-ukraine-flag){
 	background-image: url("./flags/4x3/ua.svg");
 }
 
-.stflag:is(.is-ua-flag, .is-ukraine-flag):is(.is-squared, round){
+.stflag:is(.is-ua-flag,.is-ukraine-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ua.svg");
 }
 
-.stflag:is(.is-ug-flag, .is-uganda-flag){
+.stflag:is(.is-ug-flag,.is-uganda-flag){
 	background-image: url("./flags/4x3/ug.svg");
 }
 
-.stflag:is(.is-ug-flag, .is-uganda-flag):is(.is-squared, round){
+.stflag:is(.is-ug-flag,.is-uganda-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ug.svg");
 }
 
-.stflag:is(.is-um-flag, .is-us-minor-islands-flag){
+.stflag:is(.is-um-flag,.is-us-minor-islands-flag){
 	background-image: url("./flags/4x3/um.svg");
 }
 
-.stflag:is(.is-um-flag, .is-us-minor-islands-flag):is(.is-squared, round){
+.stflag:is(.is-um-flag,.is-us-minor-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/um.svg");
 }
 
-.stflag:is(.is-un-flag, .is-united-nations-flag){
+.stflag:is(.is-un-flag,.is-united-nations-flag){
 	background-image: url("./flags/4x3/un.svg");
 }
 
-.stflag:is(.is-un-flag, .is-united-nations-flag):is(.is-squared, round){
+.stflag:is(.is-un-flag,.is-united-nations-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/un.svg");
 }
 
-.stflag:is(.is-us-flag, .is-united-states-flag, .is-america-flag, .is-usa-flag){
+.stflag:is(.is-us-flag,.is-united-states-flag,.is-america-flag,.is-usa-flag){
 	background-image: url("./flags/4x3/us.svg");
 }
 
-.stflag:is(.is-us-flag, .is-united-states-flag, .is-america-flag, .is-usa-flag):is(.is-squared, round){
+.stflag:is(.is-us-flag,.is-united-states-flag,.is-america-flag,.is-usa-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/us.svg");
 }
 
-.stflag:is(.is-uy-flag, .is-uruguay-flag){
+.stflag:is(.is-uy-flag,.is-uruguay-flag){
 	background-image: url("./flags/4x3/uy.svg");
 }
 
-.stflag:is(.is-uy-flag, .is-uruguay-flag):is(.is-squared, round){
+.stflag:is(.is-uy-flag,.is-uruguay-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/uy.svg");
 }
 
-.stflag:is(.is-uz-flag, .is-uzbekistan-flag){
+.stflag:is(.is-uz-flag,.is-uzbekistan-flag){
 	background-image: url("./flags/4x3/uz.svg");
 }
 
-.stflag:is(.is-uz-flag, .is-uzbekistan-flag):is(.is-squared, round){
+.stflag:is(.is-uz-flag,.is-uzbekistan-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/uz.svg");
 }
 
-.stflag:is(.is-va-flag, .is-vatican-city-flag){
+.stflag:is(.is-va-flag,.is-vatican-city-flag){
 	background-image: url("./flags/4x3/va.svg");
 }
 
-.stflag:is(.is-va-flag, .is-vatican-city-flag):is(.is-squared, round){
+.stflag:is(.is-va-flag,.is-vatican-city-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/va.svg");
 }
 
-.stflag:is(.is-vc-flag, .is-saint-vincent-flag){
+.stflag:is(.is-vc-flag,.is-saint-vincent-flag){
 	background-image: url("./flags/4x3/vc.svg");
 }
 
-.stflag:is(.is-vc-flag, .is-saint-vincent-flag):is(.is-squared, round){
+.stflag:is(.is-vc-flag,.is-saint-vincent-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/vc.svg");
 }
 
-.stflag:is(.is-ve-flag, .is-venezuela-flag){
+.stflag:is(.is-ve-flag,.is-venezuela-flag){
 	background-image: url("./flags/4x3/ve.svg");
 }
 
-.stflag:is(.is-ve-flag, .is-venezuela-flag):is(.is-squared, round){
+.stflag:is(.is-ve-flag,.is-venezuela-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ve.svg");
 }
 
-.stflag:is(.is-vg-flag, .is-british-virgin-islands-flag){
+.stflag:is(.is-vg-flag,.is-british-virgin-islands-flag){
 	background-image: url("./flags/4x3/vg.svg");
 }
 
-.stflag:is(.is-vg-flag, .is-british-virgin-islands-flag):is(.is-squared, round){
+.stflag:is(.is-vg-flag,.is-british-virgin-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/vg.svg");
 }
 
-.stflag:is(.is-vi-flag, .is-us-virgin-islands-flag){
+.stflag:is(.is-vi-flag,.is-us-virgin-islands-flag){
 	background-image: url("./flags/4x3/vi.svg");
 }
 
-.stflag:is(.is-vi-flag, .is-us-virgin-islands-flag):is(.is-squared, round){
+.stflag:is(.is-vi-flag,.is-us-virgin-islands-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/vi.svg");
 }
 
-.stflag:is(.is-vn-flag, .is-vietnam-flag){
+.stflag:is(.is-vn-flag,.is-vietnam-flag){
 	background-image: url("./flags/4x3/vn.svg");
 }
 
-.stflag:is(.is-vn-flag, .is-vietnam-flag):is(.is-squared, round){
+.stflag:is(.is-vn-flag,.is-vietnam-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/vn.svg");
 }
 
-.stflag:is(.is-vu-flag, .is-vanuatu-flag){
+.stflag:is(.is-vu-flag,.is-vanuatu-flag){
 	background-image: url("./flags/4x3/vu.svg");
 }
 
-.stflag:is(.is-vu-flag, .is-vanuatu-flag):is(.is-squared, round){
+.stflag:is(.is-vu-flag,.is-vanuatu-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/vu.svg");
 }
 
-.stflag:is(.is-wf-flag, .is-wallis-and-futuna-flag, .is-wallis-flag, .is-futuna-flag){
+.stflag:is(.is-wf-flag,.is-wallis-and-futuna-flag,.is-wallis-flag,.is-futuna-flag){
 	background-image: url("./flags/4x3/wf.svg");
 }
 
-.stflag:is(.is-wf-flag, .is-wallis-and-futuna-flag, .is-wallis-flag, .is-futuna-flag):is(.is-squared, round){
+.stflag:is(.is-wf-flag,.is-wallis-and-futuna-flag,.is-wallis-flag,.is-futuna-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/wf.svg");
 }
 
-.stflag:is(.is-ws-flag, .is-samoa-flag){
+.stflag:is(.is-ws-flag,.is-samoa-flag){
 	background-image: url("./flags/4x3/ws.svg");
 }
 
-.stflag:is(.is-ws-flag, .is-samoa-flag):is(.is-squared, round){
+.stflag:is(.is-ws-flag,.is-samoa-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ws.svg");
 }
 
-.stflag:is(.is-ye-flag, .is-yemen-flag){
+.stflag:is(.is-ye-flag,.is-yemen-flag){
 	background-image: url("./flags/4x3/ye.svg");
 }
 
-.stflag:is(.is-ye-flag, .is-yemen-flag):is(.is-squared, round){
+.stflag:is(.is-ye-flag,.is-yemen-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/ye.svg");
 }
 
-.stflag:is(.is-yt-flag, .is-mayotte-flag){
+.stflag:is(.is-yt-flag,.is-mayotte-flag){
 	background-image: url("./flags/4x3/yt.svg");
 }
 
-.stflag:is(.is-yt-flag, .is-mayotte-flag):is(.is-squared, round){
+.stflag:is(.is-yt-flag,.is-mayotte-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/yt.svg");
 }
 
-.stflag:is(.is-za-flag, .is-south-africa-flag){
+.stflag:is(.is-za-flag,.is-south-africa-flag){
 	background-image: url("./flags/4x3/za.svg");
 }
 
-.stflag:is(.is-za-flag, .is-south-africa-flag):is(.is-squared, round){
+.stflag:is(.is-za-flag,.is-south-africa-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/za.svg");
 }
 
-.stflag:is(.is-zm-flag, .is-zambia-flag){
+.stflag:is(.is-zm-flag,.is-zambia-flag){
 	background-image: url("./flags/4x3/zm.svg");
 }
 
-.stflag:is(.is-zm-flag, .is-zambia-flag):is(.is-squared, round){
+.stflag:is(.is-zm-flag,.is-zambia-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/zm.svg");
 }
 
-.stflag:is(.is-zw-flag, .is-zimbabwe-flag){
+.stflag:is(.is-zw-flag,.is-zimbabwe-flag){
 	background-image: url("./flags/4x3/zw.svg");
 }
 
-.stflag:is(.is-zw-flag, .is-zimbabwe-flag):is(.is-squared, round){
+.stflag:is(.is-zw-flag,.is-zimbabwe-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/zw.svg");
 }
 
-.stflag:is(.is-zz-flag, .is-unknown-flag){
+.stflag:is(.is-zz-flag,.is-unknown-flag){
 	background-image: url("./flags/4x3/zz.svg");
 }
 
-.stflag:is(.is-zz-flag, .is-unknown-flag):is(.is-squared, round){
+.stflag:is(.is-zz-flag,.is-unknown-flag):is(.is-squared,round){
 	background-image: url("./flags/1x1/zz.svg");
 }
 
@@ -10259,7 +10258,7 @@ label:has(.switch){
 	font-weight: 500;
 	line-height: 1.4;
 	align-items: center;
-	color: var(--accent-color, inherit);
+	color: var(--accent-color,inherit);
 }
 
 .ststatistic .unit{
@@ -10417,8 +10416,8 @@ label:has(.switch){
 /* Active */
 
 .stapp-sidebar .item.is-active{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 	border-radius: 0px 100rem 100rem 0;
 }
 
@@ -10478,7 +10477,7 @@ label:has(.switch){
 	padding-right: 1rem;
 	font-weight: 500;
 	font-size: 14px;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -10512,7 +10511,7 @@ label:has(.switch){
 /* Active */
 
 .stapp-navbar .item.is-active{
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 }
 
 .stapp-navbar .item.is-active .icon{
@@ -10564,8 +10563,8 @@ label:has(.switch){
 }
 
 .stapp-navbar.is-indicated .item.is-active .icon{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 /* Dense */
@@ -10756,11 +10755,11 @@ details.staccordion[open] summary{
 /* Faded */
 
 .stmask.is-faded.is-top{
-	background: linear-gradient(to bottom, rgb(0 0 0 / 50%) 0%, rgba(0, 0, 0, 0) 100%);
+	background: linear-gradient(to bottom,rgb(0 0 0 / 50%) 0%,rgba(0,0,0,0) 100%);
 }
 
 .stmask.is-faded.is-bottom{
-	background: linear-gradient(to top, rgb(0 0 0 / 50%) 0%, rgba(0, 0, 0, 0) 100%);
+	background: linear-gradient(to top,rgb(0 0 0 / 50%) 0%,rgba(0,0,0,0) 100%);
 }
 
 /* ========================================================================== Variables ========================================================================== */
@@ -10929,12 +10928,12 @@ details.staccordion[open] summary{
 	animation-name: stplaceholder-shimmer;
 	animation-timing-function: linear;
 
-	background: linear-gradient(to right, var(--stgray-200) 8%, var(--stgray-300) 18%, var(--stgray-200) 33%);
+	background: linear-gradient(to right,var(--stgray-200) 8%,var(--stgray-300) 18%,var(--stgray-200) 33%);
 	background-size: 1000px 200px;
 }
 
 .stplaceholder.loading .text.is-header{
-	background: linear-gradient(to right, var(--stgray-300) 8%, var(--stgray-400) 18%, var(--stgray-300) 33%);
+	background: linear-gradient(to right,var(--stgray-300) 8%,var(--stgray-400) 18%,var(--stgray-300) 33%);
 	background-size: 1000px 200px;
 }
 
@@ -10982,7 +10981,7 @@ details.staccordion[open] summary{
 .stheader{
 	font-weight: 500;
 	font-size: var(--stfont-size-17px);
-	color: var(--accent-color, inherit);
+	color: var(--accent-color,inherit);
 	line-height: 1.5;
 	display: flex;
 	align-items: center;
@@ -11069,7 +11068,7 @@ a.stheader:hover{
 
 /* Side Icon */
 
-.stheader:is(.starticon, .endicon) .icon{
+.stheader:is(.starticon,.endicon) .icon{
 	font-size: 1.25em;
 }
 
@@ -11116,7 +11115,7 @@ a.stheader:hover{
 .main{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-	--stindicator-color: var(--accent-color, var(--stgray-900));
+	--stindicator-color: var(--accent-color,var(--stgray-900));
 }
 
 /* ========================================================================== Base ========================================================================== */
@@ -11196,7 +11195,7 @@ a.main:hover{
 }
 
 .main.is-very-elevated{
-	box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+	box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,rgb(0 0 0 / 14%) 0px 3px 4px 0px,rgb(0 0 0 / 12%) 0px 1px 8px 0px;
 }
 
 /* Padded */
@@ -11257,8 +11256,8 @@ a.main:hover{
 	top: 0em;
 	left: 0px;
 	font-size: 5rem;
-	font-family: Georgia, "Times New Roman", Times;
-	color: var(--accent-color, var(--stgray-300));
+	font-family: Georgia,"Times New Roman",Times;
+	color: var(--accent-color,var(--stgray-300));
 	line-height: 1;
 }
 
@@ -11283,8 +11282,8 @@ a.main:hover{
 }
 
 .stquote.is-heading::before{
-	background: var(--accent-color, var(--stgray-100));
-	color: var(--accent-foreground-color, var(--stgray-800));
+	background: var(--accent-color,var(--stgray-100));
+	color: var(--accent-foreground-color,var(--stgray-800));
 	border-radius: 50%;
 	content: "”";
 	display: block;
@@ -11307,7 +11306,7 @@ a.main:hover{
 /* Secondary */
 
 .stquote.secondary{
-	border-left: 5px solid var(--accent-color, var(--stgray-300));
+	border-left: 5px solid var(--accent-color,var(--stgray-300));
 	padding: 0 0 0 2rem;
 }
 
@@ -11458,11 +11457,11 @@ a.main:hover{
 /* Text */
 
 .stavatar.is-text{
-	background: var(--accent-color, var(--stgray-200));
+	background: var(--accent-color,var(--stgray-200));
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--accent-foreground-color, var(--stgray-600));
+	color: var(--accent-foreground-color,var(--stgray-600));
 	font-weight: 500;
 	font-size: 1.1rem;
 }
@@ -11750,7 +11749,7 @@ a.main:hover{
 	background: var(--stgray-75);
 }
 
-.stmenu .item:where(.strow, .stgrid){
+.stmenu .item:where(.strow,.stgrid){
 	flex: 1;
 }
 
@@ -11759,8 +11758,8 @@ a.main:hover{
 /* Active */
 
 .stmenu .item.is-active{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 /* Disabled */
@@ -11774,8 +11773,8 @@ a.main:hover{
 /* Selected */
 
 .stmenu .item.is-selected{
-	background: var(--accent-color, var(--stprimary-700));
-	color: var(--accent-foreground-color, var(--stwhite));
+	background: var(--accent-color,var(--stprimary-700));
+	color: var(--accent-foreground-color,var(--stwhite));
 }
 
 /* Separated */
@@ -11966,12 +11965,12 @@ a.main:hover{
 
 /* 2 */
 .stimageset.is-2-images{
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(1,1fr);
 }
 
 /* 3 */
 .stimageset.is-3-images{
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(2,1fr);
 	grid-template-rows: 1.777fr 1fr;
 }
 
@@ -11981,7 +11980,7 @@ a.main:hover{
 
 /* 4 */
 .stimageset.is-4-images{
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3,1fr);
 	grid-template-rows: 1.777fr 1fr;
 }
 
@@ -11997,13 +11996,13 @@ a.main:hover{
 
 /* 2 */
 .stimageset.is-portrait.is-2-images{
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(2,1fr);
 }
 
 /* 3 */
 .stimageset.is-portrait.is-3-images{
 	grid-template-columns: 1.4fr 1fr;
-	grid-template-rows: repeat(2, 1fr);
+	grid-template-rows: repeat(2,1fr);
 }
 
 .stimageset.is-portrait.is-3-images .item:first-child{
@@ -12014,7 +12013,7 @@ a.main:hover{
 /* 4 */
 .stimageset.is-portrait.is-4-images{
 	grid-template-columns: 1.4fr 1fr;
-	grid-template-rows: repeat(3, 1fr);
+	grid-template-rows: repeat(3,1fr);
 }
 
 .stimageset.is-portrait.is-4-images .item:first-child{
@@ -12089,8 +12088,8 @@ a.main:hover{
 	width: 3rem;
 	min-width: 3rem;
 	height: 3rem;
-	background: var(--accent-color, var(--stgray-100));
-	color: var(--accent-foreground-color, inherit);
+	background: var(--accent-color,var(--stgray-100));
+	color: var(--accent-foreground-color,inherit);
 	justify-content: center;
 	align-items: center;
 	font-size: 1.4rem;
@@ -12115,7 +12114,7 @@ a.main:hover{
 
 .iconset.outline .icon{
 	background: transparent;
-	color: var(--accent-color, inherit);
+	color: var(--accent-color,inherit);
 	border: 2px solid var(--stgray-300);
 	box-sizing: border-box;
 }
@@ -12181,7 +12180,7 @@ a.main:hover{
 	position: absolute;
 	bottom: 0.5rem;
 	right: 0.5rem;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0,0,0,0.2);
 	border-radius: 0.4rem;
 	padding: 0.1rem 0.4rem;
 	color: var(--stwhite);
@@ -12260,7 +12259,7 @@ a.main:hover{
   *
   */
 
-.stconversation:is(.is-sent, .is-sending, .error, .is-read, .warning) .bubble .meta::after{
+.stconversation:is(.is-sent,.is-sending,.error,.is-read,.warning) .bubble .meta::after{
 	color: var(--stgray-500);
 
 	font-family: "Icons";
@@ -12326,7 +12325,7 @@ a.main:hover{
 	position: absolute;
 	bottom: 0.5rem;
 	right: 0.5rem;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0,0,0,0.2);
 	border-radius: 0.4rem;
 	padding: 0.1rem 0.4rem;
 	color: var(--stwhite);
@@ -12434,9 +12433,9 @@ a.main:hover{
 	bottom: 0;
 	left: 0;
 
-	background: conic-gradient(var(--accent-color, currentColor) calc(var(--value) * 1% * var(--length)), #0000 0);
-	-webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--thickness)), rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
-	mask: radial-gradient(farthest-side, #0000 calc(99% - var(--thickness)), rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
+	background: conic-gradient(var(--accent-color,currentColor) calc(var(--value) * 1% * var(--length)),#0000 0);
+	-webkit-mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
+	mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
 }
 
 .stgauge::before{
@@ -12445,9 +12444,9 @@ a.main:hover{
 	bottom: 0;
 	left: 0;
 
-	-webkit-mask: radial-gradient(farthest-side, #f000 calc(99% - var(--thickness)), #0000001a calc(100% - var(--thickness)));
-	mask: radial-gradient(farthest-side, #f000 calc(99% - var(--thickness)), #0000001a calc(100% - var(--thickness)));
-	background: conic-gradient(currentColor calc(var(--value) * var(--length) * 1%), #0000 0);
+	-webkit-mask: radial-gradient(farthest-side,#f000 calc(99% - var(--thickness)),#0000001a calc(100% - var(--thickness)));
+	mask: radial-gradient(farthest-side,#f000 calc(99% - var(--thickness)),#0000001a calc(100% - var(--thickness)));
+	background: conic-gradient(currentColor calc(var(--value) * var(--length) * 1%),#0000 0);
 }
 
 .stgauge .bar .text{
@@ -12513,7 +12512,7 @@ a.main:hover{
 	visibility: hidden;
 	font-weight: normal;
 	z-index: 99;
-	max-width: min(300px, calc(100vw - 2rem));
+	max-width: min(300px,calc(100vw - 2rem));
 	pointer-events: none;
 }
 
@@ -12577,7 +12576,7 @@ a.main:hover{
 	border: 1px solid var(--stgray-300);
 	border-radius: 0.4rem;
 	background: var(--stgray-50);
-	box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px 0px rgba(0,0,0,0.1);
 	font-size: var(--stfont-size-14px);
 	padding: 0.2rem 0;
 	white-space: nowrap;
@@ -12627,7 +12626,7 @@ a.main:hover{
 	background: var(--stgray-75);
 }
 
-.stdropdown .item:where(.strow, .stgrid){
+.stdropdown .item:where(.strow,.stgrid){
 	flex: 1;
 }
 
@@ -12636,8 +12635,8 @@ a.main:hover{
 /* Active */
 
 .stdropdown .item.is-active{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 /* Header */
@@ -12667,8 +12666,8 @@ a.main:hover{
 /* Selected */
 
 .stdropdown .item.is-selected{
-	background: var(--accent-color, var(--stprimary-700));
-	color: var(--accent-foreground-color, var(--stwhite));
+	background: var(--accent-color,var(--stprimary-700));
+	color: var(--accent-foreground-color,var(--stwhite));
 }
 
 .stdropdown .item.is-selected .description{
@@ -12812,7 +12811,7 @@ a.main:hover{
 /* Checkbox */
 
 .stdropdown .item.is-checked{
-	color: var(--accent-color, var(--stprimary-700));
+	color: var(--accent-color,var(--stprimary-700));
 }
 
 .stdropdown .item .checkbox{
@@ -12851,13 +12850,13 @@ a.main:hover{
 	align-items: center;
 	backface-visibility: hidden;
 	bottom: 0;
-	color: var(--accent-foreground-color, var(--stwhite));
+	color: var(--accent-foreground-color,var(--stwhite));
 	content: "\f00c";
 }
 
 .stdropdown .item.is-checked .checkbox{
-	background: var(--accent-color, var(--stprimary-700));
-	border-color: var(--accent-color, var(--stprimary-700));
+	background: var(--accent-color,var(--stprimary-700));
+	border-color: var(--accent-color,var(--stprimary-700));
 }
 
 .stdropdown .item.is-checked .checkbox::after{
@@ -12989,7 +12988,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 /* ========================================================================== Responsive ========================================================================== */
 @media screen and (max-width: 766px){
 
-	.is-standard-only,    .is-maximal-only{
+	.is-standard-only,   .is-maximal-only{
 		display: none !important;
 	}
 
@@ -13018,7 +13017,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 @media screen and (min-width: 993px){
 
-	.is-minimal-only,    .is-standard-only{
+	.is-minimal-only,   .is-standard-only{
 		display: none !important;
 	}
 
@@ -13510,14 +13509,14 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	grid-template-columns: 1fr auto 1fr;
 	padding: 0.5rem 1rem;
 	line-height: 1;
-	background: var(--accent-color, var(--ststatic-gray-900));
-	color: var(--accent-foreground-color, var(--stwhite));
+	background: var(--accent-color,var(--ststatic-gray-900));
+	color: var(--accent-foreground-color,var(--stwhite));
 	min-height: 50px;
 	align-items: center;
 	gap: 0.5rem;
 }
 
-.stapp-topbar:is(.start, .end, .center)>.item{
+.stapp-topbar:is(.start,.end,.center)>.item{
 	border-radius: 100em;
 	text-decoration: none;
 	width: 38px;
@@ -13530,7 +13529,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	margin-bottom: -0.1rem;
 }
 
-.stapp-topbar:is(.start, .end, .center) .item.is-text{
+.stapp-topbar:is(.start,.end,.center) .item.is-text{
 	font-size: var(--stfont-size-16px);
 	font-weight: 500;
 	width: auto;
@@ -13543,7 +13542,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	display: block;
 }
 
-.stapp-topbar:is(.start, .end){
+.stapp-topbar:is(.start,.end){
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
@@ -13804,8 +13803,8 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 /* Active */
 
 .sttimeline>.item.is-active .indicator .icon{
-	background: var(--accent-color, var(--stgray-800));
-	color: var(--accent-foreground-color, var(--stgray-50));
+	background: var(--accent-color,var(--stgray-800));
+	color: var(--accent-foreground-color,var(--stgray-50));
 }
 
 .sttimeline>.item.is-active.secondary .indicator .icon{
@@ -13815,7 +13814,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 /* Disabled */
 
-.sttimeline>.item.disabled:is(.aside, .content, .indicator){
+.sttimeline>.item.disabled:is(.aside,.content,.indicator){
 	pointer-events: none;
 	opacity: 0.5;
 	user-select: none;
@@ -13888,14 +13887,14 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .stblankslate>.icon{
 	font-size: var(--icon-size);
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 	margin-top: 0.25rem;
 	display: inline-block;
 	line-height: 1;
 }
 
 .stblankslate .header{
-	color: var(--accent-color, var(--stgray-800));
+	color: var(--accent-color,var(--stgray-800));
 	font-size: var(--header-font-size);
 	font-weight: 500;
 	line-height: 1.6;
@@ -15194,7 +15193,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 }
 
 .rangecontainer{
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial,Helvetica,sans-serif;
 	position: relative;
 	box-sizing: border-box;
 	height: 45px;
@@ -15206,8 +15205,8 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	-moz-user-select: none;
 	-ms-user-select: none;
 
-	& .rangebackground, & .rangeselected{
-		border: 1px rgb(237, 237, 237) solid;
+	& .rangebackground,& .rangeselected{
+		border: 1px rgb(237,237,237) solid;
 		position: absolute;
 		top: 5px;
 		left: 0px;
@@ -15226,7 +15225,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 	&.disabled .rangeselected{
 		border-color: #bbbbbb;
-		background: rgb(204, 204, 204);
+		background: rgb(204,204,204);
 	}
 
 	& .rangepointer{
@@ -15238,7 +15237,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 		height: 20px;
 		border-radius: 50%;
 		background: white;
-		box-shadow: inset 0 0 1px white, inset 0 1px 6px #ebebeb, 1px 1px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: inset 0 0 1px white,inset 0 1px 6px #ebebeb,1px 1px 4px rgba(0,0,0,0.1);
 		transition: all 0.2s linear;
 		cursor: pointer;
 
@@ -15246,7 +15245,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 			border: 1px var(--rangeslider-border-color) solid;
 			position: absolute;
 			left: 15px;
-			transform: translate(-50%, -35px);
+			transform: translate(-50%,-35px);
 			background: var(--stgray-75);
 			border-radius: 3px;
 			width: auto;
@@ -15259,7 +15258,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	}
 
 	&.disabled .rangepointer{
-		border-color: rgb(204, 204, 204);
+		border-color: rgb(204,204,204);
 		cursor: not-allowed;
 	}
 
@@ -15281,7 +15280,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 		& span::before{
 			content: "";
-			background: rgb(237, 237, 237);
+			background: rgb(237,237,237);
 			position: absolute;
 			top: 10px;
 			left: 0px;
@@ -15338,7 +15337,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 				top: 5px;
 				width: 1px;
 				height: 9px;
-				background: rgb(221, 221, 221);
+				background: rgb(221,221,221);
 			}
 
 			&::after{
@@ -15348,7 +15347,7 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 				top: 5px;
 				width: 1px;
 				height: 9px;
-				background: rgb(221, 221, 221);
+				background: rgb(221,221,221);
 				left: auto;
 			}
 		}
