@@ -120,20 +120,20 @@ function main(){
 			}
 
 			onclick(".folder",function(element,event){
-				href("#"+locaitonfolderdata+row[dataset("id",element)]["name"])
+				href("#"+locaitonfolderdata+row[dataset(element)]["name"],"id")
 				href("")
 			})
 
 			onclick(".downloadbutton",function(element,event){
 				innerhtml("body",`
-					<a href="${dataset("href",element)}" download="${dataset("download",element)}" id="download"></a>
+					<a href="${dataset(element,"href",element)}" download="${dataset("download")}" id="download"></a>
 				`)
 
 				click("#download")
 			})
 
 			onclick(".deletebutton",function(element,event){
-				deletefile(dataset("name",element),dataset("isfolder",element))
+				deletefile(dataset(element),"name",element),dataset("isfolder")
 			})
 		}else{
 			innerhtml("#pathgoback",`

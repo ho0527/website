@@ -36,7 +36,7 @@ function main(){
 			}
 
 			onclick(".house",function(element,event){
-				href("house.html?id="+dataset("id",element))
+				href("house.html?id="+dataset(element),"id")
 			})
 
 			// page控制

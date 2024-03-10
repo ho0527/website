@@ -55,7 +55,7 @@ function main(){
 			`,false)
 
 			onclick(".house",function(element,event){
-				href("house.html?id="+dataset("id",element))
+				href("house.html?id="+dataset(element),"id")
 			})
 
 			// page控制
@@ -87,6 +87,10 @@ function main(){
 }
 
 main()
+
+onclick("#newhouse",function(element,event){
+	href("newhouse.html")
+})
 
 onclick("#submit",function(element,event){
 	title=getvalue("keyword")

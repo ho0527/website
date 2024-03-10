@@ -5,14 +5,14 @@
             "statu": "FAILED",
             "ps": "list",
             "createdate": "2023/06/10",
-            "updatedate": "2024/02/21",
+            "updatedate": "2024/03/10",
             "data": [
                 {
                     "title": "ModuleA-SPEEDTEST",
                     "statu": "FAILED",
                     "ps": "list",
                     "createdate": "N/A",
-                    "updatedate": "2024/02/21",
+                    "updatedate": "2024/03/10",
                     "data": [
                         {
                             "list": "A",
@@ -390,7 +390,7 @@
                                     "no": "C23",
                                     "description": "C23-Range Slider",
                                     "link": "TaskA/C23/layout",
-                                    "statu": "FAILED",
+                                    "statu": "SUCCESS",
                                     "data": []
                                 },
                                 {
