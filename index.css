@@ -1155,7 +1155,7 @@ button{
 		}
 	}
 
-	&.loading{
+	&.load{
 		color: transparent;
 		pointer-events: none;
 		opacity: 0.5;
@@ -1253,7 +1253,7 @@ button{
 	}
 
 	/* Labeled Icon */
-	&:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
+	&:is(.start-labeled-icon,.end-labeled-icon) .icon{
 		position: absolute;
 		top: -2px;
 		bottom: -2px;
@@ -1265,11 +1265,11 @@ button{
 		width: calc(2.75rem + 2px);
 	}
 
-	&:where(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
+	&:where(.start-labeled-icon,.end-labeled-icon) .icon{
 		font-size: 1.2em;
 	}
 
-	&.is-start-labeled-icon{
+	&.start-labeled-icon{
 		padding-left: calc(var(--horizontal-padding) + 2.75em);
 
 		& .icon{
@@ -1279,7 +1279,7 @@ button{
 	}
 
 
-	&.is-end-labeled-icon{
+	&.end-labeled-icon{
 		padding-right: calc(var(--horizontal-padding) + 2.75em);
 
 		& .icon{
@@ -1289,27 +1289,27 @@ button{
 	}
 
 
-	&.error:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
+	&.error:is(.start-labeled-icon,.end-labeled-icon) .icon{
 		background: var(--stnegative-400);
 	}
 
-	&.outline:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
+	&.outline:is(.start-labeled-icon,.end-labeled-icon) .icon{
 		/*background: var(--stgray-300);*/
 		background: transparent;
 		border: 2px solid var(--stgray-300);
 	}
 
-	&.secondary:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
+	&.secondary:is(.start-labeled-icon,.end-labeled-icon) .icon{
 		background: var(--stgray-200);
 	}
 
-	&.is-tertiary:is(.is-start-labeled-icon,.is-end-labeled-icon) .icon{
+	&.tertiary:is(.start-labeled-icon,.end-labeled-icon) .icon{
 		background: var(--stgray-400);
 	}
 
 	/* Dense */
 
-	&.is-dense{
+	&.dense{
 		--height: var(--stinput-height-medium-dense);
 
 		&.small{
@@ -1322,13 +1322,13 @@ button{
 	}
 
 	/* Wide */
-	&.is-short{
+	&.short{
 		--horizontal-padding: 0.75em;
 
 		min-width: 65px;
 	}
 
-	&.is-wide{
+	&.long{
 		--horizontal-padding: 2em;
 	}
 
@@ -2147,12 +2147,12 @@ button{
 
 	/* Regular */
 
-	&.is-regular{
+	&.regular{
 		font-family: "IconsRegular";
 	}
 
 	/* Circular */
-	.iconround,&.is-rounded{
+	.iconround,&.rounded{
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -2165,13 +2165,13 @@ button{
 		height: 2em !important;
 	}
 
-	&.is-rounded{
+	&.rounded{
 		border-radius: 0.4rem !important;
 	}
 
 	/* Spinning */
 
-	&.is-spinning{
+	&.load{
 		display: inline-block;
 		animation: sticon-spin 2s linear infinite;
 	}
@@ -2191,7 +2191,7 @@ button{
 
 	/*  Squared */
 
-	&.is-squared{
+	&.square{
 		background: var(--stgray-100);
 		border-radius: 0.4rem;
 		font-size: 1.3em;
@@ -2210,41 +2210,40 @@ button{
 
 	/* Sizes */
 
-	&.small{
-		font-size: var(--stfont-size-13px);
+	&.tiny{
+		font-size: var(--stfont-size-10px);
 	}
 
-	&.large{
-		font-size: var(--stfont-size-18px);
+	&.small{
+		font-size: var(--stfont-size-15px);
 	}
 
 	&.big{
-		font-size: var(--stfont-size-24px);
+		font-size: var(--stfont-size-25px);
 	}
 
-	&.huge{
+	&.large{
 		font-size: var(--stfont-size-30px);
 	}
 
 	/* Heading */
 
-	&.is-heading{
+	&.head{
 		line-height: 1;
 		font-size: var(--stfont-size-75px);
 	}
 
 	/* Spaced */
-
-	&.is-spaced{
+	&.space{
 		margin-left: 0.45rem;
 		margin-right: 0.45rem;
 	}
 
-	&.is-start-spaced{
+	&.startspace{
 		margin-left: 0.45rem;
 	}
 
-	&.is-end-spaced{
+	&.endspace{
 		margin-right: 0.45rem;
 	}
 }
