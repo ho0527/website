@@ -5781,12 +5781,8 @@ button{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
 	--stindicator-color: var(--accent-color,var(--stgray-900));
-}
 
-/* ========================================================================== Base ========================================================================== */
-
-.box{
-	display: block;
+	/* ========================================================================== Base ========================================================================== */
 	text-decoration: none;
 	color: inherit;
 	border: 1px solid var(--stgray-300);
@@ -5794,98 +5790,93 @@ button{
 	overflow: hidden;
 	background: var(--stgray-50);
 	padding: 10px;
+	display: block;
+
+	a&:hover{
+		border-color: var(--stgray-400);
+	}
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& .symbol .icon{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		overflow: hidden;
+		width: 0.8em;
+		height: 0.8em;
+		margin-left: 0;
+		margin-right: 0;
+		pointer-events: none;
+		font-size: 8em;
+		line-height: 1.1em;
+		opacity: 0.1;
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Horizontal */
+
+	&.horizontal{
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Collapsed */
+
+	&.smallest{
+		width: fit-content;
+	}
+
+	/* Indicated */
+
+	&.bordertop{
+		border-top: 3px solid var(--stindicator-color);
+	}
+
+	&.borderbottom{
+		border-bottom: 3px solid var(--stindicator-color);
+	}
+
+	&.borderleft{
+		border-left: 3px solid var(--stindicator-color);
+	}
+
+	&.borderright{
+		border-right: 3px solid var(--stindicator-color);
+	}
+
+	/* Emphasises */
+
+	&.error{
+		--stindicator-color: var(--stnegative-500);
+	}
+
+	&.success{
+		--stindicator-color: var(--stpositive-500);
+	}
+
+	&.warn{
+		--stindicator-color: var(--stwarning-500);
+	}
+
+	/* Elevated */
+
+	&.elevate{
+		box-shadow: 0px 1px 5px 0 #00000024;
+	}
+
+	&.verelevate{
+		box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,rgb(0 0 0 / 14%) 0px 3px 4px 0px,rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+	}
+
+	/* Hollowed */
+	&.hollow{
+		border: 4px dashed var(--stgray-300);
+		background: transparent;
+	}
 }
 
-a.box:hover{
-	border-color: var(--stgray-400);
-}
-
-/* ========================================================================== Structure ========================================================================== */
-
-.box .symbol .icon{
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	overflow: hidden;
-	width: 0.8em;
-	height: 0.8em;
-	margin-left: 0;
-	margin-right: 0;
-	pointer-events: none;
-	font-size: 8em;
-	line-height: 1.1em;
-	opacity: 0.1;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Horizontal */
-
-.box.is-horizontal{
-	display: flex;
-	flex-direction: row;
-}
-
-/* Collapsed */
-
-.box.is-collapsed{
-	width: fit-content;
-}
-
-/* Indicated */
-
-.box.bordertop{
-	border-top: 3px solid var(--stindicator-color);
-}
-
-.box.borderbottom{
-	border-bottom: 3px solid var(--stindicator-color);
-}
-
-.box.borderleft{
-	border-left: 3px solid var(--stindicator-color);
-}
-
-.box.borderright{
-	border-right: 3px solid var(--stindicator-color);
-}
-
-/* Emphasises */
-
-.boxfail{
-	--stindicator-color: var(--stnegative-500);
-}
-
-.boxsuccess{
-	--stindicator-color: var(--stpositive-500);
-}
-
-.boxwarn{
-	--stindicator-color: var(--stwarning-500);
-}
-
-/* Elevated */
-
-.box.is-elevated{
-	box-shadow: 0px 1px 5px 0 #00000024;
-}
-
-.box.is-very-elevated{
-	box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,rgb(0 0 0 / 14%) 0px 3px 4px 0px,rgb(0 0 0 / 12%) 0px 1px 8px 0px;
-}
-
-/* Squared */
-
-.box.is-squared{
-	border-radius: 0;
-}
-
-/* Hollowed */
-
-.box.is-hollowed{
-	border: 4px dashed var(--stgray-300);
-	background: transparent;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
