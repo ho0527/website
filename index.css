@@ -48,7 +48,7 @@ table{
 	left: 0px;
 	width: 100%;
 	height: 75px;
-	color: white;
+	color: var(--navbar-color);
 	background: var(--navbar-background);
 	backdrop-filter: blur(30px);
 	box-shadow: 0 8px 32px 0 var(--navbar-boxshadow-color);
@@ -60,11 +60,11 @@ table{
 	top: 75px;
 	left: 0px;
 	width: 100%;
-	height: 75px;
-	color: white;
-	background: rgba(50,50,50,0.95);
+	height: 50px;
+	color: var(--navbar-color);
+	background: var(--navbar-background);
 	backdrop-filter: blur(20px);
-	box-shadow: 0 8px 32px 0 rgba(185,185,185,0.1);
+	box-shadow: 0 8px 32px 0 var(--navbar-boxshadow-color);
 	z-index: 600;
 }
 
@@ -93,7 +93,7 @@ table{
 }
 
 .navigationbarbutton{
-	border: 1px white solid;
+	border: 1px var(--navbar-color) solid;
 	background: none;
 	width: 150px;
 	height: 50px;
@@ -102,14 +102,14 @@ table{
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
-	color: white;
+	color: var(--navbar-color);
 	padding: 10px;
 	margin: 0px 10px;
 	transition-duration: 0.5s;
 
 	&:hover{
-		background: gray;
-		color: black;
+		background: var(--stgray-300);
+		color: var(--navbar-color);
 	}
 
 	&:active{
@@ -118,8 +118,8 @@ table{
 }
 
 .navigationbarselect{
-	background: black;
-	color: white;
+	background: var(--navbar-color);
+	color: var(--navbar-reverse-color);
 }
 
 .center{
@@ -206,13 +206,13 @@ table{
 	color: white;
 }
 
-.footer{
+/* .footer{
 	position: relative;
 	top: 10px;
 	width: 100%;
 	background: rgb(25,25,25);
 	padding: 5px 10px;
-}
+} */
 
 .a{
 	text-decoration: none;
@@ -310,6 +310,8 @@ html{
 
 	--navbar-border-color-light: white;
 	--navbar-border-color-dark: rgb(49,53,53);
+	--navbar-color-light: black;
+	--navbar-color-dark: white;
 	--navbar-background-light: rgba(238,238,238,0.95);
 	--navbar-background-dark: rgba(35,35,35,0.95);
 	--navbar-boxshadow-color-light: rgba(70,70,70,0.1);
@@ -571,6 +573,8 @@ html{
 
 		--rangeslider-color: var(--rangeslider-color-light);
 		--rangeslider-border-color: var(--rangeslider-border-color-light);
+		--navbar-color: var(--navbar-color-light);
+		--navbar-reverse-color: var(--navbar-color-dark);
 		--navbar-border-color: var(--navbar-border-color-light);
 		--navbar-background: var(--navbar-background-light);
 		--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
@@ -656,6 +660,8 @@ html{
 
 		--rangeslider-color: var(--rangeslider-color-dark);
 		--rangeslider-border-color: var(--rangeslider-border-color-dark);
+		--navbar-color: var(--navbar-color-dark);
+		--navbar-reverse-color: var(--navbar-color-light);
 		--navbar-border-color: var(--navbar-border-color-dark);
 		--navbar-background: var(--navbar-background-dark);
 		--navbar-boxshadow-color: var(--navbar-boxshadow-color-dark);
@@ -699,6 +705,8 @@ html{
 
 		--rangeslider-color: var(--rangeslider-color-light);
 		--rangeslider-border-color: var(--rangeslider-border-color-light);
+		--navbar-color: var(--navbar-color-light);
+		--navbar-reverse-color: var(--navbar-color-dark);
 		--navbar-border-color: var(--navbar-border-color-light);
 		--navbar-background: var(--navbar-background-light);
 		--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
@@ -739,6 +747,8 @@ html,html.mainlight,.u-light{
 
 	--rangeslider-color: var(--rangeslider-color-light);
 	--rangeslider-border-color: var(--rangeslider-border-color-light);
+	--navbar-color: var(--navbar-color-light);
+	--navbar-reverse-color: var(--navbar-color-dark);
 	--navbar-border-color: var(--navbar-border-color-light);
 	--navbar-background: var(--navbar-background-light);
 	--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
@@ -772,6 +782,8 @@ html,html.maindark,.u-dark{
 
 	--rangeslider-color: var(--rangeslider-color-dark);
 	--rangeslider-border-color: var(--rangeslider-border-color-dark);
+	--navbar-color: var(--navbar-color-dark);
+	--navbar-reverse-color: var(--navbar-color-light);
 	--navbar-border-color: var(--navbar-border-color-dark);
 	--navbar-background: var(--navbar-background-dark);
 	--navbar-boxshadow-color: var(--navbar-boxshadow-color-dark);
@@ -808,6 +820,8 @@ html,html.mainlight,.light{
 
 	--rangeslider-color: var(--rangeslider-color-light);
 	--rangeslider-border-color: var(--rangeslider-border-color-light);
+	--navbar-color: var(--navbar-color-light);
+	--navbar-reverse-color: var(--navbar-color-dark);
 	--navbar-border-color: var(--navbar-border-color-light);
 	--navbar-background: var(--navbar-background-light);
 	--navbar-boxshadow-color: var(--navbar-boxshadow-color-light);
@@ -842,6 +856,8 @@ html.maindark,.dark{
 
 	--rangeslider-color: var(--rangeslider-color-dark);
 	--rangeslider-border-color: var(--rangeslider-border-color-dark);
+	--navbar-color: var(--navbar-color-dark);
+	--navbar-reverse-color: var(--navbar-color-light);
 	--navbar-border-color: var(--navbar-border-color-dark);
 	--navbar-background: var(--navbar-background-dark);
 	--navbar-boxshadow-color: var(--navbar-boxshadow-color-dark);
@@ -4300,324 +4316,321 @@ button{
 
 /* ========================================================================== Variables ========================================================================== */
 
-.stselect{
+.select{
 	--object-distance-vertical: 0.4rem;
 	--object-distance-horizontal: 0.8rem;
 
 	--height: var(--stinput-height-medium);
-}
-
-/* ========================================================================== Base ========================================================================== */
-
-.stselect{
+	/* ========================================================================== Base ========================================================================== */
 	display: inline-flex;
 	background: var(--stgray-50);
 	border: 1px solid var(--stgray-300);
 	border-radius: 0.4rem;
 	cursor: pointer;
 	height: var(--height);
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& select{
+		border: none;
+		margin: 0;
+		background: inherit;
+		font: inherit;
+		outline: none;
+		box-sizing: border-box;
+		user-select: none;
+		border-radius: 0.4rem;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+
+		-webkit-font-smoothing: inherit;
+		-moz-osx-font-smoothing: inherit;
+		appearance: none;
+		-webkit-appearance: none;
+	}
+
+	& select:focus{
+		outline: 0;
+	}
+
+	& select,&select .content{
+		line-height: 1.5;
+		font-size: var(--stfont-size-14px);
+		color: var(--stgray-800);
+
+		padding: 0 1rem;
+		padding-right: 2.5rem;
+
+		width: 100%;
+		cursor: pointer;
+	}
+
+	& .content{
+		user-select: none;
+		display: flex;
+		gap: var(--object-distance-vertical) var(--object-distance-horizontal);
+		align-items: center;
+		width: calc(100% - 2.5rem);
+		overflow: hidden;
+	}
+
+	& .content,&select .content *{
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+
+	& .content .icon{
+		font-size: 1.1em;
+	}
+
+	& select option{
+		background: inherit;
+	}
+
+	&::after{
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		right: 1rem;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--stgray-700);
+
+		font-family: "Icons";
+		font-weight: normal;
+		font-style: normal;
+
+		text-decoration: inherit;
+		text-align: center;
+		width: 1.18em;
+		-webkit-font-smoothing: antialiased;
+		backface-visibility: hidden;
+		content: "▼";
+		font-size: 13px;
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Relaxed */
+
+	&.is-relaxed{
+		--height: var(--stinput-height-large);
+	}
+
+	/* Multiple */
+
+	&.is-multiple{
+		height: auto;
+	}
+
+	&.is-multiple::after{
+		content: none;
+	}
+
+	& select[multiple]{
+		padding: 0.5rem 0.5rem;
+		overflow-y: auto;
+	}
+
+	& select[multiple] option{
+		border-radius: 0.4rem;
+		padding: 0.3rem 0.5rem;
+		margin: 0.1rem 0;
+	}
+
+	& select[multiple] option:checked{
+		background: var(--stprimary-700);
+		color: var(--stwhite);
+	}
+
+	/* Solid */
+
+	&.is-solid{
+		background: var(--stgray-100);
+		border-color: transparent;
+	}
+
+	/* Focus */
+	&:focus-within{
+		border-color: var(--stprimary-600);
+	}
+
+	/* Underlined */
+
+	&.underline{
+		border-radius: 0.4rem 0.4rem 0 0;
+		border: 2px solid transparent;
+		background: var(--stgray-100);
+		border-bottom: 2px solid var(--stgray-400);
+	}
+
+	&.underline select option{
+		background: var(--stgray-50);
+	}
+
+	&.underline:focus-within{
+		border-bottom-color: var(--stprimary-600);
+	}
+
+	/* Active */
+
+	&.is-active{
+		border-color: var(--stprimary-600);
+	}
+
+	/* If select is-active then open child .stdropdown also */
+	&.is-active .stdropdown{
+		display: inline-flex;
+	}
+
+	&.underline.is-active{
+		border-color: transparent;
+		border-bottom-color: var(--stprimary-600);
+	}
+
+	/* Basic */
+
+	&.basic{
+		padding: 0;
+		background: transparent;
+		border-color: transparent;
+		min-height: initial;
+	}
+
+	&.basic select{
+		line-height: 1;
+		padding: 0 1.4rem 0 0;
+	}
+
+	&.basic::after{
+		right: 0;
+		font-size: 12px;
+		padding-top: 2px;
+	}
+
+	/* Disabled */
+
+	&.disabled{
+		pointer-events: none;
+		opacity: 0.5;
+		user-select: none;
+	}
+
+	/* fill */
+
+	&.fill{
+		width: 100%;
+	}
+
+	/* error */
+
+	&.error{
+		border-color: var(--stnegative-400);
+	}
+
+	&.error select{
+		color: var(--stnegative-600);
+		font-weight: 500;
+	}
+
+	&.error.underline{
+		border-color: transparent;
+		border-bottom-color: var(--stnegative-400);
+	}
+
+	/* Sizes */
+
+	&.small{
+		--height: var(--stinput-height-small);
+	}
+
+	&.large{
+		--height: var(--stinput-height-large);
+	}
+
+	&.small select{
+		font-size: var(--stfont-size-13px);
+	}
+
+	&.large select{
+		font-size: var(--stfont-size-17px);
+	}
+
+	/* Dense */
+
+	&.is-dense{
+		--height: var(--stinput-height-medium-dense);
+	}
+
+	&.is-dense.small{
+		--height: var(--stinput-height-small-dense);
+	}
+
+	&.is-dense.large{
+		--height: var(--stinput-height-large-dense);
+	}
+
+	/* Wrappable */
+
+	&.is-wrappable{
+		min-height: var(--height);
+		height: auto;
+		padding: 0.184em 0;
+	}
+
+	&.is-wrappable .content{
+		flex-wrap: wrap;
+	}
+
+	&.is-wrappable::after{
+		top: 0.5em;
+		bottom: initial;
+	}
+
+	/* ========================================================================== Enhanced ========================================================================== */
+
+	&[data-tocas="input-select"] select{
+		display: none;
+	}
+
+	&[data-tocas="input-combo"]{
+		cursor: text;
+	}
+
+	&[data-tocas="input-combo"] select{
+		display: none;
+	}
+
+	&[data-tocas="input-combo"] input.append{
+		border: 0;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		color: var(--stgray-800);
+		cursor: pointer;
+		font-size: var(--stfont-size-14px);
+		padding: 0 2.5rem 0 0.9rem;
+		width: 100%;
+		z-index: 1;
+		background: transparent;
+	}
+
+	&[data-tocas="input-combo"] .content.ghosting{
+		opacity: 0.5;
+	}
+
+	&[data-tocas="input-combo"] .content.is-hidden{
+		visibility: hidden;
+	}
 }
 
-/* ========================================================================== Structure ========================================================================== */
-
-.stselect select{
-	border: none;
-	margin: 0;
-	background: inherit;
-	font: inherit;
-	outline: none;
-	box-sizing: border-box;
-	user-select: none;
-	border-radius: 0.4rem;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-
-	-webkit-font-smoothing: inherit;
-	-moz-osx-font-smoothing: inherit;
-	appearance: none;
-	-webkit-appearance: none;
-}
-
-.stselect select:focus{
-	outline: 0;
-}
-
-.stselect select,.stselect .content{
-	line-height: 1.5;
-	font-size: var(--stfont-size-14px);
-	color: var(--stgray-800);
-
-	padding: 0 1rem;
-	padding-right: 2.5rem;
-
-	width: 100%;
-	cursor: pointer;
-}
-
-.stselect .content{
-	user-select: none;
-	display: flex;
-	gap: var(--object-distance-vertical) var(--object-distance-horizontal);
-	align-items: center;
-	width: calc(100% - 2.5rem);
-	overflow: hidden;
-}
-
-.stselect .content,.stselect .content *{
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	flex-shrink: 0;
-}
-
-.stselect .content .icon{
-	font-size: 1.1em;
-}
-
-.stselect select option{
-	background: inherit;
-}
-
-.stselect::after{
-	pointer-events: none;
-	position: absolute;
-	top: 0;
-	right: 1rem;
-	bottom: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--stgray-700);
-
-	font-family: "Icons";
-	font-weight: normal;
-	font-style: normal;
-
-	text-decoration: inherit;
-	text-align: center;
-	width: 1.18em;
-	-webkit-font-smoothing: antialiased;
-	backface-visibility: hidden;
-	content: "▼";
-	font-size: 13px;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Relaxed */
-
-.stselect.is-relaxed{
-	--height: var(--stinput-height-large);
-}
-
-/* Multiple */
-
-.stselect.is-multiple{
-	height: auto;
-}
-
-.stselect.is-multiple::after{
-	content: none;
-}
-
-.stselect select[multiple]{
-	padding: 0.5rem 0.5rem;
-	overflow-y: auto;
-}
-
-.stselect select[multiple] option{
-	border-radius: 0.4rem;
-	padding: 0.3rem 0.5rem;
-	margin: 0.1rem 0;
-}
-
-.stselect select[multiple] option:checked{
-	background: var(--stprimary-700);
-	color: var(--stwhite);
-}
-
-/* Solid */
-
-.stselect.is-solid{
-	background: var(--stgray-100);
-	border-color: transparent;
-}
-
-/* Focus */
-.stselect:focus-within{
-	border-color: var(--stprimary-600);
-}
-
-/* Underlined */
-
-.stselect.underline{
-	border-radius: 0.4rem 0.4rem 0 0;
-	border: 2px solid transparent;
-	background: var(--stgray-100);
-	border-bottom: 2px solid var(--stgray-400);
-}
-
-.stselect.underline select option{
-	background: var(--stgray-50);
-}
-
-.stselect.underline:focus-within{
-	border-bottom-color: var(--stprimary-600);
-}
-
-/* Active */
-
-.stselect.is-active{
-	border-color: var(--stprimary-600);
-}
-
-/* If select is-active then open child .stdropdown also */
-.stselect.is-active .stdropdown{
-	display: inline-flex;
-}
-
-.stselect.underline.is-active{
-	border-color: transparent;
-	border-bottom-color: var(--stprimary-600);
-}
-
-/* Basic */
-
-.stselect.basic{
-	padding: 0;
-	background: transparent;
-	border-color: transparent;
-	min-height: initial;
-}
-
-.stselect.basic select{
-	line-height: 1;
-	padding: 0 1.4rem 0 0;
-}
-
-.stselect.basic::after{
-	right: 0;
-	font-size: 12px;
-	padding-top: 2px;
-}
-
-/* Disabled */
-
-.stselect.disabled{
-	pointer-events: none;
-	opacity: 0.5;
-	user-select: none;
-}
-
-/* fill */
-
-.stselect.fill{
-	width: 100%;
-}
-
-/* error */
-
-.stselect.error{
-	border-color: var(--stnegative-400);
-}
-
-.stselect.error select{
-	color: var(--stnegative-600);
-	font-weight: 500;
-}
-
-.stselect.error.underline{
-	border-color: transparent;
-	border-bottom-color: var(--stnegative-400);
-}
-
-/* Sizes */
-
-.stselect.small{
-	--height: var(--stinput-height-small);
-}
-
-.stselect.large{
-	--height: var(--stinput-height-large);
-}
-
-.stselect.small select{
-	font-size: var(--stfont-size-13px);
-}
-
-.stselect.large select{
-	font-size: var(--stfont-size-17px);
-}
-
-/* Dense */
-
-.stselect.is-dense{
-	--height: var(--stinput-height-medium-dense);
-}
-
-.stselect.is-dense.small{
-	--height: var(--stinput-height-small-dense);
-}
-
-.stselect.is-dense.large{
-	--height: var(--stinput-height-large-dense);
-}
-
-/* Wrappable */
-
-.stselect.is-wrappable{
-	min-height: var(--height);
-	height: auto;
-	padding: 0.184em 0;
-}
-
-.stselect.is-wrappable .content{
-	flex-wrap: wrap;
-}
-
-.stselect.is-wrappable::after{
-	top: 0.5em;
-	bottom: initial;
-}
-
-/* ========================================================================== Enhanced ========================================================================== */
-
-.stselect[data-tocas="input-select"] select{
-	display: none;
-}
-
-.stselect[data-tocas="input-combo"]{
-	cursor: text;
-}
-
-.stselect[data-tocas="input-combo"] select{
-	display: none;
-}
-
-.stselect[data-tocas="input-combo"] input.append{
-	border: 0;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	color: var(--stgray-800);
-	cursor: pointer;
-	font-size: var(--stfont-size-14px);
-	padding: 0 2.5rem 0 0.9rem;
-	width: 100%;
-	z-index: 1;
-	background: transparent;
-}
-
-.stselect[data-tocas="input-combo"] .content.ghosting{
-	opacity: 0.5;
-}
-
-.stselect[data-tocas="input-combo"] .content.is-hidden{
-	visibility: hidden;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -6467,6 +6480,331 @@ label:has(.switch){
 
 /* ========================================================================== Base ========================================================================== */
 
+.table,.table:is(thead,tbody,tfoot,tr,th,td){
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 5px;
+	border: none;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: inherit;
+	vertical-align: inherit;
+	font-weight: inherit;
+	font-size: 14px;
+
+	-webkit-border-horizontal-spacing: 0;
+	-webkit-border-vertical-spacing: 0;
+	width: 100%;
+	color: inherit;
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& tr:has(th){
+		border-bottom: 1px solid var(--stgray-450);
+	}
+
+	& tr th{
+		background: var(--stgray-100);
+	}
+
+	&:is(thead,tfoot) tr th{
+		padding: 0.5rem 1rem;
+		color: var(--stgray-600);
+		font-weight: 500;
+	}
+
+	& tbody tr+tr{
+		border-top: 1px solid var(--stgray-450);
+	}
+
+	& tbody tr td{
+		padding: 5px;
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Sizes */
+
+	&.small,&.small:is(thead,tbody,tfoot,tr,th,td){
+		font-size: var(--stfont-size-13px);
+	}
+
+	&.large,&.large:is(thead,tbody,tfoot,tr,th,td){
+		font-size: var(--stfont-size-16px);
+	}
+
+	/* Collapsed */
+
+	&.is-collapsed{
+		width: auto;
+	}
+
+	&:is(th,td).is-collapsed{
+		width: 1px;
+		white-space: nowrap;
+	}
+
+	/* Truncated */
+
+	&.is-truncated{
+		table-layout: fixed;
+	}
+
+	&.is-truncated td{
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	/* Basic */
+
+	&:is(.basic,.is-very-basic) tr th{
+		background: transparent;
+	}
+
+	&.is-very-basic tbody:is(th,td,tr){
+		border-color: transparent;
+	}
+
+	/* Definition */
+
+	&.is-definition tr th:not(:first-child){
+		background: var(--stgray-100);
+	}
+
+	&.is-definition tr th:first-child{
+		background: transparent;
+	}
+
+	&.is-definition tr td:first-child{
+		background: var(--stgray-100);
+	}
+
+	/* Celled */
+
+	&.is-celled tr:is(td,th):not(:last-child){
+		border-right: 1px solid var(--stgray-300);
+	}
+
+	/* Insetted */
+
+	& td.is-insetted{
+		box-shadow: inset 0px 0px 10px 0px rgb(0 0 0 / 5%);
+	}
+
+	/* Aligns */
+
+	&:is(tr,th,td).left{
+		text-align: left;
+	}
+
+	&:is(th,td).center{
+		text-align: center;
+	}
+
+	&:is(th,td).right{
+		text-align: right;
+	}
+
+	&.is-top-aligned:is(th,td){
+		vertical-align: top;
+	}
+
+	&:is(th,td).is-top-aligned{
+		vertical-align: top;
+	}
+
+	&:is(th,td).is-middle-aligned{
+		vertical-align: middle;
+	}
+
+	& tr.is-middle-aligned td{
+		vertical-align: middle;
+	}
+
+	&:is(th,td).is-bottom-aligned{
+		vertical-align: bottom;
+	}
+
+	/* Secondary */
+
+	&:is(tr,tr th,tr td).secondary{
+		background: var(--stgray-75);
+	}
+
+	/* Tertiary */
+
+	&:is(tr,tr th,tr td).is-tertiary{
+		background: var(--stgray-100);
+	}
+
+	/* Active */
+
+	&:is(tr,tr th,tr td).is-active{
+		background: var(--stgray-300);
+	}
+
+	/* Disabled */
+
+	&:is(tr,tr th,tr td).disabled{
+		opacity: 0.5;
+		user-select: none;
+		pointer-events: none;
+	}
+
+	/* Single Line */
+
+	&.is-single-line:is(tr,tr th,tr td),&:is(tr,tr th,tr td).is-single-line{
+		white-space: nowrap;
+	}
+
+	/* Indicated */
+
+	&:is(tr,tr th,tr td).is-indicated{
+		box-shadow: 2px 0 0 var(--stgray-900) inset;
+	}
+
+	&:is(tr,tr th,tr td).is-indicated.error{
+		box-shadow: 2px 0 0 var(--stnegative-600) inset;
+	}
+
+	&:is(tr,tr th,tr td).is-indicated.is-positive{
+		box-shadow: 2px 0 0 var(--stpositive-600) inset;
+	}
+
+	&:is(tr,tr th,tr td).is-indicated.warning{
+		box-shadow: 2px 0 0 var(--stwarning-600) inset;
+	}
+
+	/* Sticked */
+
+	&.is-sticked tr *:is(td,th):first-child{
+		padding-left: 0;
+	}
+
+	&.is-sticked tr *:is(td,th):last-child{
+		padding-right: 0;
+	}
+
+	/* Density */
+
+	&.is-relaxed:is(thead,tfoot) tr th{
+		padding-top: 0.8rem;
+		padding-bottom: 0.8rem;
+	}
+
+	&.is-relaxed tbody tr td{
+		padding-top: 0.8rem;
+		padding-bottom: 0.8rem;
+	}
+
+	&.is-dense:is(thead,tfoot) tr th{
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+	}
+
+	&.is-dense tbody tr td{
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+	}
+
+	/* Compact */
+
+	&:is(thead,tfoot) tr th.is-compact{
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	&.is-compact:is(thead,tfoot) tr th{
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	&.is-compact tbody tr td{
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	& tbody tr td.is-compact{
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	/* Padded */
+
+	&.is-padded tbody tr td{
+		padding: 1rem 1.5rem;
+	}
+
+	&.is-padded:is(thead,tfoot) tr th{
+		padding: 1rem 1.5rem;
+	}
+
+	&.is-horizontally-padded tbody tr td{
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+
+	&.is-horizontally-padded:is(thead,tfoot) tr th{
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+
+	& tbody tr td.vertically-padded{
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	& tbody tr td.is-padded{
+		padding: 1rem 1.5rem;
+	}
+
+	& tbody tr td.vertically-padded{
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	& tbody tr td.is-horizontally-padded{
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+
+	/* Fitted */
+
+	&.is-fitted:is(thead,tfoot) tr th{
+		padding: 0;
+	}
+
+	&.is-fitted tbody tr td{
+		padding: 0;
+	}
+
+	& tbody tr td.is-fitted{
+		padding: 0;
+	}
+}
+
+
+
+/* stripe */
+
+.stripe>tbody>tr:nth-child(even){
+	background: var(--stgray-75);
+}
+
+/* Empty */
+
+.tdempty{
+	color: var(--stgray-300);
+	font-weight: 500;
+}
+
+.tdempty::after{
+	content: "—";
+}
+
+
 .sttable,.sttable:is(thead,tbody,tfoot,tr,th,td){
 	width: auto;
 	height: auto;
@@ -7724,14 +8062,11 @@ label:has(.switch){
 
 /* ========================================================================== Variables ========================================================================== */
 
-.stclose{
+.close{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
+	/* ========================================================================== Base ========================================================================== */
 
-/* ========================================================================== Base ========================================================================== */
-
-.stclose{
 	border: none;
 	margin: 0;
 	padding: 0;
@@ -7750,9 +8085,7 @@ label:has(.switch){
 	-moz-osx-font-smoothing: inherit;
 	appearance: none;
 	-webkit-appearance: none;
-}
 
-.stclose{
 	font-family: "Icons";
 	font-weight: normal;
 	font-style: normal;
@@ -7764,9 +8097,6 @@ label:has(.switch){
 	align-items: center;
 	justify-content: center;
 	text-decoration: none;
-
-	cursor: pointer;
-
 	cursor: pointer;
 	height: 18px;
 	width: 18px;
@@ -7775,67 +8105,68 @@ label:has(.switch){
 	background: var(--accent-color,var(--stgray-600));
 	color: var(--accent-foreground-color,var(--stgray-100));
 	border-radius: 100rem;
+
+	&::before{
+		content: "\f00d";
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Secondary */
+
+	&.secondary{
+		background: var(--stgray-300);
+		color: var(--stgray-800);
+	}
+
+	/* Tertiary */
+
+	&.is-tertiary{
+		background: var(--stgray-300);
+		color: var(--stgray-50);
+	}
+
+	/* Rounded */
+
+	&.is-rounded{
+		border-radius: 0.4rem;
+	}
+
+	/* Sizes */
+
+	&.small{
+		height: 16px;
+		width: 16px;
+	}
+
+	&.large{
+		height: 22px;
+		width: 22px;
+		font-size: var(--stfont-size-14px);
+	}
+
+	&.big{
+		height: 27px;
+		width: 27px;
+		font-size: var(--stfont-size-17px);
+	}
+
+	/* Spaced */
+
+	&.is-spaced{
+		margin-left: 0.45rem;
+		margin-right: 0.45rem;
+	}
+
+	&.is-start-spaced{
+		margin-left: 0.45rem;
+	}
+
+	&.is-end-spaced{
+		margin-right: 0.45rem;
+	}
 }
 
-.stclose::before{
-	content: "\f00d";
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Secondary */
-
-.stclose.secondary{
-	background: var(--stgray-300);
-	color: var(--stgray-800);
-}
-
-/* Tertiary */
-
-.stclose.is-tertiary{
-	background: var(--stgray-300);
-	color: var(--stgray-50);
-}
-
-/* Rounded */
-
-.stclose.is-rounded{
-	border-radius: 0.4rem;
-}
-
-/* Sizes */
-
-.stclose.small{
-	height: 16px;
-	width: 16px;
-}
-
-.stclose.large{
-	height: 22px;
-	width: 22px;
-	font-size: var(--stfont-size-14px);
-}
-
-.stclose.big{
-	height: 27px;
-	width: 27px;
-	font-size: var(--stfont-size-17px);
-}
-
-/* Spaced */
-
-.stclose.is-spaced{
-	margin-left: 0.45rem;
-	margin-right: 0.45rem;
-}
-
-.stclose.is-start-spaced{
-	margin-left: 0.45rem;
-}
-
-.stclose.is-end-spaced{
-	margin-right: 0.45rem;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -16236,3 +16567,4 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 
 /* program START */
+
