@@ -12,7 +12,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 hr{
-	border: 1px white solid;
+	border-top: 1px var(--stgray-400) solid;
 	width: 100%;
 	margin: 5px 0px;
 }
@@ -118,8 +118,8 @@ table{
 }
 
 .navigationbarselect{
-	background: var(--navbar-color);
-	color: var(--navbar-reverse-color);
+	background: var(--navbar-reverse-color);
+	color: var(--navbar-color);
 }
 
 .center{
@@ -2453,86 +2453,90 @@ button{
 
 	/* Labeled */
 
-	&:is(.is-start-labeled,.is-end-labeled,.islabel):is(&,.label){
+	&:is(.startlabele,.endlabele,.fulllabel):is(&,.label){
 		border-radius: var(--border-radius);
+		display: flex;
+		align-items: center;
+		justify-content: start;
 	}
 
-	&:is(.is-start-labeled,.is-end-labeled,.islabel) .label{
+	&:is(.startlabele,.endlabele,.fulllabel) .label{
 		line-height: 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background: var(--stgray-100);
-		padding: 0 0.6rem;
+		padding: 0 0.75rem;
 		font-size: var(--stfont-size-14px);
 		color: var(--stgray-700);
 		border: 1px solid var(--stgray-300);
+		height: var(--height);
 	}
 
-	&:is(.is-start-labeled,.islabel) .label{
+	&:is(.startlabele,.fulllabel) .label{
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 		border-right-width: 0;
 	}
 
-	&:is(.is-start-labeled,.islabel) input{
+	&:is(.startlabele,.fulllabel) input{
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 	}
 
-	&:is(.is-end-labeled,.islabel) .label{
+	&:is(.endlabele,.fulllabel) .label{
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		border-left-width: 0;
 	}
 
-	&:is(.is-end-labeled,.islabel) input{
+	&:is(.endlabele,.fulllabel) input{
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 	}
 
-	&.islabel .label:first-child{
+	&.fulllabel .label:first-child{
 		border-left-width: 1px;
 		border-top-left-radius: var(--border-radius);
 		border-bottom-left-radius: var(--border-radius);
 	}
 
-	&.islabel .label:last-child{
+	&.fulllabel .label:last-child{
 		border-right-width: 1px;
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
 	}
 
 	/* Underlined */
-	&:is(.is-start-labeled,.islabel,.is-end-labeled).underline .label{
+	&:is(.startlabel,.fulllabel,.endlabeled).underline .label{
 		border: 0;
 		border-bottom: 2px solid var(--stgray-400);
 		background: var(--stgray-200);
 	}
 
-	&:is(.is-start-labeled,.islabel).underline .label{
+	&:is(.startlabel,.fulllabel).underline .label{
 		border-bottom-left-radius: 0;
 	}
 
-	&:is(.is-end-labeled,.islabel).underline .label{
+	&:is(.endlabeled,.fulllabel).underline .label{
 		border-bottom-right-radius: 0;
 	}
 
-	&:is(.is-start-labeled,.islabel).underline input{
+	&:is(.startlabel,.fulllabel).underline input{
 		border-left: 0;
 	}
 
-	&:is(.is-end-labeled,.islabel).underline input{
+	&:is(.endlabeled,.fulllabel).underline input{
 		border-right: 0;
 	}
 
 	/* Solid */
-	&:is(.is-start-labeled,.islabel,.is-end-labeled).is-solid .label{
+	&:is(.startlabel,.fulllabel,.endlabeled).is-solid .label{
 		border-color: transparent;
 		background: var(--stgray-200);
 	}
 
-	&:is(.is-start-labeled,.islabel,.is-end-labeled).is-solid:focus-within .label{
+	&:is(.startlabel,.fulllabel,.endlabeled).is-solid:focus-within .label{
 		border-color: var(--stgray-300);
 	}
 
@@ -2839,7 +2843,7 @@ button{
 
 /* Resizable */
 
-.resizeable{
+.resize{
 	min-height: 5rem !important;
 	resize: vertical !important;
 }
@@ -2894,24 +2898,6 @@ button{
 		display: none;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* old */
@@ -4955,38 +4941,36 @@ button{
 
 /* ========================================================================== Variables ========================================================================== */
 
-.stfieldset{
+.fieldset{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
+	/* ========================================================================== Base ========================================================================== */
 
-/* ========================================================================== Base ========================================================================== */
-
-.stfieldset{
 	border: 1px solid var(--accent-color,var(--stgray-300));
 	border-radius: 0.4rem;
 	padding: 1rem;
 	padding-top: 0.5rem;
 	color: inherit;
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& legend{
+		color: var(--accent-color,var(--stgray-600));
+		padding: 0 0.7em;
+		margin-left: -0.7em;
+		font-weight: normal;
+		pointer-events: none;
+		user-select: none;
+	}
+
+	/* Dense */
+
+	&.dense{
+		padding-bottom: 0.5rem;
+		padding-top: 0.25rem;
+	}
 }
 
-/* ========================================================================== Structure ========================================================================== */
-
-.stfieldset legend{
-	color: var(--accent-color,var(--stgray-600));
-	padding: 0 0.7em;
-	margin-left: -0.7em;
-	font-weight: normal;
-	pointer-events: none;
-	user-select: none;
-}
-
-/* Dense */
-
-.stfieldset.is-dense{
-	padding-bottom: 0.5rem;
-	padding-top: 0.25rem;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -6169,7 +6153,7 @@ button{
 }
 
 label:has(.switch){
-    display: flex;
+	display: flex;
 	align-items: center;
 	user-select: none;
 	cursor: pointer;
@@ -6180,105 +6164,105 @@ label:has(.switch){
 	--accent-foreground-color: initial;
 
 	color: inherit;
-    appearance: none;
-    margin: 3px 0.5rem 0px 0px;
+	appearance: none;
+	margin: 3px 0.5rem 0px 0px;
 	user-select: none;
 	cursor: pointer;
 
-    -webkit-appearance: none;
+	-webkit-appearance: none;
 
-    &::after{
-        content: "";
-        height: 22px;
-        width: 38px;
-        background: var(--stgray-300);
-        border-radius: 100rem;
-        display: block;
-        transition: background 0.1s ease;
-    }
+	&::after{
+		content: "";
+		height: 22px;
+		width: 38px;
+		background: var(--stgray-300);
+		border-radius: 100rem;
+		display: block;
+		transition: background 0.1s ease;
+	}
 
-    &::before{
-        content: "";
-        position: absolute;
-        top: 3.5px;
-        left: 4px;
-        height: 15px;
-        width: 15px;
-        background: var(--stwhite);
-        border-radius: 100rem;
-        display: block;
-        transition: left 0.1s ease;
-        z-index: 1;
-    }
+	&::before{
+		content: "";
+		position: absolute;
+		top: 3.5px;
+		left: 4px;
+		height: 15px;
+		width: 15px;
+		background: var(--stwhite);
+		border-radius: 100rem;
+		display: block;
+		transition: left 0.1s ease;
+		z-index: 1;
+	}
 
-    &:checked::after{
-        background: var(--accent-color,var(--stprimary-700));
-    }
+	&:checked::after{
+		background: var(--accent-color,var(--stprimary-700));
+	}
 
-    &:checked::before{
-        background: var(--accent-foreground-color,var(--stwhite));
-        left: 19px;
-    }
+	&:checked::before{
+		background: var(--accent-foreground-color,var(--stwhite));
+		left: 19px;
+	}
 
-    /* ========================================================================== Variations ========================================================================== */
-    /* Disabled */
-    &.disabled{
-        opacity: 0.5;
-        pointer-events: none;
-        user-select: none;
-    }
+	/* ========================================================================== Variations ========================================================================== */
+	/* Disabled */
+	&.disabled{
+		opacity: 0.5;
+		pointer-events: none;
+		user-select: none;
+	}
 
-    /* Solo */
-    &.solo{
-        margin-right: 0;
-        margin-top: 0;
-    }
+	/* Solo */
+	&.solo{
+		margin-right: 0;
+		margin-top: 0;
+	}
 
-    /* error */
-    &.error{
-        border-radius: 100rem;
-        border: 2px solid var(--stnegative-600);
-    }
+	/* error */
+	&.error{
+		border-radius: 100rem;
+		border: 2px solid var(--stnegative-600);
+	}
 
-    /* Sizes */
-    &.small{
-        font-size: var(--stfont-size-14px);
+	/* Sizes */
+	&.small{
+		font-size: var(--stfont-size-14px);
 
-        &::after{
-            height: 19px;
-            width: 31px;
-        }
+		&::after{
+			height: 19px;
+			width: 31px;
+		}
 
-        &::before{
-            top: 3.5px;
-            height: 12px;
-            width: 12px;
-        }
+		&::before{
+			top: 3.5px;
+			height: 12px;
+			width: 12px;
+		}
 
-        &:checked::before{
-            left: 15px;
-        }
-    }
+		&:checked::before{
+			left: 15px;
+		}
+	}
 
 
-    &.large{
-        font-size: var(--stfont-size-17px);
+	&.large{
+		font-size: var(--stfont-size-17px);
 
-        &::after{
-            height: 25px;
-            width: 46px;
-        }
+		&::after{
+			height: 25px;
+			width: 46px;
+		}
 
-        &::before{
-            top: 3.5px;
-            height: 18px;
-            width: 18px;
-        }
+		&::before{
+			top: 3.5px;
+			height: 18px;
+			width: 18px;
+		}
 
-        &:checked::before{
-            left: 24px;
-        }
-    }
+		&:checked::before{
+			left: 24px;
+		}
+	}
 }
 
 /* ========================================================================== Variables ========================================================================== */
@@ -6802,336 +6786,6 @@ label:has(.switch){
 
 .tdempty::after{
 	content: "—";
-}
-
-
-.sttable,.sttable:is(thead,tbody,tfoot,tr,th,td){
-	width: auto;
-	height: auto;
-	margin: 0;
-	padding: 0;
-	border: none;
-	border-collapse: collapse;
-	border-spacing: 0;
-	border-color: inherit;
-	vertical-align: inherit;
-	font-weight: inherit;
-	font-size: 14px;
-
-	-webkit-border-horizontal-spacing: 0;
-	-webkit-border-vertical-spacing: 0;
-}
-
-.sttable{
-	width: 100%;
-	color: inherit;
-}
-
-/* ========================================================================== Structure ========================================================================== */
-
-.sttable thead tr{
-	border-bottom: 1px solid var(--stgray-450);
-}
-
-.sttable tfoot tr{
-	border-top: 1px solid var(--stgray-450);
-}
-
-.sttable tr th{
-	background: var(--stgray-100);
-}
-
-.sttable:is(thead,tfoot) tr th{
-	padding: 0.5rem 1rem;
-	color: var(--stgray-600);
-	font-weight: 500;
-}
-
-.sttable tbody tr+tr{
-	border-top: 1px solid var(--stgray-450);
-}
-
-.sttable tbody tr td{
-	padding: 0.5rem 1rem;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Sizes */
-
-.sttable.small,.sttable.small:is(thead,tbody,tfoot,tr,th,td){
-	font-size: var(--stfont-size-13px);
-}
-
-.sttable.large,.sttable.large:is(thead,tbody,tfoot,tr,th,td){
-	font-size: var(--stfont-size-16px);
-}
-
-/* Collapsed */
-
-.sttable.is-collapsed{
-	width: auto;
-}
-
-.sttable:is(th,td).is-collapsed{
-	width: 1px;
-	white-space: nowrap;
-}
-
-/* Truncated */
-
-.sttable.is-truncated{
-	table-layout: fixed;
-}
-
-.sttable.is-truncated td{
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-/* Basic */
-
-.sttable:is(.basic,.is-very-basic) tr th{
-	background: transparent;
-}
-
-.sttable.is-very-basic tbody:is(th,td,tr){
-	border-color: transparent;
-}
-
-/* Definition */
-
-.sttable.is-definition tr th:not(:first-child){
-	background: var(--stgray-100);
-}
-
-.sttable.is-definition tr th:first-child{
-	background: transparent;
-}
-
-.sttable.is-definition tr td:first-child{
-	background: var(--stgray-100);
-}
-
-/* Celled */
-
-.sttable.is-celled tr:is(td,th):not(:last-child){
-	border-right: 1px solid var(--stgray-300);
-}
-
-/* stripe */
-
-.stripe>tbody>tr:nth-child(even){
-	background: var(--stgray-75);
-}
-
-/* Empty */
-
-.tdempty{
-	color: var(--stgray-300);
-	font-weight: 500;
-}
-
-.tdempty::after{
-	content: "—";
-}
-
-/* Insetted */
-
-.sttable td.is-insetted{
-	box-shadow: inset 0px 0px 10px 0px rgb(0 0 0 / 5%);
-}
-
-/* Aligns */
-
-.sttable:is(tr,th,td).left{
-	text-align: left;
-}
-
-.sttable:is(th,td).center{
-	text-align: center;
-}
-
-.sttable:is(th,td).right{
-	text-align: right;
-}
-
-.sttable.is-top-aligned:is(th,td){
-	vertical-align: top;
-}
-
-.sttable:is(th,td).is-top-aligned{
-	vertical-align: top;
-}
-
-.sttable:is(th,td).is-middle-aligned{
-	vertical-align: middle;
-}
-
-.sttable tr.is-middle-aligned td{
-	vertical-align: middle;
-}
-
-.sttable:is(th,td).is-bottom-aligned{
-	vertical-align: bottom;
-}
-
-/* Secondary */
-
-.sttable:is(tr,tr th,tr td).secondary{
-	background: var(--stgray-75);
-}
-
-/* Tertiary */
-
-.sttable:is(tr,tr th,tr td).is-tertiary{
-	background: var(--stgray-100);
-}
-
-/* Active */
-
-.sttable:is(tr,tr th,tr td).is-active{
-	background: var(--stgray-300);
-}
-
-/* Disabled */
-
-.sttable:is(tr,tr th,tr td).disabled{
-	opacity: 0.5;
-	user-select: none;
-	pointer-events: none;
-}
-
-/* Single Line */
-
-.sttable.is-single-line:is(tr,tr th,tr td),.sttable:is(tr,tr th,tr td).is-single-line{
-	white-space: nowrap;
-}
-
-/* Indicated */
-
-.sttable:is(tr,tr th,tr td).is-indicated{
-	box-shadow: 2px 0 0 var(--stgray-900) inset;
-}
-
-.sttable:is(tr,tr th,tr td).is-indicated.error{
-	box-shadow: 2px 0 0 var(--stnegative-600) inset;
-}
-
-.sttable:is(tr,tr th,tr td).is-indicated.is-positive{
-	box-shadow: 2px 0 0 var(--stpositive-600) inset;
-}
-
-.sttable:is(tr,tr th,tr td).is-indicated.warning{
-	box-shadow: 2px 0 0 var(--stwarning-600) inset;
-}
-
-/* Sticked */
-
-.sttable.is-sticked tr *:is(td,th):first-child{
-	padding-left: 0;
-}
-
-.sttable.is-sticked tr *:is(td,th):last-child{
-	padding-right: 0;
-}
-
-/* Density */
-
-.sttable.is-relaxed:is(thead,tfoot) tr th{
-	padding-top: 0.8rem;
-	padding-bottom: 0.8rem;
-}
-
-.sttable.is-relaxed tbody tr td{
-	padding-top: 0.8rem;
-	padding-bottom: 0.8rem;
-}
-
-.sttable.is-dense:is(thead,tfoot) tr th{
-	padding-top: 0.25rem;
-	padding-bottom: 0.25rem;
-}
-
-.sttable.is-dense tbody tr td{
-	padding-top: 0.25rem;
-	padding-bottom: 0.25rem;
-}
-
-/* Compact */
-
-.sttable:is(thead,tfoot) tr th.is-compact{
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-}
-
-.sttable.is-compact:is(thead,tfoot) tr th{
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-}
-
-.sttable.is-compact tbody tr td{
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-}
-
-.sttable tbody tr td.is-compact{
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-}
-
-/* Padded */
-
-.sttable.is-padded tbody tr td{
-	padding: 1rem 1.5rem;
-}
-
-.sttable.is-padded:is(thead,tfoot) tr th{
-	padding: 1rem 1.5rem;
-}
-
-.sttable.is-horizontally-padded tbody tr td{
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-}
-
-.sttable.is-horizontally-padded:is(thead,tfoot) tr th{
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-}
-
-.sttable tbody tr td.vertically-padded{
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-}
-
-.sttable tbody tr td.is-padded{
-	padding: 1rem 1.5rem;
-}
-
-.sttable tbody tr td.vertically-padded{
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-}
-
-.sttable tbody tr td.is-horizontally-padded{
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-}
-
-/* Fitted */
-
-.sttable.is-fitted:is(thead,tfoot) tr th{
-	padding: 0;
-}
-
-.sttable.is-fitted tbody tr td{
-	padding: 0;
-}
-
-.sttable tbody tr td.is-fitted{
-	padding: 0;
 }
 
 /* ========================================================================== Variables ========================================================================== */
@@ -8069,7 +7723,7 @@ label:has(.switch){
 
 	border: none;
 	margin: 0;
-	padding: 0;
+	padding: 1px;
 	width: auto;
 	overflow: visible;
 	background: transparent;
@@ -8086,7 +7740,6 @@ label:has(.switch){
 	appearance: none;
 	-webkit-appearance: none;
 
-	font-family: "Icons";
 	font-weight: normal;
 	font-style: normal;
 	text-decoration: inherit;
@@ -8097,9 +7750,10 @@ label:has(.switch){
 	align-items: center;
 	justify-content: center;
 	text-decoration: none;
+
 	cursor: pointer;
-	height: 18px;
-	width: 18px;
+	height: 20px;
+	width: 20px;
 	font-size: var(--stfont-size-12px);
 	line-height: 1;
 	background: var(--accent-color,var(--stgray-600));
@@ -8107,62 +7761,51 @@ label:has(.switch){
 	border-radius: 100rem;
 
 	&::before{
-		content: "\f00d";
+		content: "X";
 	}
 
 	/* ========================================================================== Variations ========================================================================== */
 
 	/* Secondary */
-
 	&.secondary{
 		background: var(--stgray-300);
 		color: var(--stgray-800);
 	}
 
 	/* Tertiary */
-
-	&.is-tertiary{
+	&.tertiary{
 		background: var(--stgray-300);
 		color: var(--stgray-50);
 	}
 
 	/* Rounded */
-
-	&.is-rounded{
+	&.round{
 		border-radius: 0.4rem;
 	}
 
 	/* Sizes */
-
 	&.small{
-		height: 16px;
-		width: 16px;
-	}
-
-	&.large{
-		height: 22px;
-		width: 22px;
-		font-size: var(--stfont-size-14px);
+		height: 15px;
+		width: 15px;
 	}
 
 	&.big{
-		height: 27px;
-		width: 27px;
-		font-size: var(--stfont-size-17px);
+		height: 25px;
+		width: 25px;
+		font-size: var(--stfont-size-18px);
 	}
 
 	/* Spaced */
-
-	&.is-spaced{
+	&.space{
 		margin-left: 0.45rem;
 		margin-right: 0.45rem;
 	}
 
-	&.is-start-spaced{
+	&.startspace{
 		margin-left: 0.45rem;
 	}
 
-	&.is-end-spaced{
+	&.endspace{
 		margin-right: 0.45rem;
 	}
 }
@@ -15367,6 +15010,86 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	color: rgb(255 255 255);
 	padding: .125rem .5rem;
 	margin: .25rem 0px .25rem 0px;
+	--accent-color: initial;
+	--accent-foreground-color: initial;
+
+	/* ========================================================================== Base ========================================================================== */
+
+	font-size: var(--stfont-size-14px);
+	border-radius: 100rem;
+	padding: 0.225rem 0.5rem;
+	line-height: 1;
+	border: 1px solid transparent;
+	background: var(--accent-color,var(--stgray-800));
+	/* color: var(--accent-foreground-color,var(--stgray-50)); */
+	font-weight: 400;
+	display: inline-block;
+	white-space: nowrap;
+	text-decoration: none;
+	vertical-align: middle;
+	align-self: center;
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Secondary */
+
+	&.secondary{
+		background: var(--stgray-200);
+		color: var(--accent-color,var(--stgray-800));
+	}
+
+	/* Outlined */
+
+	&.outline{
+		background: transparent;
+		border-color: var(--stgray-300);
+		color: var(--accent-color,var(--stgray-800));
+	}
+
+	/* error */
+
+	&.error{
+		background: var(--stnegative-500);
+		color: var(--stwhite);
+	}
+
+	&.error.outline{
+		background: transparent;
+		border-color: var(--stnegative-500);
+		color: var(--stnegative-700);
+	}
+
+	/* Sizes */
+
+	&.small{
+		font-size: var(--stfont-size-12px);
+	}
+
+	&.large{
+		font-size: var(--stfont-size-16px);
+	}
+
+	/* Dense */
+
+	&.is-dense{
+		padding-top: 0.125rem;
+		padding-bottom: 0.125rem;
+	}
+
+	/* Spaced */
+
+	&.is-spaced{
+		margin-left: 0.45rem;
+		margin-right: 0.45rem;
+	}
+
+	&.is-start-spaced{
+		margin-left: 0.45rem;
+	}
+
+	&.is-end-spaced{
+		margin-right: 0.45rem;
+	}
 
 	&.primary{
 		background: rgb(67 97 238);
