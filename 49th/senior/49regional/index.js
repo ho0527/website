@@ -35,7 +35,6 @@ document.getElementById("login").onclick=function(){
             localStorage.setItem("49regionalid",data["data"]["id"])
             localStorage.setItem("49regionalpermission",data["data"]["permission"])
             localStorage.setItem("49regionaltimer",60)
-            location.href="usererror.php"
             let ajax2=new XMLHttpRequest()
             ajax2.onload=function(){
                 if(data["data"]["id"]=="a0000"){

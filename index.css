@@ -3759,148 +3759,142 @@ button{
 .radio{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
 
-/* ========================================================================== Base ========================================================================== */
+	/* ========================================================================== Base ========================================================================== */
 
-.radio{
 	display: inline-flex;
-	align-items: flex-start;
+	align-items: center;
 	cursor: pointer;
 	user-select: none;
 	color: inherit;
 	vertical-align: middle;
 	margin-top: -3px;
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& input{
+		border: none;
+		margin: 0;
+		padding: 0;
+		width: auto;
+		overflow: visible;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		line-height: normal;
+		border-radius: 0;
+		outline: none;
+		box-sizing: border-box;
+		user-select: none;
+		appearance: none;
+		min-height: 1.15rem;
+		min-width: 1.15rem;
+		border-radius: 100rem;
+		border: 1px solid var(--stgray-200);
+		background: var(--stgray-200);
+		margin-right: 5px;
+		cursor: pointer;
+
+		-webkit-font-smoothing: inherit;
+		-moz-osx-font-smoothing: inherit;
+		-webkit-appearance: none;
+
+		&:checked{
+			background: var(--accent-color,var(--stprimary-700));
+			background: var(--accent-color,var(--stprimary-700));
+		}
+
+		&:focus{
+			outline: 0;
+		}
+
+		&::after{
+			content: "●";
+			position: absolute;
+			display: none;
+			font-weight: normal;
+			font-style: normal;
+			text-decoration: inherit;
+			text-align: center;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			transform: scale(0.5);
+			z-index: 1;
+
+			align-items: center;
+			justify-content: center;
+			-webkit-font-smoothing: antialiased;
+			backface-visibility: hidden;
+			font-size: 1rem;
+			color: var(--accent-foreground-color,var(--stwhite));
+		}
+
+		&:checked::after{
+			display: flex;
+		}
+
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Disabled */
+
+	&.disabled{
+		cursor: not-allowed;
+		pointer-events: none;
+		opacity: 0.5;
+		user-select: none;
+	}
+
+	&.disabled input{
+		background: var(--stgray-200);
+		border-color: var(--stgray-200);
+	}
+
+	/* Solo */
+
+	&.solo input{
+		margin-right: 0;
+		margin-top: 0;
+	}
+
+	/* error */
+
+	&.error input{
+		border-color: var(--stnegative-600);
+		border-width: 2px;
+	}
+
+	/* Sizes */
+
+	&.small{
+		font-size: var(--stfont-size-14px);
+		& input{
+			min-height: 0.95rem;
+			min-width: 0.95rem;
+
+			&::after{
+				font-size: var(--stfont-size-14px);
+			}
+		}
+	}
+	&.large{
+		font-size: var(--stfont-size-17px);
+
+		& input{
+			min-height: 1.3rem;
+			min-width: 1.3rem;
+
+			&::after{
+				font-size: var(--stfont-size-18px);
+			}
+		}
+	}
+
 }
 
-/* ========================================================================== Structure ========================================================================== */
-
-.radio input{
-	border: none;
-	margin: 0;
-	padding: 0;
-	width: auto;
-	overflow: visible;
-	background: transparent;
-	color: inherit;
-	font: inherit;
-	line-height: normal;
-	border-radius: 0;
-	outline: none;
-	box-sizing: border-box;
-	user-select: none;
-	appearance: none;
-
-	-webkit-font-smoothing: inherit;
-	-moz-osx-font-smoothing: inherit;
-	-webkit-appearance: none;
-}
-
-.radio input{
-	min-height: 1.15rem;
-	min-width: 1.15rem;
-	margin-top: 5px;
-	border-radius: 100rem;
-	border: 1px solid var(--stgray-200);
-	background: var(--stgray-200);
-	margin-right: 0.5rem;
-	cursor: pointer;
-}
-
-.radio input:checked{
-	background: var(--accent-color,var(--stprimary-700));
-	background: var(--accent-color,var(--stprimary-700));
-}
-
-.radio input:focus{
-	outline: 0;
-}
-
-.radio input::after{
-	position: absolute;
-	display: none;
-	content: "\f111";
-	font-family: "Icons";
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: inherit;
-	text-align: center;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	transform: scale(0.5);
-	z-index: 1;
-
-	align-items: center;
-	justify-content: center;
-	-webkit-font-smoothing: antialiased;
-	backface-visibility: hidden;
-	font-size: 1rem;
-	color: var(--accent-foreground-color,var(--stwhite));
-}
-
-.radio input:checked::after{
-	display: flex;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Disabled */
-
-.radio.disabled{
-	cursor: not-allowed;
-	pointer-events: none;
-	opacity: 0.5;
-	user-select: none;
-}
-
-.radio.disabled input{
-	background: var(--stgray-200);
-	border-color: var(--stgray-200);
-}
-
-/* Solo */
-
-.radio.is-solo input{
-	margin-right: 0;
-	margin-top: 0;
-}
-
-/* error */
-
-.radio.error input{
-	border-color: var(--stnegative-600);
-	border-width: 2px;
-}
-
-/* Sizes */
-
-.radio.small input{
-	min-height: 0.95rem;
-	min-width: 0.95rem;
-}
-
-.radio.small input::after{
-	font-size: var(--stfont-size-14px);
-}
-
-.radio.small{
-	font-size: var(--stfont-size-14px);
-}
-
-.radio.large input{
-	min-height: 1.3rem;
-	min-width: 1.3rem;
-}
-
-.radio.large{
-	font-size: var(--stfont-size-17px);
-}
-
-.radio.large input::after{
-	font-size: var(--stfont-size-18px);
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -3943,129 +3937,125 @@ button{
 	}
 }
 
-.stprogress{
+.progress{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
 
-.stprogress .bar{
-	--value: 0;
-}
+	/* ========================================================================== Base ========================================================================== */
 
-/* ========================================================================== Base ========================================================================== */
-
-.stprogress{
 	display: flex;
 	border-radius: 0.4rem;
 	background: var(--stgray-300);
 	overflow: hidden;
 	min-height: 1.6rem;
 	line-height: 1;
+
+	& .bar{
+		--value: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-end;
+		background: var(--accent-color,var(--stgray-800));
+		color: var(--accent-foreground-color,var(--stgray-50));
+		padding: 0rem 0.5rem;
+		font-size: var(--stfont-size-14px);
+		border-radius: 0.4rem;
+		min-width: fit-content;
+		text-align: right;
+		transition: width 1s ease-out;
+		width: calc(var(--value) * 1%);
+		z-index: 1;
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Active */
+
+	&.active .bar::after{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		content: "";
+		background: #5a5a5a;
+		border-radius: 0.4rem;
+		animation: stprogress-active 2s cubic-bezier(0.4,0,0.2,1) infinite;
+	}
+
+	/* Empty */
+
+	&.empty .bar{
+		background: transparent;
+		color: var(--stgray-800);
+	}
+
+	/* Processing */
+
+	&.process{
+		background-size: 40px 40px;
+		background-image: linear-gradient(135deg,#9e9e9e 25%,#949494 25%,#949494 50%,#9e9e9e 50%,#9e9e9e 75%,#949494 75%,#949494 100%);
+		animation: stprogress-animation 2s linear 0s infinite;
+	}
+
+	/* Indeterminate */
+
+	&.indeterminate .bar{
+		animation: stprogress-indeterminate 2s cubic-bezier(0.4,0,0.2,1) 0s infinite;
+		width: 100% !important;
+		min-width: 0;
+	}
+
+	&.indeterminate .bar .text{
+		visibility: hidden;
+	}
+
+	/* Queried */
+
+	&.queried .bar{
+		animation: stprogress-indeterminate 2s cubic-bezier(0.4,0,0.2,1) 0s infinite;
+		animation-direction: reverse;
+		width: 100% !important;
+		min-width: 0;
+	}
+
+	&.queried .bar .text{
+		visibility: hidden;
+	}
+
+	/* Secondary */
+
+	& .bar.secondary{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		z-index: 0;
+		background: var(--stgray-400);
+		color: var(--stgray-800);
+	}
+
+	/* Sizes */
+
+	&.tiny{
+		min-height: 0.7rem;
+	}
+
+	&.tiny .bar .text{
+		font-size: 0.8em;
+	}
+
+	&.small{
+		min-height: 1.2rem;
+	}
+
+	&.small .bar .text{
+		font-size: 0.85em;
+	}
+
+	&.large .bar{
+		min-height: calc(1.75rem + 1.75rem / 4);
+	}
 }
 
-.stprogress .bar{
-	display: inline-flex;
-	align-items: center;
-	justify-content: flex-end;
-	background: var(--accent-color,var(--stgray-800));
-	color: var(--accent-foreground-color,var(--stgray-50));
-	padding: 0rem 0.5rem;
-	font-size: var(--stfont-size-14px);
-	border-radius: 0.4rem;
-	min-width: fit-content;
-	text-align: right;
-	transition: width 1s ease-out;
-	width: calc(var(--value) * 1%);
-	z-index: 1;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Active */
-
-.stprogress.is-active .bar::after{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	content: "";
-	background: #5a5a5a;
-	border-radius: 0.4rem;
-	animation: stprogress-active 2s cubic-bezier(0.4,0,0.2,1) infinite;
-}
-
-/* Empty */
-
-.stprogress.is-empty .bar{
-	background: transparent;
-	color: var(--stgray-800);
-}
-
-/* Processing */
-
-.stprogress.is-processing{
-	background-size: 40px 40px;
-	background-image: linear-gradient(135deg,#9e9e9e 25%,#949494 25%,#949494 50%,#9e9e9e 50%,#9e9e9e 75%,#949494 75%,#949494 100%);
-	animation: stprogress-animation 2s linear 0s infinite;
-}
-
-/* Indeterminate */
-
-.stprogress.is-indeterminate .bar{
-	animation: stprogress-indeterminate 2s cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	width: 100% !important;
-	min-width: 0;
-}
-
-.stprogress.is-indeterminate .bar .text{
-	visibility: hidden;
-}
-
-/* Queried */
-
-.stprogress.is-queried .bar{
-	animation: stprogress-indeterminate 2s cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	animation-direction: reverse;
-	width: 100% !important;
-	min-width: 0;
-}
-
-.stprogress.is-queried .bar .text{
-	visibility: hidden;
-}
-
-/* Secondary */
-
-.stprogress .bar.secondary{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	z-index: 0;
-	background: var(--stgray-400);
-	color: var(--stgray-800);
-}
-
-/* Sizes */
-
-.stprogress.tiny{
-	min-height: 0.7rem;
-}
-
-.stprogress.tiny .bar .text{
-	font-size: 0.8em;
-}
-
-.stprogress.small{
-	min-height: 1.2rem;
-}
-
-.stprogress.small .bar .text{
-	font-size: 0.85em;
-}
-
-.stprogress.large .bar{
-	min-height: calc(1.75rem + 1.75rem / 4);
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -5841,6 +5831,10 @@ button{
 
 	&.borderright{
 		border-right: 3px solid var(--stindicator-color);
+	}
+
+	&.border{
+		border: 3px solid var(--stindicator-color);
 	}
 
 	/* Emphasises */
@@ -15010,86 +15004,6 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 	color: rgb(255 255 255);
 	padding: .125rem .5rem;
 	margin: .25rem 0px .25rem 0px;
-	--accent-color: initial;
-	--accent-foreground-color: initial;
-
-	/* ========================================================================== Base ========================================================================== */
-
-	font-size: var(--stfont-size-14px);
-	border-radius: 100rem;
-	padding: 0.225rem 0.5rem;
-	line-height: 1;
-	border: 1px solid transparent;
-	background: var(--accent-color,var(--stgray-800));
-	/* color: var(--accent-foreground-color,var(--stgray-50)); */
-	font-weight: 400;
-	display: inline-block;
-	white-space: nowrap;
-	text-decoration: none;
-	vertical-align: middle;
-	align-self: center;
-
-	/* ========================================================================== Variations ========================================================================== */
-
-	/* Secondary */
-
-	&.secondary{
-		background: var(--stgray-200);
-		color: var(--accent-color,var(--stgray-800));
-	}
-
-	/* Outlined */
-
-	&.outline{
-		background: transparent;
-		border-color: var(--stgray-300);
-		color: var(--accent-color,var(--stgray-800));
-	}
-
-	/* error */
-
-	&.error{
-		background: var(--stnegative-500);
-		color: var(--stwhite);
-	}
-
-	&.error.outline{
-		background: transparent;
-		border-color: var(--stnegative-500);
-		color: var(--stnegative-700);
-	}
-
-	/* Sizes */
-
-	&.small{
-		font-size: var(--stfont-size-12px);
-	}
-
-	&.large{
-		font-size: var(--stfont-size-16px);
-	}
-
-	/* Dense */
-
-	&.is-dense{
-		padding-top: 0.125rem;
-		padding-bottom: 0.125rem;
-	}
-
-	/* Spaced */
-
-	&.is-spaced{
-		margin-left: 0.45rem;
-		margin-right: 0.45rem;
-	}
-
-	&.is-start-spaced{
-		margin-left: 0.45rem;
-	}
-
-	&.is-end-spaced{
-		margin-right: 0.45rem;
-	}
 
 	&.primary{
 		background: rgb(67 97 238);
