@@ -12,7 +12,7 @@ if(4<=weblsget("50nationalmodulea-permission")){
 		</div>
 	`)
 }else{
-	href("/!errorpage/403")
+	href("signin.html")
 }
 
 ajax("GET",AJAXURL+"getlog",function(event,data){

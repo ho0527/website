@@ -12,7 +12,7 @@ if(4<=weblsget("50nationalmodulea-permission")){
 		</div>
 	`)
 }else{
-	href("/!errorpage/403")
+	href("signin.html")
 }
 
 ajax("GET",AJAXURL+"getuserlist",function(event,data){
@@ -21,15 +21,30 @@ ajax("GET",AJAXURL+"getuserlist",function(event,data){
 		for(let i=0;i<row.length;i=i+1){
 			innerhtml("#main",`
 				<tr>
-					<td>${row[i]["id"]}</td>
+					<td>${row[i]["userid"]}</td>
 					<td>${row[i]["username"]}</td>
 					<td>
-						<input type="button" class="button outline" data-id="${row[i]["id"]}" value="修改">
-						<input type="button" class="button outline" data-id="${row[i]["id"]}" value="刪除">
+						<input type="button" class="button outline edit" data-id="${row[i]["userid"]}" value="修改權限">
+						<input type="button" class="button warn delete" data-id="${row[i]["userid"]}" value="刪除">
 					</td>
 				</tr>
 			`)
 		}
+
+		onclick(".delete",function(element,event){
+			if(confirm("是否確定刪除?")){
+				ajax("DELETE",AJAXURL+"deluser/"+dataset(element,"id"),function(event,data){
+					if(data["success"]){
+						alert("刪除成功!")
+						href("")
+					}else{
+						alert(ERRORMESSAGE[data["data"]])
+					}
+				},null,[
+					["Authorization","Bearer "+weblsget("50nationalmodulea-token")]
+				])
+			}
+		})
 	}else{
 		alert(ERRORMESSAGE[data["data"]])
 	}

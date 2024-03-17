@@ -222,7 +222,7 @@ docgetid("addClass").onclick=function(){
         `
     },null,false,"none")
     docgetid("close").onclick=function(){
-        closelightbox()
+        lightboxclose()
 
         docgetid("addClass").classList.remove("current")
     }
@@ -243,7 +243,7 @@ docgetid("addClass").onclick=function(){
             // 重置表單並關閉彈窗
             docgetid("newclass").reset()
 
-            closelightbox()
+            lightboxclose()
 
             docgetid("addClass").classList.remove("current")
         }else{
