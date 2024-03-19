@@ -1,4 +1,5 @@
 @import url("icon.css");
+@import url("flag.css");
 
 body{
 	font-family: "Consolas";
@@ -2853,6 +2854,7 @@ button{
 .inputround{
 	--border-radius: 100rem;
 }
+
 /* ========================================================================== Data Input ========================================================================== */
 .inputtag{
 	--border-radius: 0.4rem;
@@ -3827,7 +3829,7 @@ button{
 			justify-content: center;
 			-webkit-font-smoothing: antialiased;
 			backface-visibility: hidden;
-			font-size: 1rem;
+			font-size: 25px;
 			color: var(--accent-foreground-color,var(--stwhite));
 		}
 
@@ -4062,11 +4064,9 @@ button{
 .stbadge{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
 
-/* ========================================================================== Base ========================================================================== */
+	/* ========================================================================== Base ========================================================================== */
 
-.stbadge{
 	font-size: var(--stfont-size-14px);
 	border-radius: 100rem;
 	padding: 0.225rem 0.5rem;
@@ -4080,68 +4080,66 @@ button{
 	text-decoration: none;
 	vertical-align: middle;
 	align-self: center;
-}
 
-/* ========================================================================== Variations ========================================================================== */
+	/* ========================================================================== Variations ========================================================================== */
 
-/* Secondary */
+	/* Secondary */
 
-.stbadge.secondary{
-	background: var(--stgray-200);
-	color: var(--accent-color,var(--stgray-800));
-}
+	&.secondary{
+		background: var(--stgray-200);
+		color: var(--accent-color,var(--stgray-800));
+	}
 
-/* Outlined */
+	/* Outlined */
 
-.stbadge.outline{
-	background: transparent;
-	border-color: var(--stgray-300);
-	color: var(--accent-color,var(--stgray-800));
-}
+	&.outline{
+		background: transparent;
+		border-color: var(--stgray-300);
+		color: var(--accent-color,var(--stgray-800));
+	}
 
-/* error */
+	/* error */
 
-.stbadge.error{
-	background: var(--stnegative-500);
-	color: var(--stwhite);
-}
+	&.error{
+		background: var(--stnegative-500);
+		color: var(--stwhite);
+	}
 
-.stbadge.error.outline{
-	background: transparent;
-	border-color: var(--stnegative-500);
-	color: var(--stnegative-700);
-}
+	&.error.outline{
+		background: transparent;
+		border-color: var(--stnegative-500);
+		color: var(--stnegative-700);
+	}
 
-/* Sizes */
+	/* Sizes */
+	&.small{
+		font-size: var(--stfont-size-12px);
+	}
 
-.stbadge.small{
-	font-size: var(--stfont-size-12px);
-}
+	&.big{
+		font-size: var(--stfont-size-16px);
+	}
 
-.stbadge.large{
-	font-size: var(--stfont-size-16px);
-}
+	/* Dense */
+	&.dense{
+		padding-top: 0.125rem;
+		padding-bottom: 0.125rem;
+	}
 
-/* Dense */
+	/* Spaced */
 
-.stbadge.is-dense{
-	padding-top: 0.125rem;
-	padding-bottom: 0.125rem;
-}
+	&.space{
+		margin-left: 0.45rem;
+		margin-right: 0.45rem;
+	}
 
-/* Spaced */
+	&.startspace{
+		margin-left: 0.45rem;
+	}
 
-.stbadge.is-spaced{
-	margin-left: 0.45rem;
-	margin-right: 0.45rem;
-}
-
-.stbadge.is-start-spaced{
-	margin-left: 0.45rem;
-}
-
-.stbadge.is-end-spaced{
-	margin-right: 0.45rem;
+	&.endspace{
+		margin-right: 0.45rem;
+	}
 }
 
 /* ========================================================================== Variables ========================================================================== */
@@ -4426,7 +4424,7 @@ button{
 
 	/* Solid */
 
-	&.is-solid{
+	&.solid{
 		background: var(--stgray-100);
 		border-color: transparent;
 	}
@@ -4525,7 +4523,7 @@ button{
 		--height: var(--stinput-height-small);
 	}
 
-	&.large{
+	&.big{
 		--height: var(--stinput-height-large);
 	}
 
@@ -4533,37 +4531,37 @@ button{
 		font-size: var(--stfont-size-13px);
 	}
 
-	&.large select{
+	&.big select{
 		font-size: var(--stfont-size-17px);
 	}
 
 	/* Dense */
 
-	&.is-dense{
+	&.dense{
 		--height: var(--stinput-height-medium-dense);
 	}
 
-	&.is-dense.small{
+	&.dense.small{
 		--height: var(--stinput-height-small-dense);
 	}
 
-	&.is-dense.large{
+	&.dense.big{
 		--height: var(--stinput-height-large-dense);
 	}
 
 	/* Wrappable */
 
-	&.is-wrappable{
+	&.wrappable{
 		min-height: var(--height);
 		height: auto;
 		padding: 0.184em 0;
 	}
 
-	&.is-wrappable .content{
+	&.wrappable .content{
 		flex-wrap: wrap;
 	}
 
-	&.is-wrappable::after{
+	&.wrappable::after{
 		top: 0.5em;
 		bottom: initial;
 	}
@@ -4598,335 +4596,13 @@ button{
 		background: transparent;
 	}
 
-	&[data-tocas="input-combo"] .content.ghosting{
+	&[data-tocas="input-combo"] .content.ghost{
 		opacity: 0.5;
 	}
 
-	&[data-tocas="input-combo"] .content.is-hidden{
+	&[data-tocas="input-combo"] .content.hidden{
 		visibility: hidden;
 	}
-}
-
-
-/* ========================================================================== Variables ========================================================================== */
-
-.select{
-	--object-distance-vertical: 0.4rem;
-	--object-distance-horizontal: 0.8rem;
-
-	--height: var(--stinput-height-medium);
-}
-
-/* ========================================================================== Base ========================================================================== */
-
-.select{
-	display: inline-flex;
-	background: var(--stgray-50);
-	border: 1px solid var(--stgray-300);
-	border-radius: 0.4rem;
-	cursor: pointer;
-	height: var(--height);
-}
-
-/* ========================================================================== Structure ========================================================================== */
-
-.select select{
-	border: none;
-	margin: 0;
-	background: inherit;
-	font: inherit;
-	outline: none;
-	box-sizing: border-box;
-	user-select: none;
-	border-radius: 0.4rem;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-
-	-webkit-font-smoothing: inherit;
-	-moz-osx-font-smoothing: inherit;
-	appearance: none;
-	-webkit-appearance: none;
-}
-
-.select select:focus{
-	outline: 0;
-}
-
-.select select,.select .content{
-	line-height: 1.5;
-	font-size: var(--stfont-size-14px);
-	color: var(--stgray-800);
-
-	padding: 0 1rem;
-	padding-right: 2.5rem;
-
-	width: 100%;
-	cursor: pointer;
-}
-
-.select .content{
-	user-select: none;
-	display: flex;
-	gap: var(--object-distance-vertical) var(--object-distance-horizontal);
-	align-items: center;
-	width: calc(100% - 2.5rem);
-	overflow: hidden;
-}
-
-.select .content,.select .content *{
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	flex-shrink: 0;
-}
-
-.select .content .icon{
-	font-size: 1.1em;
-}
-
-.select select option{
-	background: inherit;
-}
-
-.select::after{
-	pointer-events: none;
-	position: absolute;
-	top: 0;
-	right: 1rem;
-	bottom: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--stgray-700);
-
-	font-family: "Icons";
-	font-weight: normal;
-	font-style: normal;
-
-	text-decoration: inherit;
-	text-align: center;
-	width: 1.18em;
-	-webkit-font-smoothing: antialiased;
-	backface-visibility: hidden;
-	content: "▼";
-	font-size: 13px;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Relaxed */
-
-.select.is-relaxed{
-	--height: var(--stinput-height-large);
-}
-
-/* Multiple */
-
-.select.is-multiple{
-	height: auto;
-}
-
-.select.is-multiple::after{
-	content: none;
-}
-
-.select select[multiple]{
-	padding: 0.5rem 0.5rem;
-	overflow-y: auto;
-}
-
-.select select[multiple] option{
-	border-radius: 0.4rem;
-	padding: 0.3rem 0.5rem;
-	margin: 0.1rem 0;
-}
-
-.select select[multiple] option:checked{
-	background: var(--stprimary-700);
-	color: var(--stwhite);
-}
-
-/* Solid */
-
-.select.is-solid{
-	background: var(--stgray-100);
-	border-color: transparent;
-}
-
-/* Focus */
-.select:focus-within{
-	border-color: var(--stprimary-600);
-}
-
-/* Underlined */
-
-.select.underline{
-	border-radius: 0.4rem 0.4rem 0 0;
-	border: 2px solid transparent;
-	background: var(--stgray-100);
-	border-bottom: 2px solid var(--stgray-400);
-}
-
-.select.underline select option{
-	background: var(--stgray-50);
-}
-
-.select.underline:focus-within{
-	border-bottom-color: var(--stprimary-600);
-}
-
-/* Active */
-
-.select.is-active{
-	border-color: var(--stprimary-600);
-}
-
-/* If select is-active then open child .stdropdown also */
-.select.is-active .stdropdown{
-	display: inline-flex;
-}
-
-.select.underline.is-active{
-	border-color: transparent;
-	border-bottom-color: var(--stprimary-600);
-}
-
-/* Basic */
-
-.select.basic{
-	padding: 0;
-	background: transparent;
-	border-color: transparent;
-	min-height: initial;
-}
-
-.select.basic select{
-	line-height: 1;
-	padding: 0 1.4rem 0 0;
-}
-
-.select.basic::after{
-	right: 0;
-	font-size: 12px;
-	padding-top: 2px;
-}
-
-/* Disabled */
-
-.select.disabled{
-	pointer-events: none;
-	opacity: 0.5;
-	user-select: none;
-}
-
-/* fill */
-
-.select.fill{
-	width: 100%;
-}
-
-/* error */
-
-.select.error{
-	border-color: var(--stnegative-400);
-}
-
-.select.error select{
-	color: var(--stnegative-600);
-	font-weight: 500;
-}
-
-.select.error.underline{
-	border-color: transparent;
-	border-bottom-color: var(--stnegative-400);
-}
-
-/* Sizes */
-
-.select.small{
-	--height: var(--stinput-height-small);
-}
-
-.select.large{
-	--height: var(--stinput-height-large);
-}
-
-.select.small select{
-	font-size: var(--stfont-size-13px);
-}
-
-.select.large select{
-	font-size: var(--stfont-size-17px);
-}
-
-/* Dense */
-
-.select.is-dense{
-	--height: var(--stinput-height-medium-dense);
-}
-
-.select.is-dense.small{
-	--height: var(--stinput-height-small-dense);
-}
-
-.select.is-dense.large{
-	--height: var(--stinput-height-large-dense);
-}
-
-/* Wrappable */
-
-.select.is-wrappable{
-	min-height: var(--height);
-	height: auto;
-	padding: 0.184em 0;
-}
-
-.select.is-wrappable .content{
-	flex-wrap: wrap;
-}
-
-.select.is-wrappable::after{
-	top: 0.5em;
-	bottom: initial;
-}
-
-/* ========================================================================== Enhanced ========================================================================== */
-
-.select[data-tocas="input-select"] select{
-	display: none;
-}
-
-.select[data-tocas="input-combo"]{
-	cursor: text;
-}
-
-.select[data-tocas="input-combo"] select{
-	display: none;
-}
-
-.select[data-tocas="input-combo"] input.append{
-	border: 0;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	color: var(--stgray-800);
-	cursor: pointer;
-	font-size: var(--stfont-size-14px);
-	padding: 0 2.5rem 0 0.9rem;
-	width: 100%;
-	z-index: 1;
-	background: transparent;
-}
-
-.select[data-tocas="input-combo"] .content.ghosting{
-	opacity: 0.5;
-}
-
-.select[data-tocas="input-combo"] .content.is-hidden{
-	visibility: hidden;
 }
 
 /* ========================================================================== Variables ========================================================================== */
@@ -5270,192 +4946,256 @@ button{
 .text{
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
 
-/* ========================================================================== Base ========================================================================== */
-
-.text{
+	/* ========================================================================== Base ========================================================================== */
 	color: var(--accent-color,inherit);
-}
 
-/* ========================================================================== Variations ========================================================================== */
+	/* ========================================================================== Variations ========================================================================== */
 
-/* Editable */
+	/* Editable */
 
-.text.is-editable{
-	text-decoration-style: dotted;
-	text-decoration-line: underline;
-	text-decoration-color: var(--stgray-400);
-	cursor: pointer;
-}
+	&.editable{
+		text-decoration-style: dotted;
+		text-decoration-line: underline;
+		text-decoration-color: var(--stgray-400);
+		cursor: pointer;
+	}
 
-/* Line Clamps */
+	/* Line Clamps */
 
-.text:is(.is-1-lines,.is-2-lines,.is-3-lines,.is-4-lines,.is-5-lines){
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	word-break: break-all;
-}
+	&:is(.is-1-lines,.is-2-lines,.is-3-lines,.is-4-lines,.is-5-lines){
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		word-break: break-all;
+	}
 
-.text.is-1-lines{
-	-webkit-line-clamp: 1;
-}
+	&.is-1-lines{
+		-webkit-line-clamp: 1;
+	}
 
-.text.is-2-lines{
-	-webkit-line-clamp: 2;
-}
+	&.is-2-lines{
+		-webkit-line-clamp: 2;
+	}
 
-.text.is-3-lines{
-	-webkit-line-clamp: 3;
-}
+	&.is-3-lines{
+		-webkit-line-clamp: 3;
+	}
 
-.text.is-4-lines{
-	-webkit-line-clamp: 4;
-}
+	&.is-4-lines{
+		-webkit-line-clamp: 4;
+	}
 
-.text.is-5-lines{
-	-webkit-line-clamp: 5;
-}
+	&.is-5-lines{
+		-webkit-line-clamp: 5;
+	}
 
-/* Secondary */
+	/* Secondary */
 
-.text.secondary{
-	color: var(--stgray-500);
-}
+	&.secondary{
+		color: var(--stgray-500);
+	}
 
-/* Bold */
+	/* Bold */
 
-.bold{
-	font-weight: bold !important;
-}
+	.bold{
+		font-weight: bold !important;
+	}
 
-/* Italic */
+	/* Italic */
 
-.text.is-italic{
-	font-style: italic !important;
-}
+	&.italic{
+		font-style: italic !important;
+	}
 
-/* Deleted */
+	/* Deleted */
 
-.text.is-deleted{
-	text-decoration: line-through !important;
-}
+	&.delete{
+		text-decoration: line-through !important;
+	}
 
-/* Underlined */
+	/* Underlined */
 
-.text.underline{
-	text-decoration: underline !important;
-}
+	&.underline{
+		text-decoration: underline !important;
+	}
 
-/* Link */
+	/* Link */
 
-.text.is-link.is-link.is-link{
-	color: var(--accent-color,var(--stlink-700));
-}
+	&.link.link.link{
+		color: var(--accent-color,var(--stlink-700));
+	}
 
-.text.is-link{
-	text-decoration: underline;
-}
+	&.link{
+		text-decoration: underline;
+	}
 
-.text.is-link:hover{
-	color: inherit;
-}
+	&.link:hover{
+		color: inherit;
+	}
 
-.text.is-link:active{
-	color: inherit;
-}
+	&.link:active{
+		color: inherit;
+	}
 
-.text.is-link:visited{
-	color: inherit;
-}
+	&.link:visited{
+		color: inherit;
+	}
 
-/* Undecorated */
+	/* Undecorated */
 
-.text.is-undecorated{
-	text-decoration: none;
-}
+	&.undecorated{
+		text-decoration: none;
+	}
 
-.text.is-undecorated:hover{
-	text-decoration: underline;
-}
+	&.undecorated:hover{
+		text-decoration: underline;
+	}
 
-/* External Link */
+	/* External Link */
 
-.text.is-external-link::after{
-	font-family: "Icons";
-	font-weight: normal;
-	font-style: normal;
-	display: inline;
-	text-decoration: inherit;
-	text-align: center;
-	width: 1.18em;
-	-webkit-font-smoothing: antialiased;
-	backface-visibility: hidden;
-	content: "\f35d";
-	font-size: 0.8em;
-	margin-left: 0.25rem;
-}
+	&.externallink::after{
+		font-family: "Icons";
+		font-weight: normal;
+		font-style: normal;
+		display: inline;
+		text-decoration: inherit;
+		text-align: center;
+		width: 1.18em;
+		-webkit-font-smoothing: antialiased;
+		backface-visibility: hidden;
+		content: "\f35d";
+		font-size: 0.8em;
+		margin-left: 0.25rem;
+	}
 
-/* Code */
+	/* Code */
+	&.code{
+		border-radius: 0.4rem;
+		background: var(--stgray-200);
+		padding: 0 0.2rem;
+		font-size: var(--stfont-size-14px);
+		color: var(--stgray-800);
+	}
 
-.text.is-code{
-	border-radius: 0.4rem;
-	background: var(--stgray-200);
-	padding: 0 0.2rem;
-	font-size: var(--stfont-size-14px);
-	color: var(--stgray-800);
-}
+	/* Mark */
+	&.mark{
+		border-radius: 0;
+		background: var(--stwarning-500);
+		padding: 0 0.25rem;
+		color: var(--stblack);
+		font-size: var(--stfont-size-14px);
+	}
 
-/* Mark */
+	/* Key */
 
-.mark{
-	border-radius: 0;
-	background: var(--stwarning-500);
-	padding: 0 0.25rem;
-	color: var(--stblack);
-	font-size: var(--stfont-size-14px);
-}
+	&.key{
+		border-radius: 0.4rem;
+		background: var(--stgray-100);
+		padding: 0 0.35rem;
+		color: var(--stgray-800);
+		border-bottom: 3px solid var(--stgray-300);
+		font-size: var(--stfont-size-14px);
+	}
 
-/* Key */
+	/* Sup */
 
-.text.is-key{
-	border-radius: 0.4rem;
-	background: var(--stgray-100);
-	padding: 0 0.35rem;
-	color: var(--stgray-800);
-	border-bottom: 3px solid var(--stgray-300);
-	font-size: var(--stfont-size-14px);
-}
+	&.sup{
+		font-size: 12px;
+		vertical-align: top;
+		opacity: 0.8;
+	}
 
-/* Sup */
+	/* Sub */
 
-.text.is-sup{
-	font-size: 12px;
-	vertical-align: top;
-	opacity: 0.8;
-}
+	&.sub{
+		font-size: 12px;
+		vertical-align: bottom;
+		opacity: 0.8;
+	}
 
-/* Sub */
+	/* Truncated */
 
-.text.is-sub{
-	font-size: 12px;
-	vertical-align: bottom;
-	opacity: 0.8;
-}
+	&.truncated{
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		display: block;
+	}
 
-/* Truncated */
+	/* Description */
 
-.text.is-truncated{
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-	display: block;
+	&.description{
+		color: var(--stgray-500);
+		font-size: var(--stfont-size-14px);
+	}
+
+	/* Disabled */
+
+	&.disabled{
+		opacity: 0.5;
+		pointer-events: none;
+		user-select: none;
+	}
+
+	/* Required */
+
+	&.require::after{
+		content: " *";
+		font-weight: bold;
+		color: var(--stnegative-600);
+	}
+
+	/* Sizes */
+	&.verytiny{
+		font-size: var(--stfont-size-10px);
+	}
+
+	&.tiny{
+		font-size: var(--stfont-size-13px);
+	}
+
+	&.small{
+		font-size: var(--stfont-size-15px);
+	}
+
+	&.medium{
+		font-size: var(--stfont-size-17px);
+	}
+
+	&.big{
+		font-size: var(--stfont-size-20px);
+	}
+
+	&.large{
+		font-size: var(--stfont-size-24px);
+	}
+
+	&.huge{
+		font-size: var(--stfont-size-30px);
+	}
+
+	&.veryhuge{
+		font-size: var(--stfont-size-35px);
+	}
+
+	&.max{
+		font-size: var(--stfont-size-45px);
+	}
+
+	/* error */
+
+	&.error{
+		color: var(--stnegative-600);
+	}
+
+	&.error.secondary{
+		color: var(--stnegative-500);
+	}
 }
 
 /* Aligns */
-
 .textcenter{
 	text-align: center !important;
 }
@@ -5468,80 +5208,6 @@ button{
 	text-align: right !important;
 }
 
-.text.is-justify-aligned{
-	text-align: justify;
-}
-
-/* Description */
-
-.text.is-description{
-	color: var(--stgray-500);
-	font-size: var(--stfont-size-14px);
-}
-
-/* Disabled */
-
-.text.disabled{
-	opacity: 0.5;
-	pointer-events: none;
-	user-select: none;
-}
-
-/* Required */
-
-.require::after{
-	content: " *";
-	font-weight: bold;
-	color: var(--stnegative-600);
-}
-
-/* Sizes */
-.text.verytiny{
-	font-size: var(--stfont-size-10px);
-}
-
-.text.tiny{
-	font-size: var(--stfont-size-13px);
-}
-
-.text.small{
-	font-size: var(--stfont-size-15px);
-}
-
-.text.medium{
-	font-size: var(--stfont-size-17px);
-}
-
-.text.big{
-	font-size: var(--stfont-size-20px);
-}
-
-.text.large{
-	font-size: var(--stfont-size-24px);
-}
-
-.text.huge{
-	font-size: var(--stfont-size-30px);
-}
-
-.text.veryhuge{
-	font-size: var(--stfont-size-35px);
-}
-
-.text.max{
-	font-size: var(--stfont-size-45px);
-}
-
-/* error */
-
-.text.error{
-	color: var(--stnegative-600);
-}
-
-.text.error.secondary{
-	color: var(--stnegative-500);
-}
-
 /* ========================================================================== Variables ========================================================================== */
 
 .sttab{
@@ -5549,218 +5215,206 @@ button{
 	--vertical-padding-multiplier: 1;
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
 
-/* ========================================================================== Base ========================================================================== */
-
-.sttab{
+	/* ========================================================================== Base ========================================================================== */
 	margin-bottom: -1px;
-	/* For border merge */
 	user-select: none;
 	display: flex;
 	flex-wrap: wrap;
 	z-index: 1;
-	/* For cover divider */
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& .item{
+		text-decoration: none;
+		color: var(--stgray-800);
+		padding: calc(0.5rem * var(--vertical-padding-multiplier)) calc(1rem * var(--horizontal-padding-multiplier));
+		display: inline-flex;
+		border-bottom: 3px solid transparent;
+		text-align: center;
+		justify-content: center;
+		cursor: pointer;
+		gap: 0.5rem;
+		line-height: 1.8;
+		align-items: center;
+	}
+
+	& .icon{
+		font-size: 1.1em;
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Active */
+	& .item.active{
+		border-bottom-color: var(--accent-color,var(--stgray-800));
+		cursor: default;
+	}
+
+	/* Disabled */
+	& .item.disabled{
+		opacity: 0.5;
+		pointer-events: none;
+		user-select: none;
+	}
+
+	/* Pilled */
+	&.pilled .item{
+		border-radius: 100rem;
+		padding: calc(0.25rem * var(--vertical-padding-multiplier)) calc(1rem * var(--horizontal-padding-multiplier));
+		border-bottom: 0;
+
+		&.active{
+			background: var(--accent-color,var(--stgray-800));
+			color: var(--accent-foreground-color,var(--stgray-50));
+		}
+	}
+
+
+	&.pilled.secondary .item.active{
+		background: var(--stgray-200);
+		color: var(--accent-color,var(--stgray-800));
+	}
+
+	/* Aligns */
+	&.left{
+		justify-content: flex-start;
+	}
+
+	&.center{
+		justify-content: center;
+	}
+
+	&.right{
+		justify-content: flex-end;
+	}
+
+	/* Indicated */
+	&.indicate{
+		gap: calc(1.6rem * var(--horizontal-padding-multiplier));
+		cursor: pointer;
+
+		& .item{
+			padding-left: 0;
+			padding-right: 0;
+
+			&.active{
+				border-bottom-color: transparent;
+
+				&::after{
+					content: "";
+					position: absolute;
+					background: var(--accent-color,var(--stgray-800));
+					bottom: -2px;
+					height: 4px;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 16px;
+					border-radius: 1rem;
+				}
+			}
+		}
+	}
+
+	/* Segmented */
+	&.segmente{
+		--height: var(--stinput-height-medium);
+
+		color: var(--stgray-700);
+		border: 1px solid var(--stgray-300);
+		border-radius: 0.4rem;
+		display: inline-flex;
+		align-items: center;
+		padding: 0 0.25rem;
+		height: var(--height);
+
+		& .item{
+			padding: 0.45rem calc(0.9rem * var(--horizontal-padding-multiplier));
+			border-radius: 0.3rem;
+			user-select: none;
+			line-height: 1;
+			border-bottom: 0;
+
+			&.active{
+				background: var(--accent-color,var(--stgray-800));
+				color: var(--accent-foreground-color,var(--stgray-50));
+			}
+		}
+
+	}
+
+
+	/* fill */
+
+	&.fill{
+		display: flex;
+
+		& .item{
+			flex: 1;
+		}
+	}
+
+
+	/* Tall */
+
+	&.tall{
+		--vertical-padding-multiplier: 1.6;
+	}
+
+	/* Sizes */
+
+	&.small .item{
+		font-size: var(--stfont-size-14px);
+	}
+
+	&.big .item{
+		font-size: var(--stfont-size-17px);
+	}
+
+	&.small.segmente{
+		--height: var(--stinput-height-small);
+	}
+
+	&.big.segmente{
+		--height: var(--stinput-height-large);
+	}
+
+	/* Dense */
+
+	&.dense .item{
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
+	}
+
+	&.dense.segmente .item{
+		padding-top: 0.35rem;
+		padding-bottom: 0.35rem;
+	}
+
+	&.dense.pilled .item{
+		padding-top: 0.05rem;
+		padding-bottom: 0.05rem;
+	}
+
+	&.segmente.dense{
+		--height: var(--stinput-height-medium-dense);
+	}
+
+	&.segmente.small.dense{
+		--height: var(--stinput-height-small-dense);
+	}
+
+	&.segmente.big.dense{
+		--height: var(--stinput-height-large-dense);
+	}
+
+	/* Relaxed */
+
+	&.relaxe{
+		--horizontal-padding-multiplier: 1.6;
+	}
 }
 
-/* ========================================================================== Structure ========================================================================== */
-
-.sttab .item{
-	text-decoration: none;
-	color: var(--stgray-800);
-	padding: calc(0.5rem * var(--vertical-padding-multiplier)) calc(1rem * var(--horizontal-padding-multiplier));
-	display: inline-flex;
-	border-bottom: 3px solid transparent;
-	text-align: center;
-	justify-content: center;
-	cursor: pointer;
-	gap: 0.5rem;
-	line-height: 1.8;
-	align-items: center;
-}
-
-.sttab .icon{
-	font-size: 1.1em;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Active */
-
-.sttab .item.is-active{
-	border-bottom-color: var(--accent-color,var(--stgray-800));
-	cursor: default;
-}
-
-/* Disabled */
-
-.sttab .item.disabled{
-	opacity: 0.5;
-	pointer-events: none;
-	user-select: none;
-}
-
-/* Evenly Divided (Use fill instead) */
-
-/*.sttab.is-evenly-divided .item{
-	 flex: 1;
- }*/
-
-/* Pilled */
-
-.sttab.is-pilled .item{
-	border-radius: 100rem;
-	padding: calc(0.25rem * var(--vertical-padding-multiplier)) calc(1rem * var(--horizontal-padding-multiplier));
-	border-bottom: 0;
-}
-
-.sttab.is-pilled .item.is-active{
-	background: var(--accent-color,var(--stgray-800));
-	color: var(--accent-foreground-color,var(--stgray-50));
-}
-
-.sttab.is-pilled.secondary .item.is-active{
-	background: var(--stgray-200);
-	color: var(--accent-color,var(--stgray-800));
-}
-
-/* Aligns */
-
-.sttab.left{
-	justify-content: flex-start;
-}
-
-.sttab.center{
-	justify-content: center;
-}
-
-.sttab.right{
-	justify-content: flex-end;
-}
-
-/* Indicated */
-
-.sttab.is-indicated{
-	gap: calc(1.6rem * var(--horizontal-padding-multiplier));
-	cursor: pointer;
-}
-
-.sttab.is-indicated .item.is-active{
-	border-bottom-color: transparent;
-}
-
-.sttab.is-indicated .item{
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.sttab.is-indicated .item.is-active::after{
-	position: absolute;
-	background: var(--accent-color,var(--stgray-800));
-	bottom: -2px;
-	content: "";
-	height: 4px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 16px;
-	border-radius: 1rem;
-}
-
-/* Segmented */
-
-.sttab.is-segmented{
-	--height: var(--stinput-height-medium);
-
-	color: var(--stgray-700);
-	border: 1px solid var(--stgray-300);
-	border-radius: 0.4rem;
-	display: inline-flex;
-	align-items: center;
-	padding: 0 0.25rem;
-	height: var(--height);
-}
-
-.sttab.is-segmented .item{
-	padding: 0.45rem calc(0.9rem * var(--horizontal-padding-multiplier));
-	border-radius: 0.3rem;
-	user-select: none;
-	line-height: 1;
-	border-bottom: 0;
-}
-
-.sttab.is-segmented .item.is-active{
-	background: var(--accent-color,var(--stgray-800));
-	color: var(--accent-foreground-color,var(--stgray-50));
-}
-
-/* fill */
-
-.sttab.fill{
-	display: flex;
-}
-
-.sttab.fill .item{
-	flex: 1;
-}
-
-/* Tall */
-
-.sttab.is-tall{
-	--vertical-padding-multiplier: 1.6;
-}
-
-/* Sizes */
-
-.sttab.small .item{
-	font-size: var(--stfont-size-14px);
-}
-
-.sttab.large .item{
-	font-size: var(--stfont-size-17px);
-}
-
-.sttab.small.is-segmented{
-	--height: var(--stinput-height-small);
-}
-
-.sttab.large.is-segmented{
-	--height: var(--stinput-height-large);
-}
-
-/* Dense */
-
-.sttab.is-dense .item{
-	padding-top: 0.25rem;
-	padding-bottom: 0.25rem;
-}
-
-.sttab.is-dense.is-segmented .item{
-	padding-top: 0.35rem;
-	padding-bottom: 0.35rem;
-}
-
-.sttab.is-dense.is-pilled .item{
-	padding-top: 0.05rem;
-	padding-bottom: 0.05rem;
-}
-
-.sttab.is-segmented.is-dense{
-	--height: var(--stinput-height-medium-dense);
-}
-
-.sttab.is-segmented.small.is-dense{
-	--height: var(--stinput-height-small-dense);
-}
-
-.sttab.is-segmented.large.is-dense{
-	--height: var(--stinput-height-large-dense);
-}
-
-/* Relaxed */
-
-.sttab.is-relaxed{
-	--horizontal-padding-multiplier: 1.6;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -5831,10 +5485,6 @@ button{
 
 	&.borderright{
 		border-right: 3px solid var(--stindicator-color);
-	}
-
-	&.border{
-		border: 3px solid var(--stindicator-color);
 	}
 
 	/* Emphasises */
@@ -6331,11 +5981,9 @@ label:has(.switch){
 	--height: var(--stinput-height-medium);
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
 
-/* ========================================================================== Base ========================================================================== */
+	/* ========================================================================== Base ========================================================================== */
 
-.selection{
 	border: 1px solid var(--stgray-100);
 	border-radius: 0.4rem;
 	padding: 0 0.35rem;
@@ -6344,115 +5992,119 @@ label:has(.switch){
 	box-sizing: border-box;
 	height: var(--height);
 	align-items: center;
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& .item{
+		display: flex;
+
+		& .text{
+			display: inline-flex;
+			padding: 0.25rem 1rem;
+			border-radius: 0.3rem;
+			font-size: var(--stabsolute-small);
+			color: var(--stgray-800);
+			border-color: var(--stgray-100);
+			user-select: none;
+			cursor: pointer;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			line-height: 1.5;
+		}
+	}
+
+
+	& .item input{
+		display: none;
+	}
+
+	& input:checked+.text{
+		background: var(--accent-color,var(--stprimary-700));
+		border-color: var(--accent-color,var(--stprimary-700));
+		color: var(--accent-foreground-color,var(--stwhite));
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Disabled */
+
+	&.disabled{
+		pointer-events: none;
+		opacity: 0.5;
+		user-select: none;
+	}
+
+	& .item.disabled{
+		pointer-events: none;
+		opacity: 0.5;
+		user-select: none;
+	}
+
+	/* Circular */
+
+	&.round{
+		border-radius: 100rem;
+	}
+
+	&.round .item .text{
+		border-radius: 100rem;
+	}
+
+	/* fill */
+
+	&.fill{
+		width: 100%;
+
+		& .item{
+			flex: 1;
+
+			& .text{
+				width: 100%;
+			}
+		}
+
+	}
+
+
+	/* Sizes */
+
+	&.small{
+		--height: var(--stinput-height-small);
+
+		& .item .text{
+			font-size: var(--stfont-size-13px);
+		}
+	}
+
+	&.big{
+		--height: var(--stinput-height-large);
+
+		& .item .text{
+			font-size: var(--stfont-size-17px);
+		}
+	}
+
+	/* Dense */
+	&.dense{
+		--height: var(--stinput-height-medium-dense);
+
+		&.small{
+			--height: var(--stinput-height-small-dense);
+		}
+
+		&.big{
+			--height: var(--stinput-height-large-dense);
+		}
+
+		& .item .text{
+			padding-top: 0.1rem;
+			padding-bottom: 0.1rem;
+		}
+	}
+
 }
 
-/* ========================================================================== Structure ========================================================================== */
-
-.selection .item{
-	display: flex;
-}
-
-.selection .item .text{
-	display: inline-flex;
-	padding: 0.25rem 1rem;
-	border-radius: 0.3rem;
-	font-size: var(--stabsolute-small);
-	color: var(--stgray-800);
-	border-color: var(--stgray-100);
-	user-select: none;
-	cursor: pointer;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	line-height: 1.5;
-}
-
-.selection .item input{
-	display: none;
-}
-
-.selection input:checked+.text{
-	background: var(--accent-color,var(--stprimary-700));
-	border-color: var(--accent-color,var(--stprimary-700));
-	color: var(--accent-foreground-color,var(--stwhite));
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Disabled */
-
-.selection.disabled{
-	pointer-events: none;
-	opacity: 0.5;
-	user-select: none;
-}
-
-.selection .item.disabled{
-	pointer-events: none;
-	opacity: 0.5;
-	user-select: none;
-}
-
-/* Circular */
-
-.selectionround{
-	border-radius: 100rem;
-}
-
-.selectionround .item .text{
-	border-radius: 100rem;
-}
-
-/* fill */
-
-.selection.fill{
-	width: 100%;
-}
-
-.selection.fill .item{
-	flex: 1;
-}
-
-.selection.fill .item .text{
-	width: 100%;
-}
-
-/* Sizes */
-
-.selection.small{
-	--height: var(--stinput-height-small);
-}
-
-.selection.small .item .text{
-	font-size: var(--stfont-size-13px);
-}
-
-.selection.large{
-	--height: var(--stinput-height-large);
-}
-
-.selection.large .item .text{
-	font-size: var(--stfont-size-17px);
-}
-
-/* Dense */
-
-.selection.is-dense{
-	--height: var(--stinput-height-medium-dense);
-}
-
-.selection.is-dense.small{
-	--height: var(--stinput-height-small-dense);
-}
-
-.selection.is-dense.small{
-	--height: var(--stinput-height-large-dense);
-}
-
-.selection.is-dense .item .text{
-	padding-top: 0.1rem;
-	padding-bottom: 0.1rem;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
@@ -6762,8 +6414,6 @@ label:has(.switch){
 		padding: 0;
 	}
 }
-
-
 
 /* stripe */
 
@@ -8033,2163 +7683,6 @@ label:has(.switch){
 
 .stlist.large{
 	font-size: var(--stfont-size-17px);
-}
-
-/* ========================================================================== https://flagicons.lipis.dev/ ========================================================================== */
-
-/* ========================================================================== Variables ========================================================================== */
-
-/* ========================================================================== Base ========================================================================== */
-
-.stflag{
-	display: inline-block;
-
-	background-size: contain;
-	background-position: 50%;
-	background-repeat: no-repeat;
-
-	vertical-align: middle;
-	text-decoration: inherit;
-	backface-visibility: hidden;
-	text-decoration: none;
-
-	background-size: cover;
-	box-sizing: border-box;
-
-	width: calc(4 / 3 * 1.05rem);
-	height: 1.05rem;
-}
-
-/* ========================================================================== Structure ========================================================================== */
-
-/* Section header */
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Sizes */
-
-.stflag.small{
-	width: calc(4 / 3 * 0.95rem);
-	height: 0.95rem;
-}
-
-.stflag.large{
-	width: calc(4 / 3 * 1.2rem);
-	height: 1.2rem;
-}
-
-.stflag.small:is(.is-squared,round){
-	width: 0.95rem;
-	height: 0.95rem;
-}
-
-.stflag:is(.is-squared,round){
-	width: 1.05rem;
-	height: 1.05rem;
-}
-
-.stflag.large:is(.is-squared,round){
-	width: 1.2rem;
-	height: 1.2rem;
-}
-
-/* Rounded */
-
-.stflag.is-rounded{
-	border-radius: 0.2rem;
-}
-
-/* Bordered */
-
-.stflag.is-bordered{
-	box-shadow: 0 0 0 1px rgb(0 0 0 / 12%);
-	/*var(--stgray-300)*/
-}
-
-/* Circular */
-
-.stflaground{
-	border-radius: 100rem;
-}
-
-/* Disabled */
-
-.stflag.disabled{
-	opacity: 0.5;
-	user-select: none;
-}
-
-/* Spaced */
-
-.stflag.is-spaced{
-	margin-left: 0.45rem;
-	margin-right: 0.45rem;
-}
-
-.stflag.is-start-spaced{
-	margin-left: 0.45rem;
-}
-
-.stflag.is-end-spaced{
-	margin-right: 0.45rem;
-}
-
-/* ========================================================================== Countires ========================================================================== */
-
-.stflag:is(.is-ad-flag,.is-andorra-flag){
-	background-image: url("./flags/4x3/ad.svg");
-}
-
-.stflag:is(.is-ad-flag,.is-andorra-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ad.svg");
-}
-
-.stflag:is(.is-ae-flag,.is-uae-flag,.is-united-arab-emirates-flag){
-	background-image: url("./flags/4x3/ae.svg");
-}
-
-.stflag:is(.is-ae-flag,.is-uae-flag,.is-united-arab-emirates-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ae.svg");
-}
-
-.stflag:is(.is-af-flag,.is-afghanistan-flag){
-	background-image: url("./flags/4x3/af.svg");
-}
-
-.stflag:is(.is-af-flag,.is-afghanistan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/af.svg");
-}
-
-.stflag:is(.is-ag-flag,.is-antigua-flag){
-	background-image: url("./flags/4x3/ag.svg");
-}
-
-.stflag:is(.is-ag-flag,.is-antigua-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ag.svg");
-}
-
-.stflag:is(.is-ai-flag,.is-anguilla-flag){
-	background-image: url("./flags/4x3/ai.svg");
-}
-
-.stflag:is(.is-ai-flag,.is-anguilla-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ai.svg");
-}
-
-.stflag:is(.is-al-flag,.is-albania-flag){
-	background-image: url("./flags/4x3/al.svg");
-}
-
-.stflag:is(.is-al-flag,.is-albania-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/al.svg");
-}
-
-.stflag:is(.is-am-flag,.is-armenia-flag){
-	background-image: url("./flags/4x3/am.svg");
-}
-
-.stflag:is(.is-am-flag,.is-armenia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/am.svg");
-}
-
-.stflag:is(.is-ao-flag,.is-angola-flag){
-	background-image: url("./flags/4x3/ao.svg");
-}
-
-.stflag:is(.is-ao-flag,.is-angola-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ao.svg");
-}
-
-.stflag:is(.is-aq-flag,.is-antarctica-flag){
-	background-image: url("./flags/4x3/aq.svg");
-}
-
-.stflag:is(.is-aq-flag,.is-antarctica-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/aq.svg");
-}
-
-.stflag:is(.is-ar-flag,.is-argentina-flag){
-	background-image: url("./flags/4x3/ar.svg");
-}
-
-.stflag:is(.is-ar-flag,.is-argentina-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ar.svg");
-}
-
-.stflag:is(.is-as-flag,.is-american-samoa-flag){
-	background-image: url("./flags/4x3/as.svg");
-}
-
-.stflag:is(.is-as-flag,.is-american-samoa-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/as.svg");
-}
-
-.stflag:is(.is-at-flag,.is-austria-flag){
-	background-image: url("./flags/4x3/at.svg");
-}
-
-.stflag:is(.is-at-flag,.is-austria-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/at.svg");
-}
-
-.stflag:is(.is-au-flag,.is-australia-flag){
-	background-image: url("./flags/4x3/au.svg");
-}
-
-.stflag:is(.is-au-flag,.is-australia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/au.svg");
-}
-
-.stflag:is(.is-aw-flag,.is-aruba-flag){
-	background-image: url("./flags/4x3/aw.svg");
-}
-
-.stflag:is(.is-aw-flag,.is-aruba-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/aw.svg");
-}
-
-.stflag:is(.is-ax-flag,.is-aland-islands-flag){
-	background-image: url("./flags/4x3/ax.svg");
-}
-
-.stflag:is(.is-ax-flag,.is-aland-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ax.svg");
-}
-
-.stflag:is(.is-az-flag,.is-azerbaijan-flag){
-	background-image: url("./flags/4x3/az.svg");
-}
-
-.stflag:is(.is-az-flag,.is-azerbaijan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/az.svg");
-}
-
-.stflag:is(.is-ba-flag,.is-bosnia-flag){
-	background-image: url("./flags/4x3/ba.svg");
-}
-
-.stflag:is(.is-ba-flag,.is-bosnia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ba.svg");
-}
-
-.stflag:is(.is-bb-flag,.is-barbados-flag){
-	background-image: url("./flags/4x3/bb.svg");
-}
-
-.stflag:is(.is-bb-flag,.is-barbados-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bb.svg");
-}
-
-.stflag:is(.is-bd-flag,.is-bangladesh-flag){
-	background-image: url("./flags/4x3/bd.svg");
-}
-
-.stflag:is(.is-bd-flag,.is-bangladesh-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bd.svg");
-}
-
-.stflag:is(.is-be-flag,.is-belgium-flag){
-	background-image: url("./flags/4x3/be.svg");
-}
-
-.stflag:is(.is-be-flag,.is-belgium-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/be.svg");
-}
-
-.stflag:is(.is-bf-flag,.is-burkina-faso-flag){
-	background-image: url("./flags/4x3/bf.svg");
-}
-
-.stflag:is(.is-bf-flag,.is-burkina-faso-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bf.svg");
-}
-
-.stflag:is(.is-bg-flag,.is-bulgaria-flag){
-	background-image: url("./flags/4x3/bg.svg");
-}
-
-.stflag:is(.is-bg-flag,.is-bulgaria-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bg.svg");
-}
-
-.stflag:is(.is-bh-flag,.is-bahrain-flag){
-	background-image: url("./flags/4x3/bh.svg");
-}
-
-.stflag:is(.is-bh-flag,.is-bahrain-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bh.svg");
-}
-
-.stflag:is(.is-bi-flag,.is-burundi-flag){
-	background-image: url("./flags/4x3/bi.svg");
-}
-
-.stflag:is(.is-bi-flag,.is-burundi-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bi.svg");
-}
-
-.stflag:is(.is-bj-flag,.is-benin-flag){
-	background-image: url("./flags/4x3/bj.svg");
-}
-
-.stflag:is(.is-bj-flag,.is-benin-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bj.svg");
-}
-
-.stflag:is(.is-bl-flag,.is-saint-barthélemy-flag,.is-saint-barthelemy-flag){
-	background-image: url("./flags/4x3/bl.svg");
-}
-
-.stflag:is(.is-bl-flag,.is-saint-barthélemy-flag,.is-saint-barthelemy-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bl.svg");
-}
-
-.stflag:is(.is-bm-flag,.is-bermuda-flag){
-	background-image: url("./flags/4x3/bm.svg");
-}
-
-.stflag:is(.is-bm-flag,.is-bermuda-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bm.svg");
-}
-
-.stflag:is(.is-bn-flag,.is-brunei-flag){
-	background-image: url("./flags/4x3/bn.svg");
-}
-
-.stflag:is(.is-bn-flag,.is-brunei-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bn.svg");
-}
-
-.stflag:is(.is-bo-flag,.is-bolivia-flag){
-	background-image: url("./flags/4x3/bo.svg");
-}
-
-.stflag:is(.is-bo-flag,.is-bolivia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bo.svg");
-}
-
-.stflag:is(.is-bq-flag,.is-caribbean-netherlands-flag){
-	background-image: url("./flags/4x3/bq.svg");
-}
-
-.stflag:is(.is-bq-flag,.is-caribbean-netherlands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bq.svg");
-}
-
-.stflag:is(.is-br-flag,.is-brazil-flag){
-	background-image: url("./flags/4x3/br.svg");
-}
-
-.stflag:is(.is-br-flag,.is-brazil-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/br.svg");
-}
-
-.stflag:is(.is-bs-flag,.is-bahamas-flag){
-	background-image: url("./flags/4x3/bs.svg");
-}
-
-.stflag:is(.is-bs-flag,.is-bahamas-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bs.svg");
-}
-
-.stflag:is(.is-bt-flag,.is-bhutan-flag){
-	background-image: url("./flags/4x3/bt.svg");
-}
-
-.stflag:is(.is-bt-flag,.is-bhutan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bt.svg");
-}
-
-.stflag:is(.is-bv-flag,.is-bouvet-island-flag){
-	background-image: url("./flags/4x3/bv.svg");
-}
-
-.stflag:is(.is-bv-flag,.is-bouvet-island-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bv.svg");
-}
-
-.stflag:is(.is-bw-flag,.is-botswana-flag){
-	background-image: url("./flags/4x3/bw.svg");
-}
-
-.stflag:is(.is-bw-flag,.is-botswana-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bw.svg");
-}
-
-.stflag:is(.is-by-flag,.is-belarus-flag){
-	background-image: url("./flags/4x3/by.svg");
-}
-
-.stflag:is(.is-by-flag,.is-belarus-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/by.svg");
-}
-
-.stflag:is(.is-bz-flag,.is-belize-flag){
-	background-image: url("./flags/4x3/bz.svg");
-}
-
-.stflag:is(.is-bz-flag,.is-belize-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/bz.svg");
-}
-
-.stflag:is(.is-ca-flag,.is-canada-flag){
-	background-image: url("./flags/4x3/ca.svg");
-}
-
-.stflag:is(.is-ca-flag,.is-canada-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ca.svg");
-}
-
-.stflag:is(.is-cc-flag,.is-cocos-islands-flag){
-	background-image: url("./flags/4x3/cc.svg");
-}
-
-.stflag:is(.is-cc-flag,.is-cocos-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cc.svg");
-}
-
-.stflag:is(.is-cd-flag,.is-congo-flag){
-	background-image: url("./flags/4x3/cd.svg");
-}
-
-.stflag:is(.is-cd-flag,.is-congo-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cd.svg");
-}
-
-.stflag:is(.is-cf-flag,.is-central-african-republic-flag){
-	background-image: url("./flags/4x3/cf.svg");
-}
-
-.stflag:is(.is-cf-flag,.is-central-african-republic-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cf.svg");
-}
-
-.stflag:is(.is-cg-flag,.is-congo-brazzaville-flag){
-	background-image: url("./flags/4x3/cg.svg");
-}
-
-.stflag:is(.is-cg-flag,.is-congo-brazzaville-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cg.svg");
-}
-
-.stflag:is(.is-ch-flag,.is-switzerland-flag){
-	background-image: url("./flags/4x3/ch.svg");
-}
-
-.stflag:is(.is-ch-flag,.is-switzerland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ch.svg");
-}
-
-.stflag:is(.is-ci-flag,.is-cote-divoire-flag){
-	background-image: url("./flags/4x3/ci.svg");
-}
-
-.stflag:is(.is-ci-flag,.is-cote-divoire-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ci.svg");
-}
-
-.stflag:is(.is-ck-flag,.is-cook-islands-flag){
-	background-image: url("./flags/4x3/ck.svg");
-}
-
-.stflag:is(.is-ck-flag,.is-cook-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ck.svg");
-}
-
-.stflag:is(.is-cl-flag,.is-chile-flag){
-	background-image: url("./flags/4x3/cl.svg");
-}
-
-.stflag:is(.is-cl-flag,.is-chile-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cl.svg");
-}
-
-.stflag:is(.is-cm-flag,.is-cameroon-flag){
-	background-image: url("./flags/4x3/cm.svg");
-}
-
-.stflag:is(.is-cm-flag,.is-cameroon-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cm.svg");
-}
-
-.stflag:is(.is-cn-flag,.is-china-flag,.is-peoples-republic-of-china-flag){
-	background-image: url("./flags/4x3/cn.svg");
-}
-
-.stflag:is(.is-cn-flag,.is-china-flag,.is-peoples-republic-of-china-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cn.svg");
-}
-
-.stflag:is(.is-co-flag,.is-colombia-flag){
-	background-image: url("./flags/4x3/co.svg");
-}
-
-.stflag:is(.is-co-flag,.is-colombia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/co.svg");
-}
-
-.stflag:is(.is-cr-flag,.is-costa-rica-flag){
-	background-image: url("./flags/4x3/cr.svg");
-}
-
-.stflag:is(.is-cr-flag,.is-costa-rica-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cr.svg");
-}
-
-.stflag:is(.is-cu-flag,.is-cuba-flag){
-	background-image: url("./flags/4x3/cu.svg");
-}
-
-.stflag:is(.is-cu-flag,.is-cuba-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cu.svg");
-}
-
-.stflag:is(.is-cv-flag,.is-cape-verde-flag){
-	background-image: url("./flags/4x3/cv.svg");
-}
-
-.stflag:is(.is-cv-flag,.is-cape-verde-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cv.svg");
-}
-
-.stflag:is(.is-cw-flag,.is-curaçao-flag,.is-curacao-flag){
-	background-image: url("./flags/4x3/cw.svg");
-}
-
-.stflag:is(.is-cw-flag,.is-curaçao-flag,.is-curacao-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cw.svg");
-}
-
-.stflag:is(.is-cx-flag,.is-christmas-island-flag){
-	background-image: url("./flags/4x3/cx.svg");
-}
-
-.stflag:is(.is-cx-flag,.is-christmas-island-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cx.svg");
-}
-
-.stflag:is(.is-cy-flag,.is-cyprus-flag){
-	background-image: url("./flags/4x3/cy.svg");
-}
-
-.stflag:is(.is-cy-flag,.is-cyprus-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cy.svg");
-}
-
-.stflag:is(.is-cz-flag,.is-czech-republic-flag){
-	background-image: url("./flags/4x3/cz.svg");
-}
-
-.stflag:is(.is-cz-flag,.is-czech-republic-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/cz.svg");
-}
-
-.stflag:is(.is-de-flag,.is-germany-flag){
-	background-image: url("./flags/4x3/de.svg");
-}
-
-.stflag:is(.is-de-flag,.is-germany-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/de.svg");
-}
-
-.stflag:is(.is-dj-flag,.is-djibouti-flag){
-	background-image: url("./flags/4x3/dj.svg");
-}
-
-.stflag:is(.is-dj-flag,.is-djibouti-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/dj.svg");
-}
-
-.stflag:is(.is-dk-flag,.is-denmark-flag){
-	background-image: url("./flags/4x3/dk.svg");
-}
-
-.stflag:is(.is-dk-flag,.is-denmark-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/dk.svg");
-}
-
-.stflag:is(.is-dm-flag,.is-dominica-flag){
-	background-image: url("./flags/4x3/dm.svg");
-}
-
-.stflag:is(.is-dm-flag,.is-dominica-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/dm.svg");
-}
-
-.stflag:is(.is-do-flag,.is-dominican-republic-flag){
-	background-image: url("./flags/4x3/do.svg");
-}
-
-.stflag:is(.is-do-flag,.is-dominican-republic-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/do.svg");
-}
-
-.stflag:is(.is-dz-flag,.is-algeria-flag){
-	background-image: url("./flags/4x3/dz.svg");
-}
-
-.stflag:is(.is-dz-flag,.is-algeria-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/dz.svg");
-}
-
-.stflag:is(.is-ec-flag,.is-ecuador-flag){
-	background-image: url("./flags/4x3/ec.svg");
-}
-
-.stflag:is(.is-ec-flag,.is-ecuador-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ec.svg");
-}
-
-.stflag:is(.is-ee-flag,.is-estonia-flag){
-	background-image: url("./flags/4x3/ee.svg");
-}
-
-.stflag:is(.is-ee-flag,.is-estonia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ee.svg");
-}
-
-.stflag:is(.is-eg-flag,.is-egypt-flag){
-	background-image: url("./flags/4x3/eg.svg");
-}
-
-.stflag:is(.is-eg-flag,.is-egypt-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/eg.svg");
-}
-
-.stflag:is(.is-eh-flag,.is-western-sahara-flag){
-	background-image: url("./flags/4x3/eh.svg");
-}
-
-.stflag:is(.is-eh-flag,.is-western-sahara-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/eh.svg");
-}
-
-.stflag:is(.is-er-flag,.is-eritrea-flag){
-	background-image: url("./flags/4x3/er.svg");
-}
-
-.stflag:is(.is-er-flag,.is-eritrea-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/er.svg");
-}
-
-.stflag:is(.is-es-flag,.is-spain-flag){
-	background-image: url("./flags/4x3/es.svg");
-}
-
-.stflag:is(.is-es-flag,.is-spain-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/es.svg");
-}
-
-.stflag:is(.is-es-ct-flag,.is-scotland-flag){
-	background-image: url("./flags/4x3/es-ct.svg");
-}
-
-.stflag:is(.is-es-ct-flag,.is-scotland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/es-ct.svg");
-}
-
-.stflag:is(.is-et-flag,.is-ethiopia-flag){
-	background-image: url("./flags/4x3/et.svg");
-}
-
-.stflag:is(.is-et-flag,.is-ethiopia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/et.svg");
-}
-
-.stflag:is(.is-eu-flag,.is-european-union-flag){
-	background-image: url("./flags/4x3/eu.svg");
-}
-
-.stflag:is(.is-eu-flag,.is-european-union-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/eu.svg");
-}
-
-.stflag:is(.is-fi-flag,.is-finland-flag){
-	background-image: url("./flags/4x3/fi.svg");
-}
-
-.stflag:is(.is-fi-flag,.is-finland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/fi.svg");
-}
-
-.stflag:is(.is-fj-flag,.is-fiji-flag){
-	background-image: url("./flags/4x3/fj.svg");
-}
-
-.stflag:is(.is-fj-flag,.is-fiji-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/fj.svg");
-}
-
-.stflag:is(.is-fk-flag,.is-falkland-islands-flag){
-	background-image: url("./flags/4x3/fk.svg");
-}
-
-.stflag:is(.is-fk-flag,.is-falkland-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/fk.svg");
-}
-
-.stflag:is(.is-fm-flag,.is-micronesia-flag){
-	background-image: url("./flags/4x3/fm.svg");
-}
-
-.stflag:is(.is-fm-flag,.is-micronesia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/fm.svg");
-}
-
-.stflag:is(.is-fo-flag,.is-faroe-islands-flag){
-	background-image: url("./flags/4x3/fo.svg");
-}
-
-.stflag:is(.is-fo-flag,.is-faroe-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/fo.svg");
-}
-
-.stflag:is(.is-fr-flag,.is-france-flag){
-	background-image: url("./flags/4x3/fr.svg");
-}
-
-.stflag:is(.is-fr-flag,.is-france-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/fr.svg");
-}
-
-.stflag:is(.is-ga-flag,.is-gabon-flag){
-	background-image: url("./flags/4x3/ga.svg");
-}
-
-.stflag:is(.is-ga-flag,.is-gabon-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ga.svg");
-}
-
-.stflag:is(.is-gb-flag,.is-united-kingdom-flag){
-	background-image: url("./flags/4x3/gb.svg");
-}
-
-.stflag:is(.is-gb-flag,.is-united-kingdom-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gb.svg");
-}
-
-.stflag:is(.is-gb-eng-flag,.is-england-flag){
-	background-image: url("./flags/4x3/gb-eng.svg");
-}
-
-.stflag:is(.is-gb-eng-flag,.is-england-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gb-eng.svg");
-}
-
-.stflag:is(.is-gb-nir-flag,.is-northern-ireland-flag){
-	background-image: url("./flags/4x3/gb-nir.svg");
-}
-
-.stflag:is(.is-gb-nir-flag,.is-northern-ireland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gb-nir.svg");
-}
-
-.stflag:is(.is-gb-sct-flag,.is-scotland-flag){
-	background-image: url("./flags/4x3/gb-sct.svg");
-}
-
-.stflag:is(.is-gb-sct-flag,.is-scotland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gb-sct.svg");
-}
-
-.stflag:is(.is-gb-wls-flag,.is-wales-flag){
-	background-image: url("./flags/4x3/gb-wls.svg");
-}
-
-.stflag:is(.is-gb-wls-flag,.is-wales-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gb-wls.svg");
-}
-
-.stflag:is(.is-gd-flag,.is-grenada-flag){
-	background-image: url("./flags/4x3/gd.svg");
-}
-
-.stflag:is(.is-gd-flag,.is-grenada-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gd.svg");
-}
-
-.stflag:is(.is-ge-flag,.is-georgia-flag){
-	background-image: url("./flags/4x3/ge.svg");
-}
-
-.stflag:is(.is-ge-flag,.is-georgia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ge.svg");
-}
-
-.stflag:is(.is-gf-flag,.is-french-guiana-flag){
-	background-image: url("./flags/4x3/gf.svg");
-}
-
-.stflag:is(.is-gf-flag,.is-french-guiana-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gf.svg");
-}
-
-.stflag:is(.is-gg-flag,.is-guernsey-flag){
-	background-image: url("./flags/4x3/gg.svg");
-}
-
-.stflag:is(.is-gg-flag,.is-guernsey-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gg.svg");
-}
-
-.stflag:is(.is-gh-flag,.is-ghana-flag){
-	background-image: url("./flags/4x3/gh.svg");
-}
-
-.stflag:is(.is-gh-flag,.is-ghana-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gh.svg");
-}
-
-.stflag:is(.is-gi-flag,.is-gibraltar-flag){
-	background-image: url("./flags/4x3/gi.svg");
-}
-
-.stflag:is(.is-gi-flag,.is-gibraltar-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gi.svg");
-}
-
-.stflag:is(.is-gl-flag,.is-greenland-flag){
-	background-image: url("./flags/4x3/gl.svg");
-}
-
-.stflag:is(.is-gl-flag,.is-greenland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gl.svg");
-}
-
-.stflag:is(.is-gm-flag,.is-gambia-flag){
-	background-image: url("./flags/4x3/gm.svg");
-}
-
-.stflag:is(.is-gm-flag,.is-gambia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gm.svg");
-}
-
-.stflag:is(.is-gn-flag,.is-guinea-flag){
-	background-image: url("./flags/4x3/gn.svg");
-}
-
-.stflag:is(.is-gn-flag,.is-guinea-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gn.svg");
-}
-
-.stflag:is(.is-gp-flag,.is-guadeloupe-flag){
-	background-image: url("./flags/4x3/gp.svg");
-}
-
-.stflag:is(.is-gp-flag,.is-guadeloupe-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gp.svg");
-}
-
-.stflag:is(.is-gq-flag,.is-equatorial-guinea-flag){
-	background-image: url("./flags/4x3/gq.svg");
-}
-
-.stflag:is(.is-gq-flag,.is-equatorial-guinea-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gq.svg");
-}
-
-.stflag:is(.is-gr-flag,.is-greece-flag){
-	background-image: url("./flags/4x3/gr.svg");
-}
-
-.stflag:is(.is-gr-flag,.is-greece-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gr.svg");
-}
-
-.stflag:is(.is-gs-flag,.is-sandwich-islands-flag){
-	background-image: url("./flags/4x3/gs.svg");
-}
-
-.stflag:is(.is-gs-flag,.is-sandwich-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gs.svg");
-}
-
-.stflag:is(.is-gt-flag,.is-guatemala-flag){
-	background-image: url("./flags/4x3/gt.svg");
-}
-
-.stflag:is(.is-gt-flag,.is-guatemala-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gt.svg");
-}
-
-.stflag:is(.is-gu-flag,.is-guam-flag){
-	background-image: url("./flags/4x3/gu.svg");
-}
-
-.stflag:is(.is-gu-flag,.is-guam-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gu.svg");
-}
-
-.stflag:is(.is-gw-flag,.is-guinea-bissau-flag){
-	background-image: url("./flags/4x3/gw.svg");
-}
-
-.stflag:is(.is-gw-flag,.is-guinea-bissau-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gw.svg");
-}
-
-.stflag:is(.is-gy-flag,.is-guyana-flag){
-	background-image: url("./flags/4x3/gy.svg");
-}
-
-.stflag:is(.is-gy-flag,.is-guyana-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/gy.svg");
-}
-
-.stflag:is(.is-hk-flag,.is-hong-kong-flag){
-	background-image: url("./flags/4x3/hk.svg");
-}
-
-.stflag:is(.is-hk-flag,.is-hong-kong-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/hk.svg");
-}
-
-.stflag:is(.is-hm-flag,.is-heard-island-flag){
-	background-image: url("./flags/4x3/hm.svg");
-}
-
-.stflag:is(.is-hm-flag,.is-heard-island-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/hm.svg");
-}
-
-.stflag:is(.is-hn-flag,.is-honduras-flag){
-	background-image: url("./flags/4x3/hn.svg");
-}
-
-.stflag:is(.is-hn-flag,.is-honduras-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/hn.svg");
-}
-
-.stflag:is(.is-hr-flag,.is-croatia-flag){
-	background-image: url("./flags/4x3/hr.svg");
-}
-
-.stflag:is(.is-hr-flag,.is-croatia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/hr.svg");
-}
-
-.stflag:is(.is-ht-flag,.is-haiti-flag){
-	background-image: url("./flags/4x3/ht.svg");
-}
-
-.stflag:is(.is-ht-flag,.is-haiti-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ht.svg");
-}
-
-.stflag:is(.is-hu-flag,.is-hungary-flag){
-	background-image: url("./flags/4x3/hu.svg");
-}
-
-.stflag:is(.is-hu-flag,.is-hungary-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/hu.svg");
-}
-
-.stflag:is(.is-id-flag,.is-indonesia-flag){
-	background-image: url("./flags/4x3/id.svg");
-}
-
-.stflag:is(.is-id-flag,.is-indonesia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/id.svg");
-}
-
-.stflag:is(.is-ie-flag,.is-ireland-flag){
-	background-image: url("./flags/4x3/ie.svg");
-}
-
-.stflag:is(.is-ie-flag,.is-ireland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ie.svg");
-}
-
-.stflag:is(.is-il-flag,.is-israel-flag){
-	background-image: url("./flags/4x3/il.svg");
-}
-
-.stflag:is(.is-il-flag,.is-israel-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/il.svg");
-}
-
-.stflag:is(.is-im-flag,.is-isle-of-man-flag){
-	background-image: url("./flags/4x3/im.svg");
-}
-
-.stflag:is(.is-im-flag,.is-isle-of-man-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/im.svg");
-}
-
-.stflag:is(.is-in-flag,.is-india-flag){
-	background-image: url("./flags/4x3/in.svg");
-}
-
-.stflag:is(.is-in-flag,.is-india-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/in.svg");
-}
-
-.stflag:is(.is-io-flag,.is-indian-ocean-territory-flag){
-	background-image: url("./flags/4x3/io.svg");
-}
-
-.stflag:is(.is-io-flag,.is-indian-ocean-territory-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/io.svg");
-}
-
-.stflag:is(.is-iq-flag,.is-iraq-flag){
-	background-image: url("./flags/4x3/iq.svg");
-}
-
-.stflag:is(.is-iq-flag,.is-iraq-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/iq.svg");
-}
-
-.stflag:is(.is-ir-flag,.is-iran-flag){
-	background-image: url("./flags/4x3/ir.svg");
-}
-
-.stflag:is(.is-ir-flag,.is-iran-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ir.svg");
-}
-
-.stflag:is(.is-is-flag,.is-iceland-flag){
-	background-image: url("./flags/4x3/is.svg");
-}
-
-.stflag:is(.is-is-flag,.is-iceland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/is.svg");
-}
-
-.stflag:is(.is-it-flag,.is-italy-flag){
-	background-image: url("./flags/4x3/it.svg");
-}
-
-.stflag:is(.is-it-flag,.is-italy-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/it.svg");
-}
-
-.stflag:is(.is-je-flag,.is-jersey-flag){
-	background-image: url("./flags/4x3/je.svg");
-}
-
-.stflag:is(.is-je-flag,.is-jersey-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/je.svg");
-}
-
-.stflag:is(.is-jm-flag,.is-jamaica-flag){
-	background-image: url("./flags/4x3/jm.svg");
-}
-
-.stflag:is(.is-jm-flag,.is-jamaica-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/jm.svg");
-}
-
-.stflag:is(.is-jo-flag,.is-jordan-flag){
-	background-image: url("./flags/4x3/jo.svg");
-}
-
-.stflag:is(.is-jo-flag,.is-jordan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/jo.svg");
-}
-
-.stflag:is(.is-jp-flag,.is-japan-flag){
-	background-image: url("./flags/4x3/jp.svg");
-}
-
-.stflag:is(.is-jp-flag,.is-japan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/jp.svg");
-}
-
-.stflag:is(.is-ke-flag,.is-kenya-flag){
-	background-image: url("./flags/4x3/ke.svg");
-}
-
-.stflag:is(.is-ke-flag,.is-kenya-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ke.svg");
-}
-
-.stflag:is(.is-kg-flag,.is-kyrgyzstan-flag){
-	background-image: url("./flags/4x3/kg.svg");
-}
-
-.stflag:is(.is-kg-flag,.is-kyrgyzstan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/kg.svg");
-}
-
-.stflag:is(.is-kh-flag,.is-cambodia-flag){
-	background-image: url("./flags/4x3/kh.svg");
-}
-
-.stflag:is(.is-kh-flag,.is-cambodia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/kh.svg");
-}
-
-.stflag:is(.is-ki-flag,.is-kiribati-flag){
-	background-image: url("./flags/4x3/ki.svg");
-}
-
-.stflag:is(.is-ki-flag,.is-kiribati-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ki.svg");
-}
-
-.stflag:is(.is-km-flag,.is-comoros-flag){
-	background-image: url("./flags/4x3/km.svg");
-}
-
-.stflag:is(.is-km-flag,.is-comoros-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/km.svg");
-}
-
-.stflag:is(.is-kn-flag,.is-saint-kitstand-nevis-flag,.is-saint-kitstflag,.is-nevis-flag){
-	background-image: url("./flags/4x3/kn.svg");
-}
-
-.stflag:is(.is-kn-flag,.is-saint-kitstand-nevis-flag,.is-saint-kitstflag,.is-nevis-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/kn.svg");
-}
-
-.stflag:is(.is-kp-flag,.is-north-korea-flag){
-	background-image: url("./flags/4x3/kp.svg");
-}
-
-.stflag:is(.is-kp-flag,.is-north-korea-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/kp.svg");
-}
-
-.stflag:is(.is-kr-flag,.is-south-korea-flag,.is-korea-flag){
-	background-image: url("./flags/4x3/kr.svg");
-}
-
-.stflag:is(.is-kr-flag,.is-south-korea-flag,.is-korea-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/kr.svg");
-}
-
-.stflag:is(.is-kw-flag,.is-kuwait-flag){
-	background-image: url("./flags/4x3/kw.svg");
-}
-
-.stflag:is(.is-kw-flag,.is-kuwait-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/kw.svg");
-}
-
-.stflag:is(.is-ky-flag,.is-cayman-islands-flag){
-	background-image: url("./flags/4x3/ky.svg");
-}
-
-.stflag:is(.is-ky-flag,.is-cayman-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ky.svg");
-}
-
-.stflag:is(.is-kz-flag,.is-kazakhstan-flag){
-	background-image: url("./flags/4x3/kz.svg");
-}
-
-.stflag:is(.is-kz-flag,.is-kazakhstan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/kz.svg");
-}
-
-.stflag:is(.is-la-flag,.is-laos-flag){
-	background-image: url("./flags/4x3/la.svg");
-}
-
-.stflag:is(.is-la-flag,.is-laos-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/la.svg");
-}
-
-.stflag:is(.is-lb-flag,.is-lebanon-flag){
-	background-image: url("./flags/4x3/lb.svg");
-}
-
-.stflag:is(.is-lb-flag,.is-lebanon-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/lb.svg");
-}
-
-.stflag:is(.is-lc-flag,.is-saint-lucia-flag){
-	background-image: url("./flags/4x3/lc.svg");
-}
-
-.stflag:is(.is-lc-flag,.is-saint-lucia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/lc.svg");
-}
-
-.stflag:is(.is-li-flag,.is-liechtenstein-flag){
-	background-image: url("./flags/4x3/li.svg");
-}
-
-.stflag:is(.is-li-flag,.is-liechtenstein-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/li.svg");
-}
-
-.stflag:is(.is-lk-flag,.is-sri-lanka-flag){
-	background-image: url("./flags/4x3/lk.svg");
-}
-
-.stflag:is(.is-lk-flag,.is-sri-lanka-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/lk.svg");
-}
-
-.stflag:is(.is-lr-flag,.is-liberia-flag){
-	background-image: url("./flags/4x3/lr.svg");
-}
-
-.stflag:is(.is-lr-flag,.is-liberia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/lr.svg");
-}
-
-.stflag:is(.is-ls-flag,.is-lesotho-flag){
-	background-image: url("./flags/4x3/ls.svg");
-}
-
-.stflag:is(.is-ls-flag,.is-lesotho-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ls.svg");
-}
-
-.stflag:is(.is-lt-flag,.is-lithuania-flag){
-	background-image: url("./flags/4x3/lt.svg");
-}
-
-.stflag:is(.is-lt-flag,.is-lithuania-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/lt.svg");
-}
-
-.stflag:is(.is-lu-flag,.is-luxembourg-flag){
-	background-image: url("./flags/4x3/lu.svg");
-}
-
-.stflag:is(.is-lu-flag,.is-luxembourg-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/lu.svg");
-}
-
-.stflag:is(.is-lv-flag,.is-latvia-flag){
-	background-image: url("./flags/4x3/lv.svg");
-}
-
-.stflag:is(.is-lv-flag,.is-latvia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/lv.svg");
-}
-
-.stflag:is(.is-ly-flag,.is-libya-flag){
-	background-image: url("./flags/4x3/ly.svg");
-}
-
-.stflag:is(.is-ly-flag,.is-libya-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ly.svg");
-}
-
-.stflag:is(.is-ma-flag,.is-morocco-flag){
-	background-image: url("./flags/4x3/ma.svg");
-}
-
-.stflag:is(.is-ma-flag,.is-morocco-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ma.svg");
-}
-
-.stflag:is(.is-mc-flag,.is-monaco-flag){
-	background-image: url("./flags/4x3/mc.svg");
-}
-
-.stflag:is(.is-mc-flag,.is-monaco-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mc.svg");
-}
-
-.stflag:is(.is-md-flag,.is-moldova-flag){
-	background-image: url("./flags/4x3/md.svg");
-}
-
-.stflag:is(.is-md-flag,.is-moldova-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/md.svg");
-}
-
-.stflag:is(.is-me-flag,.is-montenegro-flag){
-	background-image: url("./flags/4x3/me.svg");
-}
-
-.stflag:is(.is-me-flag,.is-montenegro-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/me.svg");
-}
-
-.stflag:is(.is-mf-flag,.is-saint-martin-flag){
-	background-image: url("./flags/4x3/mf.svg");
-}
-
-.stflag:is(.is-mf-flag,.is-saint-martin-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mf.svg");
-}
-
-.stflag:is(.is-mg-flag,.is-madagascar-flag){
-	background-image: url("./flags/4x3/mg.svg");
-}
-
-.stflag:is(.is-mg-flag,.is-madagascar-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mg.svg");
-}
-
-.stflag:is(.is-mh-flag,.is-marshall-islands-flag){
-	background-image: url("./flags/4x3/mh.svg");
-}
-
-.stflag:is(.is-mh-flag,.is-marshall-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mh.svg");
-}
-
-.stflag:is(.is-mk-flag,.is-macedonia-flag){
-	background-image: url("./flags/4x3/mk.svg");
-}
-
-.stflag:is(.is-mk-flag,.is-macedonia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mk.svg");
-}
-
-.stflag:is(.is-ml-flag,.is-mali-flag){
-	background-image: url("./flags/4x3/ml.svg");
-}
-
-.stflag:is(.is-ml-flag,.is-mali-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ml.svg");
-}
-
-.stflag:is(.is-mm-flag,.is-burma-flag,.is-myanmar-flag){
-	background-image: url("./flags/4x3/mm.svg");
-}
-
-.stflag:is(.is-mm-flag,.is-burma-flag,.is-myanmar-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mm.svg");
-}
-
-.stflag:is(.is-mn-flag,.is-mongolia-flag){
-	background-image: url("./flags/4x3/mn.svg");
-}
-
-.stflag:is(.is-mn-flag,.is-mongolia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mn.svg");
-}
-
-.stflag:is(.is-mo-flag,.is-macau-flag){
-	background-image: url("./flags/4x3/mo.svg");
-}
-
-.stflag:is(.is-mo-flag,.is-macau-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mo.svg");
-}
-
-.stflag:is(.is-mp-flag,.is-northern-mariana-islands-flag){
-	background-image: url("./flags/4x3/mp.svg");
-}
-
-.stflag:is(.is-mp-flag,.is-northern-mariana-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mp.svg");
-}
-
-.stflag:is(.is-mq-flag,.is-martinique-flag){
-	background-image: url("./flags/4x3/mq.svg");
-}
-
-.stflag:is(.is-mq-flag,.is-martinique-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mq.svg");
-}
-
-.stflag:is(.is-mr-flag,.is-mauritania-flag){
-	background-image: url("./flags/4x3/mr.svg");
-}
-
-.stflag:is(.is-mr-flag,.is-mauritania-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mr.svg");
-}
-
-.stflag:is(.is-ms-flag,.is-montserrat-flag){
-	background-image: url("./flags/4x3/ms.svg");
-}
-
-.stflag:is(.is-ms-flag,.is-montserrat-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ms.svg");
-}
-
-.stflag:is(.is-mt-flag,.is-malta-flag){
-	background-image: url("./flags/4x3/mt.svg");
-}
-
-.stflag:is(.is-mt-flag,.is-malta-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mt.svg");
-}
-
-.stflag:is(.is-mu-flag,.is-mauritius-flag){
-	background-image: url("./flags/4x3/mu.svg");
-}
-
-.stflag:is(.is-mu-flag,.is-mauritius-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mu.svg");
-}
-
-.stflag:is(.is-mv-flag,.is-maldives-flag){
-	background-image: url("./flags/4x3/mv.svg");
-}
-
-.stflag:is(.is-mv-flag,.is-maldives-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mv.svg");
-}
-
-.stflag:is(.is-mw-flag,.is-malawi-flag){
-	background-image: url("./flags/4x3/mw.svg");
-}
-
-.stflag:is(.is-mw-flag,.is-malawi-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mw.svg");
-}
-
-.stflag:is(.is-mx-flag,.is-mexico-flag){
-	background-image: url("./flags/4x3/mx.svg");
-}
-
-.stflag:is(.is-mx-flag,.is-mexico-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mx.svg");
-}
-
-.stflag:is(.is-my-flag,.is-malaysia-flag){
-	background-image: url("./flags/4x3/my.svg");
-}
-
-.stflag:is(.is-my-flag,.is-malaysia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/my.svg");
-}
-
-.stflag:is(.is-mz-flag,.is-mozambique-flag){
-	background-image: url("./flags/4x3/mz.svg");
-}
-
-.stflag:is(.is-mz-flag,.is-mozambique-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/mz.svg");
-}
-
-.stflag:is(.is-na-flag,.is-namibia-flag){
-	background-image: url("./flags/4x3/na.svg");
-}
-
-.stflag:is(.is-na-flag,.is-namibia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/na.svg");
-}
-
-.stflag:is(.is-nc-flag,.is-new-caledonia-flag){
-	background-image: url("./flags/4x3/nc.svg");
-}
-
-.stflag:is(.is-nc-flag,.is-new-caledonia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/nc.svg");
-}
-
-.stflag:is(.is-ne-flag,.is-niger-flag){
-	background-image: url("./flags/4x3/ne.svg");
-}
-
-.stflag:is(.is-ne-flag,.is-niger-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ne.svg");
-}
-
-.stflag:is(.is-nf-flag,.is-norfolk-island-flag){
-	background-image: url("./flags/4x3/nf.svg");
-}
-
-.stflag:is(.is-nf-flag,.is-norfolk-island-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/nf.svg");
-}
-
-.stflag:is(.is-ng-flag,.is-nigeria-flag){
-	background-image: url("./flags/4x3/ng.svg");
-}
-
-.stflag:is(.is-ng-flag,.is-nigeria-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ng.svg");
-}
-
-.stflag:is(.is-ni-flag,.is-nicaragua-flag){
-	background-image: url("./flags/4x3/ni.svg");
-}
-
-.stflag:is(.is-ni-flag,.is-nicaragua-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ni.svg");
-}
-
-.stflag:is(.is-nl-flag,.is-netherlands-flag){
-	background-image: url("./flags/4x3/nl.svg");
-}
-
-.stflag:is(.is-nl-flag,.is-netherlands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/nl.svg");
-}
-
-.stflag:is(.is-no-flag,.is-norway-flag){
-	background-image: url("./flags/4x3/no.svg");
-}
-
-.stflag:is(.is-no-flag,.is-norway-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/no.svg");
-}
-
-.stflag:is(.is-np-flag,.is-nepal-flag){
-	background-image: url("./flags/4x3/np.svg");
-}
-
-.stflag:is(.is-np-flag,.is-nepal-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/np.svg");
-}
-
-.stflag:is(.is-nr-flag,.is-nauru-flag){
-	background-image: url("./flags/4x3/nr.svg");
-}
-
-.stflag:is(.is-nr-flag,.is-nauru-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/nr.svg");
-}
-
-.stflag:is(.is-nu-flag,.is-niue-flag){
-	background-image: url("./flags/4x3/nu.svg");
-}
-
-.stflag:is(.is-nu-flag,.is-niue-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/nu.svg");
-}
-
-.stflag:is(.is-nz-flag,.is-new-zealand-flag){
-	background-image: url("./flags/4x3/nz.svg");
-}
-
-.stflag:is(.is-nz-flag,.is-new-zealand-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/nz.svg");
-}
-
-.stflag:is(.is-om-flag,.is-oman-flag){
-	background-image: url("./flags/4x3/om.svg");
-}
-
-.stflag:is(.is-om-flag,.is-oman-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/om.svg");
-}
-
-.stflag:is(.is-pa-flag,.is-panama-flag){
-	background-image: url("./flags/4x3/pa.svg");
-}
-
-.stflag:is(.is-pa-flag,.is-panama-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pa.svg");
-}
-
-.stflag:is(.is-pe-flag,.is-peru-flag){
-	background-image: url("./flags/4x3/pe.svg");
-}
-
-.stflag:is(.is-pe-flag,.is-peru-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pe.svg");
-}
-
-.stflag:is(.is-pf-flag,.is-french-polynesia-flag){
-	background-image: url("./flags/4x3/pf.svg");
-}
-
-.stflag:is(.is-pf-flag,.is-french-polynesia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pf.svg");
-}
-
-.stflag:is(.is-pg-flag,.is-new-guinea-flag){
-	background-image: url("./flags/4x3/pg.svg");
-}
-
-.stflag:is(.is-pg-flag,.is-new-guinea-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pg.svg");
-}
-
-.stflag:is(.is-ph-flag,.is-philippines-flag){
-	background-image: url("./flags/4x3/ph.svg");
-}
-
-.stflag:is(.is-ph-flag,.is-philippines-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ph.svg");
-}
-
-.stflag:is(.is-pk-flag,.is-pakistan-flag){
-	background-image: url("./flags/4x3/pk.svg");
-}
-
-.stflag:is(.is-pk-flag,.is-pakistan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pk.svg");
-}
-
-.stflag:is(.is-pl-flag,.is-poland-flag){
-	background-image: url("./flags/4x3/pl.svg");
-}
-
-.stflag:is(.is-pl-flag,.is-poland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pl.svg");
-}
-
-.stflag:is(.is-pm-flag,.is-saint-pierre-flag){
-	background-image: url("./flags/4x3/pm.svg");
-}
-
-.stflag:is(.is-pm-flag,.is-saint-pierre-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pm.svg");
-}
-
-.stflag:is(.is-pn-flag,.is-pitcairn-islands-flag){
-	background-image: url("./flags/4x3/pn.svg");
-}
-
-.stflag:is(.is-pn-flag,.is-pitcairn-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pn.svg");
-}
-
-.stflag:is(.is-pr-flag,.is-puerto-rico-flag){
-	background-image: url("./flags/4x3/pr.svg");
-}
-
-.stflag:is(.is-pr-flag,.is-puerto-rico-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pr.svg");
-}
-
-.stflag:is(.is-ps-flag,.is-palestine-flag){
-	background-image: url("./flags/4x3/ps.svg");
-}
-
-.stflag:is(.is-ps-flag,.is-palestine-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ps.svg");
-}
-
-.stflag:is(.is-pt-flag,.is-portugal-flag){
-	background-image: url("./flags/4x3/pt.svg");
-}
-
-.stflag:is(.is-pt-flag,.is-portugal-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pt.svg");
-}
-
-.stflag:is(.is-pw-flag,.is-palau-flag){
-	background-image: url("./flags/4x3/pw.svg");
-}
-
-.stflag:is(.is-pw-flag,.is-palau-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/pw.svg");
-}
-
-.stflag:is(.is-py-flag,.is-paraguay-flag){
-	background-image: url("./flags/4x3/py.svg");
-}
-
-.stflag:is(.is-py-flag,.is-paraguay-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/py.svg");
-}
-
-.stflag:is(.is-qa-flag,.is-qatar-flag){
-	background-image: url("./flags/4x3/qa.svg");
-}
-
-.stflag:is(.is-qa-flag,.is-qatar-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/qa.svg");
-}
-
-.stflag:is(.is-re-flag,.is-reunion-flag){
-	background-image: url("./flags/4x3/re.svg");
-}
-
-.stflag:is(.is-re-flag,.is-reunion-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/re.svg");
-}
-
-.stflag:is(.is-ro-flag,.is-romania-flag){
-	background-image: url("./flags/4x3/ro.svg");
-}
-
-.stflag:is(.is-ro-flag,.is-romania-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ro.svg");
-}
-
-.stflag:is(.is-rs-flag,.is-serbia-flag){
-	background-image: url("./flags/4x3/rs.svg");
-}
-
-.stflag:is(.is-rs-flag,.is-serbia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/rs.svg");
-}
-
-.stflag:is(.is-ru-flag,.is-russia-flag){
-	background-image: url("./flags/4x3/ru.svg");
-}
-
-.stflag:is(.is-ru-flag,.is-russia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ru.svg");
-}
-
-.stflag:is(.is-rw-flag,.is-rwanda-flag){
-	background-image: url("./flags/4x3/rw.svg");
-}
-
-.stflag:is(.is-rw-flag,.is-rwanda-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/rw.svg");
-}
-
-.stflag:is(.is-sa-flag,.is-saudi-arabia-flag){
-	background-image: url("./flags/4x3/sa.svg");
-}
-
-.stflag:is(.is-sa-flag,.is-saudi-arabia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sa.svg");
-}
-
-.stflag:is(.is-sb-flag,.is-solomon-islands-flag){
-	background-image: url("./flags/4x3/sb.svg");
-}
-
-.stflag:is(.is-sb-flag,.is-solomon-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sb.svg");
-}
-
-.stflag:is(.is-sc-flag,.is-seychelles-flag){
-	background-image: url("./flags/4x3/sc.svg");
-}
-
-.stflag:is(.is-sc-flag,.is-seychelles-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sc.svg");
-}
-
-.stflag:is(.is-sd-flag,.is-sudan-flag){
-	background-image: url("./flags/4x3/sd.svg");
-}
-
-.stflag:is(.is-sd-flag,.is-sudan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sd.svg");
-}
-
-.stflag:is(.is-se-flag,.is-sweden-flag){
-	background-image: url("./flags/4x3/se.svg");
-}
-
-.stflag:is(.is-se-flag,.is-sweden-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/se.svg");
-}
-
-.stflag:is(.is-sg-flag,.is-singapore-flag){
-	background-image: url("./flags/4x3/sg.svg");
-}
-
-.stflag:is(.is-sg-flag,.is-singapore-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sg.svg");
-}
-
-.stflag:is(.is-sh-flag,.is-saint-helena-flag){
-	background-image: url("./flags/4x3/sh.svg");
-}
-
-.stflag:is(.is-sh-flag,.is-saint-helena-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sh.svg");
-}
-
-.stflag:is(.is-si-flag,.is-slovenia-flag){
-	background-image: url("./flags/4x3/si.svg");
-}
-
-.stflag:is(.is-si-flag,.is-slovenia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/si.svg");
-}
-
-.stflag:is(.is-sj-flag,.is-jan-mayen-and-svalbard-flag,.is-svalbard-flag,.is-jan-mayen-flag){
-	background-image: url("./flags/4x3/sj.svg");
-}
-
-.stflag:is(.is-sj-flag,.is-jan-mayen-and-svalbard-flag,.is-svalbard-flag,.is-jan-mayen-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sj.svg");
-}
-
-.stflag:is(.is-sk-flag,.is-slovakia-flag){
-	background-image: url("./flags/4x3/sk.svg");
-}
-
-.stflag:is(.is-sk-flag,.is-slovakia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sk.svg");
-}
-
-.stflag:is(.is-sl-flag,.is-sierra-leone-flag){
-	background-image: url("./flags/4x3/sl.svg");
-}
-
-.stflag:is(.is-sl-flag,.is-sierra-leone-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sl.svg");
-}
-
-.stflag:is(.is-sm-flag,.is-san-marino-flag){
-	background-image: url("./flags/4x3/sm.svg");
-}
-
-.stflag:is(.is-sm-flag,.is-san-marino-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sm.svg");
-}
-
-.stflag:is(.is-sn-flag,.is-senegal-flag){
-	background-image: url("./flags/4x3/sn.svg");
-}
-
-.stflag:is(.is-sn-flag,.is-senegal-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sn.svg");
-}
-
-.stflag:is(.is-so-flag,.is-somalia-flag){
-	background-image: url("./flags/4x3/so.svg");
-}
-
-.stflag:is(.is-so-flag,.is-somalia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/so.svg");
-}
-
-.stflag:is(.is-sr-flag,.is-suriname-flag){
-	background-image: url("./flags/4x3/sr.svg");
-}
-
-.stflag:is(.is-sr-flag,.is-suriname-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sr.svg");
-}
-
-.stflag:is(.is-ss-flag,.is-south-sudan-flag){
-	background-image: url("./flags/4x3/ss.svg");
-}
-
-.stflag:is(.is-ss-flag,.is-south-sudan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ss.svg");
-}
-
-.stflag:is(.is-st-flag,.is-sao-tome-flag){
-	background-image: url("./flags/4x3/st.svg");
-}
-
-.stflag:is(.is-st-flag,.is-sao-tome-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/st.svg");
-}
-
-.stflag:is(.is-sv-flag,.is-el-salvador-flag){
-	background-image: url("./flags/4x3/sv.svg");
-}
-
-.stflag:is(.is-sv-flag,.is-el-salvador-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sv.svg");
-}
-
-.stflag:is(.is-sx-flag,.is-sint-maarten-flag){
-	background-image: url("./flags/4x3/sx.svg");
-}
-
-.stflag:is(.is-sx-flag,.is-sint-maarten-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sx.svg");
-}
-
-.stflag:is(.is-sy-flag,.is-syria-flag){
-	background-image: url("./flags/4x3/sy.svg");
-}
-
-.stflag:is(.is-sy-flag,.is-syria-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sy.svg");
-}
-
-.stflag:is(.is-sz-flag,.is-swaziland-flag){
-	background-image: url("./flags/4x3/sz.svg");
-}
-
-.stflag:is(.is-sz-flag,.is-swaziland-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/sz.svg");
-}
-
-.stflag:is(.is-tc-flag,.is-caicos-islands-flag){
-	background-image: url("./flags/4x3/tc.svg");
-}
-
-.stflag:is(.is-tc-flag,.is-caicos-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tc.svg");
-}
-
-.stflag:is(.is-td-flag,.is-chad-flag){
-	background-image: url("./flags/4x3/td.svg");
-}
-
-.stflag:is(.is-td-flag,.is-chad-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/td.svg");
-}
-
-.stflag:is(.is-tf-flag,.is-french-territories-flag){
-	background-image: url("./flags/4x3/tf.svg");
-}
-
-.stflag:is(.is-tf-flag,.is-french-territories-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tf.svg");
-}
-
-.stflag:is(.is-tg-flag,.is-togo-flag){
-	background-image: url("./flags/4x3/tg.svg");
-}
-
-.stflag:is(.is-tg-flag,.is-togo-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tg.svg");
-}
-
-.stflag:is(.is-th-flag,.is-thailand-flag){
-	background-image: url("./flags/4x3/th.svg");
-}
-
-.stflag:is(.is-th-flag,.is-thailand-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/th.svg");
-}
-
-.stflag:is(.is-tj-flag,.is-tajikistan-flag){
-	background-image: url("./flags/4x3/tj.svg");
-}
-
-.stflag:is(.is-tj-flag,.is-tajikistan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tj.svg");
-}
-
-.stflag:is(.is-tk-flag,.is-tokelau-flag){
-	background-image: url("./flags/4x3/tk.svg");
-}
-
-.stflag:is(.is-tk-flag,.is-tokelau-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tk.svg");
-}
-
-.stflag:is(.is-tl-flag,.is-timorleste-flag){
-	background-image: url("./flags/4x3/tl.svg");
-}
-
-.stflag:is(.is-tl-flag,.is-timorleste-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tl.svg");
-}
-
-.stflag:is(.is-tm-flag,.is-turkmenistan-flag){
-	background-image: url("./flags/4x3/tm.svg");
-}
-
-.stflag:is(.is-tm-flag,.is-turkmenistan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tm.svg");
-}
-
-.stflag:is(.is-tn-flag,.is-tunisia-flag){
-	background-image: url("./flags/4x3/tn.svg");
-}
-
-.stflag:is(.is-tn-flag,.is-tunisia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tn.svg");
-}
-
-.stflag:is(.is-to-flag,.is-tonga-flag){
-	background-image: url("./flags/4x3/to.svg");
-}
-
-.stflag:is(.is-to-flag,.is-tonga-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/to.svg");
-}
-
-.stflag:is(.is-tr-flag,.is-turkey-flag){
-	background-image: url("./flags/4x3/tr.svg");
-}
-
-.stflag:is(.is-tr-flag,.is-turkey-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tr.svg");
-}
-
-.stflag:is(.is-tt-flag,.is-trinidad-flag){
-	background-image: url("./flags/4x3/tt.svg");
-}
-
-.stflag:is(.is-tt-flag,.is-trinidad-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tt.svg");
-}
-
-.stflag:is(.is-tv-flag,.is-tuvalu-flag){
-	background-image: url("./flags/4x3/tv.svg");
-}
-
-.stflag:is(.is-tv-flag,.is-tuvalu-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tv.svg");
-}
-
-.stflag:is(.is-tw-flag,.is-taiwan-flag,.is-republic-of-china-flag,.is-formosa-flag){
-	background-image: url("./flags/4x3/tw.svg");
-}
-
-.stflag:is(.is-tw-flag,.is-taiwan-flag,.is-republic-of-china-flag,.is-formosa-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tw.svg");
-}
-
-.stflag:is(.is-tz-flag,.is-tanzania-flag){
-	background-image: url("./flags/4x3/tz.svg");
-}
-
-.stflag:is(.is-tz-flag,.is-tanzania-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/tz.svg");
-}
-
-.stflag:is(.is-ua-flag,.is-ukraine-flag){
-	background-image: url("./flags/4x3/ua.svg");
-}
-
-.stflag:is(.is-ua-flag,.is-ukraine-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ua.svg");
-}
-
-.stflag:is(.is-ug-flag,.is-uganda-flag){
-	background-image: url("./flags/4x3/ug.svg");
-}
-
-.stflag:is(.is-ug-flag,.is-uganda-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ug.svg");
-}
-
-.stflag:is(.is-um-flag,.is-us-minor-islands-flag){
-	background-image: url("./flags/4x3/um.svg");
-}
-
-.stflag:is(.is-um-flag,.is-us-minor-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/um.svg");
-}
-
-.stflag:is(.is-un-flag,.is-united-nations-flag){
-	background-image: url("./flags/4x3/un.svg");
-}
-
-.stflag:is(.is-un-flag,.is-united-nations-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/un.svg");
-}
-
-.stflag:is(.is-us-flag,.is-united-states-flag,.is-america-flag,.is-usa-flag){
-	background-image: url("./flags/4x3/us.svg");
-}
-
-.stflag:is(.is-us-flag,.is-united-states-flag,.is-america-flag,.is-usa-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/us.svg");
-}
-
-.stflag:is(.is-uy-flag,.is-uruguay-flag){
-	background-image: url("./flags/4x3/uy.svg");
-}
-
-.stflag:is(.is-uy-flag,.is-uruguay-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/uy.svg");
-}
-
-.stflag:is(.is-uz-flag,.is-uzbekistan-flag){
-	background-image: url("./flags/4x3/uz.svg");
-}
-
-.stflag:is(.is-uz-flag,.is-uzbekistan-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/uz.svg");
-}
-
-.stflag:is(.is-va-flag,.is-vatican-city-flag){
-	background-image: url("./flags/4x3/va.svg");
-}
-
-.stflag:is(.is-va-flag,.is-vatican-city-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/va.svg");
-}
-
-.stflag:is(.is-vc-flag,.is-saint-vincent-flag){
-	background-image: url("./flags/4x3/vc.svg");
-}
-
-.stflag:is(.is-vc-flag,.is-saint-vincent-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/vc.svg");
-}
-
-.stflag:is(.is-ve-flag,.is-venezuela-flag){
-	background-image: url("./flags/4x3/ve.svg");
-}
-
-.stflag:is(.is-ve-flag,.is-venezuela-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ve.svg");
-}
-
-.stflag:is(.is-vg-flag,.is-british-virgin-islands-flag){
-	background-image: url("./flags/4x3/vg.svg");
-}
-
-.stflag:is(.is-vg-flag,.is-british-virgin-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/vg.svg");
-}
-
-.stflag:is(.is-vi-flag,.is-us-virgin-islands-flag){
-	background-image: url("./flags/4x3/vi.svg");
-}
-
-.stflag:is(.is-vi-flag,.is-us-virgin-islands-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/vi.svg");
-}
-
-.stflag:is(.is-vn-flag,.is-vietnam-flag){
-	background-image: url("./flags/4x3/vn.svg");
-}
-
-.stflag:is(.is-vn-flag,.is-vietnam-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/vn.svg");
-}
-
-.stflag:is(.is-vu-flag,.is-vanuatu-flag){
-	background-image: url("./flags/4x3/vu.svg");
-}
-
-.stflag:is(.is-vu-flag,.is-vanuatu-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/vu.svg");
-}
-
-.stflag:is(.is-wf-flag,.is-wallis-and-futuna-flag,.is-wallis-flag,.is-futuna-flag){
-	background-image: url("./flags/4x3/wf.svg");
-}
-
-.stflag:is(.is-wf-flag,.is-wallis-and-futuna-flag,.is-wallis-flag,.is-futuna-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/wf.svg");
-}
-
-.stflag:is(.is-ws-flag,.is-samoa-flag){
-	background-image: url("./flags/4x3/ws.svg");
-}
-
-.stflag:is(.is-ws-flag,.is-samoa-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ws.svg");
-}
-
-.stflag:is(.is-ye-flag,.is-yemen-flag){
-	background-image: url("./flags/4x3/ye.svg");
-}
-
-.stflag:is(.is-ye-flag,.is-yemen-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/ye.svg");
-}
-
-.stflag:is(.is-yt-flag,.is-mayotte-flag){
-	background-image: url("./flags/4x3/yt.svg");
-}
-
-.stflag:is(.is-yt-flag,.is-mayotte-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/yt.svg");
-}
-
-.stflag:is(.is-za-flag,.is-south-africa-flag){
-	background-image: url("./flags/4x3/za.svg");
-}
-
-.stflag:is(.is-za-flag,.is-south-africa-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/za.svg");
-}
-
-.stflag:is(.is-zm-flag,.is-zambia-flag){
-	background-image: url("./flags/4x3/zm.svg");
-}
-
-.stflag:is(.is-zm-flag,.is-zambia-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/zm.svg");
-}
-
-.stflag:is(.is-zw-flag,.is-zimbabwe-flag){
-	background-image: url("./flags/4x3/zw.svg");
-}
-
-.stflag:is(.is-zw-flag,.is-zimbabwe-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/zw.svg");
-}
-
-.stflag:is(.is-zz-flag,.is-unknown-flag){
-	background-image: url("./flags/4x3/zz.svg");
-}
-
-.stflag:is(.is-zz-flag,.is-unknown-flag):is(.is-squared,round){
-	background-image: url("./flags/1x1/zz.svg");
 }
 
 /* ========================================================================== Variables ========================================================================== */
@@ -12297,7 +9790,7 @@ a.main:hover{
 
 /* ========================================================================== Base ========================================================================== */
 
-.stmodal{
+.modal{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -12310,157 +9803,157 @@ a.main:hover{
 	justify-content: center;
 	overflow-y: auto;
 	z-index: 102;
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	&>.content{
+		background: var(--stgray-50);
+		border-radius: 0.4rem;
+		box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+		width: 380px;
+		margin: auto;
+		overflow: hidden;
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Active */
+
+	&.is-visible{
+		display: flex;
+	}
+
+	/* Sizes */
+
+	&.small>.content{
+		width: 280px;
+	}
+
+	&.large>.content{
+		width: 580px;
+	}
+
+	&.big>.content{
+		width: 780px;
+	}
 }
 
-/* ========================================================================== Structure ========================================================================== */
-
-.stmodal>.content{
-	background: var(--stgray-50);
-	border-radius: 0.4rem;
-	box-shadow: 0 0 20px rgb(0 0 0 / 10%);
-	width: 380px;
-	margin: auto;
-	overflow: hidden;
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Active */
-
-.stmodal.is-visible{
-	display: flex;
-}
-
-/* Sizes */
-
-.stmodal.small>.content{
-	width: 280px;
-}
-
-.stmodal.large>.content{
-	width: 580px;
-}
-
-.stmodal.big>.content{
-	width: 780px;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
-.stgauge{
+.gauge{
 	--length: 0.8;
 	--value: 0;
 	--size: 5rem;
 	--thickness: calc(var(--size) / 10);
 	--accent-color: initial;
 	--accent-foreground-color: initial;
+
+	/* ========================================================================== Base ========================================================================== */
+
+	&,& .bar{
+		position: relative;
+		display: inline-grid;
+		height: var(--size);
+		width: var(--size);
+
+		place-content: center;
+		border-radius: 9999px;
+		background: transparent;
+		vertical-align: middle;
+		box-sizing: content-box;
+	}
+
+	&{
+		--value: 100;
+
+		transform: rotate(216deg);
+	}
+
+	/* ========================================================================== Structure ========================================================================== */
+
+	& .bar::before{
+		content: "";
+		position: absolute;
+		border-radius: 9999px;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		background: conic-gradient(var(--accent-color,currentColor) calc(var(--value) * 1% * var(--length)),#0000 0);
+		-webkit-mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
+		mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
+	}
+
+	&::before{
+		content: "";
+		position: absolute;
+		border-radius: 9999px;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		-webkit-mask: radial-gradient(farthest-side,#f000 calc(99% - var(--thickness)),#0000001a calc(100% - var(--thickness)));
+		mask: radial-gradient(farthest-side,#f000 calc(99% - var(--thickness)),#0000001a calc(100% - var(--thickness)));
+		background: conic-gradient(currentColor calc(var(--value) * var(--length) * 1%),#0000 0);
+	}
+
+	& .bar .text{
+		transform: rotate(-216deg);
+	}
+
+	/* ========================================================================== Variations ========================================================================== */
+
+	/* Circular */
+
+	&.round{
+		transform: initial;
+		--length: 1;
+	}
+
+	&.round .bar .text{
+		transform: initial;
+	}
+
+	/* Uplifted */
+
+	&.uplift{
+		transform: rotate(180deg);
+		--length: 0.7;
+	}
+
+	&.uplift .bar .text{
+		transform: rotate(-180deg);
+	}
+
+	/* Centered */
+
+	&.center{
+		margin: 0 auto;
+		display: grid;
+	}
+
+	/* Sizes */
+
+	&.small{
+		--size: 4rem;
+	}
+
+	&.big{
+		--size: 6rem;
+	}
 }
 
-/* ========================================================================== Base ========================================================================== */
-
-.stgauge,.stgauge .bar{
-	position: relative;
-	display: inline-grid;
-	height: var(--size);
-	width: var(--size);
-
-	place-content: center;
-	border-radius: 9999px;
-	background: transparent;
-	vertical-align: middle;
-	box-sizing: content-box;
-}
-
-.stgauge{
-	--value: 100;
-
-	transform: rotate(216deg);
-}
-
-/* ========================================================================== Structure ========================================================================== */
-
-.stgauge::before,.stgauge .bar::before{
-	position: absolute;
-	border-radius: 9999px;
-	content: "";
-}
-
-.stgauge .bar::before{
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-
-	background: conic-gradient(var(--accent-color,currentColor) calc(var(--value) * 1% * var(--length)),#0000 0);
-	-webkit-mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
-	mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),rgb(0 0 0 / 85%) calc(100% - var(--thickness)));
-}
-
-.stgauge::before{
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-
-	-webkit-mask: radial-gradient(farthest-side,#f000 calc(99% - var(--thickness)),#0000001a calc(100% - var(--thickness)));
-	mask: radial-gradient(farthest-side,#f000 calc(99% - var(--thickness)),#0000001a calc(100% - var(--thickness)));
-	background: conic-gradient(currentColor calc(var(--value) * var(--length) * 1%),#0000 0);
-}
-
-.stgauge .bar .text{
-	transform: rotate(-216deg);
-}
-
-/* ========================================================================== Variations ========================================================================== */
-
-/* Circular */
-
-.stgaugeround{
-	transform: initial;
-	--length: 1;
-}
-
-.stgaugeround .bar .text{
-	transform: initial;
-}
-
-/* Uplifted */
-
-.stgauge.is-uplifted{
-	transform: rotate(180deg);
-	--length: 0.7;
-}
-
-.stgauge.is-uplifted .bar .text{
-	transform: rotate(-180deg);
-}
-
-/* Centered */
-
-.stgauge.is-centered{
-	margin: 0 auto;
-	display: grid;
-}
-
-/* Sizes */
-
-.stgauge.small{
-	--size: 4rem;
-}
-
-.stgauge.large{
-	--size: 6rem;
-}
 
 /* ========================================================================== Variables ========================================================================== */
 
-.sttooltip{
+.tooltip{
 	--sttooltip-x: 0;
-}
 
-/* ========================================================================== Base ========================================================================== */
-
-.sttooltip{
+	/* ========================================================================== Base ========================================================================== */
+	
 	position: fixed;
 	background: var(--stgray-600);
 	padding: 0.1rem 0.35rem;
@@ -12472,60 +9965,56 @@ a.main:hover{
 	z-index: 99;
 	max-width: min(300px,calc(100vw - 2rem));
 	pointer-events: none;
+	
+	&.visible{
+		visibility: visible;
+	}
+	
+	& .arrow{
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-style: solid;
+		pointer-events: none;
+	}
+	
+	&[class*="bottom"] .arrow{
+		top: -4px;
+		border-width: 0 5px 5px;
+		border-bottom-color: var(--stgray-600);
+	}
+	
+	&[class*="top"] .arrow{
+		bottom: -4px;
+		border-width: 5px 5px 0;
+		border-top-color: var(--stgray-600);
+	}
+	
+	&[class$="start"] .arrow{
+		left: 10px;
+	}
+	
+	&[class$="end"] .arrow{
+		right: 10px;
+	}
+	
+	&:not([class$="start"]):not([class$="end"]) .arrow{
+		left: calc(var(--sttooltip-x) - 2.5px);
+	}
 }
-
-.sttooltip.is-visible{
-	visibility: visible;
-}
-
-.sttooltip .arrow{
-	position: absolute;
-	width: 0;
-	height: 0;
-	border-color: transparent;
-	border-style: solid;
-	pointer-events: none;
-}
-
-.sttooltip[class*="is-bottom"] .arrow{
-	top: -4px;
-	border-width: 0 5px 5px;
-	border-bottom-color: var(--stgray-600);
-}
-
-.sttooltip[class*="is-top"] .arrow{
-	bottom: -4px;
-	border-width: 5px 5px 0;
-	border-top-color: var(--stgray-600);
-}
-
-.sttooltip[class$="start"] .arrow{
-	left: 10px;
-}
-
-.sttooltip[class$="end"] .arrow{
-	right: 10px;
-}
-
-.sttooltip:not([class$="start"]):not([class$="end"]) .arrow{
-	left: calc(var(--sttooltip-x) - 2.5px);
-}
-
-/* ========================================================================== Variations ========================================================================== */
 
 /* ========================================================================== Variables ========================================================================== */
 
-.stdropdown{
+.dropdown{
 	--object-distance: 0.8rem;
 	--stdropdown-min-width: initial;
 	--stdropdown-position: absolute;
 	--accent-color: initial;
 	--accent-foreground-color: initial;
-}
 
-/* ========================================================================== Base ========================================================================== */
+	/* ========================================================================== Base ========================================================================== */
 
-.stdropdown{
 	position: var(--stdropdown-position);
 	display: none;
 	color: inherit;
@@ -12539,287 +10028,288 @@ a.main:hover{
 	padding: 0.2rem 0;
 	white-space: nowrap;
 	min-width: var(--stdropdown-min-width);
-}
 
-.stdropdown>.item{
-	font-family: inherit;
-	appearance: none;
-	border: unset;
-	font-size: inherit;
-	text-align: inherit;
-	background: transparent;
-	color: inherit;
-	line-height: 1;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	padding: 0.8rem 1rem;
-	gap: var(--object-distance);
-	padding-top: 0.65rem;
-	padding-bottom: 0.65rem;
-	min-width: 0;
-}
+	&>.item{
+		font-family: inherit;
+		appearance: none;
+		border: unset;
+		font-size: inherit;
+		text-align: inherit;
+		background: transparent;
+		color: inherit;
+		line-height: 1;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		padding: 0.8rem 1rem;
+		gap: var(--object-distance);
+		padding-top: 0.65rem;
+		padding-bottom: 0.65rem;
+		min-width: 0;
+	}
 
-.stdropdown .item .icon{
-	font-size: 1.1em;
-}
+	& .item .icon{
+		font-size: 1.1em;
+	}
 
-.stdropdown .item .stavatar{
-	margin-top: -0.4rem;
-	margin-bottom: -0.4rem;
-	margin-left: -0.2rem;
-}
+	& .item .stavatar{
+		margin-top: -0.4rem;
+		margin-bottom: -0.4rem;
+		margin-left: -0.2rem;
+	}
 
-.stdropdown .item .description{
-	font-size: var(--strelative-small);
-	color: var(--stgray-500);
+	& .item .description{
+		font-size: var(--strelative-small);
+		color: var(--stgray-500);
 
-	text-align: right;
-	margin-left: auto;
-	float: right;
-}
+		text-align: right;
+		margin-left: auto;
+		float: right;
+	}
 
-.stdropdown .item:hover{
-	cursor: pointer;
-	background: var(--stgray-75);
-}
+	& .item:hover{
+		cursor: pointer;
+		background: var(--stgray-75);
+	}
 
-.stdropdown .item:where(.strow,.stgrid){
-	flex: 1;
-}
+	& .item:where(.strow,.stgrid){
+		flex: 1;
+	}
 
-/* ========================================================================== Variations ========================================================================== */
+	/* ========================================================================== Variations ========================================================================== */
 
-/* Active */
+	/* Active */
 
-.stdropdown .item.is-active{
-	background: var(--accent-color,var(--stgray-800));
-	color: var(--accent-foreground-color,var(--stgray-50));
-}
+	& .item.is-active{
+		background: var(--accent-color,var(--stgray-800));
+		color: var(--accent-foreground-color,var(--stgray-50));
+	}
 
-/* Header */
+	/* Header */
 
-.stdropdown .item.is-header{
-	padding: 0.5rem 0.6rem;
-	background: var(--stgray-200);
-	font-size: var(--stfont-size-13px);
-	font-weight: 500;
-	border-bottom: 1px solid var(--stgray-300);
-	border-top: 1px solid var(--stgray-300);
-}
+	& .item.is-header{
+		padding: 0.5rem 0.6rem;
+		background: var(--stgray-200);
+		font-size: var(--stfont-size-13px);
+		font-weight: 500;
+		border-bottom: 1px solid var(--stgray-300);
+		border-top: 1px solid var(--stgray-300);
+	}
 
-.stdropdown .item.is-header:hover{
-	cursor: default;
-	background: var(--stgray-200);
-}
+	& .item.is-header:hover{
+		cursor: default;
+		background: var(--stgray-200);
+	}
 
-/* Disabled */
+	/* Disabled */
 
-.stdropdown .item.disabled{
-	opacity: 0.5;
-	pointer-events: none;
-	user-select: none;
-}
+	& .item.disabled{
+		opacity: 0.5;
+		pointer-events: none;
+		user-select: none;
+	}
 
-/* Selected */
+	/* Selected */
 
-.stdropdown .item.is-selected{
-	background: var(--accent-color,var(--stprimary-700));
-	color: var(--accent-foreground-color,var(--stwhite));
-}
+	& .item.is-selected{
+		background: var(--accent-color,var(--stprimary-700));
+		color: var(--accent-foreground-color,var(--stwhite));
+	}
 
-.stdropdown .item.is-selected .description{
-	color: inherit;
-	opacity: 0.8;
-}
+	& .item.is-selected .description{
+		color: inherit;
+		opacity: 0.8;
+	}
 
-/* Separated */
+	/* Separated */
 
-.stdropdown.is-separated{
-	gap: 0.25rem;
-	padding-left: 0.25rem;
-	padding-right: 0.25rem;
-}
+	&.is-separated{
+		gap: 0.25rem;
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
+	}
 
-.stdropdown.is-separated .item{
-	border-radius: 0.4rem;
-}
+	&.is-separated .item{
+		border-radius: 0.4rem;
+	}
 
-/* Icon */
+	/* Icon */
 
-.stdropdown.starticon .item .icon{
-	min-width: 1rem;
-	text-align: center;
-	display: inline-block;
-	margin-top: 1px;
-}
+	&.starticon .item .icon{
+		min-width: 1rem;
+		text-align: center;
+		display: inline-block;
+		margin-top: 1px;
+	}
 
-.stdropdown.endicon .item .icon{
-	margin-left: auto;
-	min-width: 1rem;
-	text-align: center;
-	display: inline-block;
-	margin-top: 1px;
-}
+	&.endicon .item .icon{
+		margin-left: auto;
+		min-width: 1rem;
+		text-align: center;
+		display: inline-block;
+		margin-top: 1px;
+	}
 
-/* Density */
+	/* Density */
 
-.stdropdown.is-relaxed .item{
-	padding-top: 0.8rem;
-	padding-bottom: 0.8rem;
-}
+	&.is-relaxed .item{
+		padding-top: 0.8rem;
+		padding-bottom: 0.8rem;
+	}
 
-.stdropdown.is-dense .item{
-	padding-top: 0.55rem;
-	padding-bottom: 0.55rem;
-}
+	&.is-dense .item{
+		padding-top: 0.55rem;
+		padding-bottom: 0.55rem;
+	}
 
-/* Sizes */
+	/* Sizes */
 
-.stdropdown.small{
-	font-size: var(--stfont-size-13px);
-}
+	&.small{
+		font-size: var(--stfont-size-13px);
+	}
 
-.stdropdown.large{
-	font-size: var(--stfont-size-15px);
-}
+	&.large{
+		font-size: var(--stfont-size-15px);
+	}
 
-/* Visible */
+	/* Visible */
 
-.stdropdown.is-visible{
-	display: inline-flex;
-}
+	&.is-visible{
+		display: inline-flex;
+	}
 
-/* Scrollable */
+	/* Scrollable */
 
-.stdropdown.is-scrollable{
-	overflow: auto;
-	overflow-x: hidden;
+	&.is-scrollable{
+		overflow: auto;
+		overflow-x: hidden;
+	}
+
+	/* Positions */
+
+	&.is-top-left{
+		bottom: calc(100% + 0.5rem);
+		left: 0;
+	}
+
+	&.is-bottom-left{
+		top: calc(100% + 0.5rem);
+		left: 0;
+	}
+
+	&.is-bottom-center{
+		left: 50%;
+		transform: translateX(-50%);
+		top: calc(100% + 0.5rem);
+	}
+
+	&.is-top-center{
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: calc(100% + 0.5rem);
+	}
+
+	&.is-top-right{
+		bottom: calc(100% + 0.5rem);
+		right: 0;
+	}
+
+	&.is-bottom-right{
+		top: calc(100% + 0.5rem);
+		right: 0;
+	}
+
+	&.is-top{
+		bottom: calc(100% + 0.5rem);
+		left: 0;
+		right: 0;
+		min-width: min-content;
+	}
+
+	&.is-bottom{
+		top: calc(100% + 0.5rem);
+		left: 0;
+		right: 0;
+		min-width: min-content;
+	}
+
+	/* Checkbox */
+
+	& .item.is-checked{
+		color: var(--accent-color,var(--stprimary-700));
+	}
+
+	& .item .checkbox{
+		background: var(--stgray-200);
+		border: 1px solid var(--stgray-200);
+		border-radius: 0.2rem;
+		box-sizing: border-box;
+		color: inherit;
+		cursor: pointer;
+		font: inherit;
+		line-height: normal;
+		min-height: 1.15rem;
+		min-width: 1.15rem;
+		overflow: visible;
+		padding: 0;
+		user-select: none;
+		width: auto;
+	}
+
+	& .item .checkbox::after{
+		display: none;
+		font-family: Icons;
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 400;
+		justify-content: center;
+		left: 0;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		text-decoration: inherit;
+		top: 0;
+		transform: scale(0.8);
+		z-index: 1;
+		-webkit-font-smoothing: antialiased;
+		align-items: center;
+		backface-visibility: hidden;
+		bottom: 0;
+		color: var(--accent-foreground-color,var(--stwhite));
+		content: "\f00c";
+	}
+
+	& .item.is-checked .checkbox{
+		background: var(--accent-color,var(--stprimary-700));
+		border-color: var(--accent-color,var(--stprimary-700));
+	}
+
+	& .item.is-checked .checkbox::after{
+		display: flex;
+	}
 }
 
 /* (Below 766px) */
 @media screen and (max-width: 766px){
-	.stdropdown.is-scrollable{
+	.dropdown.is-scrollable{
 		max-height: 10rem;
 	}
 }
 
 /* (Above 766px) */
 @media screen and (min-width: 766px){
-	.stdropdown.is-scrollable{
+	.dropdown.is-scrollable{
 		max-height: 15rem;
 	}
 }
 
 /* (Above 993px) */
 @media screen and (min-width: 993px){
-	.stdropdown.is-scrollable{
+	.dropdown.is-scrollable{
 		max-height: 19rem;
 	}
 }
 
-/* Positions */
-
-.stdropdown.is-top-left{
-	bottom: calc(100% + 0.5rem);
-	left: 0;
-}
-
-.stdropdown.is-bottom-left{
-	top: calc(100% + 0.5rem);
-	left: 0;
-}
-
-.stdropdown.is-bottom-center{
-	left: 50%;
-	transform: translateX(-50%);
-	top: calc(100% + 0.5rem);
-}
-
-.stdropdown.is-top-center{
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: calc(100% + 0.5rem);
-}
-
-.stdropdown.is-top-right{
-	bottom: calc(100% + 0.5rem);
-	right: 0;
-}
-
-.stdropdown.is-bottom-right{
-	top: calc(100% + 0.5rem);
-	right: 0;
-}
-
-.stdropdown.is-top{
-	bottom: calc(100% + 0.5rem);
-	left: 0;
-	right: 0;
-	min-width: min-content;
-}
-
-.stdropdown.is-bottom{
-	top: calc(100% + 0.5rem);
-	left: 0;
-	right: 0;
-	min-width: min-content;
-}
-
-/* Checkbox */
-
-.stdropdown .item.is-checked{
-	color: var(--accent-color,var(--stprimary-700));
-}
-
-.stdropdown .item .checkbox{
-	background: var(--stgray-200);
-	border: 1px solid var(--stgray-200);
-	border-radius: 0.2rem;
-	box-sizing: border-box;
-	color: inherit;
-	cursor: pointer;
-	font: inherit;
-	line-height: normal;
-	min-height: 1.15rem;
-	min-width: 1.15rem;
-	overflow: visible;
-	padding: 0;
-	user-select: none;
-	width: auto;
-}
-
-.stdropdown .item .checkbox::after{
-	display: none;
-	font-family: Icons;
-	font-size: 1rem;
-	font-style: normal;
-	font-weight: 400;
-	justify-content: center;
-	left: 0;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	text-decoration: inherit;
-	top: 0;
-	transform: scale(0.8);
-	z-index: 1;
-	-webkit-font-smoothing: antialiased;
-	align-items: center;
-	backface-visibility: hidden;
-	bottom: 0;
-	color: var(--accent-foreground-color,var(--stwhite));
-	content: "\f00c";
-}
-
-.stdropdown .item.is-checked .checkbox{
-	background: var(--accent-color,var(--stprimary-700));
-	border-color: var(--accent-color,var(--stprimary-700));
-}
-
-.stdropdown .item.is-checked .checkbox::after{
-	display: flex;
-}
 
 /* ========================================================================== Color Schemes ========================================================================== */
 
