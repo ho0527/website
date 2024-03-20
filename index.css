@@ -5487,8 +5487,11 @@ button{
 		border-right: 3px solid var(--stindicator-color);
 	}
 
-	/* Emphasises */
+	&.border{
+		border: 3px solid var(--stindicator-color);
+	}
 
+	/* Emphasises */
 	&.error{
 		--stindicator-color: var(--stnegative-500);
 	}
