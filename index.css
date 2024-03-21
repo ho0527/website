@@ -15,7 +15,7 @@ h1,h2,h3,h4,h5,h6{
 hr{
 	border-top: 1px var(--stgray-400) solid;
 	width: 100%;
-	margin: 5px 0px;
+	margin: 10px 0px;
 }
 
 table{
@@ -152,6 +152,11 @@ table{
 }
 
 .checkbox{
+    user-select: none;
+    cursor: pointer;
+}
+
+.checkbox checkbox{
 	width: 20px;
 	height: 20px;
 }
@@ -314,7 +319,7 @@ html{
 	--navbar-color-light: black;
 	--navbar-color-dark: white;
 	--navbar-background-light: rgba(238,238,238,0.95);
-	--navbar-background-dark: rgba(35,35,35,0.95);
+	--navbar-background-dark: rgba(50, 50, 50, 0.95);
 	--navbar-boxshadow-color-light: rgba(70,70,70,0.1);
 	--navbar-boxshadow-color-dark: rgba(70,70,70,0.1);
 
@@ -2454,14 +2459,14 @@ button{
 
 	/* Labeled */
 
-	&:is(.startlabele,.endlabele,.fulllabel):is(&,.label){
+	&:is(.startlabel,.endlabel,.fulllabel):is(&,.label){
 		border-radius: var(--border-radius);
 		display: flex;
 		align-items: center;
 		justify-content: start;
 	}
 
-	&:is(.startlabele,.endlabele,.fulllabel) .label{
+	&:is(.startlabel,.endlabel,.fulllabel) .label{
 		line-height: 1;
 		display: flex;
 		align-items: center;
@@ -2474,24 +2479,24 @@ button{
 		height: var(--height);
 	}
 
-	&:is(.startlabele,.fulllabel) .label{
+	&:is(.startlabel,.fulllabel) .label{
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 		border-right-width: 0;
 	}
 
-	&:is(.startlabele,.fulllabel) input{
+	&:is(.startlabel,.fulllabel) input{
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 	}
 
-	&:is(.endlabele,.fulllabel) .label{
+	&:is(.endlabel,.fulllabel) .label{
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		border-left-width: 0;
 	}
 
-	&:is(.endlabele,.fulllabel) input{
+	&:is(.endlabel,.fulllabel) input{
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 	}
@@ -2509,7 +2514,7 @@ button{
 	}
 
 	/* Underlined */
-	&:is(.startlabel,.fulllabel,.endlabeled).underline .label{
+	&:is(.startlabel,.fulllabel,.endlabel).underline .label{
 		border: 0;
 		border-bottom: 2px solid var(--stgray-400);
 		background: var(--stgray-200);
@@ -2519,7 +2524,7 @@ button{
 		border-bottom-left-radius: 0;
 	}
 
-	&:is(.endlabeled,.fulllabel).underline .label{
+	&:is(.endlabel,.fulllabel).underline .label{
 		border-bottom-right-radius: 0;
 	}
 
@@ -2527,17 +2532,17 @@ button{
 		border-left: 0;
 	}
 
-	&:is(.endlabeled,.fulllabel).underline input{
+	&:is(.endlabel,.fulllabel).underline input{
 		border-right: 0;
 	}
 
 	/* Solid */
-	&:is(.startlabel,.fulllabel,.endlabeled).is-solid .label{
+	&:is(.startlabel,.fulllabel,.endlabel).is-solid .label{
 		border-color: transparent;
 		background: var(--stgray-200);
 	}
 
-	&:is(.startlabel,.fulllabel,.endlabeled).is-solid:focus-within .label{
+	&:is(.startlabel,.fulllabel,.endlabel).is-solid:focus-within .label{
 		border-color: var(--stgray-300);
 	}
 
@@ -2776,11 +2781,11 @@ button{
 	}
 
 	/* Solid */
-	&.inputerror.is-solid:is(.is-start-labeled,.islabel,.is-end-labeled) .label{
+	&.inputerror.solid:is(.startlabel,.label,.endlabel) .label{
 		border-color: var(--stnegative-400);
 	}
 
-	&.inputerror.is-solid input:focus,&.inputerror.is-solid textarea:focus{
+	&.inputerror.solid input:focus,&.inputerror.solid textarea:focus{
 		background: var(--stgray-100);
 		border: 1px solid var(--stnegative-400);
 	}
@@ -4328,8 +4333,8 @@ button{
 		outline: 0;
 	}
 
-	& select,&select .content{
-		line-height: 1.5;
+	& select,& .content{
+		/* line-height: 1.5; */
 		font-size: var(--stfont-size-14px);
 		color: var(--stgray-800);
 
@@ -4349,7 +4354,7 @@ button{
 		overflow: hidden;
 	}
 
-	& .content,&select .content *{
+	& .content,& .content *{
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
@@ -4392,17 +4397,17 @@ button{
 
 	/* Relaxed */
 
-	&.is-relaxed{
+	&.relaxe{
 		--height: var(--stinput-height-large);
 	}
 
 	/* Multiple */
 
-	&.is-multiple{
+	&.multiple{
 		height: auto;
 	}
 
-	&.is-multiple::after{
+	&.multiple::after{
 		content: none;
 	}
 
@@ -4453,16 +4458,16 @@ button{
 
 	/* Active */
 
-	&.is-active{
+	&.active{
 		border-color: var(--stprimary-600);
 	}
 
 	/* If select is-active then open child .stdropdown also */
-	&.is-active .stdropdown{
+	&.active .stdropdown{
 		display: inline-flex;
 	}
 
-	&.underline.is-active{
+	&.underline.active{
 		border-color: transparent;
 		border-bottom-color: var(--stprimary-600);
 	}
@@ -4596,11 +4601,11 @@ button{
 		background: transparent;
 	}
 
-	&[data-tocas="input-combo"] .content.ghost{
+	&[data-tocas="input-combo"] .content.ghosting{
 		opacity: 0.5;
 	}
 
-	&[data-tocas="input-combo"] .content.hidden{
+	&[data-tocas="input-combo"] .content.is-hidden{
 		visibility: hidden;
 	}
 }
@@ -5487,11 +5492,8 @@ button{
 		border-right: 3px solid var(--stindicator-color);
 	}
 
-	&.border{
-		border: 3px solid var(--stindicator-color);
-	}
-
 	/* Emphasises */
+
 	&.error{
 		--stindicator-color: var(--stnegative-500);
 	}
@@ -6118,7 +6120,6 @@ label:has(.switch){
 	height: auto;
 	margin: 0;
 	padding: 5px;
-	border: none;
 	border-collapse: collapse;
 	border-spacing: 0;
 	border-color: inherit;
@@ -6134,7 +6135,7 @@ label:has(.switch){
 	/* ========================================================================== Structure ========================================================================== */
 
 	& tr:has(th){
-		border-bottom: 1px solid var(--stgray-450);
+		border-bottom: 1px var(--stgray-450) solid;
 	}
 
 	& tr th{
@@ -6147,8 +6148,12 @@ label:has(.switch){
 		font-weight: 500;
 	}
 
+	& tbody tr{
+		border-top: 1px var(--stgray-450) solid;
+	}
+
 	& tbody tr+tr{
-		border-top: 1px solid var(--stgray-450);
+		border-top: 1px var(--stgray-450) solid;
 	}
 
 	& tbody tr td{
@@ -6216,7 +6221,7 @@ label:has(.switch){
 
 	/* Celled */
 
-	&.is-celled tr:is(td,th):not(:last-child){
+	&.cell tr:is(td,th):not(:last-child){
 		border-right: 1px solid var(--stgray-300);
 	}
 
@@ -6416,13 +6421,22 @@ label:has(.switch){
 	& tbody tr td.is-fitted{
 		padding: 0;
 	}
+
+	&.stripe>tbody>tr:nth-child(even){
+		background: var(--stgray-100);
+	}
+
+	&.stripe>tbody:nth-child(even){
+		background: var(--stgray-100);
+	}
+
+	&.stripe{
+		background: var(--stgray-50);
+	}
 }
 
 /* stripe */
 
-.stripe>tbody>tr:nth-child(even){
-	background: var(--stgray-75);
-}
 
 /* Empty */
 
@@ -8583,7 +8597,7 @@ a.stheader:hover{
 	overflow: hidden;
 	padding: 1rem;
 	box-sizing: border-box;
-	background: var(--stgray-50);
+	background: var(--stgray-75);
 }
 
 a.main:hover{
@@ -9956,7 +9970,7 @@ a.main:hover{
 	--sttooltip-x: 0;
 
 	/* ========================================================================== Base ========================================================================== */
-	
+
 	position: fixed;
 	background: var(--stgray-600);
 	padding: 0.1rem 0.35rem;
@@ -9968,11 +9982,11 @@ a.main:hover{
 	z-index: 99;
 	max-width: min(300px,calc(100vw - 2rem));
 	pointer-events: none;
-	
+
 	&.visible{
 		visibility: visible;
 	}
-	
+
 	& .arrow{
 		position: absolute;
 		width: 0;
@@ -9981,27 +9995,27 @@ a.main:hover{
 		border-style: solid;
 		pointer-events: none;
 	}
-	
+
 	&[class*="bottom"] .arrow{
 		top: -4px;
 		border-width: 0 5px 5px;
 		border-bottom-color: var(--stgray-600);
 	}
-	
+
 	&[class*="top"] .arrow{
 		bottom: -4px;
 		border-width: 5px 5px 0;
 		border-top-color: var(--stgray-600);
 	}
-	
+
 	&[class$="start"] .arrow{
 		left: 10px;
 	}
-	
+
 	&[class$="end"] .arrow{
 		right: 10px;
 	}
-	
+
 	&:not([class$="start"]):not([class$="end"]) .arrow{
 		left: calc(var(--sttooltip-x) - 2.5px);
 	}
@@ -10282,12 +10296,12 @@ a.main:hover{
 		content: "\f00c";
 	}
 
-	& .item.is-checked .checkbox{
+	& .item.checked .checkbox{
 		background: var(--accent-color,var(--stprimary-700));
 		border-color: var(--accent-color,var(--stprimary-700));
 	}
 
-	& .item.is-checked .checkbox::after{
+	& .item.checked .checkbox::after{
 		display: flex;
 	}
 }
@@ -10324,7 +10338,7 @@ html[data-scheme="light"],.light,html[data-scheme="dark"] .is-inverted{
 	--stgray-100: var(--stlight-gray-100);
 	--stgray-200: var(--stlight-gray-200);
 	--stgray-300: var(--stlight-gray-300);
-	--stgray-400: var(--stlight-gray-400);
+    
 	--stgray-500: var(--stlight-gray-500);
 	--stgray-600: var(--stlight-gray-600);
 	--stgray-700: var(--stlight-gray-700);
@@ -13693,8 +13707,8 @@ html[data-background="secondary"],html[data-background="secondary"] body{
 
 .margin-0px{ margin: 0px !important; }
 .padding-0px{ padding: 0px !important; }
+
 /* END */
 
 
 /* program START */
-
